@@ -18,9 +18,12 @@ Convención: `[PENDIENTE]` = no hay data o no está confirmado. No se inventó n
 
 ## Webinar — lanzamiento
 
-- **Jueves 22/10/2026, 19:00 hs Argentina**, en vivo, desde el estudio con la pizarra.
+- **Lunes 19/10/2026, 19:00 hs Argentina** (definitivo, 26-sep; antes era jueves 22/10), en vivo, desde el estudio con la pizarra.
 - Estructura: los 3 dolores (CPA → márgenes → metadependencia) → los tres desembocan en el modelo de suscripción → oferta.
-- Oferta: 1a1, 3 meses, DFY, USD 6.000, 20 lugares, carrito de 3 días.
+- Oferta: 20 cupos en total, carrito de 3 días (20 al 22/10, cierre 22/10 23:59):
+  - **Génesis DFY:** 1a1, 3 meses, USD 6.000 — **10 cupos**.
+  - **Mentoría (downsell):** USD 2.000 → 2 cuotas de USD 1.100 · 3 meses — **10 cupos**. Incluye: chat 1 a 1 directo con José · 1 clase grupal semanal con Manu · 3 clases grupales semanales con José · Skool (SOPs, roadmaps, sistemas, contactos) · comunidad. Enseña únicamente a empezar a vender un producto consumible y escalarlo SIN modelo de suscripción, y algunas cosas más [PENDIENTE: chequear con Manu].
+  - José es socio de Manu y coach en la entrega del servicio.
 - Bonuses provisorios (**verificar con Manu que existan antes de decirlos**):
   - (1) Las secuencias reales de retención de su marca.
   - (2) La Calculadora del Techo, versión para usar solo.
@@ -32,7 +35,9 @@ Convención: `[PENDIENTE]` = no hay data o no está confirmado. No se inventó n
   - G2 del primer cobro: si no hacés el primer cobro recurrente en tu ciclo + N días, seguimos sin cobrar.
   - Hasta definirla, **el webinar no menciona garantía**.
 
-## Calendario de historias del lanzamiento (25-sep)
+## Calendario de historias del lanzamiento (25-sep) — REEMPLAZADO
+
+> Superado por `lanzamiento-19-10/calendario-historias.md` (webinar movido al 19/10). Se deja como histórico.
 
 | Fechas | Fase |
 |---|---|
