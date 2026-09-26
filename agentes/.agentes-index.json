@@ -1,0 +1,178 @@
+{
+  "analisis-investigacion": {
+    "title": "Análisis de investigación",
+    "hash": "19c528dd8b",
+    "files": [
+      "agentes/M3-bases/analisis-investigacion.md",
+      ".claude/skills/limitless-analisis-investigacion/SKILL.md"
+    ]
+  },
+  "analista-research": {
+    "title": "Investigación de mercado",
+    "hash": "b471bd6ea6",
+    "files": [
+      "agentes/M3-bases/analista-research.md",
+      ".claude/skills/limitless-analista-research/SKILL.md"
+    ]
+  },
+  "arquitecto-oferta": {
+    "title": "Arquitecto de Oferta",
+    "hash": "ba8272c340",
+    "files": [
+      "agentes/M3-bases/arquitecto-oferta.md",
+      ".claude/skills/limitless-arquitecto-oferta/SKILL.md"
+    ]
+  },
+  "arquitecto-producto-mvp": {
+    "title": "Cómo crear tu producto",
+    "hash": "9bd9200c36",
+    "files": [
+      "agentes/M3-bases/arquitecto-producto-mvp.md",
+      ".claude/skills/limitless-arquitecto-producto-mvp/SKILL.md"
+    ]
+  },
+  "diagnostico-validacion": {
+    "title": "Validación de oferta",
+    "hash": "b31f71c886",
+    "files": [
+      "agentes/M3-bases/diagnostico-validacion.md",
+      ".claude/skills/limitless-diagnostico-validacion/SKILL.md"
+    ]
+  },
+  "agente-copy": {
+    "title": "Mastering Copy",
+    "hash": "e3786337a9",
+    "files": [
+      "agentes/M4-webinar-organico/agente-copy.md",
+      ".claude/skills/limitless-agente-copy/SKILL.md"
+    ]
+  },
+  "agente-guiones-reels": {
+    "title": "Reels",
+    "hash": "cc4730071e",
+    "files": [
+      "agentes/M4-webinar-organico/agente-guiones-reels.md",
+      ".claude/skills/limitless-agente-guiones-reels/SKILL.md"
+    ]
+  },
+  "agente-optimizacion-perfil": {
+    "title": "Optimización de perfil",
+    "hash": "8976cddf89",
+    "files": [
+      "agentes/M4-webinar-organico/agente-optimizacion-perfil.md",
+      ".claude/skills/limitless-agente-optimizacion-perfil/SKILL.md"
+    ]
+  },
+  "agente-sala": {
+    "title": "Plataforma para webinar",
+    "hash": "ada662f73b",
+    "files": [
+      "agentes/M4-webinar-organico/agente-sala.md",
+      ".claude/skills/limitless-agente-sala/SKILL.md"
+    ]
+  },
+  "agente-secuencias-historias": {
+    "title": "Historias",
+    "hash": "146e14f589",
+    "files": [
+      "agentes/M4-webinar-organico/agente-secuencias-historias.md",
+      ".claude/skills/limitless-agente-secuencias-historias/SKILL.md"
+    ]
+  },
+  "agente-vsl-chat": {
+    "title": "VSL de chat",
+    "hash": "9c66f3ad3e",
+    "files": [
+      "agentes/M4-webinar-organico/agente-vsl-chat.md",
+      ".claude/skills/limitless-agente-vsl-chat/SKILL.md"
+    ]
+  },
+  "calendario-historias": {
+    "title": "Narrativa y calendario",
+    "hash": "f24b2469bc",
+    "files": [
+      "agentes/M4-webinar-organico/calendario-historias.md",
+      ".claude/skills/limitless-calendario-historias/SKILL.md"
+    ]
+  },
+  "calendario-nutricion": {
+    "title": "Calendario nutrición WhatsApp",
+    "hash": "d4735070b4",
+    "files": [
+      "agentes/M4-webinar-organico/calendario-nutricion.md",
+      ".claude/skills/limitless-calendario-nutricion/SKILL.md"
+    ]
+  },
+  "contenido-dia-nutricion": {
+    "title": "Cómo hacer un día de nutrición",
+    "hash": "494b111e39",
+    "files": [
+      "agentes/M4-webinar-organico/contenido-dia-nutricion.md",
+      ".claude/skills/limitless-contenido-dia-nutricion/SKILL.md"
+    ]
+  },
+  "mensajes-dia-webinar": {
+    "title": "Recordatorio WhatsApp",
+    "hash": "051a543d01",
+    "files": [
+      "agentes/M4-webinar-organico/mensajes-dia-webinar.md",
+      ".claude/skills/limitless-mensajes-dia-webinar/SKILL.md"
+    ]
+  },
+  "ads-reminder-configuracion": {
+    "title": "Ads Reminder — Configuración",
+    "hash": "fa357e1d93",
+    "files": [
+      "agentes/M5-webinar-pago/ads-reminder-configuracion.md",
+      ".claude/skills/limitless-ads-reminder-configuracion/SKILL.md"
+    ]
+  },
+  "ads-reminder-copy": {
+    "title": "Ads Reminder — Copy",
+    "hash": "255d1db43d",
+    "files": [
+      "agentes/M5-webinar-pago/ads-reminder-copy.md",
+      ".claude/skills/limitless-ads-reminder-copy/SKILL.md"
+    ]
+  },
+  "agente-vsl-registro": {
+    "title": "VSL Lanzamiento",
+    "hash": "0c042d5113",
+    "files": [
+      "agentes/M5-webinar-pago/agente-vsl-registro.md",
+      ".claude/skills/limitless-agente-vsl-registro/SKILL.md"
+    ]
+  },
+  "configurador-ads": {
+    "title": "Ads de adquisición — Configuración",
+    "hash": "bc725cce35",
+    "files": [
+      "agentes/M5-webinar-pago/configurador-ads.md",
+      ".claude/skills/limitless-configurador-ads/SKILL.md"
+    ]
+  },
+  "constructor-optin": {
+    "title": "Crear una página de registro",
+    "hash": "110bda3d01",
+    "files": [
+      "agentes/M5-webinar-pago/constructor-optin.md",
+      ".claude/skills/limitless-constructor-optin/SKILL.md"
+    ]
+  },
+  "constructor-thank-you": {
+    "title": "Crear una thank you page",
+    "hash": "318de73ede",
+    "files": [
+      "agentes/M5-webinar-pago/constructor-thank-you.md",
+      ".claude/skills/limitless-constructor-thank-you/SKILL.md"
+    ]
+  },
+  "guionista-typ": {
+    "title": "Video thank you page",
+    "hash": "063b79b627",
+    "files": [
+      "agentes/M5-webinar-pago/guionista-typ.md",
+      ".claude/skills/limitless-guionista-typ/SKILL.md"
+    ]
+  }
+}
