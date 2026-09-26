@@ -23,7 +23,10 @@ Convención: `[PENDIENTE]` = no hay data o no está confirmado. No se inventó n
 - Oferta: 20 cupos en total, carrito de 3 días (20 al 22/10, cierre 22/10 23:59):
   - **Génesis DFY:** 1a1, 3 meses, USD 6.000 — **10 cupos**.
   - **Mentoría (downsell):** USD 2.000 → 2 cuotas de USD 1.100 · 3 meses — **10 cupos**. Incluye: chat 1 a 1 directo con José · 1 clase grupal semanal con Manu · 3 clases grupales semanales con José · Skool (SOPs, roadmaps, sistemas, contactos) · comunidad. Enseña únicamente a empezar a vender un producto consumible y escalarlo SIN modelo de suscripción, y algunas cosas más [PENDIENTE: chequear con Manu].
+  - La Mentoría **no se comunica en ningún lado**: solo se ofrece en la conversación con el lead que no puede pagar la DFY.
   - José es socio de Manu y coach en la entrega del servicio.
+- La tienda no tiene que ser Tiendanube: el 95% del avatar usa Tiendanube o Shopify, y cualquier plataforma sirve.
+- Replay: ~80 minutos. Fast-action confirmado (instalación prioritaria 48 h, Génesis DFY).
 - Bonuses provisorios (**verificar con Manu que existan antes de decirlos**):
   - (1) Las secuencias reales de retención de su marca.
   - (2) La Calculadora del Techo, versión para usar solo.
@@ -83,10 +86,10 @@ Por confirmar: lugares que quedan a 4.000, si se muestran las marcas del piloto,
 
 - [ ] Links de todo (ver sección Links de `CONTEXTO.md`).
 - [ ] Garantía del webinar.
-- [ ] Confirmar que cada bonus existe.
+- [ ] Confirmar que cada bonus existe (fast-action ya confirmado).
 - [ ] La calculadora de tres escenarios (conservador/realista/deseado) con techo y punto operativo, lista para usar en vivo.
 - [ ] Qué hace Manu concretamente para el 1,28% de churn.
 - [ ] Que Manu diga "Escalar Hacia Adentro" en voz alta y le salga natural.
 - [ ] Branding: variante de naranja del símbolo.
-- [ ] Qué pasa con las marcas que no están en Tiendanube.
+- [x] Qué pasa con las marcas que no están en Tiendanube → no es excluyente.
 - [ ] El segundo "sin" de la oferta: "ni dejar de vender" (vigente) vs "sin depender del producto que pegue".
