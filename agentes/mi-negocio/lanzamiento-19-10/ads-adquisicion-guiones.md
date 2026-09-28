@@ -16,12 +16,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 - **Cuándo:** lunes 19 de octubre, 19:00 hs Argentina. En vivo, 100% gratis.
 - **Link:** `[PENDIENTE: URL de la landing con UTM]`.
-- **Los 3 entregables** (son siempre los mismos; en cada ad se redactan mirando el dolor del hook):
-  1. **La Calculadora del Techo:** cuánto podés pagar por cada cliente de tu marca sin perder plata, con tus números.
-  2. **Las secuencias reales de retención de mi marca:** las que sostienen 2.200 suscriptores activos con 1,28% de churn.
-  3. **El plan para sumar la suscripción al lado de tu compra única,** sin frenar lo que hoy vende, en Tiendanube, Shopify o la que uses.
+- **Los 3 regalos por asistir** (son siempre los mismos; en cada ad se redactan mirando el dolor del hook):
+  1. **Bonus 1 (principal) — El roadmap paso a paso para migrar tu marca al modelo de suscripción con lo que ya tenés.** La estrategia para arrancar con cientos de suscriptores el primer mes usando tu base de clientes, tu audiencia y tus anuncios ganadores actuales, sin testear nada de cero.
+  2. **Bonus 2 — El Simulador de Suscripción.** Cargás los números reales de tu marca y ves cómo se vería con suscripción: tabla de cohortes, margen mes a mes, tres escenarios y cuánto CAC podés pagar. Con IVA y Ganancias adentro, y con un Loom que te guía para completarlo.
+  3. **Bonus 3 — Los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp de suscripción.** Te genera los flujos completos de bienvenida, onboarding, cobro y migración de tu base, listos para cargar. El Bonus 2 te dice qué hacer; este te lo construye.
 
-> **[CONFIRMAR con Manu antes de grabar]** Los entregables 1 y 2 son los bonuses provisorios del brief ("Calculadora del Techo, versión para usar solo" y "las secuencias reales de retención de su marca"). Hay que confirmar que existen y que se entregan **a todos los que asisten**, no solo a los que compran. Si alguno no va, se reemplaza en los 5 guiones a la vez.
+> Los bonus por entrar a Génesis el día del evento (A: el rail con Puentify, B: el sistema de pauta, C: la Red Genesis) **no van en los ads**: el ad no vende nada. Se usan en el pitch de la masterclass.
 
 ## Matriz
 
@@ -59,11 +59,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE" grande]`
 
 **ENTREGABLES** (19–36 s)
-> Te voy a dar la Calculadora del Techo, para que sepas cuánto podés pagar por cada cliente de tu marca sin perder plata.
-> Las secuencias de retención reales de mi marca, con las que el cliente que pagaste te vuelve a comprar.
-> Y el plan para sumar la suscripción al lado de lo que hoy vendés, sin frenar nada.
+> Y a los que vengan les regalo tres cosas.
+> Uno: el roadmap paso a paso para pasar tu marca a suscripción con lo que ya tenés: tu base, tu audiencia y tus anuncios ganadores. Sin testear nada de cero.
+> Dos: el Simulador de Suscripción. Cargás tus números y ves cuánto CAC podés pagar por cliente, con IVA y Ganancias adentro.
+> Tres: los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp que cobran todos los meses.
 
-`[EDICIÓN: los 3 entregables aparecen como lista a medida que los nombra; en el 1, un plano rápido de la calculadora (sin mostrar la cuenta)]`
+`[EDICIÓN: "3 REGALOS POR ASISTIR" + los 3 aparecen como lista a medida que los nombra; en el 2, plano rápido del Simulador (sin mostrar la cuenta)]`
 
 **REMATE + CTA** (36–46 s)
 > Es lo único que necesitás para dejar de competir por el CPA.
@@ -93,11 +94,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE" grande]`
 
 **ENTREGABLES** (32–50 s)
-> Te llevás la Calculadora del Techo, para que veas cuánto podés pagar por cliente mientras tu competencia no puede.
-> Las secuencias de retención reales de mi marca.
-> Y el plan para sumar la suscripción al lado de tu compra única, sin tocar lo que hoy te vende.
+> Y a los que vengan les regalo tres cosas.
+> El roadmap paso a paso para migrar tu marca a suscripción usando los anuncios ganadores que ya tenés, sin testear nada de cero.
+> El Simulador de Suscripción, para que veas cuánto podés pagar por cliente mientras tu competencia no puede.
+> Y los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp de suscripción, listos para cargar.
 
-`[EDICIÓN: lista de los 3 entregables]`
+`[EDICIÓN: "3 REGALOS POR ASISTIR" + lista de los 3; plano rápido del Simulador en el 2]`
 
 **CTA** (50–60 s)
 > Hacé clic acá abajo y reservá tu lugar. Lunes 19, 19 horas. Te espero en vivo.
@@ -127,11 +129,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE" grande]`
 
 **ENTREGABLES** (28–46 s)
-> Te llevás la Calculadora del Techo, para saber cuánto te deja cada cliente, no cada venta.
-> Las secuencias de retención de mi marca, las que hacen que el cliente vuelva a comprar sin que pagues pauta de nuevo.
-> Y el plan para sumar la suscripción sin frenar lo que hoy factura.
+> Y a los que vengan les regalo tres cosas.
+> El roadmap paso a paso para migrar tu marca a suscripción con lo que ya tenés: tu base de clientes, tu audiencia y tus anuncios.
+> El Simulador de Suscripción, para que veas mes a mes cuánto margen te deja cada cliente, no cada venta. Con IVA y Ganancias adentro.
+> Y los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp que hacen que el cliente te vuelva a comprar sin pagar pauta de nuevo.
 
-`[EDICIÓN: lista de los 3 entregables]`
+`[EDICIÓN: "3 REGALOS POR ASISTIR" + lista de los 3; plano rápido del Simulador en el 2]`
 
 **REMATE + CTA** (46–56 s)
 > Es lo único que necesitás para dejar de sobrevivir con siete lucas por venta.
@@ -159,11 +162,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: comprobante en pantalla, captura del tablero]`
 
 **ENTREGABLES** (20–38 s)
-> La Calculadora del Techo, para que veas cuánto margen te queda por cliente cuando te compra más de una vez.
-> Las secuencias de retención reales de mi marca.
-> Y el plan para sumar la suscripción al lado de tu compra única, sin dejar de vender.
+> Y a los que vengan les regalo tres cosas.
+> El roadmap paso a paso para pasar tu marca a suscripción con lo que ya tenés, y arrancar con cientos de suscriptores el primer mes usando tu base de clientes.
+> El Simulador de Suscripción: cargás tus números reales y ves tu margen mes a mes en tres escenarios, con IVA y Ganancias adentro.
+> Y los sistemas que uso en mis marcas para armar tus flujos de bienvenida, cobro y migración de tu base, listos para cargar.
 
-`[EDICIÓN: lista de los 3 entregables]`
+`[EDICIÓN: "3 REGALOS POR ASISTIR" + lista de los 3; plano rápido del Simulador en el 2]`
 
 **REMATE + CTA** (38–46 s)
 > Es lo único que necesitás para que la segunda venta te deje plata de verdad.
@@ -192,11 +196,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE" grande]`
 
 **ENTREGABLES** (26–44 s)
-> Te llevás la Calculadora del Techo, para saber cuánto podés invertir por cliente para armar una base que te cobre sola.
-> Las secuencias de retención reales de mi marca, las que hacen que esa base no se te vaya.
-> Y el plan para sumar la suscripción al lado de lo que hoy vendés, sin frenar nada.
+> Y a los que vengan les regalo tres cosas.
+> El roadmap paso a paso para migrar tu marca a suscripción y arrancar con tu propia base de clientes, no con pauta nueva.
+> El Simulador de Suscripción, para ver cómo se vería tu facturación mes a mes con una base que cobra sola.
+> Y los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp que cobran todos los meses, con o sin Meta.
 
-`[EDICIÓN: lista de los 3 entregables]`
+`[EDICIÓN: "3 REGALOS POR ASISTIR" + lista de los 3; plano rápido del Simulador en el 2]`
 
 **REMATE + CTA** (44–55 s)
 > Es lo único que necesitás para que el mes arranque cobrado, y no en cero.
@@ -210,7 +215,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 Como en la referencia, el mismo texto para toda la campaña:
 
-> **El lunes 19 de octubre, a las 19 hs, doy una masterclass EN VIVO:** cómo pasar tu marca de consumibles a suscripción para poder pagar más por cada cliente, sin frenar lo que hoy vendés. Te llevás la Calculadora del Techo, mis secuencias de retención y el plan de migración. 100% gratis. Anotate 👇
+> **El lunes 19 de octubre, a las 19 hs, doy una masterclass EN VIVO:** cómo pasar tu marca de consumibles a suscripción para poder pagar más por cada cliente, sin frenar lo que hoy vendés. Regalo por asistir: el roadmap para migrar tu marca con lo que ya tenés, el Simulador de Suscripción y los sistemas que arman tus flujos de email y WhatsApp. 100% gratis. Anotate 👇
 
 **Titular:** LUNES 19/10 · 19 HS · EN VIVO
 **Descripción:** Masterclass gratis: cuánto podés pagar por cada cliente de tu marca.
@@ -219,14 +224,14 @@ Como en la referencia, el mismo texto para toda la campaña:
 
 - [x] Ninguno explica el método ni hace una cuenta: solo promete lo que se lleva el que va.
 - [x] Sin precio, sin oferta, sin "programa", sin "webinar", sin "funnel" ni "lead".
-- [x] Un dolor y un ángulo por pieza. Los 3 entregables son los mismos, redactados según el dolor.
+- [x] Un dolor y un ángulo por pieza. Los 3 regalos son los mismos, redactados según el dolor. Los bonus A, B y C (de compra) no aparecen.
 - [x] La fecha se dice al menos 2 veces y se ve en pantalla en hook, anuncio y CTA.
 - [x] Solo números canónicos, cada uno con su comprobante: 2.200 activos, 1,28% churn, 60M → 156.798.062, LTV 3, 12.000 vs 4.500, marca con la pauta apagada al 50% de margen.
 - [x] No se dice "cupos limitados" ni "no va a haber grabación": el cupo de asistentes no está definido y hay replay.
 
 ## Pendientes
 
-1. **Confirmar los entregables 1 y 2** (ver arriba). Es lo único que frena la grabación.
+1. D2-V2 dice "arrancar con cientos de suscriptores el primer mes" (sale del texto del Bonus 1). Manu no promete resultados: confirmar que lo quiere decir así en cámara; si no, se corta esa parte.
 2. URL de la landing con UTM.
 3. Las capturas: tablero (2.200 / 1,28% / LTV), reporte de facturación (60M → 156.798.062) y la marca con la pauta apagada.
 4. Confirmar el "después de años" de D2-V1.
