@@ -1,27 +1,6 @@
-# Adquisición · 10 al 18/10 · 10 reels
+# Reels · 10 al 18/10 · Guiones
 
-Hechos con el agente **Reels** (sin reel de referencia: anatomía de 4 partes). En ventana de lanzamiento cada reel ataca un dolor y el CTA es SIEMPRE el registro. **Todos los CTA dicen que es una clase en vivo privada y que para entrar se comenta SUSCRIPCIÓN y Manu manda la invitación.** El regalo con nombre propio del CTA son los 3 regalos por asistir (roadmap, Simulador de Suscripción, sistemas de email y WhatsApp).
-
-Reglas: un reel = un dolor = una idea = un CTA · la solución siempre es Escalar Hacia Adentro visto desde ese dolor, nombrado, nunca explicado · sin "masterclass", "webinar" ni "lanzamiento" · solo números canónicos con su comprobante.
-
-Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos. Lo que rota es el escenario.
-
-| Reel | Día | Tipo | Dolor / tema | Escenario |
-|---|---|---|---|---|
-| R1 | Sáb 10/10 (mañana) | BOFU · venta directa | Anuncio | Estudio |
-| R2 | Sáb 10/10 (tarde) | TOFU | "Buscás la compra, no el cliente" | Auto estacionado, selfie |
-| R3 | Dom 11/10 | MOFU · historia | 60M y cada venta costaba lo mismo | Depósito / stock de la marca |
-| R4 | Lun 12/10 | MOFU | CPA | Escritorio con el administrador de anuncios en pantalla |
-| R5 | Mar 13/10 | MOFU | Márgenes | Estudio, la cuenta del margen en pantalla |
-| R6 | Mié 14/10 | MOFU | Metadependencia | Caminando por la costa de Mar del Plata |
-| R7 | Jue 15/10 | MOFU · mecanismo | "Competimos por el modelo" | Estudio, los dos círculos en pantalla |
-| R8 | Vie 16/10 | BOFU · caso | Objeción: "en Argentina nadie se suscribe" | Pantalla compartida con el panel de suscriptores, cámara en la esquina |
-| R9 | Sáb 17/10 | MOFU | Objeción: "ya pagué mentorías de producto ganador" | Talking head sentado, fondo liso |
-| R10 | Dom 18/10 | BOFU · venta directa | Build-up: qué te llevás el lunes | Estudio con todo armado para el vivo |
-
----
-
-## R1 · BOFU · Anuncio · Sáb 10/10
+## R1 · Anuncio · Sáb 10/10
 
 **HOOK:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
@@ -34,13 +13,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** Es una clase en vivo privada y gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas que yo utilizo en mis marcas. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Lunes 19, 19 horas.
 
-**PRODUCCIÓN:** Talking head en el estudio, con "LUNES 19 · 19 HS" en pantalla. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
-
-**MEDICIÓN:** BOFU → registros (comentarios SUSCRIPCIÓN y clics). Se mide junto con R2 el día del anuncio, y con toda la ventana.
-
 ---
 
-## R2 · TOFU · "Buscás la compra, no el cliente" · Sáb 10/10
+## R2 · "Buscás la compra, no el cliente" · Sáb 10/10
 
 **HOOK:** Si cada venta te cuesta lo mismo que la anterior, tu problema no es el CPA.
 
@@ -53,13 +28,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 doy una clase en vivo privada, gratis, donde te muestro cómo pasé mi marca a suscripción. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
-**PRODUCCIÓN:** Selfie en el auto estacionado, crudo, sin edición más que subtítulos. Tono de charla entre operadores, ritmo rápido en la cadena causal (paso 1 y 2 de corrido), pausa antes del paso 3. En pantalla: "10 → 20" cuando lo dice.
-
-**MEDICIÓN:** TOFU → alcance y seguidores nuevos, medido sobre la semana.
-
 ---
 
-## R3 · MOFU · Historia · Dom 11/10
+## R3 · Historia · Dom 11/10
 
 **HOOK:** Facturaba 60 millones por mes y cada venta me costaba lo mismo que la anterior.
 
@@ -72,13 +43,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro el paso a paso de cómo lo hice en una clase en vivo privada. Se llama Escalar Hacia Adentro. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
-**PRODUCCIÓN:** Grabado en el depósito, entre cajas del producto (sin marca visible si no se quiere mostrar). Tono íntimo, más lento, como contando algo que costó. Corte a comprobante en el paso 3: panel de suscriptores y reporte [CARGAR]. Sin música arriba en el hook.
-
-**MEDICIÓN:** MOFU → retención, guardados y respuestas. Se mide con la semana completa.
-
 ---
 
-## R4 · MOFU · CPA · Lun 12/10
+## R4 · CPA · Lun 12/10
 
 **HOOK:** Los CPAs te empezaron a reventar y ya probaste otro creativo, otro ángulo, otro producto.
 
@@ -91,13 +58,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19, en una clase en vivo privada, te muestro cuánto podés pagar por cliente con suscripción. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el Simulador de Suscripción.
 
-**PRODUCCIÓN:** Escritorio, cámara de costado, el administrador de anuncios abierto en la pantalla (sin datos de clientes). Energía de "te explico algo que nadie te dijo". En el paso 2, "50 vs 75" en pantalla grande. [CARGAR: `DATO MANU` cuánto podía pagar por cliente antes vs ahora, si se quiere sumar como prueba]
-
-**MEDICIÓN:** MOFU → retención y respuestas; se juzga con los 3 reels de dolores juntos.
-
 ---
 
-## R5 · MOFU · Márgenes · Mar 13/10
+## R5 · Márgenes · Mar 13/10
 
 **HOOK:** "Siete lucas de ganancia. Sobreviviendo." Si cada venta te deja eso, mirá esto.
 
@@ -110,13 +73,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro el paso a paso en una clase en vivo privada. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el Simulador para ver su margen cliente por cliente.
 
-**PRODUCCIÓN:** Talking head; en pantalla aparecen "CPA = cada venta" y "CAC = una vez". Tono didáctico pero seco, sin sonrisa en el hook. [CARGAR: panel de suscriptores con LTV 3 · `DATO MANU` margen de la recompra vs 1ª venta]
-
-**MEDICIÓN:** MOFU → guardados y respuestas, medido con la semana.
-
 ---
 
-## R6 · MOFU · Metadependencia · Mié 14/10
+## R6 · Metadependencia · Mié 14/10
 
 **HOOK:** Ayer ibas 600 lucas abajo y apagaste todo. Y el 1 del mes arrancaste otra vez en cero.
 
@@ -129,13 +88,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro cómo se arma eso en una clase en vivo privada. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan los sistemas que yo utilizo en mis marcas para que la base cobre sola todos los meses.
 
-**PRODUCCIÓN:** Caminando por la costa, celular en mano, crudo. Tono tranquilo: el contraste es que él está tranquilo. Corte a la captura de la marca con la pauta en cero en el paso 3 [CARGAR].
-
-**MEDICIÓN:** MOFU → retención y respuestas.
-
 ---
 
-## R7 · MOFU · Mecanismo · Jue 15/10
+## R7 · Mecanismo · Jue 15/10
 
 **HOOK:** Los tres problemas de tu marca son uno solo.
 
@@ -148,13 +103,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro, paso a paso, cómo lo apliqué en mi marca. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
-**PRODUCCIÓN:** Estudio; en pantalla, los dos círculos que se cruzan; en el paso 3 se pinta la lente del medio. Tono de revelación contenida. Texto en pantalla: "ESCALAR HACIA ADENTRO" al nombrarlo.
-
-**MEDICIÓN:** MOFU → guardados y compartidos.
-
 ---
 
-## R8 · BOFU · Objeción "en Argentina nadie se suscribe" · Vie 16/10
+## R8 · Objeción "en Argentina nadie se suscribe" · Vie 16/10
 
 **HOOK:** "En Argentina no están acostumbrados a la suscripción." Yo también lo creía.
 
@@ -167,13 +118,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro cómo se arma en una clase en vivo privada. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el roadmap para migrar su marca con lo que ya tienen.
 
-**PRODUCCIÓN:** Pantalla compartida con el panel de suscriptores real, cámara de Manu en una esquina. Tono de "mirá vos mismo". Zoom a cada número cuando lo dice [CARGAR: panel de suscriptores 2.200 / 1,28% / LTV].
-
-**MEDICIÓN:** BOFU → registros y mensajes que citen la objeción.
-
 ---
 
-## R9 · MOFU · Objeción "ya pagué mentorías" · Sáb 17/10
+## R9 · Objeción "ya pagué mentorías" · Sáb 17/10
 
 **HOOK:** Ya pagaste dos mentorías que te enseñaron a buscar producto. Vos ya tenés producto.
 
@@ -186,13 +133,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te lo muestro en una clase en vivo privada, con mis números reales en pantalla. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
-**PRODUCCIÓN:** Talking head sentado, fondo liso, plano medio. Tono de colega, sin ataque a nadie (no se nombra competencia). Ritmo pausado.
-
-**MEDICIÓN:** MOFU → respuestas y registros calificados.
-
 ---
 
-## R10 · BOFU · Build-up · Dom 18/10
+## R10 · Build-up · Dom 18/10
 
 **HOOK:** Mañana a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
@@ -204,9 +147,3 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 3. Y cuánto podés pagar por cliente: 2,5 veces más que tu competencia.
 
 **CTA:** Es una clase en vivo privada. Si todavía no te anotaste, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas que yo utilizo en mis marcas. Mañana, 19 horas.
-
-**PRODUCCIÓN:** Estudio con todo armado: luces y cámara listas. Energía alta, cierre directo. "LUNES 19 · 19 HS" en pantalla todo el reel.
-
-**MEDICIÓN:** BOFU → registros de último momento.
-
-> R10 dice "mañana" porque se publica el 18/10 y es verdad ese día.
