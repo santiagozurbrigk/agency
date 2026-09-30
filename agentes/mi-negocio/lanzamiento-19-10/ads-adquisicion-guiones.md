@@ -1,11 +1,11 @@
 # Ads de adquisición — Clase en vivo 19/10 · Guiones de los primeros 5 videos
 
-Versión 3, 29-sep-2026. Reemplaza la v2: se sacan "masterclass", "webinar" y "lanzamiento"; el evento se nombra como **una clase en vivo explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción**.
+Versión 4, 30-sep-2026. Sobre la v3 (sin "masterclass", "webinar" ni "lanzamiento"): D1-V1 suma la promesa de la clase en el anuncio, D1-V2 nombra el método (Escalar Hacia Adentro) en vez de "una sola cosa" y D2-V2 cambia el hook a las ganancias.
 Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de adquisición y con el molde de los ads de Nazareno Gamero (ver `referencia-ads-nazareno.md`).
 
 ## El criterio
 
-- **El ad vende la clase, no el método.** Dice QUÉ se lleva el que va, nunca CÓMO se hace. Ninguna cuenta (techo, CAC, LTV) se explica en el ad: se promete.
+- **El ad vende la clase, no el método.** Dice QUÉ se lleva el que va, nunca CÓMO se hace. Ninguna cuenta (techo, CAC, LTV) se explica en el ad: se promete. El método se puede **nombrar** (Escalar Hacia Adentro), nunca explicar.
 - **No se vende nada:** sin precio, sin oferta, sin "programa". Lo único que se ofrece es un lugar gratis en una clase en vivo.
 - **Palabras prohibidas en los ads (guion, caption, titular, descripción y textos en pantalla):** masterclass · webinar · lanzamiento. Tampoco "funnel" ni "lead".
 - **Cómo se nombra el evento:** "una clase en vivo explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción". Después de la primera mención, alcanza con "la clase".
@@ -29,13 +29,13 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 | Anuncio | Dolor | Ángulo | Duración |
 |---|---|---|---|
-| D1-V1 | CPA — "Los CPAs nos empezaron a reventar" | Entregables | ~50 s |
-| D1-V2 | CPA — "Salieron 7 a pautar un producto muy parecido al nuestro" | Historia de Manu | ~64 s |
+| D1-V1 | CPA — "Los CPAs nos empezaron a reventar" | Entregables | ~54 s |
+| D1-V2 | CPA — "Salieron 7 a pautar un producto muy parecido al nuestro" | Historia de Manu + el método | ~67 s |
 | D2-V1 | Márgenes — "7 lucas de ganancia. Sobreviviendo." | Caso Manu (A→B) | ~60 s |
-| D2-V2 | Márgenes — "Hace mucho que no tenemos un día bueno" | Entregables | ~50 s |
+| D2-V2 | Márgenes — "Facturás bien, pero hace cuánto no tenés buenas ganancias" | Entregables | ~50 s |
 | D3-V1 | Metadependencia — "Íbamos 600 lucas abajo… apagamos" | Caso Manu (marca con la pauta apagada) | ~59 s |
 
-> Las duraciones subieron ~4 s respecto de la v2 por el nombre completo de la clase en el anuncio.
+> Las duraciones subieron ~4 s respecto de la v2 por el nombre completo de la clase en el anuncio; D1-V1 suma ~4 s más por la promesa y D1-V2 ~3 s por el método.
 
 **Edición común a los 5:**
 - Selfie con celular, remera negra o hueso lisa. Subtítulos palabra por palabra al centro.
@@ -58,12 +58,14 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 `[EDICIÓN: comprobante en pantalla, captura del tablero de suscriptores]`
 
-**ANUNCIO** (12–23 s)
-> Y el lunes 19 de octubre, a las 19, doy una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción. Es para los que se anoten con el link de acá abajo.
+**ANUNCIO + PROMESA** (12–27 s)
+> Y el lunes 19 de octubre, a las 19, doy una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés. Es para los que se anoten con el link de acá abajo.
 
-`[EDICIÓN: "LUNES 19 DE OCTUBRE" grande + "CLASE EN VIVO · PASO A PASO"]`
+`[EDICIÓN: "LUNES 19 DE OCTUBRE" grande + "CLASE EN VIVO · PASO A PASO"; en la promesa, "PAGAR 2,5× MÁS POR CLIENTE"]`
 
-**ENTREGABLES** (23–40 s)
+> La promesa ordena los 3 regalos: el roadmap es el "sin frenar lo que hoy vendés", el Simulador es el "cuánto podés pagar por cliente" y los sistemas son lo que hace que ese cliente vuelva a pagar.
+
+**ENTREGABLES** (27–44 s)
 > Y a los que vengan les regalo tres cosas.
 > Uno: el roadmap paso a paso para pasar tu marca a suscripción con lo que ya tenés: tu base, tu audiencia y tus anuncios ganadores. Sin testear nada de cero.
 > Dos: el Simulador de Suscripción. Cargás tus números y ves cuánto CAC podés pagar por cliente, con IVA y Ganancias adentro.
@@ -71,7 +73,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 `[EDICIÓN: "3 REGALOS POR ASISTIR" + los 3 aparecen como lista a medida que los nombra; en el 2, plano rápido del Simulador (sin mostrar la cuenta)]`
 
-**REMATE + CTA** (40–50 s)
+**REMATE + CTA** (44–54 s)
 > Es lo único que necesitás para dejar de competir por el CPA.
 > Hacé clic acá abajo, reservá tu lugar, y nos vemos el lunes 19 a las 19. En vivo.
 
@@ -86,19 +88,19 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 `[EDICIÓN: banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
-**HISTORIA** (6–24 s)
+**HISTORIA** (6–27 s)
 > A mí me pasó exactamente eso. Facturaba 60 millones por mes con un consumible: 12.000 el pote, contra marcas que lo vendían a 4.500. Cada venta me costaba lo mismo que la anterior.
-> No lo arreglé con un creativo mejor, ni bajando el precio. Cambié una sola cosa.
-> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes.
+> No lo arreglé con un creativo mejor, ni bajando el precio. Cambié el modelo.
+> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar Escalar Hacia Adentro.
 
-`[EDICIÓN: comprobante en pantalla, primero el tablero (2.200 activos) y después el reporte de facturación]`
+`[EDICIÓN: comprobante en pantalla, primero el tablero (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
 
-**ANUNCIO** (24–36 s)
-> Esa cosa te la muestro el lunes 19 de octubre, a las 19, en una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción. Anotate con el link de acá abajo.
+**ANUNCIO** (27–39 s)
+> Es el método que te voy a mostrar el lunes 19 de octubre, a las 19, en una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción. Anotate con el link de acá abajo.
 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE" grande + "CLASE EN VIVO · PASO A PASO"]`
 
-**ENTREGABLES** (36–54 s)
+**ENTREGABLES** (39–57 s)
 > Y a los que vengan les regalo tres cosas.
 > El roadmap paso a paso para migrar tu marca a suscripción usando los anuncios ganadores que ya tenés, sin testear nada de cero.
 > El Simulador de Suscripción, para que veas cuánto podés pagar por cliente mientras tu competencia no puede.
@@ -106,7 +108,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 `[EDICIÓN: "3 REGALOS POR ASISTIR" + lista de los 3; plano rápido del Simulador en el 2]`
 
-**CTA** (54–64 s)
+**CTA** (57–67 s)
 > Hacé clic acá abajo y reservá tu lugar. Lunes 19, 19 horas. Te espero en vivo.
 
 `[EDICIÓN: "LUNES 19 DE OCTUBRE · 19 HS" grande]`
@@ -152,7 +154,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 ## D2-V2 · Márgenes · Entregables
 
 **HOOK** (0–5 s)
-> ¿Facturás bien, pero hace mucho que no tenés un día bueno?
+> Facturás bien, pero ¿hace cuánto no tenés buenas ganancias?
 
 `[EDICIÓN: banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
@@ -232,7 +234,7 @@ Como en la referencia, el mismo texto para toda la campaña:
 - [x] Sin "masterclass", "webinar" ni "lanzamiento" en guion, caption, titular, descripción ni textos en pantalla. El evento se nombra como clase en vivo con el paso a paso.
 - [x] Un dolor y un ángulo por pieza. Los 3 regalos son los mismos, redactados según el dolor. Los bonus A, B y C (de compra) no aparecen.
 - [x] La fecha se dice al menos 2 veces y se ve en pantalla en hook, anuncio y CTA.
-- [x] Solo números canónicos, cada uno con su comprobante: 2.200 activos, 1,28% churn, 60M → 156.798.062, LTV 3, 12.000 vs 4.500, marca con la pauta apagada al 50% de margen.
+- [x] Solo números canónicos, cada uno con su comprobante: 2.200 activos, 1,28% churn, 60M → 156.798.062, LTV 3, 12.000 vs 4.500, marca con la pauta apagada al 50% de margen. La promesa de D1-V1 usa el número del método: pagar 2,5 veces más por cliente que la competencia.
 - [x] No se dice "cupos limitados" ni "no va a haber grabación": el cupo de asistentes no está definido y hay replay.
 
 ## Pendientes
