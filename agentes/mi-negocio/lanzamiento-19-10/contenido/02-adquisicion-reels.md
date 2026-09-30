@@ -32,7 +32,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Vas a ver cuánto podés pagar por cada cliente si pasás tu marca al modelo de suscripción: 2,5 veces más que tu competencia.
 3. Y el paso a paso para hacerlo sin frenar lo que hoy vendés. Se llama Escalar Hacia Adentro.
 
-**CTA:** Es una clase en vivo privada y gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Lunes 19, 19 horas.
+**CTA:** Es una clase en vivo privada y gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas que yo utilizo en mis marcas. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Lunes 19, 19 horas.
 
 **PRODUCCIÓN:** Talking head en el estudio, con "LUNES 19 · 19 HS" en pantalla. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
 
@@ -127,7 +127,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Con suscripción, la base cobra sola todos los meses. Meta solo suma suscriptores nuevos.
 3. Tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen. Pauta apagada. Y cobra igual.
 
-**CTA:** El lunes 19 a las 19 te muestro cómo se arma eso en una clase en vivo privada. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan los sistemas de email y WhatsApp que le cobran a mi base todos los meses.
+**CTA:** El lunes 19 a las 19 te muestro cómo se arma eso en una clase en vivo privada. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan los sistemas que yo utilizo en mis marcas para que la base cobre sola todos los meses.
 
 **PRODUCCIÓN:** Caminando por la costa, celular en mano, crudo. Tono tranquilo: el contraste es que él está tranquilo. Corte a la captura de la marca con la pauta en cero en el paso 3 [CARGAR].
 
@@ -203,7 +203,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Cómo pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés.
 3. Y cuánto podés pagar por cliente: 2,5 veces más que tu competencia.
 
-**CTA:** Es una clase en vivo privada. Si todavía no te anotaste, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp. Mañana, 19 horas.
+**CTA:** Es una clase en vivo privada. Si todavía no te anotaste, comentá SUSCRIPCIÓN y te mando la invitación. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas que yo utilizo en mis marcas. Mañana, 19 horas.
 
 **PRODUCCIÓN:** Estudio con todo armado: luces y cámara listas. Energía alta, cierre directo. "LUNES 19 · 19 HS" en pantalla todo el reel.
 
