@@ -18,7 +18,7 @@ Tipo: venta. Creencia a instalar: "si lo quiero hecho, es ahora".
 
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
-| 1 | Hook | "Ayer." | Captura del vivo con la pizarra llena. [CARGAR] |
+| 1 | Hook | "Ayer." | Captura del vivo. [CARGAR] |
 | 2 | Prueba | "Esto me escribieron después de la clase." | Capturas reales de mensajes del vivo. [CARGAR] |
 | 3 | Replay | "Si no llegaste: el replay está acá. Dura ~80 minutos." | Sticker de link `[LINK REPLAY]`. |
 | 4 | Oferta | "Y lo que presenté ayer ya está abierto: Génesis. Pasamos tu marca a suscripción con vos, 1 a 1, en 3 meses." | Selfie en el estudio. |
@@ -36,8 +36,8 @@ Tipo: caso de éxito / objeciones. Creencia a romper: "es caro" y "no uso Tienda
 |---|---|---|---|
 | 1 | Hook | "Quedan [N]." | Texto grande en rojo. Solo el número real. |
 | 2 | Prueba | "Marcas que ya entraron." | Capturas de mensajes de los que entraron, sin nombres ni marcas. [CARGAR, solo si existen] |
-| 3 | Objeción precio | "'USD 6.000 es mucho.' Hagamos la cuenta." | Pizarra. |
-| 4 | Objeción precio | "USD 6.000 son unos 9 millones. Con 45.000 más de capacidad de compra por cliente, se pagan con unos 200 clientes al techo nuevo." | Pizarra con la cuenta en rojo. |
+| 3 | Objeción precio | "'USD 6.000 es mucho.' Hagamos la cuenta." | Texto en pantalla. |
+| 4 | Objeción precio | "USD 6.000 son unos 9 millones. Con 45.000 más de capacidad de compra por cliente, se pagan con unos 200 clientes al techo nuevo." | La cuenta en pantalla, en rojo. |
 | 5 | Objeción plataforma | "'¿Y si no estoy en Tiendanube?' No importa: Shopify o la que uses." | Selfie. |
 | 6 | Fast-action | "Hoy es el último día de la instalación prioritaria." | Selfie. |
 | 7 | CTA | "Cierra mañana, jueves 22, a las 23:59." | Sticker de link `[LINK CARRITO]`. |

@@ -40,7 +40,7 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 **1. HOOK** (0–6 s)
 > Falta muy poco para que te regale todo con lo que llegué a 2.200 suscriptores activos, con 1,28% de churn.
 
-`[EDICIÓN: primer frame con el tablero en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
+`[EDICIÓN: primer frame con el panel de suscriptores en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **2. QUÉ + CUÁNDO + DÓNDE** (6–18 s)
 > Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez Escalar Hacia Adentro completo: el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Literalmente todo lo que usé para llegar a esto.
@@ -74,9 +74,9 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 ## R-VIDEO-2 · La prueba (~55 s)
 
 **1. HOOK** (0–6 s)
-> Falta muy poco para que te abra el tablero de mi marca: 2.200 suscriptores activos, 1,28% de churn.
+> Falta muy poco para que te muestre los números de mi marca: 2.200 suscriptores activos, 1,28% de churn.
 
-`[EDICIÓN: primer frame con el tablero en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
+`[EDICIÓN: primer frame con el panel de suscriptores en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **2. QUÉ + CUÁNDO + DÓNDE** (6–16 s)
 > Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez Escalar Hacia Adentro, el método con el que pasé mi marca al modelo de suscripción.
@@ -94,7 +94,7 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 > Y tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen.
 > Nada de esto te lo cuento: te lo muestro.
 
-`[EDICIÓN: un comprobante por frase — reporte de facturación · tablero con el LTV · captura de la marca con la pauta en cero]`
+`[EDICIÓN: un comprobante por frase — reporte de facturación · panel de suscriptores con el LTV · captura de la marca con la pauta en cero]`
 
 **5. URGENCIA** (40–45 s)
 > Y es en vivo: la cuenta de tu marca la hacemos ahí.
@@ -110,7 +110,7 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 
 ## Comprobantes para el editor
 
-- Tablero de suscriptores: 2.200 activos · 1,28% de churn · LTV.
+- Panel de suscriptores: 2.200 activos · 1,28% de churn · LTV.
 - Reporte de facturación: 60.000.000 → 156.798.062 ARS/mes.
 - Captura de la marca cobrando recurrencias con la pauta en cero (50% de margen).
 

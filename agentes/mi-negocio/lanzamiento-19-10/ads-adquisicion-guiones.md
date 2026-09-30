@@ -8,14 +8,14 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 - **El ad vende la clase, no el método.** Dice QUÉ se lleva el que va, nunca CÓMO se hace. Ninguna cuenta (techo, CAC, LTV) se explica en el ad: se promete. El método se puede **nombrar** (Escalar Hacia Adentro), nunca explicar.
 - **No se vende nada:** sin precio, sin oferta, sin "programa". Lo único que se ofrece es un lugar gratis en una clase en vivo.
-- **Palabras prohibidas en los ads (guion, caption, titular, descripción y textos en pantalla):** masterclass · webinar · lanzamiento. Tampoco "funnel" ni "lead".
+- **Palabras prohibidas en los ads (guion, caption, titular, descripción y textos en pantalla):** masterclass · webinar · lanzamiento · pizarra · tablero. Tampoco "funnel" ni "lead".
 - **Cómo se nombra el evento:** "una clase en vivo explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción". Después de la primera mención, alcanza con "la clase".
 - **Un ad = un dolor + un ángulo.** Los 3 dolores son los del lanzamiento. No hay casos de clientes que se puedan mostrar, así que los ángulos son **entregables**, **historia/caso de Manu**, **objeción** o **curiosidad + método**.
 - **La fecha va en todos:** Manu la dice al menos 2 veces y se ve en pantalla en 3 momentos (hook, anuncio y CTA).
 - **El hook es la segmentación:** abre con el dolor directo, con la frase del avatar, anclado a una situación concreta (nada de "un día bueno"). Nunca con "si sos dueño de…". Excepción: el ángulo curiosidad abre con el resultado que el avatar no sabe cómo lograr.
 - **El anuncio lleva la promesa:** después del nombre de la clase va el resultado ("y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés", o la versión del dolor de ese ad). Los 3 regalos desglosan esa promesa.
 - **Nada genérico en la historia:** lo que cambió Manu tiene nombre, Escalar Hacia Adentro. Nunca "una sola cosa".
-- **La prueba entra antes de que hable** en los ads nuevos: primer frame con el tablero en pantalla (aprendido del ad A de Nazareno).
+- **La prueba entra antes de que hable** en los ads nuevos: primer frame con el panel de suscriptores en pantalla (aprendido del ad A de Nazareno).
 
 ## La clase (igual en todos)
 
@@ -47,7 +47,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 **Edición común a todos:**
 - Selfie con celular, remera negra o hueso lisa. Subtítulos palabra por palabra al centro.
-- Cortes a la pantalla con cada prueba (tablero, reporte).
+- Cortes a la pantalla con cada prueba (panel de suscriptores, reporte).
 - **Banda fija arriba durante todo el video: "LUNES 19/10 · 19 HS · EN VIVO".**
 - **"LUNES 19 DE OCTUBRE" en grande (amarillo o rojo fibrón)** cada vez que Manu dice la fecha.
 - **"CLASE EN VIVO · PASO A PASO"** en pantalla cuando Manu nombra la clase.
@@ -64,7 +64,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **PRUEBA** (5–12 s)
 > Yo dejé de pelear el CPA. Hoy tengo 2.200 suscriptores activos, con 1,28% de churn.
 
-`[EDICIÓN: comprobante en pantalla, captura del tablero de suscriptores]`
+`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores]`
 
 **ANUNCIO + PROMESA** (12–27 s)
 > Y el lunes 19 de octubre, a las 19, doy una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés. Es para los que se anoten con el link de acá abajo.
@@ -101,7 +101,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 > No lo arreglé con un creativo mejor, ni bajando el precio. Cambié el modelo.
 > Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar Escalar Hacia Adentro.
 
-`[EDICIÓN: comprobante en pantalla, primero el tablero (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
 
 **ANUNCIO** (27–39 s)
 > Es el método que te voy a mostrar el lunes 19 de octubre, a las 19, en una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción. Anotate con el link de acá abajo.
@@ -134,7 +134,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 > Mi marca pasó de 60 millones a 156.798.062 por mes, después de años de que cada venta me dejara el mismo margen que la anterior.
 > Hoy el mismo cliente me compra tres veces, como mínimo.
 
-`[EDICIÓN: comprobante en pantalla, reporte de facturación y tablero con el LTV]`
+`[EDICIÓN: comprobante en pantalla, reporte de facturación y panel de suscriptores con el LTV]`
 
 > [CONFIRMAR con Manu: "después de años" — si no fueron años, se cambia por "después de vender cada pote con el mismo margen que el anterior".]
 
@@ -174,7 +174,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **PRUEBA** (17–24 s)
 > Te voy a mostrar el sistema con el que tengo 2.200 suscriptores activos que me compran todos los meses, con 1,28% de churn.
 
-`[EDICIÓN: comprobante en pantalla, captura del tablero]`
+`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores]`
 
 **ENTREGABLES** (24–42 s)
 > Y a los que vengan les regalo tres cosas.
@@ -231,12 +231,12 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **HOOK** (0–6 s)
 > Hay marcas de consumibles que pueden pagar 2,5 veces más por cada cliente que su competencia. Y no es porque tengan mejores creativos ni un CPA más bajo.
 
-`[EDICIÓN: primer frame con Manu señalando el tablero de suscriptores en la pantalla, antes de hablar + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
+`[EDICIÓN: primer frame con Manu señalando el panel de suscriptores en la pantalla, antes de hablar + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **PRUEBA + MÉTODO** (6–20 s)
 > Es porque cambiaron el modelo. Yo lo hice en mi marca: hoy tengo 2.200 suscriptores activos, con 1,28% de churn. El método se llama Escalar Hacia Adentro, y es la razón por la que dejé de pelear el CPA.
 
-`[EDICIÓN: comprobante en pantalla, captura del tablero; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
 
 **ANUNCIO + PROMESA** (20–34 s)
 > El lunes 19 de octubre, a las 19, doy una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés. Anotate con el link de acá abajo.
@@ -264,7 +264,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **HOOK** (0–6 s)
 > ¿Cada venta te deja el mismo margen que la anterior, y pensás que la suscripción en Argentina no funciona?
 
-`[EDICIÓN: primer frame con el tablero en pantalla (2.200 activos · 1,28% churn) + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
+`[EDICIÓN: primer frame con el panel de suscriptores en pantalla (2.200 activos · 1,28% churn) + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **LA OBJECIÓN, ROTA** (6–22 s)
 > Yo también lo pensaba. Vendía un pote a 12.000 contra marcas que lo vendían a 4.500, y creía que acá nadie se suscribe a nada.
@@ -308,7 +308,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **PRUEBA** (19–26 s)
 > Es lo que hice en mi marca: hoy tengo 2.200 suscriptores activos que se cobran todos los meses, con 1,28% de churn.
 
-`[EDICIÓN: comprobante en pantalla, captura del tablero]`
+`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores]`
 
 **ENTREGABLES** (26–44 s)
 > Y a los que vengan les regalo tres cosas.
@@ -338,7 +338,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 > Hasta que dejé de buscar la compra y empecé a buscar al cliente.
 > Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar Escalar Hacia Adentro.
 
-`[EDICIÓN: comprobante en pantalla, primero el tablero (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
 
 > [CONFIRMAR con Manu: que antes de la suscripción también arrancaba el mes en cero sin saber con cuánto cerraba. Es el dolor del avatar y Manu es "el avatar antes de la suscripción", pero no está dicho por él.]
 
@@ -386,7 +386,7 @@ Como en la referencia, el mismo texto para toda la campaña:
 
 1. D2-V2 dice "arrancar con cientos de suscriptores el primer mes" (sale del texto del Bonus 1). Manu no promete resultados: confirmar que lo quiere decir así en cámara; si no, se corta esa parte.
 2. URL de la landing con UTM. La landing también tiene que evitar "masterclass", "webinar" y "lanzamiento", para que el ad y la página digan lo mismo.
-3. Las capturas: tablero (2.200 / 1,28% / LTV), reporte de facturación (60M → 156.798.062) y la marca con la pauta apagada.
+3. Las capturas: panel de suscriptores (2.200 / 1,28% / LTV), reporte de facturación (60M → 156.798.062) y la marca con la pauta apagada.
 4. Confirmar el "después de años" de D2-V1.
 5. Confirmar el "arrancaba el mes en cero" de D3-V3.
 6. D2-V1, D2-V2, D3-V1 todavía no tienen la promesa en el anuncio (solo D1-V1 la tiene de los 5 originales). Si se quiere igual en todos, se agrega.

@@ -28,7 +28,7 @@ No hay agente de Limitless para mail: siguen la misma cadena que el grupo de Wha
 >
 > Hoy tengo 2.200 suscriptores activos con 1,28% de churn.
 >
-> Todos los días hasta el lunes te mando una pieza de esta cuenta. Y en el grupo de WhatsApp dejé un video de 10 minutos que la explica con mi tablero abierto:
+> Todos los días hasta el lunes te mando una pieza de esta cuenta. Y en el grupo de WhatsApp dejé un video de 10 minutos que la explica con mis números reales en pantalla:
 >
 > **[Entrar al grupo →]** `[LINK GRUPO]`
 >
@@ -148,7 +148,7 @@ No hay agente de Limitless para mail: siguen la misma cadena que el grupo de Wha
 > 3. Tu ticket promedio.
 > 4. Cada cuánto se termina tu producto (tu ciclo de reposición).
 >
-> Con eso, cuando haga la cuenta en la pizarra, la vas a estar haciendo con tu marca.
+> Con eso, cuando muestre mis números en la clase, vas a poder hacer lo mismo con tu marca.
 >
 > Agendalo ahora para no perderlo:
 >

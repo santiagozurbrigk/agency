@@ -8,14 +8,14 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 | Reel | Día | Tipo | Dolor / tema | Escenario |
 |---|---|---|---|---|
-| R1 | Sáb 10/10 (mañana) | BOFU · venta directa | Anuncio | Estudio, frente a la pizarra |
+| R1 | Sáb 10/10 (mañana) | BOFU · venta directa | Anuncio | Estudio |
 | R2 | Sáb 10/10 (tarde) | TOFU | "Buscás la compra, no el cliente" | Auto estacionado, selfie |
 | R3 | Dom 11/10 | MOFU · historia | 60M y cada venta costaba lo mismo | Depósito / stock de la marca |
 | R4 | Lun 12/10 | MOFU | CPA | Escritorio con el administrador de anuncios en pantalla |
-| R5 | Mar 13/10 | MOFU | Márgenes | Pizarra, la cuenta del margen |
+| R5 | Mar 13/10 | MOFU | Márgenes | Estudio, la cuenta del margen en pantalla |
 | R6 | Mié 14/10 | MOFU | Metadependencia | Caminando por la costa de Mar del Plata |
-| R7 | Jue 15/10 | MOFU · mecanismo | "Competimos por el modelo" | Estudio, pizarra con los dos círculos |
-| R8 | Vie 16/10 | BOFU · caso | Objeción: "en Argentina nadie se suscribe" | Pantalla compartida con el tablero, cámara en la esquina |
+| R7 | Jue 15/10 | MOFU · mecanismo | "Competimos por el modelo" | Estudio, los dos círculos en pantalla |
+| R8 | Vie 16/10 | BOFU · caso | Objeción: "en Argentina nadie se suscribe" | Pantalla compartida con el panel de suscriptores, cámara en la esquina |
 | R9 | Sáb 17/10 | MOFU | Objeción: "ya pagué mentorías de producto ganador" | Talking head sentado, fondo liso |
 | R10 | Dom 18/10 | BOFU · venta directa | Build-up: qué te llevás el lunes | Estudio con todo armado para el vivo |
 
@@ -25,7 +25,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **HOOK:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
-**CONTEXTO:** Es para marcas de consumibles que facturan entre 30 y 80 millones y están en breakeven. Te muestro mis números reales, en mi pizarra, paso a paso.
+**CONTEXTO:** Es para marcas de consumibles que facturan entre 30 y 80 millones y están en breakeven. Te muestro mis números reales, paso a paso.
 
 **VALOR:**
 1. Vas a ver por qué cada venta te cuesta lo mismo que la anterior, y por qué no es culpa de tu creativo.
@@ -34,7 +34,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** Es 100% gratis y solo para los que se anoten. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Comentá SUSCRIPCIÓN y te mando el link. Lunes 19, 19 horas.
 
-**PRODUCCIÓN:** Talking head en el estudio, frente a la pizarra con "LUNES 19 · 19 HS" escrito en rojo. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
+**PRODUCCIÓN:** Talking head en el estudio, con "LUNES 19 · 19 HS" en pantalla. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
 
 **MEDICIÓN:** BOFU → registros (comentarios SUSCRIPCIÓN y clics). Se mide junto con R2 el día del anuncio, y con toda la ventana.
 
@@ -72,7 +72,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso de cómo lo hice. Se llama Escalar Hacia Adentro. Comentá SUSCRIPCIÓN y te mando el link.
 
-**PRODUCCIÓN:** Grabado en el depósito, entre cajas del producto (sin marca visible si no se quiere mostrar). Tono íntimo, más lento, como contando algo que costó. Corte a comprobante en el paso 3: tablero y reporte [CARGAR]. Sin música arriba en el hook.
+**PRODUCCIÓN:** Grabado en el depósito, entre cajas del producto (sin marca visible si no se quiere mostrar). Tono íntimo, más lento, como contando algo que costó. Corte a comprobante en el paso 3: panel de suscriptores y reporte [CARGAR]. Sin música arriba en el hook.
 
 **MEDICIÓN:** MOFU → retención, guardados y respuestas. Se mide con la semana completa.
 
@@ -110,7 +110,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso. Comentá SUSCRIPCIÓN y te llevás el Simulador para ver tu margen cliente por cliente.
 
-**PRODUCCIÓN:** Frente a la pizarra, fibrón rojo: escribe "CPA = cada venta" y "CAC = una vez". Tono didáctico pero seco, sin sonrisa en el hook. [CARGAR: tablero con LTV 3 · `DATO MANU` margen de la recompra vs 1ª venta]
+**PRODUCCIÓN:** Talking head; en pantalla aparecen "CPA = cada venta" y "CAC = una vez". Tono didáctico pero seco, sin sonrisa en el hook. [CARGAR: panel de suscriptores con LTV 3 · `DATO MANU` margen de la recompra vs 1ª venta]
 
 **MEDICIÓN:** MOFU → guardados y respuestas, medido con la semana.
 
@@ -148,7 +148,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro, paso a paso, cómo lo apliqué en mi marca. Comentá SUSCRIPCIÓN y te mando el link.
 
-**PRODUCCIÓN:** Estudio, pizarra con los dos círculos que se cruzan; en el paso 3 pinta la lente del medio. Tono de revelación contenida. Texto en pantalla: "ESCALAR HACIA ADENTRO" al nombrarlo.
+**PRODUCCIÓN:** Estudio; en pantalla, los dos círculos que se cruzan; en el paso 3 se pinta la lente del medio. Tono de revelación contenida. Texto en pantalla: "ESCALAR HACIA ADENTRO" al nombrarlo.
 
 **MEDICIÓN:** MOFU → guardados y compartidos.
 
@@ -161,13 +161,13 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 **CONTEXTO:** Y el miedo de siempre: "se suscriben para que la primera unidad les salga más barata y se dan de baja".
 
 **VALOR:**
-1. Este es mi tablero: 2.200 suscriptores activos. En Argentina.
+1. Estos son mis números: 2.200 suscriptores activos. En Argentina.
 2. 1,28% de churn. No se van.
 3. Y cada uno me compra tres veces, como mínimo. No es cultura: es cómo se arma la suscripción.
 
 **CTA:** El lunes 19 a las 19 te muestro en vivo cómo se arma. Comentá SUSCRIPCIÓN y te llevás el roadmap para migrar tu marca con lo que ya tenés.
 
-**PRODUCCIÓN:** Pantalla compartida con el tablero real, cámara de Manu en una esquina. Tono de "mirá vos mismo". Zoom a cada número cuando lo dice [CARGAR: tablero 2.200 / 1,28% / LTV].
+**PRODUCCIÓN:** Pantalla compartida con el panel de suscriptores real, cámara de Manu en una esquina. Tono de "mirá vos mismo". Zoom a cada número cuando lo dice [CARGAR: panel de suscriptores 2.200 / 1,28% / LTV].
 
 **MEDICIÓN:** BOFU → registros y mensajes que citen la objeción.
 
@@ -184,7 +184,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. No hay que tirar lo que funciona: la suscripción va al lado de la compra única, sin tocarla.
 3. Por eso esto no es para el que arranca. Es para el que ya vende.
 
-**CTA:** El lunes 19 a las 19 te lo muestro en vivo, con mi tablero abierto. Comentá SUSCRIPCIÓN y te mando el link.
+**CTA:** El lunes 19 a las 19 te lo muestro en vivo, con mis números reales en pantalla. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Talking head sentado, fondo liso, plano medio. Tono de colega, sin ataque a nadie (no se nombra competencia). Ritmo pausado.
 
@@ -196,7 +196,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **HOOK:** Mañana a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
-**CONTEXTO:** Es gratis, desde mi estudio, con la pizarra y mis números reales. Y te muestro cuánto podés pagar por cada cliente de tu marca.
+**CONTEXTO:** Es gratis, desde mi estudio, con mis números reales. Y te muestro cuánto podés pagar por cada cliente de tu marca.
 
 **VALOR:**
 1. Por qué cada venta te cuesta lo mismo que la anterior.
@@ -205,7 +205,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 **CTA:** Si todavía no te anotaste, comentá SUSCRIPCIÓN. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp. Mañana, 19 horas.
 
-**PRODUCCIÓN:** Estudio con todo armado: luces, cámara, pizarra lista. Energía alta, cierre directo. "LUNES 19 · 19 HS" en pantalla todo el reel.
+**PRODUCCIÓN:** Estudio con todo armado: luces y cámara listas. Energía alta, cierre directo. "LUNES 19 · 19 HS" en pantalla todo el reel.
 
 **MEDICIÓN:** BOFU → registros de último momento.
 

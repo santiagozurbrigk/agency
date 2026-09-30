@@ -12,11 +12,11 @@ Tipo: venta. Dolor: el síntoma general (cada venta cuesta lo mismo). Creencia a
 
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
-| 1 | Hook | "LUNES 19 · 19 HS" | Pizarra destapada con la fecha escrita en rojo, nada más. |
+| 1 | Hook | "LUNES 19 · 19 HS" | Fondo negro con la fecha en rojo, nada más. |
 | 2 | Hook | "Te lo dije ayer. Acá está." | Selfie en el estudio, sonrisa corta. |
 | 3 | Problema | "Si tenés una marca de consumibles con tienda propia, facturás entre 30 y 80 millones y estás en breakeven…" | Selfie hablando, 10 s. |
-| 4 | Problema | "…cada venta te cuesta lo mismo que la anterior. Y no es tu creativo." | Pizarra: "COMPRA" tachado. |
-| 5 | La idea | "El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 a 156 millones por mes, y cuánto podés pagar vos por cada cliente con suscripción." | Pizarra: los dos círculos y la lente. |
+| 4 | Problema | "…cada venta te cuesta lo mismo que la anterior. Y no es tu creativo." | Texto en pantalla: "COMPRA" tachado. |
+| 5 | La idea | "El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 a 156 millones por mes, y cuánto podés pagar vos por cada cliente con suscripción." | Texto en pantalla: los dos círculos y la lente. |
 | 6 | La idea | "Es 100% gratis. El paso a paso para pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés." | Selfie. |
 | 7 | Cierre | "Te llevás: el roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas." | Lista sobre fondo negro. |
 | 8 | CTA | "Mandame SUSCRIPCIÓN y te paso el link." | Sticker de link `[LINK REGISTRO]` + "SUSCRIPCIÓN" resaltado. |
@@ -54,9 +54,9 @@ Tipo: caso de éxito. Dolor: "cada venta me costaba lo mismo que la anterior". C
 | 1 | Hook | "60.000.000" | Captura del reporte del mes de 60 millones. [CARGAR] |
 | 2 | Quién era | "Eso facturaba por mes. Compra única. Y cada venta me costaba lo mismo que la anterior." | Selfie, tono íntimo. |
 | 3 | Quién era | "12.000 el pote, contra marcas a 4.500. Y creía que en Argentina nadie se suscribe." | Foto del producto. |
-| 4 | Qué cambió | "Dejé de buscar la compra. Empecé a buscar al cliente." | Pizarra: "COMPRA → CLIENTE". |
+| 4 | Qué cambió | "Dejé de buscar la compra. Empecé a buscar al cliente." | Texto en pantalla: "COMPRA → CLIENTE". |
 | 5 | Qué cambió | "Eso tiene nombre: Escalar Hacia Adentro." | Texto sobre el símbolo. |
-| 6 | Comprobante | "156.798.062 por mes. 2.200 suscriptores activos. 1,28% de churn." | [CARGAR: reporte + tablero] |
+| 6 | Comprobante | "156.798.062 por mes. 2.200 suscriptores activos. 1,28% de churn." | [CARGAR: reporte + panel de suscriptores] |
 | 7 | CTA | "El lunes 19 a las 19 te muestro cómo, paso a paso. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** cada venta cuesta lo mismo. **Creencia:** ya lo resolvió alguien como yo. **Al terminar tiene que pensar:** "Este tuvo el mismo problema que yo, solo que ya lo resolvió."
@@ -69,11 +69,11 @@ Tipo: venta. Dolor: *"Los CPAs nos empezaron a reventar."* Creencia a romper: "t
 
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
-| 1 | Hook | "Tu competencia paga 50. ¿Y vos?" | Pizarra: "50" en rojo. |
+| 1 | Hook | "Tu competencia paga 50. ¿Y vos?" | Texto en pantalla: "50" en rojo. |
 | 2 | Problema | "Los CPAs te empezaron a reventar. Salieron siete marcas a pautar un producto casi igual al tuyo." | Selfie hablando. |
 | 3 | Problema | "Y todos hacen lo mismo: pelear para bajar el CPA." | Captura del administrador de anuncios con el CPA subiendo (sin datos de clientes). [CARGAR] |
 | 4 | La idea | "La subasta no la gana el que paga menos. La gana el que puede pagar más." | Selfie, frase sola. |
-| 5 | La idea | "Si ellos pagan 50 y vos podés pagar 75, y listo: ya no tenés competencia." | Pizarra: "50 vs 75". |
+| 5 | La idea | "Si ellos pagan 50 y vos podés pagar 75, y listo: ya no tenés competencia." | Texto en pantalla: "50 vs 75". |
 | 6 | Comprobante | "En mi marca: antes podía pagar `[DATO MANU]` por cliente. Hoy, `[DATO MANU]`." | [CARGAR: captura de la cuenta antes vs ahora] |
 | 7 | CTA | "El lunes 19 a las 19, en una clase en vivo privada, te muestro cuánto podés pagar vos. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
@@ -91,8 +91,8 @@ Tipo: producto por dentro. Dolor: *"7 lucas de ganancia. Sobreviviendo."* Creenc
 |---|---|---|---|
 | 1 | Hook | "7 lucas." | Texto grande en rojo sobre fondo negro. |
 | 2 | Problema | "'Siete lucas de ganancia. Sobreviviendo.' Me lo dijo un dueño de marca en una llamada." | Selfie. |
-| 3 | Problema | "Facturás bien, pero cada venta te deja lo mismo que la anterior. Porque pagás la pauta en cada una." | Pizarra: "CPA = cada venta". |
-| 4 | Por dentro | "Esto es lo que veo yo en mi tablero: el mismo cliente, tres compras." | Grabación de pantalla del tablero con la recompra. [CARGAR: tablero con LTV 3] |
+| 3 | Problema | "Facturás bien, pero cada venta te deja lo mismo que la anterior. Porque pagás la pauta en cada una." | Texto en pantalla: "CPA = cada venta". |
+| 4 | Por dentro | "Esto es lo que veo yo en mis números: el mismo cliente, tres compras." | Grabación de pantalla del panel de suscriptores con la recompra. [CARGAR: panel de suscriptores con LTV 3] |
 | 5 | Por dentro | "La primera la pagué. La segunda y la tercera entraron con el margen entero." | Zoom a la recompra. `[DATO MANU: margen de la recompra vs 1ª venta]` |
 | 6 | La idea | "No necesitás vender más. Necesitás que el mismo cliente te compre tres veces." | Selfie, remate seco. |
 | 7 | CTA | "El lunes 19 a las 19 te muestro el paso a paso. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |

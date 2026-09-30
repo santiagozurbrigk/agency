@@ -58,7 +58,7 @@ Preheader: Clase en vivo privada.
 **Historia**
 | Texto on-screen | Visual |
 |---|---|
-| "Hace no tanto facturaba 60 millones y cada venta me costaba lo mismo que la anterior. Hoy te muestro lo que cambié." | Foto del antes (reporte de 60M) al lado del tablero de hoy. [CARGAR] |
+| "Hace no tanto facturaba 60 millones y cada venta me costaba lo mismo que la anterior. Hoy te muestro lo que cambié." | Foto del antes (reporte de 60M) al lado del panel de suscriptores de hoy. [CARGAR] |
 
 **WhatsApp · texto**
 > Hace no tanto yo estaba donde estás vos: 60 millones por mes, compra única, y cada venta me costaba lo mismo que la anterior.
@@ -74,7 +74,7 @@ Preheader: 60 millones, compra única, cada venta igual de cara.
 >
 > Hoy tengo 2.200 suscriptores activos con 1,28% de churn.
 >
-> A las 19 te muestro qué cambié, en la pizarra.
+> A las 19 te muestro qué cambié, con mis números.
 >
 > Manu
 
@@ -85,7 +85,7 @@ Preheader: 60 millones, compra única, cada venta igual de cara.
 **Historia**
 | Texto on-screen | Visual |
 |---|---|
-| "Todo listo." | Video del estudio: pizarra, fibrón rojo, luces encendidas. |
+| "Todo listo." | Video del estudio: luces encendidas, cámara lista. |
 
 **WhatsApp · voice note (45-60 s)**
 Guion: "Te mando esto porque sé que hoy es lunes y tenés mil cosas. A las 19 capaz estás cerrando algo, revisando campañas… Te pido una hora y media. Esta noche vas a entender por qué todo lo que probaste con el CPA no funcionó, y no es por vos. No te lo voy a adelantar por acá. A las 19 te lo muestro."
@@ -118,7 +118,7 @@ Preheader: Te pido una hora y media.
 Imagen: hoja escrita a mano con los 4 datos, al lado de una compu abierta.
 > Para las 19, tres cosas:
 >
-> 1. Conectate desde la compu, no desde el celu: vas a ver la pizarra.
+> 1. Conectate desde la compu, no desde el celu: vas a ver mis números en pantalla.
 > 2. Tené a mano tus 4 números: CPA, margen por pedido, ticket y ciclo de reposición.
 > 3. Una hora y media sin interrupciones.
 
@@ -134,7 +134,7 @@ Preheader: Para hacer la cuenta con tu marca.
 > 3. Tu ticket promedio.
 > 4. Cada cuánto se termina tu producto.
 >
-> Y conectate desde la compu: vas a ver la pizarra.
+> Y conectate desde la compu: vas a ver mis números en pantalla.
 >
 > Manu
 
@@ -172,7 +172,7 @@ Preheader: Hoy 19 hs.
 **Historia**
 | Texto on-screen | Visual |
 |---|---|
-| "1 hora." | Pizarra con el fibrón rojo apoyado + sticker de link `[LINK CLASE]`. |
+| "1 hora." | El estudio listo + sticker de link `[LINK CLASE]`. |
 
 **WhatsApp · texto**
 > Falta una hora. Cerrá lo pendiente y agarrá tus 4 números.
@@ -261,7 +261,7 @@ Asunto: **Estamos en vivo**
 
 ## 11 · 19:30 · Si recién llegás, entrá igual
 
-Disparado por momento del vivo: cuando Manu termina la historia y arranca con la pizarra.
+Disparado por momento del vivo: cuando Manu termina la historia y arranca a mostrar los números.
 
 **Historia**
 | Texto on-screen | Visual |

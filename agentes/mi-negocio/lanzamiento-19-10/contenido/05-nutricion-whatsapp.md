@@ -58,7 +58,7 @@ D5     →  Convierte la creencia en asistencia
 2. Fórmula buena y cara: 12.000 el pote, contra marcas a 4.500. La cadena de siempre: te salen competidores, suben los CPM, por ende suben los CPA.
 3. Creía que en Argentina nadie se suscribe. Lo pensaba como todos.
 4. El cambio: dejó de buscar la compra y empezó a buscar al cliente. Adquirirlo al costo y hacer la plata en el segundo, tercer y cuarto pedido.
-5. Hoy: 2.200 suscriptores activos, 1,28% de churn, 156.798.062 por mes. [Mostrar tablero y reporte en pantalla]
+5. Hoy: 2.200 suscriptores activos, 1,28% de churn, 156.798.062 por mes. [Mostrar panel de suscriptores y reporte en pantalla]
 
 **Insight central — SCRIPTED (90 s)**
 > En compra única tenés un CPA. Lo pagás cada vez que vendés. En suscripción tenés un CAC: se paga una vez. La segunda, la tercera y la cuarta compra entran con el margen de contribución entero.
@@ -66,7 +66,7 @@ D5     →  Convierte la creencia en asistencia
 > No es un truco de pauta. Es el modelo.
 
 **Cierre — SCRIPTED (60 s)**
-> Esto es la base. El lunes 19 a las 19, en la clase en vivo privada, te muestro todo el paso a paso, en la pizarra.
+> Esto es la base. El lunes 19 a las 19, en la clase en vivo privada, te muestro todo el paso a paso, con mis números.
 > Mañana te dejo acá lo que le pasa al CPA cuando dejás de pelearlo. Porque todos te dicen que lo bajes, y es exactamente al revés.
 
 **Texto fallback (debajo del video)**
@@ -126,7 +126,7 @@ Fallback:
 **13:00 · Pop up · beats**
 1. "7 lucas de ganancia. Sobreviviendo." Otra frase textual de una llamada.
 2. Facturar bien y ganar poco: pagás la pauta en cada venta.
-3. Mostrar el tablero: el mismo cliente, tres compras. [CARGAR: tablero con LTV]
+3. Mostrar el panel de suscriptores: el mismo cliente, tres compras. [CARGAR: panel de suscriptores con LTV]
 4. "A la tarde te cuento el miedo que yo tenía antes de hacerlo."
 
 Fallback:
@@ -181,7 +181,7 @@ Fallback:
 > A eso le digo Escalar Hacia Adentro: crecer con los clientes que ya entraron, no saliendo a comprar más.
 
 **Cierre — SCRIPTED (60 s)**
-> El lunes 19 a las 19 te muestro el paso a paso, en vivo, en la pizarra, con mis números. Y a los que vengan les regalo el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas.
+> El lunes 19 a las 19 te muestro el paso a paso, en vivo, con mis números. Y a los que vengan les regalo el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas.
 > Mañana te pido una sola cosa para que el lunes te sirva el doble. Estate atento.
 
 **Texto fallback (debajo del video)**
@@ -201,7 +201,7 @@ Fallback:
 > Mañana, lunes 19, a las 19 hs. En vivo. 🔴
 
 **13:00 · Pop up · beats**
-1. Manu en el estudio armado: luces, pizarra, fibrón rojo.
+1. Manu en el estudio armado: luces, cámara, todo listo.
 2. "Mañana no te voy a hablar de teoría: te muestro mis números reales, paso a paso."
 3. Para que te sirva, traé 4 números de tu marca.
 4. "A la tarde te dejo cuáles."
@@ -217,7 +217,7 @@ Fallback:
 > 3. Tu ticket promedio.
 > 4. Cada cuánto se termina tu producto (tu ciclo de reposición).
 >
-> Con eso, cuando haga la cuenta en la pizarra, la vas a estar haciendo con tu marca.
+> Con eso, cuando muestre mis números en la clase, vas a poder hacer lo mismo con tu marca.
 >
 > Lunes 19, 19 hs.
 

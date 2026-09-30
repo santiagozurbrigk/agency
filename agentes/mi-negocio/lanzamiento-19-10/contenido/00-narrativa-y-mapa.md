@@ -36,7 +36,7 @@ CARRITO     →  Replay + fast-action → objeciones de compra → cierre real 2
 |---|---|---|---|---|---|
 | Mar 6/10 | Misterio: "Estoy preparando algo que nunca mostré" | H-HYPE-1 | — | — | — |
 | Mié 7/10 | "Buscás la compra, no los clientes" | H-HYPE-2 | — | — | — |
-| Jue 8/10 | Contraste + tablero: 60M → 156.798.062 | H-HYPE-3 | — | — | — |
+| Jue 8/10 | Contraste + panel de suscriptores: 60M → 156.798.062 | H-HYPE-3 | — | — | — |
 | Vie 9/10 | Pausa personal → primera mención del 19 | H-HYPE-4 | — | — | — |
 | Sáb 10/10 | **ANUNCIO** | H-ADQ-1 (mañana) + H-ADQ-2 (noche) | R1 + R2 | — | — |
 | Dom 11/10 | Historia personal | H-ADQ-3 | R3 | — | — |
@@ -56,7 +56,7 @@ CARRITO     →  Replay + fast-action → objeciones de compra → cierre real 2
 
 ## Reglas para todas las piezas
 
-- **Palabras prohibidas en todo lo público:** masterclass · webinar · lanzamiento. El evento es "la clase en vivo" / "la clase".
+- **Palabras prohibidas en todo lo público:** masterclass · webinar · lanzamiento · pizarra · tablero (se dice "mis números", "mis números reales"). El evento es "la clase en vivo" / "la clase".
 - **Promesa de la clase:** "el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés".
 - **El método se nombra, nunca se explica:** Escalar Hacia Adentro.
 - **Números canónicos, siempre iguales:** 2.200 suscriptores activos · 1,28% de churn · 60.000.000 → 156.798.062 ARS/mes · LTV 3 pedidos mínimo · 12.000 el pote vs 4.500 · marca con la pauta apagada cobrando recurrencias al 50% de margen · pagar 2,5 veces más por cliente · 50 vs 75 por cliente.
