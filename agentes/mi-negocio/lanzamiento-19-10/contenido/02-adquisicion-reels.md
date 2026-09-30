@@ -23,16 +23,16 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 ## R1 · BOFU · Anuncio · Sáb 10/10
 
-**HOOK:** El lunes 19 a las 19 hago en vivo la cuenta que me hizo pasar de 60 millones a 156 millones por mes.
+**HOOK:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
-**CONTEXTO:** Es la misma cuenta que hago con cada marca de consumibles que factura entre 30 y 80 millones y está en breakeven. La hice en mi pizarra, con mis números, y ahora la voy a hacer en vivo.
+**CONTEXTO:** Es para marcas de consumibles que facturan entre 30 y 80 millones y están en breakeven. Te muestro mis números reales, en mi pizarra, paso a paso.
 
 **VALOR:**
 1. Vas a ver por qué cada venta te cuesta lo mismo que la anterior, y por qué no es culpa de tu creativo.
 2. Vas a ver cuánto podés pagar por cada cliente si pasás tu marca al modelo de suscripción: 2,5 veces más que tu competencia.
 3. Y el paso a paso para hacerlo sin frenar lo que hoy vendés. Se llama Escalar Hacia Adentro.
 
-**CTA:** Es una clase en vivo, 100% gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Comentá SUSCRIPCIÓN y te mando el link. Lunes 19, 19 horas.
+**CTA:** Es 100% gratis y solo para los que se anoten. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Comentá SUSCRIPCIÓN y te mando el link. Lunes 19, 19 horas.
 
 **PRODUCCIÓN:** Talking head en el estudio, frente a la pizarra con "LUNES 19 · 19 HS" escrito en rojo. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
 
@@ -51,7 +51,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Saliste con 10 dólares de CPA y ahora tenés 20. Y ya dejás de ser rentable.
 3. El que busca clientes paga la primera venta una sola vez. La segunda, la tercera y la cuarta le entran con el margen entero. Eso es escalar hacia adentro.
 
-**CTA:** El lunes 19 a las 19 hago la cuenta completa en vivo, gratis. Comentá SUSCRIPCIÓN y te mando el link.
+**CTA:** El lunes 19 a las 19 doy una clase en vivo privada, gratis, donde te muestro cómo pasé mi marca a suscripción. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Selfie en el auto estacionado, crudo, sin edición más que subtítulos. Tono de charla entre operadores, ritmo rápido en la cadena causal (paso 1 y 2 de corrido), pausa antes del paso 3. En pantalla: "10 → 20" cuando lo dice.
 
@@ -89,7 +89,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Si tu competencia puede gastar 50 para adquirir un cliente, y vos podés gastar 75, y listo: ya no tenés competencia.
 3. Y podés pagar 75 porque ese cliente te compra tres veces, no una. Eso cambia cuando pasás la marca a suscripción.
 
-**CTA:** El lunes 19 a las 19 hago en vivo la cuenta de cuánto podés pagar por cliente. Comentá SUSCRIPCIÓN y te llevás el Simulador de Suscripción.
+**CTA:** El lunes 19 a las 19, en una clase en vivo privada, te muestro cuánto podés pagar por cliente con suscripción. Comentá SUSCRIPCIÓN y te llevás el Simulador de Suscripción.
 
 **PRODUCCIÓN:** Escritorio, cámara de costado, el administrador de anuncios abierto en la pantalla (sin datos de clientes). Energía de "te explico algo que nadie te dijo". En el paso 2, "50 vs 75" en pantalla grande. [CARGAR: `DATO MANU` cuánto podía pagar por cliente antes vs ahora, si se quiere sumar como prueba]
 
@@ -146,7 +146,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Nosotros no competimos por el creativo ni por el producto: competimos por el modelo. Si ellos pagan 50 por cliente, vos podés pagar 75.
 3. Eso tiene nombre: Escalar Hacia Adentro. Crecer con los clientes que ya entraron, no saliendo a comprar más.
 
-**CTA:** La cuenta entera la hago el lunes 19 a las 19, en vivo. Comentá SUSCRIPCIÓN y te mando el link.
+**CTA:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro, paso a paso, cómo lo apliqué en mi marca. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Estudio, pizarra con los dos círculos que se cruzan; en el paso 3 pinta la lente del medio. Tono de revelación contenida. Texto en pantalla: "ESCALAR HACIA ADENTRO" al nombrarlo.
 
@@ -194,9 +194,9 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 
 ## R10 · BOFU · Build-up · Dom 18/10
 
-**HOOK:** Mañana a las 19 te muestro cuánto podés pagar por cada cliente de tu marca.
+**HOOK:** Mañana a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156 millones por mes.
 
-**CONTEXTO:** Es una clase en vivo, gratis, desde mi estudio, con la pizarra. La misma cuenta que me llevó de 60 millones a 156.798.062 por mes.
+**CONTEXTO:** Es gratis, desde mi estudio, con la pizarra y mis números reales. Y te muestro cuánto podés pagar por cada cliente de tu marca.
 
 **VALOR:**
 1. Por qué cada venta te cuesta lo mismo que la anterior.
