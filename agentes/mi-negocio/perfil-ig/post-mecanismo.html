@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post Mecanismo — Escalar Hacia Adentro</title>
+<style>
+  :root {
+    --negro: #111111;
+    --hueso: #F2EDE4;
+    --rojo: #D62828;
+    --gris: #8A8578;
+    --fuente: "Helvetica Neue", Arial, sans-serif;
+    --escala: 0.4; /* tamaño en pantalla del slide de 1080x1350 */
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #2a2a2a; font-family: var(--fuente); color: var(--hueso); }
+  .aviso {
+    position: sticky; top: 0; z-index: 10; background: #FFD23F; color: #111;
+    padding: 12px 16px; font-size: 14px; font-weight: 700; line-height: 1.4; text-align: center;
+  }
+  #slides { display: flex; flex-wrap: wrap; gap: 24px; padding: 24px 16px; justify-content: center; }
+  .marco { width: calc(1080px * var(--escala)); }
+  .herramientas { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+  .herramientas button, #mas-slide {
+    font-size: 12px; padding: 4px 8px; border: 0; border-radius: 4px; cursor: pointer;
+    background: #444; color: #fff;
+  }
+  .slide {
+    width: 1080px; height: 1350px; transform: scale(var(--escala)); transform-origin: top left;
+    background: var(--negro); padding: 90px; display: flex; flex-direction: column; justify-content: center; gap: 40px;
+    position: relative; overflow: hidden;
+  }
+  .caja { height: calc(1350px * var(--escala)); overflow: hidden; }
+  .slide.claro { background: var(--hueso); color: var(--negro); }
+  .num { position: absolute; top: 50px; right: 70px; font-size: 32px; color: var(--gris); }
+  .el { position: relative; display: flex; align-items: flex-start; gap: 8px; }
+  .el .txt { flex: 1; outline: none; line-height: 1.15; }
+  .el .txt:focus { box-shadow: 0 0 0 3px var(--rojo); }
+  .el .ctl { display: flex; flex-direction: column; gap: 6px; }
+  .el .ctl button {
+    width: 56px; height: 44px; font-size: 22px; border: 0; border-radius: 6px; cursor: pointer;
+    background: rgba(128,128,128,.35); color: inherit;
+  }
+  .rojo { color: var(--rojo); }
+  #mas-slide { display: block; margin: 0 auto 40px; padding: 10px 18px; font-size: 14px; background: var(--rojo); }
+</style>
+</head>
+<body>
+
+<div class="aviso">⚠️ Este HTML es SOLO una guía base para trabajar el copy y la estructura. NO uses este diseño ni publiques screenshots de esto tal cual — un carrusel con este diseño genérico se ve feo y va a funcionar mal. Llevá el copy final a tu diseñador o a tu herramienta de diseño, con tu branding real.</div>
+
+<div id="slides"></div>
+<button id="mas-slide">+ slide</button>
+
+<script>
+  // Cada slide: [modo, [ [texto, tamañoPx, esRojo], ... ]]
+  var DATOS = [
+    ["oscuro", [["Escalá tu ecomm de consumibles a", 70], ["+$100M/mes", 130, true], ["sin depender del CPA.", 70]]],
+    ["claro",  [["No estás en breakeven por el creativo.", 64], ["Estás en breakeven por el MODELO.", 76, true], ["Vendés compras, no clientes.", 56]]],
+    ["oscuro", [["2.200 suscriptores activos", 84], ["1,28% de churn", 84, true], ["[CARGAR: captura del tablero]", 36]]],
+    ["claro",  [["ESCALAR HACIA ADENTRO", 96, true], ["Crecer con los clientes que ya entraron, no saliendo a comprar más.", 56]]],
+    ["oscuro", [["\"Los CPAs nos empezaron a reventar.\"", 56], ["Podés pagar 2,5 veces más por cada cliente que tu competencia.", 72, true]]],
+    ["oscuro", [["\"7 lucas de ganancia. Sobreviviendo.\"", 56], ["La 2ª, 3ª y 4ª compra entran con el margen entero.", 72, true]]],
+    ["oscuro", [["\"El 1 del mes arranco en cero.\"", 56], ["El mes arranca COBRADO. Si Meta te baja la cuenta, tus suscriptores se siguen cobrando.", 64, true]]],
+    ["claro",  [["Una marca con la pauta apagada, cobrando recurrencias con", 60], ["50% de margen.", 110, true], ["[CARGAR: captura]", 36]]],
+    ["oscuro", [["Mandame", 70], ["ADENTRO", 150, true], ["y te hago la cuenta con tus números.", 60]]]
+  ];
+
+  var cont = document.getElementById("slides");
+
+  function crearElemento(texto, px, rojo) {
+    var el = document.createElement("div");
+    el.className = "el";
+    var t = document.createElement("div");
+    t.className = "txt" + (rojo ? " rojo" : "");
+    t.contentEditable = "true";
+    t.style.fontSize = px + "px";
+    t.style.fontWeight = px >= 70 ? "800" : "500";
+    t.textContent = texto;
+    var ctl = document.createElement("div");
+    ctl.className = "ctl";
+    [["A+", 6], ["A−", -6], ["✕", 0]].forEach(function (b) {
+      var btn = document.createElement("button");
+      btn.textContent = b[0];
+      btn.onclick = function () {
+        if (b[1] === 0) { el.remove(); return; }
+        var actual = parseFloat(t.style.fontSize) || 60;
+        t.style.fontSize = Math.max(12, actual + b[1]) + "px";
+      };
+      ctl.appendChild(btn);
+    });
+    el.appendChild(t);
+    el.appendChild(ctl);
+    return el;
+  }
+
+  function renumerar() {
+    var nums = cont.querySelectorAll(".num");
+    nums.forEach(function (n, i) { n.textContent = (i + 1) + "/" + nums.length; });
+  }
+
+  function crearSlide(modo, elementos, despuesDe) {
+    var marco = document.createElement("div");
+    marco.className = "marco";
+    var herr = document.createElement("div");
+    herr.className = "herramientas";
+    var caja = document.createElement("div");
+    caja.className = "caja";
+    var slide = document.createElement("div");
+    slide.className = "slide" + (modo === "claro" ? " claro" : "");
+    var num = document.createElement("div");
+    num.className = "num";
+    slide.appendChild(num);
+    elementos.forEach(function (e) { slide.appendChild(crearElemento(e[0], e[1], e[2])); });
+
+    var botones = [
+      ["+ texto", function () { slide.appendChild(crearElemento("Texto nuevo", 60, false)); }],
+      ["duplicar slide", function () {
+        var copia = [];
+        slide.querySelectorAll(".el .txt").forEach(function (t) {
+          copia.push([t.textContent, parseFloat(t.style.fontSize) || 60, t.classList.contains("rojo")]);
+        });
+        crearSlide(slide.classList.contains("claro") ? "claro" : "oscuro", copia, marco);
+      }],
+      ["eliminar slide", function () { marco.remove(); renumerar(); }]
+    ];
+    botones.forEach(function (b) {
+      var btn = document.createElement("button");
+      btn.textContent = b[0];
+      btn.onclick = b[1];
+      herr.appendChild(btn);
+    });
+
+    caja.appendChild(slide);
+    marco.appendChild(herr);
+    marco.appendChild(caja);
+    if (despuesDe) { despuesDe.after(marco); } else { cont.appendChild(marco); }
+    renumerar();
+  }
+
+  DATOS.forEach(function (d) { crearSlide(d[0], d[1]); });
+  document.getElementById("mas-slide").onclick = function () {
+    crearSlide("oscuro", [["Texto nuevo", 60, false]]);
+  };
+</script>
+</body>
+</html>
