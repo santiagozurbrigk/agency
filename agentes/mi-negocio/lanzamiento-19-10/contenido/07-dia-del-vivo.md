@@ -36,16 +36,16 @@ Reglas del día:
 | "HOY. 19 HS." | Selfie a la mañana, camino al estudio. Sticker de cuenta regresiva a las 19:00. |
 
 **WhatsApp · video selfie (15-25 s)**
-Guion: "Buen día. Hoy es el día. A las 19 hago en vivo la cuenta que me cambió el negocio. Te espero."
+Guion: "Buen día. Hoy es el día. A las 19 doy la clase en vivo donde te muestro cómo pasé mi marca de 60 a 156 millones. Te espero."
 Texto:
-> Hoy, lunes 19, a las 19 hs. 🔴 Hoy hacemos la cuenta.
+> Hoy, lunes 19, a las 19 hs. 🔴 Hoy es la clase.
 
 **Mail**
 Asunto: **Hoy a las 19 hs**
-Preheader: La cuenta, en vivo.
+Preheader: Clase en vivo privada.
 > Hola,
 >
-> Hoy es el día. A las **19 hs** hago en vivo la cuenta que me llevó de 60 millones a 156.798.062 por mes: el paso a paso para pasar tu marca de consumibles al modelo de suscripción.
+> Hoy es el día. A las **19 hs** doy la clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156.798.062 por mes: el paso a paso para pasar tu marca de consumibles al modelo de suscripción.
 >
 > Te mando el link de acceso a las 17.
 >
@@ -145,7 +145,7 @@ Preheader: Para hacer la cuenta con tu marca.
 **Historia**
 | Texto on-screen | Visual |
 |---|---|
-| "En 2 horas hago la cuenta en vivo." | Selfie en el estudio + sticker de link `[LINK CLASE]`. |
+| "En 2 horas arranca la clase en vivo." | Selfie en el estudio + sticker de link `[LINK CLASE]`. |
 
 **WhatsApp · video selfie (15 s)**
 Guion: "Faltan dos horas. Ya estoy en el estudio. Cerrá lo que tengas pendiente."

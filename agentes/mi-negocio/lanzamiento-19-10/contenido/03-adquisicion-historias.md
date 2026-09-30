@@ -16,8 +16,8 @@ Tipo: venta. Dolor: el síntoma general (cada venta cuesta lo mismo). Creencia a
 | 2 | Hook | "Te lo dije ayer. Acá está." | Selfie en el estudio, sonrisa corta. |
 | 3 | Problema | "Si tenés una marca de consumibles con tienda propia, facturás entre 30 y 80 millones y estás en breakeven…" | Selfie hablando, 10 s. |
 | 4 | Problema | "…cada venta te cuesta lo mismo que la anterior. Y no es tu creativo." | Pizarra: "COMPRA" tachado. |
-| 5 | La idea | "El lunes 19 a las 19 hago en vivo la cuenta de cuánto podés pagar por cada cliente si pasás tu marca a suscripción." | Pizarra: los dos círculos y la lente. |
-| 6 | La idea | "Es una clase en vivo, 100% gratis. El paso a paso para pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés." | Selfie. |
+| 5 | La idea | "El lunes 19 a las 19 doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 a 156 millones por mes, y cuánto podés pagar vos por cada cliente con suscripción." | Pizarra: los dos círculos y la lente. |
+| 6 | La idea | "Es 100% gratis. El paso a paso para pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés." | Selfie. |
 | 7 | Cierre | "Te llevás: el roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas." | Lista sobre fondo negro. |
 | 8 | CTA | "Mandame SUSCRIPCIÓN y te paso el link." | Sticker de link `[LINK REGISTRO]` + "SUSCRIPCIÓN" resaltado. |
 
@@ -36,7 +36,7 @@ Tipo: prueba social + venta. Creencia a instalar: "otros como yo ya se anotaron"
 | 1 | Hook | "No lo esperaba así." | Captura de los DMs con "SUSCRIPCIÓN" (nombres tapados). [CARGAR: captura real de mensajes] |
 | 2 | Prueba | "Dueños de marcas de químicos, suplementos, cosmética." | Más capturas de DMs, sin nombres ni marcas visibles. [CARGAR] |
 | 3 | Problema | "La mayoría me escribe lo mismo: 'los CPAs nos empezaron a reventar'." | Captura de un mensaje que lo diga, si existe; si no, texto solo. [CARGAR si existe] |
-| 4 | Cierre | "El lunes 19 a las 19 hacemos la cuenta." | Selfie de noche, tono tranquilo. |
+| 4 | Cierre | "El lunes 19 a las 19, clase en vivo privada." | Selfie de noche, tono tranquilo. |
 | 5 | CTA | "Si todavía no te anotaste: mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** CPA. **Creencia:** otros como yo ya están. **Al terminar tiene que pensar:** "No me quiero quedar afuera."
@@ -75,7 +75,7 @@ Tipo: venta. Dolor: *"Los CPAs nos empezaron a reventar."* Creencia a romper: "t
 | 4 | La idea | "La subasta no la gana el que paga menos. La gana el que puede pagar más." | Selfie, frase sola. |
 | 5 | La idea | "Si ellos pagan 50 y vos podés pagar 75, y listo: ya no tenés competencia." | Pizarra: "50 vs 75". |
 | 6 | Comprobante | "En mi marca: antes podía pagar `[DATO MANU]` por cliente. Hoy, `[DATO MANU]`." | [CARGAR: captura de la cuenta antes vs ahora] |
-| 7 | CTA | "El lunes 19 a las 19 hago la cuenta de cuánto podés pagar vos. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "El lunes 19 a las 19, en una clase en vivo privada, te muestro cuánto podés pagar vos. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** CPA. **Creencia:** ganás pudiendo pagar más. **Al terminar tiene que pensar:** "¿Cuánto podría pagar yo?"
 

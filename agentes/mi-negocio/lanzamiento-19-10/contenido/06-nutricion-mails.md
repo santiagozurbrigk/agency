@@ -16,7 +16,7 @@ No hay agente de Limitless para mail: siguen la misma cadena que el grupo de Wha
 
 > Hola,
 >
-> Te anotaste a la clase en vivo del **lunes 19 a las 19 hs**. Ese día hago en la pizarra la cuenta que me llevó de 60 millones a 156.798.062 por mes.
+> Te anotaste a la clase en vivo del **lunes 19 a las 19 hs**. Ese día doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156.798.062 por mes.
 >
 > Antes quiero dejarte una idea, porque es la base de todo lo que vamos a ver.
 >
@@ -135,11 +135,11 @@ No hay agente de Limitless para mail: siguen la misma cadena que el grupo de Wha
 ## M-5 · Dom 18/10
 
 **Asunto:** Mañana traé estos 4 números
-**Preheader:** Lunes 19, 19 hs. Hacemos la cuenta en vivo.
+**Preheader:** Lunes 19, 19 hs. Clase en vivo privada.
 
 > Hola,
 >
-> Mañana a las 19 hacemos la cuenta en vivo.
+> Mañana a las 19 es la clase en vivo.
 >
 > Para que no la mires de afuera, traé estos 4 números de tu marca:
 >

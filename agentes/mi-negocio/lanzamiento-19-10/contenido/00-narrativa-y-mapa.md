@@ -4,7 +4,7 @@ Versión 1, 30-sep-2026. Base: `../calendario-historias.md` (v2), `../../marca-p
 
 ## La narrativa en una línea
 
-**"Cada venta te cuesta lo mismo que la anterior porque buscás la compra, no al cliente."** Todo el lanzamiento es una sola cadena causal que se cuenta de a un eslabón por día y desemboca en la clase en vivo del lunes 19/10, donde Manu hace la cuenta.
+**"Cada venta te cuesta lo mismo que la anterior porque buscás la compra, no al cliente."** Todo el lanzamiento es una sola cadena causal que se cuenta de a un eslabón por día y desemboca en la clase en vivo privada del lunes 19/10, donde Manu muestra, paso a paso, cómo pasó su marca de 60 a 156 millones por mes.
 
 ## El arco, etapa por etapa
 
@@ -20,7 +20,7 @@ Versión 1, 30-sep-2026. Base: `../calendario-historias.md` (v2), `../../marca-p
 
 ```
 HYPE        →  Instala la idea madre: "la unidad de venta es la compra, no el cliente" + prueba de que el modelo existe en Argentina
-ANUNCIO     →  "Lunes 19 a las 19 hago la cuenta en vivo"
+ANUNCIO     →  "Lunes 19 a las 19 doy una clase en vivo privada: cómo pasé mi marca de 60 a 156 millones por mes"
 DOLOR 1     →  CPA: "No ganás bajando el CPA, ganás pudiendo pagar más"
 DOLOR 2     →  Márgenes: "Pagás la primera venta; la 2ª, 3ª y 4ª entran con el margen entero"
 DOLOR 3     →  Metadependencia: "La base cobra sola; Meta solo suma suscriptores"

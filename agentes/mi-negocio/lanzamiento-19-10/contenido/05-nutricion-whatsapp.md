@@ -37,7 +37,7 @@ D5     →  Convierte la creencia en asistencia
 >
 > Este grupo es para los que se anotaron a la clase en vivo del **lunes 19 a las 19 hs**.
 >
-> Ese día hago en vivo la cuenta que me llevó de 60 millones a 156.798.062 por mes: el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
+> Ese día doy una clase en vivo privada donde te muestro cómo pasé mi marca de 60 millones a 156.798.062 por mes: el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
 >
 > Hasta el lunes, acá te voy dejando lo que necesitás para llegar con la cabeza lista. Nada de ruido: un par de mensajes por día.
 >
@@ -66,14 +66,14 @@ D5     →  Convierte la creencia en asistencia
 > No es un truco de pauta. Es el modelo.
 
 **Cierre — SCRIPTED (60 s)**
-> Esto es la base. El lunes 19 a las 19 te muestro la cuenta completa, en vivo, en la pizarra.
+> Esto es la base. El lunes 19 a las 19, en la clase en vivo privada, te muestro todo el paso a paso, en la pizarra.
 > Mañana te dejo acá lo que le pasa al CPA cuando dejás de pelearlo. Porque todos te dicen que lo bajes, y es exactamente al revés.
 
 **Texto fallback (debajo del video)**
 > Si no podés verlo ahora, la idea en tres líneas:
 > En compra única pagás la pauta en cada venta. En suscripción, una sola vez por cliente.
 > Por eso el que tiene suscriptores puede pagar más por cada cliente nuevo que su competencia.
-> El lunes 19 a las 19 hago la cuenta completa en vivo. Mañana: por qué bajar el CPA es la pelea equivocada.
+> El lunes 19 a las 19 te lo muestro paso a paso en la clase en vivo. Mañana: por qué bajar el CPA es la pelea equivocada.
 
 **Interacción:** "Reaccioná con 🔥 si cada venta te cuesta lo mismo que la anterior."
 
@@ -82,7 +82,7 @@ D5     →  Convierte la creencia en asistencia
 ## D2 · Jue 15/10 · Dolor 1 · CPA
 
 **09:30 · Recordatorio**
-> Lunes 19, 19 hs. La cuenta de cuánto podés pagar por cada cliente de tu marca, en vivo. 🔴
+> Lunes 19, 19 hs. Clase en vivo privada: cómo pasé mi marca de 60 a 156 millones por mes. 🔴
 
 **13:00 · Pop up (video selfie 1-2 min) · beats**
 1. "Los CPAs nos empezaron a reventar." Esa frase la escuchó de un dueño de marca en una llamada.
@@ -162,7 +162,7 @@ Fallback:
 
 **Apertura — SCRIPTED (90 s)**
 > Si entraste recién al grupo, este es el video que tenés que ver. Si estás desde el miércoles, este junta todo lo que vimos y le agrega la pieza que falta.
-> Pasado mañana, lunes 19 a las 19, hago la cuenta en vivo. Este video es para que llegues sabiendo exactamente qué vas a ver y por qué te importa.
+> Pasado mañana, lunes 19 a las 19, doy la clase en vivo privada. Este video es para que llegues sabiendo exactamente qué vas a ver y por qué te importa.
 
 **Promesa del día — SCRIPTED (60 s)**
 > Hoy te llevás una sola cosa: que el CPA, el margen y Meta no son tres problemas. Son uno. Y que tiene nombre y tiene salida.
@@ -202,12 +202,12 @@ Fallback:
 
 **13:00 · Pop up · beats**
 1. Manu en el estudio armado: luces, pizarra, fibrón rojo.
-2. "Mañana no te voy a hablar de teoría: vamos a hacer la cuenta."
+2. "Mañana no te voy a hablar de teoría: te muestro mis números reales, paso a paso."
 3. Para que te sirva, traé 4 números de tu marca.
 4. "A la tarde te dejo cuáles."
 
 Fallback:
-> Mañana hacemos la cuenta en vivo. Para que te sirva, traé 4 números de tu marca. A la tarde te digo cuáles.
+> Mañana es la clase en vivo. Para que te sirva, traé 4 números de tu marca. A la tarde te digo cuáles.
 
 **17:00 · Mensaje 1**
 > Para mañana, traé estos 4 números de tu marca:

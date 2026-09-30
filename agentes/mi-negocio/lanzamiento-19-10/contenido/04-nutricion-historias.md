@@ -36,7 +36,7 @@ Tipo: venta. Dolor: los 3, unidos. Creencia a romper: "tengo tres problemas dist
 | 4 | La idea | "Nosotros vamos a competir por el MODELO." | Selfie, frase sola, mirada fija. |
 | 5 | La idea | "Si ellos pueden gastar 50 dólares para adquirir un cliente, nosotros podemos gastar 75. Y listo: ya no tenés competencia." | Pizarra: "50 vs 75". |
 | 6 | Nombre | "Se llama Escalar Hacia Adentro. Crecer con los clientes que ya entraron." | Los dos círculos, se pinta la lente. |
-| 7 | CTA | "La cuenta entera la hago el lunes 19 a las 19, en vivo. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "El lunes 19 a las 19 te muestro el paso a paso en una clase en vivo privada. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** los 3. **Creencia:** es el modelo. **Al terminar tiene que pensar:** "Quiero ver la cuenta entera."
 

@@ -60,7 +60,7 @@ Tipo: caso de éxito (sin CTA). Dolor: "cada venta me deja el mismo margen". Cre
 
 ---
 
-## H-HYPE-4 · Vie 9/10 · Pausa personal → primera mención: "El lunes 19 hago la cuenta en vivo"
+## H-HYPE-4 · Vie 9/10 · Pausa personal → primera mención: "El lunes 19 doy una clase en vivo privada"
 
 Tipo: día a día → venta suave (sin link). Dolor: ninguno nuevo. Creencia a instalar: "hay una fecha, y ahí se ve la cuenta completa".
 
@@ -70,8 +70,8 @@ Tipo: día a día → venta suave (sin link). Dolor: ninguno nuevo. Creencia a i
 | 2 | Día a día | "Hoy no hay cuenta. Hoy armo el estudio." | Video del estudio: luces, cámara, la pizarra todavía tapada. |
 | 3 | Día a día | "Falta poco para mostrarlo." | Selfie en el estudio, tono tranquilo. |
 | 4 | Hook (noche) | "Ok. Ya está decidido." | Fondo negro, texto solo. |
-| 5 | Primera mención | "El lunes 19 a las 19 hago la cuenta en vivo." | Selfie hablando, 10 s, mirada a cámara. |
-| 6 | Primera mención | "La misma que hice con mi marca. En la pizarra. Con números reales." | La pizarra destapada a medias, se ve el fibrón rojo. |
+| 5 | Primera mención | "El lunes 19 a las 19 doy una clase en vivo privada." | Selfie hablando, 10 s, mirada a cámara. |
+| 6 | Primera mención | "Te muestro cómo pasé mi marca de 60 a 156 millones por mes. En la pizarra. Con números reales." | La pizarra destapada a medias, se ve el fibrón rojo. |
 | 7 | Cierre | "Mañana te cuento cómo entrar." | Fondo negro + "LUNES 19 · 19 HS". |
 
 **Dolor:** — **Creencia:** hay un día en que se ve la cuenta. **Al terminar tiene que pensar:** "Mañana me fijo cómo entro."
