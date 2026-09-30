@@ -15,7 +15,7 @@ Cada cambio toca **4 cosas a la vez**: bio, link, destacadas y fijados. Nunca un
 | **Base** | hoy → 30/9 | Promesa + prueba + ADENTRO | Video largo de YouTube | Empezá acá · Resultados · Quién soy | Personal · Mecanismo · Resultados |
 | **1 · Cierre** | **jue 1/10** → vie 9/10 | LUGARES CERRADOS | **Sin link** | **IMPORTANTE** · Quién soy · Resultados | Post de cierre · Resultados |
 | *Hype* | 6/10 → 9/10 | *No se toca: el hype vive en historias y reels* | | | |
-| **3 · Anuncio** | **sáb 10/10** → lun 19/10 19:00 | MASTERCLASS LUN 19/10 | Landing de registro | **MASTERCLASS** · **19/10** · Quién soy · Resultados | Anuncio de la masterclass · Resultados |
+| **3 · Anuncio** | **sáb 10/10** → lun 19/10 19:00 | CLASE EN VIVO LUN 19/10 | Landing de registro | **CLASE** · **19/10** · Quién soy · Resultados | Anuncio de la clase · Resultados |
 | **4 · Carrito** | **mar 20/10** → jue 22/10 23:59 | Génesis abierto hasta el 22/10 | Página de venta | **IMPORTANTE** (cierre) · **FEEDBACK** · Resultados | Oferta · Resultados |
 | **Base** | **vie 23/10** → | Vuelve la bio base | Vuelve el link base | Empezá acá · Resultados · Quién soy | Personal · Mecanismo · Resultados |
 
@@ -98,7 +98,7 @@ Mandame ADENTRO
 
 - **Foto:** Manu de pecho para arriba, mirando a cámara, remera negra lisa **sobre fondo claro (hueso)**. El avatar navega en modo oscuro: una foto luminosa resalta en el feed y en las historias. Sin logos, cadenas ni relojes. Tiene que ser la misma foto en IG, TikTok y YouTube.
 - **Portadas de las destacadas base:** fondo negro con el símbolo (dos círculos que se cruzan) en rojo fibrón. Una palabra por portada.
-- **Portadas de las destacadas del lanzamiento** (IMPORTANTE, MASTERCLASS, 19/10, FEEDBACK): **círculo rojo lleno**, como en el ejemplo de Julieta. Tienen que saltar a la vista antes que las otras.
+- **Portadas de las destacadas del lanzamiento** (IMPORTANTE, CLASE, 19/10, FEEDBACK): **círculo rojo lleno**, como en el ejemplo de Julieta. Tienen que saltar a la vista antes que las otras.
 - **Incongruencia que hay que corregir hoy:** "Genesis OS" en la bio. La marca es Génesis, y el método, Escalar Hacia Adentro.
 - **Pendiente:** la variante de naranja del símbolo sigue sin definirse. Hasta entonces, rojo fibrón. Si vas a delegar diseño, conviene armar un brand guide de una página: negro, hueso, rojo, la tipografía y el símbolo.
 
@@ -202,25 +202,25 @@ Sin CTA: la promesa queda en general y la prueba se mantiene.
 
 ## 10 · Estado 3 — Anuncio (sáb 10/10 → lun 19/10 19:00) — ⏳ esperando OK
 
-**Bio · 139 caracteres (recomendada)**
+**Bio · 143 caracteres (recomendada)**
 ```
-MASTERCLASS LUN 19/10 · 19 HS
+CLASE EN VIVO · LUN 19/10 · 19 HS
 Voy a revelar cómo escalar tu ecomm de consumibles con SUSCRIPCIÓN sin depender del CPA. Gratis.
 INSCRIBITE ↓
 ```
 
-Alternativa · 127 caracteres:
+Alternativa · 129 caracteres:
 ```
-MASTERCLASS GRATIS · LUN 19/10 · 19 HS
+CLASE EN VIVO GRATIS · LUN 19/10 · 19 HS
 Cómo escalar tu ecomm de consumibles con SUSCRIPCIÓN, sin depender del CPA.
 INSCRIBITE ↓
 ```
 
 **Link:** uno solo, la landing de registro `[PENDIENTE: URL]`. Todo el perfil apunta a una sola acción. La keyword ADENTRO se sigue usando en historias y reels, pero en la bio el CTA es el link.
 
-**Destacadas:** entran **MASTERCLASS** y **19/10** en los dos primeros lugares. Sale IMPORTANTE. Quedan "Quién soy" y "Resultados".
+**Destacadas:** entran **CLASE** y **19/10** en los dos primeros lugares. Sale IMPORTANTE. Quedan "Quién soy" y "Resultados".
 
-**MASTERCLASS** (qué es, por qué la hago, para quién es y los regalos por asistir):
+**CLASE** (qué es, por qué la hago, para quién es y los regalos por asistir):
 
 | # | Texto en pantalla | Qué se muestra |
 |---|---|---|
@@ -244,10 +244,10 @@ INSCRIBITE ↓
 | 5 | Los regalos se entregan a los que están en vivo. `[CONFIRMAR]` |
 
 **Fijados:**
-- **Anuncio de la masterclass** (flyer tipo Julieta): "MASTERCLASS EN VIVO · **LUNES 19 DE OCTUBRE** · 19 HS · Cómo pasar tu ecomm de consumibles a suscripción sin depender del CPA." Caption: fecha, para quién, los 3 regalos y "Comentá ADENTRO y te mando el link".
+- **Anuncio de la clase** (flyer tipo Julieta): "CLASE EN VIVO · **LUNES 19 DE OCTUBRE** · 19 HS · Cómo pasar tu ecomm de consumibles a suscripción sin depender del CPA." Caption: fecha, para quién, los 3 regalos y "Comentá ADENTRO y te mando el link".
 - **Resultados** (se queda).
 
-**No se dice:** "webinar", "cupos limitados" (el cupo de asistentes no está definido) ni "no hay grabación" (hay replay).
+**No se dice:** "masterclass", "webinar" ni "lanzamiento" (misma regla que los ads: el evento es "la clase en vivo"), "cupos limitados" (el cupo de asistentes no está definido) ni "no hay grabación" (hay replay).
 
 ## 11 · Estado 4 — Carrito (mar 20/10 → jue 22/10 23:59) — ⏳ esperando OK
 
@@ -261,13 +261,13 @@ Vuelve la promesa base con la prueba. La primera línea dice qué está pasando 
 
 **Link:** página de venta / aplicación a Génesis `[PENDIENTE: URL]`.
 
-**Destacadas:** entran **IMPORTANTE** (el cierre) y **FEEDBACK** en los primeros lugares. MASTERCLASS y 19/10 se archivan: el evento ya pasó. Quedan "Resultados" y "Quién soy".
+**Destacadas:** entran **IMPORTANTE** (el cierre) y **FEEDBACK** en los primeros lugares. CLASE y 19/10 se archivan: el evento ya pasó. Quedan "Resultados" y "Quién soy".
 
 **IMPORTANTE — cierra el 22/10:**
 
 | # | Texto en pantalla |
 |---|---|
-| 1 | El replay de la masterclass está arriba. [CARGAR: link al replay] |
+| 1 | El replay de la clase está arriba. [CARGAR: link al replay] |
 | 2 | Génesis está abierto hasta el **jueves 22/10 a las 23:59**. |
 | 3 | Son **10 lugares**. Quedan `[DATO REAL del día]`. |
 | 4 | Los que entran en las primeras 48 h tienen **instalación prioritaria**. |
@@ -306,12 +306,12 @@ Vuelven la bio, el link, las destacadas y los fijados de la Parte 1. Se archivan
 |---|---|---|
 | ¿Quién sos? | ✅ | Nombre: "Manu Dominguez \| Suscripciones" + la foto |
 | ¿Qué hacés? | ✅ | Bio: escalar ecomms de consumibles con suscripción |
-| ¿Para quién es? | ✅ | Bio ("ecomm de consumibles") + slides 3 y 4 de MASTERCLASS |
+| ¿Para quién es? | ✅ | Bio ("ecomm de consumibles") + slides 3 y 4 de CLASE |
 | ¿Por qué confiar? | ⚠️ | Solo el caso Manu. Falta un caso de cliente |
 | ¿Qué hago ahora? | ✅ | Un CTA por estado, igual en bio, link, destacadas y fijados |
 
 **Los 5 vacíos típicos:**
-1. *No sabe si es para él:* cubierto (bio + filtro en MASTERCLASS).
+1. *No sabe si es para él:* cubierto (bio + filtro en CLASE).
 2. *No entiende qué vendés:* cubierto en Empezá acá y en el post de oferta.
 3. *No ve resultados:* cubierto a medias, solo con Manu.
 4. *No sabe cómo es el proceso:* cubierto a propósito solo en la llamada. El perfil vende el logro, no el cómo.
