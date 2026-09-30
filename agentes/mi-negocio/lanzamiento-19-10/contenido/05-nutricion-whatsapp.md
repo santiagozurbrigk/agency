@@ -224,6 +224,6 @@ Fallback:
 **21:00 · Mensaje 2 (compromiso)**
 > Mañana a las 19 empezamos.
 >
-> Si vas a estar, respondeme al privado con un "ADENTRO" y te mando el link apenas lo abra: `[WA PRIVADO]`
+> Si vas a estar, respondeme al privado con un "SUSCRIPCIÓN" y te mando el link apenas lo abra: `[WA PRIVADO]`
 >
 > Nos vemos mañana. En vivo.

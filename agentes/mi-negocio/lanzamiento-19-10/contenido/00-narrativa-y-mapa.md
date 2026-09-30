@@ -62,7 +62,7 @@ CARRITO     →  Replay + fast-action → objeciones de compra → cierre real 2
 - **Números canónicos, siempre iguales:** 2.200 suscriptores activos · 1,28% de churn · 60.000.000 → 156.798.062 ARS/mes · LTV 3 pedidos mínimo · 12.000 el pote vs 4.500 · marca con la pauta apagada cobrando recurrencias al 50% de margen · pagar 2,5 veces más por cliente · 50 vs 75 por cliente.
 - **Retención adelante, facturación atrás.** Sin captura no hay número.
 - **Urgencia solo real:** hay replay → nunca "sin grabación" ni "única vez". Cupo de asistentes no definido → nunca "cupos limitados" para la clase. La escasez del carrito es sobre los 10 lugares de Génesis DFY, con el número real.
-- **CTA de ventana (10 al 18/10):** palabra clave **ADENTRO** por DM o el link de registro.
+- **CTA de ventana (10 al 18/10):** palabra clave **SUSCRIPCIÓN** por DM o el link de registro.
 - **Voz de Manu:** voseo, cadena causal, número intercalado, remate seco ("y listo", "y ya está"), "por ende", "literalmente". Cero gurú, cero lifestyle, cero "te garantizo".
 - **Lo que no se menciona:** marcas del piloto · "piloto" · "precio de validación" · la Mentoría (downsell) · garantía (no definida).
 

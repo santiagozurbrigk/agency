@@ -1,6 +1,6 @@
 # Nutrición · 14 al 18/10 · 5 secuencias de historias
 
-Hechas con el agente **Historias**. Siguen siendo públicas y en ventana: CTA diario al registro (`[LINK REGISTRO]` o "mandame **ADENTRO**"). Desde el 16/10 corren también los ads de reminder: las historias empujan la asistencia de los ya anotados además del registro.
+Hechas con el agente **Historias**. Siguen siendo públicas y en ventana: CTA diario al registro (`[LINK REGISTRO]` o "mandame **SUSCRIPCIÓN**"). Desde el 16/10 corren también los ads de reminder: las historias empujan la asistencia de los ya anotados además del registro.
 
 Rotación de tipos: caso de éxito (14) → venta (15) → producto por dentro (16) → venta de identificación (17) → venta directa (18).
 
@@ -18,7 +18,7 @@ Tipo: caso de éxito. Dolor: *"El 1 del mes arranco en cero."* / *"Ayer íbamos 
 | 4 | Identificación | "Y el 1 del mes, otra vez en cero. Sin saber con cuánto cerrás." | Calendario del celular en el día 1. |
 | 5 | Qué cambió | "Con suscripción, la base cobra sola todos los meses. Meta solo suma suscriptores nuevos." | Pizarra: "BASE → cobra sola / META → suma". |
 | 6 | Qué cambió | "Si mañana te bajan la cuenta, los suscriptores se siguen cobrando." | Selfie, remate seco. |
-| 7 | CTA | "Este lunes 19 a las 19 te muestro cómo se arma. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "Este lunes 19 a las 19 te muestro cómo se arma. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** metadependencia. **Creencia:** la base cobra sola. **Al terminar tiene que pensar:** "Si me bajan la cuenta, ¿qué me queda?"
 
@@ -36,7 +36,7 @@ Tipo: venta. Dolor: los 3, unidos. Creencia a romper: "tengo tres problemas dist
 | 4 | La idea | "Nosotros vamos a competir por el MODELO." | Selfie, frase sola, mirada fija. |
 | 5 | La idea | "Si ellos pueden gastar 50 dólares para adquirir un cliente, nosotros podemos gastar 75. Y listo: ya no tenés competencia." | Pizarra: "50 vs 75". |
 | 6 | Nombre | "Se llama Escalar Hacia Adentro. Crecer con los clientes que ya entraron." | Los dos círculos, se pinta la lente. |
-| 7 | CTA | "La cuenta entera la hago el lunes 19 a las 19, en vivo. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "La cuenta entera la hago el lunes 19 a las 19, en vivo. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** los 3. **Creencia:** es el modelo. **Al terminar tiene que pensar:** "Quiero ver la cuenta entera."
 
@@ -54,7 +54,7 @@ Tipo: producto por dentro. Creencia a romper: "en Argentina nadie se suscribe / 
 | 4 | Por dentro | "2.200 suscriptores activos. En Argentina." | Zoom al número. |
 | 5 | Por dentro | "1,28% de churn. No se van." | Zoom al churn. |
 | 6 | La idea | "No es cultura. Es cómo se arma la suscripción." | Selfie, remate. |
-| 7 | CTA | "Este lunes 19 a las 19 te muestro cómo se arma. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "Este lunes 19 a las 19 te muestro cómo se arma. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** la objeción madre. **Creencia:** en Argentina funciona. **Al terminar tiene que pensar:** "Entonces sí se puede con mis clientes."
 
@@ -72,7 +72,7 @@ Tipo: venta (identificación y filtro). Creencia a romper: "es otro curso más".
 | 4 | Identificación | "'Está lleno de pirañas.' Te entiendo. Por eso sin captura no hay número." | Selfie, tono de colega. |
 | 5 | Prueba | "El lunes abro mi tablero real. En vivo." | Captura del tablero, desenfocada. [CARGAR] |
 | 6 | La idea | "No te voy a decir que tires lo que funciona: la suscripción va al lado de la compra única, sin tocarla." | Pizarra: dos columnas, "compra única" y "suscripción". |
-| 7 | CTA | "Este lunes 19 a las 19. Si ya tenés producto, mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "Este lunes 19 a las 19. Si ya tenés producto, mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** "ya me estafaron". **Creencia:** esto es para el que ya vende. **Al terminar tiene que pensar:** "Esto es para mí, no para el que arranca."
 
@@ -89,7 +89,7 @@ Tipo: venta directa. Creencia a instalar: "mañana voy y llevo mis números".
 | 3 | Qué te llevás | "El roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas." | Lista sobre fondo negro. |
 | 4 | Preparación | "Traé tus números: CPA, margen por pedido, ticket y cada cuánto te recompran." | Hoja con los 4 datos escritos a mano. |
 | 5 | Prueba | "La misma cuenta que me llevó de 60 millones a 156.798.062 por mes." | [CARGAR: reporte de facturación] |
-| 6 | CTA | "Últimas horas para anotarte: mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 6 | CTA | "Últimas horas para anotarte: mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 | 7 | Cierre | Encuesta: "¿Venís mañana?" SÍ / SÍ, CON MIS NÚMEROS | Selfie. |
 
 **Dolor:** — **Creencia:** mañana es el día. **Al terminar tiene que pensar:** "Mañana voy, con mis números."

@@ -1,6 +1,6 @@
 # Adquisición · 10 al 13/10 · 5 secuencias de historias
 
-Hechas con el agente **Historias**. En ventana el CTA diario al registro es lo normal: sticker de link `[LINK REGISTRO]` o "mandame **ADENTRO**". Del 14 al 18/10 las historias siguen en `04-nutricion-historias.md`.
+Hechas con el agente **Historias**. En ventana el CTA diario al registro es lo normal: sticker de link `[LINK REGISTRO]` o "mandame **SUSCRIPCIÓN**". Del 14 al 18/10 las historias siguen en `04-nutricion-historias.md`.
 
 Rotación de tipos con CTA: venta (10/10) → prueba social (10/10 noche) → caso de éxito (11/10) → venta (12/10) → producto por dentro (13/10).
 
@@ -19,7 +19,7 @@ Tipo: venta. Dolor: el síntoma general (cada venta cuesta lo mismo). Creencia a
 | 5 | La idea | "El lunes 19 a las 19 hago en vivo la cuenta de cuánto podés pagar por cada cliente si pasás tu marca a suscripción." | Pizarra: los dos círculos y la lente. |
 | 6 | La idea | "Es una clase en vivo, 100% gratis. El paso a paso para pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés." | Selfie. |
 | 7 | Cierre | "Te llevás: el roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas." | Lista sobre fondo negro. |
-| 8 | CTA | "Mandame ADENTRO y te paso el link." | Sticker de link `[LINK REGISTRO]` + "ADENTRO" resaltado. |
+| 8 | CTA | "Mandame SUSCRIPCIÓN y te paso el link." | Sticker de link `[LINK REGISTRO]` + "SUSCRIPCIÓN" resaltado. |
 
 **Dolor:** cada venta cuesta lo mismo. **Creencia:** el lunes se ve la cuenta. **Al terminar tiene que pensar:** "Me anoto."
 
@@ -33,11 +33,11 @@ Tipo: prueba social + venta. Creencia a instalar: "otros como yo ya se anotaron"
 
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
-| 1 | Hook | "No lo esperaba así." | Captura de los DMs con "ADENTRO" (nombres tapados). [CARGAR: captura real de mensajes] |
+| 1 | Hook | "No lo esperaba así." | Captura de los DMs con "SUSCRIPCIÓN" (nombres tapados). [CARGAR: captura real de mensajes] |
 | 2 | Prueba | "Dueños de marcas de químicos, suplementos, cosmética." | Más capturas de DMs, sin nombres ni marcas visibles. [CARGAR] |
 | 3 | Problema | "La mayoría me escribe lo mismo: 'los CPAs nos empezaron a reventar'." | Captura de un mensaje que lo diga, si existe; si no, texto solo. [CARGAR si existe] |
 | 4 | Cierre | "El lunes 19 a las 19 hacemos la cuenta." | Selfie de noche, tono tranquilo. |
-| 5 | CTA | "Si todavía no te anotaste: mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 5 | CTA | "Si todavía no te anotaste: mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** CPA. **Creencia:** otros como yo ya están. **Al terminar tiene que pensar:** "No me quiero quedar afuera."
 
@@ -57,7 +57,7 @@ Tipo: caso de éxito. Dolor: "cada venta me costaba lo mismo que la anterior". C
 | 4 | Qué cambió | "Dejé de buscar la compra. Empecé a buscar al cliente." | Pizarra: "COMPRA → CLIENTE". |
 | 5 | Qué cambió | "Eso tiene nombre: Escalar Hacia Adentro." | Texto sobre el símbolo. |
 | 6 | Comprobante | "156.798.062 por mes. 2.200 suscriptores activos. 1,28% de churn." | [CARGAR: reporte + tablero] |
-| 7 | CTA | "El lunes 19 a las 19 te muestro cómo, paso a paso. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "El lunes 19 a las 19 te muestro cómo, paso a paso. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** cada venta cuesta lo mismo. **Creencia:** ya lo resolvió alguien como yo. **Al terminar tiene que pensar:** "Este tuvo el mismo problema que yo, solo que ya lo resolvió."
 
@@ -75,7 +75,7 @@ Tipo: venta. Dolor: *"Los CPAs nos empezaron a reventar."* Creencia a romper: "t
 | 4 | La idea | "La subasta no la gana el que paga menos. La gana el que puede pagar más." | Selfie, frase sola. |
 | 5 | La idea | "Si ellos pagan 50 y vos podés pagar 75, y listo: ya no tenés competencia." | Pizarra: "50 vs 75". |
 | 6 | Comprobante | "En mi marca: antes podía pagar `[DATO MANU]` por cliente. Hoy, `[DATO MANU]`." | [CARGAR: captura de la cuenta antes vs ahora] |
-| 7 | CTA | "El lunes 19 a las 19 hago la cuenta de cuánto podés pagar vos. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "El lunes 19 a las 19 hago la cuenta de cuánto podés pagar vos. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** CPA. **Creencia:** ganás pudiendo pagar más. **Al terminar tiene que pensar:** "¿Cuánto podría pagar yo?"
 
@@ -95,7 +95,7 @@ Tipo: producto por dentro. Dolor: *"7 lucas de ganancia. Sobreviviendo."* Creenc
 | 4 | Por dentro | "Esto es lo que veo yo en mi tablero: el mismo cliente, tres compras." | Grabación de pantalla del tablero con la recompra. [CARGAR: tablero con LTV 3] |
 | 5 | Por dentro | "La primera la pagué. La segunda y la tercera entraron con el margen entero." | Zoom a la recompra. `[DATO MANU: margen de la recompra vs 1ª venta]` |
 | 6 | La idea | "No necesitás vender más. Necesitás que el mismo cliente te compre tres veces." | Selfie, remate seco. |
-| 7 | CTA | "El lunes 19 a las 19 te muestro el paso a paso. Mandame ADENTRO." | Sticker de link `[LINK REGISTRO]`. |
+| 7 | CTA | "El lunes 19 a las 19 te muestro el paso a paso. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** márgenes. **Creencia:** la recompra entra con el margen entero. **Al terminar tiene que pensar:** "Yo pago la pauta en cada venta."
 

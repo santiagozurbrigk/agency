@@ -12,7 +12,7 @@ Cada cambio toca **4 cosas a la vez**: bio, link, destacadas y fijados. Nunca un
 
 | Estado | Desde → hasta | Bio | Link | Destacadas (en este orden) | Fijados |
 |---|---|---|---|---|---|
-| **Base** | hoy → 30/9 | Promesa + prueba + ADENTRO | Video largo de YouTube | Empezá acá · Resultados · Quién soy | Personal · Mecanismo · Resultados |
+| **Base** | hoy → 30/9 | Promesa + prueba + SUSCRIPCIÓN | Video largo de YouTube | Empezá acá · Resultados · Quién soy | Personal · Mecanismo · Resultados |
 | **1 · Cierre** | **jue 1/10** → vie 9/10 | LUGARES CERRADOS | **Sin link** | **IMPORTANTE** · Quién soy · Resultados | Post de cierre · Resultados |
 | *Hype* | 6/10 → 9/10 | *No se toca: el hype vive en historias y reels* | | | |
 | **3 · Anuncio** | **sáb 10/10** → lun 19/10 19:00 | CLASE EN VIVO LUN 19/10 | Landing de registro | **CLASE** · **19/10** · Quién soy · Resultados | Anuncio de la clase · Resultados |
@@ -63,30 +63,30 @@ Manu Dominguez | Suscripciones
 
 **Bio**
 
-**Opción 1 — recomendada · 150 caracteres**
+**Opción 1 — recomendada · 149 caracteres**
 ```
 Escalá tu ecomm de consumibles a +$100M/mes con SUSCRIPCIÓN, sin depender del CPA.
 2.200 suscriptores · 1,28% churn
-Mandame ADENTRO: te hago la cuenta
+DM SUSCRIPCIÓN: te hago la cuenta
 ```
 
-**Opción 2 — autoridad primero · 149 caracteres**
+**Opción 2 — autoridad primero · 148 caracteres**
 ```
 2.200 suscriptores activos y 1,28% de churn en mi marca.
 Pasá tu ecomm de consumibles a SUSCRIPCIÓN: +$100M/mes sin depender del CPA.
-Mandame ADENTRO
+DM SUSCRIPCIÓN
 ```
 
-**Opción 3 — el deseo de Gonza · 135 caracteres**
+**Opción 3 — el deseo de Gonza · 139 caracteres**
 ```
 Tu marca de consumibles a +$100M/mes: el mes arranca COBRADO y ya no dependés del CPA.
 2.200 suscriptores · 1,28% churn
-Mandame ADENTRO
+Mandame SUSCRIPCIÓN
 ```
 
-**Recomendación: opción 1.** Es la promesa aprobada palabra por palabra. La prueba es de retención, el número que nadie más muestra, y el CTA dice el posicionamiento ("el que hace la cuenta con tus números"). Queda justo en 150: si se toca algo, que sea para acortar.
+**Recomendación: opción 1.** Es la promesa aprobada palabra por palabra. La prueba es de retención, el número que nadie más muestra, y el CTA dice el posicionamiento ("el que hace la cuenta con tus números"). Queda en 149 de 150: si se toca algo, que sea para acortar.
 
-**Link:** el video largo de YouTube sobre suscripciones `[PENDIENTE: URL]`. La bio tiene un solo CTA (ADENTRO por DM); el link es el camino para el que prefiere mirar antes de escribir.
+**Link:** el video largo de YouTube sobre suscripciones `[PENDIENTE: URL]`. La bio tiene un solo CTA (SUSCRIPCIÓN por DM); el link es el camino para el que prefiere mirar antes de escribir.
 
 ## 4 · Foto de perfil y estética — ⏳ esperando OK
 
@@ -122,7 +122,7 @@ Es un VSL en historias. Se archiva el 1/10 y vuelve el 23/10. Texto corto: cada 
 | 12 | Y sin tirar lo que hoy te vende: la suscripción va **al lado** de tu compra única. | Tienda con las dos opciones | Rompe "me van a romper lo que funciona" |
 | 13 | Mi marca: de 60M a **156.798.062** por mes. | [CARGAR: reporte de facturación, punto B] | Prueba después del reveal (retención adelante, facturación atrás) |
 | 14 | [FALTA CASO REAL: una marca de cliente con su antes y después] | — | Que no funcionó solo en Manu |
-| 15 | **Mandame ADENTRO** y te hago la cuenta con tus números. | Manu a cámara señalando el DM | CTA único, igual al de la bio |
+| 15 | **Mandame SUSCRIPCIÓN** y te hago la cuenta con tus números. | Manu a cámara señalando el DM | CTA único, igual al de la bio |
 
 ## 6 · Destacada "Resultados" — ⏳ esperando OK
 
@@ -159,11 +159,11 @@ Es la que se queda en los 4 estados. Es la historia de origen (`../marca-persona
 
 **1. Personal** (carrusel): "Por qué cerré la escuela." Dónde estaba (60M, breakeven, "en Argentina nadie se suscribe"), qué cambió, por qué hoy trabaja solo con marcas que ya facturan y por qué el volumen es bajo a propósito. Cierre: "Te digo qué hacer aunque no me compres."
 
-**2. Mecanismo único:** está en **`post-mecanismo.html`** (9 slides editables). Promesa → diagnóstico → prueba → un pilar por dolor → prueba → CTA ADENTRO.
+**2. Mecanismo único:** está en **`post-mecanismo.html`** (9 slides editables). Promesa → diagnóstico → prueba → un pilar por dolor → prueba → CTA SUSCRIPCIÓN.
 
 > ⚠️ Este HTML es SOLO una guía base para trabajar el copy y la estructura. NO uses este diseño ni publiques screenshots de esto tal cual — un carrusel con este diseño genérico se ve feo y va a funcionar mal. Llevá el copy final a tu diseñador o a tu herramienta de diseño, con tu branding real.
 
-**3. Resultados** (carrusel): las mismas 6 placas que la destacada "Resultados", con este caption: "No te cuento cuánto facturo: te muestro cuántos se quedan. 2.200 suscriptores activos, 1,28% de churn. Mandame ADENTRO y te hago la cuenta con tus números." Este fijado se queda en los 4 estados.
+**3. Resultados** (carrusel): las mismas 6 placas que la destacada "Resultados", con este caption: "No te cuento cuánto facturo: te muestro cuántos se quedan. 2.200 suscriptores activos, 1,28% de churn. Mandame SUSCRIPCIÓN y te hago la cuenta con tus números." Este fijado se queda en los 4 estados.
 
 ---
 
@@ -216,7 +216,7 @@ Cómo escalar tu ecomm de consumibles con SUSCRIPCIÓN, sin depender del CPA.
 INSCRIBITE ↓
 ```
 
-**Link:** uno solo, la landing de registro `[PENDIENTE: URL]`. Todo el perfil apunta a una sola acción. La keyword ADENTRO se sigue usando en historias y reels, pero en la bio el CTA es el link.
+**Link:** uno solo, la landing de registro `[PENDIENTE: URL]`. Todo el perfil apunta a una sola acción. La keyword SUSCRIPCIÓN se sigue usando en historias y reels, pero en la bio el CTA es el link.
 
 **Destacadas:** entran **CLASE** y **19/10** en los dos primeros lugares. Sale IMPORTANTE. Quedan "Quién soy" y "Resultados".
 
@@ -244,7 +244,7 @@ INSCRIBITE ↓
 | 5 | Los regalos se entregan a los que están en vivo. `[CONFIRMAR]` |
 
 **Fijados:**
-- **Anuncio de la clase** (flyer tipo Julieta): "CLASE EN VIVO · **LUNES 19 DE OCTUBRE** · 19 HS · Cómo pasar tu ecomm de consumibles a suscripción sin depender del CPA." Caption: fecha, para quién, los 3 regalos y "Comentá ADENTRO y te mando el link".
+- **Anuncio de la clase** (flyer tipo Julieta): "CLASE EN VIVO · **LUNES 19 DE OCTUBRE** · 19 HS · Cómo pasar tu ecomm de consumibles a suscripción sin depender del CPA." Caption: fecha, para quién, los 3 regalos y "Comentá SUSCRIPCIÓN y te mando el link".
 - **Resultados** (se queda).
 
 **No se dice:** "masterclass", "webinar" ni "lanzamiento" (misma regla que los ads: el evento es "la clase en vivo"), "cupos limitados" (el cupo de asistentes no está definido) ni "no hay grabación" (hay replay).

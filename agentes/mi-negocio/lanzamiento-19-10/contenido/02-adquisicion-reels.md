@@ -1,6 +1,6 @@
 # Adquisición · 10 al 18/10 · 10 reels
 
-Hechos con el agente **Reels** (sin reel de referencia: anatomía de 4 partes). En ventana de lanzamiento cada reel ataca un dolor y el CTA es SIEMPRE el registro: comentar/mandar **ADENTRO** o el link de la bio. El regalo con nombre propio del CTA son los 3 regalos por asistir (roadmap, Simulador de Suscripción, sistemas de email y WhatsApp).
+Hechos con el agente **Reels** (sin reel de referencia: anatomía de 4 partes). En ventana de lanzamiento cada reel ataca un dolor y el CTA es SIEMPRE el registro: comentar/mandar **SUSCRIPCIÓN** o el link de la bio. El regalo con nombre propio del CTA son los 3 regalos por asistir (roadmap, Simulador de Suscripción, sistemas de email y WhatsApp).
 
 Reglas: un reel = un dolor = una idea = un CTA · la solución siempre es Escalar Hacia Adentro visto desde ese dolor, nombrado, nunca explicado · sin "masterclass", "webinar" ni "lanzamiento" · solo números canónicos con su comprobante.
 
@@ -32,11 +32,11 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Vas a ver cuánto podés pagar por cada cliente si pasás tu marca al modelo de suscripción: 2,5 veces más que tu competencia.
 3. Y el paso a paso para hacerlo sin frenar lo que hoy vendés. Se llama Escalar Hacia Adentro.
 
-**CTA:** Es una clase en vivo, 100% gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Comentá ADENTRO y te mando el link. Lunes 19, 19 horas.
+**CTA:** Es una clase en vivo, 100% gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Comentá SUSCRIPCIÓN y te mando el link. Lunes 19, 19 horas.
 
 **PRODUCCIÓN:** Talking head en el estudio, frente a la pizarra con "LUNES 19 · 19 HS" escrito en rojo. Hook con energía alta y mirada fija; valor más pausado, contando con los dedos; CTA firme. Texto en pantalla: "LUNES 19 · 19 HS · EN VIVO" fijo arriba. En el hook, corte de 1 s al reporte de 156.798.062 [CARGAR].
 
-**MEDICIÓN:** BOFU → registros (comentarios ADENTRO y clics). Se mide junto con R2 el día del anuncio, y con toda la ventana.
+**MEDICIÓN:** BOFU → registros (comentarios SUSCRIPCIÓN y clics). Se mide junto con R2 el día del anuncio, y con toda la ventana.
 
 ---
 
@@ -51,7 +51,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Saliste con 10 dólares de CPA y ahora tenés 20. Y ya dejás de ser rentable.
 3. El que busca clientes paga la primera venta una sola vez. La segunda, la tercera y la cuarta le entran con el margen entero. Eso es escalar hacia adentro.
 
-**CTA:** El lunes 19 a las 19 hago la cuenta completa en vivo, gratis. Comentá ADENTRO y te mando el link.
+**CTA:** El lunes 19 a las 19 hago la cuenta completa en vivo, gratis. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Selfie en el auto estacionado, crudo, sin edición más que subtítulos. Tono de charla entre operadores, ritmo rápido en la cadena causal (paso 1 y 2 de corrido), pausa antes del paso 3. En pantalla: "10 → 20" cuando lo dice.
 
@@ -70,7 +70,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Dejé de buscar la compra y empecé a buscar al cliente: adquirirlo al costo y hacer la plata en el segundo, el tercer y el cuarto pedido.
 3. Hoy tengo 2.200 suscriptores activos, 1,28% de churn, y la marca factura 156.798.062 por mes.
 
-**CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso de cómo lo hice. Se llama Escalar Hacia Adentro. Comentá ADENTRO y te mando el link.
+**CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso de cómo lo hice. Se llama Escalar Hacia Adentro. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Grabado en el depósito, entre cajas del producto (sin marca visible si no se quiere mostrar). Tono íntimo, más lento, como contando algo que costó. Corte a comprobante en el paso 3: tablero y reporte [CARGAR]. Sin música arriba en el hook.
 
@@ -89,7 +89,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Si tu competencia puede gastar 50 para adquirir un cliente, y vos podés gastar 75, y listo: ya no tenés competencia.
 3. Y podés pagar 75 porque ese cliente te compra tres veces, no una. Eso cambia cuando pasás la marca a suscripción.
 
-**CTA:** El lunes 19 a las 19 hago en vivo la cuenta de cuánto podés pagar por cliente. Comentá ADENTRO y te llevás el Simulador de Suscripción.
+**CTA:** El lunes 19 a las 19 hago en vivo la cuenta de cuánto podés pagar por cliente. Comentá SUSCRIPCIÓN y te llevás el Simulador de Suscripción.
 
 **PRODUCCIÓN:** Escritorio, cámara de costado, el administrador de anuncios abierto en la pantalla (sin datos de clientes). Energía de "te explico algo que nadie te dijo". En el paso 2, "50 vs 75" en pantalla grande. [CARGAR: `DATO MANU` cuánto podía pagar por cliente antes vs ahora, si se quiere sumar como prueba]
 
@@ -108,7 +108,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. En suscripción tenés un CAC: lo pagás una vez, cuando entra el cliente.
 3. La segunda, la tercera y la cuarta compra entran con el margen de contribución entero. En mi marca, el mismo cliente me compra tres veces, como mínimo.
 
-**CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso. Comentá ADENTRO y te llevás el Simulador para ver tu margen cliente por cliente.
+**CTA:** El lunes 19 a las 19 te muestro en vivo el paso a paso. Comentá SUSCRIPCIÓN y te llevás el Simulador para ver tu margen cliente por cliente.
 
 **PRODUCCIÓN:** Frente a la pizarra, fibrón rojo: escribe "CPA = cada venta" y "CAC = una vez". Tono didáctico pero seco, sin sonrisa en el hook. [CARGAR: tablero con LTV 3 · `DATO MANU` margen de la recompra vs 1ª venta]
 
@@ -127,7 +127,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Con suscripción, la base cobra sola todos los meses. Meta solo suma suscriptores nuevos.
 3. Tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen. Pauta apagada. Y cobra igual.
 
-**CTA:** El lunes 19 a las 19 te muestro en vivo cómo se arma eso. Comentá ADENTRO y te llevás los sistemas de email y WhatsApp que le cobran a mi base todos los meses.
+**CTA:** El lunes 19 a las 19 te muestro en vivo cómo se arma eso. Comentá SUSCRIPCIÓN y te llevás los sistemas de email y WhatsApp que le cobran a mi base todos los meses.
 
 **PRODUCCIÓN:** Caminando por la costa, celular en mano, crudo. Tono tranquilo: el contraste es que él está tranquilo. Corte a la captura de la marca con la pauta en cero en el paso 3 [CARGAR].
 
@@ -146,7 +146,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Nosotros no competimos por el creativo ni por el producto: competimos por el modelo. Si ellos pagan 50 por cliente, vos podés pagar 75.
 3. Eso tiene nombre: Escalar Hacia Adentro. Crecer con los clientes que ya entraron, no saliendo a comprar más.
 
-**CTA:** La cuenta entera la hago el lunes 19 a las 19, en vivo. Comentá ADENTRO y te mando el link.
+**CTA:** La cuenta entera la hago el lunes 19 a las 19, en vivo. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Estudio, pizarra con los dos círculos que se cruzan; en el paso 3 pinta la lente del medio. Tono de revelación contenida. Texto en pantalla: "ESCALAR HACIA ADENTRO" al nombrarlo.
 
@@ -165,7 +165,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. 1,28% de churn. No se van.
 3. Y cada uno me compra tres veces, como mínimo. No es cultura: es cómo se arma la suscripción.
 
-**CTA:** El lunes 19 a las 19 te muestro en vivo cómo se arma. Comentá ADENTRO y te llevás el roadmap para migrar tu marca con lo que ya tenés.
+**CTA:** El lunes 19 a las 19 te muestro en vivo cómo se arma. Comentá SUSCRIPCIÓN y te llevás el roadmap para migrar tu marca con lo que ya tenés.
 
 **PRODUCCIÓN:** Pantalla compartida con el tablero real, cámara de Manu en una esquina. Tono de "mirá vos mismo". Zoom a cada número cuando lo dice [CARGAR: tablero 2.200 / 1,28% / LTV].
 
@@ -184,7 +184,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. No hay que tirar lo que funciona: la suscripción va al lado de la compra única, sin tocarla.
 3. Por eso esto no es para el que arranca. Es para el que ya vende.
 
-**CTA:** El lunes 19 a las 19 te lo muestro en vivo, con mi tablero abierto. Comentá ADENTRO y te mando el link.
+**CTA:** El lunes 19 a las 19 te lo muestro en vivo, con mi tablero abierto. Comentá SUSCRIPCIÓN y te mando el link.
 
 **PRODUCCIÓN:** Talking head sentado, fondo liso, plano medio. Tono de colega, sin ataque a nadie (no se nombra competencia). Ritmo pausado.
 
@@ -203,7 +203,7 @@ Vestimenta fija por marca personal: remera o buzo liso negro o hueso, sin logos.
 2. Cómo pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés.
 3. Y cuánto podés pagar por cliente: 2,5 veces más que tu competencia.
 
-**CTA:** Si todavía no te anotaste, comentá ADENTRO. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp. Mañana, 19 horas.
+**CTA:** Si todavía no te anotaste, comentá SUSCRIPCIÓN. Los que vengan se llevan el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp. Mañana, 19 horas.
 
 **PRODUCCIÓN:** Estudio con todo armado: luces, cámara, pizarra lista. Energía alta, cierre directo. "LUNES 19 · 19 HS" en pantalla todo el reel.
 

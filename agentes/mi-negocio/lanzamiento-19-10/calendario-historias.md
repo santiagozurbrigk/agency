@@ -6,7 +6,7 @@ Reemplaza el calendario del 25-sep (que tenía el webinar el 22/10).
 ## Datos del lanzamiento
 
 - **Webinar:** lunes 19/10/2026, 19:00 hs Argentina (definitivo), en vivo desde el estudio con la pizarra.
-- **Keyword:** ADENTRO.
+- **Keyword:** SUSCRIPCIÓN.
 - **Los 3 dolores (orden causal) y la creencia que instala cada uno:**
   1. CPA — *"Los CPAs nos empezaron a reventar."* → No ganás bajando el CPA, ganás pudiendo pagar más.
   2. Márgenes — *"7 lucas de ganancia. Sobreviviendo."* → Pagás la primera venta de cada cliente; las siguientes entran con el margen entero.
@@ -50,7 +50,7 @@ Reemplaza el calendario del 25-sep (que tenía el webinar el 22/10).
 
 | Día | Temática del día | Qué toca (dolor / creencia / caso de éxito) | Objetivo |
 |---|---|---|---|
-| Sáb 10/10 — **ANUNCIO** | "Lunes 19 a las 19:00: te hago la cuenta de tu marca en vivo" | Fecha + hora + para quién (ecomm de consumibles con tienda propia, 30–80M/mes, en breakeven) + qué se llevan (la cuenta del techo con suscripción) + keyword **ADENTRO**. `[CONFIRMAR 27-sep: ¿el webinar tiene cupo de asistentes? Si no, no se dice "cupos limitados"]`. A la noche: repost de las primeras inscripciones | Registros |
+| Sáb 10/10 — **ANUNCIO** | "Lunes 19 a las 19:00: te hago la cuenta de tu marca en vivo" | Fecha + hora + para quién (ecomm de consumibles con tienda propia, 30–80M/mes, en breakeven) + qué se llevan (la cuenta del techo con suscripción) + keyword **SUSCRIPCIÓN**. `[CONFIRMAR 27-sep: ¿el webinar tiene cupo de asistentes? Si no, no se dice "cupos limitados"]`. A la noche: repost de las primeras inscripciones | Registros |
 | Dom 11/10 | Historia personal: "Facturaba sesenta millones por mes y cada venta me costaba lo mismo que la anterior" | Estaba: fórmula buena y cara, 12.000 el pote, contra marcas a 4.500, creyendo que en Argentina nadie se suscribe → Descubrió: "Dejé de buscar la compra y empecé a buscar al cliente" → Hoy: 156.798.062/mes, 2.200 suscriptores | Conexión: "este tuvo el mismo problema que yo, solo que ya lo resolvió" |
 | Lun 12/10 | Dolor 1 — "Los CPAs nos empezaron a reventar" | Creencia: no ganás bajando el CPA, ganás pudiendo pagar más. Caso Manu, ángulo CPA: `[DATO MANU: cuánto podía pagar por cliente antes vs ahora — captura]` | Registros del que siente el CPA |
 | Mar 13/10 | Dolor 2 — "7 lucas de ganancia. Sobreviviendo." | Creencia: la 2ª, 3ª y 4ª compra entran con el margen entero. Caso Manu, ángulo LTV: LTV 3 pedidos mínimo + `[DATO MANU: margen de la recompra vs 1ª venta — captura]` | Registros del que está en breakeven |
@@ -58,7 +58,7 @@ Reemplaza el calendario del 25-sep (que tenía el webinar el 22/10).
 | Jue 15/10 | El mecanismo: "Nosotros vamos a competir por el MODELO" | Los 3 dolores desembocan en lo mismo. "Si ellos pagan 50, vos podés pagar 75, y listo: ya no tenés competencia." Escalar Hacia Adentro, sin dar la cuenta entera ("el lunes la hago en vivo") | Que el webinar sea la única forma de ver la cuenta completa |
 | Vie 16/10 — faltan 3 días | Objeción de compra: "En Argentina no están acostumbrados a la suscripción" | Manu lo creía también. Caso Manu, ángulo retención: 2.200 suscriptores activos en Argentina, 1,28% de churn (rompe también "se suscriben por el descuento y se dan de baja") | Romper la objeción madre antes del vivo |
 | Sáb 17/10 — faltan 2 días | Objeción de asistencia: "Ya pagué dos mentorías y me enseñaron a buscar producto" / "Está lleno de pirañas" | No es otro curso de producto ganador: es para el que ya tiene producto. Manu abre el tablero real; sin captura no hay número | Que asista el calificado y se filtre el que no |
-| Dom 18/10 — mañana es el día | Build-up: "Mañana a las 19 te muestro cuánto podés pagar por cliente" | Recordatorio de qué se llevan + últimas puertas para registrarse con ADENTRO | Últimos registros + asistencia |
+| Dom 18/10 — mañana es el día | Build-up: "Mañana a las 19 te muestro cuánto podés pagar por cliente" | Recordatorio de qué se llevan + últimas puertas para registrarse con SUSCRIPCIÓN | Últimos registros + asistencia |
 
 ### Webinar — Lun 19/10
 
