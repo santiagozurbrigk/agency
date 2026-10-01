@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Falta un paso · Clase en vivo · Manu Dominguez</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Píxel de Meta: código base. Cargá tu ID en META_PIXEL_ID (vacío = no carga). -->
+<script>
+  var META_PIXEL_ID = ""; /* hueco: ID del píxel de Meta */
+  if (META_PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL_ID);
+    fbq('track', 'PageView');
+    /* fbq('track', 'Lead'); */ /* activar SOLO si el optin no lo dispara ya. Hoy el Lead se define por URL de esta página en el Administrador de Eventos. */
+  }
+</script>
+<!-- Script universal de Hyros: hueco. Pegá acá la línea de tu cuenta (una sola vez). -->
+<!-- <script src="https://XXXXXX.t.hyros.com/v1/lst/universal-script?ph=..."></script> -->
+
+<style>
+  /* Mismo sistema que la optin: negro, hueso y naranja; notificaciones del celular como concepto. */
+  :root {
+    --negro: #0B0B0C;
+    --negro-2: #141415;
+    --negro-3: #1D1D1F;
+    --linea: rgba(255,255,255,.08);
+    --hueso: #F2EDE4;
+    --tinta: #17181C;
+    --gris: #8E8E93;
+    --gris-2: #B9B9BE;
+    --naranja: #F26A1B;
+    --naranja-oscuro: #B84A0C;
+    --naranja-rgb: 242, 106, 27;
+    --verde: #34C759;
+    --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--negro); color: #fff; font-family: var(--cuerpo); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 18px; }
+  .oculto { display: none !important; }
+
+  /* Fondo: el gráfico de suscriptores, ya dibujado (en la optin crecía con el scroll) */
+  .bg-chart { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .bg-chart svg { width: 100%; height: 100%; }
+  .bg-chart .grid line { stroke: rgba(255,255,255,.05); stroke-width: 1; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+  .bg-chart .l { fill: none; stroke: rgba(var(--naranja-rgb), .35); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+  .bg-chart .a { fill: url(#ga); }
+  header, section, footer { position: relative; z-index: 1; }
+
+  /* Barra superior fija */
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(11,11,12,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
+  .top .wrap { max-width: 1120px; display: flex; align-items: center; justify-content: space-between; height: 54px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--titulos); font-weight: 700; letter-spacing: .16em; font-size: 14px; }
+  .logo svg { width: 30px; height: 20px; }
+  .top-cta { background: var(--naranja); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 10px; }
+
+  /* Botones */
+  .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; width: 100%; border: 0; border-radius: 14px; padding: 16px 20px; cursor: pointer; text-decoration: none; font-family: var(--cuerpo); font-weight: 700; font-size: 15.5px; letter-spacing: .03em; text-transform: uppercase; transition: transform .08s; }
+  .btn:active { transform: translateY(2px); }
+  .btn-naranja { background: linear-gradient(90deg, var(--naranja-oscuro), var(--naranja)); color: #fff; box-shadow: 0 10px 30px rgba(var(--naranja-rgb), .35); }
+  .btn-blanco { background: #fff; color: var(--negro); box-shadow: 0 0 0 2px var(--naranja); }
+  .btn-verde { background: #1FAF55; color: #fff; }
+  .btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
+
+  /* Notificación (componente) */
+  .notif { display: flex; gap: 11px; align-items: flex-start; text-align: left; background: rgba(38,38,40,.85); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 12px 14px; color: #fff; }
+  .notif.claro { background: rgba(246,243,238,.96); color: var(--tinta); }
+  .notif .ic { flex: 0 0 38px; height: 38px; border-radius: 9px; display: grid; place-items: center; }
+  .notif .ic svg { width: 21px; height: 21px; }
+  .ic.mail { background: #2F7CF6; } .ic.chat { background: #1FAF55; } .ic.cal { background: #fff; color: var(--naranja); }
+  .ic.genesis { background: var(--negro); border: 1px solid rgba(255,255,255,.12); }
+  .notif .nb { flex: 1; min-width: 0; }
+  .notif .nt { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .notif .nt b { font-size: 14.5px; font-weight: 600; }
+  .notif .nt time { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+  .notif .nb p { font-size: 14px; line-height: 1.32; margin-top: 1px; color: rgba(255,255,255,.9); }
+  .notif.claro .nb p { color: var(--tinta); }
+  .notif .nb p strong { font-weight: 700; }
+
+  /* Bloque 1: hero */
+  .hero { padding: 30px 0 36px; text-align: center; }
+  .hero::before { content: ""; position: absolute; left: 50%; top: -140px; transform: translateX(-50%); width: 900px; height: 560px; pointer-events: none; background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .22), transparent 70%); }
+  .hero .wrap { position: relative; }
+  .etiqueta { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--verde); background: rgba(52,199,89,.1); border: 1px solid rgba(52,199,89,.4); }
+  .etiqueta i { width: 7px; height: 7px; border-radius: 50%; background: var(--verde); }
+  .hero h1 { font-size: 31px; font-weight: 800; margin: 16px auto 12px; max-width: 15em; }
+  .hero h1 span { display: block; color: var(--naranja); }
+  .hero h1 a { color: var(--naranja); }
+  .hero .bajada { color: var(--gris-2); max-width: 32em; margin: 0 auto 22px; }
+  .hero .bajada b { color: #fff; }
+  .video { aspect-ratio: 16/9; border-radius: 18px; overflow: hidden; background: var(--negro-2); border: 1px solid var(--linea); margin-bottom: 18px; }
+  .video:empty { display: none; }
+  .video iframe, .video video { width: 100%; height: 100%; border: 0; display: block; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .chip { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--gris-2); }
+  .chip b { color: #fff; font-weight: 600; }
+  .cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 440px; margin: 20px auto 0; }
+  .cd div { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 14px; padding: 11px 4px; }
+  .cd div:first-child { background: var(--naranja); border-color: var(--naranja); }
+  .cd b { display: block; font-family: var(--titulos); font-size: 28px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cd span { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; opacity: .8; }
+
+  /* Bloque 3: los pasos */
+  .pasos-sec { padding: 46px 0; border-top: 1px solid var(--linea); }
+  .kicker { text-align: center; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--naranja); }
+  .pasos-sec h2 { text-align: center; font-size: 30px; font-weight: 800; margin: 8px 0 26px; }
+  .paso { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 22px; padding: 20px 18px; margin-bottom: 14px; }
+  .paso.importante { border-color: rgba(var(--naranja-rgb), .55); background: radial-gradient(120% 80% at 50% 0%, rgba(var(--naranja-rgb), .12), transparent 60%), var(--negro-2); }
+  .paso-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .num { font-family: var(--titulos); font-weight: 800; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--gris-2); }
+  .imp { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #fff; background: var(--naranja); padding: 3px 9px; border-radius: 999px; }
+  .paso h3 { font-size: 22px; margin-bottom: 8px; }
+  .paso > p { color: var(--gris-2); margin-bottom: 14px; }
+  .paso > p b { color: #fff; }
+  .paso .notif { margin-bottom: 14px; }
+  .paso .ayuda { font-size: 13.5px; color: var(--gris); margin: 12px 0 0; }
+  .pie { text-align: center; font-weight: 600; color: #fff; margin-top: 8px; }
+
+  /* Bloque 4: cierre */
+  .cierre { padding: 46px 0 50px; border-top: 1px solid var(--linea); text-align: center; }
+  .cierre h2 { font-size: 30px; font-weight: 800; max-width: 16em; margin: 0 auto 12px; }
+  .cierre h2 span { color: var(--naranja); }
+  .cierre p { color: var(--gris-2); max-width: 30em; margin: 0 auto 22px; }
+  .cierre .btn { max-width: 420px; }
+
+  footer { text-align: center; padding: 26px 0 32px; color: var(--gris); font-size: 13px; border-top: 1px solid var(--linea); }
+  footer .logo { justify-content: center; color: #fff; margin-bottom: 6px; }
+
+  @media (min-width: 768px) {
+    .hero { padding: 54px 0 46px; }
+    .hero h1 { font-size: 46px; }
+    .pasos-sec h2, .cierre h2 { font-size: 38px; }
+    .paso { padding: 24px 26px; }
+    .paso .btn { width: auto; min-width: 320px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-genesis" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path fill="#fff" d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.4l8 5 8-5V7H4Zm16 2.75-7.47 4.67a1 1 0 0 1-1.06 0L4 9.75V17h16V9.75Z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.66 15l-1.3 4.1a.7.7 0 0 0 .87.88l4.2-1.27A10 10 0 1 0 12 2Zm0 2a8 8 0 1 1-3.9 15l-.36-.2-2.8.85.86-2.7-.22-.38A8 8 0 0 1 12 4Z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9ZM5 6a1 1 0 0 0-1 1v1h16V7a1 1 0 0 0-1-1H5Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- Fondo -->
+<div class="bg-chart" aria-hidden="true">
+  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+    <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F26A1B" stop-opacity=".14"/><stop offset="1" stop-color="#F26A1B" stop-opacity="0"/></linearGradient></defs>
+    <g class="grid"><line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="400" x2="1000" y2="400"/><line x1="0" y1="600" x2="1000" y2="600"/><line x1="0" y1="800" x2="1000" y2="800"/></g>
+    <path class="a" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200 L 1000 1000 L 0 1000 Z"/>
+    <path class="l" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200"/>
+  </svg>
+</div>
+
+<!-- Barra superior fija con "Agendar" -->
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><svg><use href="#i-genesis"/></svg>GÉNESIS</div>
+    <a class="top-cta js-cal" href="#" target="_blank" rel="noopener">Agendar</a>
+  </div>
+</header>
+
+<!-- Bloque 1: hero -->
+<section class="hero">
+  <div class="wrap">
+    <span class="etiqueta"><i></i>Registro confirmado</span>
+    <h1 id="titular">Listo. Tu lugar está reservado. <span>Falta un paso para asegurarlo.</span></h1>
+    <p class="bajada">Antes de cerrar esta página, mirá el video. Te explico los <b>3 pasos</b> de abajo. Te toman <b>2 minutos</b>.</p>
+
+    <!-- Video de la thank you: pegá adentro el embed. Vacío = no se muestra. -->
+    <div class="video" id="video"></div>
+
+    <div class="chips">
+      <span class="chip"><b class="js-fecha"></b></span>
+      <span class="chip"><b class="js-hora"></b> <span class="js-zona"></span></span>
+      <span class="chip">100% gratis y en vivo</span>
+    </div>
+    <div class="cd" id="cd" aria-label="Cuenta regresiva">
+      <div><b data-cd="d">00</b><span>días</span></div>
+      <div><b data-cd="h">00</b><span>horas</span></div>
+      <div><b data-cd="m">00</b><span>min</span></div>
+      <div><b data-cd="s">00</b><span>seg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Bloque 3: los pasos (sin bloque 2: no hay regalo por completar los pasos) -->
+<section class="pasos-sec">
+  <div class="wrap">
+    <div class="kicker">Hacé esto ahora, te toma 2 minutos</div>
+    <h2>Asegurá tu lugar en 3 pasos</h2>
+
+    <div class="paso importante">
+      <div class="paso-top"><span class="num">Paso 1</span><span class="imp">Importante</span></div>
+      <h3>Confirmá el mail</h3>
+      <p>Te acaba de llegar un mail mío. Abrilo y tocá el botón <b>Confirmo mi lugar</b>. El lunes, el link para entrar a la clase te llega por ahí.</p>
+      <div class="notif claro" aria-label="Así se ve el mail en tu bandeja">
+        <div class="ic mail"><svg><use href="#i-mail"/></svg></div>
+        <div class="nb"><div class="nt"><b>Manu Dominguez</b><time>ahora</time></div><p><strong>Confirmá tu lugar · Lunes 19, 19 hs</strong><br>Un clic y quedás adentro de la clase.</p></div>
+      </div>
+      <p class="ayuda">Si no aparece, buscá en promociones o spam. Y movelo a principal.</p>
+    </div>
+
+    <div class="paso">
+      <div class="paso-top"><span class="num">Paso 2</span></div>
+      <h3>Entrá al grupo de WhatsApp</h3>
+      <p>Ahí pasa todo: los avisos, los videos de antes de la clase y el link para entrar el lunes. Y te voy pasando los <b>recursos y SOPs que uso en el día a día de mis marcas de suscripción</b>.</p>
+      <a class="btn btn-verde" id="btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>Entrar al grupo de WhatsApp</a>
+    </div>
+
+    <div class="paso">
+      <div class="paso-top"><span class="num">Paso 3</span></div>
+      <h3>Agendá la clase</h3>
+      <p>Sumala a tu calendario para que nada se te cruce el lunes. Un click y queda bloqueada con recordatorio.</p>
+      <a class="btn btn-blanco js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agregar a Google Calendar</a>
+    </div>
+
+    <p class="pie">Sin el paso 1 no te llega el link del vivo.</p>
+  </div>
+</section>
+
+<!-- Bloque 3b: asiento VIP (solo si VIP_URL tiene link) -->
+<section class="pasos-sec oculto" id="vip">
+  <div class="wrap">
+    <div class="paso">
+      <h3>Asiento VIP</h3>
+      <p id="vip-texto"></p>
+      <a class="btn btn-naranja" id="btn-vip" href="#" target="_blank" rel="noopener">Ver el asiento VIP</a>
+    </div>
+  </div>
+</section>
+
+<!-- Bloque 4: cierre -->
+<section class="cierre">
+  <div class="wrap">
+    <h2>Nos vemos el <span class="js-dia"></span> a las <span class="js-hora"></span> hs (<span class="js-zona-corta"></span>)</h2>
+    <p>Los 3 pasos te toman 2 minutos. Con el mail confirmado y adentro del grupo, el lunes no te perdés nada.</p>
+    <a class="btn btn-naranja js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agregar a Google Calendar</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><svg><use href="#i-genesis"/></svg>GÉNESIS</div>
+  <div>Manu Dominguez · © 2026 Génesis</div>
+</footer>
+
+<script>
+/* ================= CONFIG =================
+   Toda fecha, hora, countdown y link de la página sale de acá.
+   - EVENT_DATE: ISO con offset. "2026-10-19T19:00:00-03:00" = lunes 19/10, 19 hs de Argentina.
+   - EVENT_DURATION_MIN: duración para el calendario.
+   - EVENT_TITLE / EVENT_DETAILS: título y descripción del evento en Google Calendar.
+   - EVENT_LOCATION: link del vivo ("#" hasta tenerlo; si es "#", el calendario dice "Online").
+   - WHATSAPP_URL: link del grupo. "#" = el botón se oculta.
+   - VIP_URL: "#" = no hay asiento VIP y la tarjeta no aparece.
+   ========================================== */
+var CONFIG = {
+  EVENT_DATE: "2026-10-19T19:00:00-03:00",
+  EVENT_DURATION_MIN: 90,
+  EVENT_TITLE: "Clase en vivo privada · Manu Dominguez",
+  EVENT_DETAILS: "El roadmap con el que pasé mi marca de consumibles de 60 a 156 millones por mes con el modelo de suscripción. El link para entrar te llega por mail y por el grupo de WhatsApp.",
+  EVENT_LOCATION: "#",
+  WHATSAPP_URL: "#",
+  VIP_URL: "#"
+};
+var VIP_TEXTO = ""; /* la frase del asiento VIP, si algún día existe */
+var ZONA = "America/Argentina/Buenos_Aires", ZONA_CORTA = "Argentina";
+
+(function () {
+  "use strict";
+  var C = CONFIG;
+  var inicio = new Date(C.EVENT_DATE);
+  var fin = new Date(inicio.getTime() + C.EVENT_DURATION_MIN * 60000);
+  var hayVivo = C.EVENT_LOCATION && C.EVENT_LOCATION !== "#";
+
+  /* Textos de fecha y hora, todos desde EVENT_DATE */
+  function fmt(o) { return new Intl.DateTimeFormat("es-AR", Object.assign({ timeZone: ZONA }, o)).format(inicio); }
+  var dia = fmt({ weekday: "long" });
+  var fecha = fmt({ day: "numeric", month: "long" });
+  var hora = fmt({ hour: "2-digit", minute: "2-digit", hour12: false });
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function poner(sel, v) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].textContent = v; }
+  poner(".js-fecha", cap(dia) + " " + fecha);
+  poner(".js-dia", dia + " " + fecha);
+  poner(".js-hora", hora);
+  poner(".js-zona", "hs (" + ZONA_CORTA + ")");
+  poner(".js-zona-corta", ZONA_CORTA);
+
+  /* Google Calendar desde EVENT_DATE y EVENT_DURATION_MIN, en UTC */
+  function utc(d) { return d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, ""); }
+  var cal = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent(C.EVENT_TITLE) +
+    "&dates=" + utc(inicio) + "/" + utc(fin) +
+    "&details=" + encodeURIComponent(C.EVENT_DETAILS) +
+    "&location=" + encodeURIComponent(hayVivo ? C.EVENT_LOCATION : "Online");
+  var cals = document.querySelectorAll(".js-cal");
+  for (var i = 0; i < cals.length; i++) cals[i].href = cal;
+
+  /* WhatsApp y VIP */
+  var wa = document.getElementById("btn-wa");
+  if (!C.WHATSAPP_URL || C.WHATSAPP_URL === "#") wa.classList.add("oculto"); else wa.href = C.WHATSAPP_URL;
+  if (C.VIP_URL && C.VIP_URL !== "#") {
+    document.getElementById("vip").classList.remove("oculto");
+    document.getElementById("btn-vip").href = C.VIP_URL;
+    document.getElementById("vip-texto").textContent = VIP_TEXTO;
+  }
+
+  /* Countdown; cuando la clase empezó, cambia el titular */
+  var cd = document.getElementById("cd");
+  function dos(n) { return n < 10 ? "0" + n : String(n); }
+  function tick() {
+    var resta = inicio.getTime() - Date.now();
+    if (resta <= 0) {
+      cd.classList.add("oculto");
+      var t = document.getElementById("titular");
+      t.innerHTML = hayVivo ? 'La clase ya empezó. <a href="' + C.EVENT_LOCATION + '">Entrá por acá</a>' : "La clase ya empezó. Entrá por acá";
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(resta / 1000);
+    poner('[data-cd="d"]', dos(Math.floor(s / 86400)));
+    poner('[data-cd="h"]', dos(Math.floor(s % 86400 / 3600)));
+    poner('[data-cd="m"]', dos(Math.floor(s % 3600 / 60)));
+    poner('[data-cd="s"]', dos(s % 60));
+  }
+  var timer = setInterval(tick, 1000); tick();
+
+  /* Marca de registrado para el optin */
+  try { localStorage.setItem("registrado", "1"); } catch (e) {}
+})();
+
+/* Snippet para el optin (va antes de </body> de index.html): muestra una barra si la persona ya se registró.
+<script>
+try { if (localStorage.getItem("registrado") === "1") { var b = document.createElement("a");
+  b.href = "/thank-you"; b.textContent = "Ya reservaste tu lugar. Ver los pasos";
+  b.style.cssText = "position:fixed;left:0;right:0;bottom:0;z-index:99;background:#34C759;color:#fff;text-align:center;padding:14px;font:600 15px Inter,sans-serif;text-decoration:none";
+  document.body.appendChild(b); } } catch (e) {}
+<\/script>   (al pegarlo, cambiá <\/script> por el cierre normal)
+*/
+</script>
+</body>
+</html>
