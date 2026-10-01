@@ -16,9 +16,9 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 
 | | |
 | --- | --- |
-| Programa | Génesis · 1 a 1 · 3 meses · hecho por nosotros |
+| Programa | Génesis · consultoría 1 a 1 · 4 meses · hecho por nosotros |
 | Método | Método B.A.S.E. |
-| Precio | USD 6.000 contado · 2 cuotas de USD 3.375 · 3 cuotas de USD 2.550 |
+| Precio | USD 5.000 contado · 2 cuotas de USD 2.850 · 3 cuotas de USD 2.000 |
 | Lugares | 10 |
 | Bonus por entrar rápido | Instalación prioritaria para los que entran en las primeras 48 h del carrito |
 | Cierre | Jueves 22/10 a las 23:59 |
@@ -27,7 +27,7 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 
 - **La cuenta del techo:** margen de 30.000 por pedido → con compra única podés pagar 30.000 por cliente (breakeven en la primera venta) → con suscripción y 3 compras por cliente, el techo es 90.000 → se opera en 75.000 y quedan 15.000 vivos.
 - **La prueba:** la marca de Manu pasó de 60 millones a 156.798.062 por mes, con 2.200 suscriptores activos y 1,28% de churn.
-- **Por qué se paga solo:** USD 6.000 son unos 9 millones de pesos. Con 45.000 más de capacidad de compra por cliente, se pagan con unos 200 clientes al techo nuevo.
+- **Por qué se paga solo:** USD 5.000 son unos 7,5 millones de pesos. Con 45.000 más de capacidad de compra por cliente, se pagan con unos 170 clientes al techo nuevo.
 - **Cuándo se cobra la primera recurrencia:** al cumplirse el primer ciclo de reposición del producto. "Si tu producto se termina en 30 días, el primer cobro llega a los 30."
 
 ### Reglas que no se rompen
@@ -157,13 +157,11 @@ Corto: de 5 a 10 minutos. Cada parte se ata a algo que él te dijo. No recitás 
 
 ### 1 · Destino y tiempo
 
-> Génesis es un programa de 3 meses, 1 a 1 y hecho por nosotros, para que pases tu marca de [su hoy, con sus palabras] a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés.
+> Génesis es una consultoría de 4 meses, 1 a 1 y hecho por nosotros, para que pases tu marca de [su hoy, con sus palabras] a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés.
 
 ### 2 · Quién te acompaña
 
-> Lo trabajás directo con Manu: sesiones de migración hasta que la suscripción está instalada, después un chequeo semanal 1 a 1, y chat directo con él. Manu lo hizo primero en su marca: de 60 millones a 156.798.062 por mes, con 2.200 suscriptores activos.
-
-`[CONFIRMAR con Manu: si José participa en la entrega de Génesis y cómo se lo presenta.]`
+> Tenés chat 1 a 1 directo con Manu y con José, del primer día al último. Y una vez que la suscripción está instalada, sesiones 1 a 1 con Manu cuando las pidas, para revisar números y ajustar. Manu lo hizo primero en su marca: de 60 millones a 156.798.062 por mes, con 2.200 suscriptores activos.
 
 ### 3 · Los 3 pilares
 
@@ -173,25 +171,26 @@ Por cada pilar: qué es → para qué sirve → "porque me dijiste que [su probl
 
 > ¿Te acordás que me dijiste que [los CPAs te reventaron / no sabés cuánto podés pagar]? Esto es lo primero que resolvemos: tu techo nuevo, con tus números. ¿Tiene sentido?
 
-**Pilar 2 · La Instalación, hecha por nosotros.** Definimos la variante de suscripción y su precio, instalamos la suscripción en tu tienda al lado de la compra única sin tocarla, convertimos a tu base actual con mail y WhatsApp, y rearmamos tus anuncios al CPA nuevo.
+**Pilar 2 · La Instalación, hecha por nosotros.** Definimos, validamos y le ponemos precio a tu variante de suscripción (producto, formato, ciclo de reposición y qué gana el que se suscribe); instalamos la suscripción en tu tienda (cobro recurrente, checkout y landing) al lado de la compra única sin tocarla; convertimos a tu base actual con mail y WhatsApp; y rearmamos tus anuncios (ángulos, creativos y campañas) al CPA nuevo, con tu LTV real.
 
 > Me dijiste que [no querés romper lo que funciona / no tenés tiempo]. Por eso no te damos un curso: lo hacemos nosotros, al lado de lo que ya vendés. ¿Tiene sentido?
 
-**Pilar 3 · El Piso.** Backend de retención y recuperación de bajas, proyección de stock, panel semanal de suscriptores y churn, y la cuenta de en qué punto de la base te cierra pasar a responsable inscripto.
+**Pilar 3 · El Piso.** Backend de retención (post-compra, cadencia de contacto y recuperación de bajas), proyección de stock y reposición sobre tu base, panel de suscriptores activos, churn y recompra con un reporte que mirás cada mes, y la cuenta de en qué punto de la base te cierra pasar a responsable inscripto.
 
 > Me dijiste que [el 1 del mes arrancás en cero / dependés de Meta]. Esto es lo que hace que el mes arranque cobrado y que, si te bajan la cuenta, los suscriptores se sigan cobrando. ¿Tiene sentido?
 
 ### 4 · El roadmap mes a mes
 
-- **Mes 1 · De pedido a suscriptor:** auditoría de números, plan de suscripción, techo nuevo calculado, cobro recurrente instalado al lado de la compra única.
-- **Mes 2 · Migración sin frenar:** conversión de tu base actual, variante del producto (formato, dosis, tamaño, ciclo), proyección de stock y caja.
-- **Mes 3 · Piso de facturación:** backend de retención, panel semanal, anuncios al CPA nuevo, cuenta de formalización.
+- **Mes 1 · La cuenta:** auditoría de tu operación y tus números, techo de pauta con LTV, variante de suscripción definida, validada y con precio.
+- **Mes 2 · La instalación:** tienda con suscripción al lado de la compra única, conversión de tu base actual por mail y WhatsApp.
+- **Mes 3 · Escalar al CPA nuevo:** anuncios recalculados con tu LTV, backend de retención, proyección de stock.
+- **Mes 4 · El piso:** panel de suscriptores, churn y recompra con el reporte mensual, cuenta de formalización, y sesiones con Manu para revisar números y ajustar.
 
 `[CONFIRMAR con Manu: que este reparto por mes es el real.]`
 
 ### 5 · Los primeros 7 días
 
-> Apenas entrás: te pedimos tus números para la auditoría, tenés la primera sesión de migración con Manu y el chat directo abierto. Y el primer cobro recurrente cae cuando se cumple tu primer ciclo de reposición: si tu producto se termina en 30 días, a los 30.
+> Apenas entrás: abrimos el chat directo con Manu y José, te pedimos tus números y arrancamos la auditoría de tu operación. Y el primer cobro recurrente cae cuando se cumple tu primer ciclo de reposición: si tu producto se termina en 30 días, a los 30.
 
 `[CONFIRMAR con Manu: el orden exacto de la primera semana.]`
 
@@ -205,7 +204,7 @@ El caso de Manu, contado desde el mismo punto de partida que el lead: facturaba 
 
 ### 8 · El precio
 
-> La inversión es de USD 6.000, para que pases tu marca a suscripción y puedas pagar por cada cliente más que tu competencia. ¿Alguna duda de cómo funciona?
+> La inversión es de USD 5.000, para que pases tu marca a suscripción y puedas pagar por cada cliente más que tu competencia. ¿Alguna duda de cómo funciona?
 
 Después del precio, **silencio**. Las cuotas se ofrecen solo si aparece la objeción de plata.
 
@@ -239,8 +238,8 @@ Una objeción es un problema para resolver, no una pelea. Primero aclarás ("cua
 1. "Si tuvieras los fondos, ¿esto te funcionaría? ¿Por qué?"
 2. "¿Cómo pensás que podés resolverlo? ¿De dónde podrías sacar los fondos?" Dejá que lo proponga él.
 3. "¿Pensaste en ponerlo en una tarjeta y pagarlo con lo que te deja la base?"
-4. Recién acá, las cuotas: 2 de USD 3.375 o 3 de USD 2.550.
-5. Si califica, quiere y no puede ni en cuotas: la Mentoría (USD 2.000, o 2 cuotas de USD 1.100). `[CONFIRMAR con Manu cómo se presenta.]`
+4. Recién acá, las cuotas: 2 de USD 2.850 o 3 de USD 2.000.
+5. Si califica, quiere y no puede ni en cuotas: la Mentoría (USD 2.000, o 2 cuotas de USD 1.100). 3 meses, grupal: chat 1 a 1 directo con José, 1 clase grupal semanal con Manu, 2 clases grupales semanales con José, el curso grabado en Whop (SOPs, roadmaps, sistemas, contactos) y la comunidad. No es hecha por nosotros: la implementa él.
 6. Si no se compromete con nada: es miedo. Pasá a los reframes.
 
 ### Si es miedo: 3 reframes, en orden
