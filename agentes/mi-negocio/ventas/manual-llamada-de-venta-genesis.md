@@ -6,7 +6,7 @@ Este manual es para estudiar la llamada antes de hacerla. En la llamada se usa e
 
 ## Qué vendemos y a quién
 
-**Génesis** pasa marcas de consumibles de compra única al modelo de suscripción. Es 1 a 1, dura 3 meses y lo hacemos nosotros (done for you). El método se llama **Método B.A.S.E.**: crecer con los clientes que ya entraron, no saliendo a comprar más.
+**Génesis** pasa marcas de consumibles de compra única al modelo de suscripción. Es una consultoría 1 a 1, dura 4 meses y lo hacemos nosotros (done for you). El método se llama **Método B.A.S.E.**: crecer con los clientes que ya entraron, no saliendo a comprar más.
 
 ### El lead que te va a llegar
 
@@ -29,12 +29,24 @@ Los tres salen del mismo lugar: su unidad de venta es la compra, no el cliente.
 
 ### La oferta
 
-- **Precio:** USD 6.000 contado, 2 cuotas de USD 3.375 o 3 de USD 2.550. No se baja nunca.
+- **Precio:** USD 5.000 contado, 2 cuotas de USD 2.850 o 3 de USD 2.000. No se baja nunca.
 - **Lugares:** 10. **Cierre:** jueves 22/10 a las 23:59.
 - **Instalación prioritaria** para los que entran en las primeras 48 h del carrito.
-- **Qué incluye** (12 entregables): roadmap con auditoría de números; variante de suscripción definida y con precio; tienda con suscripción instalada al lado de la compra única; conversión de la base actual por mail y WhatsApp; anuncios rearmados al CPA nuevo; backend de retención; proyección de stock; panel semanal de suscriptores y churn; cuenta de formalización; sesiones de migración con Manu y después chequeo semanal 1 a 1; chat directo con Manu; SOPs de cada pieza.
+- **Qué incluye** (12 entregables; DFY = lo hacemos nosotros):
+  1. Roadmap de conversión con la auditoría de su operación y sus números: margen real por pedido, CPA actual y techo de pauta con LTV.
+  2. Variante de suscripción definida, validada y con precio: producto, formato, ciclo de reposición y qué gana el que se suscribe (DFY).
+  3. Tienda con suscripción instalada: cobro recurrente, checkout y landing, al lado de la compra única sin tocarla (DFY).
+  4. Conversión de la base actual: secuencia por mail y WhatsApp para pasar a suscripción a los que ya compraron (DFY).
+  5. Estructura de anuncios al CPA nuevo: ángulos, creativos y campañas recalculadas con su LTV real (DFY).
+  6. Backend de retención: secuencia post-compra, cadencia de contacto y recuperación de bajas (DFY).
+  7. Proyecciones de stock y reposición sobre la base de suscriptores (DFY).
+  8. Panel de suscriptores activos, churn y recompra, con el reporte que mira cada mes (DFY).
+  9. Cuenta de formalización: en qué punto de la base le cierra pasar a blanco (DFY).
+  10. Sesión 1 a 1 con Manu a pedido, una vez instalado lo DFY, para revisar números y ajustar.
+  11. Chat 1 a 1 directo con Manu y José.
+  12. SOPs de cada pieza del sistema.
 - **Fuera de alcance, a propósito:** fabricación, laboratorio y ANMAT; armado de equipo; proveedores; email marketing como servicio; búsqueda de producto ganador.
-- **Mentoría (downsell):** USD 2.000 (o 2 cuotas de USD 1.100), 3 meses, 10 lugares. No se comunica en ningún lado: solo se ofrece al lead que califica y no puede pagar Génesis ni en cuotas. Enseña a vender y escalar un consumible **sin** suscripción, con clases grupales y chat con José. `[CONFIRMAR con Manu el contenido exacto.]`
+- **Mentoría (downsell):** USD 2.000 (o 2 cuotas de USD 1.100), 3 meses, 10 lugares. No se comunica en ningún lado: solo se ofrece al lead que califica y no puede pagar Génesis ni en cuotas. Es grupal y la implementa él (no es DFY). Incluye chat 1 a 1 directo con José, 1 clase grupal semanal con Manu, 2 clases grupales semanales con José, el curso grabado en Whop (SOPs, roadmaps, sistemas, contactos) y la comunidad. Enseña a vender y escalar un consumible **sin** suscripción.
 
 ### La cuenta que vas a usar
 
@@ -47,7 +59,7 @@ Los tres salen del mismo lugar: su unidad de venta es la compra, no el cliente.
 
 Con los números del lead: su techo de hoy es su margen por pedido; con 3 compras, se triplica. El techo y el punto operativo se muestran siempre juntos.
 
-**Por qué se paga solo:** USD 6.000 son unos 9 millones de pesos. Con 45.000 más de capacidad de compra por cliente (de 30.000 a 75.000), se pagan con unos 200 clientes al techo nuevo.
+**Por qué se paga solo:** USD 5.000 son unos 7,5 millones de pesos. Con 45.000 más de capacidad de compra por cliente (de 30.000 a 75.000), se pagan con unos 170 clientes al techo nuevo.
 
 ## La lógica de la llamada
 
@@ -303,15 +315,15 @@ Va en este orden porque acompaña cómo el lead necesita entender la oferta: pri
 
 | # | Parte | En Génesis | Qué tiene que lograr |
 | --- | --- | --- | --- |
-| 1 | Objetivo y duración | 3 meses, 1 a 1, hecho por nosotros, para pasar de [su hoy] a una base que cobra sola, sin frenar lo que vende | Que vea el destino con sus palabras |
-| 2 | Quién lo acompaña | Manu: sesiones de migración, después chequeo semanal 1 a 1, chat directo | Que sepa que no está solo y que lo hace quien ya lo hizo |
+| 1 | Objetivo y duración | Consultoría de 4 meses, 1 a 1, hecho por nosotros, para pasar de [su hoy] a una base que cobra sola, sin frenar lo que vende | Que vea el destino con sus palabras |
+| 2 | Quién lo acompaña | Chat 1 a 1 directo con Manu y José; sesiones 1 a 1 con Manu a pedido una vez instalado | Que sepa que no está solo y que lo hace quien ya lo hizo |
 | 3 | Los 3 pilares | La Cuenta · La Instalación, hecha por nosotros · El Piso | Que vea qué recibe, atado a lo suyo |
-| 4 | Roadmap mes a mes | Mes 1 de pedido a suscriptor · Mes 2 migración sin frenar · Mes 3 piso de facturación | Que vea el camino con hitos |
-| 5 | Los primeros 7 días | Números para la auditoría, primera sesión con Manu, chat abierto | Que se saque la duda de "¿y cómo arranco?" |
+| 4 | Roadmap mes a mes | Mes 1 la cuenta · Mes 2 la instalación · Mes 3 escalar al CPA nuevo · Mes 4 el piso | Que vea el camino con hitos |
+| 5 | Los primeros 7 días | Chat abierto con Manu y José, números para la auditoría, arranca la auditoría | Que se saque la duda de "¿y cómo arranco?" |
 | 6 | La prueba | El caso de Manu: de 60 millones a 156.798.062 por mes | Que vea que ya funcionó con alguien como él |
-| 7 | Precio | USD 6.000, y silencio | Que llegue al precio habiendo visto todo el valor |
+| 7 | Precio | USD 5.000, y silencio | Que llegue al precio habiendo visto todo el valor |
 
-`[CONFIRMAR con Manu: rol de José en la entrega, reparto real por mes y orden de la primera semana.]`
+`[CONFIRMAR con Manu: reparto real por mes y orden de la primera semana.]`
 
 **Por qué el roadmap y los primeros 7 días son obligatorios:** buena parte de los "lo tengo que pensar" nacen de no ver cómo sería trabajar con nosotros. Cuando ve exactamente cómo arranca y cómo avanza, la duda baja y con ella las objeciones. Con este lead, además, el roadmap contesta su miedo más grande: que le rompan lo que funciona. La suscripción se instala al lado de la compra única, sin tocarla.
 
@@ -322,8 +334,8 @@ El esqueleto de Limitless trae 3 pilares por defecto (acompañamiento, entregabl
 | Pilar | Qué es | El dolor que resuelve |
 | --- | --- | --- |
 | **La Cuenta** | Auditoría de números y roadmap: cuánto puede pagar por cliente con suscripción | CPA: "los CPAs nos empezaron a reventar" |
-| **La Instalación, hecha por nosotros** | Variante y precio de suscripción, tienda con suscripción al lado de la compra única, conversión de la base, anuncios al CPA nuevo | Márgenes y miedo a romper lo que vende: "7 lucas de ganancia, sobreviviendo" |
-| **El Piso** | Retención y recuperación de bajas, proyección de stock, panel semanal de suscriptores y churn, cuenta de formalización | Metadependencia: "el 1 del mes arranco en cero" |
+| **La Instalación, hecha por nosotros** | Variante de suscripción validada y con precio, tienda con suscripción al lado de la compra única, conversión de la base, anuncios al CPA nuevo con su LTV | Márgenes y miedo a romper lo que vende: "7 lucas de ganancia, sobreviviendo" |
+| **El Piso** | Retención y recuperación de bajas, proyección de stock, panel de suscriptores, churn y recompra con reporte mensual, cuenta de formalización | Metadependencia: "el 1 del mes arranco en cero" |
 
 Siempre 3: con más, no los retiene; con menos, se siente flaco. Y cada uno con su nombre, no con una descripción seca: "el pilar de La Cuenta" se recuerda; "una auditoría de números", no.
 
@@ -366,7 +378,7 @@ En una venta a un dueño de empresa se suma una pieza que en otras ventas no hac
 ### El precio
 
 - Va al final, cuando ya vio destino, acompañamiento, pilares, camino, arranque y prueba.
-- Se dice como inversión, nunca como "presupuesto": "La inversión es de USD 6.000, para que pases tu marca a suscripción y puedas pagar por cada cliente más que tu competencia."
+- Se dice como inversión, nunca como "presupuesto": "La inversión es de USD 5.000, para que pases tu marca a suscripción y puedas pagar por cada cliente más que tu competencia."
 - Primero el precio contado. Las cuotas aparecen solo dentro de la objeción de plata.
 - **Después del precio, silencio.** El primero que habla pierde. No justifiques, no agregues bonus, no aclares.
 
@@ -429,10 +441,10 @@ Lo logístico (plata, socio) se resuelve primero. Si Plata o Socio no se resuelv
 Lo ayudás a resolver su problema de plata sin decirle vos qué hacer.
 
 1. **Si tuviera los fondos:** "Si tuvieras la plata, ¿esto te funcionaría?" (casi todos dicen que sí) → "¿Por qué?"
-2. **Que la solución la proponga él:** "¿Cómo pensás que podés resolverlo? ¿De dónde podrías sacar los fondos para pasar la marca a suscripción en estos 3 meses?" Un dueño que factura 45 millones casi siempre tiene de dónde: caja de la marca, stock, la tarjeta de la empresa.
+2. **Que la solución la proponga él:** "¿Cómo pensás que podés resolverlo? ¿De dónde podrías sacar los fondos para pasar la marca a suscripción en estos 4 meses?" Un dueño que factura 45 millones casi siempre tiene de dónde: caja de la marca, stock, la tarjeta de la empresa.
 3. **La tarjeta:** "¿Pensaste en ponerlo en una tarjeta y pagarlo con lo que te va a dejar la base?"
-4. **Las cuotas, recién acá:** 2 de USD 3.375 o 3 de USD 2.550. Si paga en cuotas, la tienda con suscripción se instala después de la cuota 2.
-5. **La Mentoría, como último recurso:** solo si califica, quiere y no puede pagar Génesis ni en cuotas. USD 2.000 o 2 cuotas de USD 1.100. Se presenta como otro programa (le enseña a vender y escalar un consumible sin suscripción, con clases grupales y chat con José), no como "Génesis barato". `[CONFIRMAR con Manu cómo se presenta y qué incluye.]`
+4. **Las cuotas, recién acá:** 2 de USD 2.850 o 3 de USD 2.000. Si paga en cuotas, la tienda con suscripción se instala después de la cuota 2.
+5. **La Mentoría, como último recurso:** solo si califica, quiere y no puede pagar Génesis ni en cuotas. USD 2.000 o 2 cuotas de USD 1.100, 3 meses. Se presenta como otro programa, no como "Génesis barato": es grupal y la implementa él, con chat 1 a 1 directo con José, 1 clase grupal semanal con Manu, 2 clases grupales semanales con José, el curso grabado en Whop (SOPs, roadmaps, sistemas, contactos) y la comunidad. Lo que no tiene es lo DFY ni el 1 a 1 con Manu.
 6. **Si después de 2 intentos no se compromete con nada:** no es plata, es miedo. Pasás a los reframes.
 
 **El precio de Génesis no se baja nunca.** Ni un descuento, ni "te lo dejo en 5.000". El lead de este avatar ya nos dijo que lo que más desconfianza le genera es que el precio cambie según quién lo atienda. Bajar el precio confirma ese miedo y le baja el valor a todo lo que mostraste.
@@ -489,7 +501,7 @@ Los reframes 2 y 3 del SOP original usan una isla y una persona con sobrepeso. L
 | Lo que dice | Tipo | Rama | Cómo la trabajás |
 | --- | --- | --- | --- |
 | "Lo tengo que pensar" | Plata disfrazada o miedo | Plata → Miedo | "¿Qué es puntualmente lo que tenés que pensar?" y seguís la rama que salga |
-| "Es mucha plata" | Plata | Plata | La cuenta: USD 6.000 son unos 9 millones; con 45.000 más por cliente, se pagan con unos 200 clientes al techo nuevo. Después, la secuencia de fondos |
+| "Es mucha plata" | Plata | Plata | La cuenta: USD 5.000 son unos 7,5 millones; con 45.000 más por cliente, se pagan con unos 170 clientes al techo nuevo. Después, la secuencia de fondos |
 | "No es el momento" | Plata + miedo | Plata → Miedo | "¿Qué es más riesgoso: poner el capital y resolverlo, o seguir otros 6 meses arrancando cada mes en cero?" |
 | "Lo hablo con mi socio" | Socio | Socio | Mismo lado de la mesa → billetera abierta → llamada con los dos antes del 22/10 |
 | "En Argentina no están acostumbrados a la suscripción" | Miedo | Miedo | "Manu pensaba lo mismo. Hoy tiene 2.200 suscriptores activos acá. ¿Qué te hace pensar que con tus clientes sería distinto?" |
@@ -565,12 +577,12 @@ El roadmap se ordena según dónde detectaste que se traba: si no tiene los núm
 
 ### La inversión y el compromiso
 
-- Siempre "inversión", nunca "presupuesto": "La inversión es de USD 6.000, para que pases tu marca a suscripción. ¿Alguna duda de cómo funciona?"
+- Siempre "inversión", nunca "presupuesto": "La inversión es de USD 5.000, para que pases tu marca a suscripción. ¿Alguna duda de cómo funciona?"
 - No es "cerrar", es pedir compromiso: "¿Sentís que esto es lo que estabas buscando para la marca?" → "¿Por qué?" → "El próximo paso es hacer el pago y arrancamos con el onboarding y la auditoría de tus números. ¿Te parece que avancemos?"
 
 ### Una llamada, no dos
 
-El SOP reserva las 2 llamadas (descubrimiento y estrategia por separado) para tickets de más de USD 30.000. Génesis es USD 6.000: **se cierra en una llamada**. Partirla en dos alarga, enfría al lead y, con el carrito cerrando el 22/10, lo deja afuera. La única segunda llamada que se agenda es la de la rama Socio, con los dos dueños, y siempre antes del cierre.
+El SOP reserva las 2 llamadas (descubrimiento y estrategia por separado) para tickets de más de USD 30.000. Génesis es USD 5.000: **se cierra en una llamada**. Partirla en dos alarga, enfría al lead y, con el carrito cerrando el 22/10, lo deja afuera. La única segunda llamada que se agenda es la de la rama Socio, con los dos dueños, y siempre antes del cierre.
 
 ### Lo que hacen los que cierran
 
