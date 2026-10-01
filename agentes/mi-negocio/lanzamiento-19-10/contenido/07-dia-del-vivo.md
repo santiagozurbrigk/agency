@@ -124,10 +124,10 @@ Imagen: hoja escrita a mano con los 4 datos, al lado de una compu abierta.
 
 **Mail**
 Asunto: **Tus 4 números para las 19**
-Preheader: Para hacer la cuenta con tu marca.
+Preheader: Para hacer lo mismo con tu marca.
 > Hola,
 >
-> Para que la cuenta de hoy la hagas con tu marca, tené a mano:
+> Para que lo que veas hoy lo puedas aplicar a tu marca, tené a mano:
 >
 > 1. Tu CPA actual.
 > 2. Tu margen de contribución por pedido.
@@ -271,12 +271,12 @@ Disparado por momento del vivo: cuando Manu termina la historia y arranca a most
 **WhatsApp · captura del chat + link** (lo manda quien maneja el grupo durante el vivo)
 > Le robé el celu a Manu un ratito para tenerte al tanto: soy `[NOMBRE]`, del equipo. 👋
 >
-> Si recién llegás, entrá igual: la cuenta recién arranca.
+> Si recién llegás, entrá igual: la clase recién arranca.
 > `[LINK CLASE]`
 
 **Mail**
-Asunto: **La cuenta recién arranca**
-> Si no pudiste entrar a las 19, entrá ahora: la cuenta recién arranca. `[LINK CLASE]`
+Asunto: **La clase recién arranca**
+> Si no pudiste entrar a las 19, entrá ahora: la clase recién arranca. `[LINK CLASE]`
 
 > `[CONFIRMAR: quién maneja el grupo durante el vivo (¿José?).]`
 
@@ -290,7 +290,7 @@ Asunto: **La cuenta recién arranca**
 | "Gracias. De verdad." | Capturas reales de mensajes del chat del vivo. [CARGAR] |
 
 **WhatsApp · voice note (40-60 s, tono cansado-feliz) + texto**
-Guion: "Terminé recién. Gracias por quedarte, en serio. Los regalos que te prometí, el roadmap, el Simulador y los sistemas de email y WhatsApp, te los mando por privado. Escribime qué fue lo más útil de la cuenta de hoy y te los paso."
+Guion: "Terminé recién. Gracias por quedarte, en serio. Los regalos que te prometí, el roadmap, el Simulador y los sistemas de email y WhatsApp, te los mando por privado. Escribime qué fue lo más útil de la clase de hoy y te los paso."
 Texto:
 > Gracias por venir. 🙏
 >

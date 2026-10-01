@@ -186,7 +186,7 @@ Fallback:
 
 **Texto fallback (debajo del video)**
 > El CPA, el margen y Meta son el mismo problema: vendés compras, no clientes.
-> Con suscripción la base cobra sola y Meta solo suma. A eso le digo Método B.A.S.E..
+> Con suscripción la base cobra sola y Meta solo suma. A eso le digo Método B.A.S.E.
 > Lunes 19, 19 hs, en vivo. Mañana te pido una cosa para llegar preparado.
 
 **Interacción:** "Reaccioná con ✅ si ya lo tenés agendado."
