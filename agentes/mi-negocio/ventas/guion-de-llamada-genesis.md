@@ -10,7 +10,7 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 
 **Quién califica:** dueño de una marca de consumibles (químicos de limpieza, cuidado personal, suplementos, cosmética) con tienda propia, que factura entre 30 y 80 millones de pesos por mes con Meta Ads y está en breakeven.
 
-**Quién no califica:** el que arranca de cero, el que busca producto ganador, el que vende solo en Mercado Libre, mayorista o retail sin tienda propia.
+**Quién no califica:** el que factura menos de 30 millones por mes, el que arranca de cero, el que busca producto ganador, el que vende solo en Mercado Libre, mayorista o retail sin tienda propia. A ese no se le vende Génesis: se le vende la Mentoría (ver "Si no califica para Génesis").
 
 ### La oferta
 
@@ -37,7 +37,7 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 - **No se hace el diagnóstico completo gratis en la llamada.** La auditoría de números es el primer entregable del programa: en la llamada se ve el gap, no se arma el plan.
 - **No se prometen números** ("vas a facturar X"). Se muestra la cuenta y el caso de Manu.
 - **No se mencionan las marcas del piloto** ni se dice "piloto".
-- **La Mentoría (USD 2.000) no se ofrece de entrada.** Solo al final, si el lead califica, quiere y no puede pagar Génesis ni en cuotas.
+- **La Mentoría (USD 2.000) se vende en dos casos, nunca en otro.** (1) Si el lead no califica para Génesis. (2) Si califica, quiere y no puede pagar Génesis ni en cuotas. Al que califica y puede pagar, nunca.
 - **La tienda con suscripción se instala después de pagar la cuota 2** (si paga en cuotas).
 
 ## Las 7 fases
@@ -214,6 +214,33 @@ Después del precio, **silencio**. Las cuotas se ofrecen solo si aparece la obje
 2. Si dice que sí: > ¿Por qué?
 3. > ¿Hay algo puntual que sientas que es la llave para vos?
 4. > Perfecto. El próximo paso es hacer el pago, y de ahí arrancamos con el onboarding y la auditoría de tus números. Si entrás en las primeras 48 horas del carrito, tenés instalación prioritaria. ¿Te parece que avancemos?
+
+## Si no califica para Génesis: la Mentoría
+
+**Cuándo:** te das cuenta en la fase 2 (Situación), con sus números: factura menos de 30 millones por mes, no tiene tienda propia, o todavía no está vendiendo con Meta Ads. Génesis instala la suscripción sobre una marca que ya vende; si la marca todavía no está ahí, no le sirve.
+
+**Cómo seguís:** la llamada no se corta. Hacés las 7 fases igual, pero el objetivo cambia: no es pasar a suscripción, es llegar a vender y escalar su consumible. En la fase 4 no hagas la cuenta del techo con suscripción: el futuro que le hacés ver es la marca vendiendo todos los meses con pauta.
+
+**La transición** (en vez de la de Génesis):
+
+> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas que ya facturan arriba de 30 millones con tienda propia, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Para eso tenemos otro programa. ¿Te lo muestro?
+
+**El pitch, con los mismos pasos** (qué es → para qué sirve → "porque me dijiste que…" → "¿tiene sentido?"):
+
+- **Qué es:** la Mentoría, 3 meses, grupal, para vender y escalar tu consumible. La implementás vos, con nosotros al lado.
+- **Acompañamiento:** chat 1 a 1 directo con José, 1 clase grupal por semana con Manu y 2 con José.
+- **El sistema:** el curso grabado en Whop, con los SOPs, roadmaps, sistemas y contactos.
+- **La comunidad:** otros dueños de marca en el mismo punto que vos.
+
+**El precio:**
+
+> La inversión es de USD 2.000, para que [su objetivo]. ¿Alguna duda de cómo funciona?
+
+Y silencio. Si aparece la objeción de plata: 2 cuotas de USD 1.100.
+
+**El cierre:** el mismo de Génesis (¿es lo que buscabas? → ¿por qué? → ¿qué es la llave? → pago y onboarding).
+
+**Lo que no se hace:** venderle Génesis igual "porque quiere", ni presentar la Mentoría como "Génesis barato". Son programas distintos para momentos distintos de la marca. Cuando crezca, Génesis es el paso siguiente.
 
 ## Objeciones: el primer movimiento
 

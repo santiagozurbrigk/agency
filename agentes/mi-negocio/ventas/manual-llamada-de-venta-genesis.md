@@ -46,7 +46,7 @@ Los tres salen del mismo lugar: su unidad de venta es la compra, no el cliente.
   11. Chat 1 a 1 directo con Manu y José.
   12. SOPs de cada pieza del sistema.
 - **Fuera de alcance, a propósito:** fabricación, laboratorio y ANMAT; armado de equipo; proveedores; email marketing como servicio; búsqueda de producto ganador.
-- **Mentoría (downsell):** USD 2.000 (o 2 cuotas de USD 1.100), 3 meses, 10 lugares. No se comunica en ningún lado: solo se ofrece al lead que califica y no puede pagar Génesis ni en cuotas. Es grupal y la implementa él (no es DFY). Incluye chat 1 a 1 directo con José, 1 clase grupal semanal con Manu, 2 clases grupales semanales con José, el curso grabado en Whop (SOPs, roadmaps, sistemas, contactos) y la comunidad. Enseña a vender y escalar un consumible **sin** suscripción.
+- **Mentoría (downsell):** USD 2.000 (o 2 cuotas de USD 1.100), 3 meses, 10 lugares. No se comunica en ningún lado: se vende en dos casos: al lead que no califica para Génesis, y al que califica, quiere y no puede pagarlo ni en cuotas. Es grupal y la implementa él (no es DFY). Incluye chat 1 a 1 directo con José, 1 clase grupal semanal con Manu, 2 clases grupales semanales con José, el curso grabado en Whop (SOPs, roadmaps, sistemas, contactos) y la comunidad. Enseña a vender y escalar un consumible **sin** suscripción.
 
 ### La cuenta que vas a usar
 
@@ -518,7 +518,7 @@ Los reframes 2 y 3 del SOP original usan una isla y una persona con sobrepeso. L
 
 - Bajar el precio o inventar un descuento.
 - Prometer una garantía o un número de facturación.
-- Ofrecer la Mentoría de entrada o al que sí puede pagar Génesis.
+- Ofrecer la Mentoría al que califica para Génesis y puede pagarlo, o venderle Génesis al que no califica.
 - Discutir la objeción con datos en vez de aclararla y preguntar.
 - Minimizar el miedo ("tranqui, no pasa nada").
 - Inventar urgencia. La real es: 10 lugares, cierre el 22/10 a las 23:59 e instalación prioritaria para los que entran en las primeras 48 h.
@@ -600,3 +600,60 @@ El SOP reserva las 2 llamadas (descubrimiento y estrategia por separado) para ti
 - Pitch genérico en vez de roadmap atado a sus problemas.
 - Discutir la objeción en vez de aclararla.
 - Ir a 2 llamadas cuando no hace falta.
+
+## Si no califica: la Mentoría
+
+No todos los que llegan de la clase son lead de Génesis. Al que no califica no se le vende Génesis: se le vende la Mentoría (USD 2.000, o 2 cuotas de USD 1.100).
+
+### Quién no califica para Génesis
+
+- Factura menos de 30 millones de pesos por mes.
+- No tiene tienda propia: vende solo en Mercado Libre, mayorista o retail.
+- Todavía no vende con Meta Ads, o arranca de cero.
+
+**Por qué no le sirve Génesis:** Génesis instala la suscripción sobre una marca que ya vende y ya tiene clientes. Si no hay base ni pauta andando, no hay nada que convertir: lo que necesita primero es vender y escalar su consumible. Eso es la Mentoría.
+
+### Cómo lo detectás y qué cambia
+
+Lo ves en la fase 2 (Situación), con sus números. La llamada no se corta ni se acelera: hacés las 7 fases igual, con otro objetivo.
+
+| Fase | Con un lead de Génesis | Con un lead de Mentoría |
+| --- | --- | --- |
+| Problema | El CPA, el margen, la dependencia de Meta | No logra vender de forma constante, no sabe cómo escalar |
+| Solución | La base que cobra sola + la cuenta del techo | La marca vendiendo todos los meses con pauta. Sin cuenta del techo |
+| Consecuencia | Seguir en breakeven, arrancar cada mes en cero | Seguir sin despegar, quemar plata en pauta sin sistema |
+| Presentación | Génesis, USD 5.000 | Mentoría, USD 2.000 |
+
+### La transición: honesta
+
+> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas que ya facturan arriba de 30 millones con tienda propia, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Para eso tenemos otro programa. ¿Te lo muestro?
+
+Decirle que no a Génesis suma confianza: este lead ya vio closers que le venden cualquier cosa. Que le digas "esto no es para vos todavía" es lo que hace creíble lo que viene después.
+
+### El pitch de la Mentoría
+
+Mismo motor que en Génesis: qué es → para qué sirve → "porque me dijiste que…" → "¿tiene sentido?". Tres pilares:
+
+| Pilar | Qué incluye | Lo atás a |
+| --- | --- | --- |
+| **Acompañamiento** | Chat 1 a 1 directo con José, 1 clase grupal por semana con Manu y 2 con José | "No sé por dónde arrancar", "estoy solo con esto" |
+| **El sistema** | Curso grabado en Whop: SOPs, roadmaps, sistemas y contactos | "No tengo un proceso", "pruebo cosas sueltas" |
+| **La comunidad** | Otros dueños de marca en el mismo punto | "No tengo con quién hablarlo" |
+
+Duración: 3 meses. La implementa él, con nosotros al lado: no es hecha por nosotros y no tiene el 1 a 1 con Manu.
+
+### Precio y cierre
+
+- "La inversión es de USD 2.000, para que [su objetivo]." Y silencio.
+- Las 2 cuotas de USD 1.100 aparecen solo si sale la objeción de plata.
+- El precio no se baja, igual que en Génesis.
+- El cierre es el mismo: ¿es lo que buscabas? → ¿por qué? → ¿qué es la llave? → pago y onboarding.
+
+### Los dos caminos a la Mentoría
+
+| Caso | Cuándo lo sabés | Qué presentás |
+| --- | --- | --- |
+| No califica para Génesis | Fase 2, por sus números | Solo la Mentoría, como pitch principal |
+| Califica, quiere Génesis y no puede pagarlo ni en cuotas | En la objeción de plata, después de las cuotas | Primero Génesis; la Mentoría como último paso de la rama Plata |
+
+**Lo que no se hace:** venderle Génesis al que no califica "porque quiere" (no le va a funcionar y se convierte en un cliente quemado), ni presentar la Mentoría como "Génesis barato". Son programas para momentos distintos de la marca. Cuando crezca, Génesis es el paso siguiente.
