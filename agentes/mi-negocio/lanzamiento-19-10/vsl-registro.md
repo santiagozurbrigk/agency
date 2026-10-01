@@ -1,5 +1,6 @@
 # VSL de registro — Landing de opt-in
 
+Versión 3, 1-oct-2026. Se separan los dos roadmaps: en la clase Manu muestra el que siguió él; el regalo es "tu roadmap" para pasar tu marca.
 Versión 2, 1-oct-2026. La promesa principal pasa a ser "te muestro el roadmap con el que pasé mi marca de 60 a 156.798.062 por mes" (antes: "la cuenta con tus números").
 Versión 1, 1-oct-2026. Hecho con el agente **VSL Lanzamiento** (`agentes/M5-webinar-pago/agente-vsl-registro.md`).
 Insumos: `CONTEXTO.md`, `brief-genesis.md`, `marca-personal.md`, `ads-adquisicion-notas.md`, `contenido/00-narrativa-y-mapa.md` y `contenido/05-nutricion-whatsapp.md`.
@@ -9,7 +10,7 @@ Es el video que ve el que llega a la landing desde un ad, un reel o la bio. Un s
 ---
 
 VSL DE REGISTRO — Clase en vivo privada: el roadmap con el que pasé mi marca de 60 a 156 millones por mes
-Duración estimada: ~4 min (633 palabras ÷ 150)
+Duración estimada: ~4 min (647 palabras ÷ 150)
 
 [BLOQUE 1 — Promesa + dolores]
 
@@ -75,7 +76,7 @@ Lo probé primero en mi marca. Y el lunes te lo muestro paso a paso, con mis nú
 
 En la clase:
 
-Vas a ver, paso a paso, el roadmap con el que pasé de 60 millones a 156.798.062 por mes.
+Vas a ver, paso a paso, el roadmap que seguí yo para pasar de 60 millones a 156.798.062 por mes.
 
 Vas a entender por qué cada venta te cuesta lo mismo que la anterior. Y por qué bajar el CPA es la pelea equivocada.
 
@@ -97,7 +98,7 @@ Es el mismo roadmap que sigo 1 a 1 con las marcas con las que trabajo. Esta vez 
 
 Y los que asisten se llevan tres regalos.
 
-El roadmap para migrar tu marca a suscripción con lo que ya tenés. El Simulador de Suscripción, para cargar los números de tu marca. Y los sistemas que uso para armar los flujos de email y WhatsApp de suscripción.
+El primero: tu roadmap. El mío te lo muestro en la clase; este es para que pases tu marca a suscripción con lo que ya tenés. El Simulador de Suscripción, para cargar los números de tu marca. Y los sistemas que uso para armar los flujos de email y WhatsApp de suscripción.
 
 Y no te anotás solo a una clase.
 
@@ -134,7 +135,7 @@ Huecos marcados:
 - [x] Sin precio, oferta, garantía, "programa" ni Génesis como cosa a comprar. El anclaje de valor es "el mismo roadmap que sigo 1 a 1", sin venderlo.
 - [x] Sin palabras prohibidas en lo público: masterclass, webinar, lanzamiento, pizarra, tablero, secreto, transformación, "te garantizo".
 - [x] Ninguna oración pasa las 25 palabras. Abre con la promesa, no con la presentación.
-- [x] 633 palabras de guion (tope 750).
+- [x] 647 palabras de guion (tope 750).
 
 ## Notas de edición
 
