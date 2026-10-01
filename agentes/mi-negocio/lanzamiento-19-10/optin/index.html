@@ -39,6 +39,7 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  #registro { scroll-margin-top: 110px; }
   body {
     margin: 0; background: var(--negro); color: #fff;
     font-family: var(--cuerpo); font-size: 16px; line-height: 1.55;
@@ -50,6 +51,18 @@
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 18px; }
   .angosto { max-width: 760px; margin: 0 auto; }
   .marca { background: var(--naranja); color: var(--negro); padding: 0 .16em; border-radius: .14em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+  /* ===== Fondo: gráfico de suscriptores activos que crece con el scroll ===== */
+  .bg-chart { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .bg-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bg-chart .grid line { stroke: rgba(255,255,255,.05); stroke-width: 1; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+  .bg-chart .linea-subs { fill: none; stroke: rgba(var(--naranja-rgb), .45); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  .bg-chart .area-subs { fill: url(#grad-area); }
+  .bg-punto { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 0 5px rgba(var(--naranja-rgb), .18), 0 0 24px rgba(var(--naranja-rgb), .6); }
+  .bg-tip { position: absolute; transform: translate(-100%, -130%); white-space: nowrap; font-size: 11.5px; color: var(--gris-2); background: rgba(20,20,21,.85); border: 1px solid var(--linea); border-radius: 8px; padding: 5px 8px; }
+  .bg-tip b { display: block; font-family: var(--titulos); font-size: 15px; color: #fff; font-variant-numeric: tabular-nums; }
+  .hero, section, footer { position: relative; z-index: 1; }
+  @media (max-width: 767px) { .bg-tip { display: none; } }
 
   /* ===== a) Barra superior ===== */
   .top { position: sticky; top: 0; z-index: 40; }
@@ -144,9 +157,9 @@
 
   /* ===== c) Form ===== */
   .form-sec { padding: 6px 0 40px; }
-  .form-card { max-width: 480px; margin: 0 auto; background: var(--hueso); color: var(--tinta); border-radius: 22px; padding: 26px 20px 22px; box-shadow: 0 30px 60px rgba(0,0,0,.45); position: relative; }
-  .form-card .aviso { position: absolute; left: 14px; right: 14px; top: -30px; }
-  .form-card h2 { font-size: 24px; text-align: center; margin-top: 30px; }
+  .form-card { max-width: 480px; margin: 0 auto; background: var(--hueso); color: var(--tinta); border-radius: 22px; padding: 26px 20px 22px; box-shadow: 0 30px 60px rgba(0,0,0,.45); position: relative; margin-top: 30px; }
+  .form-card .aviso { margin: -52px -6px 16px; }
+  .form-card h2 { font-size: 24px; text-align: center; }
   .form-card .lead { text-align: center; color: #5b574f; font-size: 14.5px; margin: 6px 0 18px; }
   form { display: grid; gap: 13px; }
   label { font-size: 12px; font-weight: 700; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: .06em; color: #4a4741; }
@@ -270,6 +283,27 @@
     <symbol id="i-genesis" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
   </defs>
 </svg>
+
+<!-- Fondo: gráfico de suscriptores activos (decorativo) -->
+<div class="bg-chart" aria-hidden="true">
+  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="grad-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F26A1B" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#F26A1B" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="clip-area"><rect id="clip-rect" x="0" y="0" width="0" height="1000"/></clipPath>
+    </defs>
+    <g class="grid">
+      <line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="400" x2="1000" y2="400"/>
+      <line x1="0" y1="600" x2="1000" y2="600"/><line x1="0" y1="800" x2="1000" y2="800"/>
+    </g>
+    <path class="area-subs" clip-path="url(#clip-area)" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200 L 1000 1000 L 0 1000 Z"/>
+    <path id="linea-subs" class="linea-subs" clip-path="url(#clip-area)" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200"/>
+  </svg>
+  <div class="bg-punto" id="bg-punto"></div>
+  <div class="bg-tip" id="bg-tip">Suscriptores activos<b id="bg-num">0</b></div>
+</div>
 
 <!-- a) Barra superior fija con countdown -->
 <div class="top">
@@ -524,6 +558,43 @@ document.addEventListener("DOMContentLoaded", function () {
     stacks.forEach(function (s) { io.observe(s); });
   } else {
     stacks.forEach(function (s) { s.classList.add("in"); });
+  }
+
+  /* Fondo: la línea de suscriptores se dibuja a medida que bajás.
+     El número final (2.200) es el real; la forma de la curva es ilustrativa. */
+  var linea = document.getElementById("linea-subs");
+  var clip = document.getElementById("clip-rect");
+  var punto = document.getElementById("bg-punto");
+  var tip = document.getElementById("bg-tip");
+  var num = document.getElementById("bg-num");
+  var largo = linea.getTotalLength();
+  var quieto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pendiente = false;
+  function dibujar() {
+    pendiente = false;
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var p = quieto ? 1 : Math.min(1, Math.max(0, max > 0 ? scrollY / max : 1));
+    p = 0.12 + 0.88 * p; /* arranca con un tramo dibujado */
+    var pt = linea.getPointAtLength(largo * p);
+    clip.setAttribute("width", pt.x);
+    var x = pt.x / 1000 * innerWidth, y = pt.y / 1000 * innerHeight;
+    punto.style.left = x + "px"; punto.style.top = y + "px";
+    tip.style.left = (x - 14) + "px"; tip.style.top = y + "px";
+    num.textContent = Math.round(2200 * (p - 0.12) / 0.88).toLocaleString("es-AR");
+  }
+  function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(dibujar); } }
+  addEventListener("scroll", pedir, { passive: true });
+  addEventListener("resize", pedir);
+  dibujar();
+
+  /* Botones que bajan al form: scroll por código (sin cambiar el hash, funciona también abriendo el archivo local) */
+  var anclas = document.querySelectorAll('a[href="#registro"]');
+  for (var a = 0; a < anclas.length; a++) {
+    anclas[a].addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("registro").scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(function () { document.getElementById("nombre").focus({ preventScroll: true }); }, 600);
+    });
   }
 
   /* CTA sticky: se oculta cuando el form está en pantalla */
