@@ -72,7 +72,7 @@ Por confirmar: lugares que quedan a 4.000, si se muestran las marcas del piloto,
   con modelo de SUSCRIPCIÓN
   2.200 suscriptores · 1,28% churn
   DM "ADENTRO"
-  con ESCALAR HACIA ADENTRO ↓
+  con el MÉTODO B.A.S.E. ↓
   ```
 
 ## Cómo trabaja Manu
@@ -89,7 +89,7 @@ Por confirmar: lugares que quedan a 4.000, si se muestran las marcas del piloto,
 - [ ] Confirmar que cada bonus existe (fast-action ya confirmado).
 - [ ] La calculadora de tres escenarios (conservador/realista/deseado) con techo y punto operativo, lista para usar en vivo.
 - [ ] Qué hace Manu concretamente para el 1,28% de churn.
-- [ ] Que Manu diga "Escalar Hacia Adentro" en voz alta y le salga natural.
+- [ ] Que Manu diga "Método B.A.S.E." en voz alta y le salga natural (y que valide las letras).
 - [ ] Branding: variante de naranja del símbolo.
 - [x] Qué pasa con las marcas que no están en Tiendanube → no es excluyente.
 - [ ] El segundo "sin" de la oferta: "ni dejar de vender" (vigente) vs "sin depender del producto que pegue".

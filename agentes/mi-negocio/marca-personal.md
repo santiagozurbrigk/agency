@@ -38,7 +38,7 @@ Manu no polariza. Manu te cae bien, te enseña con tus propios números y te dan
 - **Misión en una línea:** "Ayudo a dueños de marcas de consumibles a escalar a +$100M al mes convirtiendo la compra única en suscripción, sin depender del CPA ni dejar de vender."
 - **Creencia central:** "La plata de un consumible no está en la primera venta: está en la segunda, la tercera y la cuarta. Todos compiten por el producto y por el ángulo. Nadie compite por el modelo."
 - **Línea en la arena:** "No necesitás otro producto ganador ni un creativo mejor para salir del breakeven. Necesitás que el mismo cliente te compre tres veces."
-- **Metodología propia:** Escalar Hacia Adentro (ver `CONTEXTO.md`).
+- **Metodología propia:** Método B.A.S.E. (ver `CONTEXTO.md`).
 - **Promesa de transformación (dolores resueltos):** NO DEPENDÉS DEL CPA, EL MES ARRANCA COBRADO Y SI CAE META SEGUÍS FACTURANDO (sin tirar el producto que ya vendés ni frenar lo que hoy factura).
 
 ## Comunicación
@@ -59,7 +59,7 @@ Vocabulario y palabras prohibidas: ver `CONTEXTO.md` → Voz y marca.
 ## Historia de origen
 
 - **Estaba en:** "Facturaba sesenta millones de pesos por mes con un consumible de compra única. Cada venta me costaba lo mismo que la anterior. Tenía una fórmula buena y cara, 12.000 pesos cada pote, compitiendo contra marcas que vendían a 4.500. Y creía lo mismo que cree todo el mundo: que en Argentina nadie se suscribe."
-- **Descubrí:** "Que lo que me iba a hacer rentable no era el producto, ni el creativo, ni bajar el precio. Era el modelo. Adquirir al cliente al costo y hacer la plata en el segundo, el tercer y el cuarto pedido. Dejé de buscar la compra y empecé a buscar al cliente. Eso es escalar hacia adentro."
+- **Descubrí:** "Que lo que me iba a hacer rentable no era el producto, ni el creativo, ni bajar el precio. Era el modelo. Adquirir al cliente al costo y hacer la plata en el segundo, el tercer y el cuarto pedido. Dejé de buscar la compra y empecé a buscar al cliente. Eso es el Método B.A.S.E."
 - **Logré:** "Pasé de 60 millones a 156.798.062 por mes. Hoy tengo 2.200 suscriptores activos con 1,28% de churn. Y tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen."
 - **Ahora ayudo:** "Cerré la escuela para gente que arrancaba de cero. Hoy trabajo solo con marcas de consumibles que ya facturan, y hago con sus números la misma cuenta que hice con los míos."
 - **En una línea:** "Facturaba 60 millones y cada venta me costaba lo mismo que la anterior. Pasé mi marca a suscripción, llegué a 156 millones, y ahora hago la misma cuenta con marcas como la tuya."

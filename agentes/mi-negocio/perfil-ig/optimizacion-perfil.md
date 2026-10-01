@@ -99,7 +99,7 @@ Mandame SUSCRIPCIÓN
 - **Foto:** Manu de pecho para arriba, mirando a cámara, remera negra lisa **sobre fondo claro (hueso)**. El avatar navega en modo oscuro: una foto luminosa resalta en el feed y en las historias. Sin logos, cadenas ni relojes. Tiene que ser la misma foto en IG, TikTok y YouTube.
 - **Portadas de las destacadas base:** fondo negro con el símbolo (dos círculos que se cruzan) en rojo fibrón. Una palabra por portada.
 - **Portadas de las destacadas del lanzamiento** (IMPORTANTE, CLASE, 19/10, FEEDBACK): **círculo rojo lleno**, como en el ejemplo de Julieta. Tienen que saltar a la vista antes que las otras.
-- **Incongruencia que hay que corregir hoy:** "Genesis OS" en la bio. La marca es Génesis, y el método, Escalar Hacia Adentro.
+- **Incongruencia que hay que corregir hoy:** "Genesis OS" en la bio. La marca es Génesis, y el método, B.A.S.E.
 - **Pendiente:** la variante de naranja del símbolo sigue sin definirse. Hasta entonces, rojo fibrón. Si vas a delegar diseño, conviene armar un brand guide de una página: negro, hueso, rojo, la tipografía y el símbolo.
 
 ## 5 · Destacada "Empezá acá" — ⏳ esperando OK
@@ -115,7 +115,7 @@ Es un VSL en historias. Se archiva el 1/10 y vuelve el 23/10. Texto corto: cada 
 | 5 | "7 lucas de ganancia. Sobreviviendo." | Texto sobre fondo negro | Dolor 2 |
 | 6 | "El 1 del mes arranco en cero." | Texto sobre fondo negro | Dolor 3 |
 | 7 | No es tu creativo. **Es tu modelo.** Buscás la compra, no los clientes. | Manu en la pizarra | El error común, y le saca la culpa |
-| 8 | **ESCALAR HACIA ADENTRO:** crecer con los clientes que ya entraron, no saliendo a comprar más. | El símbolo: dos círculos y la lente | Reveal del mecanismo con nombre propio |
+| 8 | **MÉTODO B.A.S.E.:** crecer con los clientes que ya entraron, no saliendo a comprar más. | El símbolo: dos círculos y la lente | Reveal del mecanismo con nombre propio |
 | 9 | CPA → podés pagar **2,5 veces más** por cliente que tu competencia. | Barras: competencia vs vos | Rompe "tengo que bajar el CPA" |
 | 10 | Márgenes → la 2ª, 3ª y 4ª compra entran con el **margen entero**. | Pedido 1 / 2 / 3 / 4 | Rompe "tengo que vender más" |
 | 11 | Metadependencia → el mes arranca **cobrado**. Si Meta te baja la cuenta, los suscriptores se siguen cobrando. | [CARGAR: marca con la pauta apagada cobrando con 50% de margen] | Rompe "si cae Meta, se termina" |
@@ -282,7 +282,7 @@ Vuelve la promesa base con la prueba. La primera línea dice qué está pasando 
   1. "Escalá tu ecomm de consumibles a +$100M/mes, sin depender del CPA ni dejar de vender."
   2. "Si venís de: ❌ creativo nuevo cada semana ❌ bajar el precio ❌ dos mentorías de producto ganador ❌ apagar la cuenta con 600 lucas abajo. Probaste todo y seguís en breakeven."
   3. "El error: vendés compras, no clientes."
-  4. "Por eso existe GÉNESIS: Escalar Hacia Adentro, hecho con vos, 1a1, en 3 meses."
+  4. "Por eso existe GÉNESIS: el Método B.A.S.E., hecho con vos, 1a1, en 3 meses."
   5. "Qué incluye (1/2): roadmap con auditoría de tus números · suscripción definida y precificada · tienda con suscripción instalada · conversión de tu base actual."
   6. "Qué incluye (2/2): anuncios al CPA nuevo · backend de retención · tablero semanal · chat 1a1 conmigo."
   7. "2.200 suscriptores · 1,28% churn · de 60M a 156.798.062/mes." [CARGAR: tablero y reporte]

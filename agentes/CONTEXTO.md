@@ -8,7 +8,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 - **Nicho:** consultoría 1a1 para dueños de ecommerce de consumibles (químicos de limpieza y cuidado personal, suplementos, cosmética) en Argentina que ya facturan 30 a 80 millones ARS/mes con Meta Ads y están en breakeven. Los pasa de compra única a modelo de suscripción.
   - No es para: el que arranca de cero, el que busca producto ganador, ni el que vende solo en retail/mayorista/Mercado Libre sin tienda propia.
 
-- **Qué vendo (oferta principal y precio):** **Génesis — Escalar Hacia Adentro.** Consultoría 1:1 · 3 meses · Done For You. No hay versión grupal.
+- **Qué vendo (oferta principal y precio):** **Génesis — Método B.A.S.E.** Consultoría 1:1 · 3 meses · Done For You. No hay versión grupal.
   - Frase de la oferta (cerrada 6-sep): *"Escalo tu ecomm de consumibles a +$100M al mes convirtiéndolo a modelo de suscripción, sin depender del CPA ni dejar de vender."*
 
   | | Validación (piloto, ya cerrada) | Webinar (vigente desde el lanzamiento) |
@@ -40,10 +40,12 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - Velocidad (no plazo): el primer cobro recurrente cae al cumplirse el primer ciclo de reposición del producto. *"Si tu producto se termina en 30 días, el primer cobro llega a los 30."* Se calcula por cliente; no hay número por defecto.
   - Fuera de alcance, a propósito: fabricación/laboratorio/ANMAT (territorio de Bulacio), equipo y roles, proveedores, email marketing como servicio, búsqueda de producto ganador.
 
-- **Método único (con nombre propio):** **ESCALAR HACIA ADENTRO** — crecer con los clientes que ya entraron, no saliendo a comprar más.
+- **Método único (con nombre propio):** **MÉTODO B.A.S.E.** — crecer con los clientes que ya entraron, no saliendo a comprar más.
+  - Las letras: **B**ase que cobra sola · **A**dquirís al costo · **S**uscripción al lado de la compra única · **E**scalás con el CAC nuevo. En el contenido se nombra ("el Método B.A.S.E."); las letras se explican solo en la clase. `[CONFIRMAR con Manu que las letras le salen naturales]`
+  - Antes se llamaba "Escalar Hacia Adentro" (cambiado el 1-oct-2026).
   - Número que lo prueba: *"Poder pagar 2,5 veces más por cada cliente que tu competencia."*
-  - Se busca por categoría ("modelo de suscripción"), se recuerda por método. Génesis es la empresa; Escalar Hacia Adentro es el método.
-  - Contraste: escalar "hacia afuera" (más pauta, más creativos, bajar el CPA) vs. hacia adentro.
+  - Se busca por categoría ("modelo de suscripción"), se recuerda por método. Génesis es la empresa; B.A.S.E. es el método.
+  - Contraste: crecer saliendo a comprar clientes nuevos (más pauta, más creativos, bajar el CPA) vs. crecer sobre la base que ya tenés.
 
   **Fases de la entrega:**
 
@@ -67,7 +69,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 
   Techo y punto operativo se muestran siempre juntos.
 
-  **Símbolo:** dos círculos que se cruzan con una lente al medio. Círculo 1 = compra única, círculo 2 = suscripción, lente = el cliente que vuelve. Escalar hacia adentro = agrandar la lente.
+  **Símbolo:** dos círculos que se cruzan con una lente al medio. Círculo 1 = compra única, círculo 2 = suscripción, lente = el cliente que vuelve. El Método B.A.S.E. = agrandar la lente.
 
 - **Caso de éxito (solo Manu):** su propia marca pasó de 60.000.000 a 156.798.062 ARS/mes, 2.200 suscriptores activos, 1,28% de churn, LTV 3 pedidos mínimo. Período entre 60M y 156.798.062: [PENDIENTE].
   - Reglas: retención adelante, facturación atrás · se muestra, no se dice (sin captura no hay número) · un ángulo distinto por pieza · el punto A se dice con el número.
@@ -154,8 +156,8 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - Vocabulario técnico que usa sin explicar: CPA · CAC · CPM · LTV · margen de contribución · breakeven (pegado) · churn · suscriptores activos · recurrencia · RI · subasta · ciclo de reposición · pautar ("la volvés a pautar el mes que viene, con el mismo costo o mayor").
   - Patrones de sus guiones de ads (17-sep, **pesan más que todo lo demás**): "buscás la compra, no los clientes" · el hook se reemplaza entero si hay un ángulo más fuerte · frase repetida entre piezas del mismo set · el CTA nunca nombra el botón de la plataforma · cierre con consecuencia concreta ("el CPA te va a terminar matando el negocio") · redundancia conversacional a propósito.
   - Frases de cierre:
-    - Bloque de autoridad en cada caption: "Manu. Escalo hacia adentro: 2.200 suscriptores activos, 1,28% de churn. Enseño el modelo en Génesis."
-    - Cierre de reel y video largo: "Esto es escalar hacia adentro." (en ads, remate específico de la pieza).
+    - Bloque de autoridad en cada caption: "Manu. Método B.A.S.E.: 2.200 suscriptores activos, 1,28% de churn. Enseño el modelo en Génesis."
+    - Cierre de reel y video largo: "Esto es el Método B.A.S.E." (en ads, remate específico de la pieza).
   - Frases fuertes, textuales:
     - "Nosotros vamos a competir por el MODELO. Si ellos pueden gastar 50 dólares para adquirir un cliente, nosotros podemos gastar 75, y listo: ya no tenés competencia."
     - "En compra única tenés un CPA... En suscripción tenés un CAC. Se paga una vez. La segunda, la tercera y la cuarta compra entran con el margen de contribución ENTERO."
