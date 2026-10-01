@@ -1,6 +1,6 @@
 # Ads de reminder — Clase en vivo privada 19/10 · 4 piezas
 
-Corren las últimas 72 horas antes de la clase (viernes 16/10 19:00 → lunes 19/10 19:00). 2 videos + 2 imágenes.
+Corren las últimas 72 horas antes de la clase (viernes 16/10 19:00 → lunes 19/10 19:00). 4 videos en formato reel.
 
 ## R-VIDEO-1 · El regalo
 
@@ -58,44 +58,56 @@ Este lunes 19. Solo vos y yo. Anotate AHORA en el link de abajo. No te lo pierda
 
 ---
 
-## R-IMAGEN-1 · El cartel del evento
+## R-VIDEO-3 · El dolor
 
-**TITULAR**
+**HOOK** (0–6 s)
 
-Cómo pasé mi marca de 60 a 156 millones por mes con suscripción
+Falta muy poco para que te muestre por qué te suben los CPA, te queda poco margen y dependés de Meta. Y por qué es el mismo problema.
 
-**SUBTÍTULO**
+**QUÉ + CUÁNDO + DÓNDE** (6–18 s)
 
-Clase en vivo privada · Método B.A.S.E.
+Este LUNES 19, a las 19, doy una clase en vivo privada, y a los que se anoten con el link de acá abajo les voy a mostrar por primera vez el Método B.A.S.E.: cómo pasé mi marca de consumibles al modelo de suscripción.
 
-**FECHA**
+**QUÉ TE LLEVÁS** (18–32 s)
 
-LUNES 19 DE OCTUBRE · 19 HS
+Vas a ver por qué cada venta te cuesta lo mismo que la anterior, cómo hacer que la segunda, la tercera y la cuarta compra te entren con el margen entero, y cómo hacer que la base te cobre sola todos los meses, aunque Meta te baje la cuenta. Y te llevás el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas.
 
-**CTA**
+**LA PRUEBA MAYOR** (32–38 s)
 
-Registrate gratis en el link
+Es lo mismo que hice en mi marca: hoy tengo 2.200 suscriptores activos, con 1,28% de churn.
 
-**CAPTION**
+**URGENCIA** (38–43 s)
 
-Este lunes 19 a las 19 hs doy una clase en vivo privada: el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia. Solo entran los que se anoten. Es gratis 👇
+Y es privada: si no te anotás, no podés entrar.
+
+**CIERRE 1 A 1 + CTA** (43–54 s)
+
+Este lunes 19. Solo vos y yo. Anotate AHORA en el link de abajo. No te lo pierdas. Este lunes 19, a las 19, te espero EN VIVO. NO faltes.
 
 ---
 
-## R-IMAGEN-2 · La última oportunidad
+## R-VIDEO-4 · La última oportunidad
 
-**TITULAR**
+**HOOK** (0–5 s)
 
-CLASE PRIVADA: SOLO ENTRAN LOS ANOTADOS
+Falta muy poco, y esta clase es privada.
 
-**FECHA**
+**QUÉ + CUÁNDO + DÓNDE** (5–15 s)
 
-LUNES 19 · 19 HS · EN VIVO
+Este LUNES 19, a las 19, doy una clase en vivo privada, y solo van a poder entrar los que se anoten con el link de acá abajo. Ahí te muestro el Método B.A.S.E. completo.
 
-**CTA**
+**QUÉ TE LLEVÁS** (15–25 s)
 
-Anotate ahora en el link
+El paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
 
-**CAPTION**
+**LA PRUEBA MAYOR** (25–30 s)
 
-Falta muy poco. Este lunes 19 a las 19 hs te muestro el Método B.A.S.E., con mis números reales. Es privada: si no te anotás, no podés entrar. Gratis 👇
+Con este método mi marca pasó de 60 millones a 156.798.062 por mes.
+
+**URGENCIA** (30–35 s)
+
+Si no te anotás, no te puedo dejar entrar. Así de simple.
+
+**CIERRE 1 A 1 + CTA** (35–44 s)
+
+Este lunes 19. Solo vos y yo. Anotate AHORA en el link de abajo. Este lunes 19, a las 19, te espero EN VIVO. NO faltes.

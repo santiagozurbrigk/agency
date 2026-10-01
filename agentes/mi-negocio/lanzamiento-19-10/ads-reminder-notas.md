@@ -31,7 +31,7 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 
 - Nunca "mañana" ni "faltan X horas" mientras el reminder corra 72 horas.
 - Sin "masterclass", "webinar" ni "lanzamiento": el evento es "la clase".
-- Sin "no hay grabación", "última vez" ni "única vez": hay replay (~80 min). La urgencia real es que la clase es **privada**: si no te anotás, no podés entrar. Va en el bloque de urgencia de los videos y en la imagen 2.
+- Sin "no hay grabación", "última vez" ni "única vez": hay replay (~80 min). La urgencia real es que la clase es **privada**: si no te anotás, no podés entrar. Va en el bloque de urgencia de los 4 videos.
 - El método (Método B.A.S.E.) se nombra, nunca se explica.
 - Números canónicos, iguales en las 2 piezas: 2.200 suscriptores activos · 1,28% de churn · 60 millones → 156.798.062 por mes · LTV 3 pedidos mínimo · marca con la pauta apagada al 50% de margen · pagar 2,5 veces más por cliente.
 - Un solo CTA: anotarse con el link de abajo. Cero presentación.
@@ -51,4 +51,4 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 3. ~~Confirmar la cuenta en vivo~~: ya no aplica, el bloque 5 ahora es "es privada: si no te anotás, no podés entrar".
 4. Duración del vivo: si se confirma (el replay dura ~80 min), el bloque 3 puede decir "en esos 80 minutos", como la referencia.
 5. Si el reminder se corre solo las últimas 24 h (y no 72), se puede usar "mañana" y "faltan menos de 24 horas", como la referencia.
-6. Las 2 imágenes ya están (R-IMAGEN-1 y R-IMAGEN-2). Falta el diseño: foto de Manu o captura del panel de suscriptores de fondo, fecha bien grande.
+6. Sin imágenes: las 4 piezas son videos en formato reel (R-VIDEO-1 regalo · R-VIDEO-2 prueba · R-VIDEO-3 dolor · R-VIDEO-4 última oportunidad).
