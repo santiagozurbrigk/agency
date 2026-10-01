@@ -9,7 +9,7 @@
 **VALOR:**
 1. Vas a ver por qué cada venta te cuesta lo mismo que la anterior, y por qué no es culpa de tu creativo.
 2. Vas a ver cuánto podés pagar por cada cliente si pasás tu marca al modelo de suscripción: 2,5 veces más que tu competencia.
-3. Y el paso a paso para hacerlo sin frenar lo que hoy vendés. Se llama Escalar Hacia Adentro.
+3. Y el paso a paso para hacerlo sin frenar lo que hoy vendés. Se llama Método B.A.S.E..
 
 **CTA:** Es una clase en vivo privada y gratis. Los que vengan se llevan el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas que yo utilizo en mis marcas. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación. Lunes 19, 19 horas.
 
@@ -24,7 +24,7 @@
 **VALOR:**
 1. Largás un producto, lo escalás, te salen cinco competidores, te suben los CPM, por ende te suben los CPA.
 2. Saliste con 10 dólares de CPA y ahora tenés 20. Y ya dejás de ser rentable.
-3. El que busca clientes paga la primera venta una sola vez. La segunda, la tercera y la cuarta le entran con el margen entero. Eso es escalar hacia adentro.
+3. El que busca clientes paga la primera venta una sola vez. La segunda, la tercera y la cuarta le entran con el margen entero. Eso es el Método B.A.S.E.
 
 **CTA:** El lunes 19 a las 19 doy una clase en vivo privada, gratis, donde te muestro cómo pasé mi marca a suscripción. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
@@ -41,7 +41,7 @@
 2. Dejé de buscar la compra y empecé a buscar al cliente: adquirirlo al costo y hacer la plata en el segundo, el tercer y el cuarto pedido.
 3. Hoy tengo 2.200 suscriptores activos, 1,28% de churn, y la marca factura 156.798.062 por mes.
 
-**CTA:** El lunes 19 a las 19 te muestro el paso a paso de cómo lo hice en una clase en vivo privada. Se llama Escalar Hacia Adentro. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
+**CTA:** El lunes 19 a las 19 te muestro el paso a paso de cómo lo hice en una clase en vivo privada. Se llama Método B.A.S.E.. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 
 ---
 
@@ -99,7 +99,7 @@
 **VALOR:**
 1. Todas vienen de lo mismo: tu unidad de venta es la compra, no el cliente.
 2. Nosotros no competimos por el creativo ni por el producto: competimos por el modelo. Si ellos pagan 50 por cliente, vos podés pagar 75.
-3. Eso tiene nombre: Escalar Hacia Adentro. Crecer con los clientes que ya entraron, no saliendo a comprar más.
+3. Eso tiene nombre: Método B.A.S.E.. Crecer con los clientes que ya entraron, no saliendo a comprar más.
 
 **CTA:** El lunes 19 a las 19 doy una clase en vivo privada donde te muestro, paso a paso, cómo lo apliqué en mi marca. Para entrar, comentá SUSCRIPCIÓN y te mando la invitación.
 

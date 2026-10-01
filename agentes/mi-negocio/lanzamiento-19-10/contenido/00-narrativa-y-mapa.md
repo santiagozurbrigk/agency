@@ -24,7 +24,7 @@ ANUNCIO     →  "Lunes 19 a las 19 doy una clase en vivo privada: cómo pasé m
 DOLOR 1     →  CPA: "No ganás bajando el CPA, ganás pudiendo pagar más"
 DOLOR 2     →  Márgenes: "Pagás la primera venta; la 2ª, 3ª y 4ª entran con el margen entero"
 DOLOR 3     →  Metadependencia: "La base cobra sola; Meta solo suma suscriptores"
-MECANISMO   →  "Competimos por el MODELO" → Escalar Hacia Adentro, por nombre, sin el cómo
+MECANISMO   →  "Competimos por el MODELO" → Método B.A.S.E., por nombre, sin el cómo
 OBJECIONES  →  "En Argentina nadie se suscribe" (2.200 activos, 1,28% churn) · "Ya pagué mentorías de producto ganador" (esto es para el que ya tiene producto)
 VIVO        →  La cuenta completa + la oferta
 CARRITO     →  Replay + fast-action → objeciones de compra → cierre real 22/10 23:59
@@ -58,7 +58,7 @@ CARRITO     →  Replay + fast-action → objeciones de compra → cierre real 2
 
 - **Palabras prohibidas en todo lo público:** masterclass · webinar · lanzamiento · pizarra · tablero (se dice "mis números", "mis números reales"). El evento es "la clase en vivo" / "la clase".
 - **Promesa de la clase:** "el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés".
-- **El método se nombra, nunca se explica:** Escalar Hacia Adentro.
+- **El método se nombra, nunca se explica:** Método B.A.S.E. (Base que cobra sola · Adquirís al costo · Suscripción al lado de la compra única · Escalás con el CAC nuevo). Se dice "el Método B.A.S.E."; las letras no se explican en el contenido..
 - **Números canónicos, siempre iguales:** 2.200 suscriptores activos · 1,28% de churn · 60.000.000 → 156.798.062 ARS/mes · LTV 3 pedidos mínimo · 12.000 el pote vs 4.500 · marca con la pauta apagada cobrando recurrencias al 50% de margen · pagar 2,5 veces más por cliente · 50 vs 75 por cliente.
 - **Retención adelante, facturación atrás.** Sin captura no hay número.
 - **Urgencia solo real:** hay replay → nunca "sin grabación" ni "única vez". Cupo de asistentes no definido → nunca "cupos limitados" para la clase. La escasez del carrito es sobre los 10 lugares de Génesis DFY, con el número real.

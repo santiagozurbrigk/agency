@@ -35,7 +35,7 @@ Tipo: venta. Dolor: los 3, unidos. Creencia a romper: "tengo tres problemas dist
 | 3 | Problema | "Parecen tres cosas. Es una: tu unidad de venta es la compra, no el cliente." | Selfie hablando. |
 | 4 | La idea | "Nosotros vamos a competir por el MODELO." | Selfie, frase sola, mirada fija. |
 | 5 | La idea | "Si ellos pueden gastar 50 dólares para adquirir un cliente, nosotros podemos gastar 75. Y listo: ya no tenés competencia." | Texto en pantalla: "50 vs 75". |
-| 6 | Nombre | "Se llama Escalar Hacia Adentro. Crecer con los clientes que ya entraron." | Los dos círculos, se pinta la lente. |
+| 6 | Nombre | "Se llama Método B.A.S.E.. Crecer con los clientes que ya entraron." | Los dos círculos, se pinta la lente. |
 | 7 | CTA | "El lunes 19 a las 19 te muestro el paso a paso en una clase en vivo privada. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 
 **Dolor:** los 3. **Creencia:** es el modelo. **Al terminar tiene que pensar:** "Quiero ver la cuenta entera."

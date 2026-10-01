@@ -23,7 +23,7 @@ Hecho con los agentes **Calendario nutrición WhatsApp** y **Cómo hacer un día
 ```
 D1     →  "Lo que funciona es el modelo, no el creativo" (historia de Manu)
 D2-D3  →  Rompe "tengo que bajar el CPA" y "tengo que vender más", cada uno por separado
-D4     →  Integra todo y nombra el método: Escalar Hacia Adentro (sin el cómo)
+D4     →  Integra todo y nombra el método: Método B.A.S.E. (sin el cómo)
 D5     →  Convierte la creencia en asistencia
 ```
 
@@ -178,7 +178,7 @@ Fallback:
 > Los tres salen del mismo lugar: tu unidad de venta es la compra, no el cliente.
 > Cuando la unidad es la compra, pagás pauta en cada venta, el margen no crece, y si se apaga Meta se apaga todo.
 > Cuando la unidad es el cliente, la base cobra sola todos los meses, y Meta solo suma suscriptores nuevos. Si te bajan la cuenta, los suscriptores se siguen cobrando.
-> A eso le digo Escalar Hacia Adentro: crecer con los clientes que ya entraron, no saliendo a comprar más.
+> A eso le digo Método B.A.S.E.: crecer con los clientes que ya entraron, no saliendo a comprar más.
 
 **Cierre — SCRIPTED (60 s)**
 > El lunes 19 a las 19 te muestro el paso a paso, en vivo, con mis números. Y a los que vengan les regalo el roadmap para migrar su marca, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas.
@@ -186,7 +186,7 @@ Fallback:
 
 **Texto fallback (debajo del video)**
 > El CPA, el margen y Meta son el mismo problema: vendés compras, no clientes.
-> Con suscripción la base cobra sola y Meta solo suma. A eso le digo Escalar Hacia Adentro.
+> Con suscripción la base cobra sola y Meta solo suma. A eso le digo Método B.A.S.E..
 > Lunes 19, 19 hs, en vivo. Mañana te pido una cosa para llegar preparado.
 
 **Interacción:** "Reaccioná con ✅ si ya lo tenés agendado."

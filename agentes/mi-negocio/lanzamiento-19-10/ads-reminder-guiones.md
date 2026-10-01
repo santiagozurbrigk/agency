@@ -29,7 +29,7 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 - Nunca "mañana" ni "faltan X horas" mientras el reminder corra 72 horas.
 - Sin "masterclass", "webinar" ni "lanzamiento": el evento es "la clase".
 - Sin "no hay grabación", "última vez" ni "única vez": hay replay (~80 min).
-- El método (Escalar Hacia Adentro) se nombra, nunca se explica.
+- El método (Método B.A.S.E.) se nombra, nunca se explica.
 - Números canónicos, iguales en las 2 piezas: 2.200 suscriptores activos · 1,28% de churn · 60 millones → 156.798.062 por mes · LTV 3 pedidos mínimo · marca con la pauta apagada al 50% de margen · pagar 2,5 veces más por cliente.
 - Un solo CTA: anotarse con el link de abajo. Cero presentación.
 
@@ -43,9 +43,9 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 `[EDICIÓN: primer frame con el panel de suscriptores en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **2. QUÉ + CUÁNDO + DÓNDE** (6–18 s)
-> Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez Escalar Hacia Adentro completo: el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Literalmente todo lo que usé para llegar a esto.
+> Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez el Método B.A.S.E. completo: el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Literalmente todo lo que usé para llegar a esto.
 
-`[EDICIÓN: "LUNES 19 · 19 HS" grande + "ESCALAR HACIA ADENTRO"]`
+`[EDICIÓN: "LUNES 19 · 19 HS" grande + "MÉTODO B.A.S.E."]`
 
 **3. QUÉ TE LLEVÁS** (18–30 s)
 > En esa clase te explico de la A a la Z el paso a paso para pasar tu marca de consumibles al modelo de suscripción, cómo aplicarlo con lo que ya tenés, y cómo poder pagar 2,5 veces más por cada cliente que tu competencia.
@@ -79,9 +79,9 @@ Versión 2, 30-sep-2026. Reescrita sobre el copy de referencia de reminder que p
 `[EDICIÓN: primer frame con el panel de suscriptores en pantalla + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **2. QUÉ + CUÁNDO + DÓNDE** (6–16 s)
-> Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez Escalar Hacia Adentro, el método con el que pasé mi marca al modelo de suscripción.
+> Este LUNES 19, a las 19, a los que se anoten con el link de acá abajo les voy a mostrar por primera vez el Método B.A.S.E., el método con el que pasé mi marca al modelo de suscripción.
 
-`[EDICIÓN: "LUNES 19 · 19 HS" grande + "ESCALAR HACIA ADENTRO"]`
+`[EDICIÓN: "LUNES 19 · 19 HS" grande + "MÉTODO B.A.S.E."]`
 
 **3. QUÉ TE LLEVÁS** (16–24 s)
 > De la A a la Z: el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Literalmente todo.

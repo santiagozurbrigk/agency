@@ -55,7 +55,7 @@ Tipo: caso de éxito. Dolor: "cada venta me costaba lo mismo que la anterior". C
 | 2 | Quién era | "Eso facturaba por mes. Compra única. Y cada venta me costaba lo mismo que la anterior." | Selfie, tono íntimo. |
 | 3 | Quién era | "12.000 el pote, contra marcas a 4.500. Y creía que en Argentina nadie se suscribe." | Foto del producto. |
 | 4 | Qué cambió | "Dejé de buscar la compra. Empecé a buscar al cliente." | Texto en pantalla: "COMPRA → CLIENTE". |
-| 5 | Qué cambió | "Eso tiene nombre: Escalar Hacia Adentro." | Texto sobre el símbolo. |
+| 5 | Qué cambió | "Eso tiene nombre: Método B.A.S.E.." | Texto sobre el símbolo. |
 | 6 | Comprobante | "156.798.062 por mes. 2.200 suscriptores activos. 1,28% de churn." | [CARGAR: reporte + panel de suscriptores] |
 | 7 | CTA | "El lunes 19 a las 19 te muestro cómo, paso a paso. Mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 

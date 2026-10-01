@@ -1,12 +1,13 @@
 # Ads de adquisición — Clase en vivo 19/10 · Guiones de los primeros 9 videos
 
+Versión 6, 1-oct-2026. El método pasa a llamarse **Método B.A.S.E.** (antes Escalar Hacia Adentro). Moneda: la campaña va solo a Argentina, así que los montos quedan en pesos.
 Versión 5, 30-sep-2026. Suma 4 ads nuevos (D1-V3, D2-V3, D3-V2, D3-V3) con las mismas correcciones: promesa en el anuncio, método con nombre y hook anclado a la situación del avatar. Quedan 3 ads por dolor.
 Versión 4, 30-sep-2026. Sobre la v3 (sin "masterclass", "webinar" ni "lanzamiento"): D1-V1 suma la promesa de la clase en el anuncio, D1-V2 nombra el método (Escalar Hacia Adentro) en vez de "una sola cosa" y D2-V2 cambia el hook a las ganancias.
 Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de adquisición y con el molde de los ads de Nazareno Gamero (ver `referencia-ads-nazareno.md`).
 
 ## El criterio
 
-- **El ad vende la clase, no el método.** Dice QUÉ se lleva el que va, nunca CÓMO se hace. Ninguna cuenta (techo, CAC, LTV) se explica en el ad: se promete. El método se puede **nombrar** (Escalar Hacia Adentro), nunca explicar.
+- **El ad vende la clase, no el método.** Dice QUÉ se lleva el que va, nunca CÓMO se hace. Ninguna cuenta (techo, CAC, LTV) se explica en el ad: se promete. El método se puede **nombrar** (Método B.A.S.E.), nunca explicar.
 - **No se vende nada:** sin precio, sin oferta, sin "programa". Lo único que se ofrece es un lugar gratis en una clase en vivo.
 - **Palabras prohibidas en los ads (guion, caption, titular, descripción y textos en pantalla):** masterclass · webinar · lanzamiento · pizarra · tablero. Tampoco "funnel" ni "lead".
 - **Cómo se nombra el evento:** "una clase en vivo explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción". Después de la primera mención, alcanza con "la clase".
@@ -14,7 +15,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 - **La fecha va en todos:** Manu la dice al menos 2 veces y se ve en pantalla en 3 momentos (hook, anuncio y CTA).
 - **El hook es la segmentación:** abre con el dolor directo, con la frase del avatar, anclado a una situación concreta (nada de "un día bueno"). Nunca con "si sos dueño de…". Excepción: el ángulo curiosidad abre con el resultado que el avatar no sabe cómo lograr.
 - **El anuncio lleva la promesa:** después del nombre de la clase va el resultado ("y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés", o la versión del dolor de ese ad). Los 3 regalos desglosan esa promesa.
-- **Nada genérico en la historia:** lo que cambió Manu tiene nombre, Escalar Hacia Adentro. Nunca "una sola cosa".
+- **Nada genérico en la historia:** lo que cambió Manu tiene nombre, Método B.A.S.E.. Nunca "una sola cosa".
 - **La prueba entra antes de que hable** en los ads nuevos: primer frame con el panel de suscriptores en pantalla (aprendido del ad A de Nazareno).
 
 ## La clase (igual en todos)
@@ -99,9 +100,9 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **HISTORIA** (6–27 s)
 > A mí me pasó exactamente eso. Facturaba 60 millones por mes con un consumible: 12.000 el pote, contra marcas que lo vendían a 4.500. Cada venta me costaba lo mismo que la anterior.
 > No lo arreglé con un creativo mejor, ni bajando el precio. Cambié el modelo.
-> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar Escalar Hacia Adentro.
+> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar el Método B.A.S.E..
 
-`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "MÉTODO B.A.S.E." grande cuando lo nombra]`
 
 **ANUNCIO** (27–39 s)
 > Es el método que te voy a mostrar el lunes 19 de octubre, a las 19, en una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción. Anotate con el link de acá abajo.
@@ -234,9 +235,9 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 `[EDICIÓN: primer frame con Manu señalando el panel de suscriptores en la pantalla, antes de hablar + banda "LUNES 19/10 · 19 HS · EN VIVO"]`
 
 **PRUEBA + MÉTODO** (6–20 s)
-> Es porque cambiaron el modelo. Yo lo hice en mi marca: hoy tengo 2.200 suscriptores activos, con 1,28% de churn. El método se llama Escalar Hacia Adentro, y es la razón por la que dejé de pelear el CPA.
+> Es porque cambiaron el modelo. Yo lo hice en mi marca: hoy tengo 2.200 suscriptores activos, con 1,28% de churn. El método se llama Método B.A.S.E., y es la razón por la que dejé de pelear el CPA.
 
-`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, captura del panel de suscriptores; "MÉTODO B.A.S.E." grande cuando lo nombra]`
 
 **ANUNCIO + PROMESA** (20–34 s)
 > El lunes 19 de octubre, a las 19, doy una clase en vivo, 100% gratis, explicando el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés. Anotate con el link de acá abajo.
@@ -245,7 +246,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 **ENTREGABLES** (34–50 s)
 > Y a los que vengan les regalo tres cosas.
-> El roadmap paso a paso para aplicar Escalar Hacia Adentro en tu marca con lo que ya tenés: tu base, tu audiencia y tus anuncios ganadores.
+> El roadmap paso a paso para aplicar el Método B.A.S.E. en tu marca con lo que ya tenés: tu base, tu audiencia y tus anuncios ganadores.
 > El Simulador de Suscripción: cargás tus números y ves cuánto podés pagar por cliente sin perder plata, con IVA y Ganancias adentro.
 > Y los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp que hacen que ese cliente te vuelva a pagar todos los meses.
 
@@ -336,9 +337,9 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 **HISTORIA** (5–25 s)
 > Yo facturaba 60 millones por mes y todos los meses era igual: el 1 arrancaba en cero y no sabía con cuánto iba a cerrar. Cada venta me costaba lo mismo que la anterior.
 > Hasta que dejé de buscar la compra y empecé a buscar al cliente.
-> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar Escalar Hacia Adentro.
+> Hoy tengo 2.200 suscriptores activos y la marca factura 156.798.062 por mes gracias a aplicar el Método B.A.S.E..
 
-`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "ESCALAR HACIA ADENTRO" grande cuando lo nombra]`
+`[EDICIÓN: comprobante en pantalla, primero el panel de suscriptores (2.200 activos) y después el reporte de facturación; "MÉTODO B.A.S.E." grande cuando lo nombra]`
 
 > [CONFIRMAR con Manu: que antes de la suscripción también arrancaba el mes en cero sin saber con cuánto cerraba. Es el dolor del avatar y Manu es "el avatar antes de la suscripción", pero no está dicho por él.]
 
@@ -349,7 +350,7 @@ Hecho con los agentes **Reels** y **Mastering Copy**, con el criterio de ads de 
 
 **ENTREGABLES** (39–55 s)
 > Y a los que vengan les regalo tres cosas.
-> El roadmap paso a paso para aplicar Escalar Hacia Adentro arrancando con tu propia base de clientes.
+> El roadmap paso a paso para aplicar el Método B.A.S.E. arrancando con tu propia base de clientes.
 > El Simulador de Suscripción, para que veas cómo se vería tu facturación mes a mes con una base que cobra sola.
 > Y los sistemas que uso en mis marcas para armar los flujos de email y WhatsApp de cobro, listos para cargar.
 

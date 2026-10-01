@@ -116,7 +116,7 @@ No hay agente de Limitless para mail: siguen la misma cadena que el grupo de Wha
 >
 > Parecen tres problemas. Es uno: tu unidad de venta es la compra, no el cliente.
 >
-> Cuando la unidad es el cliente, la base cobra sola todos los meses y Meta solo suma suscriptores nuevos. A eso le digo **Escalar Hacia Adentro**: crecer con los clientes que ya entraron, no saliendo a comprar más.
+> Cuando la unidad es el cliente, la base cobra sola todos los meses y Meta solo suma suscriptores nuevos. A eso le digo **Método B.A.S.E.**: crecer con los clientes que ya entraron, no saliendo a comprar más.
 >
 > El **lunes 19 a las 19 hs** te muestro el paso a paso en vivo. Y a los que vengan les regalo:
 >
