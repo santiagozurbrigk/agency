@@ -144,7 +144,38 @@ button { font: inherit; color: inherit; }
 .pill.no { background: var(--no-bg); color: var(--no-ink); }
 
 body.panel-open .zoom { right: 442px; }
+
+/* Mejoras de uso */
+.n.step, .n.dec, .n.jump { transition: box-shadow .15s ease, transform .15s ease; }
+@media (prefers-reduced-motion: no-preference) { .n.step:hover, .n.dec:hover, .n.jump:hover { transform: translateY(-2px); } }
+.legend { pointer-events: auto; margin-left: auto; display: flex; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 0 14px; font-size: 12px; color: var(--muted); box-shadow: 0 2px 10px rgba(30,25,15,.06); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.legend i.dia { transform: rotate(45deg); border-radius: 2px; width: 9px; height: 9px; }
+.bigname { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 36px; background: rgba(255,255,255,.9); border-radius: 16px; z-index: 3; pointer-events: none; text-align: center; padding: 80px; }
+.bigname b { font-family: var(--font-mono); font-size: 96px; letter-spacing: .14em; color: var(--fc); }
+.bigname span { font-family: var(--font-display); font-weight: 800; font-size: 150px; line-height: 1.02; letter-spacing: -.02em; color: var(--ink); text-wrap: balance; }
+#world.far .bigname { display: flex; }
+#world.far .fhead { visibility: hidden; }
+.minimap { position: fixed; left: 16px; bottom: calc(62px + env(safe-area-inset-bottom, 0px)); width: 236px; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 2px 10px rgba(30,25,15,.08); z-index: 5; padding: 8px 10px 10px; touch-action: none; }
+.minimap .ml { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.minimap .mm { position: relative; width: 216px; overflow: hidden; cursor: pointer; border-radius: 6px; background: var(--board); }
+.minimap .mf { position: absolute; border-radius: 2px; opacity: .8; }
+.minimap .vw { position: absolute; border: 2px solid var(--ink); border-radius: 3px; background: rgba(27,28,30,.06); pointer-events: none; }
+.pnav { border-top: 1px solid var(--line); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.pnav button { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 7px 12px; cursor: pointer; font-size: 13px; font-weight: 600; }
+.pnav button:hover:not(:disabled) { border-color: var(--ink); }
+.pnav button:disabled { opacity: .35; cursor: default; }
+.pnav button:focus-visible { outline: 2px solid var(--ink); }
+.pnav span { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-align: center; }
+.kindrow { display: flex; gap: 8px; align-items: center; }
+.extabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.extab { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 5px 11px; font-size: 12.5px; cursor: pointer; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.extab[aria-selected="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.extab:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 1100px) { .legend { display: none; } }
 @media (max-width: 720px) {
+  .minimap { display: none; }
   body.panel-open .zoom { right: 16px; bottom: calc(70% + 12px); }
   .brand small { display: none; }
   .hint { display: none; }
@@ -162,7 +193,9 @@ body.panel-open .zoom { right: 442px; }
 <div class="topbar">
   <div class="brand"><span class="logo">G</span><span><b>Mapa de ventas</b><small>Génesis · clase 19/10</small></span></div>
   <nav class="tabs" id="tabs" aria-label="Fases"></nav>
+  <div class="legend" aria-label="Referencias"><span><i style="background:var(--sdr)"></i>SDR</span><span><i style="background:var(--closer)"></i>Closer</span><span><i style="background:var(--form)"></i>Formulario</span><span><i class="dia" style="background:var(--dec-ico)"></i>Decisión</span><span><i style="background:var(--note-line)"></i>Nota</span></div>
 </div>
+<div class="minimap" id="minimap" aria-label="Minimapa"><div class="ml"><span>Vista general</span><span id="mmf"></span></div><div class="mm" id="mm"></div></div>
 
 <div class="zoom">
   <button type="button" id="zin" aria-label="Acercar">+</button>
@@ -170,11 +203,12 @@ body.panel-open .zoom { right: 442px; }
   <button type="button" id="zfit" aria-label="Ver todo el mapa">⤢</button>
   <div class="pct" id="pct">100%</div>
 </div>
-<div class="hint">Rueda = zoom · arrastrá para moverte · clic en un paso = ejemplo · clic en una fase = acercar</div>
+<div class="hint">Rueda = zoom · arrastrá para moverte · doble clic = acercar · clic en un paso = ejemplo · ← → = pasos</div>
 
 <aside class="panel" id="panel" hidden aria-live="polite">
   <div class="ph"><button class="close" type="button" id="pclose">Cerrar</button><span class="fase" id="pfase"></span><h2 id="ptitle"></h2></div>
   <div class="pb" id="pbody"></div>
+  <div class="pnav"><button type="button" id="pprev">← Anterior</button><span id="ppos"></span><button type="button" id="pnext">Siguiente →</button></div>
 </aside>
 
 <script>
@@ -417,7 +451,7 @@ FRAMES.forEach((f, fi) => {
   fr.className = "frame"; fr.id = f.id;
   fr.style.setProperty("--fc", f.color);
   fr.style.left = "0px"; fr.style.top = y + "px"; fr.style.width = FW + "px";
-  fr.innerHTML = `<div class="fhead" data-frame="${f.id}"><span class="fchip">${f.chip}</span><span class="ftitle">${esc(f.title)}</span><span class="fmeta">${esc(f.meta)}</span></div><div class="fsep"></div>`;
+  fr.innerHTML = `<div class="fhead" data-frame="${f.id}"><span class="fchip">${f.chip}</span><span class="ftitle">${esc(f.title)}</span><span class="fmeta">${esc(f.meta)}</span></div><div class="fsep"></div><div class="bigname" aria-hidden="true"><b>${f.chip}</b><span>${esc(f.title)}</span></div>`;
   world.appendChild(fr);
   f.el = fr; f.y = y;
   f.nodes.forEach(n => {
@@ -463,6 +497,7 @@ function layout() {
   const bottom = Math.max(...FRAMES.map(f => f.y + f.h));
   world.style.width = WW + "px"; world.style.height = (bottom + 80) + "px";
   drawEdges();
+  if (typeof drawMini === "function") drawMini();
 }
 function box(id) { const n = byId[id]; const e = n.el; const x = n.frame.x + e.offsetLeft, yv = n.frame.y + e.offsetTop; return { x, y: yv, w: e.offsetWidth, h: e.offsetHeight, f: n.frame }; }
 function drawEdges() {
@@ -502,7 +537,7 @@ function drawEdges() {
   big.setAttribute("markerWidth", "5"); big.setAttribute("markerHeight", "5"); big.setAttribute("orient", "auto-start-reverse");
   big.innerHTML = `<path d="M0 0L10 5L0 10z" fill="#1b1c1e"/>`; defs.appendChild(big);
   const bigPath = (d, color) => { const p = document.createElementNS(ns, "path"); p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", color || "#1b1c1e"); p.setAttribute("stroke-width", "5"); p.setAttribute("stroke-linejoin", "round"); p.setAttribute("stroke-linecap", "round"); p.setAttribute("marker-end", "url(#ahb)"); svg.appendChild(p); };
-  const bigLabel = (x, yv, t, color) => { const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", x); tx.setAttribute("y", yv); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("fill", color || "#1b1c1e"); tx.setAttribute("font-family", "JetBrains Mono, monospace"); tx.setAttribute("font-size", "22"); tx.setAttribute("font-weight", "700"); tx.setAttribute("letter-spacing", "1.5"); tx.textContent = t.toUpperCase(); svg.appendChild(tx); };
+  const bigLabel = (x, yv, t, color) => { const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", x); tx.setAttribute("y", yv); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("fill", color || "#1b1c1e"); tx.setAttribute("font-family", "JetBrains Mono, monospace"); tx.setAttribute("font-size", "24"); tx.setAttribute("font-weight", "700"); tx.setAttribute("letter-spacing", "1.5"); tx.setAttribute("stroke", "#f6f4ef"); tx.setAttribute("stroke-width", "10"); tx.setAttribute("paint-order", "stroke"); tx.textContent = t.toUpperCase(); svg.appendChild(tx); };
   const F = id => FRAMES.find(x => x.id === id);
   const H = f => f.y + 48;                       // altura del título de cada marco
   const out = f => f.x + FW + 24, inn = f => f.x - 24;
@@ -532,7 +567,9 @@ function apply() {
   vp.style.backgroundSize = `${g}px ${g}px`;
   vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
   document.getElementById("pct").textContent = Math.round(cam.s * 100) + "%";
+  world.classList.toggle("far", cam.s < 0.26);
   markTab();
+  if (typeof updMini === "function") updMini();
 }
 function zoomAt(f, px, py) {
   const ns = Math.min(MAX, Math.max(MIN, cam.s * f));
@@ -591,6 +628,7 @@ vp.addEventListener("pointerup", endPtr);
 vp.addEventListener("dragstart", e => e.preventDefault());
 vp.addEventListener("selectstart", e => e.preventDefault());
 vp.addEventListener("pointercancel", endPtr);
+vp.addEventListener("dblclick", e => { if (e.target.closest && e.target.closest(".n,.fhead")) return; zoomAt(1.8, e.clientX, e.clientY); });
 vp.addEventListener("wheel", e => { e.preventDefault(); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0016)), e.clientX, e.clientY); }, { passive: false });
 
 function click(t) {
@@ -615,6 +653,7 @@ addEventListener("keydown", e => {
   if (e.key === "+" || e.key === "=") zoomAt(1.2, innerWidth / 2, innerHeight / 2);
   else if (e.key === "-") zoomAt(1 / 1.2, innerWidth / 2, innerHeight / 2);
   else if (e.key === "Escape") closePanel();
+  else if (active && (e.key === "ArrowRight" || e.key === "ArrowLeft")) { e.preventDefault(); stepBy(e.key === "ArrowRight" ? 1 : -1); }
 });
 document.getElementById("zin").onclick = () => zoomAt(1.25, innerWidth / 2, innerHeight / 2);
 document.getElementById("zout").onclick = () => zoomAt(0.8, innerWidth / 2, innerHeight / 2);
@@ -644,19 +683,19 @@ function exHtml(ex, i) {
   const cp = ex.type === "note" ? "" : `<button class="copy" type="button" data-i="${i}">Copiar</button>`;
   return `<div class="ex"><div class="exh"><span>${lab} · ${esc(ex.head)}</span>${cp}</div>${inner}</div>`;
 }
-function openPanel(id) {
-  const n = byId[id];
-  if (active) byId[active].el.classList.remove("active");
-  active = id; n.el.classList.add("active");
-  document.getElementById("pfase").textContent = `${n.frame.chip} · ${n.frame.title}`;
-  document.getElementById("pfase").style.color = n.frame.color;
-  document.getElementById("ptitle").textContent = n.t === "dec" ? n.title : `${n.n} · ${n.title}`;
-  let h = "";
-  if (n.d) h += `<section><h3>Qué se hace</h3><p>${esc(n.d)}</p></section>`;
-  if (n.branches) h += `<section><h3>Salidas</h3>${n.branches.map(([a, b], i) => `<div class="br"><span class="pill${i === 1 ? " no" : ""}">${esc(a)}</span><span>${esc(b)}</span></div>`).join("")}</section>`;
-  if (n.ex) h += `<section><h3>Ejemplo con nuestro caso</h3>${n.ex.map(exHtml).join("")}</section>`;
-  if (n.rule) h += `<section><h3>La regla</h3><div class="rule">${esc(n.rule)}</div></section>`;
-  const body = document.getElementById("pbody"); body.innerHTML = h; body.scrollTop = 0;
+const viewable = n => (n.t === "step" || n.t === "dec") && (n.ex || n.branches || n.rule);
+function seqOf(f) { return f.nodes.filter(viewable).map(n => n.id); }
+function stepBy(d) { const n = byId[active]; const q = seqOf(n.frame); const i = q.indexOf(active) + d; if (i >= 0 && i < q.length) openPanel(q[i], true); }
+function reveal(id) {
+  if (innerWidth <= 720) return;
+  const b = box(id), availW = innerWidth - 442;
+  const sx = b.x * cam.s + cam.x, sy = b.y * cam.s + cam.y, sw = b.w * cam.s, sh = b.h * cam.s;
+  if (sx < 16 || sx + sw > availW - 16 || sy < 90 || sy + sh > innerHeight - 20) {
+    const sc = Math.max(cam.s, 0.6);
+    flyTo({ s: sc, x: availW / 2 - (b.x + b.w / 2) * sc, y: innerHeight / 2 - (b.y + b.h / 2) * sc });
+  }
+}
+function wireCopy(body, n) {
   body.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
     const ex = n.ex[+b.dataset.i];
     const text = ex.lines.map(x => Array.isArray(x) ? `${x[0]}: ${x[1]}` : x).join("\n\n");
@@ -664,9 +703,60 @@ function openPanel(id) {
     const sel = () => { const el = b.closest(".ex").querySelector(".bubble,.call"); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
     try { navigator.clipboard.writeText(text).then(() => done(true), () => { sel(); done(false); }); } catch (_) { sel(); done(false); }
   }));
+}
+function openPanel(id, fromNav) {
+  const n = byId[id];
+  if (active) byId[active].el.classList.remove("active");
+  active = id; n.el.classList.add("active");
+  document.getElementById("pfase").textContent = `${n.frame.chip} · ${n.frame.title}`;
+  document.getElementById("pfase").style.color = n.frame.color;
+  document.getElementById("ptitle").textContent = n.t === "dec" ? n.title : `${n.n} · ${n.title}`;
+  const kind = n.t === "dec" ? `<span class="pill no" style="background:var(--dec-bg);color:var(--dec-ico)">Decisión</span>` : `<span class="badge k-${n.k}">${KIND[n.k]}</span>`;
+  let h = `<div class="kindrow">${kind}</div>`;
+  if (n.d) h += `<section><h3>Qué se hace</h3><p>${esc(n.d)}</p></section>`;
+  if (n.branches) h += `<section><h3>Salidas</h3>${n.branches.map(([a, b], i) => `<div class="br"><span class="pill${i === 1 ? " no" : ""}">${esc(a)}</span><span>${esc(b)}</span></div>`).join("")}</section>`;
+  if (n.ex) {
+    const tabsH = n.ex.length > 1 ? `<div class="extabs" role="tablist">${n.ex.map((ex, i) => `<button type="button" class="extab" role="tab" data-t="${i}" aria-selected="${i === 0}" title="${esc(ex.head)}">${esc(ex.head)}</button>`).join("")}</div>` : "";
+    h += `<section><h3>Ejemplo con nuestro caso${n.ex.length > 1 ? ` · ${n.ex.length} variantes` : ""}</h3>${tabsH}<div id="exslot">${exHtml(n.ex[0], 0)}</div></section>`;
+  }
+  if (n.rule) h += `<section><h3>La regla</h3><div class="rule">${esc(n.rule)}</div></section>`;
+  const body = document.getElementById("pbody"); body.innerHTML = h; body.scrollTop = 0;
+  wireCopy(body, n);
+  body.querySelectorAll(".extab").forEach(t => t.addEventListener("click", () => {
+    body.querySelectorAll(".extab").forEach(x => x.setAttribute("aria-selected", x === t ? "true" : "false"));
+    const slot = document.getElementById("exslot"); slot.innerHTML = exHtml(n.ex[+t.dataset.t], +t.dataset.t); wireCopy(slot, n);
+  }));
+  const q = seqOf(n.frame), i = q.indexOf(id);
+  document.getElementById("ppos").textContent = `${i + 1} de ${q.length} en esta fase`;
+  document.getElementById("pprev").disabled = i <= 0;
+  document.getElementById("pnext").disabled = i >= q.length - 1;
   panel.hidden = false;
   document.body.classList.add("panel-open");
+  reveal(id);
 }
+document.getElementById("pprev").onclick = () => stepBy(-1);
+document.getElementById("pnext").onclick = () => stepBy(1);
+
+/* ---------- Minimapa ---------- */
+const mmEl = document.getElementById("mm"); let mmSc = 1;
+function drawMini() {
+  mmSc = 216 / WW; const H = world.offsetHeight * mmSc;
+  mmEl.style.height = Math.max(40, H) + "px";
+  mmEl.innerHTML = FRAMES.map(f => `<div class="mf" style="left:${f.x * mmSc}px;top:${f.y * mmSc}px;width:${FW * mmSc}px;height:${f.h * mmSc}px;background:${f.color}"></div>`).join("") + `<div class="vw" id="mmv"></div>`;
+  updMini();
+}
+function updMini() {
+  const v = document.getElementById("mmv"); if (!v) return;
+  v.style.left = (-cam.x / cam.s) * mmSc + "px"; v.style.top = (-cam.y / cam.s) * mmSc + "px";
+  v.style.width = (innerWidth / cam.s) * mmSc + "px"; v.style.height = (innerHeight / cam.s) * mmSc + "px";
+  const cur = tabs.querySelector('.tab[aria-current="true"]'); document.getElementById("mmf").textContent = cur ? cur.textContent : "";
+}
+let mmDown = false;
+const mmMove = e => { const r = mmEl.getBoundingClientRect(); const wx = (e.clientX - r.left) / mmSc, wy = (e.clientY - r.top) / mmSc; cam.x = innerWidth / 2 - wx * cam.s; cam.y = innerHeight / 2 - wy * cam.s; apply(); };
+mmEl.addEventListener("pointerdown", e => { mmDown = true; try { mmEl.setPointerCapture(e.pointerId); } catch (_) {} mmMove(e); });
+mmEl.addEventListener("pointermove", e => { if (mmDown) mmMove(e); });
+mmEl.addEventListener("pointerup", () => { mmDown = false; });
+
 function closePanel() { panel.hidden = true; document.body.classList.remove("panel-open"); if (active) { byId[active].el.classList.remove("active"); active = null; } }
 document.getElementById("pclose").onclick = closePanel;
 panel.addEventListener("pointerdown", e => e.stopPropagation());
