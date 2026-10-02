@@ -399,8 +399,7 @@ const svg = document.getElementById("edges");
 const KIND = { sdr: "SDR", closer: "Closer", form: "Form" };
 const byId = {};
 const esc = s => { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; };
-const GAP = 130, TOP = 520, GX = 340;
-const LINKS = [["f1","f2","Sí califica"],["f2","f3","Si no califica",true],["f3","f4","Confirmado"],["f4","f5","Grupos armados"],["f5","f6","Agendó"]];
+const GAP = 130, TOP = 520, GX = 340, GY = 360;
 let WW = FW;
 
 // Título del tablero
@@ -445,10 +444,22 @@ function layout() {
     f.nodes.forEach(n => { const e = byId[n.id].el; maxB = Math.max(maxB, e.offsetTop + e.offsetHeight); });
     f.h = maxB + 56; f.el.style.height = f.h + "px";
   });
-  // una fila, de izquierda a derecha: 01 → 02 → 03 → 04 → 05 → 06
-  FRAMES.forEach((f, i) => { f.x = i * (FW + GX); f.y = TOP; f.el.style.left = f.x + "px"; f.el.style.top = TOP + "px"; });
-  WW = FRAMES.length * FW + (FRAMES.length - 1) * GX;
-  world.style.width = WW + "px"; world.style.height = (TOP + Math.max(...FRAMES.map(f => f.h)) + 80) + "px";
+  // f1 a la izquierda; f2 arriba y f3 abajo; f4 y f5 siguen abajo; f6 a la derecha, al medio
+  const F = id => FRAMES.find(x => x.id === id);
+  const gaps = [560, 340, 340, 560];
+  const colX = [0]; gaps.forEach((g, i) => colX.push(colX[i] + FW + g));
+  const yTop = TOP, yBot = TOP + F("f2").h + GY;
+  const midY = h => (yTop + yBot + F("f3").h) / 2 - h / 2;
+  const place = (id, c, yv) => { const f = F(id); f.x = colX[c]; f.y = yv; f.el.style.left = f.x + "px"; f.el.style.top = yv + "px"; };
+  place("f1", 0, midY(F("f1").h));
+  place("f2", 1, yTop);
+  place("f3", 1, yBot);
+  place("f4", 2, yBot);
+  place("f5", 3, yBot);
+  place("f6", 4, midY(F("f6").h));
+  WW = colX[4] + FW;
+  const bottom = Math.max(...FRAMES.map(f => f.y + f.h));
+  world.style.width = WW + "px"; world.style.height = (bottom + 80) + "px";
   drawEdges();
 }
 function box(id) { const n = byId[id]; const e = n.el; const x = n.frame.x + e.offsetLeft, yv = n.frame.y + e.offsetTop; return { x, y: yv, w: e.offsetWidth, h: e.offsetHeight, f: n.frame }; }
@@ -488,15 +499,25 @@ function drawEdges() {
   big.setAttribute("id", "ahb"); big.setAttribute("viewBox", "0 0 10 10"); big.setAttribute("refX", "8"); big.setAttribute("refY", "5");
   big.setAttribute("markerWidth", "5"); big.setAttribute("markerHeight", "5"); big.setAttribute("orient", "auto-start-reverse");
   big.innerHTML = `<path d="M0 0L10 5L0 10z" fill="#1b1c1e"/>`; defs.appendChild(big);
-  const bigPath = (d, dashed) => { const p = document.createElementNS(ns, "path"); p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", "#1b1c1e"); p.setAttribute("stroke-width", "5"); p.setAttribute("stroke-linecap", "round"); if (dashed) p.setAttribute("stroke-dasharray", "4 14"); p.setAttribute("marker-end", "url(#ahb)"); svg.appendChild(p); };
-  const bigLabel = (x, yv, t) => { const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", x); tx.setAttribute("y", yv); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("fill", "#1b1c1e"); tx.setAttribute("font-family", "JetBrains Mono, monospace"); tx.setAttribute("font-size", "22"); tx.setAttribute("font-weight", "700"); tx.setAttribute("letter-spacing", "1.5"); tx.textContent = t.toUpperCase(); svg.appendChild(tx); };
+  const bigPath = (d, color) => { const p = document.createElementNS(ns, "path"); p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", color || "#1b1c1e"); p.setAttribute("stroke-width", "5"); p.setAttribute("stroke-linejoin", "round"); p.setAttribute("stroke-linecap", "round"); p.setAttribute("marker-end", "url(#ahb)"); svg.appendChild(p); };
+  const bigLabel = (x, yv, t, color) => { const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", x); tx.setAttribute("y", yv); tx.setAttribute("text-anchor", "middle"); tx.setAttribute("fill", color || "#1b1c1e"); tx.setAttribute("font-family", "JetBrains Mono, monospace"); tx.setAttribute("font-size", "22"); tx.setAttribute("font-weight", "700"); tx.setAttribute("letter-spacing", "1.5"); tx.textContent = t.toUpperCase(); svg.appendChild(tx); };
   const F = id => FRAMES.find(x => x.id === id);
-  const ay = TOP + 48;
-  LINKS.forEach(([a, b, t, dashed]) => { const A = F(a), Bf = F(b); const x1 = A.x + FW + 24, x2 = Bf.x - 24; bigPath(`M${x1} ${ay}H${x2}`, dashed); bigLabel((x1 + x2) / 2, ay - 22, t); });
-  // la ruta pre-venta salta directo al núcleo
-  const f2 = F("f2"), f6 = F("f6"), top = TOP - 110;
-  bigPath(`M${f2.x + FW / 2} ${TOP - 14}V${top}H${f6.x + FW / 2}V${TOP - 18}`);
-  bigLabel((f2.x + f6.x + FW) / 2, top - 20, "Pre-venta: entra directo al núcleo");
+  const H = f => f.y + 48;                       // altura del título de cada marco
+  const out = f => f.x + FW + 24, inn = f => f.x - 24;
+  const elbow = (a, b, ya, yb, t, color, mxo) => {     // sale de a, dobla en el hueco, entra en b
+    const x1 = out(a), x2 = inn(b), mx = mxo != null ? mxo : (x1 + x2) / 2;
+    bigPath(`M${x1} ${ya}H${mx}V${yb}H${x2}`, color);
+    if (t) bigLabel((mx + x2) / 2, yb - 22, t, color);
+  };
+  const f1 = F("f1"), f2 = F("f2"), f3 = F("f3"), f4 = F("f4"), f5 = F("f5"), f6 = F("f6");
+  const y1 = f1.y + f1.h / 2;
+  elbow(f1, f2, y1 - 40, H(f2), "Califica", "#15803d");
+  elbow(f1, f3, y1 + 40, H(f3), "Todavía no", "#b42318");
+  elbow(f3, f4, H(f3), H(f4), "Confirmado");
+  elbow(f4, f5, H(f4), H(f5), "Grupos armados");
+  const g6 = (out(f5) + inn(f6)) / 2;
+  elbow(f2, f6, H(f2), f6.y + f6.h / 2 - 40, "Agenda en la llamada", null, g6 - 70);
+  elbow(f5, f6, H(f5), f6.y + f6.h / 2 + 40, "Agendó", null, g6 + 70);
 }
 
 /* ---------- Cámara ---------- */
