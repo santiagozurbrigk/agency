@@ -43,6 +43,8 @@ button { font: inherit; color: inherit; }
   background-image: radial-gradient(var(--dot) 1.2px, transparent 1.3px);
   background-size: 22px 22px; }
 #viewport.dragging { cursor: grabbing; }
+#viewport, .topbar, .zoom, .hint { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.panel { -webkit-user-select: text; user-select: text; }
 #world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
 #edges { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; z-index: 1; }
 
@@ -527,6 +529,8 @@ function goFrame(id) { const f = FRAMES.find(x => x.id === id); flyTo(fitRect(f.
 const pts = new Map(); let drag = null, pinch = null;
 vp.addEventListener("pointerdown", e => {
   if (e.button !== undefined && e.button > 0) return;
+  if (e.pointerType === "mouse") e.preventDefault();
+  const sel = getSelection(); if (sel && sel.rangeCount) sel.removeAllRanges();
   pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
   if (pts.size === 1) drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false, target: e.target };
   if (pts.size === 2) { const [p, q] = [...pts.values()]; pinch = { d: Math.hypot(p.x - q.x, p.y - q.y), s: cam.s }; drag = null; }
@@ -551,6 +555,8 @@ function endPtr(e) {
   if (pts.size === 0) { drag = null; vp.classList.remove("dragging"); }
 }
 vp.addEventListener("pointerup", endPtr);
+vp.addEventListener("dragstart", e => e.preventDefault());
+vp.addEventListener("selectstart", e => e.preventDefault());
 vp.addEventListener("pointercancel", endPtr);
 vp.addEventListener("wheel", e => { e.preventDefault(); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0016)), e.clientX, e.clientY); }, { passive: false });
 
