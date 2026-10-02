@@ -8,19 +8,18 @@
 <meta name="theme-color" content="#0B0B0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Stubs de Meta: la librería real carga diferida al final -->
+<!-- Stubs de Meta: la librería real carga diferida -->
 <script>
   !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
 </script>
 
 <style>
   /*
-    Concepto: la página es el celular de un dueño de tienda.
-    Gonza vive mirando notificaciones de "Nueva venta" (cada una le costó un CPA).
-    A Manu le llegan "Cobros recurrentes" (clientes que ya compraron, sin pauta).
-    Naranja = lo que querés que te llegue. Gris = lo que hoy te llega.
+    Estructura: la del agente Constructor de optin (a → h).
+    Concepto visual: el celular de un dueño de tienda.
+    Gris = "Nueva venta" (cada una te costó un CPA). Naranja = "Cobro recurrente" (sin pauta).
   */
   :root {
     --negro: #0B0B0C;
@@ -28,7 +27,6 @@
     --negro-3: #1D1D1F;
     --linea: rgba(255,255,255,.08);
     --hueso: #F2EDE4;
-    --hueso-2: #D9D3C8;
     --tinta: #17181C;
     --gris: #8E8E93;
     --gris-2: #B9B9BE;
@@ -38,46 +36,52 @@
     --verde: #34C759;
     --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
     --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    --ancho: 1120px;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  #registro { scroll-margin-top: 110px; }
   body {
     margin: 0; background: var(--negro); color: #fff;
     font-family: var(--cuerpo); font-size: 16px; line-height: 1.55;
     -webkit-font-smoothing: antialiased; overflow-x: hidden; padding-bottom: 84px;
   }
   img { max-width: 100%; height: auto; display: block; }
-  h1, h2, h3 { font-family: var(--titulos); line-height: 1.08; margin: 0; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
   p { margin: 0; }
-  .wrap { max-width: var(--ancho); margin: 0 auto; padding: 0 18px; }
-  .marca { background: var(--naranja); color: var(--negro); padding: 0 .18em; border-radius: .14em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .tx-naranja { color: var(--naranja); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 18px; }
+  .angosto { max-width: 760px; margin: 0 auto; }
+  .marca { background: var(--naranja); color: #fff; padding: 0 .16em; border-radius: .14em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
-  /* ===== Barra superior ===== */
+  /* ===== Fondo: gráfico de suscriptores activos que crece con el scroll ===== */
+  .bg-chart { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .bg-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .bg-chart .grid line { stroke: rgba(255,255,255,.05); stroke-width: 1; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+  .bg-chart .linea-subs { fill: none; stroke: rgba(var(--naranja-rgb), .45); stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+  .bg-chart .area-subs { fill: url(#grad-area); }
+  .bg-punto { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 0 5px rgba(var(--naranja-rgb), .18), 0 0 24px rgba(var(--naranja-rgb), .6); }
+  .bg-tip { position: absolute; transform: translate(-100%, -130%); white-space: nowrap; font-size: 11.5px; color: var(--gris-2); background: rgba(20,20,21,.85); border: 1px solid var(--linea); border-radius: 8px; padding: 5px 8px; }
+  .bg-tip b { display: block; font-family: var(--titulos); font-size: 15px; color: #fff; font-variant-numeric: tabular-nums; }
+  .hero, section, footer { position: relative; z-index: 1; }
+  @media (max-width: 767px) { .bg-tip { display: none; } }
+
+  /* ===== a) Barra superior ===== */
   .top { position: sticky; top: 0; z-index: 40; }
-  .head {
-    background: rgba(11,11,12,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--linea);
-  }
-  .head .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .head { background: rgba(11,11,12,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
+  .head .wrap { display: flex; align-items: center; justify-content: space-between; height: 54px; }
   .logo { display: flex; align-items: center; gap: 10px; font-family: var(--titulos); font-weight: 700; letter-spacing: .16em; font-size: 14px; }
   .logo svg { width: 30px; height: 20px; }
-  .head-cta {
-    background: var(--naranja); color: var(--negro); text-decoration: none; font-weight: 700; font-size: 14px;
-    padding: 9px 14px; border-radius: 10px;
-  }
-  .timebar { background: var(--naranja); color: var(--negro); text-align: center; font-weight: 600; font-size: 13.5px; padding: 7px 10px; }
+  .head-cta { background: var(--naranja); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 10px; }
+  .timebar { background: var(--naranja); color: #fff; text-align: center; font-weight: 600; font-size: 13.5px; padding: 7px 10px; }
   .timebar b { font-family: var(--titulos); font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 
-  /* ===== Notificación (componente) ===== */
+  /* ===== Notificación (componente del concepto) ===== */
   .notif {
     display: flex; gap: 11px; align-items: flex-start; text-align: left;
-    background: rgba(38,38,40,.72); backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%);
-    border: 1px solid rgba(255,255,255,.06); border-radius: 20px; padding: 12px 14px 13px;
-    color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    background: rgba(38,38,40,.78); backdrop-filter: blur(22px) saturate(160%); -webkit-backdrop-filter: blur(22px) saturate(160%);
+    border: 1px solid rgba(255,255,255,.07); border-radius: 20px; padding: 12px 14px 13px;
+    color: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.4);
   }
-  .notif.claro { background: rgba(246,243,238,.92); color: var(--tinta); border-color: rgba(0,0,0,.04); }
+  .notif.claro { background: rgba(246,243,238,.95); color: var(--tinta); border-color: rgba(0,0,0,.04); }
   .notif .ic { flex: 0 0 38px; height: 38px; border-radius: 9px; display: grid; place-items: center; }
   .notif .ic svg { width: 22px; height: 22px; }
   .ic.tienda { background: var(--naranja); }
@@ -90,34 +94,45 @@
   .notif.claro .nt time { color: #7d7a74; }
   .notif .nb p { font-size: 14.5px; line-height: 1.32; margin-top: 1px; color: rgba(255,255,255,.92); }
   .notif.claro .nb p { color: var(--tinta); }
-  .badge {
-    display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: 11.5px; font-weight: 600;
-    padding: 3px 8px; border-radius: 999px; letter-spacing: .01em;
-  }
+  .badge { display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: 11.5px; font-weight: 600; padding: 3px 8px; border-radius: 999px; }
   .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
   .badge.rec { color: var(--naranja); background: rgba(var(--naranja-rgb), .14); }
   .badge.cpa { color: var(--gris-2); background: rgba(255,255,255,.08); }
-  .notif.venta { opacity: .9; }
+  .stack { display: grid; gap: 8px; }
 
   /* Entrada de notificaciones */
-  .anim .notif { opacity: 0; transform: translateY(-14px) scale(.98); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+  .anim .notif { opacity: 0; transform: translateY(-12px) scale(.98); transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
   .anim.in .notif { opacity: 1; transform: none; }
-  .anim.in .notif:nth-child(2) { transition-delay: .25s; }
-  .anim.in .notif:nth-child(3) { transition-delay: .5s; }
-  .anim.in .notif:nth-child(4) { transition-delay: .75s; }
-  .anim.in .notif:nth-child(5) { transition-delay: 1s; }
+  .anim.in .notif:nth-child(2) { transition-delay: .2s; }
+  .anim.in .notif:nth-child(3) { transition-delay: .4s; }
 
-  /* ===== Hero ===== */
-  .hero { position: relative; padding: 26px 0 34px; overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: -20% -30% auto; height: 620px; pointer-events: none;
-    background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .26), transparent 70%);
+  /* Botones */
+  .btn {
+    display: inline-flex; justify-content: center; align-items: center; width: 100%; max-width: 420px;
+    border: 0; border-radius: 14px; padding: 17px 22px; cursor: pointer; text-decoration: none;
+    font-family: var(--cuerpo); font-weight: 700; font-size: 16px; letter-spacing: .03em; text-transform: uppercase;
+    transition: transform .08s;
   }
-  .hero .wrap { position: relative; display: grid; gap: 28px; }
-  .copy { text-align: center; }
-  .lock-m { margin-bottom: 18px; }
-  .lock-date { font-size: 16px; font-weight: 600; color: var(--hueso); }
-  .lock-time { font-family: var(--titulos); font-weight: 300; font-size: 88px; line-height: .95; letter-spacing: -0.04em; color: var(--hueso); }
+  .btn:active { transform: translateY(2px); }
+  .btn-naranja { background: linear-gradient(90deg, var(--naranja-oscuro), var(--naranja)); color: #fff; box-shadow: 0 10px 30px rgba(var(--naranja-rgb), .35); }
+  .btn-blanco { background: #fff; color: var(--negro); box-shadow: 0 0 0 2px var(--naranja), 0 10px 34px rgba(255,255,255,.1); }
+  .btn[disabled] { opacity: .7; cursor: wait; }
+
+  /* Etiqueta de sección (como un estado de pedido) */
+  .tag-estado {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--gris-2); background: var(--negro-2); border: 1px solid var(--linea);
+    padding: 6px 12px; border-radius: 999px;
+  }
+  .tag-estado i { width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); }
+
+  /* ===== b) Above the fold ===== */
+  .hero { position: relative; padding: 24px 0 30px; text-align: center; }
+  .hero::before {
+    content: ""; position: absolute; left: 50%; top: -120px; transform: translateX(-50%); width: 900px; height: 600px; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .24), transparent 70%);
+  }
+  .hero .wrap { position: relative; }
   .pill {
     display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(var(--naranja-rgb), .6);
     color: var(--naranja); border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 700;
@@ -125,161 +140,92 @@
   }
   .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); animation: pulso 1.6s infinite; }
   @keyframes pulso { 50% { opacity: .25; } }
-  .hero h1 { font-size: 30px; font-weight: 800; margin: 16px 0 14px; line-height: 1.14; }
-  .hero .sub { color: var(--gris-2); font-size: 16px; max-width: 34em; margin: 0 auto 20px; }
-  .btn {
-    display: inline-flex; justify-content: center; align-items: center; width: 100%; max-width: 420px;
-    border: 0; border-radius: 14px; padding: 17px 22px; cursor: pointer; text-decoration: none;
-    font-family: var(--cuerpo); font-weight: 700; font-size: 16px; letter-spacing: .03em; text-transform: uppercase;
-    transition: transform .08s, box-shadow .2s;
-  }
-  .btn:active { transform: translateY(2px); }
-  .btn-naranja { background: linear-gradient(90deg, var(--naranja-oscuro), var(--naranja)); color: #fff; box-shadow: 0 10px 30px rgba(var(--naranja-rgb), .35); }
-  .btn-blanco { background: #fff; color: var(--negro); box-shadow: 0 0 0 2px var(--naranja), 0 10px 34px rgba(255,255,255,.12); }
-  .btn[disabled] { opacity: .7; cursor: wait; }
-  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
-  .chip { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--gris-2); }
-  .chip b { color: #fff; font-weight: 600; }
-
-  /* Celular: en mobile no hay marco, las notificaciones quedan sueltas */
-  .phone { position: relative; }
-  .phone .screen { position: relative; }
-  .phone .lock-d { display: none; }
-  .stack { display: grid; gap: 8px; max-width: 420px; margin: 0 auto; }
-  .stack-label { font-size: 13px; color: var(--gris); text-align: center; margin-bottom: 2px; }
-  .stack-more { height: 12px; margin: -4px 14px 0; border-radius: 0 0 16px 16px; background: rgba(38,38,40,.55); }
-  .stack-more + .stack-more { height: 9px; margin: -2px 26px 0; background: rgba(38,38,40,.35); }
-  .phone-cap { text-align: center; color: var(--gris); font-size: 13.5px; margin-top: 12px; }
-
-  /* ===== VSL ===== */
-  .vsl-sec { padding: 0 0 34px; }
+  .hero h1 { font-size: 29px; font-weight: 800; margin: 14px auto 12px; line-height: 1.12; max-width: 15em; }
+  .hero .sub { color: var(--gris-2); font-size: 16px; max-width: 34em; margin: 0 auto 18px; }
+  .hero .sub b { color: #fff; }
   .vsl {
-    max-width: 760px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden;
+    max-width: 760px; margin: 22px auto 0; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden;
     background: var(--negro-2); border: 1px solid var(--linea); display: grid; place-items: center;
   }
   .vsl iframe, .vsl video { width: 100%; height: 100%; border: 0; display: block; }
-  .pendiente { color: var(--gris); font-size: 14px; text-align: center; padding: 20px; border: 1.5px dashed rgba(255,255,255,.18); border-radius: 14px; }
-  .vsl .pendiente { border: 0; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+  .chip { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--gris-2); }
+  .chip b { color: #fff; font-weight: 600; }
+  .pendiente { color: var(--gris); font-size: 14px; text-align: center; padding: 20px; }
+  /* Notificaciones flotando alrededor del titular (solo desktop ancho) */
+  .flota { display: none; }
 
-  /* ===== Form + resumen ===== */
-  .form-sec { padding: 10px 0 46px; }
-  .form-grid { display: grid; gap: 16px; max-width: 980px; margin: 0 auto; }
-  .card-hueso { background: var(--hueso); color: var(--tinta); border-radius: 20px; padding: 26px 20px 22px; box-shadow: 0 30px 60px rgba(0,0,0,.45); }
-  .card-hueso h2 { font-size: 24px; text-align: center; }
-  .card-hueso .lead { text-align: center; color: #5b574f; font-size: 14.5px; margin: 6px 0 20px; }
+  /* ===== c) Form ===== */
+  .form-sec { padding: 6px 0 40px; }
+  .form-card { max-width: 480px; margin: 0 auto; background: var(--hueso); color: var(--tinta); border-radius: 22px; padding: 26px 20px 22px; box-shadow: 0 30px 60px rgba(0,0,0,.45); position: relative; margin-top: 30px; }
+  .form-card .aviso { margin: -52px -6px 16px; }
+  .form-card h2 { font-size: 24px; text-align: center; }
+  .form-card .lead { text-align: center; color: #5b574f; font-size: 14.5px; margin: 6px 0 18px; }
   form { display: grid; gap: 13px; }
   label { font-size: 12px; font-weight: 700; display: block; margin-bottom: 5px; text-transform: uppercase; letter-spacing: .06em; color: #4a4741; }
-  input, select {
-    width: 100%; font: inherit; font-size: 16px; padding: 13px 13px; border-radius: 10px;
-    border: 1.5px solid #D6CEC0; background: #fff; color: var(--tinta);
-  }
+  input, select { width: 100%; font: inherit; font-size: 16px; padding: 13px; border-radius: 10px; border: 1.5px solid #D6CEC0; background: #fff; color: var(--tinta); }
   input:focus, select:focus { outline: none; border-color: var(--naranja); box-shadow: 0 0 0 3px rgba(var(--naranja-rgb), .2); }
   .tel { display: grid; grid-template-columns: 112px 1fr; gap: 8px; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  form .btn { max-width: none; }
   .nota { font-size: 13px; color: #5b574f; text-align: center; margin-top: 2px; }
   .error { display: none; color: #b3261e; font-size: 14px; text-align: center; font-weight: 600; }
   .campo-error { border-color: #b3261e; }
-  form .btn { max-width: none; }
-
-  .resumen { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 20px; padding: 20px; }
-  .resumen h3 { font-size: 15px; font-family: var(--cuerpo); font-weight: 600; color: var(--gris-2); display: flex; justify-content: space-between; align-items: center; }
-  .estado { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(52,199,89,.14); color: var(--verde); }
-  .linea { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--linea); }
-  .linea:first-of-type { margin-top: 8px; }
-  .thumb { width: 44px; height: 44px; border-radius: 10px; background: var(--negro-3); display: grid; place-items: center; position: relative; }
-  .thumb svg { width: 22px; height: 22px; }
-  .thumb .q { position: absolute; top: -6px; right: -6px; min-width: 19px; height: 19px; border-radius: 999px; background: var(--gris); color: var(--negro); font-size: 11px; font-weight: 700; display: grid; place-items: center; padding: 0 5px; }
-  .linea b { display: block; font-size: 14.5px; font-weight: 600; }
-  .linea small { color: var(--gris); font-size: 12.5px; }
-  .precio { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--gris-2); }
-  .total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 14px; }
-  .total span { color: var(--gris-2); font-size: 14px; }
-  .total strong { font-family: var(--titulos); font-size: 26px; }
-  .total strong small { font-family: var(--cuerpo); font-size: 12px; color: var(--gris); font-weight: 500; margin-right: 6px; }
-
-  /* ===== Secciones con estado ===== */
-  .sec { padding: 54px 0; border-top: 1px solid var(--linea); }
-  .tag-estado {
-    display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--gris-2); background: var(--negro-2); border: 1px solid var(--linea);
-    padding: 6px 12px; border-radius: 999px;
-  }
-  .tag-estado i { width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); }
-  .sec-head { text-align: center; max-width: 760px; margin: 0 auto 30px; }
-  .sec-head h2 { font-size: 30px; font-weight: 800; margin-top: 14px; }
-  .sec-head p { color: var(--gris-2); margin-top: 12px; font-size: 16px; }
-
-  /* #01 La diferencia */
-  .versus { display: grid; gap: 14px; }
-  .lado { border-radius: 22px; padding: 18px 14px 16px; border: 1px solid var(--linea); }
-  .lado.vos { background: linear-gradient(180deg, #161617, #101011); }
-  .lado.yo { background: radial-gradient(120% 90% at 50% 0%, rgba(var(--naranja-rgb), .16), transparent 60%), #121212; border-color: rgba(var(--naranja-rgb), .35); }
-  .lado h3 { font-size: 13px; font-family: var(--cuerpo); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gris); margin: 0 4px 12px; }
-  .lado.yo h3 { color: var(--naranja); }
-  .lado .stack { max-width: none; }
-  .dia1 { display: grid; gap: 14px; margin-top: 14px; }
-  .lock-mini { border-radius: 22px; padding: 18px 14px; text-align: center; border: 1px solid var(--linea); background: #0f0f10; min-height: 200px; }
-  .lock-mini .d { font-size: 13px; color: var(--gris-2); font-weight: 600; }
-  .lock-mini .t { font-family: var(--titulos); font-weight: 300; font-size: 54px; line-height: 1; color: var(--hueso); margin: 2px 0 14px; letter-spacing: -0.03em; }
-  .vacio { color: var(--gris); font-size: 14px; padding: 26px 0 10px; }
-  .lock-mini.yo { border-color: rgba(var(--naranja-rgb), .35); background: radial-gradient(120% 80% at 50% 0%, rgba(var(--naranja-rgb), .14), transparent 60%), #0f0f10; }
-  .remate { text-align: center; font-family: var(--titulos); font-size: 22px; font-weight: 700; margin-top: 26px; }
-
-  /* #02 Lo que te llevás */
-  .llevas { display: grid; gap: 26px; }
-  .pasos { display: grid; gap: 12px; }
-  .paso { display: grid; grid-template-columns: 34px 1fr; gap: 14px; background: var(--negro-2); border: 1px solid var(--linea); border-radius: 18px; padding: 16px; }
-  .paso .n { width: 34px; height: 34px; border-radius: 10px; background: rgba(var(--naranja-rgb), .14); color: var(--naranja); display: grid; place-items: center; font-weight: 800; font-family: var(--titulos); }
-  .paso b { display: block; font-family: var(--titulos); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja); margin-bottom: 2px; }
-  .paso p { color: #fff; }
-  .regalos h3 { font-size: 13px; font-family: var(--cuerpo); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gris); margin: 0 4px 12px; }
-
-  /* #03 Anfitrión */
-  .host { display: grid; gap: 24px; align-items: start; }
-  .foto { position: relative; border-radius: 22px; overflow: hidden; background: var(--negro-2); border: 1px solid var(--linea); aspect-ratio: 4/5; max-width: 380px; width: 100%; margin: 0 auto; }
-  .foto img { width: 100%; height: 100%; object-fit: cover; }
-  .foto .pendiente { position: absolute; inset: 14px; display: grid; place-items: center; }
-  .foto .notif { position: absolute; left: 12px; right: 12px; bottom: 12px; }
-  .host h3 { font-size: 26px; margin-bottom: 14px; }
-  .host .bio p { color: var(--gris-2); margin-bottom: 12px; }
-  .host .bio p b { color: #fff; }
-  .metricas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
-  .metrica { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 16px; padding: 14px; }
-  .metrica.ancha { grid-column: 1 / -1; }
-  .metrica .l { font-size: 13px; color: var(--gris); display: flex; justify-content: space-between; }
-  .metrica .v { font-family: var(--titulos); font-weight: 700; font-size: 26px; margin-top: 4px; font-variant-numeric: tabular-nums; }
-  .barras { display: grid; gap: 6px; margin-top: 10px; }
-  .barra { display: grid; grid-template-columns: 54px 1fr; gap: 10px; align-items: center; font-size: 12px; color: var(--gris); }
-  .barra span { height: 10px; border-radius: 6px; background: #3A3A3C; }
-  .barra.hoy span { background: var(--naranja); }
-  .capturas { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
-  .capturas .pendiente { min-height: 90px; display: grid; place-items: center; }
-
-  /* #04 Tu lugar: seguimiento + cierre */
-  .seguimiento { max-width: 760px; margin: 0 auto; background: var(--negro-2); border: 1px solid var(--linea); border-radius: 22px; padding: 22px 18px; }
-  .seg-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .seg-top small { color: var(--gris); font-size: 13px; display: block; }
-  .seg-top strong { font-family: var(--titulos); font-size: 20px; }
-  .cd-grande { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 18px 0; }
-  .cd-grande div { background: var(--negro-3); border-radius: 14px; padding: 12px 4px; text-align: center; }
-  .cd-grande div:first-child { background: var(--naranja); color: var(--negro); }
+  .cd-grande { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 480px; margin: 22px auto 0; }
+  .cd-grande div { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 14px; padding: 12px 4px; text-align: center; }
+  .cd-grande div:first-child { background: var(--naranja); color: #fff; border-color: var(--naranja); }
   .cd-grande b { display: block; font-family: var(--titulos); font-size: 30px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
   .cd-grande span { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; opacity: .75; }
-  .track { display: grid; grid-template-columns: repeat(3, 1fr); position: relative; margin-top: 6px; }
-  .track::before { content: ""; position: absolute; left: 16%; right: 16%; top: 9px; height: 2px; background: var(--negro-3); }
-  .track::after { content: ""; position: absolute; left: 16%; width: 0; top: 9px; height: 2px; background: var(--naranja); }
-  .tp { position: relative; text-align: center; font-size: 12.5px; color: var(--gris); padding: 0 4px; }
-  .tp i { display: block; width: 20px; height: 20px; border-radius: 50%; margin: 0 auto 8px; background: var(--negro-3); border: 2px solid var(--negro-2); box-shadow: 0 0 0 2px var(--negro-3); }
-  .tp.activo { color: #fff; font-weight: 600; }
-  .tp.activo i { background: var(--naranja); box-shadow: 0 0 0 2px var(--naranja), 0 0 0 6px rgba(var(--naranja-rgb), .2); }
-  .final { text-align: center; margin-top: 34px; }
-  .final h2 { font-size: 28px; font-weight: 800; }
-  .final p { color: var(--gris-2); margin: 12px auto 22px; max-width: 32em; }
+
+  /* ===== Secciones ===== */
+  .sec { padding: 52px 0; border-top: 1px solid var(--linea); }
+  .sec-head { text-align: center; margin-bottom: 26px; }
+  .sec-head h2 { font-size: 30px; font-weight: 800; margin-top: 14px; }
+
+  /* d) Lo que vas a ver en vivo */
+  .regalos { max-width: 520px; margin: 0 auto 30px; }
+  .regalos .t { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gris); text-align: center; margin-bottom: 12px; }
+  .bullets { display: grid; gap: 14px; max-width: 1080px; margin: 0 auto; }
+  .bullet { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+
+  .bullet b.k { display: block; font-family: var(--titulos); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--naranja); margin-bottom: 4px; }
+  .bullet p { font-size: 16.5px; }
+  .ilus { background: #0f0f10; border: 1px solid var(--linea); border-radius: 16px; padding: 12px; }
+  .ilus .notif { box-shadow: none; }
+  .ilus-l { font-size: 12px; color: var(--gris); margin: 0 2px 8px; }
+  .barras { display: grid; gap: 8px; }
+  .barra { display: grid; grid-template-columns: 52px 1fr auto; gap: 10px; align-items: center; font-size: 12.5px; color: var(--gris); }
+  .barra span { height: 12px; border-radius: 6px; background: #3A3A3C; }
+  .barra.hoy span { background: var(--naranja); }
+  .barra em { font-style: normal; font-variant-numeric: tabular-nums; color: var(--gris-2); }
+  .barra.hoy em { color: #fff; font-weight: 600; }
+
+  /* e) Anfitrión */
+  .host { display: grid; gap: 24px; align-items: start; max-width: 980px; margin: 0 auto; }
+  .foto { position: relative; border-radius: 22px; overflow: hidden; background: var(--negro-2); border: 1px solid var(--linea); aspect-ratio: 4/5; max-width: 360px; width: 100%; margin: 0 auto; }
+  .foto img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+  .foto .pendiente { position: absolute; inset: 0; display: grid; place-items: center; }
+  .host h3 { font-size: 28px; margin: 14px 0 12px; }
+  .bio p { color: var(--gris-2); margin-bottom: 12px; }
+  .bio p b { color: #fff; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; }
+  .stat { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 16px; padding: 12px; }
+  .stat .l { font-size: 12px; color: var(--gris); }
+  .stat .v { font-family: var(--titulos); font-weight: 700; font-size: 21px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  .stat.naranja { background: rgba(var(--naranja-rgb), .12); border-color: rgba(var(--naranja-rgb), .4); }
+  .stat.naranja .v { color: var(--naranja); }
+
+  /* g) CTA final: pantalla de bloqueo */
+  .final { text-align: center; }
+  .lock { max-width: 420px; margin: 0 auto 26px; border-radius: 30px; padding: 26px 14px 16px; border: 1px solid rgba(var(--naranja-rgb), .35);
+    background: radial-gradient(100% 70% at 50% 0%, rgba(var(--naranja-rgb), .3), transparent 70%), #0f0f10; }
+  .lock-date { font-size: 15px; font-weight: 600; color: var(--hueso); }
+  .lock-time { font-family: var(--titulos); font-weight: 300; font-size: 76px; line-height: 1; letter-spacing: -0.04em; color: var(--hueso); margin-bottom: 18px; }
+  .final h2 { font-size: 26px; font-weight: 800; max-width: 18em; margin: 0 auto 20px; }
   .final .chico { font-size: 13.5px; color: var(--gris); margin-top: 12px; }
 
-  .entre { text-align: center; margin-top: 30px; }
-
-  footer { text-align: center; padding: 30px 0 34px; color: var(--gris); font-size: 13px; border-top: 1px solid var(--linea); }
+  /* h) Footer */
+  footer { text-align: center; padding: 28px 0 32px; color: var(--gris); font-size: 13px; border-top: 1px solid var(--linea); }
   footer .logo { justify-content: center; color: #fff; margin-bottom: 6px; }
 
   /* CTA sticky mobile */
@@ -291,66 +237,80 @@
   .sticky .btn { max-width: none; padding: 15px; }
   .sticky.oculto { transform: translateY(115%); }
 
-  /* ===== Desktop ===== */
+  /* ===== 768 px ===== */
   @media (min-width: 768px) {
-    .hero h1 { font-size: 40px; }
-    .sec-head h2 { font-size: 38px; }
-    .versus { grid-template-columns: 1fr 1fr; }
-    .dia1 { grid-template-columns: 1fr 1fr; }
-    .form-grid { grid-template-columns: 1.1fr .9fr; align-items: start; }
-    .llevas { grid-template-columns: 1.1fr .9fr; align-items: start; }
-    .host { grid-template-columns: 340px 1fr; }
-    .foto { position: sticky; top: 110px; }
-    .capturas { grid-template-columns: 1fr 1fr 1fr; }
-    .final h2 { font-size: 36px; }
-  }
-  @media (min-width: 960px) {
     body { padding-bottom: 0; }
     .sticky { display: none; }
-    .hero { padding: 54px 0 60px; }
-    .hero .wrap { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 48px; }
-    .copy { text-align: left; }
-    .lock-m { display: none; }
-    .hero .sub { margin-left: 0; }
-    .chips { justify-content: flex-start; }
-    .hero h1 { font-size: 50px; }
-    /* El celular con marco */
-    .phone {
-      width: 340px; margin: 0 auto; border-radius: 48px; padding: 12px; background: #1a1a1b;
-      box-shadow: 0 0 0 2px #2a2a2c, 0 40px 90px rgba(0,0,0,.6), 0 0 120px rgba(var(--naranja-rgb), .18);
-    }
-    .phone .screen {
-      border-radius: 38px; overflow: hidden; padding: 54px 12px 26px;
-      background: radial-gradient(90% 60% at 50% 0%, rgba(var(--naranja-rgb), .35), transparent 70%), linear-gradient(180deg, #2a1608, #0d0d0e 60%);
-    }
-    .phone .screen::before { content: ""; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 100px; height: 28px; border-radius: 20px; background: #000; }
-    .phone .lock-d { display: block; text-align: center; margin-bottom: 22px; }
-    .phone .lock-time { font-size: 82px; }
-    .phone .stack-label { color: rgba(255,255,255,.7); }
-    .phone-cap { display: none; }
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 44px; }
+    .hero .sub { font-size: 18px; }
+    .sec-head h2 { font-size: 38px; }
+    .host { grid-template-columns: 340px 1fr; }
+    .foto { position: sticky; top: 110px; }
+    .stat .v { font-size: 26px; }
+    .final h2 { font-size: 34px; }
   }
+  @media (min-width: 960px) {
+    .bullets { grid-template-columns: repeat(3, 1fr); }
+    .bullet { padding: 22px 20px; }
+    .bullet .ilus { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .bullet .ilus.stack { display: grid; align-content: center; }
+  }
+  /* ===== 1120 px ===== */
   @media (min-width: 1120px) {
-    .hero h1 { font-size: 56px; }
+    .hero { padding: 60px 0 46px; }
+    .hero h1 { font-size: 56px; max-width: 14em; }
+  }
+  /* Notificaciones flotando a los costados: solo si hay margen */
+  @media (min-width: 1380px) {
+    .flota { display: block; position: absolute; width: 260px; }
+    .flota .notif { transform: rotate(var(--r, 0deg)); }
+    .flota.f1 { left: -150px; top: 30px; --r: -3deg; }
+    .flota.f2 { left: -120px; top: 190px; --r: 2deg; }
+    .flota.f3 { right: -150px; top: 20px; --r: 3deg; }
+    .flota.f4 { right: -120px; top: 180px; --r: -2deg; }
+    .flota .anim .notif { transform: rotate(var(--r)) translateY(-12px); }
+    .flota .anim.in .notif { transform: rotate(var(--r)); }
+    .hero .copy { padding: 0 140px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .anim .notif { opacity: 1; transform: none; transition: none; }
+    .anim .notif { opacity: 1; transition: none; }
     .pill .dot { animation: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- Íconos reutilizables -->
+<!-- Íconos -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-bolsa" viewBox="0 0 24 24"><path fill="#fff" d="M7 8V7a5 5 0 0 1 10 0v1h2.2a1 1 0 0 1 1 .93l.8 11A2 2 0 0 1 19 23H5a2 2 0 0 1-2-2.07l.8-11A1 1 0 0 1 4.8 8H7Zm2 0h6V7a3 3 0 0 0-6 0v1Z"/></symbol>
     <symbol id="i-genesis" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
-    <symbol id="i-video" viewBox="0 0 24 24"><path fill="#F26A1B" d="M4 6h11a2 2 0 0 1 2 2v1.5l3.4-2.3A1 1 0 0 1 22 8v8a1 1 0 0 1-1.6.8L17 14.5V16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/></symbol>
-    <symbol id="i-regalo" viewBox="0 0 24 24"><path fill="#F26A1B" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 0 1 0 2h-2V6a1 1 0 0 1 1-1h1ZM9 5h1a1 1 0 0 1 1 1v1H9a1 1 0 0 1 0-2Zm2 15H7v-8h4v8Zm0-10H5V9h6v1Zm6 10h-4v-8h4v8Zm2-10h-6V9h6v1Z"/></symbol>
   </defs>
 </svg>
 
-<!-- Barra superior -->
+<!-- Fondo: gráfico de suscriptores activos (decorativo) -->
+<div class="bg-chart" aria-hidden="true">
+  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="grad-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F26A1B" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#F26A1B" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="clip-area"><rect id="clip-rect" x="0" y="0" width="0" height="1000"/></clipPath>
+    </defs>
+    <g class="grid">
+      <line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="400" x2="1000" y2="400"/>
+      <line x1="0" y1="600" x2="1000" y2="600"/><line x1="0" y1="800" x2="1000" y2="800"/>
+    </g>
+    <path class="area-subs" clip-path="url(#clip-area)" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200 L 1000 1000 L 0 1000 Z"/>
+    <path id="linea-subs" class="linea-subs" clip-path="url(#clip-area)" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200"/>
+  </svg>
+  <div class="bg-punto" id="bg-punto"></div>
+  <div class="bg-tip" id="bg-tip">Suscriptores activos<b id="bg-num">0</b></div>
+</div>
+
+<!-- a) Barra superior fija con countdown -->
 <div class="top">
   <div class="head">
     <div class="wrap">
@@ -361,68 +321,51 @@
   <div class="timebar">La clase empieza en <b data-cd="d">00</b><b>D</b> <b data-cd="h">00</b><b>H</b> <b data-cd="m">00</b><b>M</b> <b data-cd="s">00</b><b>S</b></div>
 </div>
 
-<!-- Hero: la pantalla de bloqueo -->
+<!-- b) Above the fold -->
 <header class="hero">
   <div class="wrap">
+    <!-- Desktop: lo que te llega a vos (izquierda) y lo que me llega a mí (derecha) -->
+    <div class="flota f1"><div class="anim">
+      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 2 min</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
+    </div></div>
+    <div class="flota f2"><div class="anim">
+      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 2 artículos desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
+    </div></div>
+    <div class="flota f3"><div class="anim">
+      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 2 min</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge rec">Sin pauta</span></div></div>
+    </div></div>
+    <div class="flota f4"><div class="anim">
+      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 1 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, cuarto cobro.</p><span class="badge rec">Sin pauta</span></div></div>
+    </div></div>
+
     <div class="copy">
-      <div class="lock-m">
-        <div class="lock-date">Lunes, 19 de octubre</div>
-        <div class="lock-time">19:00</div>
-      </div>
-      <span class="pill"><span class="dot"></span>Clase en vivo · privada</span>
-      <h1 id="headline">El roadmap con el que pasé mi marca de consumibles de <span class="marca">60 a 156 millones</span> por mes con suscripción</h1>
-      <p class="sub">El lunes 19 de octubre te lo muestro paso a paso, con mis números reales. Para que pases tu marca al modelo de suscripción sin frenar lo que hoy vendés.</p>
-      <a href="#registro" class="btn btn-blanco">Quiero mi lugar en la clase</a>
-      <div class="chips">
-        <span class="chip"><b>Lunes 19 de octubre</b></span>
-        <span class="chip"><b>19:00 hs</b> Argentina</span>
-        <span class="chip">100% gratis y en vivo</span>
-      </div>
+      <span class="pill"><span class="dot"></span>Clase en vivo</span>
+      <h1 id="headline">El roadmap con el que pasé mi marca de <span class="marca">60 a 156 millones</span> por mes</h1>
+      <p class="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
+      <a href="#registro" class="btn btn-blanco">Reservá tu lugar gratis</a>
     </div>
 
-    <div class="phone" aria-label="Pantalla de bloqueo con notificaciones">
-      <div class="screen">
-        <div class="lock-d">
-          <div class="lock-date">Lunes, 19 de octubre</div>
-          <div class="lock-time">19:00</div>
-        </div>
-        <div class="stack anim" id="stack-hero">
-          <div class="notif claro">
-            <div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div>
-            <div class="nb"><div class="nt"><b>Génesis</b><time>ahora</time></div><p>La clase en vivo empieza ahora. Tu lugar está reservado.</p></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual de un cliente que ya te compró.</p><span class="badge rec">Recurrente · sin pauta</span></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 3 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, tercer cobro.</p></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hoy 00:01</time></div><p>Cobro recurrente aprobado. Suscripción mensual, quinto cobro.</p></div>
-          </div>
-        </div>
-        <div class="stack-more"></div><div class="stack-more"></div>
-      </div>
-      <p class="phone-cap">Mientras entrás a la clase, los suscriptores se siguen cobrando.</p>
+    <!-- Slot del VSL: pegá el embed adentro y borrá el bloque .pendiente -->
+    <div class="vsl" id="vsl"><div class="pendiente">Acá va el VSL de registro (pendiente de grabar)</div></div>
+
+    <div class="chips">
+      <span class="chip"><b>Lunes 19 de octubre</b></span>
+      <span class="chip" data-tz></span>
+      <span class="chip">100% gratis y en vivo</span>
     </div>
   </div>
 </header>
 
-<!-- VSL -->
-<section class="vsl-sec">
-  <div class="wrap">
-    <!-- Pegá adentro de .vsl el embed del video y borrá el bloque .pendiente -->
-    <div class="vsl" id="vsl"><div class="pendiente">Acá va el VSL de registro (pendiente de grabar)</div></div>
-  </div>
-</section>
-
-<!-- Form + resumen del lugar -->
+<!-- c) Form -->
 <section class="form-sec" id="registro">
-  <div class="wrap form-grid">
-    <div class="card-hueso">
+  <div class="wrap">
+    <div class="form-card">
+      <div class="aviso">
+        <div class="notif claro">
+          <div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div>
+          <div class="nb"><div class="nt"><b>Génesis</b><time>ahora</time></div><p>Completá tus datos y tu lugar queda reservado.</p></div>
+        </div>
+      </div>
       <h2>Reservá tu lugar</h2>
       <p class="lead">Lunes 19 de octubre, 19:00 hs (Argentina). En vivo.</p>
       <form id="form" novalidate>
@@ -439,12 +382,14 @@
           <div class="tel">
             <select id="pais" name="pais" aria-label="Código de país">
               <option value="54" selected>AR +54</option>
-              <option value="598">UY +598</option>
-              <option value="56">CL +56</option>
+              <option value="34">ES +34</option>
               <option value="57">CO +57</option>
+              <option value="56">CL +56</option>
               <option value="52">MX +52</option>
+              <option value="598">UY +598</option>
               <option value="51">PE +51</option>
               <option value="593">EC +593</option>
+              <option value="1">EEUU +1</option>
               <option value="595">PY +595</option>
               <option value="591">BO +591</option>
               <option value="58">VE +58</option>
@@ -456,8 +401,6 @@
               <option value="505">NI +505</option>
               <option value="1809">DO +1809</option>
               <option value="53">CU +53</option>
-              <option value="34">ES +34</option>
-              <option value="1">EEUU +1</option>
             </select>
             <input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="11 2345 6789" required>
           </div>
@@ -466,259 +409,151 @@
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
         </div>
-        <button type="submit" class="btn btn-naranja" id="submit">Quiero mi lugar en la clase</button>
+        <button type="submit" class="btn btn-naranja" id="submit">Reservá tu lugar gratis</button>
         <p class="nota">Sin costo. Es privada: solo entran los anotados. El acceso te llega por email.</p>
         <p class="error" id="error">No pudimos registrarte. Probá de nuevo en unos segundos.</p>
       </form>
     </div>
-
-    <aside class="resumen" aria-label="Resumen de tu lugar">
-      <h3>Resumen de tu lugar <span class="estado">Gratis</span></h3>
-      <div class="linea">
-        <div class="thumb"><svg><use href="#i-video"/></svg><span class="q">1</span></div>
-        <div><b>Clase en vivo privada</b><small>Lunes 19/10 · 19:00 hs</small></div>
-        <div class="precio">$0</div>
-      </div>
-      <div class="linea">
-        <div class="thumb"><svg><use href="#i-regalo"/></svg><span class="q">1</span></div>
-        <div><b>Tu roadmap</b><small>Regalo por asistir</small></div>
-        <div class="precio">$0</div>
-      </div>
-      <div class="linea">
-        <div class="thumb"><svg><use href="#i-regalo"/></svg><span class="q">1</span></div>
-        <div><b>Simulador de Suscripción</b><small>Regalo por asistir</small></div>
-        <div class="precio">$0</div>
-      </div>
-      <div class="linea">
-        <div class="thumb"><svg><use href="#i-regalo"/></svg><span class="q">1</span></div>
-        <div><b>Sistemas de email y WhatsApp</b><small>Regalo por asistir</small></div>
-        <div class="precio">$0</div>
-      </div>
-      <div class="total"><span>Total</span><strong><small>ARS</small>$0</strong></div>
-    </aside>
+    <div class="cd-grande" aria-label="Cuenta regresiva">
+      <div><b data-cd="d">00</b><span>días</span></div>
+      <div><b data-cd="h">00</b><span>horas</span></div>
+      <div><b data-cd="m">00</b><span>min</span></div>
+      <div><b data-cd="s">00</b><span>seg</span></div>
+    </div>
   </div>
 </section>
 
-<!-- #01 La diferencia -->
+<!-- d) Lo que vas a ver en vivo -->
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tag-estado"><i></i>#01 · La diferencia</span>
-      <h2>Buscás la compra. <span class="tx-naranja">No al cliente.</span></h2>
-      <p>Las dos notificaciones dicen que entró plata. Una te costó un CPA. La otra no pasó por Meta.</p>
-    </div>
-
-    <div class="versus">
-      <div class="lado vos">
-        <h3>Lo que te llega a vos</h3>
-        <div class="stack anim">
-          <div class="notif venta">
-            <div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 2 min</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div>
-          </div>
-          <div class="notif venta">
-            <div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 2 artículos desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div>
-          </div>
-          <div class="notif venta">
-            <div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 3 h</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="lado yo">
-        <h3>Lo que me llega a mí</h3>
-        <div class="stack anim">
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 2 min</time></div><p>Cobro recurrente aprobado. Suscripción mensual de un cliente que ya te compró.</p><span class="badge rec">Sin pauta</span></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 1 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, cuarto cobro.</p><span class="badge rec">Sin pauta</span></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 3 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, segundo cobro.</p><span class="badge rec">Sin pauta</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="dia1">
-      <div class="lock-mini">
-        <div class="d">1 del mes</div>
-        <div class="t">00:00</div>
-        <div class="vacio">Sin notificaciones</div>
-      </div>
-      <div class="lock-mini yo">
-        <div class="d">1 del mes</div>
-        <div class="t">00:01</div>
-        <div class="stack anim">
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Mi tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p></div>
-          </div>
-          <div class="notif">
-            <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-            <div class="nb"><div class="nt"><b>Mi tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="remate">El 1 del mes, vos arrancás en cero. <span class="tx-naranja">Yo arranco cobrado.</span></p>
-
-    <div class="entre"><a href="#registro" class="btn btn-blanco">Quiero mi lugar en la clase</a></div>
-  </div>
-</section>
-
-<!-- #02 Lo que te llevás -->
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="tag-estado"><i></i>#02 · Lo que te llevás</span>
+      <span class="tag-estado"><i></i>Lo que te llevás</span>
       <h2>Lo que vas a ver en vivo</h2>
     </div>
-    <div class="llevas">
-      <div class="pasos">
-        <div class="paso"><div class="n">1</div><div><b>Primero</b><p>El roadmap que seguí, paso a paso, para pasar mi marca de 60 millones a 156.798.062 por mes.</p></div></div>
-        <div class="paso"><div class="n">2</div><div><b>Segundo</b><p>Por qué cada venta te cuesta lo mismo que la anterior, y por qué bajar el CPA es la pelea equivocada.</p></div></div>
-        <div class="paso"><div class="n">3</div><div><b>Y tercero</b><p>Cómo pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés y sin tirar el producto que ya tenés.</p></div></div>
+
+    <div class="regalos">
+      <div class="t">Y por asistir, te llegan 3 regalos</div>
+      <div class="stack anim">
+        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 1</time></div><p><b>Tu roadmap.</b> Para pasar tu marca a suscripción con lo que ya tenés.</p></div></div>
+        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><b>El Simulador de Suscripción.</b> Cargás los números de tu marca y ves cuánto podés pagar por cliente.</p></div></div>
+        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 3</time></div><p><b>Los sistemas que uso en mis marcas</b> para armar los flujos de email y WhatsApp de suscripción.</p></div></div>
       </div>
-      <div class="regalos">
-        <h3>Y por asistir, te llega esto</h3>
-        <div class="stack anim">
-          <div class="notif claro">
-            <div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div>
-            <div class="nb"><div class="nt"><b>Génesis</b><time>regalo 1</time></div><p><b>Tu roadmap.</b> Para pasar tu marca a suscripción con lo que ya tenés: tu base, tu audiencia y tus anuncios.</p></div>
-          </div>
-          <div class="notif claro">
-            <div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div>
-            <div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><b>El Simulador de Suscripción.</b> Cargás los números de tu marca y ves cuánto podés pagar por cliente.</p></div>
-          </div>
-          <div class="notif claro">
-            <div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div>
-            <div class="nb"><div class="nt"><b>Génesis</b><time>regalo 3</time></div><p><b>Los sistemas que uso en mis marcas</b> para armar los flujos de email y WhatsApp de suscripción.</p></div>
+    </div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div><b class="k">Primero</b><p>El roadmap que seguí, paso a paso, para pasar mi marca de 60 millones a 156.798.062 por mes.</p></div>
+        <div class="ilus">
+          <div class="ilus-l">Facturación mensual de mi marca</div>
+          <div class="barras">
+            <div class="barra"><small>Antes</small><span style="width:38%"></span><em>60.000.000</em></div>
+            <div class="barra hoy"><small>Hoy</small><span style="width:100%"></span><em>156.798.062</em></div>
           </div>
         </div>
       </div>
+      <div class="bullet">
+        <div><b class="k">Segundo</b><p>Por qué cada venta te cuesta lo mismo que la anterior, y por qué bajar el CPA es la pelea equivocada.</p></div>
+        <div class="ilus stack anim">
+          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>ahora</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
+          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó otro CPA</span></div></div>
+        </div>
+      </div>
+      <div class="bullet">
+        <div><b class="k">Y tercero</b><p>Cómo pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés y sin tirar el producto que ya tenés.</p></div>
+        <div class="ilus stack anim">
+          <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge rec">Sin pauta</span></div></div>
+          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 5 min</time></div><p>Nueva venta: 1 artículo. Compra única, como siempre.</p></div></div>
+        </div>
+      </div>
     </div>
-    <div class="entre"><a href="#registro" class="btn btn-blanco">Quiero mi lugar en la clase</a></div>
   </div>
 </section>
 
-<!-- #03 Tu anfitrión -->
+<!-- e) Anfitrión -->
 <section class="sec">
   <div class="wrap host">
     <div class="foto">
-      <img src="manu.jpg" alt="Manu Dominguez" width="760" height="950" loading="lazy" onerror="this.remove()">
+      <img src="manu.jpg" alt="Manu Dominguez" width="720" height="900" loading="lazy" onerror="this.remove()">
       <div class="pendiente">Foto de Manu (manu.jpg)</div>
-      <div class="notif">
-        <div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div>
-        <div class="nb"><div class="nt"><b>Mi tienda</b><time>hoy</time></div><p>2.200 suscriptores activos.</p></div>
-      </div>
     </div>
     <div>
-      <span class="tag-estado"><i></i>#03 · Tu anfitrión</span>
-      <h3 style="margin-top:14px">Soy Manu Dominguez</h3>
+      <span class="tag-estado"><i></i>Tu anfitrión</span>
+      <h3>Soy Manu Dominguez</h3>
       <div class="bio">
         <p>Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
-        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>156.798.062 por mes</b>, en Argentina, donde todos dicen que nadie se suscribe.</p>
+        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>156.798.062 por mes</b>, con <b>2.200 suscriptores activos</b> y <b>1,28% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
         <p>En esta clase te muestro el roadmap que seguí, con mis números reales.</p>
       </div>
-      <div class="metricas">
-        <div class="metrica ancha">
-          <div class="l"><span>Facturación mensual</span><span>ARS</span></div>
-          <div class="v">$156.798.062</div>
-          <div class="barras">
-            <div class="barra"><small>Antes</small><span style="width:38%"></span></div>
-            <div class="barra hoy"><small>Hoy</small><span style="width:100%"></span></div>
-          </div>
-        </div>
-        <div class="metrica"><div class="l">Suscriptores activos</div><div class="v">2.200</div></div>
-        <div class="metrica"><div class="l">Churn</div><div class="v">1,28%</div></div>
-      </div>
-      <div class="capturas">
-        <div class="pendiente">Captura: panel de suscriptores</div>
-        <div class="pendiente">Captura: reporte 60M → 156.798.062</div>
-        <div class="pendiente">Captura: marca con la pauta apagada</div>
+      <div class="stats">
+        <div class="stat naranja"><div class="l">Por mes</div><div class="v">156,8M</div></div>
+        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">2.200</div></div>
+        <div class="stat"><div class="l">Churn</div><div class="v">1,28%</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- #04 Tu lugar -->
-<section class="sec">
+<!-- f) Prueba social: se omite hasta tener las capturas reales (panel de suscriptores, reporte 60M → 156.798.062, marca con la pauta apagada) -->
+
+<!-- g) CTA final -->
+<section class="sec final">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="tag-estado"><i></i>#04 · Tu lugar</span>
-    </div>
-    <div class="seguimiento">
-      <div class="seg-top">
-        <div><small>Tu clase llega el</small><strong>Lunes 19 de octubre · 19:00 hs</strong></div>
-        <span class="estado">En vivo y gratis</span>
-      </div>
-      <div class="cd-grande">
-        <div><b data-cd2="d">00</b><span>días</span></div>
-        <div><b data-cd2="h">00</b><span>horas</span></div>
-        <div><b data-cd2="m">00</b><span>min</span></div>
-        <div><b data-cd2="s">00</b><span>seg</span></div>
-      </div>
-      <div class="track">
-        <div class="tp activo"><i></i>Reservás tu lugar</div>
-        <div class="tp"><i></i>Te llega el acceso</div>
-        <div class="tp"><i></i>Clase en vivo</div>
+    <div class="lock">
+      <div class="lock-date">Lunes, 19 de octubre</div>
+      <div class="lock-time">19:00</div>
+      <div class="stack anim">
+        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>ahora</time></div><p>La clase en vivo empieza ahora. Tu lugar está reservado.</p></div></div>
       </div>
     </div>
-    <div class="final">
-      <h2>Reservá tu lugar en la clase privada</h2>
-      <p>El roadmap con el que pasé de 60 a 156 millones por mes. Lunes 19 de octubre, 19 hs, en vivo.</p>
-      <a href="#registro" class="btn btn-naranja">Quiero mi lugar en la clase</a>
-      <p class="chico">Registrate en menos de 30 segundos.</p>
-    </div>
+    <h2>El roadmap con el que pasé mi marca de 60 a 156 millones por mes.</h2>
+    <a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a>
+    <p class="chico">Registrate en menos de 30 segundos.</p>
   </div>
 </section>
 
+<!-- h) Footer mínimo -->
 <footer>
   <div class="logo"><svg><use href="#i-genesis"/></svg>GÉNESIS</div>
   <div>© 2026 Génesis</div>
 </footer>
 
 <!-- CTA sticky (mobile) -->
-<div class="sticky" id="sticky"><a href="#registro" class="btn btn-naranja">Quiero mi lugar en la clase</a></div>
+<div class="sticky" id="sticky"><a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a></div>
 
 <script>
-/* La lógica corre cuando el DOM está listo, así lee el CONFIG que está al final. */
+/* La lógica corre cuando el DOM está listo; para entonces el CONFIG del final ya está cargado. */
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
-  var C = window.CONFIG;
+
+  /* Hora en todas las zonas */
+  var tz = document.querySelectorAll("[data-tz]");
+  for (var z = 0; z < tz.length; z++) tz[z].textContent = EVENT_TZ_LABEL;
 
   /* A/B de headline */
   var variant = "A";
-  if (C.AB_TEST) {
+  if (AB_TEST) {
     try { variant = localStorage.getItem("optin_variant") || ""; } catch (e) { variant = ""; }
     if (variant !== "A" && variant !== "B") {
       variant = Math.random() < 0.5 ? "A" : "B";
       try { localStorage.setItem("optin_variant", variant); } catch (e) {}
     }
-    document.getElementById("headline").innerHTML = variant === "A" ? C.HEADLINE_A : C.HEADLINE_B;
+    document.getElementById("headline").innerHTML = variant === "A" ? HEADLINE_A : HEADLINE_B;
   }
 
-  /* Countdown (barra superior y tarjeta de seguimiento) */
-  var objetivo = new Date(C.EVENT_DATE).getTime();
+  /* Countdown */
+  var objetivo = new Date(EVENT_DATE).getTime();
   function dos(n) { return n < 10 ? "0" + n : String(n); }
-  function poner(attr, k, v) {
-    var els = document.querySelectorAll("[" + attr + '="' + k + '"]');
-    for (var i = 0; i < els.length; i++) els[i].textContent = v;
-  }
   function tick() {
     var s = Math.floor(Math.max(0, objetivo - Date.now()) / 1000);
     var v = { d: dos(Math.floor(s / 86400)), h: dos(Math.floor(s % 86400 / 3600)), m: dos(Math.floor(s % 3600 / 60)), s: dos(s % 60) };
-    for (var k in v) { poner("data-cd", k, v[k]); poner("data-cd2", k, v[k]); }
+    for (var k in v) {
+      var els = document.querySelectorAll('[data-cd="' + k + '"]');
+      for (var i = 0; i < els.length; i++) els[i].textContent = v[k];
+    }
   }
   tick(); setInterval(tick, 1000);
 
-  /* Entrada de notificaciones cuando aparecen en pantalla */
+  /* Las notificaciones entran cuando aparecen en pantalla */
   var stacks = document.querySelectorAll(".anim");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (es) {
@@ -729,13 +564,50 @@ document.addEventListener("DOMContentLoaded", function () {
     stacks.forEach(function (s) { s.classList.add("in"); });
   }
 
+  /* Fondo: la línea de suscriptores se dibuja a medida que bajás.
+     El número final (2.200) es el real; la forma de la curva es ilustrativa. */
+  var linea = document.getElementById("linea-subs");
+  var clip = document.getElementById("clip-rect");
+  var punto = document.getElementById("bg-punto");
+  var tip = document.getElementById("bg-tip");
+  var num = document.getElementById("bg-num");
+  var largo = linea.getTotalLength();
+  var quieto = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pendiente = false;
+  function dibujar() {
+    pendiente = false;
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var p = quieto ? 1 : Math.min(1, Math.max(0, max > 0 ? scrollY / max : 1));
+    p = 0.12 + 0.88 * p; /* arranca con un tramo dibujado */
+    var pt = linea.getPointAtLength(largo * p);
+    clip.setAttribute("width", pt.x);
+    var x = pt.x / 1000 * innerWidth, y = pt.y / 1000 * innerHeight;
+    punto.style.left = x + "px"; punto.style.top = y + "px";
+    tip.style.left = (x - 14) + "px"; tip.style.top = y + "px";
+    num.textContent = Math.round(2200 * (p - 0.12) / 0.88).toLocaleString("es-AR");
+  }
+  function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(dibujar); } }
+  addEventListener("scroll", pedir, { passive: true });
+  addEventListener("resize", pedir);
+  dibujar();
+
+  /* Botones que bajan al form: scroll por código (sin cambiar el hash, funciona también abriendo el archivo local) */
+  var anclas = document.querySelectorAll('a[href="#registro"]');
+  for (var a = 0; a < anclas.length; a++) {
+    anclas[a].addEventListener("click", function (e) {
+      e.preventDefault();
+      document.getElementById("registro").scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(function () { document.getElementById("nombre").focus({ preventScroll: true }); }, 600);
+    });
+  }
+
   /* CTA sticky: se oculta cuando el form está en pantalla */
   var sticky = document.getElementById("sticky");
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (e) { sticky.classList.toggle("oculto", e[0].isIntersecting); }).observe(document.getElementById("registro"));
   }
 
-  /* Tracking que viene en la URL */
+  /* Tracking de la URL */
   function tracking() {
     var p = new URLSearchParams(location.search), t = {};
     p.forEach(function (v, k) { if (k.indexOf("utm_") === 0 || k === "fbclid" || k === "sl") t[k] = v; });
@@ -769,7 +641,7 @@ document.addEventListener("DOMContentLoaded", function () {
       telefono: "+" + form.pais.value + numero,
       tracking: tracking()
     };
-    if (C.AB_TEST) datos.variant = variant;
+    if (AB_TEST) datos.variant = variant;
 
     btn.disabled = true;
     btn.textContent = "Reservando tu lugar...";
@@ -782,27 +654,27 @@ document.addEventListener("DOMContentLoaded", function () {
       }).catch(function () {});
     } catch (e) {
       btn.disabled = false;
-      btn.textContent = "Quiero mi lugar en la clase";
+      btn.textContent = "Reservá tu lugar gratis";
       err.style.display = "block";
       return;
     }
-    location.href = C.THANK_YOU_URL + (C.THANK_YOU_URL.indexOf("?") > -1 ? "&" : "?") + "email=" + encodeURIComponent(datos.email);
+    location.href = THANK_YOU_URL + (THANK_YOU_URL.indexOf("?") > -1 ? "&" : "?") + "email=" + encodeURIComponent(datos.email);
   });
 
-  /* Carga diferida: píxel, Hyros y player */
+  /* Tracking diferido: píxel, Hyros y player 300 ms después del load (red de seguridad a 3500 ms) */
   var cargado = false;
   function cargarTerceros() {
     if (cargado) return; cargado = true;
-    if (C.META_PIXEL_ID) {
+    if (META_PIXEL_ID) {
       var s = document.createElement("script"); s.async = true;
       s.src = "https://connect.facebook.net/en_US/fbevents.js";
       document.head.appendChild(s);
-      fbq("init", C.META_PIXEL_ID);
+      fbq("init", META_PIXEL_ID);
       fbq("track", "PageView");
     }
-    if (C.HYROS_SCRIPT_URL) {
+    if (HYROS_SCRIPT_URL) {
       var h = document.createElement("script"); h.async = true;
-      h.src = C.HYROS_SCRIPT_URL;
+      h.src = HYROS_SCRIPT_URL;
       document.head.appendChild(h);
     }
     /* Si el embed del VSL usa un script de player, cargalo acá. */
@@ -810,29 +682,25 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("load", function () { setTimeout(cargarTerceros, 300); });
   setTimeout(cargarTerceros, 3500);
 });
-</script>
 
-<script>
-/*
-  CONFIG
-  - EVENT_DATE: fecha y hora de la clase con offset. Ejemplo: "2026-10-19T19:00:00-03:00" (19 hs de Argentina).
-  - EVENT_TZ_LABEL: cómo se nombra la zona en la página.
-  - THANK_YOU_URL: a dónde va el registrado. "/thank-you" si la thank you está en este mismo proyecto.
-  - META_PIXEL_ID: ID del píxel de Meta. Vacío = no carga.
-  - HYROS_SCRIPT_URL: URL del script universal de Hyros. Vacío = no carga.
-  - AB_TEST: true para probar dos headlines; cada navegador ve siempre la misma.
-  - HEADLINE_A / HEADLINE_B: los dos headlines (acepta HTML).
-*/
-window.CONFIG = {
-  EVENT_DATE: "2026-10-19T19:00:00-03:00",
-  EVENT_TZ_LABEL: "Argentina",
-  THANK_YOU_URL: "/thank-you",
-  META_PIXEL_ID: "",
-  HYROS_SCRIPT_URL: "",
-  AB_TEST: false,
-  HEADLINE_A: 'El roadmap con el que pasé mi marca de consumibles de <span class="marca">60 a 156 millones</span> por mes con suscripción',
-  HEADLINE_B: 'Cómo pasé mi marca de consumibles de <span class="marca">60 a 156 millones</span> por mes con el modelo de suscripción'
-};
+/* ================= CONFIG =================
+   Lo único que cambia entre lanzamientos.
+   - EVENT_DATE: fecha y hora con offset de zona. Ejemplo: "2026-10-19T19:00:00-03:00" = 19 hs de Argentina.
+   - EVENT_TZ_LABEL: la hora en las zonas de la audiencia (va en el chip).
+   - THANK_YOU_URL: a dónde va el registrado.
+   - META_PIXEL_ID / HYROS_SCRIPT_URL: vacíos = no cargan.
+   - AB_TEST: true para probar dos headlines; cada navegador ve siempre la misma.
+   - HEADLINE_A / HEADLINE_B: los dos headlines (aceptan HTML).
+   ========================================== */
+var EVENT_DATE       = "2026-10-19T19:00:00-03:00";
+var EVENT_TZ_LABEL   = "19:00 hs (Argentina)";
+var THANK_YOU_URL    = "/thank-you";
+var META_PIXEL_ID    = "";
+var HYROS_SCRIPT_URL = "";
+var AB_TEST          = false;
+var HEADLINE_A       = 'El roadmap con el que pasé mi marca de <span class="marca">60 a 156 millones</span> por mes';
+var HEADLINE_B       = 'Cómo pasé mi marca de consumibles de <span class="marca">60 a 156 millones</span> por mes con suscripción';
+// El webhook de GHL NO va acá: vive en la variable de entorno GHL_WEBHOOK_URL de Vercel.
 </script>
 </body>
 </html>
