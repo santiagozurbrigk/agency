@@ -1,5 +1,7 @@
 # Día del vivo · Lun 19/10 · 12 historias, 12 mails y 12 mensajes de WhatsApp
 
+> **Los 12 mails de este archivo no se usan (02/10): el lanzamiento no tiene funnel de emails.** Solo van las historias y los mensajes de WhatsApp. El link de la clase llega por el grupo.
+
 Hecho con el agente **Recordatorio WhatsApp** (pre-live, during-live y post-live) y el calendario de historias del 19/10. Los tres canales siguen los mismos 12 momentos; cada uno se adapta a su formato.
 
 Reglas del día:
@@ -318,7 +320,7 @@ Preheader: El replay llega mañana.
 
 - Grabar: video selfie de las 08:30 (1), de las 17:00 (5) y de las 18:30 (7). El voice note de las 12:30 (3).
 - Sacar: la foto de la hoja con los 4 números (4) y la del antes/después (2).
-- Programar: los 12 mails y los textos de WhatsApp de los momentos 2, 6, 8 y 9.
+- Programar: los textos de WhatsApp de los momentos 2, 6, 8 y 9.
 - En vivo, sacar capturas: la sala con gente (9 y 10), el chat con energía (11) y los mensajes de agradecimiento (12).
 
 ## Abierto

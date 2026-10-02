@@ -1,5 +1,7 @@
 # Nutrición · 14 al 18/10 · 5 mails a registrados
 
+> **ARCHIVADO (02/10): este lanzamiento no usa funnel de emails.** No se programan estos mails. Los registrados se trabajan solo por el grupo de WhatsApp (`05-nutricion-whatsapp.md`).
+
 No hay agente de Limitless para mail: siguen la misma cadena que el grupo de WhatsApp (un tema por día, fecha todos los días, loop al día siguiente), pero cada mail se sostiene solo, porque mucha gente lee el mail y no el grupo.
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
