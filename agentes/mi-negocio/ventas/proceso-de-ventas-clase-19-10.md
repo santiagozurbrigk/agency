@@ -50,7 +50,7 @@ Este documento es el mapa de todo el proceso, de punta a punta, para el SDR y el
 
 | # | Paso | Qué se hace | La regla |
 | --- | --- | --- | --- |
-| 1 | Lo que captura el formulario | Nombre, WhatsApp, email y una pregunta de dolor o situación | Esa respuesta es lo primero que lee el SDR. Lo que el lead ya contestó no se le vuelve a preguntar |
+| 1 | Lo que captura el formulario | Nombre, email, teléfono, facturación y si vende un producto consumible | Esa respuesta es lo primero que lee el SDR. Lo que el lead ya contestó no se le vuelve a preguntar |
 | 2 | Mensaje inicial (WhatsApp) | El SDR se presenta, nombra la clase y el recurso que el lead ya recibió, y le propone llamarlo para mandarle uno personalizado | Doble salida: "¿te llamo? o querés contarme por acá". El que no quiere hablar igual entra al proceso |
 | ◆ | ¿Contestó en 5 minutos? | **No:** lo llamás igual, dos veces seguidas. **Sí:** paso 3 | La primera llamada la ve como un número raro; la segunda, como algo que pasa |
 | 3 | Ramas del chat | Pide info por escrito · no puede ahora · pregunta el precio · está arrancando. Todas terminan en un horario para hablar | La línea que más rinde: "mandame audio si querés". El audio da diez veces más información que el texto |
@@ -203,16 +203,9 @@ Acá terminan todas las ventas. La anatomía de la llamada está en el **Guion d
 
 ### Formulario de opt-in (la landing)
 
-Nombre · WhatsApp · email · y una pregunta de dolor, que es lo primero que lee el SDR:
+Cinco preguntas: nombre · email · teléfono · facturación · si vende un producto consumible. Facturación y consumible ya dicen si probablemente califica; el SDR lo confirma hablando.
 
-> **¿Qué es lo que más te frena hoy con tu marca?**
->
-> - Los CPA me suben todos los meses
-> - Vendo, pero cada venta me deja poco margen
-> - Dependo de Meta: si apago la pauta, no vendo
-> - Todavía no logro vender de forma constante
-
-Hoy la landing pide nombre, email y WhatsApp, pero no esta pregunta. Hay que sumarla.
+Hoy la landing pide nombre, email y WhatsApp. Hay que sumar facturación y si vende un producto consumible.
 
 ### Formulario para agendar (con el Calendly adentro)
 
@@ -223,7 +216,7 @@ Es uno solo para todas las puertas. Cada respuesta rutea una pieza:
 | Nombre y teléfono (WhatsApp) | Libre | El teléfono que vale |
 | **Situación:** ¿Qué vende tu marca y cuánto factura por mes? | Consumible químico, más de 30 millones · Consumible químico, menos de 30 millones · Otro tipo de consumible · Todavía no vendo | El **testimonio**, y si el closer prepara Génesis o la Mentoría |
 | **Objetivo:** ¿Qué querés lograr en los próximos meses? | Ingresos que se cobren solos todos los meses · Poder pagar más por cliente y escalar la pauta · Que cada venta me deje más margen · Empezar a vender de forma constante | El **video de la oferta** |
-| **Problema:** ¿Qué es lo que más te frena hoy? | Las mismas 4 opciones del opt-in | El **recurso** (SOP de la Skool) |
+| **Problema:** ¿Qué es lo que más te frena hoy? | Los CPA me suben todos los meses · Vendo, pero cada venta me deja poco margen · Dependo de Meta · Todavía no logro vender de forma constante | El **recurso** (SOP de la Skool) |
 | ¿Cuánto podés invertir para resolverlo? | Menos de USD 2.000 · Entre USD 2.000 y 5.000 · Más de USD 5.000 | Llega al closer en el traspaso |
 | ¿Qué tan pronto lo querés resolver? | Ya · En 1 a 3 meses · Más adelante | Llega al closer en el traspaso |
 | Calendly | Horarios del closer hasta el 22/10 | |
@@ -247,7 +240,7 @@ Para que cada lead esté en una sola lista y nadie llame dos veces: **califica /
 El contenido del lanzamiento todavía se armó con un carrito público. Con "todo pasa por una llamada" hay que corregir:
 
 - **Post-clase** (historias y WhatsApp del 20 al 22/10): hoy llevan a `[LINK CARRITO]` y dicen "USD 6.000". Pasan a llevar al formulario para agendar, con la oferta vigente.
-- **Landing:** sumar la pregunta de dolor y cambiar "el acceso te llega por email" por WhatsApp.
+- **Landing:** sumar facturación y consumible y cambiar "el acceso te llega por email" por WhatsApp.
 - **Video de la página de gracias:** está armado alrededor de confirmar un mail. Pasa a tener un solo trabajo: entrar al grupo de WhatsApp.
 
 ### Datos que faltan

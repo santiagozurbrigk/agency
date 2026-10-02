@@ -6,7 +6,7 @@ Los textos de cada paso del SDR, del opt-in a la llamada de venta. El mapa compl
 
 ## Antes de escribir
 
-**Leé lo que el lead ya contestó.** En el opt-in eligió qué es lo que más lo frena (CPA, margen, dependencia de Meta o vender constante). Esa respuesta es tu primera línea de conversación. Lo que ya contestó no se le vuelve a preguntar.
+**Leé lo que el lead ya contestó.** En el opt-in dejó nombre, email, teléfono, su facturación y si vende un producto consumible. Con eso ya sabés si probablemente califica y tenés tu primera línea de conversación. Lo que ya contestó no se le vuelve a preguntar: se confirma.
 
 **Las reglas del SDR:**
 
@@ -26,7 +26,7 @@ Los textos de cada paso del SDR, del opt-in a la llamada de venta. El mapa compl
 
 > Hola [nombre], ¿cómo va? Soy [tu nombre], del equipo de Manu Dominguez. Vi que te anotaste a la clase en vivo del lunes 19 y que ya te llegó [recurso del opt-in].
 >
-> Me quedé con lo que pusiste: [su respuesta del formulario, con sus palabras]. Te quiero armar un recurso puntual para tu marca, pero antes necesito entender cómo vienen.
+> Me quedé con lo que pusiste: que venden [producto] y facturan [lo que eligió en facturación]. Te quiero armar un recurso puntual para tu marca, pero antes necesito entender cómo vienen.
 >
 > ¿Te llamo 10 minutos? ¿O preferís contarme por acá?
 
@@ -67,8 +67,8 @@ Llamada, texto y audio, turnándose, un toque por día hasta el lunes 19. El pre
 | Día | Toque | Qué decís |
 | --- | --- | --- |
 | 1 | 2 llamadas seguidas + texto | "Te llamé para armarte el recurso, pero todavía no conozco lo que estás haciendo con tu marca. ¿Cuándo te quedan bien 10 minutos?" |
-| 2 | Audio (30 s) | "Hola [nombre], soy [tu nombre], del equipo de Manu. Vi que pusiste que [dolor]. Es justo una de las cosas que Manu va a mostrar el lunes. Te quiero armar algo puntual para tu marca, pero necesito diez minutos para entender cómo vienen. Decime qué horario te queda y te llamo." |
-| 3 | Llamada + texto | "[nombre], ¿seguís con [dolor]? Si me decís qué venden y cuánto vienen facturando, aunque sea en un audio, ya te puedo mandar algo útil." |
+| 2 | Audio (30 s) | "Hola [nombre], soy [tu nombre], del equipo de Manu. Vi que venden [producto]. Lo que Manu va a mostrar el lunes es justo para marcas como la tuya. Te quiero armar algo puntual para tu marca, pero necesito diez minutos para entender cómo vienen. Decime qué horario te queda y te llamo." |
+| 3 | Llamada + texto | "[nombre], si me contás en un audio cómo vienen con la marca y qué es lo que más te frena hoy, ya te puedo mandar algo útil." |
 | 4 en adelante | Vuelve a empezar: llamada, texto, audio | Siempre su dolor + el recurso + un horario |
 | Lun 19/10 | Recordatorio de la clase | Ver "El día de la clase". Va a todos, hayan atendido o no |
 

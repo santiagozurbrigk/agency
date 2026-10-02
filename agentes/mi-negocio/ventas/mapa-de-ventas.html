@@ -1,475 +1,648 @@
 <title>Mapa de ventas Génesis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
-/* Layout: mapa de red arriba (las fases conectadas) + carriles por fase con sus pasos; el panel de ejemplo vive a la derecha (abajo como hoja en el celular). */
+/* Layout: tablero infinito estilo pizarra (fondo punteado) con un marco por fase; barra de fases arriba, zoom abajo a la derecha, panel de ejemplo a la derecha. Un solo look claro, a propósito. */
 :root {
-  --bg: #eef2f1;
-  --surface: #ffffff;
-  --ink: #15232b;
-  --muted: #5a6b72;
-  --line: #c9d4d2;
-  --sdr: #0e7a68;
-  --sdr-soft: #dcefe9;
-  --closer: #4b4fb8;
-  --closer-soft: #e3e4f7;
-  --dec: #a8640f;
-  --dec-soft: #f6e9d6;
-  --form: #4f6470;
-  --form-soft: #e2e9ec;
-  --bubble: #d9f3df;
-  --bubble-ink: #10301c;
-  --focus: #0e7a68;
+  color-scheme: light;
+  --board: #f6f4ef;
+  --dot: #d8d3c8;
+  --frame: #ffffff;
+  --ink: #1b1c1e;
+  --muted: #6c6b66;
+  --line: #e2ded4;
+  --edge: #2a2b2d;
+  --sdr: #c2410c;
+  --closer: #4f46e5;
+  --form: #475569;
+  --dec-bg: #fff3ea;
+  --dec-line: #f2b48c;
+  --dec-ico: #ea580c;
+  --no-bg: #fdf1f0;
+  --no-line: #efb4ad;
+  --no-ink: #b42318;
+  --note-bg: #fbf5e2;
+  --note-line: #d9a72b;
+  --note-ink: #8a6100;
+  --yes: #15803d;
+  --bubble: #dcf8c6;
+  --bubble-ink: #14280c;
+  --p1: #3b5bdb; --p2: #e8590c; --p3: #b08900; --p4: #d6336c; --p5: #7048e8; --p6: #2b8a3e;
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1719; --surface: #172226; --ink: #e4ecea; --muted: #94a6a8; --line: #2c3c40;
-    --sdr: #4cc3aa; --sdr-soft: #173a33; --closer: #9a9df0; --closer-soft: #26284a;
-    --dec: #e3a650; --dec-soft: #3a2c17; --form: #a3b6bf; --form-soft: #223036;
-    --bubble: #1d4a32; --bubble-ink: #e2f6e8; --focus: #4cc3aa; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f1719; --surface: #172226; --ink: #e4ecea; --muted: #94a6a8; --line: #2c3c40;
-  --sdr: #4cc3aa; --sdr-soft: #173a33; --closer: #9a9df0; --closer-soft: #26284a;
-  --dec: #e3a650; --dec-soft: #3a2c17; --form: #a3b6bf; --form-soft: #223036;
-  --bubble: #1d4a32; --bubble-ink: #e2f6e8; --focus: #4cc3aa; color-scheme: dark;
-}
+html, body { height: 100%; }
+body { background: var(--board); color: var(--ink); font-family: var(--font-body); overflow: hidden; }
 * { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
-.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; }
-h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; }
-h1 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
-.lede { color: var(--muted); max-width: 64ch; margin: 10px 0 0; }
-.eyebrow { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+button { font: inherit; color: inherit; }
 
-/* Personas */
-.personas { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 22px; }
-.persona { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; }
-.persona b { font-family: var(--font-display); font-size: 17px; }
-.persona .tagline { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; }
-.persona.yes .tagline { color: var(--sdr); }
-.persona.no .tagline { color: var(--dec); }
-.persona p { margin: 0; color: var(--muted); font-size: 14px; }
+#viewport { position: fixed; inset: 0; overflow: hidden; cursor: grab; touch-action: none;
+  background-color: var(--board);
+  background-image: radial-gradient(var(--dot) 1.2px, transparent 1.3px);
+  background-size: 22px 22px; }
+#viewport.dragging { cursor: grabbing; }
+#world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+#edges { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; z-index: 1; }
 
-/* Leyenda */
-.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 18px; font-size: 13px; color: var(--muted); }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+/* Barra superior */
+.topbar { position: fixed; left: 16px; right: 16px; top: calc(14px + env(safe-area-inset-top, 0px)); display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; pointer-events: none; z-index: 5; }
+.brand, .tabs { pointer-events: auto; background: #fff; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 2px 10px rgba(30,25,15,.06); }
+.brand { display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 10px; }
+.brand .logo { width: 30px; height: 30px; border-radius: 8px; background: var(--sdr); color: #fff; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 15px; }
+.brand b { display: block; font-size: 14px; font-weight: 700; }
+.brand small { display: block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+.tabs { display: flex; align-items: center; gap: 2px; padding: 4px; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+.tab { border: 0; background: transparent; border-radius: 8px; padding: 7px 10px; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.tab i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.tab:hover { background: #f3f1ec; }
+.tab[aria-current="true"] { background: #f3f1ec; font-weight: 700; }
+.tab.mapa { color: var(--sdr); font-weight: 700; }
+.tab:focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
 
-/* Red de fases */
-.net { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow-x: auto; }
-.net svg { display: block; min-width: 760px; width: 100%; height: auto; }
-.net .cl { cursor: pointer; }
-.net .cl:focus { outline: none; }
-.net .cl:focus-visible rect, .net .cl:focus-visible polygon { stroke: var(--focus); stroke-width: 2.5; }
-.net .cl:hover rect, .net .cl:hover polygon { stroke: var(--ink); }
+/* Controles */
+.zoom { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 8px; z-index: 5; }
+.zoom button { width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--line); background: #fff; font-size: 18px; cursor: pointer; box-shadow: 0 2px 8px rgba(30,25,15,.06); }
+.zoom button:focus-visible { outline: 2px solid var(--ink); }
+.zoom .pct { font-family: var(--font-mono); font-size: 10.5px; text-align: center; color: var(--muted); }
+.hint { position: fixed; left: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; z-index: 5; max-width: calc(100% - 100px); }
 
-/* Cuerpo: carriles + panel */
-.body { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 20px; margin-top: 24px; align-items: start; }
-.lanes { display: grid; gap: 16px; min-width: 0; }
-.lane { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; scroll-margin-top: 16px; }
-.lane-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
-.lane-head h2 { font-size: 20px; font-weight: 700; }
-.lane-head .meta { color: var(--muted); font-size: 13.5px; }
-.lane-hito { margin-top: 4px; font-size: 13px; color: var(--muted); }
-.lane-hito b { color: var(--ink); font-weight: 600; }
-.steps { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 26px; }
-.steps li { position: relative; display: flex; }
-.steps.seq li:not(:last-child)::after { content: "→"; position: absolute; right: -19px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; }
-.node { font: inherit; text-align: left; cursor: pointer; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 8px 12px 9px; display: grid; gap: 2px; min-width: 128px; max-width: 200px; }
-.node .k { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; }
-.node .t { font-weight: 600; font-size: 14px; line-height: 1.25; }
-.node.sdr { border-left: 4px solid var(--sdr); } .node.sdr .k { color: var(--sdr); }
-.node.closer { border-left: 4px solid var(--closer); } .node.closer .k { color: var(--closer); }
-.node.form { border-left: 4px solid var(--form); } .node.form .k { color: var(--form); }
-.node.dec { border-left: 4px solid var(--dec); background: var(--dec-soft); } .node.dec .k { color: var(--dec); }
-.node:hover { border-color: var(--ink); }
-.node:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.node[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 2px var(--ink) inset; }
-.node.sdr[aria-pressed="true"] { background: var(--sdr-soft); }
-.node.closer[aria-pressed="true"] { background: var(--closer-soft); }
-.node.form[aria-pressed="true"] { background: var(--form-soft); }
+/* Marcos */
+.frame { position: absolute; background: var(--frame); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 4px 24px rgba(30,25,15,.06); }
+.frame::before { content: ""; position: absolute; left: -1px; right: -1px; top: -1px; height: 5px; border-radius: 16px 16px 0 0; background: var(--fc); }
+.fhead { position: absolute; left: 28px; top: 26px; right: 28px; display: flex; align-items: center; gap: 16px; cursor: zoom-in; }
+.fchip { font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; color: var(--fc); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: #fff; white-space: nowrap; }
+.ftitle { font-family: var(--font-display); font-weight: 800; font-size: 30px; letter-spacing: -.01em; }
+.fmeta { font-size: 14px; color: var(--muted); margin-left: auto; }
+.fsep { position: absolute; left: 0; right: 0; top: 96px; border-top: 1px solid var(--line); }
+.board-title { position: absolute; left: 0; top: 0; }
+.board-title h1 { font-family: var(--font-display); font-weight: 800; font-size: 56px; margin: 0; letter-spacing: -.02em; }
+.board-title p { margin: 8px 0 0; font-size: 18px; color: var(--muted); max-width: 900px; line-height: 1.45; }
+.personas { display: flex; gap: 16px; margin-top: 22px; }
+.persona { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; width: 470px; font-size: 15px; line-height: 1.45; }
+.persona .pt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+.persona b { display: block; font-family: var(--font-display); font-size: 22px; margin: 2px 0 4px; }
+.persona p { margin: 0; color: var(--muted); }
+
+/* Nodos */
+.n { position: absolute; width: 200px; border-radius: 10px; font-size: 12.5px; line-height: 1.42; text-align: left; }
+.n.step, .n.dec { cursor: pointer; }
+.n:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.n.step { background: #fff; border: 1px solid var(--line); padding: 12px 14px 12px; box-shadow: 0 1px 3px rgba(30,25,15,.05); }
+.n.step:hover, .n.dec:hover { box-shadow: 0 0 0 2px var(--ink); }
+.n.active { box-shadow: 0 0 0 2.5px var(--ink) !important; }
+.badge { display: inline-block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .08em; border: 1px solid currentColor; border-radius: 999px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; text-transform: uppercase; }
+.k-sdr { color: var(--sdr); } .k-closer { color: var(--closer); } .k-form { color: var(--form); }
+.n .tt { font-weight: 700; font-size: 13.5px; color: var(--ink); }
+.n .dd { color: var(--muted); margin-top: 5px; }
+.n .ver { display: inline-block; margin-top: 9px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; color: var(--muted); }
+.n.start { background: var(--ink); color: #fff; border-radius: 10px; padding: 14px 16px; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.n.dec { background: var(--dec-bg); border: 1px solid var(--dec-line); padding: 11px 14px 11px 34px; font-weight: 700; font-size: 13px; }
+.n.dec::before { content: ""; position: absolute; left: 13px; top: 15px; width: 10px; height: 10px; background: var(--dec-ico); transform: rotate(45deg); border-radius: 2px; }
+.n.dec .dd { font-weight: 400; }
+.n.no { background: var(--no-bg); border: 1px solid var(--no-line); border-left: 3px solid var(--no-ink); padding: 11px 13px; color: #5b3a36; font-size: 12px; }
+.n.no .act { margin-top: 8px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--no-ink); }
+.n.note { background: var(--note-bg); border: 1px solid #efe1b4; border-left: 3px solid var(--note-line); padding: 11px 13px; color: #4a3d1a; font-size: 12px; }
+.n.note .lab, .n.mile .lab, .n.yesbox .lab { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--note-ink); margin-bottom: 4px; }
+.n.mile { background: #fff; border: 1.5px solid var(--ink); padding: 14px 16px; text-align: center; border-radius: 12px; }
+.n.mile .lab { color: var(--sdr); }
+.n.mile .tt { font-family: var(--font-display); font-size: 19px; font-weight: 800; line-height: 1.15; }
+.n.mile .dd { margin-top: 6px; }
+.n.jump { background: #fff; border: 1.5px dashed var(--fc2, var(--ink)); padding: 12px 14px; cursor: pointer; }
+.n.jump .lab { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fc2, var(--ink)); }
+.n.jump:hover { box-shadow: 0 0 0 2px var(--fc2, var(--ink)); }
+.n.route { background: #fff; border: 1px solid var(--line); padding: 11px 13px; }
+.n.route .lab { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--sdr); margin-bottom: 3px; }
+.elab { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: .06em; }
 
 /* Panel */
-.panel { position: sticky; top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; max-height: calc(100vh - 32px); overflow-y: auto; }
-.panel .close { display: none; }
-.p-k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
-.p-title { font-size: 22px; font-weight: 700; margin-top: 4px; }
-.p-fase { color: var(--muted); font-size: 13px; margin-top: 2px; }
-.p-sec { margin-top: 16px; display: grid; gap: 8px; }
-.p-sec h3 { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-.p-sec p { margin: 0; }
-.ex { display: grid; gap: 8px; }
-.ex-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
-.copy { font: inherit; font-size: 12px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 8px; padding: 3px 10px; cursor: pointer; }
-.copy:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-.bubble { background: var(--bubble); color: var(--bubble-ink); border-radius: 12px 12px 12px 4px; padding: 10px 12px; display: grid; gap: 8px; font-size: 14.5px; }
-.bubble p { margin: 0; white-space: pre-line; }
-.call { border-left: 3px solid var(--sdr); padding: 4px 0 4px 12px; display: grid; gap: 8px; font-size: 14.5px; }
-.call.closer-call { border-left-color: var(--closer); }
-.call p { margin: 0; }
-.call .who { font-weight: 600; }
-.call .lead { color: var(--muted); }
-.note { background: var(--bg); border-radius: 10px; padding: 10px 12px; font-size: 14px; display: grid; gap: 6px; }
-.note p { margin: 0; }
-.rule { border: 1px dashed var(--dec); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
-.branches { display: grid; gap: 8px; }
-.br { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: 14px; }
-.br .pill { font-family: var(--font-mono); font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--sdr-soft); color: var(--sdr); }
-.br .pill.no { background: var(--dec-soft); color: var(--dec); }
-.foot { margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 70ch; }
+.panel { position: fixed; right: 16px; top: calc(78px + env(safe-area-inset-top, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); width: 410px; max-width: calc(100% - 32px); background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 12px 40px rgba(30,25,15,.16); z-index: 6; display: flex; flex-direction: column; }
+.panel[hidden] { display: none !important; }
+.ph { padding: 16px 18px 12px; border-bottom: 1px solid var(--line); display: grid; gap: 4px; position: relative; }
+.ph .close { position: absolute; right: 12px; top: 12px; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 4px 10px; cursor: pointer; font-size: 12.5px; }
+.ph .fase { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; }
+.ph h2 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1.15; padding-right: 64px; text-wrap: balance; }
+.pb { padding: 14px 18px 22px; overflow-y: auto; display: grid; gap: 16px; align-content: start; font-size: 14.5px; line-height: 1.5; }
+.pb h3 { margin: 0 0 8px; font-family: var(--font-mono); font-weight: 500; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pb p { margin: 0; }
+.ex { display: grid; gap: 8px; margin-bottom: 12px; }
+.exh { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); }
+.copy { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 3px 10px; cursor: pointer; font-size: 12px; }
+.copy:focus-visible, .ph .close:focus-visible { outline: 2px solid var(--ink); }
+.bubble { background: var(--bubble); color: var(--bubble-ink); border-radius: 12px 12px 12px 4px; padding: 10px 12px; display: grid; gap: 8px; }
+.call { border-left: 3px solid var(--sdr); padding: 2px 0 2px 12px; display: grid; gap: 8px; }
+.call.closer { border-left-color: var(--closer); }
+.call .w { font-weight: 700; }
+.call .w.l { color: var(--muted); }
+.notebox { background: #f6f4ef; border-radius: 10px; padding: 10px 12px; display: grid; gap: 6px; }
+.rule { border: 1px dashed var(--note-line); background: var(--note-bg); border-radius: 10px; padding: 10px 12px; }
+.br { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; margin-bottom: 6px; }
+.pill { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #e6f4ea; color: var(--yes); }
+.pill.no { background: var(--no-bg); color: var(--no-ink); }
 
-@media (max-width: 980px) {
-  .body { grid-template-columns: minmax(0, 1fr); }
-  .panel { position: fixed; left: 0; right: 0; bottom: 0; top: auto; max-height: 72vh; border-radius: 16px 16px 0 0; padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); box-shadow: 0 -8px 30px rgba(0,0,0,0.18); z-index: 10; }
-  .panel[data-open="false"] { display: none; }
-  .panel .close { display: inline-block; position: sticky; top: 0; float: right; }
-  .node { max-width: none; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .node { transition: border-color .15s, background .15s; }
+body.panel-open .zoom { right: 442px; }
+@media (max-width: 720px) {
+  body.panel-open .zoom { right: 16px; bottom: calc(70% + 12px); }
+  .brand small { display: none; }
+  .hint { display: none; }
+  .panel { left: 0; right: 0; bottom: 0; top: auto; width: auto; max-width: none; max-height: 70%; border-radius: 16px 16px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .zoom { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 }
 </style>
 
-<div class="wrap">
-  <header>
-    <div class="eyebrow">Clase en vivo 19/10 · proceso de ventas</div>
-    <h1>Mapa de ventas Génesis</h1>
-    <p class="lede">Cada paso del proceso, del opt-in a la venta, con un ejemplo de lo que decimos nosotros. Tocá un paso para ver el mensaje o el guion. Los ejemplos siguen a dos leads de muestra.</p>
-    <div class="personas">
-      <div class="persona yes"><span class="tagline">LEAD DE EJEMPLO · CALIFICA</span><b>Martín</b><p>Marca de productos de limpieza en Tiendanube. Factura 45 millones por mes con Meta Ads y está en breakeven. En el formulario eligió "Los CPA me suben todos los meses".</p></div>
-      <div class="persona no"><span class="tagline">LEAD DE EJEMPLO · TODAVÍA NO</span><b>Lucía</b><p>Marca de limpieza ecológica, vende por Instagram y tienda propia. Factura 14 millones por mes. En el formulario eligió "Todavía no logro vender de forma constante".</p></div>
-    </div>
-    <div class="legend" aria-label="Referencias">
-      <span><i class="dot" style="background:var(--sdr)"></i>Lo hace el SDR</span>
-      <span><i class="dot" style="background:var(--closer)"></i>Lo hace el closer</span>
-      <span><i class="dot" style="background:var(--form)"></i>Formulario</span>
-      <span><i class="dot" style="background:var(--dec)"></i>Decisión</span>
-    </div>
-  </header>
-
-  <div class="net" id="net"></div>
-
-  <div class="body">
-    <div class="lanes" id="lanes"></div>
-    <aside class="panel" id="panel" aria-live="polite" data-open="false"></aside>
+<div id="viewport" aria-label="Tablero del proceso de ventas. Arrastrá para moverte, usá la rueda o los botones para hacer zoom.">
+  <div id="world">
+    <svg id="edges"></svg>
   </div>
-
-  <p class="foot">Reglas que valen en todo el mapa: todo se vende por llamada (no hay link de pago directo), no hay emails, la ventana cierra el jueves 22/10 a las 23:59. Génesis se ofrece solo al que vende un consumible químico y factura más de 30 millones por mes; al resto, la Mentoría. Los textos entre corchetes se completan con lo del lead.</p>
 </div>
 
+<div class="topbar">
+  <div class="brand"><span class="logo">G</span><span><b>Mapa de ventas</b><small>Génesis · clase 19/10</small></span></div>
+  <nav class="tabs" id="tabs" aria-label="Fases"></nav>
+</div>
+
+<div class="zoom">
+  <button type="button" id="zin" aria-label="Acercar">+</button>
+  <button type="button" id="zout" aria-label="Alejar">−</button>
+  <button type="button" id="zfit" aria-label="Ver todo el mapa">⤢</button>
+  <div class="pct" id="pct">100%</div>
+</div>
+<div class="hint">Rueda = zoom · arrastrá para moverte · clic en un paso = ejemplo · clic en una fase = acercar</div>
+
+<aside class="panel" id="panel" hidden aria-live="polite">
+  <div class="ph"><button class="close" type="button" id="pclose">Cerrar</button><span class="fase" id="pfase"></span><h2 id="ptitle"></h2></div>
+  <div class="pb" id="pbody"></div>
+</aside>
+
 <script>
-const LANES = [
-  { id: "f01", n: "Fase 01", t: "Primer contacto y calificación", who: "SDR · apenas entra el opt-in", hito: "Sabemos si califica.", seq: true, nodes: [
-    { id: "optin", k: "form", t: "Opt-in en GHL",
-      what: "El lead se anota a la clase. El formulario pide nombre, WhatsApp, email y una pregunta de dolor. Esa respuesta es lo primero que lee el SDR.",
-      ex: [{ type: "note", head: "Lo que ve el SDR en GHL", lines: ["Martín · +54 9 11 [número] · martin@[marca].com", "¿Qué es lo que más te frena hoy con tu marca? → \"Los CPA me suben todos los meses\""] }],
-      rule: "Lo que el lead ya contestó no se le vuelve a preguntar por teléfono." },
-    { id: "msg", k: "sdr", t: "Mensaje inicial",
-      what: "Por WhatsApp, apenas entra. Te presentás, nombrás la clase y el recurso que ya recibió, usás su respuesta del formulario y le proponés llamarlo para mandarle uno personalizado.",
-      ex: [{ type: "wa", head: "WhatsApp a Martín", lines: ["Hola Martín, ¿cómo va? Soy [tu nombre], del equipo de Manu Dominguez. Vi que te anotaste a la clase en vivo del lunes 19 y que ya te llegó [recurso del opt-in].", "Me quedé con lo que pusiste: que los CPA te suben todos los meses. Te quiero armar un recurso puntual para tu marca, pero antes necesito entender cómo vienen.", "¿Te llamo 10 minutos? ¿O preferís contarme por acá?"] }],
+/* ---------- Datos ---------- */
+const COLS = [40, 285, 530, 775, 1020, 1265, 1510];
+const FW = 1760;
+const B = 200; // desplazamiento de las cajas de abajo (no / nota)
+
+const FRAMES = [
+ { id: "f1", tab: "01 Primer contacto", chip: "FASE 01", title: "Del opt-in a la calificación", meta: "SDR · apenas entra el opt-in", color: "var(--p1)", rows: [140, 600],
+   nodes: [
+    { id: "s1", t: "start", r: 0, c: 0, title: "Entra el opt-in" },
+    { id: "optin", t: "step", k: "form", r: 0, c: 1, n: "1", title: "Lo que captura el formulario", d: "Nombre · email · teléfono · facturación · si vende un producto consumible.",
+      ex: [{ type: "note", head: "Lo que ve el SDR en GHL", lines: ["Nombre: Martín", "Email: martin@[marca].com", "Teléfono: +54 9 11 [número]", "Facturación: entre 30 y 60 millones por mes", "¿Vende un producto consumible?: Sí, productos de limpieza"] }, { type: "note", head: "Lo que puso Lucía", lines: ["Facturación: menos de 30 millones por mes", "¿Vende un producto consumible?: Sí, limpieza ecológica"] }],
+      rule: "Las respuestas del formulario son lo primero que lee el SDR. Lo que el lead ya contestó no se le vuelve a preguntar: se confirma." },
+    { id: "nopt", t: "note", r: 0, c: 1, below: true, from: "optin", lab: "Regla", text: "Facturación y consumible ya te dicen si probablemente califica. Igual lo confirmás hablando: el formulario no alcanza." },
+    { id: "msg", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Mensaje inicial", d: "Te presentás, nombrás la clase y el recurso que ya recibió, usás lo que puso y le proponés llamarlo.",
+      ex: [{ type: "wa", head: "WhatsApp a Martín, apenas se anota", lines: ["Hola Martín, ¿cómo va? Soy [tu nombre], del equipo de Manu Dominguez. Vi que te anotaste a la clase en vivo del lunes 19 y que ya te llegó [recurso del opt-in].", "Me quedé con lo que pusiste: que venden productos de limpieza y facturan entre 30 y 60 millones por mes. Te quiero armar un recurso puntual para tu marca, pero antes necesito entender cómo vienen.", "¿Te llamo 10 minutos? ¿O preferís contarme por acá?"] }],
       rule: "Doble salida a propósito: el que no quiere hablar igual entra al proceso por chat." },
-    { id: "d5", k: "dec", t: "¿Contestó en 5 minutos?",
-      what: "Si en 5 minutos no contestó, no esperás: lo llamás.",
-      branches: [["Sí", "Seguís por las ramas del chat."], ["No", "Lo llamás dos veces seguidas. La primera la ve como un número raro; la segunda, como algo que pasa."]],
+    { id: "nmsg", t: "note", r: 0, c: 2, below: true, from: "msg", lab: "Doble salida", text: "«¿Te llamo? ¿O preferís contarme por acá?». El que no quiere hablar igual entra al proceso." },
+    { id: "d5", t: "dec", r: 0, c: 3, title: "¿Contestó en 5 minutos?",
+      branches: [["Sí", "Seguís por las ramas del chat."], ["No", "Lo llamás dos veces seguidas."]],
       ex: [{ type: "wa", head: "Si no atiende las dos llamadas", lines: ["Te acabo de llamar por lo del recurso para tu marca. ¿Te queda mejor hoy a la tarde o mañana a la mañana?"] }] },
-    { id: "ramas", k: "sdr", t: "Ramas del chat",
-      what: "Si contesta por chat, puede ir por 4 lados. Todos terminan en un horario para hablar.",
-      ex: [
-        { type: "wa", head: "Pide la info por escrito", lines: ["Te la puedo mandar, pero sin saber cómo vienen te mandaría algo genérico, y eso ya lo tenés. Si te queda más cómodo, mandame un audio contándome qué venden y cuánto vienen facturando, y con eso arranco."] },
-        { type: "wa", head: "Pregunta el precio", lines: ["Depende de tu caso, por eso no te tiro un número al aire. Primero veo cómo vienen y, si tiene sentido, lo ves con tus números en una llamada. ¿Te llamo hoy a las 18 o mañana a las 11?"] },
-        { type: "wa", head: "No puede ahora", lines: ["Dale, sin drama. ¿Te queda mejor hoy a las 18 o mañana a las 11?"] }
-      ],
-      rule: "La línea que más rinde: \"mandame audio si querés\". El audio da diez veces más información que el texto." },
-    { id: "atendio", k: "dec", t: "¿Atendió?",
-      what: "Si no atiende, arranca la cadencia: llamada, texto y audio, turnándose, un toque por día hasta el lunes 19.",
-      branches: [["Sí", "Vas a la apertura de la llamada."], ["No", "Cadencia hasta la clase, siempre con el recurso como pretexto."]],
-      ex: [{ type: "audio", head: "Audio del día 2 de la cadencia (30 s)", lines: ["Hola Martín, soy [tu nombre], del equipo de Manu. Vi que pusiste que los CPA te suben todos los meses. Es justo una de las cosas que Manu va a mostrar el lunes. Te quiero armar algo puntual para tu marca, pero necesito diez minutos para entender cómo vienen. Decime qué horario te queda y te llamo."] }] },
-    { id: "apertura", k: "sdr", t: "Apertura",
-      what: "Arrancás la llamada retomando el mensaje. Si no te ubica, te volvés a presentar.",
-      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Buenas Martín, ¿cómo vas? ¿Pudiste ver el mensaje que te envié?"], ["Martín", "Sí, sí, vi algo, pero no me acuerdo bien de qué era."], ["SDR", "Soy [tu nombre], del equipo de Manu Dominguez. Te anotaste a la clase en vivo del lunes 19, la de cómo pasar tu marca al modelo de suscripción. ¿Te acordás?"]] }] },
-    { id: "razones", k: "sdr", t: "Las dos razones",
-      what: "Le decís por qué lo llamás: conocer su marca para mandarle un recurso a medida, y ver si califica para los lugares que quedan.",
+    { id: "d5no", t: "no", r: 0, c: 3, below: true, from: "d5", text: "Llamás igual, dos veces seguidas. La primera la ve como número raro; la segunda, como algo que pasa.", act: "↺ Llamar" },
+    { id: "ramas", t: "step", k: "sdr", r: 0, c: 4, n: "3", title: "Ramas del chat", d: "Pide info por escrito · no puede ahora · pregunta el precio · está arrancando. Todas terminan en un horario.",
+      ex: [{ type: "wa", head: "Pide la info por escrito", lines: ["Te la puedo mandar, pero sin saber cómo vienen te mandaría algo genérico, y eso ya lo tenés. Si te queda más cómodo, mandame un audio contándome cómo vienen y con eso arranco."] }, { type: "wa", head: "Pregunta el precio", lines: ["Depende de tu caso, por eso no te tiro un número al aire. Primero veo cómo vienen y, si tiene sentido, lo ves con tus números en una llamada. ¿Te llamo hoy a las 18 o mañana a las 11?"] }, { type: "wa", head: "No puede ahora", lines: ["Dale, sin drama. ¿Te queda mejor hoy a las 18 o mañana a las 11?"] }],
+      rule: "La línea que más rinde: «mandame audio si querés». El audio da diez veces más información que el texto." },
+    { id: "nramas", t: "note", r: 0, c: 4, below: true, from: "ramas", lab: "La línea que más rinde", text: "«Mandame audio si querés». Te da diez veces más información que el texto y escuchás el tono." },
+    { id: "aten", t: "dec", r: 0, c: 5, title: "¿Atendió?",
+      branches: [["Sí", "Apertura de la llamada."], ["No", "Cadencia hasta la clase: llamada, texto y audio, turnándose."]],
+      ex: [{ type: "wa", head: "Audio del día 2 de la cadencia (30 s)", lines: ["Hola Martín, soy [tu nombre], del equipo de Manu. Vi que pusiste que venden productos de limpieza. Lo que Manu va a mostrar el lunes es justo para marcas como la tuya. Te quiero armar algo puntual, pero necesito diez minutos para entender cómo vienen. Decime qué horario te queda y te llamo."] }] },
+    { id: "atenno", t: "no", r: 0, c: 5, below: true, from: "aten", text: "«Te llamé para armarte el recurso pero todavía no conozco lo que estás haciendo». Llamada, texto y audio hasta la clase.", act: "↺ Seguir la cadencia" },
+    { id: "aper", t: "step", k: "sdr", r: 1, c: 0, n: "4", title: "Apertura", d: "«¿Pudiste ver el mensaje que te envié?». Si no te ubica, te volvés a presentar.",
+      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Buenas Martín, ¿cómo vas? ¿Pudiste ver el mensaje que te envié?"], ["Martín", "Sí, vi algo, pero no me acuerdo bien."], ["SDR", "Soy [tu nombre], del equipo de Manu Dominguez. Te anotaste a la clase en vivo del lunes 19, la de cómo pasar tu marca al modelo de suscripción. ¿Te acordás?"]] }] },
+    { id: "razones", t: "step", k: "sdr", r: 1, c: 1, n: "5", title: "Las dos razones", d: "Conocer su marca para mandarle un recurso a medida, y ver si califica para los lugares que quedan.",
       ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Te cuento por qué te llamo, son dos cosas. Una: quiero conocer un poco tu marca para mandarte un recurso armado para tu caso, no algo genérico. Y dos: Manu toma pocas marcas para trabajar con él, y quiero ver si la tuya podría calificar para alguno de los lugares que quedan. ¿Todo check hasta acá?"]] }],
-      rule: "El orden no se toca. Si abrís por el cupo, se vuelve una llamada de venta y el lead se cierra." },
-    { id: "situacion", k: "sdr", t: "Situación",
-      what: "Qué lo trajo, qué vende y por dónde, cuánto factura, cuánto le queda, con quién trabaja, objetivo y qué lo frena. Acá se juega la calificación.",
-      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "¿Qué venden? ¿Y por dónde: tienda propia, Mercado Libre?"], ["Martín", "Productos de limpieza para el hogar. Tiendanube y un poco de Mercado Libre."], ["SDR", "¿Cuánto vienen facturando por mes, más o menos? ¿Y cuánto te queda a vos después de todo?"], ["Martín", "Unos 45 palos. Y quedar, queda poco, la verdad. Estamos casi en cero."]] }],
-      rule: "Los dos datos que no te podés ir sin tener: si vende un consumible químico y si factura más de 30 millones por mes." },
-    { id: "dolor", k: "sdr", t: "Dolor y consecuencia",
-      what: "Cavás en una sola cosa: hace cuánto, qué probó, qué le cuesta. Y una pincelada de qué pasa si sigue igual.",
-      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Me dijiste que los CPA te suben todos los meses. ¿Hace cuánto te pasa?"], ["Martín", "Desde mitad de año. Salieron como siete marcas a pautar lo mismo que nosotros."], ["SDR", "¿Y qué probaste para resolverlo?"], ["Martín", "Más creativos, cambiamos de agencia… y nada."], ["SDR", "¿Y si sigue así seis meses más, qué pasa con la marca?"]] }],
-      rule: "Mostrás el tamaño del agujero, no cómo taparlo. La cuenta completa es para la llamada de venta." },
-    { id: "compromiso", k: "sdr", t: "Compromiso",
-      what: "Le preguntás si lo quiere cambiar ahora. Si dice que sí, le pedís el por qué: va textual al traspaso.",
-      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "¿Es algo que querés cambiar ahora o lo querés dejar para después?"], ["Martín", "Ahora. Si sigo así, para fin de año estoy pagando por vender."], ["SDR", "¿Por qué ahora?"]] }] },
-    { id: "califica", k: "dec", t: "¿Califica?",
-      what: "Califica si se dan las dos cosas: vende un producto consumible químico y factura más de 30 millones de pesos por mes. Lo decidís vos, hablando con él.",
-      branches: [["Sí", "Martín: limpieza, 45 millones. Ruta pre-venta (Fase 02): agenda en la misma llamada."], ["No", "Lucía: limpieza ecológica, 14 millones. Ruta a la clase (Fase 03). Vos no le decís que no califica."]],
-      ex: [{ type: "note", head: "Cómo se resuelve con nuestros dos leads", lines: ["Martín → consumible químico ✓ · más de 30 millones ✓ → califica → Génesis", "Lucía → consumible químico ✓ · más de 30 millones ✗ → todavía no → Mentoría"] }] }
-  ]},
-  { id: "f02", n: "Fase 02", t: "Ruta pre-venta", who: "SDR · en la misma llamada · ej. Martín", hito: "Lugar reservado y paquete definido.", seq: true, nodes: [
-    { id: "form", k: "form", t: "Formulario en la llamada",
-      what: "Le mandás el formulario por WhatsApp mientras sigue en el teléfono, y te quedás hasta que elige el horario. El Calendly va adentro del formulario.",
+      rule: "El orden no se toca. Si abrís por el cupo, es una llamada de venta y el lead se cierra." },
+    { id: "nraz", t: "note", r: 1, c: 1, below: true, from: "razones", lab: "Ojo", text: "El orden no se toca. Si abrís por el cupo, es una llamada de venta y se te cierra." },
+    { id: "sit", t: "step", k: "sdr", r: 1, c: 2, n: "6", title: "Situación", d: "Qué vende y por dónde, cuánto factura y cuánto le queda, equipo, objetivo y qué lo frena.",
+      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Pusiste que venden productos de limpieza y que facturan entre 30 y 60 millones. ¿Sigue así? ¿Por dónde venden?"], ["Martín", "Sí, unos 45 palos. Tiendanube y un poco de Mercado Libre."], ["SDR", "¿Y cuánto te queda a vos después de todo?"], ["Martín", "Poco, la verdad. Estamos casi en cero."]] }],
+      rule: "Lo que ya puso en el formulario no se pregunta: se confirma. Lo que no te podés ir sin saber: si su consumible es químico y si factura más de 30 millones." },
+    { id: "dolor", t: "step", k: "sdr", r: 1, c: 3, n: "7", title: "Dolor y consecuencia", d: "Cavás en una sola cosa: hace cuánto, qué probó, qué le cuesta. Y una pincelada de qué pasa si sigue igual.",
+      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "¿Qué es lo que más te está frenando hoy?"], ["Martín", "El CPA. Salieron como siete marcas a pautar lo mismo que nosotros."], ["SDR", "¿Hace cuánto te pasa? ¿Y qué probaste?"], ["Martín", "Desde mitad de año. Más creativos, cambiamos de agencia… y nada."], ["SDR", "¿Y si sigue así seis meses más, qué pasa con la marca?"]] }],
+      rule: "Mostrás el tamaño del agujero, no cómo taparlo. La cuenta completa es munición para la llamada de venta." },
+    { id: "ndol", t: "note", r: 1, c: 3, below: true, from: "dolor", lab: "Límite", text: "Mostrás el tamaño del agujero, no cómo taparlo. La cuenta completa es para la llamada de venta." },
+    { id: "comp", t: "step", k: "sdr", r: 1, c: 4, n: "8", title: "Compromiso", d: "«¿Es algo que querés cambiar ahora o lo querés dejar para después?»",
+      ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "¿Es algo que querés cambiar ahora o lo querés dejar para después?"], ["Martín", "Ahora. Si sigo así, para fin de año estoy pagando por vender."], ["SDR", "¿Por qué ahora?"]] }],
+      rule: "Lo que conteste al «¿por qué ahora?» va textual al traspaso para el closer." },
+    { id: "cal", t: "dec", r: 1, c: 5, title: "¿Califica?", d: "Consumible químico + más de 30 millones por mes.",
+      branches: [["Sí", "Martín (limpieza, 45 millones) → Fase 02, ruta pre-venta."], ["No", "Lucía (limpieza ecológica, 14 millones) → Fase 03, ruta a la clase."]],
+      ex: [{ type: "note", head: "Cómo se resuelve", lines: ["Martín → consumible químico ✓ · más de 30 millones ✓ → califica → Génesis", "Lucía → consumible químico ✓ · más de 30 millones ✗ → todavía no → Mentoría"] }],
+      rule: "Lo decide el que está en la llamada, hablando. El formulario no alcanza para saberlo." },
+    { id: "calno", t: "jump", r: 1, c: 5, below: true, from: "cal", go: "f3", lab: "No · Fase 03", text: "Ruta a la clase. Le educás, le mandás el SOP y lo confirmás para el lunes." },
+    { id: "calsi", t: "jump", r: 1, c: 6, go: "f2", lab: "Sí · Fase 02", text: "Ruta pre-venta. Agenda la llamada de venta en esta misma llamada." }
+   ],
+   edges: [["s1","optin","h"],["optin","nopt","n"],["optin","msg","h"],["msg","nmsg","n"],["msg","d5","h"],["d5","d5no","d","NO"],["d5","ramas","h","SÍ"],["ramas","nramas","n"],["ramas","aten","h"],["aten","atenno","d","NO"],["aten","aper","w","SÍ"],["aper","razones","h"],["razones","nraz","n"],["razones","sit","h"],["sit","dolor","h"],["dolor","ndol","n"],["dolor","comp","h"],["comp","cal","h"],["cal","calsi","h","SÍ"],["cal","calno","d","NO"]] },
+
+ { id: "f2", tab: "02 Pre-venta", chip: "FASE 02", title: "Califica en la llamada: ruta pre-venta", meta: "SDR · en la misma llamada · ej. Martín", color: "var(--p2)", rows: [140, 600],
+   nodes: [
+    { id: "s2", t: "start", r: 0, c: 0, title: "Califica en la llamada" },
+    { id: "form", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Le mandás el formulario en el momento", d: "Con el lead todavía en el teléfono. Nunca «después te lo paso».",
       ex: [{ type: "call", head: "Llamada con Martín", lines: [["SDR", "Por lo que me contás, tu marca encaja justo con lo que hace Manu. El próximo paso es una llamada con [closer], del equipo, donde ven tus números y si tiene sentido trabajar juntos. Te mando ahora un formulario cortito y al final elegís el horario. Lo completamos juntos, así no te queda pendiente."]] }],
-      rule: "Nunca \"después te lo paso\" y nunca el link de Calendly suelto: el closer entraría a ciegas." },
-    { id: "preguntas", k: "form", t: "Las preguntas",
-      what: "Nombre y teléfono, situación, objetivo, problema, cuánto puede invertir y qué tan pronto lo quiere resolver. Al final, el horario.",
+      rule: "El Calendly va adentro del formulario. Con el link suelto, agenda sin dejar datos y el closer entra a ciegas." },
+    { id: "nform", t: "note", r: 0, c: 1, below: true, from: "form", lab: "Por qué el Calendly va adentro", text: "Completar el formulario es el precio de entrada a la agenda. Con el link suelto, el closer entra a ciegas." },
+    { id: "preg", t: "step", k: "form", r: 0, c: 2, n: "2", title: "Las preguntas", d: "Nombre y teléfono · situación · objetivo · problema · cuánto puede invertir · qué tan pronto · Calendly.",
       ex: [{ type: "note", head: "Lo que completó Martín", lines: ["Situación: consumible químico, más de 30 millones", "Objetivo: poder pagar más por cliente y escalar la pauta", "Problema: los CPA me suben todos los meses", "Inversión: entre USD 2.000 y 5.000 · Lo quiere resolver: ya", "Horario: miércoles 21/10, 11 hs"] }],
       rule: "El teléfono se vuelve a preguntar: puede no ser el del opt-in, y el que vale es este." },
-    { id: "reservo", k: "dec", t: "¿Completó y reservó?",
-      what: "Si no reservó, no cortás la llamada hasta que agarre el horario.",
-      branches: [["Sí", "Confirmación."], ["No", "Si ya cortaste: llamada más texto el mismo día. El lugar no se reserva solo."]],
-      ex: [{ type: "wa", head: "Si cortó sin reservar", lines: ["Martín, te quedó pendiente elegir el horario con [closer]: [link del formulario]. El lugar no queda reservado hasta que lo completás. ¿Lo hacés ahora?"] }] },
-    { id: "confirmacion", k: "sdr", t: "Confirmación",
-      what: "Le pedís un ok explícito y le mandás el recurso prometido el mismo día.",
-      ex: [
-        { type: "wa", head: "Al terminar la llamada", lines: ["Quedás para el miércoles 21 a las 11 con [closer]. Tirame un ok así te reservo el lugar."] },
-        { type: "wa", head: "Más tarde, el mismo día", lines: ["Como te dije, acá va lo que te prometí para tu caso: [SOP de la Skool sobre CPA]. Fijate sobre todo la parte de cuánto podés pagar por cliente."] }
-      ] },
-    { id: "grupo", k: "sdr", t: "Grupo de WhatsApp + traspaso",
-      what: "Apenas reserva, armás un grupo con el lead, el closer y vos, y presentás el caso ahí. La ficha completa (con el presupuesto) queda en GHL para el closer.",
-      ex: [{ type: "wa", head: "Grupo \"[Marca de Martín] · Equipo Manu Dominguez\"", lines: ["Martín, te presento a [closer], que es con quien hablás el miércoles 21 a las 11.", "[closer]: Martín tiene [marca], productos de limpieza para el hogar en Tiendanube, y vienen facturando unos 45 millones. Lo que más le pesa hoy es que \"salieron como siete marcas a pautar lo mismo\" y el CPA sube todos los meses. El objetivo es poder pagar más por cliente y escalar. Ya le mandé el SOP de CPA.", "Cualquier cosa antes de la llamada, la hablamos por acá."] }],
-      rule: "En el traspaso va: situación, cuello de botella, el dolor con sus palabras, objetivo, plazo, presupuesto declarado y qué recurso le mandaste." },
-    { id: "paquete", k: "sdr", t: "Las respuestas definen el paquete",
-      what: "Tres respuestas del formulario eligen las tres piezas que va a recibir antes de la llamada.",
-      ex: [{ type: "note", head: "El paquete de Martín", lines: ["Situación (químico, más de 30M) → testimonio de una marca de limpieza que facturaba parecido", "Objetivo (pagar más por cliente) → video del roadmap de Génesis", "Problema (CPA) → SOP de la Skool sobre CPA y techo de pauta"] }],
-      rule: "Sin el banco de testimonios dividido por situación, la tercera pieza no existe." }
-  ]},
-  { id: "f03", n: "Fase 03", t: "Ruta a la clase", who: "SDR · en la misma llamada · ej. Lucía", hito: "Confirmada para la clase.", seq: true, nodes: [
-    { id: "eduproblema", k: "sdr", t: "Educás sobre el problema",
-      what: "En la misma llamada, le mostrás que lo que cree que le pasa no es lo que le pasa.",
+    { id: "npreg", t: "note", r: 0, c: 2, below: true, from: "preg", lab: "El teléfono se repregunta", text: "El del formulario puede no ser el mismo que dejó en el opt-in. El que vale es este." },
+    { id: "res", t: "dec", r: 0, c: 3, title: "¿Completó y reservó horario?",
+      branches: [["Sí", "Confirmación."], ["No", "No cortás hasta que agarre el horario."]],
+      ex: [{ type: "wa", head: "Si ya cortó sin reservar", lines: ["Martín, te quedó pendiente elegir el horario con [closer]: [link del formulario]. El lugar no queda reservado hasta que lo completás. ¿Lo hacés ahora?"] }] },
+    { id: "resno", t: "no", r: 0, c: 3, below: true, from: "res", text: "No cortes hasta que agarre el horario. Si ya cortaste: llamada + texto el mismo día. El lugar no se reserva solo.", act: "↺ Volver a llamar" },
+    { id: "conf", t: "step", k: "sdr", r: 0, c: 4, n: "3", title: "Confirmación", d: "«Quedás para el [día y hora], tirame un ok así te reservo el lugar». El recurso sale el mismo día.",
+      ex: [{ type: "wa", head: "Al terminar la llamada", lines: ["Quedás para el miércoles 21 a las 11 con [closer]. Tirame un ok así te reservo el lugar."] }, { type: "wa", head: "Más tarde, el mismo día", lines: ["Como te dije, acá va lo que te prometí para tu caso: [SOP de la Skool sobre CPA]. Fijate sobre todo la parte de cuánto podés pagar por cliente."] }] },
+    { id: "grupo", t: "step", k: "sdr", r: 0, c: 5, n: "4", title: "Grupo de WhatsApp + traspaso al closer", d: "Lo armás apenas reserva, con el lead y el closer adentro, y presentás el caso ahí.",
+      ex: [{ type: "wa", head: "Grupo «[Marca de Martín] · Equipo Manu Dominguez»", lines: ["Martín, te presento a [closer], que es con quien hablás el miércoles 21 a las 11.", "[closer]: Martín tiene [marca], productos de limpieza para el hogar en Tiendanube, y vienen facturando unos 45 millones. Lo que más le pesa hoy es que «salieron como siete marcas a pautar lo mismo» y el CPA sube todos los meses. El objetivo es poder pagar más por cliente y escalar. Ya le mandé el SOP de CPA.", "Cualquier cosa antes de la llamada, la hablamos por acá."] }],
+      rule: "La ficha completa (con el presupuesto declarado) queda en GHL para el closer, no en el grupo." },
+    { id: "ngrupo", t: "note", r: 0, c: 5, below: true, from: "grupo", lab: "Qué va en el traspaso", text: "Situación · cuello de botella · dolor con sus palabras · objetivo · plazo · presupuesto declarado · qué recurso le mandaste." },
+    { id: "paq", t: "step", k: "sdr", r: 1, c: 0, n: "5", title: "Las respuestas definen el paquete", d: "Tres respuestas del formulario eligen las tres piezas: una por situación, una por objetivo y una por problema.",
+      ex: [{ type: "note", head: "El paquete de Martín", lines: ["Situación (químico, más de 30M) → testimonio de una marca de limpieza que facturaba parecido", "Objetivo (pagar más por cliente) → video del roadmap de Génesis", "Problema (CPA) → SOP de la Skool sobre CPA y techo de pauta"] }] },
+    { id: "r1", t: "route", r: 1, c: 1, lab: "Rutea", title: "Situación → testimonio", text: "De alguien en su misma situación. Sin el banco dividido por situación, esta pieza no existe." },
+    { id: "r2", t: "route", r: 1, c: 2, lab: "Rutea", title: "Objetivo → video de la oferta", text: "El video que lo lleva justo a donde dijo que quiere llegar." },
+    { id: "r3", t: "route", r: 1, c: 3, lab: "Rutea", title: "Problema → recurso", text: "El SOP de la Skool que ataca el cuello de botella que declaró, no uno genérico." },
+    { id: "m2", t: "mile", r: 1, c: 4, lab: "Milestone", title: "Lugar reservado y paquete definido", text: "Sigue en el núcleo: las 3 piezas y la llamada de venta." }
+   ],
+   edges: [["s2","form","h"],["form","nform","n"],["form","preg","h"],["preg","npreg","n"],["preg","res","h"],["res","resno","d","NO"],["res","conf","h","SÍ"],["conf","grupo","h"],["grupo","ngrupo","n"],["grupo","paq","w"],["paq","r1","h"],["r1","r2","h"],["r2","r3","h"],["r3","m2","h"]] },
+
+ { id: "f3", tab: "03 Ruta a la clase", chip: "FASE 03", title: "No califica todavía: ruta a la clase", meta: "SDR · en la misma llamada · ej. Lucía", color: "var(--p3)", rows: [140, 600],
+   nodes: [
+    { id: "s3", t: "start", r: 0, c: 0, title: "No califica todavía" },
+    { id: "edup", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Educás sobre el problema", d: "En la misma llamada. Le mostrás que lo que cree que le pasa no es lo que le pasa.",
       ex: [{ type: "call", head: "Llamada con Lucía", lines: [["Lucía", "Creo que me falta encontrar el producto que pegue. Pruebo cosas y no termina de arrancar."], ["SDR", "Te entiendo. Pero por lo que me contás, no te falta un producto ganador: tus clientas te compran y no vuelven. El que ya te compró no tiene un motivo para volver, y por eso cada mes arrancás de nuevo."]] }],
-      rule: "No cortes para volver a llamar: el lead tibio se enfría en cuanto colgás." },
-    { id: "edusolucion", k: "sdr", t: "Educás sobre la solución",
-      what: "Que hay una salida y que tiene un orden. El qué y el por qué, nunca el cómo completo.",
-      ex: [{ type: "call", head: "Llamada con Lucía", lines: [["SDR", "Las marcas que salen de ahí dejan de pensar en la venta y empiezan a pensar en el cliente: cuánto les deja en el tiempo, no en la primera compra. Hay un orden para hacerlo, y Manu lo muestra paso a paso el lunes."]] }],
-      rule: "Si se lleva el cómo entero, no va a la clase: ya tiene lo que fue a buscar." },
-    { id: "sop", k: "sdr", t: "Le mandás el SOP",
-      what: "El mismo día, el SOP de la Skool de Manu que ataca su problema puntual.",
-      ex: [{ type: "wa", head: "WhatsApp a Lucía", lines: ["Te paso lo que te prometí: [SOP de la Skool sobre recompra]. Es justo para lo de que tus clientas no vuelven. Arrancá por la secuencia post-compra y después contame cómo te fue."] }],
-      rule: "Cumple la promesa y te deja el pretexto del seguimiento: \"¿pudiste aplicar lo del SOP?\"." },
-    { id: "interes", k: "sdr", t: "Subís el interés por la clase",
-      what: "Conectás su problema con lo que se va a mostrar. Tiene que escuchar su propio problema en el temario.",
+      rule: "Vos no le decís que no califica ni le hablás de otro programa: eso lo hace el closer." },
+    { id: "nedup", t: "note", r: 0, c: 1, below: true, from: "edup", lab: "No cortes y vuelvas a llamar", text: "El lead tibio se enfría en el momento en que colgás. Todo esto pasa en la primera llamada." },
+    { id: "edus", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Educás sobre la solución", d: "Que existe una salida y que tiene un orden. El qué y el por qué, nunca el cómo completo.",
+      ex: [{ type: "call", head: "Llamada con Lucía", lines: [["SDR", "Las marcas que salen de ahí dejan de pensar en la venta y empiezan a pensar en el cliente: cuánto les deja en el tiempo, no en la primera compra. Hay un orden para hacerlo, y Manu lo muestra paso a paso el lunes."]] }] },
+    { id: "nedus", t: "note", r: 0, c: 2, below: true, from: "edus", lab: "Límite", text: "Si se lleva el cómo entero, no va a la clase: ya tiene lo que fue a buscar." },
+    { id: "sop", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Le mandás el SOP que le sirve", d: "El de la Skool de Manu que ataca su problema puntual, el mismo día.",
+      ex: [{ type: "wa", head: "WhatsApp a Lucía", lines: ["Te paso lo que te prometí: [SOP de la Skool sobre recompra]. Es justo para lo de que tus clientas no vuelven. Arrancá por la secuencia post-compra y después contame cómo te fue."] }] },
+    { id: "nsop", t: "note", r: 0, c: 3, below: true, from: "sop", lab: "Doble función", text: "Cumple la promesa y te deja el pretexto del seguimiento: «¿pudiste aplicar lo del SOP?»." },
+    { id: "int", t: "step", k: "sdr", r: 0, c: 4, n: "4", title: "Subís el interés por la clase", d: "Conectás su problema con lo que se va a mostrar: «esto que te pasa es justo lo que vamos a ver».",
       ex: [{ type: "call", head: "Llamada con Lucía", lines: [["SDR", "Esto que te pasa con las clientas que no vuelven es justo lo que Manu va a mostrar el lunes 19 a las 19: por qué cada venta te cuesta lo mismo que la anterior y cómo salir de eso. La clase es privada, así que entrás porque estás anotada."]] }] },
-    { id: "confirmaclase", k: "dec", t: "¿Confirmó?",
-      what: "Le pedís día, hora y un ok explícito. El ok es lo que sube la asistencia.",
-      branches: [["Sí", "Recordatorio el día anterior y el día de la clase, pidiendo un ok cada vez."], ["No", "Sigue la cadencia hasta el evento, con el SOP como excusa."]],
-      ex: [
-        { type: "wa", head: "La confirmación", lines: ["¿Te cuento como confirmada para el lunes 19 a las 19? Tirame un ok."] },
-        { type: "wa", head: "Domingo 18", lines: ["Mañana a las 19 es la clase. Lo de las clientas que no vuelven lo ves ahí. ¿Seguís firme? Tirame un ok."] }
-      ],
-      rule: "Si aplica el SOP y vuelve con resultados o preguntas, se recalienta: le mandás el formulario y agenda sin esperar a la clase." }
-  ]},
-  { id: "f04", n: "Fase 04", t: "El día de la clase", who: "SDR · lunes 19/10", hito: "Los 3 grupos armados esa misma noche.", seq: true, nodes: [
-    { id: "recordatorio", k: "sdr", t: "Recordatorio final y link",
-      what: "Dos horas antes y al abrir la sala, a las 3 listas: los que confirmaste, los que nunca te atendieron y los que se anotaron sin hablar con nadie.",
-      ex: [
-        { type: "wa", head: "17:00", lines: ["Martín, hoy a las 19 es la clase en vivo con Manu. Te voy a pasar el link por acá cuando abra la sala. Tirame un ok así sé que lo tenés."] },
-        { type: "wa", head: "19:00", lines: ["Arrancó. Entrá acá: [LINK CLASE]"] }
-      ],
-      rule: "El último empujón trae a la mitad de los que aparecen." },
-    { id: "chat", k: "sdr", t: "Moderás el chat",
-      what: "Contestás dudas y sostenés la conversación. En el chat no se vende ni se da precio.",
-      ex: [{ type: "note", head: "Respuestas en el chat", lines: ["\"¿Cuánto sale?\" → Depende de cada marca. Eso lo ves en una llamada con tus números; al final Manu te dice cómo agendar.", "\"¿Queda grabada?\" → Sí, los anotados reciben la repetición. Pero en vivo podés preguntar.", "\"¿Sirve para mi rubro?\" → Contame qué vendés y te digo."] }] },
-    { id: "senales", k: "sdr", t: "Marcás señales de compra",
-      what: "El que pregunta precio, formas de pago o cuándo empieza queda marcado como prioridad del día siguiente.",
-      ex: [{ type: "note", head: "Ejemplo en el chat", lines: ["Martín escribe: \"¿Y esto cuándo arranca? ¿Se puede pagar en cuotas?\"", "→ Etiqueta en GHL: señal de compra. Es el primero que se llama si no agenda."] }],
-      rule: "Sin esa lista, al día siguiente llamás por orden alfabético." },
-    { id: "cta", k: "form", t: "El llamado a la acción: agendar",
-      what: "Cuando Manu invita a agendar, pegás en el chat el mismo formulario con Calendly de la ruta pre-venta.",
-      ex: [{ type: "wa", head: "En el chat de la clase", lines: ["Para agendar tu llamada con el equipo: [link del formulario]. Completás las preguntas y al final elegís el horario."] }],
-      rule: "Mismo formulario = un solo ruteo de piezas para todas las puertas." },
-    { id: "tresgrupos", k: "dec", t: "Partís la lista en 3 grupos",
-      what: "Esa misma noche, no al día siguiente. La ventana cierra el jueves 22 a las 23:59.",
-      ex: [{ type: "note", head: "Con nuestros dos leads", lines: ["Grupo 1 · asistió y agendó → Lucía agendó al final de la clase", "Grupo 2 · asistió y no agendó → los que preguntaron y no agendaron", "Grupo 3 · no asistió → se anotaron y no aparecieron"] }] }
-  ]},
-  { id: "f05", n: "Fase 05", t: "Después de la clase: los 3 grupos", who: "SDR · del 19/10 a la noche al 22/10", hito: "Cada lead entra al núcleo con su llamada agendada, o queda para el próximo ciclo.", seq: false, nodes: [
-    { id: "g1", k: "sdr", t: "Grupo 1 · Asistió y agendó",
-      what: "Grupo de WhatsApp con el closer esa misma noche, llamada de bienvenida al día siguiente y las 3 piezas.",
-      ex: [{ type: "call", head: "Bienvenida a Lucía (5 minutos)", lines: [["SDR", "Lucía, ¿cómo estás? Te llamo porque vi que agendaste con [closer] para el miércoles a las 16. Antes de eso: ¿qué fue lo que más te sirvió de la clase? ¿Y qué te quedó dando vueltas?"], ["SDR", "Perfecto. Te voy a mandar un par de cosas por el grupo antes de la llamada, así llegás con todo el panorama."]] }],
-      rule: "Este grupo ya dijo que sí. Lo único que puede pasar es que se enfríe, y se enfría en silencio." },
-    { id: "g2", k: "sdr", t: "Grupo 2 · Asistió y no agendó",
-      what: "Los llamás el mismo día, primero los marcados con señal de compra. Buscás la objeción real y la rompés con su pieza.",
-      ex: [{ type: "call", head: "Llamada a un lead del Grupo 2", lines: [["SDR", "Te vi en la clase de ayer, y vi que preguntaste por las cuotas. ¿Qué te pareció?"], ["Lead", "Muy bueno. Lo tengo que pensar."], ["SDR", "¿Qué es puntualmente lo que tenés que pensar?"], ["Lead", "No sé si con mi rubro funciona."], ["SDR", "Te paso el caso de una marca igual a la tuya. Y si querés verlo con tus números, acá elegís horario: [link del formulario]."]] }],
-      rule: "La primera objeción nunca es la real. Preguntás qué le faltó y te callás." },
-    { id: "g3", k: "sdr", t: "Grupo 3 · No asistió",
-      what: "El objetivo no es agendar: es volver a meterlo en el proceso. Le mandás una sola cosa: la repetición o el recurso.",
-      ex: [{ type: "wa", head: "Después de la llamada", lines: ["Te paso la repetición: [LINK REPLAY]. Si vas con poco tiempo, arrancá en [minuto], que es donde Manu habla de los CPA."] }],
-      rule: "Nunca los dos links en el mismo mensaje. Si en la llamada aparece temperatura, agendás directo." }
-  ]},
-  { id: "nucleo", n: "El núcleo", t: "Las 3 piezas y la llamada de venta", who: "SDR + closer · hasta el 22/10 23:59", hito: "Venta: Génesis o Mentoría.", seq: true, nodes: [
-    { id: "piezas", k: "sdr", t: "Las 3 piezas",
-      what: "En este orden, por el grupo de WhatsApp: video de la oferta (por objetivo), recurso (por problema) y testimonio (por situación). El testimonio va último.",
-      ex: [
-        { type: "wa", head: "1 · Video", lines: ["Para que llegues a la llamada con el panorama completo: este video es el camino para poder pagar más por cliente y escalar, paso a paso. [link]"] },
-        { type: "wa", head: "2 · Recurso", lines: ["Me dijiste que lo que más te frena es que el CPA sube todos los meses. Esto es puntualmente para eso: [SOP]"] },
-        { type: "wa", head: "3 · Testimonio", lines: ["Y esto te lo quería mostrar: [caso] estaba igual que vos, con una marca de limpieza y el CPA por las nubes. Mirá cómo le fue. [testimonio]"] }
-      ],
-      rule: "El testimonio mata la objeción que nadie dice: \"a mí esto no me va a funcionar\"." },
-    { id: "consumio", k: "dec", t: "¿Consumió las piezas?",
-      what: "Antes del recordatorio, preguntás qué le resonó.",
-      branches: [["Sí", "Anotás qué le resonó en la ficha: el closer lo usa."], ["No", "No la das por perdida: el closer entra sabiéndolo y arranca más abajo."]],
+    { id: "nint", t: "note", r: 0, c: 4, below: true, from: "int", lab: "Personalizado o no sirve", text: "Invitar en genérico no mueve a nadie. Tiene que escuchar su propio problema en el temario." },
+    { id: "confa", t: "step", k: "sdr", r: 0, c: 5, n: "5", title: "Confirmás la asistencia", d: "Día, hora y un ok explícito. El ok es lo que sube la asistencia.",
+      ex: [{ type: "wa", head: "WhatsApp a Lucía", lines: ["¿Te cuento como confirmada para el lunes 19 a las 19? Tirame un ok."] }] },
+    { id: "dconf", t: "dec", r: 1, c: 0, title: "¿Confirmó?",
+      branches: [["Sí", "Recordatorios hasta el día."], ["No", "Sigue la cadencia hasta el evento, con el SOP como excusa."]],
+      ex: [{ type: "wa", head: "Cadencia con el SOP como excusa", lines: ["Lucía, ¿pudiste aplicar lo del SOP? Contame qué te pasó, y de paso te confirmo para el lunes a las 19."] }] },
+    { id: "dconfno", t: "no", r: 1, c: 0, below: true, from: "dconf", text: "Sigue en la cadencia hasta el evento: llamada, texto y audio turnándose, con el SOP como excusa.", act: "↺ Seguir la cadencia" },
+    { id: "rec", t: "step", k: "sdr", r: 1, c: 1, n: "6", title: "Recordatorios hasta el día", d: "Día anterior y día de la clase, pidiendo un ok cada vez.",
+      ex: [{ type: "wa", head: "Domingo 18", lines: ["Mañana a las 19 es la clase. Lo de las clientas que no vuelven lo ves ahí. ¿Seguís firme? Tirame un ok."] }] },
+    { id: "m3", t: "mile", r: 1, c: 2, lab: "Milestone", title: "Confirmada para la clase", text: "Sigue en la Fase 04." },
+    { id: "nm3", t: "note", r: 1, c: 2, below: true, from: "m3", lab: "Se puede recalentar", text: "Si aplica el SOP y vuelve con resultados o preguntas, le mandás el formulario y agenda. No esperes a la clase por respetar el mapa." }
+   ],
+   edges: [["s3","edup","h"],["edup","nedup","n"],["edup","edus","h"],["edus","nedus","n"],["edus","sop","h"],["sop","nsop","n"],["sop","int","h"],["int","nint","n"],["int","confa","h"],["confa","dconf","w"],["dconf","dconfno","d","NO"],["dconf","rec","h","SÍ"],["rec","m3","h"],["m3","nm3","n"]] },
+
+ { id: "f4", tab: "04 Día de la clase", chip: "FASE 04", title: "Arranca la clase en vivo", meta: "SDR · lunes 19/10", color: "var(--p4)", rows: [140, 600],
+   nodes: [
+    { id: "s4", t: "start", r: 0, c: 0, title: "Arranca el vivo" },
+    { id: "recf", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Recordatorio final y link", d: "Dos horas antes y al abrir la sala. El último empujón trae a la mitad de los que aparecen.",
+      ex: [{ type: "wa", head: "17:00", lines: ["Martín, hoy a las 19 es la clase en vivo con Manu. Te voy a pasar el link por acá cuando abra la sala. Tirame un ok así sé que lo tenés."] }, { type: "wa", head: "19:00", lines: ["Arrancó. Entrá acá: [LINK CLASE]"] }] },
+    { id: "nrecf", t: "note", r: 0, c: 1, below: true, from: "recf", lab: "Quiénes están en la lista", text: "Los que confirmaste, los que nunca te atendieron y los que se anotaron sin hablar con nadie. Los tres reciben el recordatorio." },
+    { id: "chat", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Moderás el chat", d: "Contestás dudas y sostenés la conversación. Acá no se vende ni se da precio.",
+      ex: [{ type: "note", head: "Respuestas en el chat", lines: ["«¿Cuánto sale?» → Depende de cada marca. Eso lo ves en una llamada con tus números; al final Manu te dice cómo agendar.", "«¿Queda grabada?» → Sí, los anotados reciben la repetición. Pero en vivo podés preguntar.", "«¿Sirve para mi rubro?» → Contame qué vendés y te digo."] }] },
+    { id: "sen", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Marcás señales de compra", d: "El que pregunta precio, formas de pago o cuándo empieza queda marcado como prioridad del día siguiente.",
+      ex: [{ type: "note", head: "Ejemplo en el chat", lines: ["Escribe: «¿Y esto cuándo arranca? ¿Se puede pagar en cuotas?»", "→ Etiqueta en GHL: señal de compra. Es el primero que se llama si no agenda."] }] },
+    { id: "nsen", t: "note", r: 0, c: 3, below: true, from: "sen", lab: "Vale oro", text: "Esa lista es por quién empezás a llamar al día siguiente. Sin ella, llamás por orden alfabético." },
+    { id: "cta", t: "step", k: "form", r: 0, c: 4, n: "4", title: "El llamado a la acción: agendar", d: "El link de la clase lleva al mismo formulario con Calendly de la ruta pre-venta.",
+      ex: [{ type: "wa", head: "En el chat de la clase", lines: ["Para agendar tu llamada con el equipo: [link del formulario]. Completás las preguntas y al final elegís el horario."] }] },
+    { id: "ncta", t: "note", r: 0, c: 4, below: true, from: "cta", lab: "Por qué el mismo", text: "Mismo formulario = un solo ruteo de piezas para todas las puertas. Dos formularios, dos sistemas." },
+    { id: "part", t: "step", k: "sdr", r: 1, c: 0, n: "5", title: "Partís la lista en tres grupos", d: "El mismo día, no al siguiente. La ventana cierra el jueves 22 a las 23:59.",
+      ex: [{ type: "note", head: "Con nuestros dos leads", lines: ["Grupo 1 · asistió y agendó → Lucía agendó al final de la clase", "Grupo 2 · asistió y no agendó → los que preguntaron y no agendaron", "Grupo 3 · no asistió → se anotaron y no aparecieron"] }] },
+    { id: "g1c", t: "route", r: 1, c: 1, lab: "Grupo 1", title: "Asistió y agendó", text: "El más caliente. Ya está adentro: solo hay que sostenerlo hasta la llamada." },
+    { id: "g2c", t: "route", r: 1, c: 2, lab: "Grupo 2", title: "Asistió y no agendó", text: "Vio todo y no dio el paso. Hay una objeción concreta y hay que ir a buscarla." },
+    { id: "g3c", t: "route", r: 1, c: 3, lab: "Grupo 3", title: "No asistió", text: "Se anotó y no apareció. Hay que volver a meterlo con la repetición antes de pedirle nada." },
+    { id: "m4", t: "mile", r: 1, c: 4, lab: "Milestone", title: "Los tres grupos armados", text: "Sigue en la Fase 05, cada grupo con su entrada." }
+   ],
+   edges: [["s4","recf","h"],["recf","nrecf","n"],["recf","chat","h"],["chat","sen","h"],["sen","nsen","n"],["sen","cta","h"],["cta","ncta","n"],["cta","part","w"],["part","g1c","h"],["g1c","g2c","h"],["g2c","g3c","h"],["g3c","m4","h"]] },
+
+ { id: "f5", tab: "05 Los 3 grupos", chip: "FASE 05", title: "Después de la clase: los tres grupos", meta: "SDR · del 19/10 a la noche al 22/10", color: "var(--p5)", rows: [140, 600, 1060],
+   nodes: [
+    { id: "s51", t: "start", r: 0, c: 0, title: "Grupo 1 · Asistió y agendó" },
+    { id: "g1a", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Grupo + traspaso al closer", d: "Esa misma noche, con el lead y el closer adentro.",
+      ex: [{ type: "wa", head: "Grupo «[Marca de Lucía] · Equipo Manu Dominguez»", lines: ["Lucía, te presento a [closer], que es con quien hablás el miércoles a las 16.", "[closer]: Lucía tiene [marca], productos de limpieza ecológica, y vienen facturando unos 14 millones. Lo que más le pesa es que sus clientas compran una vez y no vuelven. Ya le mandé el SOP de recompra."] }] },
+    { id: "ng1a", t: "note", r: 0, c: 1, below: true, from: "g1a", lab: "Ojo", text: "Este grupo ya dijo que sí. Lo único que puede pasarle hasta la llamada es enfriarse, y se enfría en silencio." },
+    { id: "g1b", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Llamada de bienvenida", d: "Confirmás la llamada, sacás lo que le faltó de la clase y le anticipás qué le vas a mandar.",
+      ex: [{ type: "call", head: "Bienvenida a Lucía (5 minutos)", lines: [["SDR", "Lucía, ¿cómo estás? Te llamo porque vi que agendaste con [closer] para el miércoles a las 16. Antes de eso: ¿qué fue lo que más te sirvió de la clase? ¿Y qué te quedó dando vueltas?"], ["SDR", "Perfecto. Te voy a mandar un par de cosas por el grupo antes de la llamada, así llegás con todo el panorama."]] }] },
+    { id: "g1c2", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Las tres piezas", d: "El paquete que ruteó el formulario: testimonio por situación, video por objetivo, recurso por problema.",
+      ex: [{ type: "note", head: "Ver el núcleo", lines: ["Los textos de las tres piezas están en la Fase 06, El núcleo."] }] },
+    { id: "m51", t: "mile", r: 0, c: 4, lab: "Milestone", title: "Sostenido hasta la llamada", text: "Entra al núcleo." },
+
+    { id: "s52", t: "start", r: 1, c: 0, title: "Grupo 2 · Asistió y no agendó" },
+    { id: "g2a", t: "step", k: "sdr", r: 1, c: 1, n: "1", title: "Los llamás el mismo día", d: "Empezás por los que marcaste con señales de compra en el chat.",
+      ex: [{ type: "call", head: "Llamada a un lead del Grupo 2", lines: [["SDR", "Te vi en la clase de ayer, y vi que preguntaste por las cuotas. ¿Qué te pareció?"]] }] },
+    { id: "ng2a", t: "note", r: 1, c: 1, below: true, from: "g2a", lab: "Acá está la plata", text: "Vieron todo, entendieron la oferta y no dieron el paso. Están más cerca que cualquier lead nuevo." },
+    { id: "g2b", t: "step", k: "sdr", r: 1, c: 2, n: "2", title: "Buscás la objeción real", d: "«¿Qué te faltó para dar el paso?» y te callás.",
+      ex: [{ type: "call", head: "Llamada a un lead del Grupo 2", lines: [["Lead", "Muy bueno. Lo tengo que pensar."], ["SDR", "¿Qué es puntualmente lo que tenés que pensar?"], ["Lead", "No sé si con mi rubro funciona."]] }] },
+    { id: "ng2b", t: "note", r: 1, c: 2, below: true, from: "g2b", lab: "La primera nunca es la real", text: "La primera es «lo tengo que pensar». La verdadera aparece cuando preguntás qué le faltó." },
+    { id: "g2c2", t: "step", k: "sdr", r: 1, c: 3, n: "3", title: "La rompés", d: "Con la pieza que corresponde a esa objeción, no con el paquete genérico.",
+      ex: [{ type: "wa", head: "Después de la llamada", lines: ["Te paso el caso de una marca igual a la tuya: [testimonio]. Y si querés verlo con tus números, acá elegís horario: [link del formulario]."] }] },
+    { id: "g2d", t: "dec", r: 1, c: 4, title: "¿La objeción es de miedo o de fit?",
+      branches: [["Miedo", "Hay fit: agendás con el formulario y sigue como el Grupo 1."], ["Sin fit", "No lo agendás: le mandás el recurso que le sirve y queda para el próximo ciclo."]],
+      rule: "El que no califica para Génesis sí tiene fit: se agenda igual y el closer le presenta la Mentoría. Sin fit real es el que no tiene un consumible propio o no tiene intención de invertir." },
+    { id: "g2dno", t: "no", r: 1, c: 4, below: true, from: "g2d", text: "Si no hay fit real, no lo agendes: le mandás el recurso que le sirve y queda para el próximo ciclo.", act: "↺ Próximo ciclo" },
+    { id: "g2e", t: "step", k: "sdr", r: 1, c: 5, n: "4", title: "Agendás", d: "Formulario con el Calendly adentro, y de ahí sigue exactamente como el Grupo 1.",
+      ex: [{ type: "wa", head: "WhatsApp", lines: ["Dale, lo vemos con tus números. Acá elegís el horario con [closer]: [link del formulario]."] }] },
+
+    { id: "s53", t: "start", r: 2, c: 0, title: "Grupo 3 · No asistió" },
+    { id: "g3a", t: "step", k: "sdr", r: 2, c: 1, n: "1", title: "Los llamás", d: "El objetivo no es agendar: es volver a meterlo en el proceso.",
+      ex: [{ type: "call", head: "Llamada a un lead del Grupo 3", lines: [["SDR", "Soy [tu nombre], del equipo de Manu. Te llamo porque te anotaste a la clase de ayer y no te vi. ¿Qué pasó? ¿Y cómo venís con la marca?"]] }] },
+    { id: "ng3a", t: "note", r: 2, c: 1, below: true, from: "g3a", lab: "Excepción", text: "Si en la llamada aparece temperatura, agendás directo. No lo mandes a ver la repetición por respetar el orden." },
+    { id: "g3b", t: "step", k: "sdr", r: 2, c: 2, n: "2", title: "Repetición o el recurso que le sirve", d: "Uno solo, elegido por lo que te contó. Nunca los dos links en el mismo mensaje.",
+      ex: [{ type: "wa", head: "Después de la llamada", lines: ["Te paso la repetición: [LINK REPLAY]. Si vas con poco tiempo, arrancá en [minuto], que es donde Manu habla de los CPA."] }] },
+    { id: "g3d", t: "dec", r: 2, c: 3, title: "¿Lo vio?",
+      branches: [["Sí", "Agendás con el mismo formulario y sigue como el Grupo 1."], ["No", "Seguís la cadencia con el recurso como excusa. Si no lo abre en la ventana, próximo ciclo."]],
+      ex: [{ type: "wa", head: "Si lo vio", lines: ["¿Qué te pareció? Si querés verlo con tus números, acá elegís horario: [link del formulario]."] }] },
+    { id: "g3dno", t: "no", r: 2, c: 3, below: true, from: "g3d", text: "Seguís la cadencia con el recurso como excusa. Si no lo abre antes del 22/10, queda para el próximo ciclo.", act: "↺ Próximo ciclo" },
+    { id: "g3e", t: "step", k: "sdr", r: 2, c: 4, n: "3", title: "Agendás", d: "Mismo formulario, y sigue como el Grupo 1.",
+      ex: [{ type: "wa", head: "WhatsApp", lines: ["Buenísimo. Acá elegís el horario con [closer]: [link del formulario]. Ojo que hasta el jueves 22 a las 23:59 tenemos lugar."] }] }
+   ],
+   edges: [["s51","g1a","h"],["g1a","ng1a","n"],["g1a","g1b","h"],["g1b","g1c2","h"],["g1c2","m51","h"],
+           ["s52","g2a","h"],["g2a","ng2a","n"],["g2a","g2b","h"],["g2b","ng2b","n"],["g2b","g2c2","h"],["g2c2","g2d","h"],["g2d","g2dno","d","SIN FIT"],["g2d","g2e","h","MIEDO"],
+           ["s53","g3a","h"],["g3a","ng3a","n"],["g3a","g3b","h"],["g3b","g3d","h"],["g3d","g3dno","d","NO"],["g3d","g3e","h","SÍ"]] },
+
+ { id: "f6", tab: "06 El núcleo", chip: "NÚCLEO", title: "Las tres piezas y la llamada de venta", meta: "SDR + closer · hasta el 22/10 23:59", color: "var(--p6)", rows: [140, 600],
+   nodes: [
+    { id: "s6", t: "start", r: 0, c: 0, title: "Entran las 4 puertas" },
+    { id: "ns6", t: "note", r: 0, c: 0, below: true, from: "s6", lab: "Las 4 puertas", text: "Pre-venta · asistió y agendó · asistió y no agendó · no asistió. Todas reciben lo mismo, ruteado por sus respuestas." },
+    { id: "vid", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Video de la oferta o roadmap", d: "Primero entiende a dónde va y cómo se llega. Elegido por el objetivo que declaró.",
+      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Para que llegues a la llamada con el panorama completo: este video es el camino para poder pagar más por cliente y escalar, paso a paso. [link]"] }] },
+    { id: "recu", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Recurso sobre su problema", d: "Después ve que su cuello de botella puntual tiene salida. Elegido por el problema que declaró.",
+      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Me dijiste que lo que más te frena es que el CPA sube todos los meses. Esto es puntualmente para eso: [SOP de la Skool]"] }] },
+    { id: "test", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Testimonio de su misma situación", d: "Y al final ve a alguien igual a él que ya lo logró. Elegido por su situación.",
+      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Y esto te lo quería mostrar: [caso] estaba igual que vos, con una marca de limpieza y el CPA por las nubes. Mirá cómo le fue. [testimonio]"] }] },
+    { id: "ntest", t: "note", r: 0, c: 3, below: true, from: "test", lab: "Por qué cierra el testimonio", text: "Mata la última objeción, la que nadie dice: «a mí esto no me va a funcionar». Por eso va último." },
+    { id: "cons", t: "dec", r: 0, c: 4, title: "¿Consumió las piezas?",
+      branches: [["Sí", "Recordatorios de la llamada."], ["No", "No la des por perdida: preguntá qué le resonó."]],
       ex: [{ type: "wa", head: "WhatsApp", lines: ["¿Llegaste a ver lo que te mandé? ¿Qué fue lo que más te resonó?"] }] },
-    { id: "recordatorios", k: "sdr", t: "Recordatorios de la llamada",
-      what: "El día anterior y dos horas antes, pidiendo un ok cada vez. Si no contesta, lo llamás.",
-      ex: [
-        { type: "wa", head: "El día anterior", lines: ["Mañana a las 11 hablás con [closer]. ¿Seguís firme? Tirame un ok."] },
-        { type: "wa", head: "Si no se presenta", lines: ["Martín, [closer] te estaba esperando. ¿Pasó algo? Elegí otro horario acá: [link del formulario]."] }
-      ] },
-    { id: "llamada", k: "closer", t: "La llamada de venta",
-      what: "Las 7 fases, de conexión a presentación. Si califica, el closer presenta Génesis; si no, la Mentoría, explicándole de su lado por qué Génesis hoy no le sirve.",
-      ex: [
-        { type: "closer", head: "Con Martín (califica)", lines: [["Closer", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."], ["Closer", "La inversión es de USD 5.000, para que puedas pagar por cada cliente más que esas siete marcas. ¿Alguna duda de cómo funciona?"]] },
-        { type: "closer", head: "Con Lucía (no califica)", lines: [["Closer", "Lucía, te hablo con total sinceridad. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?"]] }
-      ],
+    { id: "consno", t: "no", r: 0, c: 4, below: true, from: "cons", text: "No la des por perdida: preguntá qué le resonó de la que sí abrió. Si no vio nada, el closer entra sabiéndolo y arranca más abajo.", act: "↺ Avisar al closer" },
+    { id: "recl", t: "step", k: "sdr", r: 0, c: 5, n: "4", title: "Recordatorios de la llamada", d: "Día anterior y dos horas antes, pidiendo un ok cada vez. El ok sostiene la asistencia.",
+      ex: [{ type: "wa", head: "El día anterior", lines: ["Mañana a las 11 hablás con [closer]. ¿Seguís firme? Tirame un ok."] }, { type: "wa", head: "Si no se presenta", lines: ["Martín, [closer] te estaba esperando. ¿Pasó algo? Elegí otro horario acá: [link del formulario]."] }] },
+    { id: "lv", t: "step", k: "closer", r: 1, c: 0, n: "5", title: "La llamada de venta", d: "Las 7 fases, de conexión a presentación. Génesis si califica; Mentoría si no.",
+      ex: [{ type: "closer", head: "Con Martín (califica)", lines: [["Closer", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."], ["Closer", "La inversión es de USD 5.000, para que puedas pagar por cada cliente más que esas siete marcas. ¿Alguna duda de cómo funciona?"]] }, { type: "closer", head: "Con Lucía (no califica)", lines: [["Closer", "Lucía, te hablo con total sinceridad. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?"]] }],
       rule: "Después del precio, silencio. Las cuotas aparecen solo si sale la objeción de plata. El precio no se baja nunca." },
-    { id: "cerro", k: "dec", t: "¿Cerró?",
-      what: "Todo cierre pasa por esta llamada: no hay link de pago público.",
-      branches: [["Sí", "El closer manda el link de pago. Con el pago, onboarding. Génesis: USD 5.000 (2 × 2.850 o 3 × 2.000). Mentoría: USD 2.000 (2 × 1.100)."], ["No", "Seguimiento del closer sobre la objeción que quedó viva, hasta el 22/10 a las 23:59. Si se cae, queda para el próximo ciclo con todo lo que sabemos de él."]],
-      ex: [{ type: "note", head: "Cómo terminan nuestros dos leads", lines: ["Martín → Génesis, 3 cuotas de USD 2.000", "Lucía → Mentoría, 2 cuotas de USD 1.100"] }] }
-  ]}
+    { id: "nlv", t: "note", r: 1, c: 0, below: true, from: "lv", lab: "Qué se ofrece", text: "Califica (químico + más de 30M): Génesis. No califica: Mentoría, explicándole de su lado por qué Génesis hoy no le sirve." },
+    { id: "cls1", t: "route", r: 1, c: 1, lab: "Clase", title: "Las 7 fases de la llamada", text: "Conexión → situación → problema → solución → compromiso → consecuencia → presentación." },
+    { id: "cls2", t: "route", r: 1, c: 2, lab: "Clase", title: "Proceso B2B", text: "El dueño de marca compra con criterio de negocio: de igual a igual, con números." },
+    { id: "cls3", t: "route", r: 1, c: 3, lab: "Clase", title: "Presentación y objeciones", text: "Los 3 pilares atados a sus problemas. La matriz de objeciones, con el 22/10 como fecha de cierre real." },
+    { id: "cer", t: "dec", r: 1, c: 4, title: "¿Cerró?",
+      branches: [["Sí", "El closer manda el link de pago y, con el pago, onboarding."], ["No", "Seguimiento del closer sobre la objeción viva, dentro de la ventana."]],
+      ex: [{ type: "note", head: "Cómo terminan nuestros dos leads", lines: ["Martín → Génesis, 3 cuotas de USD 2.000", "Lucía → Mentoría, 2 cuotas de USD 1.100"] }] },
+    { id: "cerno", t: "no", r: 1, c: 4, below: true, from: "cer", text: "Seguimiento post-llamada sobre la objeción que quedó viva, hasta el 22/10 23:59. Si se cae, vuelve a la lista del próximo ciclo con lo que ya sabés de él.", act: "↺ Seguimiento" },
+    { id: "venta", t: "mile", r: 1, c: 5, lab: "Milestone", title: "Venta", text: "Génesis USD 5.000 (2 × 2.850 o 3 × 2.000) · Mentoría USD 2.000 (2 × 1.100). Pasa a onboarding." },
+    { id: "dep", t: "note", r: 1, c: 6, lab: "Dependencia dura", text: "El banco de testimonios dividido por situación y por problema. Sin eso, la tercera pieza no existe en ninguna de las 4 puertas." }
+   ],
+   edges: [["s6","ns6","n"],["s6","vid","h"],["vid","recu","h"],["recu","test","h"],["test","ntest","n"],["test","cons","h"],["cons","consno","d","NO"],["cons","recl","h","SÍ"],["recl","lv","w"],["lv","nlv","n"],["lv","cls1","h"],["cls1","cls2","h"],["cls2","cls3","h"],["cls3","cer","h"],["cer","cerno","d","NO"],["cer","venta","h","SÍ"],["venta","dep","h"]] }
 ];
 
-const KIND = { sdr: "SDR", closer: "Closer", form: "Formulario", dec: "Decisión" };
+/* ---------- Render ---------- */
+const world = document.getElementById("world");
+const svg = document.getElementById("edges");
+const KIND = { sdr: "SDR", closer: "Closer", form: "Form" };
 const byId = {};
-LANES.forEach(l => l.nodes.forEach(n => { byId[n.id] = { ...n, lane: l }; }));
+const esc = s => { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; };
+const GAP = 130, TOP = 520;
+let WW = FW;
 
-/* Red de fases */
-function drawNet() {
+// Título del tablero
+const head = document.createElement("div");
+head.className = "board-title";
+head.innerHTML = `<h1>Mapa de ventas Génesis</h1><p>Todo el proceso, del opt-in a la venta. Cada paso tiene un ejemplo con nuestro caso: hacé clic para ver el mensaje o el guion. Todo se vende por llamada, sin emails, y la ventana cierra el jueves 22/10 a las 23:59.</p>
+<div class="personas"><div class="persona"><span class="pt" style="color:var(--yes)">Lead de ejemplo · califica</span><b>Martín</b><p>Productos de limpieza en Tiendanube. Factura 45 millones por mes con Meta Ads, en breakeven. El CPA le sube todos los meses.</p></div><div class="persona"><span class="pt" style="color:var(--no-ink)">Lead de ejemplo · todavía no</span><b>Lucía</b><p>Limpieza ecológica, Instagram y tienda propia. Factura 14 millones por mes. Sus clientas compran una vez y no vuelven.</p></div></div>`;
+world.appendChild(head);
+
+let y = TOP;
+FRAMES.forEach((f, fi) => {
+  const fr = document.createElement("section");
+  fr.className = "frame"; fr.id = f.id;
+  fr.style.setProperty("--fc", f.color);
+  fr.style.left = "0px"; fr.style.top = y + "px"; fr.style.width = FW + "px";
+  fr.innerHTML = `<div class="fhead" data-frame="${f.id}"><span class="fchip">${f.chip}</span><span class="ftitle">${esc(f.title)}</span><span class="fmeta">${esc(f.meta)}</span></div><div class="fsep"></div>`;
+  world.appendChild(fr);
+  f.el = fr; f.y = y;
+  f.nodes.forEach(n => {
+    const el = document.createElement(n.t === "step" || n.t === "dec" || n.t === "jump" ? "button" : "div");
+    if (el.tagName === "BUTTON") el.type = "button";
+    el.className = "n " + n.t; el.id = "n-" + n.id;
+    const top = f.rows[n.r] + (n.below ? B : 0);
+    el.style.left = COLS[n.c] + "px"; el.style.top = top + "px";
+    if (n.t === "start") el.textContent = n.title;
+    else if (n.t === "step") el.innerHTML = `<div class="tt"><span class="badge k-${n.k}">${KIND[n.k]}</span>${esc(n.n)} · ${esc(n.title)}</div><div class="dd">${esc(n.d)}</div><span class="ver">Ver ejemplo →</span>`;
+    else if (n.t === "dec") el.innerHTML = `<div>${esc(n.title)}</div>${n.d ? `<div class="dd">${esc(n.d)}</div>` : ""}<span class="ver">Ver ejemplo →</span>`;
+    else if (n.t === "no") el.innerHTML = `<div>${esc(n.text)}</div><div class="act">${esc(n.act)}</div>`;
+    else if (n.t === "note") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div>${esc(n.text)}</div>`;
+    else if (n.t === "mile") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div class="tt">${esc(n.title)}</div><div class="dd">${esc(n.text)}</div>`;
+    else if (n.t === "route") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div class="tt">${esc(n.title)}</div><div class="dd">${esc(n.text)}</div>`;
+    else if (n.t === "jump") { const tf = FRAMES.find(x => x.id === n.go); el.style.setProperty("--fc2", tf.color); el.innerHTML = `<div class="lab">${esc(n.lab)} →</div><div class="dd" style="margin-top:4px;color:var(--ink)">${esc(n.text)}</div>`; }
+    fr.appendChild(el);
+    byId[n.id] = { ...n, frame: f, el };
+  });
+});
+
+function layout() {
+  // alto de cada marco según su contenido, y posición vertical encadenada
+  FRAMES.forEach(f => {
+    let maxB = 0;
+    f.nodes.forEach(n => { const e = byId[n.id].el; maxB = Math.max(maxB, e.offsetTop + e.offsetHeight); });
+    f.h = maxB + 56; f.el.style.height = f.h + "px";
+  });
+  // dos columnas: 01-02, 03-04, 05-06
+  let yy = TOP;
+  for (let i = 0; i < FRAMES.length; i += 2) {
+    const row = FRAMES.slice(i, i + 2);
+    row.forEach((f, j) => { f.x = j * (FW + GAP); f.y = yy; f.el.style.left = f.x + "px"; f.el.style.top = yy + "px"; });
+    yy += Math.max(...row.map(f => f.h)) + GAP;
+  }
+  WW = FW * 2 + GAP;
+  world.style.width = WW + "px"; world.style.height = yy + "px";
+  drawEdges();
+}
+function box(id) { const n = byId[id]; const e = n.el; const x = n.frame.x + e.offsetLeft, yv = n.frame.y + e.offsetTop; return { x, y: yv, w: e.offsetWidth, h: e.offsetHeight, f: n.frame }; }
+function drawEdges() {
   const ns = "http://www.w3.org/2000/svg";
-  const W = 1080, H = 280;
-  const C = [
-    { id: "f01", label: "Opt-in y contacto", x: 120, y: 140, k: "sdr" },
-    { id: "f01", label: "¿Califica?", x: 300, y: 140, k: "dec", diamond: true, anchor: "califica" },
-    { id: "f02", label: "Ruta pre-venta", x: 470, y: 64, k: "sdr" },
-    { id: "f03", label: "Ruta a la clase", x: 470, y: 216, k: "sdr" },
-    { id: "f04", label: "Clase en vivo 19/10", x: 640, y: 216, k: "sdr" },
-    { id: "f05", label: "Los 3 grupos", x: 810, y: 216, k: "sdr" },
-    { id: "nucleo", label: "Las 3 piezas", x: 810, y: 64, k: "sdr", anchor: "piezas" },
-    { id: "nucleo", label: "Llamada de venta", x: 970, y: 64, k: "closer", anchor: "llamada" },
-    { id: "nucleo", label: "Génesis o Mentoría", x: 970, y: 216, k: "closer", anchor: "cerro" }
-  ];
-  const svg = document.createElementNS(ns, "svg");
-  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-  svg.setAttribute("role", "img");
-  svg.setAttribute("aria-label", "Red del proceso: dos rutas que terminan en la misma llamada de venta");
-  const el = (tag, attrs, parent) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; };
-  const defs = el("defs", {});
-  const mk = el("marker", { id: "arr", viewBox: "0 0 10 10", refX: "9", refY: "5", markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse" }, defs);
-  el("path", { d: "M0 0L10 5L0 10z", fill: "var(--muted)" }, mk);
-  const bw = 140, bh = 46;
-  const edges = [
-    [`M${120 + bw / 2} 140H${300 - 54}`],
-    [`M300 ${140 - 30}V64H${470 - bw / 2}`, "sí", 312, 92],
-    [`M300 ${140 + 30}V216H${470 - bw / 2}`, "todavía no", 312, 196],
-    [`M${470 + bw / 2} 64H${810 - bw / 2}`],
-    [`M${470 + bw / 2} 216H${640 - bw / 2}`],
-    [`M${640 + bw / 2} 216H${810 - bw / 2}`],
-    [`M810 ${216 - bh / 2}V${64 + bh / 2}`],
-    [`M${810 + bw / 2} 64H${970 - bw / 2}`],
-    [`M970 ${64 + bh / 2}V${216 - bh / 2}`]
-  ];
-  const g = el("g", { fill: "none", stroke: "var(--muted)", "stroke-width": "1.4" });
-  edges.forEach(([d, lab, lx, ly]) => {
-    el("path", { d, "marker-end": "url(#arr)" }, g);
-    if (lab) { const t = el("text", { x: lx, y: ly, fill: "var(--muted)", "font-size": "12.5", "font-family": "var(--font-mono)", stroke: "none" }); t.textContent = lab; }
-  });
-  const colors = { sdr: ["var(--sdr)", "var(--sdr-soft)"], closer: ["var(--closer)", "var(--closer-soft)"], dec: ["var(--dec)", "var(--dec-soft)"] };
-  C.forEach(c => {
-    const grp = el("g", { class: "cl", tabindex: "0", role: "button", "aria-label": `Ir a ${c.label}` });
-    const [stroke, fill] = colors[c.k];
-    if (c.diamond) el("polygon", { points: `${c.x - 54},${c.y} ${c.x},${c.y - 30} ${c.x + 54},${c.y} ${c.x},${c.y + 30}`, fill, stroke, "stroke-width": "1.5" }, grp);
-    else el("rect", { x: c.x - bw / 2, y: c.y - bh / 2, width: bw, height: bh, rx: "10", fill, stroke, "stroke-width": "1.5" }, grp);
-    const t = el("text", { x: c.x, y: c.y + 4.5, "text-anchor": "middle", fill: "var(--ink)", "font-size": "13", "font-weight": "600", "font-family": "var(--font-body)" }, grp);
-    t.textContent = c.label;
-    const go = () => { select(c.anchor || LANES.find(l => l.id === c.id).nodes[0].id, true); document.getElementById("lane-" + c.id).scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); };
-    grp.addEventListener("click", go);
-    grp.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
-  });
-  const title = el("text", { x: 24, y: 28, fill: "var(--ink)", "font-size": "15", "font-weight": "700", "font-family": "var(--font-display)" });
-  title.textContent = "Dos rutas, una sola llamada de venta";
-  document.getElementById("net").appendChild(svg);
-}
-
-/* Carriles */
-function drawLanes() {
-  const root = document.getElementById("lanes");
-  LANES.forEach(l => {
-    const sec = document.createElement("section");
-    sec.className = "lane"; sec.id = "lane-" + l.id;
-    sec.innerHTML = `<div class="lane-head"><span class="eyebrow">${l.n}</span><h2>${l.t}</h2><span class="meta">${l.who}</span></div><div class="lane-hito">Hito de salida: <b>${l.hito}</b></div>`;
-    const ul = document.createElement("ul");
-    ul.className = "steps" + (l.seq ? " seq" : "");
-    l.nodes.forEach(n => {
-      const li = document.createElement("li");
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "node " + n.k; b.id = "node-" + n.id;
-      b.setAttribute("aria-pressed", "false");
-      b.innerHTML = `<span class="k">${KIND[n.k]}</span><span class="t"></span>`;
-      b.querySelector(".t").textContent = n.t;
-      b.addEventListener("click", () => select(n.id));
-      li.appendChild(b); ul.appendChild(li);
-    });
-    sec.appendChild(ul);
-    root.appendChild(sec);
-  });
-}
-
-/* Panel */
-function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
-function exText(ex) { return ex.lines.map(x => Array.isArray(x) ? `${x[0]}: ${x[1]}` : x).join("\n\n"); }
-function renderEx(ex, i) {
-  let inner = "";
-  if (ex.type === "wa" || ex.type === "audio") inner = `<div class="bubble">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
-  else if (ex.type === "call" || ex.type === "closer") inner = `<div class="call${ex.type === "closer" ? " closer-call" : ""}">${ex.lines.map(([w, s]) => `<p><span class="${w === "SDR" || w === "Closer" ? "who" : "who lead"}">${esc(w)}:</span> ${esc(s)}</p>`).join("")}</div>`;
-  else inner = `<div class="note">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
-  const label = { wa: "WhatsApp", audio: "Audio", call: "Llamada", closer: "Llamada de venta", note: "Ejemplo" }[ex.type];
-  const copy = ex.type === "note" ? "" : `<button class="copy" type="button" data-ex="${i}">Copiar</button>`;
-  return `<div class="ex"><div class="ex-head"><span>${ex.head.includes(label) ? "" : label + " · "}${esc(ex.head)}</span>${copy}</div>${inner}</div>`;
-}
-let current = null;
-function select(id, quiet) {
-  const n = byId[id]; if (!n) return;
-  if (current) { const prev = document.getElementById("node-" + current); if (prev) prev.setAttribute("aria-pressed", "false"); }
-  current = id;
-  document.getElementById("node-" + id).setAttribute("aria-pressed", "true");
-  const p = document.getElementById("panel");
-  const color = { sdr: "var(--sdr)", closer: "var(--closer)", form: "var(--form)", dec: "var(--dec)" }[n.k];
-  let html = `<button class="copy close" type="button" id="close">Cerrar</button><div class="p-k" style="color:${color}">${KIND[n.k]}</div><h2 class="p-title">${esc(n.t)}</h2><div class="p-fase">${esc(n.lane.n)} · ${esc(n.lane.t)}</div>`;
-  html += `<div class="p-sec"><h3>Qué se hace</h3><p>${esc(n.what)}</p></div>`;
-  if (n.branches) html += `<div class="p-sec"><h3>Salidas</h3><div class="branches">${n.branches.map(([a, b]) => `<div class="br"><span class="pill${a === "No" ? " no" : ""}">${esc(a)}</span><span>${esc(b)}</span></div>`).join("")}</div></div>`;
-  if (n.ex) html += `<div class="p-sec"><h3>Ejemplo con nuestro caso</h3>${n.ex.map(renderEx).join("")}</div>`;
-  if (n.rule) html += `<div class="p-sec"><h3>La regla</h3><div class="rule">${esc(n.rule)}</div></div>`;
-  p.innerHTML = html;
-  p.dataset.open = quiet && matchMedia("(max-width: 980px)").matches ? "false" : "true";
-  p.scrollTop = 0;
-  p.querySelectorAll("button[data-ex]").forEach(b => b.addEventListener("click", () => {
-    const text = exText(n.ex[+b.dataset.ex]);
-    const done = ok => { b.textContent = ok ? "Copiado" : "Seleccioná y copiá"; setTimeout(() => { b.textContent = "Copiar"; }, 1600); };
-    try {
-      navigator.clipboard.writeText(text).then(() => done(true), () => { selectText(b); done(false); });
-    } catch (e) { selectText(b); done(false); }
+  svg.innerHTML = "";
+  svg.setAttribute("width", WW); svg.setAttribute("height", world.offsetHeight);
+  const defs = document.createElementNS(ns, "defs");
+  defs.innerHTML = `<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2a2b2d"/></marker>`;
+  svg.appendChild(defs);
+  const path = (d, dashed) => { const p = document.createElementNS(ns, "path"); p.setAttribute("d", d); p.setAttribute("fill", "none"); p.setAttribute("stroke", "#2a2b2d"); p.setAttribute("stroke-width", dashed ? "1.6" : "1.8"); if (dashed) p.setAttribute("stroke-dasharray", "5 5"); p.setAttribute("marker-end", "url(#ah)"); svg.appendChild(p); };
+  const label = (x, yv, t, color) => { const tx = document.createElementNS(ns, "text"); tx.setAttribute("x", x); tx.setAttribute("y", yv); tx.setAttribute("class", "elab"); tx.setAttribute("fill", color); tx.setAttribute("font-family", "JetBrains Mono, monospace"); tx.setAttribute("font-size", "11"); tx.setAttribute("font-weight", "700"); tx.textContent = t; svg.appendChild(tx); };
+  FRAMES.forEach(f => f.edges.forEach(([a, b, type, lab]) => {
+    const A = box(a), Bx = box(b);
+    const isNo = lab && /NO|SIN FIT/.test(lab);
+    const col = isNo ? "#b42318" : "#15803d";
+    if (type === "h") {
+      const ay = A.y + Math.min(A.h / 2, 26), by = Bx.y + Math.min(Bx.h / 2, 26);
+      const x1 = A.x + A.w, x2 = Bx.x - 2, mx = (x1 + x2) / 2;
+      path(`M${x1} ${ay}H${mx}V${by}H${x2}`);
+      if (lab) label(x1 + 6, ay - 8, lab, col);
+    } else if (type === "d" || type === "n") {
+      const cx = A.x + A.w / 2;
+      path(`M${cx} ${A.y + A.h}V${Bx.y - 2}`, type === "n");
+      if (lab) label(cx + 8, A.y + A.h + 22, lab, col);
+    } else if (type === "w") {
+      const ay = A.y + Math.min(A.h / 2, 26);
+      const rx = A.f.x + FW - 26;
+      const rowTop = Bx.y - 40;
+      const cx = Bx.x + Bx.w / 2;
+      path(`M${A.x + A.w} ${ay}H${rx}V${rowTop}H${cx}V${Bx.y - 2}`);
+      if (lab) label(A.x + A.w + 8, ay - 8, lab, col);
+    }
   }));
-  document.getElementById("close").addEventListener("click", () => { p.dataset.open = "false"; document.getElementById("node-" + id).focus(); });
-  try { localStorage.setItem("mapa-ventas-nodo", id); } catch (e) {}
-}
-function selectText(btn) {
-  const box = btn.closest(".ex").querySelector(".bubble, .call");
-  if (!box) return;
-  const r = document.createRange(); r.selectNodeContents(box);
-  const s = getSelection(); s.removeAllRanges(); s.addRange(r);
 }
 
-drawNet();
-drawLanes();
-let start = "msg";
-try { const saved = localStorage.getItem("mapa-ventas-nodo"); if (saved && byId[saved]) start = saved; } catch (e) {}
-select(start, true);
-if (!matchMedia("(max-width: 980px)").matches) document.getElementById("panel").dataset.open = "true";
+/* ---------- Cámara ---------- */
+const vp = document.getElementById("viewport");
+const cam = { x: 40, y: 100, s: 0.5 };
+const MIN = 0.12, MAX = 2.2;
+function apply() {
+  world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.s})`;
+  const g = 22 * cam.s;
+  vp.style.backgroundSize = `${g}px ${g}px`;
+  vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+  document.getElementById("pct").textContent = Math.round(cam.s * 100) + "%";
+  markTab();
+}
+function zoomAt(f, px, py) {
+  const ns = Math.min(MAX, Math.max(MIN, cam.s * f));
+  const k = ns / cam.s;
+  cam.x = px - (px - cam.x) * k; cam.y = py - (py - cam.y) * k; cam.s = ns; apply();
+}
+let anim = null;
+function flyTo(t) {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (anim) cancelAnimationFrame(anim);
+  if (reduce) { Object.assign(cam, t); apply(); return; }
+  const s0 = { ...cam }, t0 = performance.now(), D = 420;
+  const step = now => { const p = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - p, 3);
+    cam.x = s0.x + (t.x - s0.x) * e; cam.y = s0.y + (t.y - s0.y) * e; cam.s = s0.s + (t.s - s0.s) * e; apply();
+    if (p < 1) anim = requestAnimationFrame(step); };
+  anim = requestAnimationFrame(step);
+}
+function fitRect(x, yv, w, h, pad) {
+  const top = 84, W = innerWidth - (document.body.classList.contains("panel-open") && innerWidth > 720 ? 442 : 0), H = innerHeight - top - 20;
+  const s = Math.min(MAX, Math.max(MIN, Math.min((W - pad * 2) / w, (H - pad) / h)));
+  return { s, x: (W - w * s) / 2 - x * s, y: top + (H - h * s) / 2 - yv * s };
+}
+function fitAll() { flyTo(fitRect(0, 0, WW, world.offsetHeight, 40)); }
+function goFrame(id) { const f = FRAMES.find(x => x.id === id); flyTo(fitRect(f.x, f.y, FW, f.h, 24)); }
+
+// arrastre + pinza
+const pts = new Map(); let drag = null, pinch = null;
+vp.addEventListener("pointerdown", e => {
+  if (e.button !== undefined && e.button > 0) return;
+  pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pts.size === 1) drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false, target: e.target };
+  if (pts.size === 2) { const [p, q] = [...pts.values()]; pinch = { d: Math.hypot(p.x - q.x, p.y - q.y), s: cam.s }; drag = null; }
+});
+vp.addEventListener("pointermove", e => {
+  if (!pts.has(e.pointerId)) return;
+  pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  if (pinch && pts.size === 2) {
+    const [p, q] = [...pts.values()]; const d = Math.hypot(p.x - q.x, p.y - q.y);
+    zoomAt((pinch.s * d / pinch.d) / cam.s, (p.x + q.x) / 2, (p.y + q.y) / 2); return;
+  }
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (!drag.moved && Math.hypot(dx, dy) > 4) { drag.moved = true; vp.classList.add("dragging"); try { vp.setPointerCapture(e.pointerId); } catch (_) {} }
+  if (drag.moved) { cam.x = drag.cx + dx; cam.y = drag.cy + dy; apply(); }
+});
+function endPtr(e) {
+  if (!pts.has(e.pointerId)) return;
+  pts.delete(e.pointerId);
+  if (pts.size < 2) pinch = null;
+  if (drag && !drag.moved && e.type === "pointerup") click(drag.target);
+  if (pts.size === 0) { drag = null; vp.classList.remove("dragging"); }
+}
+vp.addEventListener("pointerup", endPtr);
+vp.addEventListener("pointercancel", endPtr);
+vp.addEventListener("wheel", e => { e.preventDefault(); zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0016)), e.clientX, e.clientY); }, { passive: false });
+
+function click(t) {
+  const n = t.closest && t.closest(".n");
+  if (n) {
+    const id = n.id.slice(2), d = byId[id];
+    if (d.t === "jump") { goFrame(d.go); return; }
+    if (d.ex || d.branches || d.rule) { openPanel(id); return; }
+  }
+  const fh = t.closest && t.closest(".fhead");
+  if (fh) goFrame(fh.dataset.frame);
+}
+// teclado en los nodos
+world.addEventListener("keydown", e => { if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("n")) { e.preventDefault(); click(e.target); } });
+world.addEventListener("focusin", e => {
+  const n = e.target.closest(".n"); if (!n) return;
+  const r = n.getBoundingClientRect();
+  if (r.left < 0 || r.top < 80 || r.right > innerWidth || r.bottom > innerHeight) { const b = box(n.id.slice(2)); flyTo({ s: Math.max(cam.s, 0.8), x: innerWidth / 2 - (b.x + b.w / 2) * Math.max(cam.s, 0.8), y: innerHeight / 2 - (b.y + b.h / 2) * Math.max(cam.s, 0.8) }); }
+});
+addEventListener("keydown", e => {
+  if (e.target.closest && e.target.closest("input,textarea")) return;
+  if (e.key === "+" || e.key === "=") zoomAt(1.2, innerWidth / 2, innerHeight / 2);
+  else if (e.key === "-") zoomAt(1 / 1.2, innerWidth / 2, innerHeight / 2);
+  else if (e.key === "Escape") closePanel();
+});
+document.getElementById("zin").onclick = () => zoomAt(1.25, innerWidth / 2, innerHeight / 2);
+document.getElementById("zout").onclick = () => zoomAt(0.8, innerWidth / 2, innerHeight / 2);
+document.getElementById("zfit").onclick = fitAll;
+
+/* ---------- Pestañas ---------- */
+const tabs = document.getElementById("tabs");
+const tm = document.createElement("button"); tm.type = "button"; tm.className = "tab mapa"; tm.textContent = "Mapa"; tm.onclick = fitAll; tabs.appendChild(tm);
+FRAMES.forEach(f => { const b = document.createElement("button"); b.type = "button"; b.className = "tab"; b.dataset.f = f.id; b.innerHTML = `<i style="background:${f.color}"></i>${esc(f.tab)}`; b.onclick = () => goFrame(f.id); tabs.appendChild(b); });
+function markTab() {
+  if (cam.s < 0.3) { tabs.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-current", b.classList.contains("mapa") ? "true" : "false")); return; }
+  const cx = (innerWidth / 2 - cam.x) / cam.s, cy = (innerHeight / 2 - cam.y) / cam.s;
+  let cur = FRAMES[0].id, best = Infinity;
+  FRAMES.forEach(f => { if (f.h == null) return; const dx = Math.max(f.x - cx, 0, cx - f.x - FW), dy = Math.max(f.y - cy, 0, cy - f.y - f.h), d = dx * dx + dy * dy; if (d < best) { best = d; cur = f.id; } });
+  tabs.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-current", b.dataset.f === cur ? "true" : "false"));
+}
+
+/* ---------- Panel ---------- */
+const panel = document.getElementById("panel");
+let active = null;
+function exHtml(ex, i) {
+  let inner;
+  if (ex.type === "wa") inner = `<div class="bubble">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
+  else if (ex.type === "call" || ex.type === "closer") inner = `<div class="call${ex.type === "closer" ? " closer" : ""}">${ex.lines.map(([w, s]) => `<p><span class="w${w === "SDR" || w === "Closer" ? "" : " l"}">${esc(w)}:</span> ${esc(s)}</p>`).join("")}</div>`;
+  else inner = `<div class="notebox">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
+  const lab = { wa: "WhatsApp", call: "Llamada", closer: "Llamada de venta", note: "Ejemplo" }[ex.type];
+  const cp = ex.type === "note" ? "" : `<button class="copy" type="button" data-i="${i}">Copiar</button>`;
+  return `<div class="ex"><div class="exh"><span>${lab} · ${esc(ex.head)}</span>${cp}</div>${inner}</div>`;
+}
+function openPanel(id) {
+  const n = byId[id];
+  if (active) byId[active].el.classList.remove("active");
+  active = id; n.el.classList.add("active");
+  document.getElementById("pfase").textContent = `${n.frame.chip} · ${n.frame.title}`;
+  document.getElementById("pfase").style.color = n.frame.color;
+  document.getElementById("ptitle").textContent = n.t === "dec" ? n.title : `${n.n} · ${n.title}`;
+  let h = "";
+  if (n.d) h += `<section><h3>Qué se hace</h3><p>${esc(n.d)}</p></section>`;
+  if (n.branches) h += `<section><h3>Salidas</h3>${n.branches.map(([a, b], i) => `<div class="br"><span class="pill${i === 1 ? " no" : ""}">${esc(a)}</span><span>${esc(b)}</span></div>`).join("")}</section>`;
+  if (n.ex) h += `<section><h3>Ejemplo con nuestro caso</h3>${n.ex.map(exHtml).join("")}</section>`;
+  if (n.rule) h += `<section><h3>La regla</h3><div class="rule">${esc(n.rule)}</div></section>`;
+  const body = document.getElementById("pbody"); body.innerHTML = h; body.scrollTop = 0;
+  body.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+    const ex = n.ex[+b.dataset.i];
+    const text = ex.lines.map(x => Array.isArray(x) ? `${x[0]}: ${x[1]}` : x).join("\n\n");
+    const done = ok => { b.textContent = ok ? "Copiado" : "Seleccioná y copiá"; setTimeout(() => b.textContent = "Copiar", 1600); };
+    const sel = () => { const el = b.closest(".ex").querySelector(".bubble,.call"); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(text).then(() => done(true), () => { sel(); done(false); }); } catch (_) { sel(); done(false); }
+  }));
+  panel.hidden = false;
+  document.body.classList.add("panel-open");
+}
+function closePanel() { panel.hidden = true; document.body.classList.remove("panel-open"); if (active) { byId[active].el.classList.remove("active"); active = null; } }
+document.getElementById("pclose").onclick = closePanel;
+panel.addEventListener("pointerdown", e => e.stopPropagation());
+panel.addEventListener("wheel", e => e.stopPropagation(), { passive: true });
+
+/* ---------- Arranque ---------- */
+function boot() {
+  layout();
+  // abre en la Fase 01, con el mensaje inicial a la vista
+  const f = FRAMES[0];
+  if (innerWidth > 720) document.body.classList.add("panel-open");
+  const t = innerWidth <= 720 ? { s: 0.55, x: 16 - 20 * 0.55, y: 130 - (f.y + 10) * 0.55 } : fitRect(f.x, f.y, FW, f.h, 24);
+  Object.assign(cam, t); apply();
+  if (innerWidth > 720) openPanel("msg");
+}
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(boot); else boot();
+addEventListener("resize", () => { layout(); apply(); });
 </script>
