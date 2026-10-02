@@ -10,7 +10,7 @@ Este manual es para estudiar la llamada antes de hacerla. En la llamada se usa e
 
 ### El lead que te va a llegar
 
-Viene de la clase en vivo privada del lunes 19/10 y llama durante el carrito (20 al 22/10). Ya vio la cuenta del techo y el caso de Manu. Es un dueño de marca de consumibles (químicos, cuidado personal, suplementos, cosmética) con tienda propia, que factura entre 30 y 80 millones de pesos por mes con Meta Ads y está en breakeven.
+Viene de la clase en vivo privada del lunes 19/10 y llega a esta llamada por el formulario de agenda, con el SDR adelante (todo se vende por llamada y la ventana cierra el 22/10 a las 23:59). Ya vio la cuenta del techo y el caso de Manu. El lead de Génesis vende un consumible químico y factura más de 30 millones de pesos por mes; casi siempre tiene tienda propia, pauta en Meta Ads y está en breakeven. El que no llega a eso es lead de la Mentoría (ver la última sección).
 
 - Opera su marca: hace o supervisa las campañas, sabe de creativos, proveedores y logística.
 - Probablemente ya pagó una o dos mentorías de producto ganador que no le sirvieron, porque él ya tiene producto.
@@ -31,7 +31,7 @@ Los tres salen del mismo lugar: su unidad de venta es la compra, no el cliente.
 
 - **Precio:** USD 5.000 contado, 2 cuotas de USD 2.850 o 3 de USD 2.000. No se baja nunca.
 - **Lugares:** 10. **Cierre:** jueves 22/10 a las 23:59.
-- **Instalación prioritaria** para los que entran en las primeras 48 h del carrito.
+- **Instalación prioritaria** para los que cierran en las primeras 48 h después de la clase. [CONFIRMAR con Manu]
 - **Qué incluye** (12 entregables; DFY = lo hacemos nosotros):
   1. Roadmap de conversión con la auditoría de su operación y sus números: margen real por pedido, CPA actual y techo de pauta con LTV.
   2. Variante de suscripción definida, validada y con precio: producto, formato, ciclo de reposición y qué gana el que se suscribe (DFY).
@@ -73,7 +73,7 @@ Con este lead, el gap casi siempre se ve así:
 
 | Hoy | Donde quiere estar |
 | --- | --- |
-| Factura entre 30 y 80 millones, pero en breakeven | Una base que cobra sola todos los meses |
+| Factura más de 30 millones, pero en breakeven | Una base que cobra sola todos los meses |
 | Cada venta le cuesta lo mismo que la anterior | La 2ª, 3ª y 4ª compra entran con el margen entero |
 | Puede pagar por cliente lo que le deja un pedido | Puede pagar 2,5 veces más que su competencia |
 | El 1 del mes arranca en cero | El mes arranca con los suscriptores ya cobrados |
@@ -287,7 +287,7 @@ Resolver el problema no alcanza, y la solución tampoco: hay que sumarle la cons
 1. Buscás el sí: "¿sentís que esto es lo que estabas buscando para tu marca?"
 2. Pedís el por qué: "¿por qué?" (que se lo venda él).
 3. Que reafirme lo puntual: "¿hay algo que sientas que es la llave para vos?"
-4. Pedís la venta con el próximo paso concreto: pago → onboarding → auditoría de números, y la instalación prioritaria si entra en las primeras 48 h del carrito.
+4. Pedís la venta con el próximo paso concreto: pago → onboarding → auditoría de números, y la instalación prioritaria si cierra en las primeras 48 h después de la clase.
 
 El detalle del pitch está en la sección siguiente.
 
@@ -464,7 +464,7 @@ Lo ayudás a resolver su problema de plata sin decirle vos qué hacer.
 
 > Tenemos dos opciones. O hacemos una llamada con tu socio, o hacés el pago ahora. No es para guardarte el lugar: es un compromiso con lo que querés lograr. Lo que vemos es que cuando llevás a tu socio una decisión ya tomada, lo respetás igual porque lo hacés parte, pero llevás una seguridad que se nota. ¿Cómo querés avanzar?
 
-**Paso 3 — Si sigue sin querer:** agendá la llamada con los dos, con día y hora. Recordá que el carrito cierra el jueves 22/10 a las 23:59: la llamada tiene que ser antes.
+**Paso 3 — Si sigue sin querer:** agendá la llamada con los dos, con día y hora. Recordá que la ventana cierra el jueves 22/10 a las 23:59: la llamada tiene que ser antes.
 
 ### Rama Miedo: 3 reframes, en orden
 
@@ -582,7 +582,7 @@ El roadmap se ordena según dónde detectaste que se traba: si no tiene los núm
 
 ### Una llamada, no dos
 
-El SOP reserva las 2 llamadas (descubrimiento y estrategia por separado) para tickets de más de USD 30.000. Génesis es USD 5.000: **se cierra en una llamada**. Partirla en dos alarga, enfría al lead y, con el carrito cerrando el 22/10, lo deja afuera. La única segunda llamada que se agenda es la de la rama Socio, con los dos dueños, y siempre antes del cierre.
+El SOP reserva las 2 llamadas (descubrimiento y estrategia por separado) para tickets de más de USD 30.000. Génesis es USD 5.000: **se cierra en una llamada**. Partirla en dos alarga, enfría al lead y, con la ventana cerrando el 22/10, lo deja afuera. La única segunda llamada que se agenda es la de la rama Socio, con los dos dueños, y siempre antes del cierre.
 
 ### Lo que hacen los que cierran
 
@@ -608,8 +608,8 @@ No todos los que llegan de la clase son lead de Génesis. Al que no califica no 
 ### Quién no califica para Génesis
 
 - Factura menos de 30 millones de pesos por mes.
-- No tiene tienda propia: vende solo en Mercado Libre, mayorista o retail.
-- Todavía no vende con Meta Ads, o arranca de cero.
+- Lo que vende no es un consumible químico.
+- Con que le falte una de las dos, no califica: tienen que darse las dos.
 
 **Por qué no le sirve Génesis:** Génesis instala la suscripción sobre una marca que ya vende y ya tiene clientes. Si no hay base ni pauta andando, no hay nada que convertir: lo que necesita primero es vender y escalar su consumible. Eso es la Mentoría.
 
@@ -626,7 +626,7 @@ Lo ves en la fase 2 (Situación), con sus números. La llamada no se corta ni se
 
 ### La transición: honesta
 
-> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas que ya facturan arriba de 30 millones con tienda propia, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Para eso tenemos otro programa. ¿Te lo muestro?
+> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?
 
 Decirle que no a Génesis suma confianza: este lead ya vio closers que le venden cualquier cosa. Que le digas "esto no es para vos todavía" es lo que hace creíble lo que viene después.
 

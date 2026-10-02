@@ -8,9 +8,9 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 
 **Tené abierto:** el formulario del lead, la presentación de Génesis, el Simulador de Suscripción (para hacer la cuenta con sus números) y el link de pago.
 
-**Quién califica:** dueño de una marca de consumibles (químicos de limpieza, cuidado personal, suplementos, cosmética) con tienda propia, que factura entre 30 y 80 millones de pesos por mes con Meta Ads y está en breakeven.
+**Quién califica:** vende un producto consumible químico (limpieza, cuidado personal, cosmética) y factura más de 30 millones de pesos por mes. Tienen que darse las dos cosas. El SDR ya lo filtró, pero lo confirmás vos en la fase 2.
 
-**Quién no califica:** el que factura menos de 30 millones por mes, el que arranca de cero, el que busca producto ganador, el que vende solo en Mercado Libre, mayorista o retail sin tienda propia. A ese no se le vende Génesis: se le vende la Mentoría (ver "Si no califica para Génesis").
+**Quién no califica:** el que factura menos de 30 millones por mes, o el que no vende un consumible químico. A ese no se le vende Génesis: se le vende la Mentoría (ver "Si no califica para Génesis").
 
 ### La oferta
 
@@ -20,7 +20,7 @@ La llamada dura ~1 hora y se cierra en la misma llamada. Le hablás a un dueño 
 | Método | Método B.A.S.E. |
 | Precio | USD 5.000 contado · 2 cuotas de USD 2.850 · 3 cuotas de USD 2.000 |
 | Lugares | 10 |
-| Bonus por entrar rápido | Instalación prioritaria para los que entran en las primeras 48 h del carrito |
+| Bonus por entrar rápido | Instalación prioritaria para los que cierran en las primeras 48 h después de la clase [CONFIRMAR con Manu] |
 | Cierre | Jueves 22/10 a las 23:59 |
 
 ### Los números que vas a usar
@@ -213,17 +213,17 @@ Después del precio, **silencio**. Las cuotas se ofrecen solo si aparece la obje
 1. > ¿Sentís que esto es lo que estabas buscando para tu marca?
 2. Si dice que sí: > ¿Por qué?
 3. > ¿Hay algo puntual que sientas que es la llave para vos?
-4. > Perfecto. El próximo paso es hacer el pago, y de ahí arrancamos con el onboarding y la auditoría de tus números. Si entrás en las primeras 48 horas del carrito, tenés instalación prioritaria. ¿Te parece que avancemos?
+4. > Perfecto. El próximo paso es hacer el pago, y de ahí arrancamos con el onboarding y la auditoría de tus números. Si cerrás en las primeras 48 horas después de la clase, tenés instalación prioritaria. ¿Te parece que avancemos?
 
 ## Si no califica para Génesis: la Mentoría
 
-**Cuándo:** te das cuenta en la fase 2 (Situación), con sus números: factura menos de 30 millones por mes, no tiene tienda propia, o todavía no está vendiendo con Meta Ads. Génesis instala la suscripción sobre una marca que ya vende; si la marca todavía no está ahí, no le sirve.
+**Cuándo:** te das cuenta en la fase 2 (Situación), con sus números: factura menos de 30 millones por mes, o lo que vende no es un consumible químico. Génesis instala la suscripción sobre una marca que ya vende; si la marca todavía no está ahí, no le sirve.
 
 **Cómo seguís:** la llamada no se corta. Hacés las 7 fases igual, pero el objetivo cambia: no es pasar a suscripción, es llegar a vender y escalar su consumible. En la fase 4 no hagas la cuenta del techo con suscripción: el futuro que le hacés ver es la marca vendiendo todos los meses con pauta.
 
 **La transición** (en vez de la de Génesis):
 
-> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas que ya facturan arriba de 30 millones con tienda propia, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Para eso tenemos otro programa. ¿Te lo muestro?
+> Mirá [nombre], te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Pero por lo que me contaste, querés [objetivo] y hoy [problema]. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?
 
 **El pitch, con los mismos pasos** (qué es → para qué sirve → "porque me dijiste que…" → "¿tiene sentido?"):
 
