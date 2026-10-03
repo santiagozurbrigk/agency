@@ -16,6 +16,7 @@
   --sdr: #c2410c;
   --closer: #4f46e5;
   --form: #475569;
+  --team: #0f766e;
   --dec-bg: var(--surface)3ea;
   --dec-line: #f2b48c;
   --dec-ico: #ea580c;
@@ -49,7 +50,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
   --board: #121417; --dot: #2b2f35; --frame: #1b1e23; --ink: #ecebe7; --muted: #9d9b95; --line: #30343a; --edge: #bdbab3;
-  --sdr: #fb8a4c; --closer: #9496fb; --form: #a3b1c2;
+  --sdr: #fb8a4c; --closer: #9496fb; --form: #a3b1c2; --team: #2dd4bf;
   --dec-bg: #352318; --dec-line: #7c4a26; --dec-ico: #fb923c;
   --no-bg: #34191a; --no-line: #74322d; --no-ink: #f87171;
   --note-bg: #2f2711; --note-line: #d9a72b; --note-ink: #f0c75e;
@@ -63,7 +64,7 @@
 }
 :root[data-theme="dark"] {
   --board: #121417; --dot: #2b2f35; --frame: #1b1e23; --ink: #ecebe7; --muted: #9d9b95; --line: #30343a; --edge: #bdbab3;
-  --sdr: #fb8a4c; --closer: #9496fb; --form: #a3b1c2;
+  --sdr: #fb8a4c; --closer: #9496fb; --form: #a3b1c2; --team: #2dd4bf;
   --dec-bg: #352318; --dec-line: #7c4a26; --dec-ico: #fb923c;
   --no-bg: #34191a; --no-line: #74322d; --no-ink: #f87171;
   --note-bg: #2f2711; --note-line: #d9a72b; --note-ink: #f0c75e;
@@ -137,7 +138,7 @@ button { font: inherit; color: inherit; }
 .n.step:hover, .n.dec:hover { box-shadow: 0 0 0 2px var(--ink); }
 .n.active { box-shadow: 0 0 0 2.5px var(--ink) !important; }
 .badge { display: inline-block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: .08em; border: 1px solid currentColor; border-radius: 999px; padding: 1px 6px; margin-right: 6px; vertical-align: 1px; text-transform: uppercase; }
-.k-sdr { color: var(--sdr); } .k-closer { color: var(--closer); } .k-form { color: var(--form); }
+.k-sdr { color: var(--sdr); } .k-closer { color: var(--closer); } .k-form { color: var(--form); } .k-team { color: var(--team); }
 .n .tt { font-weight: 700; font-size: 13.5px; color: var(--ink); }
 .n .dd { color: var(--muted); margin-top: 5px; }
 .n .ver { display: inline-block; margin-top: 9px; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; color: var(--muted); }
@@ -242,7 +243,7 @@ body.panel-open .zoom { right: 442px; }
   <div class="brand"><span class="logo">G</span><span><b>Mapa de ventas</b><small>Génesis · clase 19/10</small></span></div>
   <nav class="tabs" id="tabs" aria-label="Fases"></nav>
   <button type="button" class="themebtn" id="themebtn" aria-label="Cambiar a modo oscuro"><span class="ico"></span><span id="themelab">Modo oscuro</span></button>
-  <div class="legend" aria-label="Referencias"><span><i style="background:var(--sdr)"></i>SDR</span><span><i style="background:var(--closer)"></i>Closer</span><span><i style="background:var(--form)"></i>Formulario</span><span><i class="dia" style="background:var(--dec-ico)"></i>Decisión</span><span><i style="background:var(--note-line)"></i>Nota</span></div>
+  <div class="legend" aria-label="Referencias"><span><i style="background:var(--sdr)"></i>SDR</span><span><i style="background:var(--closer)"></i>Closer</span><span><i style="background:var(--form)"></i>Formulario</span><span><i style="background:var(--team)"></i>Equipo</span><span><i class="dia" style="background:var(--dec-ico)"></i>Decisión</span><span><i style="background:var(--note-line)"></i>Nota</span></div>
 </div>
 <div class="minimap" id="minimap" aria-label="Minimapa"><div class="ml"><span>Vista general</span><span id="mmf"></span></div><div class="mm" id="mm"></div></div>
 
@@ -388,28 +389,29 @@ const FRAMES = [
    ],
    edges: [["s3","ns3","n"],["s3","edup","h"],["edup","nedup","n"],["edup","edus","h"],["edus","nedus","n"],["edus","sop","h"],["sop","nsop","n"],["sop","int","h"],["int","nint","n"],["int","confa","h"],["confa","dconf","w"],["dconf","dconfno","d","NO"],["dconf","rec","h","SÍ"],["rec","m3","h"],["m3","nm3","n"]] },
 
- { id: "f4", tab: "04 Día de la clase", chip: "FASE 04", title: "Arranca la clase en vivo", meta: "SDR · lunes 19/10", color: "var(--p4)", rows: [140, 600],
+ { id: "f4", tab: "04 Día de la clase", chip: "FASE 04", title: "Arranca la clase en vivo", meta: "Paso 1: SDR · pasos 2 a 5: Matías, Santiago y José · lunes 19/10", color: "var(--p4)", rows: [140, 600],
    nodes: [
     { id: "s4", t: "start", r: 0, c: 0, title: "Arranca el vivo" },
     { id: "recf", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Recordatorio final y link", d: "Dos horas antes y al abrir la sala. El último empujón trae a la mitad de los que aparecen.",
       ex: [{ type: "wa", head: "17:00", lines: ["Martín, hoy a las 19 es la clase en vivo con Manu. Te voy a pasar el link por acá cuando abra la sala. Tirame un ok así sé que lo tenés."] }, { type: "wa", head: "19:00", lines: ["Arrancó. Entrá acá: [LINK CLASE]"] }] },
     { id: "nrecf", t: "note", r: 0, c: 1, below: true, from: "recf", lab: "Quiénes están en la lista", text: "Los que confirmaste, los que nunca te atendieron y los que se anotaron sin hablar con nadie. Los tres reciben el recordatorio." },
-    { id: "chat", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Moderás el chat", d: "Contestás dudas y sostenés la conversación. Acá no se vende ni se da precio.",
+    { id: "chat", t: "step", k: "team", r: 0, c: 2, n: "2", title: "Moderás el chat", d: "Contestás dudas y sostenés la conversación. Acá no se vende ni se da precio.",
       ex: [{ type: "note", head: "Respuestas en el chat", lines: ["«¿Cuánto sale?» → Depende de cada marca. Eso lo ves en una llamada con tus números; al final Manu te dice cómo agendar.", "«¿Queda grabada?» → Sí, los anotados reciben la repetición. Pero en vivo podés preguntar.", "«¿Sirve para mi rubro?» → Contame qué vendés y te digo."] }] },
-    { id: "sen", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Marcás señales de compra", d: "El que pregunta precio, formas de pago o cuándo empieza queda marcado como prioridad del día siguiente.",
+    { id: "nchat", t: "note", r: 0, c: 2, below: true, from: "chat", lab: "Desde acá, el equipo", text: "Los pasos 2 a 5 los hacen Matías, Santiago y José. El SDR y los closers no hacen nada más en esta fase: siguen en la Fase 05." },
+    { id: "sen", t: "step", k: "team", r: 0, c: 3, n: "3", title: "Marcás señales de compra", d: "El que pregunta precio, formas de pago o cuándo empieza queda marcado como prioridad del día siguiente.",
       ex: [{ type: "note", head: "Ejemplo en el chat", lines: ["Escribe: «¿Y esto cuándo arranca? ¿Se puede pagar en cuotas?»", "→ Etiqueta en GHL: señal de compra. Es el primero que se llama si no agenda."] }] },
     { id: "nsen", t: "note", r: 0, c: 3, below: true, from: "sen", lab: "Vale oro", text: "Esa lista es por quién empezás a llamar al día siguiente. Sin ella, llamás por orden alfabético." },
-    { id: "cta", t: "step", k: "form", r: 0, c: 4, n: "4", title: "El llamado a la acción: agendar", d: "El link de la clase lleva al mismo formulario con Calendly de la ruta pre-venta.",
+    { id: "cta", t: "step", k: "team", r: 0, c: 4, n: "4", title: "El llamado a la acción: agendar", d: "El link de la clase lleva al mismo formulario con Calendly de la ruta pre-venta.",
       ex: [{ type: "wa", head: "En el chat de la clase", lines: ["Para agendar tu llamada con el equipo: [link del formulario]. Completás las preguntas y al final elegís el horario."] }] },
     { id: "ncta", t: "note", r: 0, c: 4, below: true, from: "cta", lab: "Por qué el mismo", text: "Mismo formulario = un solo ruteo de piezas para todas las puertas. Dos formularios, dos sistemas." },
-    { id: "part", t: "step", k: "sdr", r: 1, c: 0, n: "5", title: "Partís la lista en tres grupos", d: "El mismo día, no al siguiente. La ventana cierra el jueves 22 a las 23:59.",
+    { id: "part", t: "step", k: "team", r: 1, c: 0, n: "5", title: "Partís la lista en tres grupos", d: "El mismo día, no al siguiente. La ventana cierra el jueves 22 a las 23:59.",
       ex: [{ type: "note", head: "Con nuestros dos leads", lines: ["Grupo 1 · asistió y agendó → Lucía agendó al final de la clase", "Grupo 2 · asistió y no agendó → los que preguntaron y no agendaron", "Grupo 3 · no asistió → se anotaron y no aparecieron"] }] },
     { id: "g1c", t: "route", r: 1, c: 1, lab: "Grupo 1", title: "Asistió y agendó", text: "El más caliente. Ya está adentro: solo hay que sostenerlo hasta la llamada." },
     { id: "g2c", t: "route", r: 1, c: 2, lab: "Grupo 2", title: "Asistió y no agendó", text: "Vio todo y no dio el paso. Hay una objeción concreta y hay que ir a buscarla." },
     { id: "g3c", t: "route", r: 1, c: 3, lab: "Grupo 3", title: "No asistió", text: "Se anotó y no apareció. Hay que volver a meterlo con la repetición antes de pedirle nada." },
     { id: "m4", t: "mile", r: 1, c: 4, lab: "Milestone", title: "Los tres grupos armados", text: "Sigue en la Fase 05, cada grupo con su entrada." }
    ],
-   edges: [["s4","recf","h"],["recf","nrecf","n"],["recf","chat","h"],["chat","sen","h"],["sen","nsen","n"],["sen","cta","h"],["cta","ncta","n"],["cta","part","w"],["part","g1c","h"],["g1c","g2c","h"],["g2c","g3c","h"],["g3c","m4","h"]] },
+   edges: [["s4","recf","h"],["chat","nchat","n"],["recf","nrecf","n"],["recf","chat","h"],["chat","sen","h"],["sen","nsen","n"],["sen","cta","h"],["cta","ncta","n"],["cta","part","w"],["part","g1c","h"],["g1c","g2c","h"],["g2c","g3c","h"],["g3c","m4","h"]] },
 
  { id: "f5", tab: "05 Los 3 grupos", chip: "FASE 05", title: "Después de la clase: los tres grupos", meta: "SDR · del 19/10 a la noche al 22/10", color: "var(--p5)", rows: [140, 600, 1060],
    nodes: [
@@ -493,7 +495,7 @@ const FRAMES = [
 /* ---------- Render ---------- */
 const world = document.getElementById("world");
 const svg = document.getElementById("edges");
-const KIND = { sdr: "SDR", closer: "Closer", form: "Form" };
+const KIND = { sdr: "SDR", closer: "Closer", form: "Form", team: "Equipo" };
 const byId = {};
 const esc = s => { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; };
 const GAP = 130, TOP = 520, GX = 340, GY = 360;
