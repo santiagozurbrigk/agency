@@ -474,38 +474,33 @@ const FRAMES = [
            ["s52","g2a","h"],["g2a","ng2a","n"],["g2a","g2b","h"],["g2b","ng2b","n"],["g2b","g2c2","h"],["g2c2","g2d","h"],["g2d","g2dno","d","SIN FIT"],["g2d","g2q","h","MIEDO"],["g2q","g2e","h","SÍ"],["g2q","g2m","d","NO"],
            ["s53","g3a","h"],["g3a","ng3a","n"],["g3a","g3b","h"],["g3b","g3d","h"],["g3d","g3dno","d","NO"],["g3d","g3e","h","SÍ"]] },
 
- { id: "f6", tab: "06 El núcleo", chip: "NÚCLEO", title: "Las tres piezas y la llamada de venta", meta: "SDR + closer · hasta el 22/10 23:59", color: "var(--p6)", rows: [140, 600],
+ { id: "f6", tab: "06 El núcleo", chip: "NÚCLEO", title: "Hasta la llamada de venta", meta: "SDR + Manu o closer · hasta el 22/10 23:59", color: "var(--p6)", rows: [140, 600],
    nodes: [
-    { id: "s6", t: "start", r: 0, c: 0, title: "Entran las 4 puertas" },
-    { id: "ns6", t: "note", r: 0, c: 0, below: true, from: "s6", lab: "Las 4 puertas", text: "Pre-venta · asistió y agendó · asistió y no agendó · no asistió. Todas reciben lo mismo, ruteado por sus respuestas." },
-    { id: "vid", t: "step", k: "sdr", r: 0, c: 1, n: "1", title: "Video de la oferta o roadmap", d: "Primero entiende a dónde va y cómo se llega. Elegido por el objetivo que declaró.",
-      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Para que llegues a la llamada con el panorama completo: este video es el camino para poder pagar más por cliente y escalar, paso a paso. [link]"] }] },
-    { id: "recu", t: "step", k: "sdr", r: 0, c: 2, n: "2", title: "Recurso sobre su problema", d: "Después ve que su cuello de botella puntual tiene salida. Elegido por el problema que declaró.",
-      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Me dijiste que lo que más te frena es que el CPA sube todos los meses. Esto es puntualmente para eso: [SOP de la Skool]"] }] },
-    { id: "test", t: "step", k: "sdr", r: 0, c: 3, n: "3", title: "Testimonio de su misma situación", d: "Y al final ve a alguien igual a él que ya lo logró. Elegido por su situación.",
-      ex: [{ type: "wa", head: "Por el grupo, a Martín", lines: ["Y esto te lo quería mostrar: [caso] estaba igual que vos, con una marca de limpieza y el CPA por las nubes. Mirá cómo le fue. [testimonio]"] }] },
-    { id: "ntest", t: "note", r: 0, c: 3, below: true, from: "test", lab: "Por qué cierra el testimonio", text: "Mata la última objeción, la que nadie dice: «a mí esto no me va a funcionar». Por eso va último." },
-    { id: "cons", t: "dec", r: 0, c: 4, title: "¿Consumió las piezas?",
-      branches: [["Sí", "Recordatorios de la llamada."], ["No", "No la des por perdida: preguntá qué le resonó."]],
-      ex: [{ type: "wa", head: "WhatsApp", lines: ["¿Llegaste a ver lo que te mandé? ¿Qué fue lo que más te resonó?"] }] },
-    { id: "consno", t: "no", r: 0, c: 4, below: true, from: "cons", text: "No la des por perdida: preguntá qué le resonó de la que sí abrió. Si no vio nada, el closer entra sabiéndolo y arranca más abajo.", act: "↺ Avisar al closer" },
-    { id: "recl", t: "step", k: "sdr", r: 0, c: 5, n: "4", title: "Recordatorios de la llamada", d: "Día anterior y dos horas antes, pidiendo un ok cada vez. El ok sostiene la asistencia.",
-      ex: [{ type: "wa", head: "El día anterior", lines: ["Mañana a las 11 hablás con [closer]. ¿Seguís firme? Tirame un ok."] }, { type: "wa", head: "Si no se presenta", lines: ["Martín, [closer] te estaba esperando. ¿Pasó algo? Elegí otro horario acá: [link del formulario]."] }] },
-    { id: "lv", t: "step", k: "closer", r: 1, c: 0, n: "5", title: "La llamada de venta", d: "Las 7 fases, de conexión a presentación. Génesis si califica; Mentoría si no.",
-      ex: [{ type: "closer", head: "Con Martín (califica)", lines: [["Closer", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."], ["Closer", "La inversión es de USD 5.000, para que puedas pagar por cada cliente más que esas siete marcas. ¿Alguna duda de cómo funciona?"]] }, { type: "closer", head: "Con Lucía (no califica)", lines: [["Closer", "Lucía, te hablo con total sinceridad. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?"]] }],
+    { id: "s6", t: "start", r: 0, c: 0, title: "Entran todos los que agendaron" },
+    { id: "ns6", t: "note", r: 0, c: 0, below: true, from: "s6", lab: "De dónde vienen", text: "Pre-venta (con Manu) · Grupo 1 (Manu o closer) · Grupo 2 y Grupo 3 que agendaron. Todos ya tienen su grupo y su recurso hecho con la IA." },
+    { id: "cons", t: "dec", r: 0, c: 1, title: "¿Vio el recurso?",
+      branches: [["Sí", "Recordatorios de la llamada."], ["No", "No lo des por perdido: preguntá qué le resonó."]],
+      ex: [{ type: "wa", head: "Por el grupo", lines: ["¿Llegaste a ver el recurso que te mandé? ¿Qué fue lo que más te resonó?"] }],
+      rule: "Lo que le resonó va a la ficha de GHL: Manu o el closer lo usan en la llamada." },
+    { id: "consno", t: "no", r: 0, c: 1, below: true, from: "cons", text: "No lo des por perdido. Si no vio nada, Manu o el closer entran sabiéndolo y arrancan más abajo.", act: "↺ Avisar en la ficha" },
+    { id: "recl", t: "step", k: "sdr", r: 0, c: 2, n: "1", title: "Recordatorios de la llamada", d: "Día anterior y dos horas antes, pidiendo un ok cada vez. El ok sostiene la asistencia.",
+      ex: [{ type: "wa", head: "El día anterior", lines: ["Mañana a las 11 hablás con Manu. ¿Seguís firme? Tirame un ok."] }, { type: "wa", head: "Dos horas antes", lines: ["En dos horas hablás con Manu. ¿Todo ok?"] }, { type: "wa", head: "Si no se presenta", lines: ["Martín, Manu te estaba esperando. ¿Pasó algo? Elegí otro horario acá: [link de Calendly]."] }],
+      rule: "Si no contesta el ok, lo llamás. Si no se presenta, se reagenda dentro de la ventana." },
+    { id: "nrecl", t: "note", r: 0, c: 2, below: true, from: "recl", lab: "Con quién habla", text: "En los mensajes va el nombre de quien toma la llamada: Manu o el closer." },
+    { id: "lv", t: "step", k: "closer", r: 1, c: 0, n: "2", title: "La llamada de venta", d: "La toma Manu o el closer. Las 7 fases, de conexión a presentación. Génesis si califica; Mentoría si no.",
+      ex: [{ type: "closer", head: "Manu con Martín (califica)", lines: [["Manu", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."], ["Manu", "La inversión es de USD 5.000, para que puedas pagar por cada cliente más que esas siete marcas. ¿Alguna duda de cómo funciona?"]] }, { type: "closer", head: "El closer con Lucía (no califica)", lines: [["Closer", "Lucía, te hablo con total sinceridad. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría."], ["Closer", "Primero necesitás que la marca venda todos los meses de forma constante. Para eso está la Mentoría: 3 meses, chat 1 a 1 con José, una clase grupal por semana con Manu y dos con José, todo el contenido grabado y la comunidad. La inversión es de USD 2.000, o 2 cuotas de USD 1.100."]] }],
       rule: "Después del precio, silencio. Las cuotas aparecen solo si sale la objeción de plata. El precio no se baja nunca." },
     { id: "nlv", t: "note", r: 1, c: 0, below: true, from: "lv", lab: "Qué se ofrece", text: "Califica (químico + más de 30M): Génesis. No califica: Mentoría, explicándole de su lado por qué Génesis hoy no le sirve." },
-    { id: "cls1", t: "route", r: 1, c: 1, lab: "Clase", title: "Las 7 fases de la llamada", text: "Conexión → situación → problema → solución → compromiso → consecuencia → presentación." },
-    { id: "cls2", t: "route", r: 1, c: 2, lab: "Clase", title: "Proceso B2B", text: "El dueño de marca compra con criterio de negocio: de igual a igual, con números." },
-    { id: "cls3", t: "route", r: 1, c: 3, lab: "Clase", title: "Presentación y objeciones", text: "Los 3 pilares atados a sus problemas. La matriz de objeciones, con el 22/10 como fecha de cierre real." },
+    { id: "cls1", t: "route", r: 1, c: 1, lab: "Guion y manual", title: "Las 7 fases de la llamada", text: "Conexión → situación → problema → solución → compromiso → consecuencia → presentación." },
+    { id: "cls2", t: "route", r: 1, c: 2, lab: "Guion y manual", title: "Proceso B2B", text: "El dueño de marca compra con criterio de negocio: de igual a igual, con números." },
+    { id: "cls3", t: "route", r: 1, c: 3, lab: "Guion y manual", title: "Presentación y objeciones", text: "Los 3 pilares atados a sus problemas. La matriz de objeciones, con el 22/10 como fecha de cierre real." },
     { id: "cer", t: "dec", r: 1, c: 4, title: "¿Cerró?",
-      branches: [["Sí", "El closer manda el link de pago y, con el pago, onboarding."], ["No", "Seguimiento del closer sobre la objeción viva, dentro de la ventana."]],
-      ex: [{ type: "note", head: "Cómo terminan nuestros dos leads", lines: ["Martín → Génesis, 3 cuotas de USD 2.000", "Lucía → Mentoría, 2 cuotas de USD 1.100"] }] },
-    { id: "cerno", t: "no", r: 1, c: 4, below: true, from: "cer", text: "Seguimiento post-llamada sobre la objeción que quedó viva, hasta el 22/10 23:59. Si se cae, vuelve a la lista del próximo ciclo con lo que ya sabés de él.", act: "↺ Seguimiento" },
-    { id: "venta", t: "mile", r: 1, c: 5, lab: "Milestone", title: "Venta", text: "Génesis USD 5.000 (2 × 2.850 o 3 × 2.000) · Mentoría USD 2.000 (2 × 1.100). Pasa a onboarding." },
-    { id: "dep", t: "note", r: 1, c: 6, lab: "Dependencia dura", text: "El banco de testimonios dividido por situación y por problema. Sin eso, la tercera pieza no existe en ninguna de las 4 puertas." }
+      branches: [["Sí", "Se le manda el link de pago y, con el pago, onboarding."], ["No", "Seguimiento sobre la objeción que quedó viva, dentro de la ventana."]],
+      ex: [{ type: "note", head: "Cómo terminan nuestros leads", lines: ["Martín (con Manu) → Génesis, 3 cuotas de USD 2.000", "Lucía (con el closer) → Mentoría, 2 cuotas de USD 1.100"] }] },
+    { id: "cerno", t: "no", r: 1, c: 4, below: true, from: "cer", text: "Seguimiento sobre la objeción que quedó viva, hasta el 22/10 23:59. Si se cae, vuelve a la lista del próximo ciclo con lo que ya sabés de él.", act: "↺ Seguimiento" },
+    { id: "venta", t: "mile", r: 1, c: 5, lab: "Milestone", title: "Venta", text: "Génesis USD 5.000 (2 × 2.850 o 3 × 2.000) · Mentoría USD 2.000 (2 × 1.100). Pasa a onboarding." }
    ],
-   edges: [["s6","ns6","n"],["s6","vid","h"],["vid","recu","h"],["recu","test","h"],["test","ntest","n"],["test","cons","h"],["cons","consno","d","NO"],["cons","recl","h","SÍ"],["recl","lv","w"],["lv","nlv","n"],["lv","cls1","h"],["cls1","cls2","h"],["cls2","cls3","h"],["cls3","cer","h"],["cer","cerno","d","NO"],["cer","venta","h","SÍ"],["venta","dep","h"]] }
+   edges: [["s6","ns6","n"],["s6","cons","h"],["cons","consno","d","NO"],["cons","recl","h","SÍ"],["recl","nrecl","n"],["recl","lv","w"],["lv","nlv","n"],["lv","cls1","h"],["cls1","cls2","h"],["cls2","cls3","h"],["cls3","cer","h"],["cer","cerno","d","NO"],["cer","venta","h","SÍ"]] }
 ];
 
 /* ---------- Render ---------- */
@@ -756,7 +751,7 @@ let active = null;
 function exHtml(ex, i) {
   let inner;
   if (ex.type === "wa") inner = `<div class="bubble">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
-  else if (ex.type === "call" || ex.type === "closer") inner = `<div class="call${ex.type === "closer" ? " closer" : ""}">${ex.lines.map(([w, s]) => `<p><span class="w${w === "SDR" || w === "Closer" ? "" : " l"}">${esc(w)}:</span> ${esc(s)}</p>`).join("")}</div>`;
+  else if (ex.type === "call" || ex.type === "closer") inner = `<div class="call${ex.type === "closer" ? " closer" : ""}">${ex.lines.map(([w, s]) => `<p><span class="w${["SDR", "Closer", "Manu"].includes(w) ? "" : " l"}">${esc(w)}:</span> ${esc(s)}</p>`).join("")}</div>`;
   else inner = `<div class="notebox">${ex.lines.map(x => `<p>${esc(x)}</p>`).join("")}</div>`;
   const lab = { wa: "WhatsApp", call: "Llamada", closer: "Llamada de venta", note: "Ejemplo" }[ex.type];
   const cp = ex.type === "note" ? "" : `<button class="copy" type="button" data-i="${i}">Copiar</button>`;
