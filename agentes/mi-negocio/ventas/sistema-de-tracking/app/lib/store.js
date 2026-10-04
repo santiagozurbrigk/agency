@@ -41,9 +41,15 @@ async function saveSettings(patch) {
 
 /* ---------- Leads ---------- */
 
+// El sistema solo trabaja los leads del lanzamiento: los que entraron por el
+// opt-in o por los formularios de la clase. Los contactos viejos de la
+// subcuenta (sin estos tags) no aparecen en ninguna lista.
+const TAGS_LANZAMIENTO = ["optin-19-10", "agenda-directa", "quiero-contacto"];
+
 async function listLeads() {
   if (DEMO) return demo.db().leads.map(l => ({ ...l, fields: { ...l.fields } }));
-  return ghl.listContacts();
+  const todos = await ghl.listContacts();
+  return todos.filter(l => (l.tags || []).some(t => TAGS_LANZAMIENTO.includes(String(t).toLowerCase())));
 }
 
 async function getLead(id) {
