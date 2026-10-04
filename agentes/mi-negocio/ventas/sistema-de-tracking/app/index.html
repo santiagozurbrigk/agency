@@ -203,17 +203,18 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 /* ===================== Ficha ===================== */
 #velo{position:fixed;inset:0;background:rgba(10,10,12,.45);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
 #velo.on{opacity:1;pointer-events:auto}
-#ficha{position:fixed;top:0;right:0;bottom:0;width:min(620px,100vw);background:var(--bg);border-left:1px solid var(--borde);z-index:31;transform:translateX(104%);transition:transform .22s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;box-shadow:var(--sombra-2)}
-#ficha.on{transform:none}
-.f-cab{background:var(--panel);border-bottom:1px solid var(--borde);padding:18px 20px 0}
-.f-top{display:flex;gap:14px;align-items:flex-start}
-.f-top .datos{flex:1;min-width:0}
-.f-top h3{font-size:20px;margin-bottom:3px}
+#ficha{position:fixed;left:50%;top:50%;width:min(1140px,calc(100vw - 48px));height:min(880px,calc(100vh - 48px));background:var(--bg);border:1px solid var(--borde);border-radius:18px;z-index:31;transform:translate(-50%,-47%) scale(.985);opacity:0;pointer-events:none;transition:transform .2s cubic-bezier(.2,.8,.2,1),opacity .18s;display:flex;flex-direction:column;box-shadow:var(--sombra-2);overflow:hidden}
+#ficha.on{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+.f-cab{position:relative;background:var(--panel);border-bottom:1px solid var(--borde);padding:20px 26px 16px;flex:none}
+.f-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;padding-right:40px}
+.f-top .datos{flex:1;min-width:240px}
+.f-top h3{font-size:22px;margin-bottom:4px}
+.f-top .f-acc{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end;padding:0}
 .f-top .contacto{display:flex;gap:12px;flex-wrap:wrap;color:var(--tx-2);font-size:13px}
 .copiar{display:inline-flex;align-items:center;gap:5px;color:var(--tx-2);border-radius:6px;padding:1px 4px;margin:-1px -4px}
 .copiar:hover{background:var(--panel-2);color:var(--tx)}
 .copiar svg.ic{width:13px;height:13px}
-.f-badges{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.f-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}
 .pasos{display:flex;margin:16px 0 0;gap:4px}
 .paso{flex:1;text-align:center;font-size:11px;font-weight:600;color:var(--tx-3)}
 .paso i{display:block;height:4px;border-radius:99px;background:var(--panel-3);margin-bottom:6px}
@@ -221,18 +222,23 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .paso.actual{color:var(--tx)}
 .paso.actual i{background:var(--naranja);box-shadow:0 0 0 3px var(--naranja-suave)}
 .paso.fin i{background:var(--ok)}
-.f-acc{display:flex;gap:8px;flex-wrap:wrap;padding:14px 0}
-.tabs{display:flex;gap:2px;margin:0 -4px;overflow-x:auto}
+.tabs{display:flex;gap:2px;overflow-x:auto;padding:0 12px;border-bottom:1px solid var(--borde);flex:none}
 .tabs button{padding:10px 12px;font-weight:600;font-size:13.5px;color:var(--tx-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
 .tabs button.on{color:var(--tx);border-bottom-color:var(--naranja)}
 .tabs button:hover{color:var(--tx)}
-.f-cuerpo{flex:1;overflow-y:auto;padding:18px 20px 40px}
+.f-cuerpo{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:18px;padding:18px 26px 24px}
+.f-izq{overflow-y:auto;min-height:0;padding-right:4px}
+.f-izq .tarjeta:last-child{margin-bottom:0}
+.f-der{display:flex;flex-direction:column;min-height:0;background:var(--panel);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden}
+.f-der .contenido{flex:1;overflow-y:auto;padding:18px}
+.f-der .contenido .tarjeta{background:none;border:0;padding:0;margin-bottom:24px;border-radius:0}
+.f-der .contenido .tarjeta:last-child{margin-bottom:0}
 .tarjeta{background:var(--panel);border:1px solid var(--borde);border-radius:var(--radio);padding:16px;margin-bottom:14px}
 .tarjeta h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--tx-3);margin-bottom:12px;font-family:var(--txt)}
 .hechos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .hechos .h{background:var(--panel-2);border-radius:10px;padding:10px 12px;min-width:0}
 .hechos .h small{display:block;font-size:11.5px;color:var(--tx-3);font-weight:600}
-.hechos .h b{display:block;font-size:14px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hechos .h b{display:block;font-size:14px;margin-top:2px;line-height:1.3;overflow-wrap:anywhere}
 .switches{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sw{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;border:1px solid var(--borde);border-radius:10px;font-size:13.5px;font-weight:500;text-align:left;width:100%}
 .sw:hover{background:var(--panel-2)}
@@ -336,6 +342,13 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
   .fila .col-fact,.fila .col-etapa{display:none}
   .fila.cab{display:none}
   .fila .movil{display:flex}
+  #ficha{left:0;top:0;width:100vw;height:100dvh;border-radius:0;border:0;transform:translateY(12px)}
+  #ficha.on{transform:none}
+  .f-cab{padding:16px 16px 12px}
+  .f-top .f-acc{justify-content:flex-start;width:100%}
+  .f-cuerpo{display:flex;flex-direction:column;padding:0;gap:0;overflow:hidden}
+  .f-izq{display:none}
+  .f-der{border:0;border-radius:0;flex:1}
   .hechos{grid-template-columns:1fr 1fr}
   .switches{grid-template-columns:1fr}
   .dl{grid-template-columns:1fr;gap:2px}
@@ -862,10 +875,14 @@ async function correrSetup(){
 function abrirFicha(id,tab){
   if(FICHA_ID!==id){FICHA_TAB=tab||"resumen";EDITANDO=false;} else if(tab) FICHA_TAB=tab;
   FICHA_ID=id; pintarFicha();
-  $("#velo").classList.add("on"); $("#ficha").classList.add("on");
+  $("#velo").classList.add("on"); $("#ficha").classList.add("on"); document.body.style.overflow="hidden";
   api("/api/lead?id="+encodeURIComponent(id)).then(d=>{COMPLETO[id]=d.lead;if(FICHA_ID===id&&!EDITANDO)pintarFicha();}).catch(()=>{});
 }
-function cerrarFicha(){FICHA_ID=null;EDITANDO=false;$("#velo").classList.remove("on");$("#ficha").classList.remove("on");}
+function cerrarFicha(){FICHA_ID=null;EDITANDO=false;$("#velo").classList.remove("on");$("#ficha").classList.remove("on");document.body.style.overflow="";}
+const esMovil=()=>matchMedia("(max-width:900px)").matches;
+// Si se cruza el corte celular/escritorio con la ficha abierta, se rearma.
+let _eraMovil=null;
+addEventListener("resize",()=>{const m=esMovil();if(_eraMovil!==null&&m!==_eraMovil&&FICHA_ID&&!EDITANDO)pintarFicha();_eraMovil=m;});
 function cerrarTodo(){cerrarFicha();$("#side").classList.remove("on");}
 function tabFicha(t){FICHA_TAB=t;EDITANDO=false;pintarFicha();}
 
@@ -889,7 +906,10 @@ function pintarFicha(){
   const f=l.fields;
   const paso=pasoDe(f.etapa), esVenta=(f.etapa||"").startsWith("Venta");
   const pasos=PASOS.map((p,i)=>`<div class="paso ${i<paso?"hecho":""} ${i===paso?"actual":""} ${esVenta&&i===4?"fin":""}"><i></i>${p}</div>`).join("");
-  const tabs=[["resumen","Resumen"],["dijo","Lo que dijo"],["venta","Venta"],["historial","Historial"]];
+  const movil=esMovil(); _eraMovil=movil;
+  // En escritorio el resumen va fijo a la izquierda; en celular es una pestaña más.
+  let tab=FICHA_TAB; if(!movil&&tab==="resumen") tab="dijo";
+  const tabs=(movil?[["resumen","Resumen"]]:[]).concat([["dijo","Lo que dijo"],["venta","Venta"],["historial","Historial"]]);
   const sel=(acc,dataKey,label,ops,msg)=>`<select class="btn sm sel"  aria-label="${label}" onchange="if(this.value)accion('${id}','${acc}',{${dataKey}:this.value},'${msg}')"><option value="">${label}</option>${ops.map(o=>`<option>${o}</option>`).join("")}</select>`;
   $("#ficha").innerHTML=`
   <div class="f-cab">
@@ -897,26 +917,31 @@ function pintarFicha(){
       <div class="avatar lg ${claseAvatar(f.dueno)}">${esc(iniciales(l.nombre))}</div>
       <div class="datos"><h3>${esc(l.nombre||"(sin nombre)")}</h3>
         <div class="contacto">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar">${ic("i-tel")}${esc(l.telefono)}</button>`:""}${l.email?`<button class="copiar" onclick="copiar('${esc(l.email)}',event)" title="Copiar">${esc(l.email)}</button>`:""}</div>
+        <div class="f-badges">${badgeEtapa(f.etapa)}${etiquetas(l)}</div>
       </div>
-      <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar">${ic("i-x")}</button>
+      <div class="f-acc">
+        <button class="btn pri sm" onclick="accion('${id}','intento',{},'Intento anotado')">${ic("i-mas")}1 intento</button>
+        ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa),"Etapa actualizada")}
+        ${sel("reasignar","llamada_con","Llamada con…",["Manu","Diego"],"Llamada reasignada")}
+        ${sel("reasignar","dueno","Dueño…",["Braian","Diego"],"Dueño reasignado")}
+        ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
+      </div>
+      <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>
     </div>
-    <div class="f-badges">${badgeEtapa(f.etapa)}${etiquetas(l)}</div>
     <div class="pasos" aria-label="Recorrido del lead">${pasos}</div>
-    <div class="f-acc">
-      <button class="btn pri sm" onclick="accion('${id}','intento',{},'Intento anotado')">${ic("i-mas")}1 intento</button>
-      ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa),"Etapa actualizada")}
-      ${sel("reasignar","llamada_con","Llamada con…",["Manu","Diego"],"Llamada reasignada")}
-      ${sel("reasignar","dueno","Dueño…",["Braian","Diego"],"Dueño reasignado")}
-      ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
-    </div>
-    <div class="tabs" role="tablist">${tabs.map(([k,t])=>`<button role="tab" aria-selected="${FICHA_TAB===k}" class="${FICHA_TAB===k?"on":""}" onclick="tabFicha('${k}')">${t}</button>`).join("")}</div>
   </div>
-  <div class="f-cuerpo">${cuerpoFicha(l)}</div>`;
+  <div class="f-cuerpo">
+    ${movil?"":`<div class="f-izq">${cuerpoFicha(l,"resumen")}</div>`}
+    <div class="f-der">
+      <div class="tabs" role="tablist">${tabs.map(([k,t])=>`<button role="tab" aria-selected="${tab===k}" class="${tab===k?"on":""}" onclick="tabFicha('${k}')">${t}</button>`).join("")}</div>
+      <div class="contenido">${cuerpoFicha(l,tab)}</div>
+    </div>
+  </div>`;
 }
 
-function cuerpoFicha(l){
+function cuerpoFicha(l,tab){
   const id=l.id, f=l.fields;
-  if(FICHA_TAB==="resumen"){
+  if(tab==="resumen"){
     const sw=(campo,txt)=>`<button class="sw ${f[campo]==="Sí"?"on":""}" role="switch" aria-checked="${f[campo]==="Sí"}" onclick="marcar('${id}','${campo}','${f[campo]==="Sí"?"No":"Sí"}')"><span>${txt}</span><span class="pista"></span></button>`;
     const h=(t,v)=>`<div class="h"><small>${t}</small><b title="${esc(v||"")}">${esc(v||"—")}</b></div>`;
     return `<div class="tarjeta"><div class="hechos">
@@ -931,7 +956,7 @@ function cuerpoFicha(l){
         <textarea id="nota" placeholder="Lo que tenga que saber el próximo que hable con este lead…" onfocus="EDITANDO=true">${esc(f.notas||"")}</textarea>
         <div style="margin-top:10px;display:flex;justify-content:flex-end"><button class="btn sm" onclick="accion('${id}','campos',{notas:$('#nota').value},'Notas guardadas')">Guardar notas</button></div></div>`;
   }
-  if(FICHA_TAB==="dijo"){
+  if(tab==="dijo"){
     if(EDITANDO==="campos") return editorCampos(l);
     const d=(t,v)=>`<dt>${t}</dt><dd class="${v?"":"vacio-dd"}">${esc(v||"Sin dato")}</dd>`;
     return `<div class="tarjeta"><h4 style="display:flex;align-items:center">Formularios<button class="btn sm fantasma" style="margin-left:auto" onclick="EDITANDO='campos';pintarFicha()">${ic("i-editar")}Editar</button></h4><dl class="dl">
@@ -941,7 +966,7 @@ function cuerpoFicha(l){
         ${d("Qué vende",f.que_vende)}${d("Por dónde vende",f.por_donde)}${d("Cuánto le queda",f.cuanto_queda)}${d("Dolor principal",f.dolor)}
         ${d("Por qué ahora",f.por_que_ahora)}${d("Objeción real",f.objecion)}${d("Le faltó de la clase",f.falto_clase)}${d("Le resonó del recurso",f.resono)}</dl></div>`;
   }
-  if(FICHA_TAB==="venta") return cuerpoVenta(l);
+  if(tab==="venta") return cuerpoVenta(l);
   const full=COMPLETO[id];
   let hist=[];try{hist=JSON.parse(((full||{}).fields||{}).historial_json||"[]");}catch(e){}
   if(!full) return `<div class="tarjeta"><div class="esq" style="width:70%"></div><div class="esq" style="width:50%;margin-top:10px"></div><div class="esq" style="width:60%;margin-top:10px"></div></div>`;
