@@ -10,27 +10,55 @@ const LOCATION = process.env.GHL_LOCATION_ID;
 
 const enabled = Boolean(TOKEN && LOCATION);
 
-async function api(path, opts = {}) {
-  const r = await fetch(BASE + path, {
-    ...opts,
-    headers: {
-      Authorization: "Bearer " + TOKEN,
-      Version: "2021-07-28",
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      ...(opts.headers || {})
-    },
-    body: opts.body ? JSON.stringify(opts.body) : undefined
+// Límite de GHL: 100 pedidos cada 10 segundos por subcuenta.
+// Cada instancia usa un "balde de fichas": puede largar hasta 25 pedidos de golpe
+// (las ráfagas de la clase salen al instante) y después recarga 6 por segundo,
+// así nunca supera ~85 cada 10 s. Si GHL igual responde 429, se reintenta con espera creciente.
+const BALDE = 25, RECARGA_POR_SEG = 6;
+let fichas = BALDE, ultimaRecarga = Date.now(), colaTurnos = Promise.resolve();
+function turno() {
+  const p = colaTurnos.then(async () => {
+    for (;;) {
+      const ahora = Date.now();
+      fichas = Math.min(BALDE, fichas + ((ahora - ultimaRecarga) / 1000) * RECARGA_POR_SEG);
+      ultimaRecarga = ahora;
+      if (fichas >= 1) { fichas -= 1; return; }
+      await new Promise(r => setTimeout(r, ((1 - fichas) / RECARGA_POR_SEG) * 1000));
+    }
   });
-  const text = await r.text();
-  let data = {};
-  try { data = text ? JSON.parse(text) : {}; } catch (e) { data = { raw: text }; }
-  if (!r.ok) {
-    const err = new Error(`GHL ${opts.method || "GET"} ${path} → ${r.status}: ${text.slice(0, 300)}`);
-    err.status = r.status;
-    throw err;
+  colaTurnos = p.catch(() => {});
+  return p;
+}
+
+async function api(path, opts = {}) {
+  for (let intento = 0; ; intento++) {
+    await turno();
+    const r = await fetch(BASE + path, {
+      ...opts,
+      headers: {
+        Authorization: "Bearer " + TOKEN,
+        Version: "2021-07-28",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        ...(opts.headers || {})
+      },
+      body: opts.body ? JSON.stringify(opts.body) : undefined
+    });
+    if (r.status === 429 && intento < 4) {
+      const ra = parseFloat((r.headers.get && r.headers.get("retry-after")) || "");
+      await new Promise(res => setTimeout(res, (ra > 0 ? ra * 1000 : 1000 * 2 ** intento) + Math.random() * 300));
+      continue;
+    }
+    const text = await r.text();
+    let data = {};
+    try { data = text ? JSON.parse(text) : {}; } catch (e) { data = { raw: text }; }
+    if (!r.ok) {
+      const err = new Error(`GHL ${opts.method || "GET"} ${path} → ${r.status}: ${text.slice(0, 300)}`);
+      err.status = r.status;
+      throw err;
+    }
+    return data;
   }
-  return data;
 }
 
 /* ---------- Campos personalizados ---------- */
@@ -167,19 +195,31 @@ async function findByPhoneOrEmail(phone, email) {
   return (await tryQuery(phone)) || (await tryQuery(email));
 }
 
-async function updateContact(id, { nombre, email, telefono, fields, addTags }) {
+// Actualiza el contacto. Si se pasa `base` (la ficha que ya tenemos), no vuelve a
+// leer el contacto: devuelve la ficha resultante armada localmente (1 pedido en vez de 2-3).
+async function updateContact(id, { nombre, email, telefono, fields, addTags }, base) {
   const map = await loadFieldMap();
+  const actual = base || (addTags && addTags.length ? await getContact(id) : null);
   const body = {};
   if (nombre) { const p = nombre.trim().split(/\s+/); body.firstName = p.shift(); body.lastName = p.join(" "); }
   if (email) body.email = email;
   if (telefono) body.phone = telefono;
   if (fields) body.customFields = fieldsToCustom(fields, map);
+  let tags = actual ? (actual.tags || []) : null;
   if (addTags && addTags.length) {
-    const actual = await getContact(id);
-    body.tags = Array.from(new Set([...(actual.tags || []), ...addTags]));
+    tags = Array.from(new Set([...(tags || []), ...addTags]));
+    body.tags = tags;
   }
   await api(`/contacts/${id}`, { method: "PUT", body });
-  return getContact(id);
+  if (!actual) return getContact(id);
+  return {
+    ...actual,
+    nombre: nombre ? nombre.trim() : actual.nombre,
+    email: email || actual.email,
+    telefono: telefono || actual.telefono,
+    tags: tags || actual.tags,
+    fields: { ...actual.fields, ...(fields || {}) }
+  };
 }
 
 async function createContact({ nombre, email, telefono, fields, tags }) {

@@ -20,7 +20,7 @@ Lo que queda para resolver más adelante. Se va sumando a medida que aparece. La
 | 7 | ~~Dónde se guardan los comprobantes~~ Resuelto: Vercel Blob (Storage → Blob en el proyecto). | Hecho |
 | 8 | ~~Probar con la subcuenta real~~ Hecho (04/10): setup de campos, opt-in → sistema, ruteo de la agenda directa, prefill del calendario y webhook de alta y cancelación. | Hecho |
 | 8b | ~~Landing del opt-in~~ Hecho: `optin-genesis.vercel.app`, pide ciclo y facturación y reenvía al sistema. Falta: dominio propio, VSL, píxel de Meta y Hyros en el bloque CONFIG, y `GHL_WEBHOOK_URL` si el email de acceso sale de un workflow de GHL. | Santiago |
-| 8c | Blob store en `tracking-genesis` (Storage → Create → Blob) para poder adjuntar comprobantes. | Santiago |
+| 8c | Blob store **privado** en `tracking-genesis` (Storage → Create → Blob → Private) y conectarlo al proyecto. | Santiago |
 
 ## Cosas que vienen del mapa de ventas y siguen abiertas
 

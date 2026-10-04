@@ -133,7 +133,8 @@ tbody tr:hover td{background:var(--panel2)}
 
 <script>
 /* ---------- Estado ---------- */
-let ME=null, DEMO=false, DATA=null, METRICS=null, VISTA="ahora", FICHA_ID=null;
+let ME=null, DEMO=false, DATA=null, METRICS=null, VISTA="ahora", FICHA_ID=null, CARGANDO=false;
+const COMPLETO={}; // fichas completas (con historial) ya leídas, por id
 const $=s=>document.querySelector(s);
 const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML};
 
@@ -185,16 +186,20 @@ function arrancar(){
   $("#pUser").textContent=ME.name;
   $("#avisoDemo").style.display=DEMO?"block":"none";
   pintarTabs(); refrescar();
-  setInterval(refrescar, 60000);
+  // Se refresca cada 30 s solo mientras la pestaña está a la vista, y al volver a ella.
+  setInterval(()=>{ if(document.visibilityState==="visible") refrescar(); }, 30000);
+  document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") refrescar(); });
 }
 
 /* ---------- Datos ---------- */
 async function refrescar(){
+  if(CARGANDO) return; CARGANDO=true;
   try{
     DATA=await api("/api/leads");
     pintarPills(); pintarTabs(); render();
     if(FICHA_ID) pintarFicha(FICHA_ID);
   }catch(e){ if(e.message!=="Sesión vencida") aviso(e.message,true); }
+  finally{ CARGANDO=false; }
 }
 function lead(id){return DATA.leads.find(l=>l.id===id);}
 function pintarPills(){
@@ -386,11 +391,24 @@ async function armarGrupos(){
 }
 
 /* ---------- Ficha ---------- */
-function abrirFicha(id){FICHA_ID=id;pintarFicha(id);$("#velo").style.display="block";$("#ficha").classList.add("abierta");}
+function abrirFicha(id){
+  FICHA_ID=id;pintarFicha(id);$("#velo").style.display="block";$("#ficha").classList.add("abierta");
+  // La lista no trae el historial: se pide la ficha completa al abrirla.
+  api("/api/lead?id="+encodeURIComponent(id)).then(d=>{COMPLETO[id]=d.lead;if(FICHA_ID===id)pintarFicha(id);}).catch(()=>{});
+}
 function cerrarFicha(){FICHA_ID=null;$("#velo").style.display="none";$("#ficha").classList.remove("abierta");}
 async function accion(id,action,data,msgOk){
-  try{await api("/api/lead",{method:"POST",body:JSON.stringify({id,action,data})});
-    if(msgOk)aviso(msgOk);await refrescar();
+  try{
+    const d=await api("/api/lead",{method:"POST",body:JSON.stringify({id,action,data})});
+    if(msgOk)aviso(msgOk);
+    // Se muestra el cambio al instante y la lista se reacomoda en segundo plano.
+    if(d.lead){
+      COMPLETO[id]=d.lead;
+      const i=DATA.leads.findIndex(l=>l.id===id);
+      if(i>=0) DATA.leads[i]={...DATA.leads[i],...d.lead,calc:DATA.leads[i].calc};
+      render(); if(FICHA_ID===id) pintarFicha(id);
+    }
+    refrescar();
   }catch(e){aviso(e.message,true);}
 }
 function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
@@ -398,7 +416,7 @@ function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
 function pintarFicha(id){
   const l=lead(id);if(!l){cerrarFicha();return;}
   const f=l.fields;
-  let hist=[];try{hist=JSON.parse(f.historial_json||"[]")}catch(e){}
+  let hist=[];try{hist=JSON.parse(((COMPLETO[id]||{}).fields||{}).historial_json||f.historial_json||"[]")}catch(e){}
   let venta=null;try{venta=JSON.parse(f.venta_json||"null")}catch(e){}
   const dato=(t,v)=>v?`<dt>${t}</dt><dd>${esc(v)}</dd>`:"";
   const toggle=(campo,txt)=>`<button class="mini ${f[campo]==="Sí"?"pri":""}" onclick="marcar('${id}','${campo}','${f[campo]==="Sí"?"No":"Sí"}')">${txt}${f[campo]==="Sí"?" ✓":""}</button>`;
@@ -410,7 +428,7 @@ function pintarFicha(id){
       hVenta+=`<div class="pago">
         <button class="mini ${p.pagado?"pri":""}" onclick="accion('${id}','pago',{n:${p.n},pagado:${!p.pagado}})">${p.pagado?"✓ Cobrado":"Marcar cobrado"}</button>
         <span>Pago ${p.n} de ${venta.pagos.length} · USD ${p.monto}${p.fecha?` · ${new Date(p.fecha).toLocaleDateString("es-AR")}`:""}</span>
-        ${p.comprobante?`<a href="${esc(p.comprobante)}" target="_blank">comprobante</a>`:`<label class="mini" style="margin:0"><input type="file" style="display:none" onchange="subirComprobante('${id}',${p.n},this)"><button class="mini" onclick="this.previousElementSibling.click()">+ comprobante</button></label>`}
+        ${p.comprobante?`<a href="${esc(/^https?:/.test(p.comprobante)?p.comprobante:"/api/comprobante?path="+encodeURIComponent(p.comprobante))}" target="_blank">comprobante</a>`:`<label class="mini" style="margin:0"><input type="file" style="display:none" onchange="subirComprobante('${id}',${p.n},this)"><button class="mini" onclick="this.previousElementSibling.click()">+ comprobante</button></label>`}
       </div>`;
     }
     hVenta+=`<div style="margin-top:8px"><button class="mini" onclick="if(confirm('¿Anular la venta?'))accion('${id}','anular_venta',{})">Anular venta</button></div>`;

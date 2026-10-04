@@ -159,6 +159,16 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   r=await call(settingsApi,{method:"POST",cookie,body:{genesisLugares:12}});
   ok(r.body.settings.genesisLugares===12,"editar lugares de Génesis");
 
+  // Ráfaga: muchos formularios a la vez no pueden pasar el tope de Manu.
+  const cargaAntes=(await call(leads,{cookie})).body.manu;
+  await call(settingsApi,{method:"POST",cookie,body:{manuTope:cargaAntes.total+2}});
+  const rafaga=await Promise.all(Array.from({length:8},(_,i)=>call(agenda,{method:"POST",body:{
+    telefono:"+54911666600"+i,ciclo:"En menos de 30 días",facturacion:"Más de 100M",inversion:"Más de USD 6.000"}})));
+  const aManu=rafaga.filter(r=>r.body.ruta==="manu").length;
+  ok(aManu===2,`ráfaga de 8 con 2 lugares libres → 2 a Manu (fueron ${aManu})`);
+  ok(rafaga.filter(r=>r.body.ruta==="diego").length===6,"el resto de la ráfaga → Diego");
+  await call(settingsApi,{method:"POST",cookie,body:{manuTope:10}});
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});

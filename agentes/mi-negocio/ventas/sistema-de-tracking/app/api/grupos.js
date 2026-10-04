@@ -1,6 +1,9 @@
 // Arma los tres grupos la noche de la clase: calcula el grupo de cada lead
 // activo y lo escribe en su ficha. Se puede correr más de una vez:
 // respeta los grupos corregidos a mano solo si se pasa respetarManuales=true.
+//
+// Sale de la foto en caché y escribe solo los leads que cambian de grupo,
+// con 1 pedido a GHL por lead (sin releer la ficha).
 
 const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
@@ -19,13 +22,16 @@ module.exports = async function handler(req, res) {
 
   try {
     const leads = await store.listLeads();
-    const counts = { "1": 0, "2": 0, "3": 0, fuera: 0, sinCambio: 0 };
+    const counts = { "1": 0, "2": 0, "3": 0, fuera: 0, sinCambio: 0, escritos: 0 };
     for (const l of leads) {
       const g = R.grupoDelLead(l);
       if (g == null) { counts.fuera++; continue; }
       if (respetarManuales && l.fields.grupo && l.fields.grupo !== g) { counts.sinCambio++; counts[l.fields.grupo]++; continue; }
-      if (l.fields.grupo !== g) {
-        await store.registrar(l.id, user.name, `Grupo → ${g} (armado automático)`, { grupo: g, asistio: l.fields.asistio || (g === "3" ? "No" : l.fields.asistio) });
+      const asistio = l.fields.asistio || (g === "3" ? "No" : l.fields.asistio);
+      if (l.fields.grupo !== g || (asistio && l.fields.asistio !== asistio)) {
+        // Solo se escriben estos campos: el historial del lead en GHL no se toca.
+        await store.updateLead(l.id, { fields: { grupo: g, ...(asistio ? { asistio } : {}) } }, l);
+        counts.escritos++;
       }
       counts[g]++;
     }

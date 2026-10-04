@@ -49,7 +49,8 @@ module.exports = async function handler(req, res) {
       await store.registrar(contactId, "GHL", "Cita cancelada", {
         agendo: "No",
         etapa: "Canceló · a reagendar"
-      });
+      }, lead);
+      if (esManuPost) await store.invalidarCitasManu();
       return res.status(200).json({ ok: true });
     }
 
@@ -58,16 +59,17 @@ module.exports = async function handler(req, res) {
     if (esManuPre) {
       await store.registrar(contactId, "GHL", "Agendó la pre-venta con Manu", {
         etapa: "Agendado con Manu (pre-venta)", llamada_con: "Manu", agendo: "Sí"
-      });
+      }, lead);
     } else {
       const con = esManuPost ? "Manu" : "Diego";
       const fields = { etapa: "Llamada agendada", llamada_con: con, agendo: "Sí" };
       // Red de seguridad del tope: si la cita de Manu entra por encima de 10, se marca.
+      // Se cuenta fresco (sin caché) porque acaba de entrar una cita.
       if (esManuPost) {
-        const carga = await store.cargaManu();
+        const carga = await store.cargaManu({ fresco: true });
         if (carga.citas > carga.tope) fields.excede_tope = "Sí";
       }
-      await store.registrar(contactId, "GHL", `Agendó la llamada de venta con ${con}`, fields);
+      await store.registrar(contactId, "GHL", `Agendó la llamada de venta con ${con}`, fields, lead);
     }
     return res.status(200).json({ ok: true });
   } catch (e) {

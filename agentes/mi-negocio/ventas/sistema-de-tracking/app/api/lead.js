@@ -36,8 +36,10 @@ module.exports = async function handler(req, res) {
       // Editar campos de la ficha (incluye datos de contacto).
       case "campos": {
         const { nombre, email, telefono, ...fields } = data;
-        updated = await store.updateLead(id, { nombre, email, telefono, fields });
-        updated = await store.registrar(id, quien, "Editó la ficha");
+        updated = await store.updateLead(id, {
+          nombre, email, telefono,
+          fields: { ...fields, historial_json: store.historialCon(lead, quien, "Editó la ficha") }
+        }, lead);
         break;
       }
 
@@ -46,7 +48,7 @@ module.exports = async function handler(req, res) {
         const n = (parseInt(lead.fields.intentos || "0", 10) || 0) + 1;
         updated = await store.registrar(id, quien, `Intento de contacto #${n}`, {
           intentos: String(n), ultimo_contacto: new Date().toISOString()
-        });
+        }, lead);
         break;
       }
 
@@ -54,7 +56,7 @@ module.exports = async function handler(req, res) {
       case "etapa": {
         updated = await store.registrar(id, quien, `Etapa → ${data.etapa}`, {
           etapa: data.etapa, ultimo_contacto: new Date().toISOString()
-        });
+        }, lead);
         break;
       }
 
@@ -63,7 +65,7 @@ module.exports = async function handler(req, res) {
       case "marcar": {
         updated = await store.registrar(id, quien, `${data.campo} → ${data.valor}`, {
           [data.campo]: data.valor, ultimo_contacto: new Date().toISOString()
-        });
+        }, lead);
         break;
       }
 
@@ -74,13 +76,13 @@ module.exports = async function handler(req, res) {
         if (data.llamada_con) { fields.llamada_con = data.llamada_con; fields.excede_tope = "No"; }
         updated = await store.registrar(id, quien,
           `Reasignado: ${[data.dueno && "dueño → " + data.dueno, data.llamada_con && "llamada → " + data.llamada_con].filter(Boolean).join(" · ")}`,
-          fields);
+          fields, lead);
         break;
       }
 
       // Forzar el grupo (corrección manual).
       case "grupo": {
-        updated = await store.registrar(id, quien, `Grupo → ${data.grupo}`, { grupo: data.grupo });
+        updated = await store.registrar(id, quien, `Grupo → ${data.grupo}`, { grupo: data.grupo }, lead);
         break;
       }
 
@@ -97,7 +99,7 @@ module.exports = async function handler(req, res) {
         updated = await store.registrar(id, quien, `Venta ${oferta} · ${forma} · vendió ${venta.vendedor}`, {
           venta_json: JSON.stringify(venta),
           etapa: oferta === "Génesis" ? "Venta Génesis" : "Venta Mentoría"
-        });
+        }, lead);
         break;
       }
 
@@ -113,7 +115,7 @@ module.exports = async function handler(req, res) {
         if (data.comprobante) p.comprobante = data.comprobante;
         updated = await store.registrar(id, quien,
           `Pago ${p.n} de ${venta.pagos.length} ${p.pagado ? "cobrado" : "desmarcado"} (${venta.oferta})`,
-          { venta_json: JSON.stringify(venta) });
+          { venta_json: JSON.stringify(venta) }, lead);
         break;
       }
 
@@ -121,7 +123,7 @@ module.exports = async function handler(req, res) {
       case "anular_venta": {
         updated = await store.registrar(id, quien, "Venta anulada", {
           venta_json: "", etapa: "No cerró · seguimiento"
-        });
+        }, lead);
         break;
       }
 

@@ -1,0 +1,13 @@
+{
+  "name": "tracking-genesis",
+  "private": true,
+  "description": "Sistema de tracking de leads del lanzamiento de Génesis, montado sobre GHL.",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node test/flujo.test.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.0",
+    "@vercel/functions": "^3.9.11"
+  }
+}
