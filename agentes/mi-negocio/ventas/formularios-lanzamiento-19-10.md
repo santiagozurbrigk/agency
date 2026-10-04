@@ -86,11 +86,11 @@ _Nombre y email los pide Calendly. Todas obligatorias._
    - Más de 100M
 7. Si vemos que encaja con tu marca, ¿con cuánto contás hoy para invertir en resolverlo?
    - Menos de USD 1.000
-   - Entre USD 2.000 y USD 4.000
-   - Entre USD 4.000 y USD 6.000
+   - Entre USD 1.000 y USD 3.000
+   - Entre USD 3.000 y USD 6.000
    - Más de USD 6.000
 
-   `[REVISAR: entre USD 1.000 y USD 2.000 no hay opción. Propuesta: "Menos de USD 2.000" en la primera, que además coincide con la Mentoría.]`
+   Cómo lo lee el closer: menos de 1.000 no llega a ninguna de las dos ofertas (se atiende igual y se valida hablando) · 1.000 a 3.000 es el rango de la Mentoría (USD 2.000, o 2 × 1.100) · 3.000 a 6.000 es el de Génesis en todas sus formas de pago (USD 5.000 contado, 2 × 2.850 o 3 × 2.000) · más de 6.000, Génesis con margen.
 
 Ciclo y facturación se repiten del opt-in a propósito: el que agenda desde la clase puede no haber pasado por el opt-in (llegó por la grabación o por un link reenviado), y el closer entra sin la llamada del SDR.
 
