@@ -1,6 +1,10 @@
 // Formulario público de Agenda directa (link 1 de la clase).
-// POST paso 1: guarda las respuestas, decide Manu o Diego (regla 5.2),
-// reserva el lugar de Manu 3 minutos y devuelve el link del calendario con los datos precargados.
+// Guarda las respuestas, decide Manu o Diego (regla 5.2), reserva el lugar de Manu
+// 3 minutos y devuelve el link del calendario con los datos precargados.
+//
+// Es el camino más cargado de la noche de la clase (todos agendan a la vez):
+// responde al instante con lo que hay en caché (la foto de leads, la carga de Manu,
+// la configuración) y guarda en GHL en segundo plano.
 
 const store = require("../../lib/store");
 const R = require("../../lib/rules");
@@ -16,60 +20,65 @@ module.exports = async function handler(req, res) {
     const { telefono, objetivo, freno, hace_cuanto, ciclo, facturacion, inversion } = body || {};
     if (!telefono) return res.status(400).json({ ok: false, error: "Falta el WhatsApp" });
 
-    // Une con la ficha del opt-in por el WhatsApp; si no está, crea el lead como posible duplicado.
-    let lead = await store.findLead(telefono, null);
-    const fields = {
+    const [s, conocido] = await Promise.all([store.getSettings(), store.enFoto(telefono, null)]);
+
+    const respuestas = {
       objetivo: objetivo || "", freno: freno || "", hace_cuanto: hace_cuanto || "",
       ciclo: ciclo || "", facturacion: facturacion || "", inversion: inversion || "",
       form_agenda: "Sí", asistio: "Sí"
     };
-    if (!lead) {
-      lead = await store.createLead({
-        nombre: body.nombre || "", telefono,
-        fields: { ...fields, etapa: "Nuevo", posible_duplicado: "Sí", intentos: "0" },
-        tags: ["agenda-directa"]
-      });
-    } else {
-      await store.updateLead(lead.id, { fields, addTags: ["agenda-directa"] });
-    }
+
+    // Guarda en GHL: lee la ficha completa (o la busca en toda la subcuenta) y escribe todo junto.
+    const guardar = (fields, que, clave) => store.enSegundoPlano(async () => {
+      const lead = conocido ? await store.getLead(conocido.id) : await store.findLead(telefono, null);
+      let final;
+      if (lead) {
+        if (fields.etapa === undefined && (lead.fields || {}).etapa === "Próximo ciclo") fields = { ...fields, etapa: "En conversación" };
+        final = await store.updateLead(lead.id, {
+          fields: { ...fields, historial_json: store.historialCon(lead, "Sistema", que) },
+          addTags: ["agenda-directa"]
+        }, lead);
+      } else {
+        final = await store.createLead({
+          nombre: body.nombre || "", telefono,
+          fields: { etapa: "Nuevo", ...fields, posible_duplicado: "Sí", intentos: "0",
+            historial_json: store.historialCon(null, "Sistema", que) },
+          tags: ["agenda-directa"]
+        });
+      }
+      if (clave && final) await store.renombrarReserva(clave, final.id);
+    });
 
     // Menos de USD 1.000 → "Por el momento no podemos ayudarte" + Próximo ciclo (regla 5.4).
     if (inversion === "Menos de USD 1.000") {
-      await store.registrar(lead.id, "Sistema", "Agenda directa: inversión < USD 1.000 → Próximo ciclo", {
-        etapa: "Próximo ciclo"
-      });
-      await store.liberarReserva(lead.id);
+      if (conocido) await store.liberarReserva(conocido.id);
+      await guardar({ ...respuestas, etapa: "Próximo ciclo" }, "Agenda directa: inversión < USD 1.000 → Próximo ciclo", null);
       return res.status(200).json({ ok: true, ruta: "rechazado" });
     }
-    // Si vuelve a mandar el formulario con otra respuesta, se reactiva solo.
-    if ((lead.fields || {}).etapa === "Próximo ciclo") {
-      await store.updateLead(lead.id, { fields: { etapa: "En conversación" } });
-    }
 
-    // Regla 5.2 con el tope de Manu (citas + reservas vivas).
-    const carga = await store.cargaManu();
-    const manuLibre = carga.total < carga.tope;
-    const ruta = R.rutaAgendaDirecta({ ciclo, facturacion, inversion }, manuLibre);
+    // Regla 5.2 con el tope de Manu (citas + reservas vivas). La decisión y la
+    // reserva se hacen juntas y de a una, para no pasarse del tope en una ráfaga.
+    const clave = conocido ? conocido.id : "tel:" + store.normTel(telefono);
+    const ruta = await store.decidirYReservar(clave, (manuLibre) =>
+      R.rutaAgendaDirecta({ ciclo, facturacion, inversion }, manuLibre));
+    const con = ruta === "manu" ? "Manu" : "Diego";
 
-    const s = await store.getSettings();
+    await guardar({ ...respuestas, llamada_con: con }, `Agenda directa completada → calendario de ${con}`,
+      ruta === "manu" ? clave : null);
+
+    // Datos precargados para el widget del calendario de GHL.
     const base = ruta === "manu" ? s.calManuPostLink : s.calDiegoLink;
-    if (ruta === "manu") await store.reservarManu(lead.id);
-
-    await store.registrar(lead.id, "Sistema", `Agenda directa completada → calendario de ${ruta === "manu" ? "Manu" : "Diego"}`, {
-      llamada_con: ruta === "manu" ? "Manu" : "Diego"
-    });
-
-    // Datos precargados para el widget del calendario de GHL (pendiente #8: validar el prefill).
     let link = base || "";
     if (link) {
       const u = new URL(link);
-      if (lead.nombre) {
-        const p = lead.nombre.trim().split(/\s+/);
+      const nombre = (conocido && conocido.nombre) || body.nombre || "";
+      if (nombre) {
+        const p = nombre.trim().split(/\s+/);
         u.searchParams.set("first_name", p.shift());
         if (p.length) u.searchParams.set("last_name", p.join(" "));
       }
-      if (lead.email) u.searchParams.set("email", lead.email);
-      u.searchParams.set("phone", lead.telefono || telefono);
+      if (conocido && conocido.email) u.searchParams.set("email", conocido.email);
+      u.searchParams.set("phone", (conocido && conocido.telefono) || telefono);
       link = u.toString();
     }
 

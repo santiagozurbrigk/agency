@@ -1,13 +1,17 @@
 // Capa de datos: GHL cuando hay token, demo en memoria cuando no.
 // Todos los endpoints del API pasan por acá.
+//
+// Para la noche de la clase, las lecturas salen de una foto en caché (lib/cache.js)
+// y cada escritura actualiza esa foto al instante (write-through). GHL sigue siendo
+// la fuente de verdad: la foto se rehace sola cada pocos segundos.
 
 const ghl = require("./ghl");
 const demo = require("./demo");
+const cache = require("./cache");
 
 const DEMO = !ghl.enabled;
 
 const SETTINGS_KEY = "trk_settings";
-const RESERVAS_KEY = "trk_reservas_manu";
 const RESERVA_MIN = 3; // minutos que se reserva el lugar de Manu en la Agenda directa
 
 const DEFAULTS = {
@@ -21,13 +25,21 @@ const DEFAULTS = {
   calDiegoId: "", calDiegoLink: ""
 };
 
+// Frescura de cada cosa en caché.
+const POL_LEADS = { frescoMs: 15000, viejoMs: 10 * 60000, ttlSeg: 1800 };
+const POL_SETTINGS = { frescoMs: 60000, viejoMs: 30 * 60000, ttlSeg: 3600 };
+const POL_CITAS = { frescoMs: 20000, viejoMs: 2 * 60000, ttlSeg: 600 };
+
 /* ---------- Settings ---------- */
 
 async function getSettings() {
   if (DEMO) return { ...DEFAULTS, ...(demo.db().settings || {}) };
   try {
-    const v = await ghl.getCustomValue(SETTINGS_KEY);
-    return { ...DEFAULTS, ...(v && v.value ? JSON.parse(v.value) : {}) };
+    const v = await cache.swr("settings", async () => {
+      const cv = await ghl.getCustomValue(SETTINGS_KEY);
+      return cv && cv.value ? JSON.parse(cv.value) : {};
+    }, POL_SETTINGS);
+    return { ...DEFAULTS, ...(v || {}) };
   } catch (e) { return { ...DEFAULTS }; }
 }
 
@@ -36,6 +48,8 @@ async function saveSettings(patch) {
   const next = { ...actual, ...patch };
   if (DEMO) { demo.db().settings = next; return next; }
   await ghl.setCustomValue(SETTINGS_KEY, JSON.stringify(next));
+  await cache.set("settings", next, POL_SETTINGS.ttlSeg);
+  await cache.del("manu_citas");
   return next;
 }
 
@@ -45,33 +59,83 @@ async function saveSettings(patch) {
 // opt-in o por los formularios de la clase. Los contactos viejos de la
 // subcuenta (sin estos tags) no aparecen en ninguna lista.
 const TAGS_LANZAMIENTO = ["optin-19-10", "agenda-directa", "quiero-contacto"];
+const esDelLanzamiento = (l) => (l.tags || []).some(t => TAGS_LANZAMIENTO.includes(String(t).toLowerCase()));
 
-async function listLeads() {
-  if (DEMO) return demo.db().leads.map(l => ({ ...l, fields: { ...l.fields } }));
-  const todos = await ghl.listContacts();
-  return todos.filter(l => (l.tags || []).some(t => TAGS_LANZAMIENTO.includes(String(t).toLowerCase())));
+// La foto no lleva el historial (pesa y solo se usa al abrir una ficha).
+function liviano(l) {
+  const { historial_json, ...fields } = l.fields || {};
+  return { ...l, fields };
+}
+const copia = (l) => ({ ...l, tags: [...(l.tags || [])], fields: { ...l.fields } });
+
+async function fotoLeads() {
+  return cache.swr("leads", async () => {
+    const todos = await ghl.listContacts();
+    return todos.filter(esDelLanzamiento).map(liviano);
+  }, POL_LEADS);
 }
 
+async function listLeads() {
+  if (DEMO) return demo.db().leads.map(l => liviano(copia(l)));
+  return (await fotoLeads()).map(copia);
+}
+
+// Pone la versión nueva de un lead en la foto (o lo agrega si es nuevo).
+async function actualizarFoto(lead) {
+  if (DEMO || !lead) return;
+  const foto = await cache.get("leads");
+  if (!foto) return; // no hay foto todavía: la próxima lectura la arma completa
+  const l = liviano(lead);
+  const i = foto.findIndex(x => x.id === l.id);
+  if (esDelLanzamiento(l)) { if (i >= 0) foto[i] = l; else foto.push(l); }
+  else if (i >= 0) foto.splice(i, 1);
+  await cache.set("leads", foto, POL_LEADS.ttlSeg);
+}
+
+// La ficha completa (con historial) se lee siempre de GHL.
 async function getLead(id) {
   if (DEMO) {
     const l = demo.db().leads.find(l => l.id === id);
-    return l ? { ...l, fields: { ...l.fields } } : null;
+    return l ? copia(l) : null;
   }
   return ghl.getContact(id);
 }
 
+// Busca un lead por WhatsApp o email. Primero en la foto (sin pedirle nada a GHL);
+// si no está, en toda la subcuenta (puede ser un contacto viejo sin el tag).
+// Devuelve la ficha completa.
 async function findLead(telefono, email) {
+  const tel = normTel(telefono);
+  const mail = String(email || "").trim().toLowerCase();
+  const coincide = (l) => (tel && normTel(l.telefono) === tel) || (mail && (l.email || "").toLowerCase() === mail);
   if (DEMO) {
-    const tel = normTel(telefono);
-    return demo.db().leads.find(l =>
-      (tel && normTel(l.telefono) === tel) ||
-      (email && l.email && l.email.toLowerCase() === String(email).toLowerCase())
-    ) || null;
+    const l = demo.db().leads.find(coincide);
+    return l ? copia(l) : null;
   }
+  const enFoto = (await fotoLeads()).find(coincide);
+  if (enFoto) return ghl.getContact(enFoto.id);
   return ghl.findByPhoneOrEmail(telefono, email);
 }
 
-async function updateLead(id, patch) {
+// Busca solo en la foto en caché (sin pedirle nada a GHL). Devuelve la versión liviana.
+async function enFoto(telefono, email) {
+  const tel = normTel(telefono);
+  const mail = String(email || "").trim().toLowerCase();
+  const coincide = (l) => (tel && normTel(l.telefono) === tel) || (mail && (l.email || "").toLowerCase() === mail);
+  const lista = DEMO ? demo.db().leads : await fotoLeads();
+  const l = lista.find(coincide);
+  return l ? liviano(copia(l)) : null;
+}
+
+// Corre `fn` después de responder (Vercel mantiene viva la función hasta que termine).
+// En modo demo se espera, para que todo sea determinista.
+async function enSegundoPlano(fn) {
+  if (DEMO) return fn();
+  cache.waitUntil(Promise.resolve().then(fn).catch(e => console.error("segundo plano:", e.message)));
+}
+
+// `base` = la ficha completa que ya tenemos, para ahorrar lecturas a GHL.
+async function updateLead(id, patch, base) {
   if (DEMO) {
     const l = demo.db().leads.find(l => l.id === id);
     if (!l) return null;
@@ -80,9 +144,11 @@ async function updateLead(id, patch) {
     if (patch.telefono) l.telefono = patch.telefono;
     if (patch.fields) Object.assign(l.fields, patch.fields);
     if (patch.addTags) l.tags = Array.from(new Set([...(l.tags || []), ...patch.addTags]));
-    return { ...l, fields: { ...l.fields } };
+    return copia(l);
   }
-  return ghl.updateContact(id, patch);
+  const nuevo = await ghl.updateContact(id, patch, base);
+  await actualizarFoto(nuevo);
+  return nuevo;
 }
 
 async function createLead({ nombre, email, telefono, fields, tags }) {
@@ -94,20 +160,30 @@ async function createLead({ nombre, email, telefono, fields, tags }) {
       tags: tags || [], creado: new Date().toISOString(), fields: { ...(fields || {}) }
     };
     d.leads.push(l);
-    return { ...l, fields: { ...l.fields } };
+    return copia(l);
   }
-  return ghl.createContact({ nombre, email, telefono, fields, tags });
+  const nuevo = await ghl.createContact({ nombre, email, telefono, fields, tags });
+  await actualizarFoto(nuevo);
+  return nuevo;
 }
 
-// Suma una línea al historial del lead (quién, cuándo, qué).
-async function registrar(id, quien, que, fieldsExtra) {
-  const lead = await getLead(id);
-  if (!lead) return null;
+// Devuelve el historial del lead con una línea más (quién, cuándo, qué), como JSON.
+function historialCon(lead, quien, que) {
   let hist = [];
-  try { hist = JSON.parse(lead.fields.historial_json || "[]"); } catch (e) {}
+  try { hist = JSON.parse((lead && lead.fields && lead.fields.historial_json) || "[]"); } catch (e) {}
   hist.push({ t: new Date().toISOString(), q: quien, a: que });
   if (hist.length > 200) hist = hist.slice(-200);
-  return updateLead(id, { fields: { ...(fieldsExtra || {}), historial_json: JSON.stringify(hist) } });
+  return JSON.stringify(hist);
+}
+
+// Suma una línea al historial y, en el mismo pedido, los campos de `fieldsExtra`.
+// Con `base` (ficha completa ya leída) es 1 solo pedido a GHL.
+async function registrar(id, quien, que, fieldsExtra, base) {
+  const lead = base || await getLead(id);
+  if (!lead) return null;
+  return updateLead(id, {
+    fields: { ...(fieldsExtra || {}), historial_json: historialCon(lead, quien, que) }
+  }, lead);
 }
 
 function normTel(t) {
@@ -115,49 +191,94 @@ function normTel(t) {
 }
 
 /* ---------- Reservas del lugar de Manu (Agenda directa) ---------- */
+// Son de 3 minutos: viven en la caché compartida, no en GHL.
 
 async function getReservas() {
   let lista = [];
   if (DEMO) lista = demo.db().reservas;
-  else {
-    try {
-      const v = await ghl.getCustomValue(RESERVAS_KEY);
-      lista = v && v.value ? JSON.parse(v.value) : [];
-    } catch (e) { lista = []; }
-  }
+  else lista = (await cache.get("reservas_manu")) || [];
   const ahora = Date.now();
   return lista.filter(r => r.hasta > ahora);
 }
 
 async function saveReservas(lista) {
   if (DEMO) { demo.db().reservas = lista; return; }
-  await ghl.setCustomValue(RESERVAS_KEY, JSON.stringify(lista));
+  await cache.set("reservas_manu", lista, 15 * 60);
 }
 
-async function reservarManu(leadId) {
-  const vivas = await getReservas();
-  const sinEste = vivas.filter(r => r.leadId !== leadId);
-  sinEste.push({ leadId, hasta: Date.now() + RESERVA_MIN * 60 * 1000 });
-  await saveReservas(sinEste);
+// Todo lo que lee y escribe las reservas pasa de a uno por vez (en la instancia),
+// para que una ráfaga de formularios no vea a Manu libre a la vez y se pase del tope.
+let cadena = Promise.resolve();
+function deAUno(fn) {
+  const p = cadena.then(fn, fn);
+  cadena = p.catch(() => {});
+  return p;
 }
 
-async function liberarReserva(leadId) {
-  const vivas = await getReservas();
-  await saveReservas(vivas.filter(r => r.leadId !== leadId));
+// Decide Manu o Diego y, si es Manu, le reserva el lugar en el mismo paso.
+// `clave` identifica la reserva (el id del lead, o "tel:<número>" si todavía no existe).
+// `quiereManu(manuLibre)` aplica la regla 5.2 y devuelve "manu" o "diego".
+function decidirYReservar(clave, quiereManu) {
+  return deAUno(async () => {
+    const carga = await cargaManu();
+    const yaReservado = (await getReservas()).some(r => r.leadId === clave);
+    const libre = yaReservado || carga.total < carga.tope;
+    const ruta = quiereManu(libre);
+    if (ruta === "manu" && !yaReservado) {
+      const vivas = await getReservas();
+      vivas.push({ leadId: clave, hasta: Date.now() + RESERVA_MIN * 60 * 1000 });
+      await saveReservas(vivas);
+    }
+    return ruta;
+  });
+}
+
+// Cuando el lead se crea después de reservar, la reserva pasa a su id.
+function renombrarReserva(desde, hacia) {
+  if (desde === hacia) return Promise.resolve();
+  return deAUno(async () => {
+    const vivas = await getReservas();
+    const r = vivas.find(x => x.leadId === desde);
+    if (!r) return;
+    r.leadId = hacia;
+    await saveReservas(vivas);
+  });
+}
+
+function reservarManu(leadId) {
+  return deAUno(async () => {
+    const vivas = (await getReservas()).filter(r => r.leadId !== leadId);
+    vivas.push({ leadId, hasta: Date.now() + RESERVA_MIN * 60 * 1000 });
+    await saveReservas(vivas);
+  });
+}
+
+function liberarReserva(leadId) {
+  return deAUno(async () => {
+    const vivas = await getReservas();
+    if (!vivas.some(r => r.leadId === leadId)) return;
+    await saveReservas(vivas.filter(r => r.leadId !== leadId));
+  });
 }
 
 /* ---------- Carga de Manu ---------- */
 
 // Cuántos lugares post-clase de Manu están ocupados: citas vigentes + reservas vivas.
-// Si el calendario no está configurado todavía, cuenta los leads con llamada_con=Manu y agendo=Sí.
-async function cargaManu() {
+// Las citas se cuentan en el calendario de GHL (en caché 20 s; el webhook la invalida
+// en cada alta o cancelación). Sin calendario configurado, se cuentan desde los leads.
+async function cargaManu({ fresco } = {}) {
   const s = await getSettings();
   const reservas = (await getReservas()).length;
   let citas = null;
   if (!DEMO && s.calManuPostId) {
-    const desde = Date.now() - 24 * 3600 * 1000;
-    const hasta = new Date(s.cierre).getTime() + 14 * 24 * 3600 * 1000;
-    try { citas = await ghl.countAppointments(s.calManuPostId, desde, hasta); } catch (e) { citas = null; }
+    if (fresco) await cache.del("manu_citas");
+    try {
+      citas = await cache.swr("manu_citas", () => {
+        const desde = Date.now() - 24 * 3600 * 1000;
+        const hasta = new Date(s.cierre).getTime() + 14 * 24 * 3600 * 1000;
+        return ghl.countAppointments(s.calManuPostId, desde, hasta);
+      }, POL_CITAS);
+    } catch (e) { citas = null; }
   }
   if (citas == null) {
     const leads = await listLeads();
@@ -167,10 +288,15 @@ async function cargaManu() {
   return { citas, reservas, total: citas + reservas, tope: s.manuTope };
 }
 
+async function invalidarCitasManu() {
+  if (!DEMO) await cache.del("manu_citas");
+}
+
 module.exports = {
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
-  listLeads, getLead, findLead, updateLead, createLead, registrar,
-  getReservas, reservarManu, liberarReserva, cargaManu,
+  listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
+  getReservas, reservarManu, liberarReserva, decidirYReservar, renombrarReserva,
+  cargaManu, invalidarCitasManu,
   normTel
 };
