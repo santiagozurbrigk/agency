@@ -405,6 +405,28 @@
             <input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="11 2345 6789" required>
           </div>
         </div>
+        <div>
+          <label for="ciclo">¿Cada cuánto se le termina el producto a tu cliente?</label>
+          <select id="ciclo" name="ciclo" required>
+            <option value="" selected disabled>Elegí una opción</option>
+            <option>En menos de 30 días</option>
+            <option>Entre 30 y 60 días</option>
+            <option>Entre 60 y 90 días</option>
+            <option>Más de 90 días</option>
+            <option>No se termina, se compra una vez y listo</option>
+          </select>
+        </div>
+        <div>
+          <label for="facturacion">¿Cuánto está facturando tu marca mensualmente?</label>
+          <select id="facturacion" name="facturacion" required>
+            <option value="" selected disabled>Elegí una opción</option>
+            <option>Menos de 10M</option>
+            <option>Entre 10M y 30M</option>
+            <option>Entre 30M y 50M</option>
+            <option>Entre 50M y 100M</option>
+            <option>Más de 100M</option>
+          </select>
+        </div>
         <div class="hp" aria-hidden="true">
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
@@ -621,8 +643,8 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
     err.style.display = "none";
-    var nombre = form.nombre, email = form.email, tel = form.tel;
-    [nombre, email, tel].forEach(function (i) { i.classList.remove("campo-error"); });
+    var nombre = form.nombre, email = form.email, tel = form.tel, ciclo = form.ciclo, facturacion = form.facturacion;
+    [nombre, email, tel, ciclo, facturacion].forEach(function (i) { i.classList.remove("campo-error"); });
 
     if (form.empresa.value) return; /* anti-spam */
 
@@ -631,6 +653,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { email.classList.add("campo-error"); ok = false; }
     var numero = tel.value.replace(/\D/g, "").replace(/^0+/, "");
     if (numero.length < 6) { tel.classList.add("campo-error"); ok = false; }
+    if (!ciclo.value) { ciclo.classList.add("campo-error"); ok = false; }
+    if (!facturacion.value) { facturacion.classList.add("campo-error"); ok = false; }
     /* Argentina: WhatsApp necesita el 9 después del +54 */
     if (form.pais.value === "54") { numero = numero.replace(/^15/, ""); if (numero.charAt(0) !== "9") numero = "9" + numero; }
     if (!ok) return;
@@ -639,6 +663,8 @@ document.addEventListener("DOMContentLoaded", function () {
       nombre: nombre.value.trim(),
       email: email.value.trim().toLowerCase(),
       telefono: "+" + form.pais.value + numero,
+      ciclo: ciclo.value,
+      facturacion: facturacion.value,
       tracking: tracking()
     };
     if (AB_TEST) datos.variant = variant;
