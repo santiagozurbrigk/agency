@@ -137,7 +137,8 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .buscador input{padding-left:36px;height:38px;border-radius:10px;background:var(--panel)}
 .buscador svg{position:absolute;left:11px;top:10px;color:var(--tx-3)}
 .buscador kbd{position:absolute;right:9px;top:9px;font:600 11px var(--txt);color:var(--tx-3);border:1px solid var(--borde-2);border-radius:5px;padding:1px 6px;background:var(--panel-2)}
-.kpis{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.kpis{display:flex;gap:8px;flex-wrap:wrap}
+.tema-btn{margin-left:auto;height:38px;border-radius:10px}
 .kpi{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--borde);border-radius:10px;padding:6px 12px;min-width:0}
 .kpi .t{font-size:11px;color:var(--tx-3);font-weight:600;text-transform:uppercase;letter-spacing:.05em;line-height:1.2}
 .kpi .v{font-family:var(--tit);font-weight:700;font-size:15px;line-height:1.2}
@@ -334,6 +335,8 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
   .hamb{display:inline-grid}
   header.top{padding:10px 14px}
   .kpis{width:100%;margin-left:0;order:3}
+  .tema-btn span{display:none}
+  .tema-btn{padding:0 10px}
   .kpi{flex:1}
   .meter{display:none}
   .tile .meter{display:block}
@@ -427,6 +430,7 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
           <input id="busca" placeholder="Buscar por nombre, email o WhatsApp" autocomplete="off" aria-label="Buscar leads">
           <kbd>/</kbd>
         </div>
+        <button class="btn tema-btn" onclick="cambiarTema()" aria-label="Cambiar entre modo claro y oscuro"><svg class="ic" id="temaIcTop"><use href="#i-sol"/></svg><span id="temaTxt">Modo claro</span></button>
         <div class="kpis">
           <div class="kpi" id="kManu"><div><div class="t">Manu</div><div class="v num" id="kManuV">–</div></div><div class="meter"><i id="kManuM" style="width:0"></i></div></div>
           <div class="kpi" title="Lugares de Génesis vendidos"><div><div class="t">Génesis</div><div class="v num" id="kGenV">–</div></div><div class="meter"><i id="kGenM" style="width:0"></i></div></div>
@@ -560,7 +564,11 @@ function temaActual(){
   if(t) return t;
   return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
 }
-function pintarIconoTema(){ $("#temaIc").innerHTML=`<use href="#${temaActual()==="dark"?"i-sol":"i-luna"}"/>`; }
+function pintarIconoTema(){
+  const oscuro=temaActual()==="dark", ic=`<use href="#${oscuro?"i-sol":"i-luna"}"/>`;
+  $("#temaIc").innerHTML=ic; $("#temaIcTop").innerHTML=ic;
+  $("#temaTxt").textContent=oscuro?"Modo claro":"Modo oscuro";
+}
 function cambiarTema(){
   const n=temaActual()==="dark"?"light":"dark";
   document.documentElement.setAttribute("data-theme",n);
