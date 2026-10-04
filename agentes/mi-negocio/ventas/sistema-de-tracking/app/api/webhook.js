@@ -20,20 +20,24 @@ module.exports = async function handler(req, res) {
     body = body || {};
 
     const appt = body.appointment || body.calendar || body;
-    const contactId = appt.contactId || body.contactId || (body.contact && body.contact.id);
-    const calendarId = appt.calendarId || body.calendarId;
-    const tipo = String(body.type || body.eventType || "").toLowerCase();
+    const contactId = appt.contactId || body.contactId || body.contact_id
+      || (body.contact && body.contact.id) || null;
+    const calendarId = appt.calendarId || body.calendarId || body.calendar_id || null;
+    const tipo = String(body.type || body.eventType || req.query.type || "").toLowerCase();
     const cancelada = tipo.includes("delete") || tipo.includes("cancel")
       || ["cancelled", "canceled"].includes(String(appt.appointmentStatus || appt.status || "").toLowerCase());
 
-    if (!contactId || !calendarId) {
-      return res.status(200).json({ ok: true, ignorado: true, motivo: "Sin contactId o calendarId" });
+    if (!contactId) {
+      return res.status(200).json({ ok: true, ignorado: true, motivo: "Sin contactId" });
     }
 
     const s = await store.getSettings();
-    const esManuPost = calendarId === s.calManuPostId;
-    const esManuPre = calendarId === s.calManuPreventaId;
-    const esDiego = calendarId === s.calDiegoId;
+    // El calendario puede venir en la URL (?cal=manu_pre|manu_post|diego), que es
+    // lo más simple de configurar en el workflow de GHL, o por su ID en el payload.
+    const cal = String(req.query.cal || "").toLowerCase();
+    const esManuPost = cal === "manu_post" || calendarId === s.calManuPostId;
+    const esManuPre = cal === "manu_pre" || calendarId === s.calManuPreventaId;
+    const esDiego = cal === "diego" || calendarId === s.calDiegoId;
     if (!esManuPost && !esManuPre && !esDiego) {
       return res.status(200).json({ ok: true, ignorado: true, motivo: "Calendario ajeno al proceso" });
     }
