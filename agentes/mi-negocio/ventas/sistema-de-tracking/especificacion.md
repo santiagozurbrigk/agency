@@ -87,7 +87,12 @@ Al enviarlo, el sistema decide si se muestra el calendario de **Manu** o el de *
 3. **Paso 2, la agenda.** En la misma página aparece el calendario de GHL que corresponde, de Manu o de Diego, embebido. Nombre, email y WhatsApp vienen precargados desde el opt-in, así el lead no los vuelve a escribir. Elige el horario y queda agendado en el momento.
    - Si eligió «Menos de USD 1.000», en lugar del calendario aparece la pantalla de la regla 5.4.
 
-**Para que el tope no se pase:** si dos leads completan el formulario al mismo tiempo cuando Manu tiene 9 de 10, los dos podrían terminar con Manu. Para evitarlo, cuando el sistema muestra el calendario de Manu le reserva ese lugar durante 15 minutos. Si en ese tiempo el lead no agenda, el lugar se libera.
+**Para que el tope no se pase:** el link sale en vivo y todos corren a agendar al mismo tiempo.
+
+- **Reserva de 3 minutos.** Cuando el sistema muestra el calendario de Manu, le reserva ese lugar durante 3 minutos. Le alcanza para elegir el horario sin trabar a los que vienen atrás. Si en ese tiempo no agenda, el lugar se libera para el siguiente.
+- **Red de seguridad.** Si igual entra una cita con Manu por encima de 10 (por ejemplo, alguien que agenda después de los 3 minutos), el sistema la marca **«Excede el tope de Manu»** apenas llega. Santiago o Matías la pasan a Diego con la corrección manual de la regla 5.2.
+
+**Si completa el formulario pero no agenda:** el lead queda **primero en el Grupo 2**, por encima de los que completaron Quiero que me contacten, para que un SDR lo llame enseguida.
 
 ### 4.4 Quiero que me contacten · link 2 de la clase → Grupo 2
 
@@ -149,7 +154,7 @@ Al enviar el formulario 4.3:
 | Grupo | Quién entra | Orden en la lista |
 | --- | --- | --- |
 | **Grupo 1** | Completó la Agenda directa (4.3) | Por facturación, de mayor a menor |
-| **Grupo 2** | Completó Quiero que me contacten (4.4), más los que asistieron y no completaron ningún formulario | 1° los que completaron el formulario 4.4, por facturación de mayor a menor · 2° los que asistieron sin completar ningún formulario |
+| **Grupo 2** | Completó Quiero que me contacten (4.4), más los que asistieron y no completaron ningún formulario | 1° los que completaron la Agenda directa (4.3) pero no agendaron · 2° los que completaron el formulario 4.4, por facturación de mayor a menor · 3° los que asistieron sin completar ningún formulario |
 | **Grupo 3** | Está en el opt-in y no asistió | Por facturación, de mayor a menor |
 
 - **Quien ya agendó en la pre-venta no entra a ningún grupo:** ya está en el núcleo.
