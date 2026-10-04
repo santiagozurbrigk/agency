@@ -614,15 +614,26 @@ function arrancar(){
 /* ============================================================
    Datos
    ============================================================ */
+// VERSION_LOCAL sube con cada cambio hecho desde esta pantalla. Si un refresco salió
+// antes de un cambio, su respuesta trae datos viejos: se descarta y se vuelve a pedir.
+let VERSION_LOCAL=0, OTRO_REFRESCO=false;
 async function refrescar(){
-  if(CARGANDO) return; CARGANDO=true;
+  if(CARGANDO){ OTRO_REFRESCO=true; return; }
+  CARGANDO=true;
+  const v=VERSION_LOCAL;
+  let vieja=false;
   try{
-    DATA=await api("/api/leads");
+    const d=await api("/api/leads");
+    if(v!==VERSION_LOCAL){ vieja=true; return; }
+    DATA=d;
     pintarKpis(); pintarNav();
     if(!EDITANDO) render();
     if(FICHA_ID && !EDITANDO) pintarFicha();
   }catch(e){ if(e.message!=="Sesión vencida") toast(e.message,true); }
-  finally{ CARGANDO=false; }
+  finally{
+    CARGANDO=false;
+    if(vieja||OTRO_REFRESCO){ OTRO_REFRESCO=false; setTimeout(refrescar,250); }
+  }
 }
 function pintarKpis(){
   const m=DATA.manu, pct=Math.min(100,(m.total/Math.max(1,m.tope))*100);
@@ -894,18 +905,49 @@ addEventListener("resize",()=>{const m=esMovil();if(_eraMovil!==null&&m!==_eraMo
 function cerrarTodo(){cerrarFicha();$("#side").classList.remove("on");}
 function tabFicha(t){FICHA_TAB=t;EDITANDO=false;pintarFicha();}
 
+// Lo que cambia cada acción, para mostrarlo al instante (antes de que responda el servidor).
+function cambiosOptimistas(l,action,data){
+  const f=l.fields;
+  if(action==="marcar") return {[data.campo]:data.valor};
+  if(action==="etapa") return {etapa:data.etapa};
+  if(action==="grupo") return {grupo:data.grupo};
+  if(action==="reasignar") return {...(data.dueno?{dueno:data.dueno}:{}),...(data.llamada_con?{llamada_con:data.llamada_con,excede_tope:"No"}:{})};
+  if(action==="intento") return {intentos:String((parseInt(f.intentos||"0",10)||0)+1),ultimo_contacto:new Date().toISOString()};
+  return null;
+}
+function aplicarLocal(id,fields,lead){
+  const i=DATA?DATA.leads.findIndex(l=>l.id===id):-1;
+  if(i>=0){
+    const l=DATA.leads[i];
+    DATA.leads[i]=lead?{...l,...lead,fields:{...l.fields,...lead.fields},calc:l.calc}:{...l,fields:{...l.fields,...fields}};
+    if(fields&&fields.grupo&&DATA.leads[i].calc) DATA.leads[i].calc={...DATA.leads[i].calc,grupo:fields.grupo};
+  }
+  if(lead) COMPLETO[id]=lead;
+  else if(COMPLETO[id]) COMPLETO[id]={...COMPLETO[id],fields:{...COMPLETO[id].fields,...fields}};
+}
 async function accion(id,action,data,msgOk){
+  VERSION_LOCAL++;
+  const actual=lead(id);
+  const previo=actual?{...actual.fields}:null;
+  const previoCompleto=COMPLETO[id]?{...COMPLETO[id].fields}:null;
+  const opt=actual?cambiosOptimistas(actual,action,data):null;
+  if(opt){ aplicarLocal(id,opt); render(); if(FICHA_ID===id) pintarFicha(); }
   try{
     const d=await api("/api/lead",{method:"POST",body:JSON.stringify({id,action,data})});
+    VERSION_LOCAL++;
     if(msgOk)toast(msgOk);
-    if(d.lead){
-      COMPLETO[id]=d.lead;
-      const i=DATA.leads.findIndex(l=>l.id===id);
-      if(i>=0) DATA.leads[i]={...DATA.leads[i],...d.lead,calc:DATA.leads[i].calc};
-      EDITANDO=false; render(); if(FICHA_ID===id) pintarFicha();
-    }
+    if(d.lead){ aplicarLocal(id,null,d.lead); EDITANDO=false; render(); if(FICHA_ID===id) pintarFicha(); }
     refrescar();
-  }catch(e){toast(e.message,true);}
+  }catch(e){
+    // Falló: se vuelve a como estaba.
+    if(opt&&previo){
+      const i=DATA.leads.findIndex(l=>l.id===id);
+      if(i>=0) DATA.leads[i]={...DATA.leads[i],fields:previo};
+      if(previoCompleto&&COMPLETO[id]) COMPLETO[id]={...COMPLETO[id],fields:previoCompleto};
+      render(); if(FICHA_ID===id) pintarFicha();
+    }
+    toast(e.message,true);
+  }
 }
 function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
 

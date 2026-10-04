@@ -75,14 +75,46 @@ async function fotoLeads() {
   }, POL_LEADS);
 }
 
-async function listLeads() {
-  if (DEMO) return demo.db().leads.map(l => liviano(copia(l)));
-  return (await fotoLeads()).map(copia);
+// La lista de contactos de GHL tarda en reflejar los cambios recientes (minutos a
+// veces), así que cada escritura del sistema se guarda además como "reciente" y se
+// aplica por encima de la foto durante RECIENTE_MS. Así un refresco de la foto con
+// datos atrasados de GHL no puede deshacer lo que el equipo acaba de cambiar.
+const RECIENTE_MS = 10 * 60 * 1000;
+let cadenaRecientes = Promise.resolve();
+
+async function leerRecientes() {
+  const r = (await cache.get("recientes")) || {};
+  const limite = Date.now() - RECIENTE_MS;
+  for (const id of Object.keys(r)) if (r[id].t < limite) delete r[id];
+  return r;
 }
 
-// Pone la versión nueva de un lead en la foto (o lo agrega si es nuevo).
+function guardarReciente(lead) {
+  const p = cadenaRecientes.then(async () => {
+    const r = await leerRecientes();
+    r[lead.id] = { l: liviano(lead), t: Date.now() };
+    await cache.set("recientes", r, Math.ceil(RECIENTE_MS / 1000) + 60);
+  });
+  cadenaRecientes = p.catch(() => {});
+  return p;
+}
+
+async function listLeads() {
+  if (DEMO) return demo.db().leads.map(l => liviano(copia(l)));
+  const [foto, recientes] = await Promise.all([fotoLeads(), leerRecientes()]);
+  const lista = foto.map(copia);
+  for (const { l } of Object.values(recientes)) {
+    const i = lista.findIndex(x => x.id === l.id);
+    if (esDelLanzamiento(l)) { if (i >= 0) lista[i] = copia(l); else lista.push(copia(l)); }
+    else if (i >= 0) lista.splice(i, 1);
+  }
+  return lista;
+}
+
+// Pone la versión nueva de un lead en la foto (o lo agrega si es nuevo) y la marca como reciente.
 async function actualizarFoto(lead) {
   if (DEMO || !lead) return;
+  await guardarReciente(lead);
   const foto = await cache.get("leads");
   if (!foto) return; // no hay foto todavía: la próxima lectura la arma completa
   const l = liviano(lead);
@@ -112,7 +144,7 @@ async function findLead(telefono, email) {
     const l = demo.db().leads.find(coincide);
     return l ? copia(l) : null;
   }
-  const enFoto = (await fotoLeads()).find(coincide);
+  const enFoto = (await listLeads()).find(coincide);
   if (enFoto) return ghl.getContact(enFoto.id);
   return ghl.findByPhoneOrEmail(telefono, email);
 }
@@ -122,7 +154,7 @@ async function enFoto(telefono, email) {
   const tel = normTel(telefono);
   const mail = String(email || "").trim().toLowerCase();
   const coincide = (l) => (tel && normTel(l.telefono) === tel) || (mail && (l.email || "").toLowerCase() === mail);
-  const lista = DEMO ? demo.db().leads : await fotoLeads();
+  const lista = DEMO ? demo.db().leads : await listLeads();
   const l = lista.find(coincide);
   return l ? liviano(copia(l)) : null;
 }
