@@ -104,19 +104,26 @@ function fieldsToCustom(fields, map) {
   return out;
 }
 
+// Lista con GET /contacts/ y no con /contacts/search: el search no devuelve
+// los campos personalizados, y todas las colas dependen de ellos.
 async function listContacts() {
   const map = await loadFieldMap();
   const leads = [];
-  let searchAfter = null;
-  for (let page = 0; page < 60; page++) { // hasta 30.000 contactos
-    const body = { locationId: LOCATION, pageLimit: 500 };
-    if (searchAfter) body.searchAfter = searchAfter;
-    const data = await api("/contacts/search", { method: "POST", body });
+  let url = `/contacts/?locationId=${LOCATION}&limit=100`;
+  for (let page = 0; page < 300 && url; page++) { // hasta 30.000 contactos
+    const data = await api(url);
     const items = data.contacts || [];
     for (const c of items) leads.push(contactToLead(c, map));
-    if (items.length < 500) break;
-    searchAfter = items[items.length - 1].searchAfter;
-    if (!searchAfter) break;
+    const meta = data.meta || {};
+    url = null;
+    if (items.length === 100) {
+      if (meta.nextPageUrl) {
+        const u = new URL(meta.nextPageUrl);
+        url = u.pathname + u.search;
+      } else if (meta.startAfterId) {
+        url = `/contacts/?locationId=${LOCATION}&limit=100&startAfterId=${meta.startAfterId}${meta.startAfter ? "&startAfter=" + meta.startAfter : ""}`;
+      }
+    }
   }
   return leads;
 }
@@ -128,7 +135,6 @@ async function getContact(id) {
 }
 
 async function findByPhoneOrEmail(phone, email) {
-  const map = await loadFieldMap();
   const tryQuery = async (q) => {
     if (!q) return null;
     const data = await api("/contacts/search", {
@@ -136,7 +142,8 @@ async function findByPhoneOrEmail(phone, email) {
       body: { locationId: LOCATION, pageLimit: 5, query: q }
     });
     const c = (data.contacts || [])[0];
-    return c ? contactToLead(c, map) : null;
+    // El search no trae los campos personalizados: se busca la ficha completa.
+    return c ? getContact(c.id) : null;
   };
   return (await tryQuery(phone)) || (await tryQuery(email));
 }
