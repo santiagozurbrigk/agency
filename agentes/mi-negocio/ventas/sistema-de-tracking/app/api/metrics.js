@@ -3,6 +3,7 @@
 const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const R = require("../lib/rules");
+const { OPCIONES } = require("../lib/fields");
 
 module.exports = async function handler(req, res) {
   if (!requiere(req, res)) return;
@@ -63,7 +64,50 @@ module.exports = async function handler(req, res) {
       if (grupos[g] != null) grupos[g]++;
     }
 
+    // Distribuciones para los gráficos: cuenta por opción, en el orden del formulario.
+    const contar = (key, opciones) => {
+      const c = Object.fromEntries(opciones.map(o => [o, 0]));
+      let sinDato = 0;
+      for (const l of leads) {
+        const v = key === "etapa" ? etapa(l) : l.fields[key];
+        if (!v) sinDato++;
+        else if (c[v] != null) c[v]++;
+        else c["Otro"] = (c["Otro"] || 0) + 1;
+      }
+      return { valores: Object.entries(c).map(([op, n]) => ({ op, n })), sinDato };
+    };
+    const intentos = { "0": 0, "1": 0, "2": 0, "3": 0, "4+": 0 };
+    for (const l of leads) {
+      const n = parseInt(l.fields.intentos || "0", 10) || 0;
+      intentos[n >= 4 ? "4+" : String(n)]++;
+    }
+    const ORIGEN = { "optin-19-10": "Opt-in de la landing", "agenda-directa": "Agenda directa (link 1)", "quiero-contacto": "Quiero que me contacten (link 2)" };
+    const origen = Object.fromEntries(Object.values(ORIGEN).map(o => [o, 0]));
+    for (const l of leads) for (const t of l.tags || []) if (ORIGEN[t]) origen[ORIGEN[t]]++;
+
+    // Opt-ins por día (hora de Argentina), desde el primero hasta hoy, máximo 30 días.
+    const diaAR = (iso) => new Date(new Date(iso).getTime() - 3 * 3600e3).toISOString().slice(0, 10);
+    const porDiaMapa = {};
+    for (const l of leads) if (l.creado) { const d = diaAR(l.creado); porDiaMapa[d] = (porDiaMapa[d] || 0) + 1; }
+    const hoy = diaAR(new Date().toISOString());
+    const primero = Object.keys(porDiaMapa).sort()[0] || hoy;
+    const porDia = [];
+    for (let t = Date.parse(hoy + "T12:00:00Z"); porDia.length < 30; t -= 864e5) {
+      const d = new Date(t).toISOString().slice(0, 10);
+      porDia.unshift({ dia: d, n: porDiaMapa[d] || 0 });
+      if (d <= primero && porDia.length >= 7) break;
+    }
+
     return res.status(200).json({
+      distribucion: {
+        facturacion: contar("facturacion", OPCIONES.facturacion),
+        ciclo: contar("ciclo", OPCIONES.ciclo),
+        inversion: contar("inversion", OPCIONES.inversion),
+        etapa: contar("etapa", OPCIONES.etapa),
+        intentos: Object.entries(intentos).map(([op, n]) => ({ op, n })),
+        origen: Object.entries(origen).map(([op, n]) => ({ op, n }))
+      },
+      porDia,
       ok: true,
       embudo: { total, contactados, enConversacion, calificados, agendadosPre, agendadosPost, confirmados, asistieron, presentados, ventas: ventas.length },
       porOferta, porPersona, grupos,
