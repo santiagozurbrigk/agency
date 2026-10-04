@@ -14,12 +14,13 @@ Lo que queda para resolver más adelante. Se va sumando a medida que aparece. La
 
 | # | Qué falta | Quién |
 | --- | --- | --- |
-| 4 | Crear el proyecto en Vercel apuntando a `app/` y cargar las variables del `app/README.md` (`GHL_API_TOKEN`, `GHL_LOCATION_ID`, `SESSION_SECRET`, `USERS_JSON`, `WEBHOOK_SECRET`). | Santiago |
-| 5 | Crear a mano los 3 calendarios en GHL con los horarios de Manu (pre-venta y post-clase) y de Diego, y pegar ID y link en Configuración dentro de la app. | Santiago |
-| 6 | Emails y claves de los cinco usuarios para `USERS_JSON` (Santiago, Matías, Manu, Diego, Braian). | Santiago |
+| 4 | ~~Proyecto en Vercel y variables~~ Hecho: `tracking-genesis.vercel.app`. | Hecho |
+| 5 | ~~Calendarios en GHL~~ Hecho: los 3 creados y cargados en Configuración, más los 6 workflows del webhook de citas. | Hecho |
+| 6 | Rotar la clave de Santiago en `USERS_JSON` (viajó por el chat) y borrar los contactos de prueba «Prueba Sistema» y «Prueba Landing» en GHL. | Santiago |
 | 7 | ~~Dónde se guardan los comprobantes~~ Resuelto: Vercel Blob (Storage → Blob en el proyecto). | Hecho |
-| 8 | Probar con la subcuenta real: el prefill del calendario embebido (Agenda directa, paso 2), el setup de campos y el webhook de citas. | Al conectar GHL |
-| 8b | ~~Actualizar la landing del opt-in~~ Hecho: pide ciclo y facturación y reenvía al sistema. Falta solo cargar `TRACKING_OPTIN_URL` en el proyecto Vercel de la landing. | Santiago |
+| 8 | ~~Probar con la subcuenta real~~ Hecho (04/10): setup de campos, opt-in → sistema, ruteo de la agenda directa, prefill del calendario y webhook de alta y cancelación. | Hecho |
+| 8b | ~~Landing del opt-in~~ Hecho: `optin-genesis.vercel.app`, pide ciclo y facturación y reenvía al sistema. Falta: dominio propio, VSL, píxel de Meta y Hyros en el bloque CONFIG, y `GHL_WEBHOOK_URL` si el email de acceso sale de un workflow de GHL. | Santiago |
+| 8c | Blob store en `tracking-genesis` (Storage → Create → Blob) para poder adjuntar comprobantes. | Santiago |
 
 ## Cosas que vienen del mapa de ventas y siguen abiertas
 
