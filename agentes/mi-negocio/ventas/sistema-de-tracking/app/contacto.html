@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiero que me contacten</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#0B0B0C;--panel:#141416;--borde:#2A2A2E;--tx:#F2F2F3;--tx2:#A7A7AD;--ac:#5B8CFF;--mal:#E85B4B}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;display:flex;justify-content:center;padding:28px 16px}
+.caja{width:min(560px,100%)}
+h1{font-size:22px;margin-bottom:6px}
+.sub{color:var(--tx2);font-size:14.5px;margin-bottom:22px}
+.campo{margin-bottom:16px}
+label{display:block;font-size:13.5px;color:var(--tx2);margin-bottom:6px}
+input,select{font:inherit;width:100%;background:var(--panel);border:1px solid var(--borde);color:var(--tx);border-radius:10px;padding:12px 14px}
+input:focus,select:focus{outline:none;border-color:var(--ac)}
+.otro{display:none;margin-top:8px}
+button{font:inherit;width:100%;background:var(--ac);color:#fff;border:0;border-radius:10px;padding:14px;font-weight:600;cursor:pointer;font-size:16px}
+button:disabled{opacity:.6;cursor:default}
+.err{color:var(--mal);font-size:14px;margin-top:12px;display:none}
+.fin,.rechazo{display:none}
+.caja2{background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:28px;text-align:center}
+.caja2 h2{font-size:20px;margin-bottom:8px}
+.caja2 p{color:var(--tx2);font-size:14.5px;margin-bottom:0}
+.linklike{background:none;border:1px solid var(--borde);color:var(--tx);margin-top:18px}
+</style>
+</head>
+<body>
+<div class="caja">
+
+  <div id="form1">
+    <h1>Dejanos tus datos y te contactamos</h1>
+    <p class="sub">Contanos qué te quedó dando vueltas y hoy mismo te escribimos.</p>
+    <form id="form">
+      <div class="campo"><label>Nombre</label><input name="nombre" required placeholder="Tu nombre"></div>
+      <div class="campo"><label>Tu WhatsApp con código de país</label>
+        <input name="telefono" required inputmode="tel" placeholder="+54 9 11 2345 6789"></div>
+
+      <div class="campo"><label>¿Qué te falta para dar el paso hoy?</label>
+        <select name="que_falta" required onchange="otro(this,'oFalta')">
+          <option value="" selected disabled>Elegí una opción</option>
+          <option>Entender cómo se aplica a mi marca en particular</option>
+          <option>Saber si mi producto sirve para suscripción</option>
+          <option>Tengo dudas con la inversión</option>
+          <option>No sé si tengo tiempo para implementarlo ahora</option>
+          <option>Lo tengo que hablar con mi socio</option>
+          <option value="Otro">Otro</option>
+        </select>
+        <input class="otro" id="oFalta" placeholder="Contanos qué te falta"></div>
+
+      <div class="campo"><label>¿Cada cuánto se le termina el producto a tu cliente?</label>
+        <select name="ciclo" required>
+          <option value="" selected disabled>Elegí una opción</option>
+          <option>En menos de 30 días</option>
+          <option>Entre 30 y 60 días</option>
+          <option>Entre 60 y 90 días</option>
+          <option>Más de 90 días</option>
+          <option>No se termina, se compra una vez y listo</option>
+        </select></div>
+
+      <div class="campo"><label>¿Cuánto está facturando tu marca mensualmente?</label>
+        <select name="facturacion" required>
+          <option value="" selected disabled>Elegí una opción</option>
+          <option>Menos de 10M</option>
+          <option>Entre 10M y 30M</option>
+          <option>Entre 30M y 50M</option>
+          <option>Entre 50M y 100M</option>
+          <option>Más de 100M</option>
+        </select></div>
+
+      <div class="campo"><label>Si vemos que encaja con tu marca, ¿con cuánto contás hoy para invertir en resolverlo?</label>
+        <select name="inversion" required>
+          <option value="" selected disabled>Elegí una opción</option>
+          <option>Menos de USD 1.000</option>
+          <option>Entre USD 1.000 y USD 3.000</option>
+          <option>Entre USD 3.000 y USD 6.000</option>
+          <option>Más de USD 6.000</option>
+        </select></div>
+
+      <button id="btn" type="submit">Quiero que me contacten</button>
+      <div class="err" id="err"></div>
+    </form>
+  </div>
+
+  <div class="fin" id="fin">
+    <div class="caja2">
+      <h2>Listo, ya tenemos tus datos</h2>
+      <p>Hoy mismo te escribimos por WhatsApp para resolver lo que te quedó dando vueltas.</p>
+    </div>
+  </div>
+
+  <div class="rechazo" id="rechazo">
+    <div class="caja2">
+      <h2>Por el momento no podemos ayudarte</h2>
+      <p>El trabajo que hacemos necesita una inversión mínima para que a vos te cierren los números. Si marcaste una opción que no refleja tu situación real, podés volver a completar el formulario.</p>
+      <button class="linklike" onclick="volver()">Volver a completar el formulario</button>
+    </div>
+  </div>
+
+</div>
+<script>
+function otro(sel,id){document.getElementById(id).style.display=sel.value==="Otro"?"block":"none";}
+function volver(){
+  document.getElementById("rechazo").style.display="none";
+  document.getElementById("form1").style.display="block";
+  window.scrollTo(0,0);
+}
+document.getElementById("form").addEventListener("submit",async function(ev){
+  ev.preventDefault();
+  var err=document.getElementById("err");err.style.display="none";
+  var f=ev.target, btn=document.getElementById("btn");
+  var datos={
+    nombre:f.nombre.value.trim(),
+    telefono:f.telefono.value.trim(),
+    que_falta:f.que_falta.value==="Otro"?("Otro: "+document.getElementById("oFalta").value.trim()):f.que_falta.value,
+    ciclo:f.ciclo.value, facturacion:f.facturacion.value, inversion:f.inversion.value
+  };
+  if(datos.telefono.replace(/\D/g,"").length<8){err.textContent="Revisá el WhatsApp: tiene que tener código de país.";err.style.display="block";return;}
+  btn.disabled=true;btn.textContent="Enviando…";
+  try{
+    var r=await fetch("/api/public/contacto",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(datos)});
+    var d=await r.json();
+    if(!d.ok)throw new Error(d.error||"No se pudo enviar. Probá de nuevo.");
+    document.getElementById("form1").style.display="none";
+    document.getElementById(d.ruta==="rechazado"?"rechazo":"fin").style.display="block";
+    window.scrollTo(0,0);
+  }catch(e){
+    err.textContent=e.message;err.style.display="block";
+    btn.disabled=false;btn.textContent="Quiero que me contacten";
+  }
+});
+</script>
+</body>
+</html>
