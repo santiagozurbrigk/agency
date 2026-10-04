@@ -1,0 +1,217 @@
+// Cliente de la API v2 de GHL (LeadConnector).
+// Token de integración privada en GHL_API_TOKEN, subcuenta en GHL_LOCATION_ID.
+// Si faltan las dos variables, el sistema corre en modo demo (ver store.js).
+
+const { FIELDS } = require("./fields");
+
+const BASE = "https://services.leadconnectorhq.com";
+const TOKEN = process.env.GHL_API_TOKEN;
+const LOCATION = process.env.GHL_LOCATION_ID;
+
+const enabled = Boolean(TOKEN && LOCATION);
+
+async function api(path, opts = {}) {
+  const r = await fetch(BASE + path, {
+    ...opts,
+    headers: {
+      Authorization: "Bearer " + TOKEN,
+      Version: "2021-07-28",
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      ...(opts.headers || {})
+    },
+    body: opts.body ? JSON.stringify(opts.body) : undefined
+  });
+  const text = await r.text();
+  let data = {};
+  try { data = text ? JSON.parse(text) : {}; } catch (e) { data = { raw: text }; }
+  if (!r.ok) {
+    const err = new Error(`GHL ${opts.method || "GET"} ${path} → ${r.status}: ${text.slice(0, 300)}`);
+    err.status = r.status;
+    throw err;
+  }
+  return data;
+}
+
+/* ---------- Campos personalizados ---------- */
+
+let _fieldCache = null; // { byKey: {nuestraKey -> {id, fieldKey}}, byId: {id -> nuestraKey}, at }
+
+function slug(name) {
+  return name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+}
+
+async function loadFieldMap(force) {
+  if (_fieldCache && !force && Date.now() - _fieldCache.at < 10 * 60 * 1000) return _fieldCache;
+  const data = await api(`/locations/${LOCATION}/customFields`);
+  const list = data.customFields || [];
+  const byKey = {}, byId = {};
+  for (const f of FIELDS) {
+    const wanted = slug(f.name);
+    const found = list.find(cf => slug(cf.name || "") === wanted);
+    if (found) { byKey[f.key] = { id: found.id, fieldKey: found.fieldKey }; byId[found.id] = f.key; }
+  }
+  _fieldCache = { byKey, byId, at: Date.now(), raw: list };
+  return _fieldCache;
+}
+
+// Crea en GHL los campos que falten. Devuelve un reporte.
+async function ensureCustomFields() {
+  const map = await loadFieldMap(true);
+  const report = { creados: [], existentes: [], errores: [] };
+  for (const f of FIELDS) {
+    if (map.byKey[f.key]) { report.existentes.push(f.name); continue; }
+    try {
+      const body = { name: f.name, dataType: f.type };
+      if (f.options) body.options = f.options;
+      await api(`/locations/${LOCATION}/customFields`, { method: "POST", body });
+      report.creados.push(f.name);
+    } catch (e) {
+      report.errores.push(`${f.name}: ${e.message}`);
+    }
+  }
+  await loadFieldMap(true);
+  return report;
+}
+
+/* ---------- Contactos ---------- */
+
+function contactToLead(c, map) {
+  const lead = {
+    id: c.id,
+    nombre: [c.firstName, c.lastName].filter(Boolean).join(" ") || c.contactName || "",
+    email: c.email || "",
+    telefono: c.phone || "",
+    tags: c.tags || [],
+    creado: c.dateAdded || c.createdAt || null,
+    fields: {}
+  };
+  const cfs = c.customFields || c.customField || [];
+  for (const cf of cfs) {
+    const key = map.byId[cf.id];
+    if (key) lead.fields[key] = cf.value != null ? cf.value : cf.fieldValue;
+  }
+  return lead;
+}
+
+function fieldsToCustom(fields, map) {
+  const out = [];
+  for (const [key, value] of Object.entries(fields || {})) {
+    const f = map.byKey[key];
+    if (f) out.push({ id: f.id, value: value == null ? "" : String(value) });
+  }
+  return out;
+}
+
+async function listContacts() {
+  const map = await loadFieldMap();
+  const leads = [];
+  let searchAfter = null;
+  for (let page = 0; page < 60; page++) { // hasta 30.000 contactos
+    const body = { locationId: LOCATION, pageLimit: 500 };
+    if (searchAfter) body.searchAfter = searchAfter;
+    const data = await api("/contacts/search", { method: "POST", body });
+    const items = data.contacts || [];
+    for (const c of items) leads.push(contactToLead(c, map));
+    if (items.length < 500) break;
+    searchAfter = items[items.length - 1].searchAfter;
+    if (!searchAfter) break;
+  }
+  return leads;
+}
+
+async function getContact(id) {
+  const map = await loadFieldMap();
+  const data = await api(`/contacts/${id}`);
+  return contactToLead(data.contact || data, map);
+}
+
+async function findByPhoneOrEmail(phone, email) {
+  const map = await loadFieldMap();
+  const tryQuery = async (q) => {
+    if (!q) return null;
+    const data = await api("/contacts/search", {
+      method: "POST",
+      body: { locationId: LOCATION, pageLimit: 5, query: q }
+    });
+    const c = (data.contacts || [])[0];
+    return c ? contactToLead(c, map) : null;
+  };
+  return (await tryQuery(phone)) || (await tryQuery(email));
+}
+
+async function updateContact(id, { nombre, email, telefono, fields, addTags }) {
+  const map = await loadFieldMap();
+  const body = {};
+  if (nombre) { const p = nombre.trim().split(/\s+/); body.firstName = p.shift(); body.lastName = p.join(" "); }
+  if (email) body.email = email;
+  if (telefono) body.phone = telefono;
+  if (fields) body.customFields = fieldsToCustom(fields, map);
+  if (addTags && addTags.length) {
+    const actual = await getContact(id);
+    body.tags = Array.from(new Set([...(actual.tags || []), ...addTags]));
+  }
+  await api(`/contacts/${id}`, { method: "PUT", body });
+  return getContact(id);
+}
+
+async function createContact({ nombre, email, telefono, fields, tags }) {
+  const map = await loadFieldMap();
+  const body = { locationId: LOCATION };
+  if (nombre) { const p = nombre.trim().split(/\s+/); body.firstName = p.shift(); body.lastName = p.join(" "); }
+  if (email) body.email = email;
+  if (telefono) body.phone = telefono;
+  if (fields) body.customFields = fieldsToCustom(fields, map);
+  if (tags) body.tags = tags;
+  const data = await api("/contacts/", { method: "POST", body });
+  return contactToLead(data.contact || data, await loadFieldMap());
+}
+
+/* ---------- Custom values (mini KV para settings y reservas) ---------- */
+
+async function getCustomValue(name) {
+  const data = await api(`/locations/${LOCATION}/customValues`);
+  const list = data.customValues || [];
+  return list.find(v => v.name === name) || null;
+}
+
+async function setCustomValue(name, value) {
+  const existing = await getCustomValue(name);
+  if (existing) {
+    await api(`/locations/${LOCATION}/customValues/${existing.id}`, { method: "PUT", body: { name, value } });
+  } else {
+    await api(`/locations/${LOCATION}/customValues`, { method: "POST", body: { name, value } });
+  }
+}
+
+/* ---------- Calendario ---------- */
+
+// Citas vigentes (no canceladas) de un calendario entre dos fechas (ms).
+async function countAppointments(calendarId, desdeMs, hastaMs) {
+  if (!calendarId) return null;
+  const qs = new URLSearchParams({
+    locationId: LOCATION,
+    calendarId,
+    startTime: String(desdeMs),
+    endTime: String(hastaMs)
+  });
+  const data = await api(`/calendars/events?${qs}`);
+  const events = data.events || [];
+  return events.filter(e => !["cancelled", "canceled", "noshow", "invalid"].includes(String(e.appointmentStatus || "").toLowerCase())).length;
+}
+
+module.exports = {
+  enabled,
+  api,
+  loadFieldMap,
+  ensureCustomFields,
+  listContacts,
+  getContact,
+  findByPhoneOrEmail,
+  updateContact,
+  createContact,
+  getCustomValue,
+  setCustomValue,
+  countAppointments
+};

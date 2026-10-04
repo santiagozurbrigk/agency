@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ventas · Clase 19/10</title>
+<meta name="robots" content="noindex">
+<style>
+:root{
+  --bg:#0B0B0C; --panel:#141416; --panel2:#1C1C1F; --borde:#2A2A2E;
+  --tx:#F2F2F3; --tx2:#A7A7AD; --tx3:#6E6E76;
+  --ok:#2FBF71; --warn:#E8B931; --mal:#E85B4B; --ac:#5B8CFF; --vio:#A78BFA;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh}
+button{font:inherit;cursor:pointer;border:1px solid var(--borde);background:var(--panel2);color:var(--tx);border-radius:8px;padding:7px 12px}
+button:hover{border-color:var(--tx3)}
+button.pri{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+button.mini{padding:3px 9px;font-size:13px;border-radius:6px}
+input,select,textarea{font:inherit;background:var(--panel2);border:1px solid var(--borde);color:var(--tx);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:70px;resize:vertical}
+label{display:block;font-size:12.5px;color:var(--tx2);margin:10px 0 4px}
+a{color:var(--ac)}
+
+/* Login */
+#login{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50}
+#login .caja{width:min(360px,92vw);background:var(--panel);border:1px solid var(--borde);border-radius:14px;padding:26px}
+#login h1{font-size:19px;margin-bottom:2px}
+#login p{color:var(--tx2);font-size:13.5px;margin-bottom:14px}
+.err{color:var(--mal);font-size:13.5px;margin-top:10px;display:none}
+
+/* Layout */
+header{position:sticky;top:0;z-index:10;background:rgba(11,11,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--borde)}
+.hrow{display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.logo{font-weight:700;font-size:15px;white-space:nowrap}
+.logo span{color:var(--tx3);font-weight:400}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center}
+.pill{border:1px solid var(--borde);background:var(--panel);border-radius:999px;padding:4px 12px;font-size:12.5px;color:var(--tx2);white-space:nowrap}
+.pill b{color:var(--tx)}
+.pill.alerta b{color:var(--mal)}
+nav{display:flex;gap:2px;padding:0 10px 0;overflow-x:auto}
+nav button{border:0;background:none;color:var(--tx2);padding:9px 12px;border-radius:8px 8px 0 0;border-bottom:2px solid transparent;white-space:nowrap}
+nav button.on{color:var(--tx);border-bottom-color:var(--ac)}
+nav button .n{display:inline-block;min-width:20px;text-align:center;background:var(--panel2);border-radius:999px;font-size:11.5px;padding:1px 6px;margin-left:5px;color:var(--tx2)}
+main{padding:16px;max-width:1280px;margin:0 auto}
+.sub{color:var(--tx2);font-size:13.5px;margin:2px 0 14px}
+.fila-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.fila-top h2{font-size:17px}
+.fila-top .esp{flex:1}
+
+/* Tabla de leads */
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--borde);border-radius:12px;overflow:hidden}
+th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--tx3);text-align:left;padding:9px 12px;border-bottom:1px solid var(--borde);background:var(--panel2)}
+td{padding:10px 12px;border-bottom:1px solid var(--borde);font-size:14px;vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:var(--panel2)}
+.tag{display:inline-block;border-radius:6px;padding:1px 7px;font-size:11.5px;border:1px solid var(--borde);color:var(--tx2);margin:1px 3px 1px 0;white-space:nowrap}
+.tag.ok{color:var(--ok);border-color:rgba(47,191,113,.4)}
+.tag.warn{color:var(--warn);border-color:rgba(232,185,49,.4)}
+.tag.mal{color:var(--mal);border-color:rgba(232,91,75,.45)}
+.tag.ac{color:var(--ac);border-color:rgba(91,140,255,.45)}
+.tag.vio{color:var(--vio);border-color:rgba(167,139,250,.45)}
+.vacio{padding:34px;text-align:center;color:var(--tx3);background:var(--panel);border:1px dashed var(--borde);border-radius:12px}
+
+/* Ficha */
+#velo{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:20}
+#ficha{position:fixed;top:0;right:0;bottom:0;width:min(560px,100vw);background:var(--panel);border-left:1px solid var(--borde);z-index:30;transform:translateX(102%);transition:transform .18s ease;overflow-y:auto}
+#ficha.abierta{transform:none}
+#ficha .fh{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--borde);padding:14px 18px;display:flex;align-items:center;gap:10px;z-index:2}
+#ficha .fh h3{font-size:17px;flex:1}
+#ficha .cuerpo{padding:16px 18px 40px}
+.secc{border:1px solid var(--borde);border-radius:10px;padding:12px 14px;margin-bottom:12px;background:var(--panel2)}
+.secc h4{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--tx3);margin-bottom:8px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:4px 10px;font-size:13.5px}
+.kv dt{color:var(--tx2)}
+.kv dd{word-break:break-word}
+.acciones{display:flex;gap:8px;flex-wrap:wrap}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+.hist{font-size:12.5px;color:var(--tx2);max-height:180px;overflow-y:auto}
+.hist div{padding:3px 0;border-bottom:1px dashed var(--borde)}
+.pago{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--borde);font-size:13.5px;flex-wrap:wrap}
+.pago:last-child{border-bottom:0}
+
+/* Métricas */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:16px}
+.card{background:var(--panel);border:1px solid var(--borde);border-radius:12px;padding:12px 14px}
+.card .v{font-size:24px;font-weight:700;margin-top:2px}
+.card .t{font-size:12px;color:var(--tx2)}
+.demo{background:rgba(232,185,49,.12);border:1px solid rgba(232,185,49,.4);color:var(--warn);border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:14px}
+.aviso{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--borde);border-radius:10px;padding:10px 16px;font-size:14px;z-index:60;display:none;max-width:90vw}
+@media (max-width:700px){ .kv{grid-template-columns:1fr} .g2{grid-template-columns:1fr} td.op{display:none} th.op{display:none} }
+</style>
+</head>
+<body>
+
+<div id="login">
+  <div class="caja">
+    <h1>Equipo de ventas · Génesis</h1>
+    <p>Clase del lunes 19/10. Entrá con tu email.</p>
+    <label>Email</label><input id="lEmail" type="email" autocomplete="username">
+    <label>Clave</label><input id="lPass" type="password" autocomplete="current-password">
+    <div style="margin-top:16px"><button class="pri" style="width:100%" onclick="hacerLogin()">Entrar</button></div>
+    <div class="err" id="lErr"></div>
+  </div>
+</div>
+
+<header style="display:none" id="hdr">
+  <div class="hrow">
+    <div class="logo">Ventas · Génesis <span>· clase 19/10</span></div>
+    <div class="pills">
+      <div class="pill" id="pManu">Manu: –</div>
+      <div class="pill" id="pGen">Génesis: –</div>
+      <div class="pill" id="pCierre">Cierre: –</div>
+      <input id="busca" placeholder="Buscar nombre, email o WhatsApp" style="width:230px;padding:5px 11px;border-radius:999px;font-size:13px">
+      <div class="pill" id="pUser"></div>
+      <button class="mini" onclick="salir()">Salir</button>
+    </div>
+  </div>
+  <nav id="tabs"></nav>
+</header>
+
+<main id="main" style="display:none">
+  <div class="demo" id="avisoDemo" style="display:none">
+    Modo demo: sin GHL conectado. Los datos son de ejemplo y no se guardan. Cargá <b>GHL_API_TOKEN</b> y <b>GHL_LOCATION_ID</b> en Vercel para operar en serio.
+  </div>
+  <div id="vista"></div>
+</main>
+
+<div id="velo" onclick="cerrarFicha()"></div>
+<aside id="ficha"></aside>
+<div class="aviso" id="aviso"></div>
+
+<script>
+/* ---------- Estado ---------- */
+let ME=null, DEMO=false, DATA=null, METRICS=null, VISTA="ahora", FICHA_ID=null;
+const $=s=>document.querySelector(s);
+const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML};
+
+const TABS=[
+  ["ahora","Primer contacto","primerContacto"],
+  ["seg","Seguimiento","seguimiento"],
+  ["clase","Día de la clase",null],
+  ["g1","Grupo 1","grupo1"],
+  ["g2","Grupo 2","grupo2"],
+  ["g3","Grupo 3","grupo3"],
+  ["llam","Llamadas","llamadas"],
+  ["ventas","Ventas","ventas"],
+  ["met","Métricas",null],
+  ["conf","Configuración",null]
+];
+
+const ETAPAS=["Nuevo","Contactado","En conversación","Sin respuesta","Califica · pre-venta",
+"Agendado con Manu (pre-venta)","Ruta a la clase","Confirmado para la clase","Llamada agendada",
+"No se presentó · a reagendar","No cerró · seguimiento","Venta Génesis","Venta Mentoría","Próximo ciclo"];
+
+/* ---------- API ---------- */
+async function api(path,opts){
+  const r=await fetch(path,{headers:{"Content-Type":"application/json"},...opts});
+  const d=await r.json().catch(()=>({ok:false,error:"Respuesta inválida"}));
+  if(r.status===401){mostrarLogin();throw new Error("Sesión vencida");}
+  if(!d.ok) throw new Error(d.error||"Error");
+  return d;
+}
+function aviso(t,mal){const a=$("#aviso");a.textContent=t;a.style.display="block";a.style.borderColor=mal?"var(--mal)":"var(--borde)";clearTimeout(a._t);a._t=setTimeout(()=>a.style.display="none",3200);}
+
+/* ---------- Login ---------- */
+function mostrarLogin(){$("#login").style.display="flex";$("#hdr").style.display="none";$("#main").style.display="none";}
+async function hacerLogin(){
+  try{
+    const d=await api("/api/login",{method:"POST",body:JSON.stringify({email:$("#lEmail").value,pass:$("#lPass").value})});
+    ME=d.user; arrancar();
+  }catch(e){const x=$("#lErr");x.textContent=e.message;x.style.display="block";}
+}
+async function salir(){await fetch("/api/login",{method:"DELETE"});location.reload();}
+$("#lPass")&&$("#lPass").addEventListener("keydown",e=>{if(e.key==="Enter")hacerLogin();});
+
+async function init(){
+  const d=await fetch("/api/me").then(r=>r.json());
+  DEMO=d.demo;
+  if(d.user){ME=d.user;arrancar();}else{mostrarLogin();if(DEMO){$("#login p").textContent="Modo demo: entrá con cualquier email y la clave «demo».";}}
+}
+function arrancar(){
+  $("#login").style.display="none";$("#hdr").style.display="block";$("#main").style.display="block";
+  $("#pUser").textContent=ME.name;
+  $("#avisoDemo").style.display=DEMO?"block":"none";
+  pintarTabs(); refrescar();
+  setInterval(refrescar, 60000);
+}
+
+/* ---------- Datos ---------- */
+async function refrescar(){
+  try{
+    DATA=await api("/api/leads");
+    pintarPills(); pintarTabs(); render();
+    if(FICHA_ID) pintarFicha(FICHA_ID);
+  }catch(e){ if(e.message!=="Sesión vencida") aviso(e.message,true); }
+}
+function lead(id){return DATA.leads.find(l=>l.id===id);}
+function pintarPills(){
+  const m=DATA.manu;
+  const pm=$("#pManu");
+  pm.innerHTML=`Manu: <b>${m.total} de ${m.tope}</b>${m.reservas?` <span style="color:var(--tx3)">(+${m.reservas} reservado${m.reservas>1?"s":""})</span>`:""}`;
+  pm.className="pill"+(m.total>=m.tope?" alerta":"");
+  $("#pGen").innerHTML=`Génesis: <b>${DATA.contadores.genesisVendidos} de ${DATA.contadores.genesisLugares}</b>`;
+  const fin=new Date(DATA.settings.cierre)-Date.now();
+  const h=Math.floor(fin/3600000), dd=Math.floor(h/24);
+  $("#pCierre").innerHTML=fin>0?`Cierre: <b>${dd>0?dd+" d ":""}${h%24} h</b>`:`<b>Ventana cerrada</b>`;
+}
+function pintarTabs(){
+  const nav=$("#tabs");nav.innerHTML="";
+  for(const [id,nombre,cola] of TABS){
+    const b=document.createElement("button");
+    b.className=VISTA===id?"on":"";
+    const n=cola&&DATA?`<span class="n">${DATA.colas[cola].length}</span>`:"";
+    b.innerHTML=esc(nombre)+n;
+    b.onclick=()=>{VISTA=id;pintarTabs();render();};
+    nav.appendChild(b);
+  }
+}
+
+/* ---------- Render de vistas ---------- */
+function chips(l){
+  const f=l.fields,c=[];
+  if(l.calc&&l.calc.califica)c.push('<span class="tag ok">Califica Génesis</span>');
+  if(f.senal_compra==="Sí")c.push('<span class="tag warn">Señal de compra</span>');
+  if(f.form_agenda==="Sí"&&f.agendo!=="Sí")c.push('<span class="tag ac">Agenda directa sin agendar</span>');
+  if(f.form_contacto==="Sí")c.push('<span class="tag vio">Pidió contacto</span>');
+  if(f.excede_tope==="Sí")c.push('<span class="tag mal">Excede el tope de Manu</span>');
+  if(f.posible_duplicado==="Sí")c.push('<span class="tag mal">Posible duplicado</span>');
+  if(f.llamada_con)c.push('<span class="tag">Llamada: '+esc(f.llamada_con)+'</span>');
+  return c.join("");
+}
+function tabla(ids,extraCols){
+  if(!ids.length)return '<div class="vacio">No hay leads acá por ahora.</div>';
+  let h='<table><thead><tr><th>Lead</th><th class="op">Facturación</th><th class="op">Dueño</th><th>Etapa</th><th class="op">Estado</th></tr></thead><tbody>';
+  for(const id of ids){
+    const l=lead(id);if(!l)continue;const f=l.fields;
+    h+=`<tr onclick="abrirFicha('${l.id}')">
+      <td><b>${esc(l.nombre||"(sin nombre)")}</b><br><span style="color:var(--tx3);font-size:12.5px">${esc(l.telefono||l.email||"")}</span></td>
+      <td class="op">${esc(f.facturacion||"–")}</td>
+      <td class="op">${esc(f.dueno||"–")}</td>
+      <td>${esc(f.etapa||"Nuevo")}${f.intentos&&f.intentos!=="0"?`<br><span style="color:var(--tx3);font-size:12px">${esc(f.intentos)} intento${f.intentos==="1"?"":"s"}</span>`:""}</td>
+      <td class="op">${chips(l)}</td></tr>`;
+  }
+  return h+"</tbody></table>";
+}
+function render(){
+  const v=$("#vista");
+  const busq=$("#busca").value.trim().toLowerCase();
+  if(busq){
+    const ids=DATA.leads.filter(l=>
+      (l.nombre||"").toLowerCase().includes(busq)||
+      (l.email||"").toLowerCase().includes(busq)||
+      (l.telefono||"").replace(/\D/g,"").includes(busq.replace(/\D/g,"")||"∅")
+    ).map(l=>l.id);
+    v.innerHTML=`<div class="fila-top"><h2>Resultados de «${esc(busq)}»</h2></div>`+tabla(ids);
+    return;
+  }
+  switch(VISTA){
+    case "ahora":
+      v.innerHTML=`<div class="fila-top"><h2>A quién llamo ahora</h2></div>
+      <p class="sub">Opt-ins sin contactar. Primero los que califican para Génesis, después por facturación.</p>`+tabla(DATA.colas.primerContacto);break;
+    case "seg":
+      v.innerHTML=`<div class="fila-top"><h2>Seguimiento hasta la clase</h2></div>
+      <p class="sub">En cadencia, ruta a la clase y confirmados.</p>`+tabla(DATA.colas.seguimiento);break;
+    case "clase": renderClase(v);break;
+    case "g1":
+      v.innerHTML=`<div class="fila-top"><h2>Grupo 1 · Agendó en la clase</h2></div>
+      <p class="sub">Ordenado por facturación. La llamada ya tiene asignado Manu o Diego.</p>`+tabla(DATA.colas.grupo1);break;
+    case "g2":
+      v.innerHTML=`<div class="fila-top"><h2>Grupo 2 · Para llamar</h2></div>
+      <p class="sub">1° Agenda directa sin agendar · 2° Quiero que me contacten (por facturación) · 3° asistió sin completar nada. La señal de compra adelanta dentro de cada bloque.</p>`+tabla(DATA.colas.grupo2);break;
+    case "g3":
+      v.innerHTML=`<div class="fila-top"><h2>Grupo 3 · No asistió</h2></div>
+      <p class="sub">Volver a meterlos en el proceso con la repetición o el recurso.</p>`+tabla(DATA.colas.grupo3);break;
+    case "llam":
+      v.innerHTML=`<div class="fila-top"><h2>Llamadas de venta</h2></div>
+      <p class="sub">Pre-venta y post-clase, con Manu o con Diego.</p>`+tabla(DATA.colas.llamadas);break;
+    case "ventas": renderVentas(v);break;
+    case "met": renderMetricas(v);break;
+    case "conf": renderConfig(v);break;
+  }
+}
+$("#busca").addEventListener("input",()=>render());
+
+function renderClase(v){
+  const leads=DATA.leads.filter(l=>!["Próximo ciclo","Venta Génesis","Venta Mentoría"].includes(l.fields.etapa||""));
+  leads.sort((a,b)=>(a.nombre||"").localeCompare(b.nombre||""));
+  let h=`<div class="fila-top"><h2>Día de la clase</h2><div class="esp"></div>
+    <button onclick="armarGrupos()">Armar los 3 grupos</button></div>
+    <p class="sub">Marcá asistencia y señales de compra. «Armar los 3 grupos» se corre al terminar la clase y asigna el grupo de cada lead.</p>`;
+  h+='<table><thead><tr><th>Lead</th><th class="op">Facturación</th><th>Asistió</th><th>Señal de compra</th></tr></thead><tbody>';
+  for(const l of leads){
+    h+=`<tr><td onclick="abrirFicha('${l.id}')" style="cursor:pointer"><b>${esc(l.nombre||"(sin nombre)")}</b><br><span style="color:var(--tx3);font-size:12.5px">${esc(l.telefono||"")}</span></td>
+    <td class="op">${esc(l.fields.facturacion||"–")}</td>
+    <td><button class="mini ${l.fields.asistio==="Sí"?"pri":""}" onclick="marcar('${l.id}','asistio','${l.fields.asistio==="Sí"?"No":"Sí"}')">${l.fields.asistio==="Sí"?"Sí":"No / marcar"}</button></td>
+    <td><button class="mini ${l.fields.senal_compra==="Sí"?"pri":""}" onclick="marcar('${l.id}','senal_compra','${l.fields.senal_compra==="Sí"?"No":"Sí"}')">${l.fields.senal_compra==="Sí"?"⚡ Sí":"marcar"}</button></td></tr>`;
+  }
+  v.innerHTML=h+"</tbody></table>";
+}
+
+function renderVentas(v){
+  const ids=DATA.colas.ventas;
+  let h=`<div class="fila-top"><h2>Ventas y cobros</h2></div>`;
+  if(!ids.length){v.innerHTML=h+'<div class="vacio">Todavía no hay ventas registradas.</div>';return;}
+  h+='<table><thead><tr><th>Lead</th><th>Oferta</th><th class="op">Vendió</th><th>Pagos</th></tr></thead><tbody>';
+  for(const id of ids){
+    const l=lead(id);let venta=null;try{venta=JSON.parse(l.fields.venta_json||"null")}catch(e){}
+    if(!venta)continue;
+    const pagos=venta.pagos.map(p=>`<span class="tag ${p.pagado?"ok":"warn"}">${p.n}/${venta.pagos.length} · USD ${p.monto}${p.pagado?" ✓":""}</span>`).join(" ");
+    h+=`<tr onclick="abrirFicha('${l.id}')"><td><b>${esc(l.nombre)}</b></td><td>${esc(venta.oferta)} · ${esc(venta.forma)}</td><td class="op">${esc(venta.vendedor)}</td><td>${pagos}</td></tr>`;
+  }
+  v.innerHTML=h+"</tbody></table>";
+}
+
+async function renderMetricas(v){
+  v.innerHTML='<div class="fila-top"><h2>Métricas</h2></div><p class="sub">Cargando…</p>';
+  try{METRICS=await api("/api/metrics");}catch(e){v.innerHTML='<div class="vacio">'+esc(e.message)+'</div>';return;}
+  const m=METRICS,e=m.embudo;
+  const card=(t,val)=>`<div class="card"><div class="t">${t}</div><div class="v">${val}</div></div>`;
+  let h='<div class="fila-top"><h2>Métricas</h2></div><div class="cards">';
+  h+=card("Opt-ins",e.total)+card("Contactados",e.contactados)+card("En conversación",e.enConversacion)
+    +card("Califican Génesis",e.calificados)+card("Agendas pre-venta",e.agendadosPre)+card("Agendas post-clase",e.agendadosPost)
+    +card("Confirmados clase",e.confirmados)+card("Asistieron",e.asistieron)+card("Se presentaron",e.presentados)+card("Ventas",e.ventas);
+  h+='</div><div class="cards">';
+  h+=card("Grupo 1",m.grupos["1"])+card("Grupo 2",m.grupos["2"])+card("Grupo 3",m.grupos["3"])
+    +card("Manu",`${m.manu.total} / ${m.manu.tope}`)+card("Génesis",`${m.genesis.vendidos} / ${m.genesis.lugares}`);
+  h+='</div>';
+  h+='<h3 style="margin:14px 0 8px;font-size:15px">Por oferta</h3><table><thead><tr><th>Oferta</th><th>Ventas</th><th>Total USD</th><th>Cobrado USD</th></tr></thead><tbody>';
+  const po=Object.entries(m.porOferta);
+  h+=po.length?po.map(([o,x])=>`<tr><td>${esc(o)}</td><td>${x.cantidad}</td><td>${x.total}</td><td>${x.cobrado}</td></tr>`).join(""):'<tr><td colspan="4" style="color:var(--tx3)">Sin ventas todavía</td></tr>';
+  h+='</tbody></table>';
+  h+='<h3 style="margin:18px 0 8px;font-size:15px">Por persona</h3><table><thead><tr><th>Persona</th><th>Leads</th><th>Contactados</th><th>Agendas</th><th>Cierres</th><th>Facturado USD</th></tr></thead><tbody>';
+  const pp=Object.entries(m.porPersona);
+  h+=pp.length?pp.map(([n,x])=>`<tr><td>${esc(n)}</td><td>${x.leads}</td><td>${x.contactados}</td><td>${x.agendas}</td><td>${x.cierres}</td><td>${x.facturado}</td></tr>`).join(""):'<tr><td colspan="6" style="color:var(--tx3)">Sin datos</td></tr>';
+  v.innerHTML=h+'</tbody></table>';
+}
+
+function renderConfig(v){
+  const s=DATA.settings;
+  v.innerHTML=`<div class="fila-top"><h2>Configuración</h2></div>
+  <div class="secc"><h4>Topes y fechas</h4><div class="g2">
+    <div><label>Tope de llamadas post-clase de Manu</label><input id="cManuTope" type="number" value="${esc(s.manuTope)}"></div>
+    <div><label>Lugares de Génesis</label><input id="cGenLug" type="number" value="${esc(s.genesisLugares)}"></div>
+    <div><label>Clase (fecha y hora)</label><input id="cClase" value="${esc(s.clase)}"></div>
+    <div><label>Cierre de la ventana</label><input id="cCierre" value="${esc(s.cierre)}"></div>
+  </div></div>
+  <div class="secc"><h4>Calendarios de GHL</h4>
+    <div class="g2">
+      <div><label>Manu pre-venta · ID</label><input id="cPreId" value="${esc(s.calManuPreventaId)}"></div>
+      <div><label>Manu pre-venta · link</label><input id="cPreLink" value="${esc(s.calManuPreventaLink)}"></div>
+      <div><label>Manu post-clase · ID</label><input id="cPostId" value="${esc(s.calManuPostId)}"></div>
+      <div><label>Manu post-clase · link</label><input id="cPostLink" value="${esc(s.calManuPostLink)}"></div>
+      <div><label>Diego · ID</label><input id="cDiegoId" value="${esc(s.calDiegoId)}"></div>
+      <div><label>Diego · link</label><input id="cDiegoLink" value="${esc(s.calDiegoLink)}"></div>
+    </div>
+  </div>
+  <div class="acciones">
+    <button class="pri" onclick="guardarConfig()">Guardar</button>
+    <button onclick="correrSetup()">Crear los campos en GHL (setup)</button>
+  </div>`;
+}
+async function guardarConfig(){
+  try{
+    await api("/api/settings",{method:"POST",body:JSON.stringify({
+      manuTope:$("#cManuTope").value, genesisLugares:$("#cGenLug").value,
+      clase:$("#cClase").value, cierre:$("#cCierre").value,
+      calManuPreventaId:$("#cPreId").value, calManuPreventaLink:$("#cPreLink").value,
+      calManuPostId:$("#cPostId").value, calManuPostLink:$("#cPostLink").value,
+      calDiegoId:$("#cDiegoId").value, calDiegoLink:$("#cDiegoLink").value
+    })});
+    aviso("Configuración guardada");refrescar();
+  }catch(e){aviso(e.message,true);}
+}
+async function correrSetup(){
+  try{const d=await api("/api/setup",{method:"POST"});
+    aviso(d.mensaje||`Campos creados: ${d.report.creados.length} · ya existían: ${d.report.existentes.length}${d.report.errores.length?" · errores: "+d.report.errores.length:""}`);
+  }catch(e){aviso(e.message,true);}
+}
+async function armarGrupos(){
+  if(!confirm("¿Armar los 3 grupos con la asistencia marcada hasta ahora?"))return;
+  try{const d=await api("/api/grupos",{method:"POST",body:JSON.stringify({})});
+    aviso(`Grupos armados · G1: ${d.counts["1"]} · G2: ${d.counts["2"]} · G3: ${d.counts["3"]}`);refrescar();
+  }catch(e){aviso(e.message,true);}
+}
+
+/* ---------- Ficha ---------- */
+function abrirFicha(id){FICHA_ID=id;pintarFicha(id);$("#velo").style.display="block";$("#ficha").classList.add("abierta");}
+function cerrarFicha(){FICHA_ID=null;$("#velo").style.display="none";$("#ficha").classList.remove("abierta");}
+async function accion(id,action,data,msgOk){
+  try{await api("/api/lead",{method:"POST",body:JSON.stringify({id,action,data})});
+    if(msgOk)aviso(msgOk);await refrescar();
+  }catch(e){aviso(e.message,true);}
+}
+function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
+
+function pintarFicha(id){
+  const l=lead(id);if(!l){cerrarFicha();return;}
+  const f=l.fields;
+  let hist=[];try{hist=JSON.parse(f.historial_json||"[]")}catch(e){}
+  let venta=null;try{venta=JSON.parse(f.venta_json||"null")}catch(e){}
+  const dato=(t,v)=>v?`<dt>${t}</dt><dd>${esc(v)}</dd>`:"";
+  const toggle=(campo,txt)=>`<button class="mini ${f[campo]==="Sí"?"pri":""}" onclick="marcar('${id}','${campo}','${f[campo]==="Sí"?"No":"Sí"}')">${txt}${f[campo]==="Sí"?" ✓":""}</button>`;
+
+  let hVenta;
+  if(venta){
+    hVenta=`<div style="font-size:14px;margin-bottom:6px"><b>${esc(venta.oferta)}</b> · ${esc(venta.forma)} · vendió ${esc(venta.vendedor)}</div>`;
+    for(const p of venta.pagos){
+      hVenta+=`<div class="pago">
+        <button class="mini ${p.pagado?"pri":""}" onclick="accion('${id}','pago',{n:${p.n},pagado:${!p.pagado}})">${p.pagado?"✓ Cobrado":"Marcar cobrado"}</button>
+        <span>Pago ${p.n} de ${venta.pagos.length} · USD ${p.monto}${p.fecha?` · ${new Date(p.fecha).toLocaleDateString("es-AR")}`:""}</span>
+        ${p.comprobante?`<a href="${esc(p.comprobante)}" target="_blank">comprobante</a>`:`<label class="mini" style="margin:0"><input type="file" style="display:none" onchange="subirComprobante('${id}',${p.n},this)"><button class="mini" onclick="this.previousElementSibling.click()">+ comprobante</button></label>`}
+      </div>`;
+    }
+    hVenta+=`<div style="margin-top:8px"><button class="mini" onclick="if(confirm('¿Anular la venta?'))accion('${id}','anular_venta',{})">Anular venta</button></div>`;
+  }else{
+    hVenta=`<div class="g2">
+      <div><label>Oferta</label><select id="vOferta"><option>Génesis</option><option>Mentoría</option></select></div>
+      <div><label>Forma de pago</label><select id="vForma"><option>PIF</option><option>2 cuotas</option><option>3 cuotas</option></select></div>
+    </div>
+    <div style="margin-top:10px"><button class="pri" onclick="registrarVenta('${id}')">Registrar la venta</button></div>
+    <p style="font-size:12px;color:var(--tx3);margin-top:6px">Génesis: PIF 5.000 · 2 × 2.850 · 3 × 2.000 — Mentoría: PIF 2.000 · 2 × 1.100 (sin 3 cuotas).</p>`;
+  }
+
+  $("#ficha").innerHTML=`
+  <div class="fh"><h3>${esc(l.nombre||"(sin nombre)")}</h3>${chips(l)}<button class="mini" onclick="cerrarFicha()">✕</button></div>
+  <div class="cuerpo">
+
+    <div class="secc"><h4>Contacto y estado</h4>
+      <dl class="kv">${dato("WhatsApp",l.telefono)}${dato("Email",l.email)}${dato("Dueño",f.dueno)}${dato("Grupo",f.grupo)}${dato("Llamada con",f.llamada_con)}
+      ${dato("Intentos",f.intentos)}${dato("Último contacto",f.ultimo_contacto?new Date(f.ultimo_contacto).toLocaleString("es-AR"):"")}</dl>
+      <div class="acciones" style="margin-top:10px">
+        <button class="mini pri" onclick="accion('${id}','intento',{},'Intento anotado')">+1 intento</button>
+        <select class="mini" style="width:auto;padding:4px 8px" onchange="if(this.value)accion('${id}','etapa',{etapa:this.value})">
+          <option value="">Etapa: ${esc(f.etapa||"Nuevo")}</option>
+          ${ETAPAS.map(e=>`<option ${e===f.etapa?"disabled":""}>${e}</option>`).join("")}
+        </select>
+        <select class="mini" style="width:auto;padding:4px 8px" onchange="if(this.value)accion('${id}','reasignar',{dueno:this.value})">
+          <option value="">Dueño…</option><option>Braian</option><option>Diego</option>
+        </select>
+        <select class="mini" style="width:auto;padding:4px 8px" onchange="if(this.value)accion('${id}','reasignar',{llamada_con:this.value})">
+          <option value="">Llamada con…</option><option>Manu</option><option>Diego</option>
+        </select>
+        <select class="mini" style="width:auto;padding:4px 8px" onchange="if(this.value)accion('${id}','grupo',{grupo:this.value})">
+          <option value="">Grupo…</option><option>1</option><option>2</option><option>3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="secc"><h4>Marcas rápidas</h4>
+      <div class="acciones">
+        ${toggle("confirmo_clase","Confirmó la clase")}${toggle("recurso_enviado","Recurso enviado")}${toggle("recurso_visto","Recurso visto")}
+        ${toggle("asistio","Asistió")}${toggle("senal_compra","Señal de compra")}${toggle("agendo","Agendó")}${toggle("se_presento","Se presentó")}
+      </div>
+    </div>
+
+    <div class="secc"><h4>Lo que dijo el lead</h4>
+      <dl class="kv">
+        ${dato("Facturación",f.facturacion)}${dato("Ciclo",f.ciclo)}${dato("Inversión",f.inversion)}
+        ${dato("Qué vende",f.que_vende)}${dato("Por dónde",f.por_donde)}${dato("Cuánto le queda",f.cuanto_queda)}
+        ${dato("Objetivo 6 meses",f.objetivo)}${dato("Qué lo frena",f.freno)}${dato("Dolor",f.dolor)}
+        ${dato("Hace cuánto / probó",f.hace_cuanto)}${dato("Por qué ahora",f.por_que_ahora)}
+        ${dato("Qué le falta",f.que_falta)}${dato("Objeción",f.objecion)}
+        ${dato("Le faltó de la clase",f.falto_clase)}${dato("Le resonó",f.resono)}
+      </dl>
+      <div style="margin-top:10px"><button class="mini" onclick="editarCampos('${id}')">Editar la ficha</button></div>
+    </div>
+
+    <div class="secc" id="editor" style="display:none"></div>
+
+    <div class="secc"><h4>Venta</h4>${hVenta}</div>
+
+    <div class="secc"><h4>Notas</h4>
+      <textarea id="nota">${esc(f.notas||"")}</textarea>
+      <div style="margin-top:8px"><button class="mini" onclick="accion('${id}','campos',{notas:$('#nota').value},'Notas guardadas')">Guardar notas</button></div>
+    </div>
+
+    <div class="secc"><h4>Historial</h4>
+      <div class="hist">${hist.slice().reverse().map(h=>`<div>${new Date(h.t).toLocaleString("es-AR")} · <b>${esc(h.q)}</b> · ${esc(h.a)}</div>`).join("")||'<div style="border:0">Sin movimientos todavía.</div>'}</div>
+    </div>
+  </div>`;
+}
+
+function editarCampos(id){
+  const l=lead(id),f=l.fields,e=$("#editor");
+  const inp=(k,t,v)=>`<div><label>${t}</label><input data-k="${k}" value="${esc(v||"")}"></div>`;
+  e.style.display="block";
+  e.innerHTML=`<h4>Editar la ficha</h4><div class="g2">
+    ${inp("nombre","Nombre",l.nombre)}${inp("telefono","WhatsApp",l.telefono)}${inp("email","Email",l.email)}
+    ${inp("que_vende","Qué vende",f.que_vende)}${inp("por_donde","Por dónde",f.por_donde)}${inp("cuanto_queda","Cuánto le queda",f.cuanto_queda)}
+    ${inp("dolor","Dolor",f.dolor)}${inp("objecion","Objeción",f.objecion)}
+  </div>
+  <label>Por qué ahora (textual)</label><textarea data-k="por_que_ahora">${esc(f.por_que_ahora||"")}</textarea>
+  <label>Qué le faltó de la clase</label><textarea data-k="falto_clase">${esc(f.falto_clase||"")}</textarea>
+  <label>Qué le resonó del recurso</label><textarea data-k="resono">${esc(f.resono||"")}</textarea>
+  <div style="margin-top:10px" class="acciones">
+    <button class="pri mini" onclick="guardarCampos('${id}')">Guardar</button>
+    <button class="mini" onclick="$('#editor').style.display='none'">Cancelar</button>
+  </div>`;
+}
+function guardarCampos(id){
+  const data={};
+  document.querySelectorAll("#editor [data-k]").forEach(el=>data[el.dataset.k]=el.value);
+  accion(id,"campos",data,"Ficha guardada");
+}
+function registrarVenta(id){
+  const oferta=$("#vOferta").value,forma=$("#vForma").value;
+  if(oferta==="Mentoría"&&forma==="3 cuotas"){aviso("La Mentoría no tiene 3 cuotas",true);return;}
+  accion(id,"venta",{oferta,forma},"Venta registrada");
+}
+function subirComprobante(id,n,input){
+  const file=input.files[0];if(!file)return;
+  if(file.size>8*1024*1024){aviso("El archivo pasa los 8 MB",true);return;}
+  const r=new FileReader();
+  r.onload=async()=>{
+    try{
+      await api("/api/comprobante",{method:"POST",body:JSON.stringify({
+        id,n,filename:file.name,contentType:file.type,dataBase64:r.result.split(",")[1]
+      })});
+      aviso("Comprobante subido");refrescar();
+    }catch(e){aviso(e.message,true);}
+  };
+  r.readAsDataURL(file);
+}
+
+init();
+</script>
+</body>
+</html>

@@ -14,11 +14,12 @@ Lo que queda para resolver más adelante. Se va sumando a medida que aparece. La
 
 | # | Qué falta | Quién |
 | --- | --- | --- |
-| 4 | Token de integración privada de GHL y el ID de la subcuenta, cargados en Vercel (`GHL_API_TOKEN`, `GHL_LOCATION_ID`). | Santiago |
-| 5 | Horarios disponibles de Manu (pre-venta y post-clase) y de Diego, para armar los calendarios de GHL. | Santiago |
-| 6 | Emails de los cinco usuarios (Santiago, Matías, Manu, Diego, Braian). | Santiago |
-| 7 | Dónde se guardan los comprobantes de venta: en un campo de archivo de GHL o en el almacenamiento de Vercel. | Se define al construir |
-| 8 | Probar que el calendario de GHL embebido acepte nombre, email y WhatsApp precargados desde la URL (Agenda directa, paso 2). | Se valida al construir |
+| 4 | Crear el proyecto en Vercel apuntando a `app/` y cargar las variables del `app/README.md` (`GHL_API_TOKEN`, `GHL_LOCATION_ID`, `SESSION_SECRET`, `USERS_JSON`, `WEBHOOK_SECRET`). | Santiago |
+| 5 | Crear a mano los 3 calendarios en GHL con los horarios de Manu (pre-venta y post-clase) y de Diego, y pegar ID y link en Configuración dentro de la app. | Santiago |
+| 6 | Emails y claves de los cinco usuarios para `USERS_JSON` (Santiago, Matías, Manu, Diego, Braian). | Santiago |
+| 7 | ~~Dónde se guardan los comprobantes~~ Resuelto: Vercel Blob (Storage → Blob en el proyecto). | Hecho |
+| 8 | Probar con la subcuenta real: el prefill del calendario embebido (Agenda directa, paso 2), el setup de campos y el webhook de citas. | Al conectar GHL |
+| 8b | Actualizar la landing del opt-in (`lanzamiento-19-10/optin/`): sumarle ciclo y facturación y que postee a `/api/public/optin` del sistema. | Claude |
 
 ## Cosas que vienen del mapa de ventas y siguen abiertas
 
