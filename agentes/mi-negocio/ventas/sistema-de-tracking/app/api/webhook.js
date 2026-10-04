@@ -48,7 +48,7 @@ module.exports = async function handler(req, res) {
     if (cancelada) {
       await store.registrar(contactId, "GHL", "Cita cancelada", {
         agendo: "No",
-        etapa: esManuPre ? "Califica · pre-venta" : "No se presentó · a reagendar"
+        etapa: "Canceló · a reagendar"
       });
       return res.status(200).json({ ok: true });
     }

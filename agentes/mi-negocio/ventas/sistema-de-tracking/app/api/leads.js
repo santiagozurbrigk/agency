@@ -46,7 +46,7 @@ module.exports = async function handler(req, res) {
 
       llamadas: leads.filter(l => activo(l) &&
         (l.fields.agendo === "Sí" || ["Agendado con Manu (pre-venta)", "Llamada agendada",
-          "No se presentó · a reagendar", "No cerró · seguimiento"].includes(etapa(l))))
+          "Canceló · a reagendar", "No se presentó · a reagendar", "No cerró · seguimiento"].includes(etapa(l))))
         .sort(R.porFacturacion).map(l => l.id),
 
       ventas: leads.filter(l => etapa(l).startsWith("Venta")).map(l => l.id),
