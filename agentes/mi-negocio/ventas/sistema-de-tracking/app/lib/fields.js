@@ -54,6 +54,7 @@ const OPCIONES = {
     "Ruta a la clase",
     "Confirmado para la clase",
     "Llamada agendada",
+    "Canceló · a reagendar",
     "No se presentó · a reagendar",
     "No cerró · seguimiento",
     "Venta Génesis",

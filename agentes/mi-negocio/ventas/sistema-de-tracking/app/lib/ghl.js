@@ -59,9 +59,28 @@ async function loadFieldMap(force) {
 // Crea en GHL los campos que falten. Devuelve un reporte.
 async function ensureCustomFields() {
   const map = await loadFieldMap(true);
-  const report = { creados: [], existentes: [], errores: [] };
+  const report = { creados: [], existentes: [], actualizados: [], errores: [] };
   for (const f of FIELDS) {
-    if (map.byKey[f.key]) { report.existentes.push(f.name); continue; }
+    if (map.byKey[f.key]) {
+      report.existentes.push(f.name);
+      // Si el campo es de opciones y le faltan opciones nuevas, se actualiza la lista.
+      if (f.options) {
+        const actual = (map.raw || []).find(cf => cf.id === map.byKey[f.key].id) || {};
+        const tiene = (actual.picklistOptions || actual.options || []).map(o => (typeof o === "string" ? o : o.label || o.key || o.name));
+        const faltan = f.options.filter(o => !tiene.includes(o));
+        if (faltan.length) {
+          try {
+            await api(`/locations/${LOCATION}/customFields/${actual.id}`, {
+              method: "PUT", body: { name: f.name, options: f.options }
+            });
+            report.actualizados.push(`${f.name} (+${faltan.join(", ")})`);
+          } catch (e) {
+            report.errores.push(`${f.name}: ${e.message}`);
+          }
+        }
+      }
+      continue;
+    }
     try {
       const body = { name: f.name, dataType: f.type };
       if (f.options) body.options = f.options;

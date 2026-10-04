@@ -152,7 +152,7 @@ const TABS=[
 
 const ETAPAS=["Nuevo","Contactado","En conversación","Sin respuesta","Califica · pre-venta",
 "Agendado con Manu (pre-venta)","Ruta a la clase","Confirmado para la clase","Llamada agendada",
-"No se presentó · a reagendar","No cerró · seguimiento","Venta Génesis","Venta Mentoría","Próximo ciclo"];
+"Canceló · a reagendar","No se presentó · a reagendar","No cerró · seguimiento","Venta Génesis","Venta Mentoría","Próximo ciclo"];
 
 /* ---------- API ---------- */
 async function api(path,opts){
@@ -375,7 +375,7 @@ async function guardarConfig(){
 }
 async function correrSetup(){
   try{const d=await api("/api/setup",{method:"POST"});
-    aviso(d.mensaje||`Campos creados: ${d.report.creados.length} · ya existían: ${d.report.existentes.length}${d.report.errores.length?" · errores: "+d.report.errores.length:""}`);
+    aviso(d.mensaje||`Campos creados: ${d.report.creados.length} · ya existían: ${d.report.existentes.length}${d.report.actualizados&&d.report.actualizados.length?" · actualizados: "+d.report.actualizados.length:""}${d.report.errores.length?" · errores: "+d.report.errores.length:""}`);
   }catch(e){aviso(e.message,true);}
 }
 async function armarGrupos(){
