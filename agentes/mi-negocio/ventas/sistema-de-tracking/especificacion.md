@@ -77,6 +77,18 @@ Facturación y ciclo ya vienen del opt-in.
 
 Al enviarlo, el sistema decide si se muestra el calendario de **Manu** o el de **Diego** (regla 5.2).
 
+**Cómo funciona la página:** es una sola página con dos pasos y el lead no sabe que hay dos calendarios.
+
+1. **Paso 1, el formulario.** El lead completa las 7 preguntas y toca «Siguiente».
+2. **El sistema decide, en menos de un segundo:**
+   - busca al lead en GHL por el WhatsApp y le guarda las respuestas;
+   - cuenta en GHL las citas vigentes del calendario post-clase de Manu;
+   - aplica la regla 5.2.
+3. **Paso 2, la agenda.** En la misma página aparece el calendario de GHL que corresponde, de Manu o de Diego, embebido. Nombre, email y WhatsApp vienen precargados desde el opt-in, así el lead no los vuelve a escribir. Elige el horario y queda agendado en el momento.
+   - Si eligió «Menos de USD 1.000», en lugar del calendario aparece la pantalla de la regla 5.4.
+
+**Para que el tope no se pase:** si dos leads completan el formulario al mismo tiempo cuando Manu tiene 9 de 10, los dos podrían terminar con Manu. Para evitarlo, cuando el sistema muestra el calendario de Manu le reserva ese lugar durante 15 minutos. Si en ese tiempo el lead no agenda, el lugar se libera.
+
 ### 4.4 Quiero que me contacten · link 2 de la clase → Grupo 2
 
 1. Nombre
@@ -137,7 +149,7 @@ Al enviar el formulario 4.3:
 | Grupo | Quién entra | Orden en la lista |
 | --- | --- | --- |
 | **Grupo 1** | Completó la Agenda directa (4.3) | Por facturación, de mayor a menor |
-| **Grupo 2** | Completó Quiero que me contacten (4.4), más los que asistieron y no completaron ningún formulario | Por facturación, de mayor a menor |
+| **Grupo 2** | Completó Quiero que me contacten (4.4), más los que asistieron y no completaron ningún formulario | 1° los que completaron el formulario 4.4, por facturación de mayor a menor · 2° los que asistieron sin completar ningún formulario |
 | **Grupo 3** | Está en el opt-in y no asistió | Por facturación, de mayor a menor |
 
 - **Quien ya agendó en la pre-venta no entra a ningún grupo:** ya está en el núcleo.
@@ -205,9 +217,13 @@ Más un botón **«+1 intento»** cada vez que lo contactan sin respuesta. Los m
 
 ## 9. Ventas y cobros
 
-- **Cada venta registra:** oferta (Génesis o Mentoría), plan de pago, quién vendió y fecha.
-- **Cada cuota registra:** monto, vencimiento, si está pagada y la fecha de pago.
-- **Se puede adjuntar el comprobante** de cada venta.
+- **Cada venta registra:** oferta (Génesis o Mentoría), forma de pago, quién vendió y fecha.
+- **Formas de pago:**
+  - Génesis: un solo pago (PIF) de USD 5.000 · 2 × 2.850 · 3 × 2.000.
+  - Mentoría: un solo pago (PIF) de USD 2.000 · 2 × 1.100.
+- **Cada pago registra:** monto, vencimiento, si está pagado, fecha de pago y **su comprobante adjunto**.
+  - Si pagó todo junto (PIF), es un pago con un comprobante.
+  - Si paga en cuotas, cada cuota lleva su propio comprobante cuando se paga.
 - **El link de pago** lo manda quien tomó la llamada.
 - **Contador visible:** «Génesis: X de 10 lugares».
 
