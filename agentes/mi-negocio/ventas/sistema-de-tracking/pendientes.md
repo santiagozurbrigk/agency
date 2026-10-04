@@ -36,6 +36,6 @@ Lo que queda para resolver más adelante. Se va sumando a medida que aparece. La
 | 13 | **Fase 04**: las señales de compra las marcan Santiago y Matías (sale José). Los dos links de la clase son Agenda directa y Quiero que me contacten. |
 | 14 | **Fase 05 · Grupo 1**: el filtro Manu / closer ya no lo hacen Matías y Santiago a mano. Lo resuelve el formulario (consumible + 50M o más + USD 3.000 o más + Manu con menos de 10), con corrección manual. |
 | 15 | **Fase 05 · Grupo 2**: si califica para Génesis, agenda con Manu o con Diego según la carga de Manu. Si no califica, el SDR (Braian o Diego) vende la Mentoría en la misma cold call. |
-| 16 | **Fase 05 · Grupo 2**: entra quien completó Quiero que me contacten, más quien asistió sin completar nada. Se ordena por facturación. |
+| 16 | **Fase 05 · Grupo 2**: entra quien completó Quiero que me contacten, más quien asistió sin completar nada. Primero los del formulario, por facturación; después los que solo asistieron. |
 | 17 | **En todo el mapa**: el closer es Diego (también SDR). Braian es solo SDR. |
 | 18 | **Ofertas**: «Menos de USD 1.000» en los formularios de la clase lleva a «Próximo ciclo». |
