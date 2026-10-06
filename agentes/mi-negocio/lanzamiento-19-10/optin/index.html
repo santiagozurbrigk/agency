@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0B0B0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 
 <!-- Stubs de Meta: la librería real carga diferida -->
 <script>
@@ -183,8 +183,6 @@
   .sec-head h2 { font-size: 30px; font-weight: 800; margin-top: 14px; }
 
   /* d) Lo que vas a ver en vivo */
-  .regalos { max-width: 520px; margin: 0 auto 30px; }
-  .regalos .t { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--gris); text-align: center; margin-bottom: 12px; }
   .bullets { display: grid; gap: 14px; max-width: 1080px; margin: 0 auto; }
   .bullet { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 16px; }
 
@@ -199,6 +197,55 @@
   .barra.hoy span { background: var(--naranja); }
   .barra em { font-style: normal; font-variant-numeric: tabular-nums; color: var(--gris-2); }
   .barra.hoy em { color: #fff; font-weight: 600; }
+
+
+  /* d2) Los 3 regalos: tarjetas tangibles con la captura real de cada bonus */
+  .bonus-sec .kicker-a { font-family: "Caveat", cursive; font-size: 24px; color: var(--naranja); display: block; margin-top: 14px; }
+  .bonus-sec .sec-head h2 { margin-top: 2px; }
+  .bonus-sec .sec-head p { color: var(--gris-2); max-width: 34em; margin: 10px auto 0; }
+  .bonos { display: grid; gap: 22px; max-width: 1100px; margin: 34px auto 0; }
+  .bono { position: relative; border-radius: 22px; padding: 18px 18px 22px; display: flex; flex-direction: column; gap: 18px;
+    background: linear-gradient(180deg, #1a1311, #0f0f10 60%); border: 1px solid rgba(var(--naranja-rgb), .28);
+    box-shadow: 0 30px 60px rgba(0,0,0,.45); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+  .bono.papel { background: var(--hueso); color: var(--tinta); border-color: #E2D9CA; }
+  .bono .top { display: flex; align-items: center; justify-content: space-between; }
+  .bono .ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(var(--naranja-rgb), .14); color: var(--naranja); }
+  .bono .ico svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .bono .num { font-family: var(--titulos); font-style: italic; font-weight: 700; font-size: 17px; color: var(--naranja); border: 1.5px solid var(--naranja); border-radius: 9px; padding: 1px 10px; transform: rotate(-4deg); }
+  .bono .num small { font-style: normal; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px; opacity: .8; }
+  /* Ventana de navegador con la captura */
+  .ventana { position: relative; border-radius: 12px; overflow: visible; }
+  .ventana .marco { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
+  .bono.papel .ventana .marco { border-color: #D9CFBF; box-shadow: 0 14px 30px rgba(60,40,20,.18); }
+  .ventana .barra-v { height: 24px; background: #EDE7DD; display: flex; align-items: center; gap: 5px; padding: 0 9px; }
+  .ventana .barra-v i { width: 7px; height: 7px; border-radius: 50%; background: #CFC6B8; }
+  .ventana .barra-v span { margin-left: 8px; flex: 1; height: 13px; border-radius: 4px; background: #fff; font-size: 8.5px; line-height: 13px; color: #8a8378; padding-left: 7px; overflow: hidden; white-space: nowrap; }
+  .ventana img { width: 100%; aspect-ratio: 1400 / 762; object-fit: cover; object-position: top left; }
+  .ventana .pegote { position: absolute; z-index: 2; background: var(--naranja); color: #fff; font-weight: 700; font-size: 13px; border-radius: 10px; padding: 7px 12px;
+    box-shadow: 0 10px 24px rgba(var(--naranja-rgb), .45); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .ventana .pegote.abajo { left: 50%; bottom: -16px; transform: translateX(-50%) rotate(-2deg); }
+  .ventana .pegote.dato { right: -6px; bottom: -18px; transform: rotate(3deg); background: var(--tinta); box-shadow: 0 10px 24px rgba(0,0,0,.35); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 12px; }
+  .ventana .pegote.dato small { font-size: 10px; font-weight: 600; color: var(--gris-2); letter-spacing: .04em; }
+  .ventana .pegote.dato b { font-family: var(--titulos); font-size: 20px; color: var(--naranja); line-height: 1.1; }
+  .bono h3 { font-size: 20px; font-weight: 800; margin-top: 6px; }
+  .bono .desc { font-size: 15.5px; color: var(--gris-2); margin-top: 6px; }
+  .bono.papel .desc { color: #4f4a42; }
+  .bono .desc b { color: #fff; }
+  .bono.papel .desc b { color: var(--tinta); }
+  .bono ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 7px; font-size: 14px; }
+  .bono li { display: flex; gap: 8px; align-items: flex-start; color: var(--gris-2); }
+  .bono.papel li { color: #4f4a42; }
+  .bono li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 2px; border-radius: 50%; background: rgba(var(--naranja-rgb), .16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F26A1B' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 10px no-repeat; }
+  .bono-pie { text-align: center; color: var(--gris); font-size: 14px; margin-top: 30px; }
+  .bono-pie b { color: #fff; }
+  @media (min-width: 960px) {
+    .bonos { grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
+    .bono:nth-child(1) { transform: rotate(-2deg); }
+    .bono:nth-child(2) { transform: rotate(1.5deg) translateY(14px); }
+    .bono:nth-child(3) { transform: rotate(-1.5deg); }
+    .bono:hover { transform: rotate(0) translateY(-6px); }
+  }
+  @media (prefers-reduced-motion: reduce) { .bono { transition: none; } }
 
   /* e) Anfitrión */
   .host { display: grid; gap: 24px; align-items: start; max-width: 980px; margin: 0 auto; }
@@ -453,15 +500,6 @@
       <h2>Lo que vas a ver en vivo</h2>
     </div>
 
-    <div class="regalos">
-      <div class="t">Y por asistir, te llegan 3 regalos</div>
-      <div class="stack anim">
-        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 1</time></div><p><b>Tu roadmap.</b> Para pasar tu marca a suscripción con lo que ya tenés.</p></div></div>
-        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><b>El Simulador de Suscripción.</b> Cargás los números de tu marca y ves cuánto podés pagar por cliente.</p></div></div>
-        <div class="notif claro"><div class="ic genesis"><svg viewBox="0 0 36 24"><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 3</time></div><p><b>Los sistemas que uso en mis marcas</b> para armar los flujos de email y WhatsApp de suscripción.</p></div></div>
-      </div>
-    </div>
-
     <div class="bullets">
       <div class="bullet">
         <div><b class="k">Primero</b><p>El roadmap que seguí, paso a paso, para pasar mi marca de 60 millones a 156.798.062 por mes.</p></div>
@@ -488,6 +526,54 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- d2) Los 3 regalos por asistir -->
+<section class="sec bonus-sec" id="regalos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag-estado"><i></i>Por asistir en vivo</span>
+      <span class="kicker-a">esto es lo que te llevás de la clase ↓</span>
+      <h2>Los 3 regalos que te llevás</h2>
+      <p>No son PDFs para leer y olvidar: son las mismas herramientas que uso en mis marcas, listas para cargar los números de la tuya.</p>
+    </div>
+    <div class="bonos">
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 6h7M14 6h7M3 12h4M11 12h10M3 18h10M17 18h4"/><circle cx="12" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="15" cy="18" r="2"/></svg></div><span class="num"><small>Regalo</small>01</span></div>
+        <div class="ventana"><div class="marco"><div class="barra-v"><i></i><i></i><i></i><span>genesis-os · roadmap de migración</span></div>
+          <img src="bonus/bonus-1.webp" alt="Board del roadmap: semana 1, los públicos caliente, tibio y frío, la retención y el Gantt de 4 semanas" width="1400" height="762" loading="lazy"></div>
+          <span class="pegote abajo">▶ Recorrido de 8 pasos</span></div>
+        <div>
+          <h3>El roadmap para migrar tu marca con lo que ya tenés</h3>
+          <p class="desc">Un board animado con <b>las 4 semanas</b>, paso a paso, para arrancar con suscriptores desde el primer mes.</p>
+          <ul><li>La semana 1: recurrencia, la oferta y las salidas</li><li>Los públicos caliente, tibio y frío, con sus pasos</li><li>La retención desde el día 1 y el Gantt de las 4 semanas</li><li>Las métricas estrella en vivo, con el simulador adentro</li></ul>
+        </div>
+      </article>
+      <article class="bono papel">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h2M12 18h2"/></svg></div><span class="num"><small>Regalo</small>02</span></div>
+        <div class="ventana"><div class="marco"><div class="barra-v"><i></i><i></i><i></i><span>genesis-os · simulador de suscripción</span></div>
+          <img src="bonus/bonus-2.webp" alt="Simulador de suscripción: ganancia proyectada en el mes 12 y tres escenarios de LTV" width="1400" height="760" loading="lazy"></div>
+          <span class="pegote dato"><small>Ejemplo · mes 12</small><b>×5,4 vs. compra única</b></span></div>
+        <div>
+          <h3>El simulador de suscripción</h3>
+          <p class="desc">Cargás los números de tu marca y ves <b>cuánto ganarías en el mes 12</b> y cuánto podés pagar por cada cliente.</p>
+          <ul><li>Régimen fiscal con puente de IVA</li><li>Compra única, primer cobro y cobros recurrentes</li><li>Regalos con costo según el número de cobro</li><li>Tres escenarios de LTV, cohortes, caja por venta y proyección</li></ul>
+        </div>
+      </article>
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><span class="num"><small>Regalo</small>03</span></div>
+        <div class="ventana"><div class="marco"><div class="barra-v"><i></i><i></i><i></i><span>genesis-os · sistema de flows de email</span></div>
+          <img src="bonus/bonus-3.webp" alt="Sistema de flows de email: los 10 flows por etapa y la vida de un suscriptor email por email" width="1400" height="762" loading="lazy"></div>
+          <span class="pegote abajo">10 flows · listos para Klaviyo</span></div>
+        <div>
+          <h3>La IA que arma los flujos de email</h3>
+          <p class="desc">La skill que <b>escribe y diseña los 10 flows</b> de tu suscripción, con tu marca, y te dice cómo cargarlos en Klaviyo.</p>
+          <ul><li>Los 10 flows, con emails de ejemplo de una marca de muestra</li><li>El aviso de cobro, antes y después</li><li>La vida de un suscriptor en 30 días, email por email</li><li>El SOP del sistema, flow por flow</li></ul>
+        </div>
+      </article>
+    </div>
+    <p class="bono-pie">Te llegan <b>por asistir a la clase en vivo</b>.</p>
   </div>
 </section>
 
