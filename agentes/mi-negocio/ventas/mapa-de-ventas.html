@@ -187,6 +187,30 @@ button { font: inherit; color: inherit; }
 .pill.no { background: var(--no-bg); color: var(--no-ink); }
 
 body.panel-open .zoom { right: 442px; }
+body.panel-wide .panel { width: 650px; }
+body.panel-open.panel-wide .zoom { right: 682px; }
+.n.route.doc { cursor: pointer; box-shadow: 0 1px 3px var(--sh1); border-color: var(--closer); }
+.n.route.doc .lab { color: var(--closer); }
+.n.route.doc:hover { box-shadow: 0 0 0 2px var(--ink); }
+.n.route.doc:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.dsub { color: var(--muted); }
+.dtools { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+.dsec { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.dsec > summary { list-style: none; cursor: pointer; padding: 12px 14px; font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.dsec > summary::-webkit-details-marker { display: none; }
+.dsec > summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); font-size: 16px; }
+.dsec[open] > summary::after { content: "–"; }
+.dsec > summary:focus-visible { outline: 2px solid var(--ink); border-radius: 12px; }
+.dsec[open] > summary { border-bottom: 1px solid var(--line); }
+.db { padding: 12px 14px 14px; display: grid; gap: 10px; }
+.db h4 { margin: 6px 0 0; font-family: var(--font-mono); font-weight: 500; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.db ul, .db ol { margin: 0; padding-left: 20px; display: grid; gap: 5px; }
+.db .kv b { font-weight: 700; }
+.dtab { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
+.dtab table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.4; }
+.dtab th, .dtab td { text-align: left; vertical-align: top; padding: 7px 10px; border-bottom: 1px solid var(--line); }
+.dtab tr:last-child td { border-bottom: 0; }
+.dtab th { font-weight: 600; color: var(--muted); background: var(--soft); }
 
 /* Botón de tema */
 .themebtn { pointer-events: auto; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 0 14px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 10px var(--sh1); min-height: 44px; }
@@ -266,6 +290,299 @@ body.panel-open .zoom { right: 442px; }
 const COLS = [40, 285, 530, 775, 1020, 1265, 1510];
 const FW = 1760;
 const B = 220; // desplazamiento de las cajas de abajo (no / nota)
+
+/* ---------- Documentos de la llamada (tarjetas "Guion y manual") ---------- */
+const DOCS = {
+ fases: {
+  sub: "La llamada dura cerca de una hora y la toma Manu o el closer. Cada fase construye sobre la anterior: si salteás una, el lead te responde a medias.",
+  secs: [
+   { h: "La lógica de la llamada", open: true, b: [
+     { p: "Partimos la llamada en fases para que el proceso lo manejes vos, no el lead. Subís la intensidad de las preguntas de a poco: cuando llegás al problema y a la solución, ya está cómodo y te da la respuesta verdadera." },
+     { h4: "El motor: el gap" },
+     { p: "El gap es la distancia entre dónde está la marca hoy y dónde el dueño quiere que esté. Toda la llamada sirve para agrandarlo con datos y hacerlo vívido: cuanto más grande y claro, más urgencia." },
+     { t: { h: ["Hoy", "Donde quiere estar"], r: [
+       ["Factura más de 30 millones, pero en breakeven", "Una base que cobra sola todos los meses"],
+       ["Cada venta le cuesta lo mismo que la anterior", "La 2ª, 3ª y 4ª compra entran con el margen entero"],
+       ["Puede pagar por cliente lo que le deja un pedido", "Puede pagar 2,5 veces más que su competencia"],
+       ["El 1 del mes arranca en cero", "El mes arranca con los suscriptores ya cobrados"],
+       ["Si Meta le baja la cuenta, se corta todo", "Si Meta le baja la cuenta, la base se sigue cobrando"]] } },
+     { rule: "La venta se hace en el descubrimiento, no en la presentación. Si el gap está bien armado, el pitch es mostrarle el puente. Si no, el pitch es un folleto y el precio parece caro." },
+     { h4: "Por qué este orden" },
+     { ul: [
+       "Conexión antes que todo: sin contexto ni confianza, las preguntas sobre el problema suenan invasivas.",
+       "Situación antes que Problema: primero entendés cómo funciona la marca y sus números; recién después te cuenta qué cambiaría.",
+       "Solución después de Problema, sin agrandar el dolor: si el problema fuera tan grave, ya lo habría resuelto. Lo que lo mueve es ver el futuro resuelto.",
+       "Compromiso antes de Consecuencia: primero dice en voz alta que está dispuesto a hacer algo, y llega al precio coherente con eso.",
+       "Consecuencia justo antes del pitch: crea la urgencia. Llegás a la presentación con el contraste entre los dos futuros bien fresco."] },
+     { h4: "Cuánto dura cada parte" },
+     { t: { h: ["Fase", "Tiempo"], r: [["1 · Conexión (con la sentada de base)", "5 min"], ["2 · Situación", "10 min"], ["3 · Problema", "10 min"], ["4 · Solución", "10 min"], ["5 · Compromiso", "2 min"], ["6 · Consecuencia", "5 min"], ["7 · Presentación", "10 min máximo"], ["Cierre y objeciones", "Lo que haga falta"]] } },
+     { p: "El pitch nunca ocupa más del 15% de la llamada. Si te encontrás presentando 25 minutos, el descubrimiento quedó corto." },
+     { h4: "El error en cada fase es el viejo modelo" },
+     { p: "Marcar la agenda, demostrar autoridad, avisar que “al final vas a tener que tomar una decisión”, clavarte en el problema al minuto 2 o decir “obviamente no te está funcionando, por algo estás acá”. Este lead ya compró mentorías y vio llamadas de venta: si le hacés el guion viejo, se cierra." }
+   ] },
+   { h: "Fase 1 · Conexión (5 min)", b: [
+     { kv: ["Objetivo", "Que esté relajado y saber qué vino a buscar, en una frase. Cuanto menos piense en vos como vendedor, mejores respuestas te da."] },
+     { h4: "Qué cubrís" },
+     { ul: ["Por qué agendó y qué vio en la clase que le hizo pensar que esto le sirve.", "El objetivo general de la marca, en una frase. Sin cavar.", "La sentada de base: cómo va a ser la llamada y que, si encajan, al final se decide. Dicho como un acuerdo entre pares, no como una advertencia."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "¿Todo bien, Martín? Por lo que veo agendaste para ver si te podemos ayudar a pasar tu marca a suscripción. Tengo lo que llenaste en el formulario, pero quiero que me lo cuentes vos: ¿por qué agendaste?"], ["Closer", "¿Qué fue lo que viste en la clase del lunes que te hizo pensar que esto te podía servir?"], ["Lead", "La cuenta del techo. Nunca lo había pensado así."], ["Closer", "¿Y hoy cuál es el objetivo con la marca?"], ["Lead", "Quiero dejar de depender tanto de la pauta."]] },
+     { h4: "La sentada de base (cuando ya tenés el objetivo)" },
+     { say: [["Closer", "Perfecto. Te cuento cómo trabajamos: pasamos marcas de consumibles al modelo de suscripción y lo hacemos nosotros, con vos. La idea de esta llamada es ver qué están haciendo hoy, cómo les está yendo, dónde se está trabando, y en base a eso ver qué roadmap tendría sentido para tu marca. Si al final sentimos que encajamos, vemos de arrancar. ¿Te parece?"]] },
+     { kv: ["El error", "Clavarte en el problema al toque (“¿hace cuánto que la pauta no te rinde?”): todavía no te ganaste esa pregunta. Y abrir con el currículum de Manu: ya lo vio en la clase."] },
+     { kv: ["Pasás a Situación cuando", "Tenés el objetivo en una frase, responde tranquilo y todavía no cavaste en ningún problema."] }
+   ] },
+   { h: "Fase 2 · Situación (10 min)", b: [
+     { kv: ["Objetivo", "El mapa de cómo funciona la marca hoy, con números. Todavía no atacás nada."] },
+     { h4: "Qué cubrís" },
+     { ul: ["Facturación mensual, tamaño del equipo, qué vende y en qué plataforma.", "Cómo consigue clientes (casi siempre Meta Ads) y cuánto pauta.", "Sus números: CPA, margen de contribución por pedido, ticket promedio, cada cuánto se termina el producto, cuántos vuelven a comprar.", "Hace cuánto lo hace así y por qué eligió ese camino."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "Para ubicarme: ¿cuánto están facturando por mes? ¿Cuántos son en el equipo? ¿Qué venden y por dónde?"], ["Closer", "¿Tenés los números bajados? CPA, margen por pedido, ticket promedio, cada cuánto se termina el producto, cuántos te vuelven a comprar."], ["Closer", "¿Hace cuánto lo vienen haciendo así? ¿Fue criterio propio o lo aprendieron de alguien?"]] },
+     { ul: ["Si no tiene los números: “¿Y cómo deciden cuánto pautar? ¿Cómo saben si un mes fue bueno?”. Ahí aparece solo el primer problema: maneja a ciegas.", "Si los tiene: anotalos todos. Margen por pedido y ciclo de reposición son los dos que no te podés ir sin tener: los usás en el Simulador."] },
+     { h4: "La jugada clave: permiso para quejarse" },
+     { say: [["Closer", "¿Te gusta cómo lo vienen manejando?"], ["Lead", "Sí, la verdad que vendemos bien."], ["Closer", "Buenísimo, ¿qué es lo que más te gusta?"], ["Lead", "Que tenemos los creativos aceitados, sacamos uno nuevo por semana."], ["Closer", "Suena que funciona. Si pudieras cambiar algo, de cómo lo hacen o de los resultados, ¿qué sería?"], ["Lead", "Que cada venta nos deje algo. Hoy vendemos mucho y no queda nada."]] },
+     { p: "No lo socaves: si le destruís su forma de manejar la marca demasiado temprano, al final no va a tener confianza para decidir. Lo querés en el punto justo: confía en su criterio, pero sabe que solo no llega." },
+     { kv: ["El error", "“Obviamente no te está funcionando, por algo estás acá.” Lo pone a la defensiva y la charla pasa de colaborativa a pelea."] },
+     { kv: ["Pasás a Problema cuando", "Tenés sus números, empezó a decir qué cambiaría y sigue colaborando."] },
+     { rule: "Acá ves si califica: consumible químico y más de 30 millones por mes. Si no, la llamada sigue igual con otro objetivo (ver la última sección)." }
+   ] },
+   { h: "Fase 3 · Problema (10 min)", b: [
+     { kv: ["Objetivo", "Cuatro datos, de forma neutral y sin atacar: el problema, hace cuánto, el impacto y la causa. Que él desarme su propio proceso."] },
+     { h4: "Qué cubrís, en este orden" },
+     { ol: ["El problema, aclarado: “Cuando decís que no queda nada, ¿a qué te referís puntualmente?”.", "Hace cuánto: querés un plazo. “Desde mitad de año, cuando entraron 7 marcas a pautar lo mismo.”", "El impacto, en la marca y en él: “No podemos pagar más pauta” · “El 1 del mes arranco en cero, no duermo”.", "La causa: él la dice como la ve (“la competencia”, “Meta”). Vos sabés que la raíz es que su unidad de venta es la compra, no el cliente. No se lo corrijas acá: eso es el pitch."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "Cuando decís que no queda nada, ¿a qué te referís puntualmente?"], ["Closer", "¿Hace cuánto te pasa?"], ["Closer", "¿Y de dónde creés que viene?"], ["Closer", "Eso de los últimos seis meses, ¿qué impacto tuvo en la marca? ¿Y a vos, en lo personal, cómo te está pegando?"]] },
+     { h4: "La pregunta de la fase" },
+     { say: [["Closer", "Para entender bien la lógica: ¿por qué querés resolverlo ahora con suscripción, en vez de hacer más de lo mismo? Más creativos, más pauta, sumar productos."], ["Lead", "Porque ya lo hicimos, y cada creativo nuevo me cuesta más que el anterior."]] },
+     { p: "Lo dice él, no vos. Eso vale más que cualquier argumento tuyo." },
+     { p: "Frases que vas a escuchar, anotalas textuales para el pitch: “los CPAs nos empezaron a reventar”, “salieron 7 a pautar un producto muy parecido”, “7 lucas de ganancia, sobreviviendo”, “ayer íbamos 600 lucas abajo y apagamos”, “si paso a responsable inscripto no me cierra”." },
+     { kv: ["El error", "Atacar el proceso directo (“clarísimo que tu modelo no da más”): defensa y pelea."] },
+     { kv: ["Pasás a Solución cuando", "Tenés los 4 datos concretos y él mismo justificó por qué su forma actual no alcanza."] }
+   ] },
+   { h: "Fase 4 · Solución (10 min)", b: [
+     { kv: ["Objetivo", "Que vea vivo el futuro con el problema resuelto. La venta no se hace agrandando el problema: la hace la visión del futuro."] },
+     { h4: "Los 3 elementos" },
+     { ol: ["Criterio ideal: qué tendría que tener la solución para que le funcione. Vas a escuchar “que no me rompa lo que ya vende”, “que lo hagan con nosotros, no un curso”, “que sea alguien que lo haya hecho”. Son los pilares que vas a resaltar.", "Tangible: qué va a poder hacer que hoy no puede. “Pagar más pauta sin miedo”, “contratar”, “tomarme una semana sin mirar el administrador de anuncios”.", "Emocional: qué se siente. Acá está la venta."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "Si tu equipo y el nuestro se sentaran a armar esto 1 a 1, ¿qué tendría que tener para que te funcione de verdad?"], ["Closer", "Si mañana tenés tu base de suscriptores cobrando todos los meses, ¿qué vas a poder hacer que hoy no podés?"], ["Closer", "Imaginate que es día 1 del mes. Abrís el panel y ya tenés cobrados 800 suscriptores antes de prender un anuncio. ¿Qué se siente? ¿A quién se lo contás primero?"]] },
+     { p: "Preguntalo en presente (“qué se siente”), no en condicional. El presente lo mete en la escena." },
+     { h4: "La cuenta con sus números" },
+     { p: "Hacés la cuenta del techo en el Simulador con los datos de la fase 2. Si su margen por pedido es 30.000, hoy puede pagar 30.000 por cliente; con 3 compras, el techo es 90.000 y se opera en 75.000. Que vea su número, no el de Manu. Techo y punto operativo, siempre juntos." },
+     { h4: "El cierre de la fase" },
+     { say: [["Closer", "Con lo que tenés hoy, el equipo y cómo lo vienen haciendo, ¿qué tan cerca estás de llegar a eso?"], ["Lead", "Lejos."]] },
+     { p: "Ahí ves el gap. Si te dice que está cerca, no es lead para Génesis o hay que subir el objetivo." },
+     { kv: ["El error", "Saltear lo emocional y quedarte solo en números. Compra con la cabeza, pero decide con lo que siente al imaginarse el mes arrancando cobrado."] },
+     { kv: ["Pasás a Compromiso cuando", "Tenés criterio, tangible y emocional, vio su cuenta del techo y le pegó la distancia entre hoy y ese futuro."] }
+   ] },
+   { h: "Fase 5 · Compromiso (2 min)", b: [
+     { kv: ["Objetivo", "Que diga con sus palabras que está dispuesto a hacer algo. Es corta, pero no se saltea."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "¿Sentís que es momento de hacer un cambio, entonces? ¿Por qué ahora y no en 6 meses?"]] },
+     { h4: "El empujón para atrás (en tono liviano, casi jugando)" },
+     { say: [["Closer", "Mirá, no tenés que hacerlo, eh. La marca factura 45 millones, está funcionando. ¿Por qué no lo dejás para más adelante?"], ["Lead", "Porque si sigo así, en 6 meses estoy peor. Ya me quedé quieto todo el año."]] },
+     { p: "Cuando lo empujás suave para atrás, se empuja solo para adelante. Una vez que lo dijo en voz alta, queda coherente con eso y llega al precio comprometido, no como alguien que “está viendo”." },
+     { kv: ["El error", "Saltearla porque “ya se ve que quiere”. Si no lo dijo él, no cuenta."] },
+     { kv: ["Pasás a Consecuencia cuando", "Dijo que está dispuesto y te dio su “por qué ahora”."] }
+   ] },
+   { h: "Fase 6 · Consecuencia (5 min)", b: [
+     { kv: ["Objetivo", "Que vea el costo de no hacer nada con el mismo detalle con el que vio el éxito. Acá nace la urgencia."] },
+     { h4: "Cómo suena" },
+     { say: [["Closer", "Esa es una cara de la moneda. ¿Y si no cambia nada? Si en 6 meses seguís igual: el CPA sigue subiendo, cada venta te deja lo mismo y el 1 de cada mes arrancás en cero. ¿Qué pasa con la marca?"], ["Closer", "¿Y si un día Meta te baja la cuenta y no tenés base? ¿Qué pasa ese mes? ¿Y el siguiente?"], ["Closer", "¿Y con vos? ¿Seguís pudiendo bancarte otros 6 meses así?"], ["Closer", "Al final, ¿de quién es la responsabilidad de cambiarlo? ¿Y sentís que el momento es ahora?"]] },
+     { p: "No le aceptes el “ya lo voy a resolver”. La gente que no mira el fracaso vuelve en 6 o 12 meses más atrás que antes. Que lo explore en detalle: es incómodo, y de eso se trata." },
+     { kv: ["El error", "Quedarte en lo abstracto (“y bueno, vas a seguir igual”). El fracaso tiene que ser tan concreto como el éxito: el mes, el número, la cuenta bloqueada."] },
+     { kv: ["Pasás a Presentación cuando", "Exploró el fracaso sin esquivarlo, hay urgencia real y se siente la tensión entre los dos futuros."] }
+   ] },
+   { h: "Fase 7 · Presentación (10 min máximo)", b: [
+     { kv: ["Objetivo", "Mostrar el puente. Corto: no más del 15% de la llamada."] },
+     { h4: "La transición: cerrás el gap con sus palabras y pedís permiso" },
+     { say: [["Closer", "Mirá Martín, por todo lo que me contaste, esto te sirve. Me dijiste que querés dejar de depender de la pauta, pero hoy cada venta te deja lo mismo y el 1 del mes arrancás en cero, y eso te tiene sin dormir. Dejame mostrarte cómo lo resolveríamos y cómo se vería tu roadmap. ¿Dale?"]] },
+     { h4: "Después del pitch, la secuencia de cierre" },
+     { ol: ["Buscás el sí: “¿Sentís que esto es lo que estabas buscando para tu marca?”.", "Pedís el por qué: “¿Por qué?”. Que se lo venda él.", "Que reafirme lo puntual: “¿Hay algo que sientas que es la llave para vos?”.", "Pedís la venta con el próximo paso concreto: pago, onboarding y auditoría de sus números."] },
+     { p: "El pitch completo, paso a paso, está en el documento “Presentación y objeciones”." },
+     { kv: ["La llamada cerró cuando", "Pasaste los 3 pilares, cada uno atado a un problema suyo con su “¿tiene sentido?”; conseguiste el sí, el por qué y la llave; y pediste la venta con el próximo paso."] }
+   ] },
+   { h: "Las 7 fases en una línea", b: [
+     { ol: ["Conexión: sacá el foco de vos y encontrá el objetivo general. No caves.", "Situación: cómo funciona la marca, con números. Permiso para quejarse sin socavarlo.", "Problema: cuál, hace cuánto, qué impacto, qué lo causa, y “¿por qué no más de lo mismo?”.", "Solución: el futuro resuelto (criterio, tangible, emocional) y su cuenta del techo. Cerrá con “¿qué tan cerca estás?”.", "Compromiso: que diga que está dispuesto. Empujón para atrás.", "Consecuencia: el fracaso con el mismo detalle que el éxito.", "Presentación: pitch corto, 3 pilares atados a sus problemas, y sí → por qué → llave → pedir la venta."] }
+   ] },
+   { h: "Si no califica: misma llamada, otro objetivo", b: [
+     { p: "Lo ves en la fase 2, con sus números: factura menos de 30 millones por mes o no vende un consumible químico (tienen que darse las dos para calificar). La llamada no se corta ni se acelera: hacés las 7 fases igual, pero el destino es la Mentoría." },
+     { t: { h: ["Fase", "Lead de Génesis", "Lead de Mentoría"], r: [
+       ["Problema", "El CPA, el margen, la dependencia de Meta", "No logra vender de forma constante, no sabe cómo escalar"],
+       ["Solución", "La base que cobra sola y la cuenta del techo", "La marca vendiendo todos los meses con pauta. Sin cuenta del techo"],
+       ["Consecuencia", "Seguir en breakeven, arrancar cada mes en cero", "Seguir sin despegar, quemar plata en pauta sin sistema"],
+       ["Presentación", "Génesis, USD 5.000", "Mentoría, USD 2.000"]] } },
+     { p: "La transición y el pitch de la Mentoría están en el documento “Presentación y objeciones”." }
+   ] }
+  ] },
+
+ b2b: {
+  sub: "El lead de Génesis es un dueño de marca que ya factura. Las 7 fases son las mismas; lo que cambia es el tono: de igual a igual, lógico y técnico.",
+  secs: [
+   { h: "Lo que cambia con un dueño de empresa", open: true, b: [
+     { ul: ["De igual a igual: le hablás como dueño a dueño. Nada de explicar lo obvio ni tono de coach. Sabe de pauta, márgenes y proveedores más que la mayoría.", "Lógico y directo: compra con la cabeza, aunque la emoción esté abajo. Vas al grano: números, dónde se traba, cuánto le cuesta.", "Técnico: quiere entender el cómo por dentro. Si pregunta cómo se cobra la recurrencia, cómo se convierte la base o cómo se arma la variante de suscripción, contestás con detalle. Acá el detalle técnico convence y construye autoridad."] },
+     { rule: "El error que más ventas mata: tratarlo como principiante. Emocional, básico, sobreexplicando (“la suscripción es cuando el cliente paga todos los meses…”). Le subís la guardia y perdés el deal." },
+     { h4: "La emoción, desde su mundo" },
+     { p: "En la fase 4 la parte emocional no se saltea, pero se hace desde su mundo: el mes que arranca cobrado, la cuenta de Meta que deja de ser un riesgo, poder contratar, dormir tranquilo. Nada de “cerrá los ojos e imaginá tu vida soñada”." }
+   ] },
+   { h: "La sentada de base", b: [
+     { p: "Va al final de la Conexión, cuando ya tenés el objetivo. Enmarca toda la llamada como un roadmap." },
+     { say: [["Closer", "Te cuento cómo trabajamos: pasamos marcas de consumibles al modelo de suscripción y lo hacemos nosotros, con vos. La idea de esta llamada es ver qué están haciendo hoy, cómo les está yendo, dónde se está trabando, y en base a eso ver qué roadmap tendría sentido para tu marca. Si al final sentimos que encajamos, vemos de arrancar. ¿Te parece?"]] },
+     { p: "No es “al final vas a tener que tomar una decisión” (eso es el viejo modelo): es un acuerdo entre dos dueños sobre cómo usar la hora." }
+   ] },
+   { h: "Las métricas: cómo ramificar la Situación", b: [
+     { p: "En la fase 2 preguntás si tiene los números bajados a tierra." },
+     { ul: ["No los tiene: vas al proceso. “¿Y cómo deciden cuánto pautar? ¿Cómo saben si fue una buena decisión?” Aparece un problema real: maneja a ciegas. No lo hagas sentir tonto: muchos dueños que facturan 40 millones no tienen el margen por pedido calculado.", "Los tiene: con los números ubicás dónde se traba."] },
+     { t: { h: ["Métrica", "Para qué la querés"], r: [
+       ["Margen de contribución por pedido", "Es su techo de hoy: lo máximo que puede pagar por cliente con compra única"],
+       ["CPA", "Cuánto le cuesta hoy cada venta y qué tan cerca está del techo"],
+       ["Ticket promedio", "Para calcular el margen y la variante de suscripción"],
+       ["Ciclo de reposición", "Cada cuánto se termina el producto: cuándo cae la primera recurrencia"],
+       ["Recompra", "Cuántos vuelven solos: cuánta plata deja sobre la mesa"],
+       ["Facturación e inversión en pauta", "El tamaño del negocio y cuánto depende de Meta"]] } },
+     { say: [["Closer", "Más o menos, ¿cuánto te queda por pedido después de producto, envío y comisiones?"]] },
+     { p: "Si no sabe el margen o el ciclo de reposición, lo estimás con él en la llamada. Sin esos dos no podés mostrarle el gap con su número." }
+   ] },
+   { h: "La calculadora: el Simulador de Suscripción", b: [
+     { p: "En una venta a un dueño de empresa se suma una pieza que en otras ventas no hace falta: la calculadora que muestra con números dónde está hoy y dónde estaría con el método." },
+     { ul: ["Qué hace: toma sus números de la fase 2 (margen por pedido, CPA, ciclo de reposición) y le muestra su techo de hoy al lado del techo con suscripción.", "Por qué funciona: el dueño compra con la cabeza. Ver el gap en un número hace el caso solo, y como el número lo pone él, no lo puede discutir.", "Dónde va: la primera vez en la fase 4, para que vea el gap. En el pitch, como refuerzo del roadmap y antes del precio."] },
+     { say: [["Closer", "Con tu margen de 30.000 por pedido, hoy podés pagar 30.000 por cliente. Con 3 compras, tu techo es 90.000, y nosotros operamos un poco abajo, en 75.000, para que siempre te quede margen vivo."]] },
+     { rule: "Nunca prometas facturación (“vas a facturar 150 millones”). Mostrás la cuenta con sus números y el caso de Manu: el resultado depende de su ejecución y de su producto." }
+   ] },
+   { h: "La presentación B2B: problema → cómo → qué significa", b: [
+     { p: "No es un pitch genérico: le devolvés sus problemas mapeados a un roadmap, con el detalle del cómo. Por cada problema, 3 pasos:" },
+     { ol: ["Repetís el problema y su consecuencia.", "Explicás cómo lo resolvemos, con detalle.", "Le decís qué significa para él."] },
+     { say: [["Closer", "Vos me dijiste que con el CPA de hoy el margen del pedido se te va entero en pauta, y que eso te tiene sin poder crecer."], ["Closer", "La forma en que lo resolvemos es pasar tu unidad de venta de la compra al cliente: calculamos con tus números cuánto vale un cliente en 3 compras, definimos la variante de suscripción con su precio, la instalamos al lado de la compra única y rearmamos los anuncios para operar en el CPA nuevo."], ["Closer", "Y lo que eso significa es que podés pagar por cada cliente más que las 7 marcas que pautan lo mismo que vos, y seguir ganando. ¿Vas conmigo con eso? ¿Cómo ves que esa parte te ayuda?"]] },
+     { p: "El roadmap se ordena según dónde se traba: si no tiene los números, primero remarcás la auditoría; si su miedo es romper lo que vende, la instalación al lado de la compra única; si es Meta, El Piso." },
+     { p: "Si te pregunta algo técnico que no sabés, decís “eso lo vemos en la auditoría con Manu”. No lo inventás." }
+   ] },
+   { h: "La inversión y el compromiso", b: [
+     { p: "Siempre “inversión”, nunca “presupuesto”. Y no es “cerrar”: es pedir compromiso." },
+     { say: [["Closer", "La inversión es de USD 5.000, para que pases tu marca a suscripción. ¿Alguna duda de cómo funciona?"], ["Closer", "¿Sentís que esto es lo que estabas buscando para la marca? ¿Por qué?"], ["Closer", "El próximo paso es hacer el pago y arrancamos con el onboarding y la auditoría de tus números. ¿Te parece que avancemos?"]] }
+   ] },
+   { h: "Una llamada, no dos", b: [
+     { p: "Las dos llamadas (descubrimiento y estrategia por separado) se reservan para tickets de más de USD 30.000. Génesis es USD 5.000: se cierra en una llamada. Partirla en dos enfría al lead y, con la ventana cerrando el 22/10 a las 23:59, lo deja afuera." },
+     { p: "La única segunda llamada que se agenda es la de la rama Socio, con los dos dueños, y siempre antes del cierre." }
+   ] },
+   { h: "Lo que hacen los que cierran y los errores", b: [
+     { h4: "Lo que hacen los que cierran" },
+     { ul: ["Tratan al dueño de igual a igual.", "Van con números: los suyos, no los de Manu.", "Contestan el cómo con detalle cuando lo piden.", "Presentan poco y preguntan mucho.", "Le devuelven sus problemas en el roadmap."] },
+     { h4: "Los errores" },
+     { ul: ["Tratarlo como principiante: el que más ventas mata.", "Presentar antes de armar el gap.", "Esquivar lo técnico por miedo a no saber.", "Pitch genérico en vez de roadmap atado a sus problemas.", "Discutir la objeción en vez de aclararla.", "Ir a 2 llamadas cuando no hace falta."] }
+   ] }
+  ] },
+
+ pitch: {
+  sub: "La presentación no es para vender, es para mostrar el puente: la venta ya se hizo en el descubrimiento. Las objeciones no son una pelea: son un problema para resolver.",
+  secs: [
+   { h: "La regla madre del pitch", open: true, b: [
+     { p: "Si presentás sin haber armado el gap, es un folleto. Si lo armaste bien, es la confirmación de una decisión que el lead ya tomó." },
+     { p: "Toda la presentación responde tres cosas, en este orden: qué es Génesis (30 segundos), cómo lo lleva al resultado (pilar por pilar, atado a sus dolores) y para qué (el resultado, con lo que él dijo que quería)." },
+     { p: "Dura de 5 a 10 minutos. No recitás todo lo que incluye: mostrás lo que resuelve lo suyo, anclado en su problema principal, no en los cinco." },
+     { h4: "La transición" },
+     { say: [["Closer", "Mirá Martín, por todo lo que me contaste, esto te sirve. Me dijiste que querés dejar de depender de la pauta, pero hoy cada venta te deja lo mismo y el 1 del mes arrancás en cero. Dejame mostrarte cómo lo resolveríamos y cómo se vería tu roadmap. ¿Dale?"]] }
+   ] },
+   { h: "El pitch de Génesis, en 8 partes", b: [
+     { t: { h: ["#", "Parte", "Qué tiene que lograr"], r: [["1", "Destino y tiempo", "Que vea el destino con sus palabras"], ["2", "Quién lo acompaña", "Que sepa que no está solo y que lo hace quien ya lo hizo"], ["3", "Los 3 pilares", "Que vea qué recibe, atado a lo suyo"], ["4", "El roadmap mes a mes", "Que vea el camino con hitos"], ["5", "Los primeros 7 días", "Que se saque la duda de “¿y cómo arranco?”"], ["6", "La calculadora", "Que vea su número de hoy al lado del proyectado"], ["7", "La prueba", "Que vea que ya funcionó con alguien como él"], ["8", "El precio", "Que llegue al precio habiendo visto todo el valor"]] } },
+     { h4: "1 · Destino y tiempo" },
+     { say: [["Closer", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."]] },
+     { h4: "2 · Quién te acompaña" },
+     { say: [["Closer", "Tenés chat 1 a 1 directo con Manu y con José, del primer día al último. Y una vez que la suscripción está instalada, sesiones 1 a 1 con Manu cuando las pidas, para revisar números y ajustar."]] },
+     { h4: "3 · Los 3 pilares" },
+     { p: "Por cada pilar, cuatro cosas: qué es → para qué sirve → “porque me dijiste que…” (textual) → “¿tiene sentido?”. Recién con el sí, avanzás." },
+     { t: { h: ["Pilar", "Qué es", "El dolor que resuelve"], r: [
+       ["La Cuenta", "Auditoría de números y roadmap: cuánto puede pagar por cliente con suscripción", "CPA: “los CPAs nos empezaron a reventar”"],
+       ["La Instalación, hecha por nosotros", "Variante de suscripción validada y con precio, tienda con suscripción al lado de la compra única, conversión de la base y anuncios al CPA nuevo", "Márgenes y miedo a romper lo que vende: “7 lucas de ganancia, sobreviviendo”"],
+       ["El Piso", "Retención y recuperación de bajas, proyección de stock, panel de suscriptores, churn y recompra, cuenta de formalización", "Metadependencia: “el 1 del mes arranco en cero”"]] } },
+     { say: [["Closer", "El pilar 1 es La Cuenta. Lo primero que hacemos es auditar tus números y calcular cuánto podés pagar por cliente con suscripción. ¿Te acordás que me dijiste que desde que entraron 7 marcas a pautar lo mismo el CPA se te fue al techo? Esto es lo que lo da vuelta: no vas a ganar bajando el CPA, vas a ganar pudiendo pagar más que ellos. ¿Tiene sentido?"], ["Closer", "El pilar 2 es La Instalación, y la hacemos nosotros. Me dijiste que lo que más te preocupa es romper lo que hoy vende. Por eso la suscripción va al lado de la compra única, sin tocarla, y la base que ya tenés la convertimos por mail y WhatsApp. Vos seguís vendiendo; nosotros instalamos. ¿Tiene sentido?"], ["Closer", "El pilar 3 es El Piso. Me dijiste que el 1 del mes arrancás en cero y que no dormís. Esto es lo que hace que el mes arranque con los suscriptores ya cobrados, y que si Meta te baja la cuenta, la base se siga cobrando. ¿Tiene sentido?"]] },
+     { h4: "4 · El roadmap mes a mes" },
+     { ul: ["Mes 1 · La cuenta: auditoría de la operación y los números, techo de pauta con LTV, variante de suscripción definida, validada y con precio.", "Mes 2 · La instalación: tienda con suscripción al lado de la compra única y conversión de la base por mail y WhatsApp.", "Mes 3 · Escalar al CPA nuevo: anuncios recalculados con su LTV, backend de retención, proyección de stock.", "Mes 4 · El piso: panel de suscriptores, churn y recompra con reporte mensual, cuenta de formalización y sesiones con Manu."] },
+     { rule: "[CONFIRMAR con Manu: que este reparto por mes y el orden de la primera semana son los reales.]" },
+     { h4: "5 · Los primeros 7 días" },
+     { say: [["Closer", "Apenas entrás, abrimos el chat directo con Manu y José, te pedimos tus números y arrancamos la auditoría de tu operación. El primer cobro recurrente cae cuando se cumple tu primer ciclo de reposición: si tu producto se termina en 30 días, a los 30."]] },
+     { p: "El roadmap y los primeros 7 días son obligatorios: buena parte de los “lo tengo que pensar” nacen de no ver cómo sería trabajar con nosotros." },
+     { h4: "6 · La calculadora" },
+     { p: "En el Simulador, sus números de hoy al lado de los proyectados: su margen por pedido es su techo de hoy; con 3 compras, se triplica. Techo y punto operativo, siempre juntos." },
+     { h4: "7 · La prueba" },
+     { p: "El caso de Manu, contado desde el mismo punto de partida que el lead: facturaba 60 millones por mes en compra única y cada venta le costaba lo mismo que la anterior. Hoy esa marca factura 156.798.062 por mes, con 1,28% de churn, y sus marcas suman más de 3.500 suscriptores activos." },
+     { h4: "8 · El precio" },
+     { say: [["Closer", "La inversión es de USD 5.000, para que pases tu marca a suscripción y puedas pagar por cada cliente más que tu competencia. ¿Alguna duda de cómo funciona?"]] },
+     { rule: "Después del precio, silencio. El primero que habla pierde. No justifiques ni agregues nada. Las cuotas (2 de USD 2.850 o 3 de USD 2.000) aparecen solo dentro de la objeción de plata." }
+   ] },
+   { h: "El cierre", b: [
+     { say: [["Closer", "¿Sentís que esto es lo que estabas buscando para tu marca?"], ["Lead", "Sí."], ["Closer", "¿Por qué?"], ["Closer", "¿Hay algo puntual que sientas que es la llave para vos?"], ["Closer", "Perfecto. El próximo paso es hacer el pago, y de ahí arrancamos con el onboarding y la auditoría de tus números. ¿Te parece que avancemos?"]] },
+     { p: "La urgencia es real y es la única que se usa: son 10 lugares y la ventana cierra el jueves 22/10 a las 23:59." },
+     { p: "Si viene de la pre-venta, entrar ahora le reserva uno de los 10 lugares y le da acceso exclusivo a la IA que usa Manu para operar sus marcas." },
+     { rule: "[CONFIRMAR con Manu: si hay instalación prioritaria para los que cierran en las primeras 48 horas después de la clase.]" }
+   ] },
+   { h: "Errores que matan la presentación", b: [
+     { ul: ["Presentar antes de armar el gap.", "Mostrar los 12 entregables en fila en vez de lo que resuelve lo suyo.", "Leer las slides o monologar sin “¿tiene sentido?”.", "Saltear el roadmap o los primeros 7 días.", "Poner el precio antes de mostrar el valor.", "Contar el caso de Manu de forma genérica en vez de desde el mismo punto de partida que el lead.", "Explicar el mecanismo (apps, flujos de mail) en vez de la solución, salvo que el dueño pregunte el cómo."] }
+   ] },
+   { h: "Objeciones: el primer movimiento", b: [
+     { p: "Una objeción es como una cebolla: casi nunca es lo que parece a primera vista. Antes de responder, la pelás hasta la raíz real. Nunca rebatís con datos: preguntás para que él llegue solo a la conclusión." },
+     { say: [["Lead", "Lo tengo que pensar."], ["Closer", "Perfecto. ¿Qué es puntualmente lo que tenés que pensar?"]] },
+     { p: "Con cualquier objeción: “Cuando decís eso, ¿a qué te referís puntualmente?”. Casi siempre sale plata o falta de claridad." }
+   ] },
+   { h: "La Matriz y el recorrido", b: [
+     { p: "Dos ejes. Casi toda objeción es una mezcla de dos:" },
+     { t: { h: ["", "Logística", "Miedo"], r: [["Plata", "No tiene los fondos líquidos ahora", "No sabe si va a recuperar la inversión"], ["“Lo voy a pensar”", "Necesita ordenar algo concreto", "No se anima a decidir"], ["Socio", "El socio tiene que firmar", "Usa al socio para no decir que tiene miedo"]] } },
+     { p: "Afuera de la Matriz está el humo: excusas una atrás de otra, ninguna real. Ahí no hay venta; lo difícil es darte cuenta rápido." },
+     { p: "Con este avatar, “pareja” casi siempre es “socio”: muchas marcas tienen 2 o 3 dueños." },
+     { h4: "El recorrido" },
+     { ol: ["Identificá el tipo con la Matriz.", "Ruteá a una rama: Plata, Socio o Miedo. Lo logístico se resuelve primero; si no se resuelve, desemboca en Miedo.", "Cerrá, o agendá un seguimiento con fecha antes del 22/10 a las 23:59."] }
+   ] },
+   { h: "Rama Plata", b: [
+     { ol: ["Si tuviera los fondos: “Si tuvieras la plata, ¿esto te funcionaría? ¿Por qué?”.", "Que la solución la proponga él: “¿Cómo pensás que podés resolverlo? ¿De dónde podrías sacar los fondos?”. Un dueño que factura 45 millones casi siempre tiene de dónde: caja de la marca, stock, la tarjeta de la empresa.", "La tarjeta: “¿Pensaste en ponerlo en una tarjeta y pagarlo con lo que te va a dejar la base?”.", "Las cuotas, recién acá: 2 de USD 2.850 o 3 de USD 2.000. Si paga en cuotas, la tienda con suscripción se instala después de la cuota 2.", "La Mentoría, como último recurso: solo si califica, quiere y no puede pagar Génesis ni en cuotas. Se presenta como otro programa, no como “Génesis barato”.", "Si después de 2 intentos no se compromete con nada: no es plata, es miedo. Pasás a los reframes."] },
+     { say: [["Lead", "Es mucha plata."], ["Closer", "Te entiendo. Si tuvieras los fondos, ¿esto te funcionaría?"], ["Lead", "Sí."], ["Closer", "¿Por qué?"], ["Closer", "USD 5.000 son unos 7,5 millones. Con 45.000 más de capacidad de compra por cliente, se pagan con unos 170 clientes al techo nuevo. ¿De dónde podrías sacar los fondos para arrancar?"]] },
+     { rule: "El precio no se baja nunca. Este lead ya nos dijo que lo que más desconfianza le genera es que el precio cambie según quién lo atienda: bajarlo confirma ese miedo." }
+   ] },
+   { h: "Rama Socio", b: [
+     { h4: "Paso 1 · Ponete del mismo lado de la mesa" },
+     { say: [["Closer", "Re entendible. Si tu socio estuviera acá ahora y estuviera 100% de acuerdo, ¿esto sería la respuesta para la marca? ¿Por qué? ¿Qué sentís que más le suma? ¿Y si no quiere avanzar, cómo van a llegar ahí?"]] },
+     { h4: "Paso 2 · ¿El socio está a bordo?" },
+     { ul: ["No está a bordo, pero él igual quiere avanzar: cierre suave y pasás a la siguiente objeción. Lo que queda es miedo.", "No avanza sin él: preguntale cómo se lo va a plantear y ayudalo a hacerlo desde el problema y el impacto (el CPA, el margen, el 1 del mes en cero), no desde la solución. Después, el test de la billetera abierta."] },
+     { say: [["Closer", "Tenemos dos opciones: o hacemos una llamada con tu socio, o hacés el pago ahora. No es para guardarte el lugar: es un compromiso con lo que querés lograr. Cuando llevás a tu socio una decisión ya tomada, lo hacés parte igual, pero llevás una seguridad que se nota. ¿Cómo querés avanzar?"]] },
+     { h4: "Paso 3 · Si sigue sin querer" },
+     { p: "Agendás la llamada con los dos, con día y hora, siempre antes del 22/10 a las 23:59." }
+   ] },
+   { h: "Rama Miedo: 3 reframes, en orden", b: [
+     { p: "Si llegás acá, lo logístico ya está resuelto: lo único que queda es que cambie la forma en que mira el problema. Si el primero no alcanza, vas al segundo, y después al tercero. Nunca minimices el miedo (“tranqui, no pasa nada”)." },
+     { h4: "1 · Cambio de proceso" },
+     { say: [["Closer", "Entiendo que es un paso grande. ¿Te puedo hacer una pregunta? ¿Sentís que tu forma de ver las cosas afecta cómo decidís?"], ["Lead", "Sí, obvio."], ["Closer", "¿Y estás 100% conforme con dónde está la marca hoy?"], ["Lead", "Y… no."], ["Closer", "¿Y querés que esa misma forma de decidir siga marcando los resultados de la marca de acá en adelante? ¿Por qué no?"]] },
+     { h4: "2 · El administrador de anuncios" },
+     { say: [["Closer", "Hoy mirás la marca desde el administrador de anuncios: CPA, CPM, ROAS a 30 días. Desde ahí, todas tus decisiones salen de lo mismo: bajar el CPA. Para ver la marca como es de verdad, tenés que mirarla desde lo que te deja cada cliente en el tiempo. Lo difícil es creer que esa vista existe, y después animarte a decidir desde ahí. ¿Qué sentís que necesitás hacer para decidir como el que ya la mira desde ahí?"]] },
+     { h4: "3 · La marca en breakeven" },
+     { say: [["Closer", "Una marca está en breakeven porque toma las decisiones de una marca en breakeven: sale a comprar cada cliente de nuevo todos los meses. Recién cuando empieza a decidir como una marca con base, se convierte en una. ¿Qué decisiones necesitás empezar a tomar para ser esa marca?"]] }
+   ] },
+   { h: "Las objeciones de este avatar", b: [
+     { t: { h: ["Lo que dice", "Rama", "Cómo la trabajás"], r: [
+       ["“Lo tengo que pensar”", "Plata → Miedo", "“¿Qué es puntualmente lo que tenés que pensar?” y seguís la rama que salga"],
+       ["“Es mucha plata”", "Plata", "La cuenta de los 170 clientes al techo nuevo, y después la secuencia de fondos"],
+       ["“No es el momento”", "Plata → Miedo", "“¿Qué es más riesgoso: poner el capital y resolverlo, o seguir otros 6 meses arrancando cada mes en cero?”"],
+       ["“Lo hablo con mi socio”", "Socio", "Mismo lado de la mesa → billetera abierta → llamada con los dos antes del 22/10"],
+       ["“En Argentina no están acostumbrados a la suscripción”", "Miedo", "“Manu pensaba lo mismo. Hoy sus marcas suman más de 3.500 suscriptores activos acá. ¿Qué te hace pensar que con tus clientes sería distinto?”"],
+       ["“Se suscriben por el descuento y se dan de baja”", "Miedo", "“1,28% de churn. ¿Qué tendría que pasar para que tus clientes se queden?” → eso es El Piso"],
+       ["“Ya pagué mentorías y no me sirvieron”", "Miedo", "“¿Qué te enseñaron? ¿Qué te frenó?” Casi siempre producto ganador o pauta. Esto es para el que ya tiene producto, y lo hacemos nosotros"],
+       ["“No quiero romper lo que funciona”", "Miedo", "“La suscripción va al lado de la compra única, sin tocarla. ¿Qué parte te preocupa que se rompa?”"],
+       ["“No estoy en Tiendanube”", "Logística", "“No importa: Shopify o la que uses. ¿En cuál estás?”"],
+       ["“¿Tienen garantía?”", "Miedo", "No se promete garantía. “¿Qué necesitarías ver para estar tranquilo?” → roadmap, primeros 7 días y la cuenta con sus números"],
+       ["“Está lleno de pirañas”", "Miedo", "“Por eso no te pido que me creas: en la auditoría ves la cuenta con tus números. ¿Qué necesitarías ver para confiar?”"],
+       ["“Haceme el diagnóstico y después veo”", "Humo o miedo", "El diagnóstico completo es el primer entregable del programa. En la llamada se ve el gap, no se arma el plan"],
+       ["Excusas una atrás de otra, sin ganas", "Humo", "No hay venta. Cerrá con respeto"]] } }
+   ] },
+   { h: "Lo que nunca se hace", b: [
+     { ul: ["Bajar el precio o inventar un descuento.", "Prometer una garantía o un número de facturación.", "Ofrecer la Mentoría al que califica y puede pagar Génesis, o venderle Génesis al que no califica.", "Discutir la objeción con datos en vez de aclararla y preguntar.", "Minimizar el miedo.", "Inventar urgencia. La real es: 10 lugares y cierre el jueves 22/10 a las 23:59."] }
+   ] },
+   { h: "Si no califica: el pitch de la Mentoría", b: [
+     { h4: "La transición, honesta" },
+     { say: [["Closer", "Mirá Lucía, te voy a ser honesto. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes, porque lo que hacemos ahí es instalar la suscripción sobre una base que ya existe. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría. Primero necesitás que la marca venda todos los meses de forma constante. Para eso tenemos otro programa. ¿Te lo muestro?"]] },
+     { p: "Decirle que no a Génesis suma confianza: este lead ya vio closers que le venden cualquier cosa." },
+     { h4: "Los 3 pilares de la Mentoría" },
+     { t: { h: ["Pilar", "Qué incluye", "Lo atás a"], r: [["Acompañamiento", "Chat 1 a 1 directo con José, 1 clase grupal por semana con Manu y 2 con José", "“No sé por dónde arrancar” · “Estoy solo con esto”"], ["El sistema", "Curso grabado en Whop: SOPs, roadmaps, sistemas y contactos", "“No tengo un proceso” · “Pruebo cosas sueltas”"], ["La comunidad", "Otros dueños de marca en el mismo punto", "“No tengo con quién hablarlo”"]] } },
+     { p: "Duración: 3 meses. La implementa él, con nosotros al lado: no es hecha por nosotros y no tiene el 1 a 1 con Manu." },
+     { say: [["Closer", "La inversión es de USD 2.000, para que tu marca venda todos los meses de forma constante. ¿Alguna duda de cómo funciona?"]] },
+     { rule: "Después del precio, silencio. Las 2 cuotas de USD 1.100 aparecen solo si sale la objeción de plata. El precio no se baja, y la Mentoría nunca se presenta como “Génesis barato”: cuando la marca crezca, Génesis es el paso siguiente." }
+   ] }
+  ] }
+};
 
 const FRAMES = [
  { id: "f1", tab: "01 Primer contacto", chip: "FASE 01", title: "Del opt-in a la calificación", meta: "SDR · apenas entra el opt-in", color: "var(--p1)", rows: [140, 600],
@@ -491,9 +808,9 @@ const FRAMES = [
       ex: [{ type: "closer", head: "Manu con Martín (califica)", lines: [["Manu", "Génesis es una consultoría de 4 meses, 1 a 1 y hecha por nosotros, para que pases tu marca de pagar cada cliente de nuevo a una base de suscriptores que cobra sola todos los meses, sin frenar lo que hoy vendés."], ["Manu", "La inversión es de USD 5.000, para que puedas pagar por cada cliente más que esas siete marcas. ¿Alguna duda de cómo funciona?"]] }, { type: "closer", head: "El closer con Lucía (no califica)", lines: [["Closer", "Lucía, te hablo con total sinceridad. Génesis hoy no es para vos: lo armamos para marcas de consumibles químicos que ya facturan más de 30 millones por mes. Si hoy te vendiera Génesis, te estaría cobrando por instalar una suscripción sobre una base que todavía no tenés, y la cuenta no te cerraría."], ["Closer", "Primero necesitás que la marca venda todos los meses de forma constante. Para eso está la Mentoría: 3 meses, chat 1 a 1 con José, una clase grupal por semana con Manu y dos con José, todo el contenido grabado y la comunidad. La inversión es de USD 2.000, o 2 cuotas de USD 1.100."]] }],
       rule: "Después del precio, silencio. Las cuotas aparecen solo si sale la objeción de plata. El precio no se baja nunca." },
     { id: "nlv", t: "note", r: 1, c: 0, below: true, from: "lv", lab: "Qué se ofrece", text: "Califica (químico + más de 30M): Génesis. No califica: Mentoría, explicándole de su lado por qué Génesis hoy no le sirve." },
-    { id: "cls1", t: "route", r: 1, c: 1, lab: "Guion y manual", title: "Las 7 fases de la llamada", text: "Conexión → situación → problema → solución → compromiso → consecuencia → presentación." },
-    { id: "cls2", t: "route", r: 1, c: 2, lab: "Guion y manual", title: "Proceso B2B", text: "El dueño de marca compra con criterio de negocio: de igual a igual, con números." },
-    { id: "cls3", t: "route", r: 1, c: 3, lab: "Guion y manual", title: "Presentación y objeciones", text: "Los 3 pilares atados a sus problemas. La matriz de objeciones, con el 22/10 como fecha de cierre real." },
+    { id: "cls1", t: "route", doc: DOCS.fases, r: 1, c: 1, lab: "Guion y manual", title: "Las 7 fases de la llamada", text: "Conexión → situación → problema → solución → compromiso → consecuencia → presentación." },
+    { id: "cls2", t: "route", doc: DOCS.b2b, r: 1, c: 2, lab: "Guion y manual", title: "Proceso B2B", text: "El dueño de marca compra con criterio de negocio: de igual a igual, con números." },
+    { id: "cls3", t: "route", doc: DOCS.pitch, r: 1, c: 3, lab: "Guion y manual", title: "Presentación y objeciones", text: "Los 3 pilares atados a sus problemas. La matriz de objeciones, con el 22/10 como fecha de cierre real." },
     { id: "cer", t: "dec", r: 1, c: 4, title: "¿Cerró?",
       branches: [["Sí", "Se le manda el link de pago y, con el pago, onboarding."], ["No", "Seguimiento sobre la objeción que quedó viva, dentro de la ventana."]],
       ex: [{ type: "note", head: "Cómo terminan nuestros leads", lines: ["Martín (con Manu) → Génesis, 3 cuotas de USD 2.000", "Lucía (con el closer) → Mentoría, 2 cuotas de USD 1.100"] }] },
@@ -529,9 +846,9 @@ FRAMES.forEach((f, fi) => {
   world.appendChild(fr);
   f.el = fr; f.y = y;
   f.nodes.forEach(n => {
-    const el = document.createElement(n.t === "step" || n.t === "dec" || n.t === "jump" ? "button" : "div");
+    const el = document.createElement(n.t === "step" || n.t === "dec" || n.t === "jump" || n.doc ? "button" : "div");
     if (el.tagName === "BUTTON") el.type = "button";
-    el.className = "n " + n.t; el.id = "n-" + n.id;
+    el.className = "n " + n.t + (n.doc ? " doc" : ""); el.id = "n-" + n.id;
     const top = f.rows[n.r] + (n.below ? B : 0);
     el.style.left = COLS[n.c] + "px"; el.style.top = top + "px";
     if (n.t === "start") el.textContent = n.title;
@@ -540,7 +857,7 @@ FRAMES.forEach((f, fi) => {
     else if (n.t === "no") el.innerHTML = `<div>${esc(n.text)}</div><div class="act">${esc(n.act)}</div>`;
     else if (n.t === "note") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div>${esc(n.text)}</div>`;
     else if (n.t === "mile") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div class="tt">${esc(n.title)}</div><div class="dd">${esc(n.text)}</div>`;
-    else if (n.t === "route") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div class="tt">${esc(n.title)}</div><div class="dd">${esc(n.text)}</div>`;
+    else if (n.t === "route") el.innerHTML = `<div class="lab">${esc(n.lab)}</div><div class="tt">${esc(n.title)}</div><div class="dd">${esc(n.text)}</div>${n.doc ? `<span class="ver">Abrir documento →</span>` : ""}`;
     else if (n.t === "jump") { const tf = FRAMES.find(x => x.id === n.go); el.style.setProperty("--fc2", tf.color); el.innerHTML = `<div class="lab">${esc(n.lab)} →</div><div class="dd" style="margin-top:4px;color:var(--ink)">${esc(n.text)}</div>`; }
     fr.appendChild(el);
     byId[n.id] = { ...n, frame: f, el };
@@ -662,7 +979,7 @@ function flyTo(t) {
   anim = requestAnimationFrame(step);
 }
 function fitRect(x, yv, w, h, pad) {
-  const top = 84, W = innerWidth - (document.body.classList.contains("panel-open") && innerWidth > 720 ? 442 : 0), H = innerHeight - top - 20;
+  const top = 84, W = innerWidth - (document.body.classList.contains("panel-open") ? panelW() : 0), H = innerHeight - top - 20;
   const s = Math.min(MAX, Math.max(MIN, Math.min((W - pad * 2) / w, (H - pad) / h)));
   return { s, x: (W - w * s) / 2 - x * s, y: top + (H - h * s) / 2 - yv * s };
 }
@@ -710,7 +1027,7 @@ function click(t) {
   if (n) {
     const id = n.id.slice(2), d = byId[id];
     if (d.t === "jump") { goFrame(d.go); return; }
-    if (d.ex || d.branches || d.rule) { openPanel(id); return; }
+    if (d.ex || d.branches || d.rule || d.doc) { openPanel(id); return; }
   }
   const fh = t.closest && t.closest(".fhead");
   if (fh) goFrame(fh.dataset.frame);
@@ -757,12 +1074,12 @@ function exHtml(ex, i) {
   const cp = ex.type === "note" ? "" : `<button class="copy" type="button" data-i="${i}">Copiar</button>`;
   return `<div class="ex"><div class="exh"><span>${lab} · ${esc(ex.head)}</span>${cp}</div>${inner}</div>`;
 }
-const viewable = n => (n.t === "step" || n.t === "dec") && (n.ex || n.branches || n.rule);
+const viewable = n => ((n.t === "step" || n.t === "dec") && (n.ex || n.branches || n.rule)) || !!n.doc;
 function seqOf(f) { return f.nodes.filter(viewable).map(n => n.id); }
 function stepBy(d) { const n = byId[active]; const q = seqOf(n.frame); const i = q.indexOf(active) + d; if (i >= 0 && i < q.length) openPanel(q[i], true); }
 function reveal(id) {
   if (innerWidth <= 720) return;
-  const b = box(id), availW = innerWidth - 442;
+  const b = box(id), availW = innerWidth - panelW();
   const sx = b.x * cam.s + cam.x, sy = b.y * cam.s + cam.y, sw = b.w * cam.s, sh = b.h * cam.s;
   if (sx < 16 || sx + sw > availW - 16 || sy < 90 || sy + sh > innerHeight - 20) {
     const sc = Math.max(cam.s, 0.6);
@@ -770,7 +1087,7 @@ function reveal(id) {
   }
 }
 function wireCopy(body, n) {
-  body.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  body.querySelectorAll(".copy[data-i]").forEach(b => b.addEventListener("click", () => {
     const ex = n.ex[+b.dataset.i];
     const text = ex.lines.map(x => Array.isArray(x) ? `${x[0]}: ${x[1]}` : x).join("\n\n");
     const done = ok => { b.textContent = ok ? "Copiado" : "Seleccioná y copiá"; setTimeout(() => b.textContent = "Copiar", 1600); };
@@ -778,13 +1095,30 @@ function wireCopy(body, n) {
     try { navigator.clipboard.writeText(text).then(() => done(true), () => { sel(); done(false); }); } catch (_) { sel(); done(false); }
   }));
 }
+function panelW() { return innerWidth <= 720 ? 0 : (document.body.classList.contains("panel-wide") ? 682 : 442); }
+function docBlock(x) {
+  if (x.p) return `<p>${esc(x.p)}</p>`;
+  if (x.h4) return `<h4>${esc(x.h4)}</h4>`;
+  if (x.kv) return `<p class="kv"><b>${esc(x.kv[0])}:</b> ${esc(x.kv[1])}</p>`;
+  if (x.ul) return `<ul>${x.ul.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`;
+  if (x.ol) return `<ol>${x.ol.map(i => `<li>${esc(i)}</li>`).join("")}</ol>`;
+  if (x.rule) return `<div class="rule">${esc(x.rule)}</div>`;
+  if (x.say) return `<div class="call closer">${x.say.map(([w, t]) => `<p><span class="w${w === "Lead" ? " l" : ""}">${esc(w)}:</span> ${esc(t)}</p>`).join("")}</div>`;
+  if (x.t) return `<div class="dtab"><table><thead><tr>${x.t.h.map(c => `<th>${esc(c)}</th>`).join("")}</tr></thead><tbody>${x.t.r.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  return "";
+}
+function docHtml(d) {
+  return `<p class="dsub">${esc(d.sub)}</p><div class="dtools"><span>${d.secs.length} secciones · «Closer» es Manu o el closer</span><button type="button" class="copy" id="dall">Abrir todo</button></div>` +
+    d.secs.map(s => `<details class="dsec"${s.open ? " open" : ""}><summary>${esc(s.h)}</summary><div class="db">${s.b.map(docBlock).join("")}</div></details>`).join("");
+}
 function openPanel(id, fromNav) {
   const n = byId[id];
+  document.body.classList.toggle("panel-wide", !!n.doc && innerWidth > 720);
   if (active) byId[active].el.classList.remove("active");
   active = id; n.el.classList.add("active");
   document.getElementById("pfase").textContent = `${n.frame.chip} · ${n.frame.title}`;
   document.getElementById("pfase").style.color = n.frame.color;
-  document.getElementById("ptitle").textContent = n.t === "dec" ? n.title : `${n.n} · ${n.title}`;
+  document.getElementById("ptitle").textContent = n.t === "dec" || n.doc ? n.title : `${n.n} · ${n.title}`;
   const kind = n.t === "dec" ? `<span class="pill no" style="background:var(--dec-bg);color:var(--dec-ico)">Decisión</span>` : `<span class="badge k-${n.k}">${KIND[n.k]}</span>`;
   let h = `<div class="kindrow">${kind}</div>`;
   if (n.d) h += `<section><h3>Qué se hace</h3><p>${esc(n.d)}</p></section>`;
@@ -794,7 +1128,10 @@ function openPanel(id, fromNav) {
     h += `<section><h3>Ejemplo con nuestro caso${n.ex.length > 1 ? ` · ${n.ex.length} variantes` : ""}</h3>${tabsH}<div id="exslot">${exHtml(n.ex[0], 0)}</div></section>`;
   }
   if (n.rule) h += `<section><h3>La regla</h3><div class="rule">${esc(n.rule)}</div></section>`;
+  if (n.doc) h = `<div class="kindrow"><span class="badge k-closer">${esc(n.lab)}</span></div>` + docHtml(n.doc);
   const body = document.getElementById("pbody"); body.innerHTML = h; body.scrollTop = 0;
+  const dall = document.getElementById("dall");
+  if (dall) dall.onclick = () => { const ds = body.querySelectorAll(".dsec"), allOpen = [...ds].every(x => x.open); ds.forEach(x => x.open = !allOpen); dall.textContent = allOpen ? "Abrir todo" : "Cerrar todo"; };
   wireCopy(body, n);
   body.querySelectorAll(".extab").forEach(t => t.addEventListener("click", () => {
     body.querySelectorAll(".extab").forEach(x => x.setAttribute("aria-selected", x === t ? "true" : "false"));
@@ -831,7 +1168,7 @@ mmEl.addEventListener("pointerdown", e => { mmDown = true; try { mmEl.setPointer
 mmEl.addEventListener("pointermove", e => { if (mmDown) mmMove(e); });
 mmEl.addEventListener("pointerup", () => { mmDown = false; });
 
-function closePanel() { panel.hidden = true; document.body.classList.remove("panel-open"); if (active) { byId[active].el.classList.remove("active"); active = null; } }
+function closePanel() { panel.hidden = true; document.body.classList.remove("panel-open", "panel-wide"); if (active) { byId[active].el.classList.remove("active"); active = null; } }
 document.getElementById("pclose").onclick = closePanel;
 panel.addEventListener("pointerdown", e => e.stopPropagation());
 panel.addEventListener("wheel", e => e.stopPropagation(), { passive: true });
