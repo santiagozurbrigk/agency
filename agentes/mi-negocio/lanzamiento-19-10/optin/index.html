@@ -150,6 +150,11 @@
   .vsl iframe, .vsl video { width: 100%; height: 100%; border: 0; display: block; }
   .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
   .chip { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--gris-2); }
+  .chip { display: inline-flex; align-items: center; gap: 7px; }
+  .chip .ci { width: 15px; height: 15px; flex: none; fill: none; stroke: var(--naranja); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .chip .vivo { width: 8px; height: 8px; border-radius: 50%; background: #FF3B30; box-shadow: 0 0 0 0 rgba(255,59,48,.6); animation: vivo 1.6s infinite; flex: none; }
+  @keyframes vivo { 70% { box-shadow: 0 0 0 7px rgba(255,59,48,0); } 100% { box-shadow: 0 0 0 0 rgba(255,59,48,0); } }
+  @media (prefers-reduced-motion: reduce) { .chip .vivo { animation: none; } }
   .chip b { color: #fff; font-weight: 600; }
   .pendiente { color: var(--gris); font-size: 14px; text-align: center; padding: 20px; }
   /* Notificaciones flotando alrededor del titular (solo desktop ancho) */
@@ -460,9 +465,9 @@
     <div class="vsl" id="vsl"><div class="pendiente">Acá va el VSL de registro (pendiente de grabar)</div></div>
 
     <div class="chips">
-      <span class="chip"><b>Lunes 19 de octubre</b></span>
-      <span class="chip" data-tz></span>
-      <span class="chip">100% gratis y en vivo</span>
+      <span class="chip"><svg class="ci" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><b>Lunes 19 de octubre</b></span>
+      <span class="chip"><svg class="ci" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-tz></span></span>
+      <span class="chip"><i class="vivo" aria-hidden="true"></i>100% gratis y en vivo</span>
     </div>
   </div>
 </header>
