@@ -7,7 +7,7 @@ Retargeting **solo para los que ya se anotaron**. Corren desde que abre el optin
 - Le hablamos a alguien que **ya está adentro**. No se pide que se anote, no se dice "cupos limitados" y no se vuelve a presentar a Manu. El único llamado es aparecer el lunes.
 - **La fecha no va en el copy ni se dice a cámara.** Va siempre en la placa: `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`.
 - **El QUÉ sí, el CÓMO nunca.** El Método B.A.S.E. se nombra y no se explica.
-- **Números:** solo los de Manu (el único caso real que tenemos), y cada uno con su captura en pantalla. Sin captura no hay número. El número total que se repite es uno solo, **2.200 suscriptores activos**, y no se usa 3.500 en ninguna pieza.
+- **Números:** cada uno con su captura en pantalla. Sin captura no hay número. El número total que se repite es uno solo: **más de 3.500 suscriptores activos** en las marcas de Manu. No se usa 2.200 en ninguna pieza.
 - **Palabras prohibidas:** masterclass, webinar, lanzamiento, funnel, lead. Se dice "la clase" o "la clase en vivo privada". Tampoco se dice "sin grabación".
 - **Voz de Manu:** voseo, cadena causal, el número entre guiones y un remate seco.
 
@@ -15,7 +15,7 @@ Retargeting **solo para los que ya se anotaron**. Corren desde que abre el optin
 
 ## MÉTODO
 
-### NUT-01 · Método · Lo que te llevás (video 35–45 s)
+### NUT-01 · Método · Lo que te llevás (video 50–60 s)
 
 **HOOK DE LA DECISIÓN** (0–6 s)
 
@@ -23,7 +23,7 @@ Te anotaste a la clase por algo. Dejame recordarte qué va a pasar ahí adentro.
 
 **LOS 3 ENTREGABLES** (6–28 s)
 
-Te voy a mostrar el Método B.A.S.E., el mismo con el que tengo 2.200 suscriptores activos con 1,28% de churn `[EDICIÓN: captura del panel de suscriptores]`. Y te vas a llevar tres cosas.
+Te voy a mostrar el Método B.A.S.E., el mismo con el que opero mis marcas de más de 3.500 suscriptores activos `[EDICIÓN: captura del panel de suscriptores]`. Y te vas a llevar tres cosas.
 
 Uno: por qué cada venta te cuesta lo mismo que la anterior, y cómo poder pagar 2,5 veces más por cada cliente que tu competencia.
 
@@ -31,11 +31,19 @@ Dos: cómo hacer que la segunda, la tercera y la cuarta compra te entren con el 
 
 Tres: cómo hacer que tu base te cobre sola todos los meses, aunque Meta te baje la cuenta.
 
-**INCENTIVO EN VIVO** (28–34 s) · *solo si existe y es real; si no, se corta este bloque*
+**LOS 3 BONUS EN VIVO** (28–50 s)
 
-Y los que estén en vivo se llevan [INCENTIVO EN VIVO A CONFIRMAR].
+Y los que estén en vivo se llevan tres bonus.
 
-**CIERRE + PLACA** (34–42 s)
+Uno: el roadmap paso a paso para migrar tu marca al modelo de suscripción con lo que ya tenés. Para arrancar con cientos de suscriptores el primer mes usando tu base de clientes, tu audiencia y tus anuncios ganadores, sin testear nada de cero.
+
+Dos: el Simulador de Suscripción. Cargás los números reales de tu marca y ves cómo se vería con suscripción: margen mes a mes, tres escenarios y cuánto CAC podés pagar. Con IVA y Ganancias adentro.
+
+Tres: los sistemas que uso en mis marcas, que te arman los flujos de email y WhatsApp de suscripción listos para cargar. El simulador te dice qué hacer; este te lo construye.
+
+`[EDICIÓN: placa con los 3 bonus: ROADMAP · SIMULADOR DE SUSCRIPCIÓN · SISTEMAS DE EMAIL Y WHATSAPP]`
+
+**CIERRE + PLACA** (50–58 s)
 
 Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
 
@@ -43,7 +51,8 @@ Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
 
 **Copy primario:**
 Te anotaste por algo: por el CPA, por el margen o por Meta.
-En la clase te muestro el Método B.A.S.E., el mismo con el que tengo 2.200 suscriptores activos.
+En la clase te muestro el Método B.A.S.E., el mismo con el que opero mis marcas de más de 3.500 suscriptores activos.
+Y si estás en vivo te llevás el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp.
 Ya tenés tu lugar. Solo tenés que aparecer.
 
 **Headline:** Ya estás adentro. Ahora aparecé.
@@ -62,7 +71,7 @@ Probaste creativos nuevos, cambiaste la campaña y buscaste otro proveedor. Y ca
 
 **EL MÉTODO, NOMBRADO** (24–34 s)
 
-En la clase te muestro el Método B.A.S.E., cómo pasé mi marca de compra única al modelo de suscripción, sin frenar lo que ya vendía. Hoy tengo 2.200 suscriptores activos `[EDICIÓN: captura del panel de suscriptores]`.
+En la clase te muestro el Método B.A.S.E., cómo pasé mi marca de compra única al modelo de suscripción, sin frenar lo que ya vendía. Hoy mis marcas suman más de 3.500 suscriptores activos `[EDICIÓN: captura del panel de suscriptores]`.
 
 **CIERRE + PLACA** (34–42 s)
 
@@ -81,32 +90,40 @@ En la clase te muestro el Método B.A.S.E. Ya tenés tu lugar.
 
 ## CASOS DE ÉXITO (uno por dolor)
 
-El único caso real que hay es la marca de Manu (CONTEXTO.md, "Caso de éxito — solo Manu"), así que los 3 casos lo usan con un ángulo distinto por pieza, como pide la regla del caso. Si aparece un caso real de un cliente, con nombre, número y captura, reemplaza al que corresponda a su dolor.
+**Los casos los completa Manu.** Cada pieza trae la estructura fija y un ejemplo de cómo se ve armada. Los ejemplos tienen nombres y números inventados solo para mostrar la forma: **no se publican**. Antes de grabar, cada `[CASO: …]` se reemplaza por un caso real que tenga captura.
+
+**La mini-fórmula del caso:** nombre + resultado con número + eco del dolor + `[EDICIÓN: comprobante en pantalla]`.
+
+- **El eco** es la situación de la que salió, dicha con las palabras del dolor. Es lo que hace que el que mira piense "ese soy yo".
+- **El número** tiene que salir de la captura. Si no hay captura, no hay número.
+- **El nombre** tiene que ser real y con permiso del cliente (nombre o nombre de la marca).
 
 ### NUT-03 · Caso · CPA (video 45–60 s)
 
-**HOOK CON EL DOLOR** (0–6 s)
+**HOOK CON EL DOLOR** (0–6 s) · *fijo*
 
 ¿Los CPA te empezaron a reventar desde que salieron siete marcas a pautar lo mismo que vos?
 
-**EL CASO** (6–24 s)
+**EL CASO** (6–24 s) · *lo completa Manu*
 
-Yo estaba ahí. Mi marca facturaba 60 millones por mes en compra única, y cada venta me costaba lo mismo que la anterior. Hoy factura 156.798.062 por mes `[EDICIÓN: captura de facturación]`, y puedo pagar 2,5 veces más por cada cliente que mi competencia. Si ellos pueden gastar 50 para adquirir un cliente, yo puedo gastar 75. Y listo: ya no tengo competencia.
+`[CASO: nombre] + [resultado con número] + [eco del dolor: cómo le estaba pegando el CPA]` `[EDICIÓN: comprobante en pantalla]`
 
-**EL GIRO + EL PUENTE** (24–42 s)
+> **Ejemplo (inventado, no publicar):** "Martín tiene una marca de limpieza. Salió pautando con 10 dólares de CPA y en seis meses estaba en 20, con cinco competidores copiándole el producto. Hoy tiene 400 suscriptores activos y puede pagar el doble por cada cliente que su competencia. Y listo: ya no le compiten."
 
-No bajé el CPA. Cambié una sola cosa, y es exactamente lo que vas a ver en la clase. Y yo venía igual que vos: peleando la subasta todos los meses.
+**EL GIRO + EL PUENTE** (24–42 s) · *fijo, se cambia solo el nombre*
 
-**CIERRE + PLACA** (42–52 s)
+No bajó el CPA. Cambió una sola cosa, y es exactamente lo que vas a ver en la clase. Y [nombre] venía igual que vos: peleando la subasta todos los meses.
+
+**CIERRE + PLACA** (42–52 s) · *fijo*
 
 Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
 **Copy primario:**
-Mi marca facturaba 60 millones por mes y cada venta me costaba lo mismo que la anterior.
-Hoy puedo pagar 2,5 veces más por cliente que mi competencia.
-No bajé el CPA. En la clase te muestro qué cambié.
+[Nombre] pasaba de [CPA antes] a [CPA después] y cada venta le costaba más que la anterior.
+Hoy [resultado con número].
+No bajó el CPA. En la clase te muestro qué cambió.
 
 **Headline:** No ganás bajando el CPA
 
@@ -114,64 +131,65 @@ No bajé el CPA. En la clase te muestro qué cambié.
 
 ### NUT-04 · Caso · Márgenes (video 45–60 s)
 
-**HOOK CON EL DOLOR** (0–6 s)
+**HOOK CON EL DOLOR** (0–6 s) · *fijo*
 
 ¿Facturás bien, pero a fin de mes te quedan 7 lucas de ganancia y estás sobreviviendo?
 
-**EL CASO** (6–26 s)
+**EL CASO** (6–26 s) · *lo completa Manu*
 
-En compra única, cada cliente me dejaba 30.000 de margen, y con eso tenía que pagar el anuncio. Breakeven en la primera venta, y ya está. Hoy cada cliente me compra tres veces como mínimo `[EDICIÓN: captura de recompras / LTV]`. El techo por cliente pasó de 30.000 a 90.000, y opero en 75.000: me quedan 15.000 vivos por cada uno.
+`[CASO: nombre] + [resultado con número: margen o recompras] + [eco del dolor: facturaba pero no le quedaba nada]` `[EDICIÓN: comprobante en pantalla]`
 
-`[EDICIÓN: placa con la cuenta 30.000 → 90.000 → 75.000]`
+> **Ejemplo (inventado, no publicar):** "Sofía facturaba 40 millones por mes con su marca de suplementos y le quedaban 7 lucas por venta, después de pagar el anuncio. Hoy cada cliente le compra tres veces y la segunda y la tercera compra le entran con el margen entero. Pasó de sobrevivir a tener margen para crecer."
 
-**EL GIRO + EL PUENTE** (26–44 s)
+**EL GIRO + EL PUENTE** (26–44 s) · *fijo, se cambia solo el nombre*
 
-No subí el precio ni cambié de proveedor. Cambié una sola cosa, y es exactamente lo que vas a ver en la clase. Y venía igual que vos, haciendo malabares para que cierre el mes.
+No subió el precio ni cambió de proveedor. Cambió una sola cosa, y es exactamente lo que vas a ver en la clase. Y [nombre] venía igual que vos, haciendo malabares para que cierre el mes.
 
-**CIERRE + PLACA** (44–54 s)
+**CIERRE + PLACA** (44–54 s) · *fijo*
 
 Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
 **Copy primario:**
-En compra única, cada cliente me dejaba 30.000, y con eso pagaba el anuncio.
-Hoy cada cliente me compra tres veces como mínimo.
-La segunda, la tercera y la cuarta compra entran con el margen entero. En la clase te muestro cómo llegué ahí.
+[Nombre] facturaba [número] pero le quedaban [margen antes] por venta.
+Hoy [resultado con número].
+La segunda, la tercera y la cuarta compra entran con el margen entero. En la clase te muestro cómo.
 
-**Headline:** De 30.000 a 90.000 por cliente
+**Headline:** Facturar no es lo mismo que ganar
 
 ---
 
 ### NUT-05 · Caso · Metadependencia (video 45–60 s)
 
-**HOOK CON EL DOLOR** (0–6 s)
+**HOOK CON EL DOLOR** (0–6 s) · *fijo*
 
 ¿El 1 del mes arrancás en cero, y si Meta te baja la cuenta se termina el negocio?
 
-**EL CASO** (6–24 s)
+**EL CASO** (6–24 s) · *lo completa Manu*
 
-Hoy tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen `[EDICIÓN: captura del Ads Manager en cero + cobros del mes]`. 2.200 suscriptores activos, 1,28% de churn `[EDICIÓN: captura del panel de suscriptores]`. Meta ya no me sostiene el negocio: solo me suma suscriptores nuevos.
+`[CASO: nombre] + [resultado con número: lo que cobra sin pautar] + [eco del dolor: dependía de Meta / arrancaba en cero]` `[EDICIÓN: comprobante en pantalla]`
 
-**EL GIRO + EL PUENTE** (24–42 s)
+> **Ejemplo (inventado, no publicar):** "A Tomás le bajaron la cuenta publicitaria un martes y ese mes facturó la mitad. Hoy arranca cada mes con 3 millones ya cobrados de sus suscriptores, antes de prender un solo anuncio."
 
-No conseguí una cuenta más segura ni otro canal. Cambié una sola cosa, y es exactamente lo que vas a ver en la clase. Y yo venía igual que vos: el 1 del mes arrancaba en cero.
+**EL GIRO + EL PUENTE** (24–42 s) · *fijo, se cambia solo el nombre*
 
-**CIERRE + PLACA** (42–52 s)
+No consiguió una cuenta más segura ni otro canal. Cambió una sola cosa, y es exactamente lo que vas a ver en la clase. Y [nombre] venía igual que vos: el 1 del mes arrancaba en cero.
+
+**CIERRE + PLACA** (42–52 s) · *fijo*
 
 Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
 **Copy primario:**
-Tengo una marca que, con la pauta apagada, sigue cobrando con un 50% de margen.
-El 1 del mes ya no arranco en cero.
-En la clase te muestro qué cambié. Ya tenés tu lugar.
+A [nombre] [eco del dolor con Meta].
+Hoy [resultado con número].
+En la clase te muestro qué cambió. Ya tenés tu lugar.
 
-**Headline:** Pauta apagada. Sigue cobrando.
+**Headline:** El mes arranca cobrado
 
 ---
-
 ## OBJECIONES
 
 Son objeciones reales: las dos primeras salen de la call de Herbora y la tercera es el freno principal del avatar. Cada una se responde con prueba y el método nombrado, no con argumentos.
@@ -184,7 +202,7 @@ Sé lo que estás pensando: "la suscripción está buenísima, pero en Argentina
 
 **CASO + MÉTODO** (6–28 s)
 
-Yo pensaba exactamente lo mismo. Hoy tengo 2.200 suscriptores activos acá, en Argentina, cobrando en pesos `[EDICIÓN: captura del panel de suscriptores]`. Y no es un mercado distinto: es el mismo cliente que hoy te compra una vez. Lo hice con el Método B.A.S.E., y en la clase te voy a revelar el camino exacto que apliqué para conseguirlo.
+Yo pensaba exactamente lo mismo. Hoy mis marcas suman más de 3.500 suscriptores activos acá, en Argentina, cobrando en pesos `[EDICIÓN: captura del panel de suscriptores]`. Y no es un mercado distinto: es el mismo cliente que hoy te compra una vez. Lo hice con el Método B.A.S.E., y en la clase te voy a revelar el camino exacto que apliqué para conseguirlo.
 
 **CIERRE + PLACA** (28–38 s)
 
@@ -194,10 +212,10 @@ En la clase lo ves completo. Ya estás adentro. Nos vemos ahí.
 
 **Copy primario:**
 "En Argentina no están acostumbrados a la suscripción."
-Yo pensaba lo mismo. Hoy tengo 2.200 suscriptores activos acá.
+Yo pensaba lo mismo. Hoy mis marcas suman más de 3.500 suscriptores activos acá.
 En la clase te muestro el camino exacto, con el Método B.A.S.E.
 
-**Headline:** 2.200 suscriptores. En Argentina.
+**Headline:** +3.500 suscriptores. En Argentina.
 
 ---
 
@@ -375,7 +393,6 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 
 - 1 campaña ABO con 11 ad sets, todos con la audiencia de registrados (la URL de la página de gracias del optin).
 - Objetivo ThruPlay. La campaña se apaga el lunes 19 a las 19.
-- **Presupuesto:** el piso del SOP es de USD 2–3 por día por ad set. Con 11 piezas hacen falta entre **USD 22 y 33 por día**. Si la parte de nutrición (5–10% del total) no llega a eso, conviene subirla antes que recortar piezas.
 
 ## Checklist de producción
 
@@ -388,20 +405,20 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 
 **Capturas que hacen falta para editar (sin captura no hay número):**
 
-- [ ] Panel de suscriptores: 2.200 activos (NUT-01, 02, 05 y 06)
-- [ ] Churn de 1,28% (NUT-05 y 07)
-- [ ] Facturación: 60M → 156.798.062 por mes (NUT-03 y 08)
-- [ ] Recompras / LTV de 3 compras como mínimo (NUT-04)
-- [ ] Ads Manager apagado + cobros del mes en la marca con 50% de margen (NUT-05)
+- [ ] Panel de suscriptores: más de 3.500 activos entre las marcas (NUT-01, 02 y 06)
+- [ ] Churn de 1,28% (NUT-07)
+- [ ] Facturación: 60M → 156.798.062 por mes (NUT-08)
+- [ ] El comprobante de cada caso real (NUT-03, 04 y 05), lo trae Manu con el caso
 
 **Placas de edición:**
 
 - [ ] Placa de fecha en las 11 piezas: "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"
-- [ ] Placa de la cuenta 30.000 → 90.000 → 75.000 (NUT-04) y 30.000 → 90.000 (NUT-11)
+- [ ] Placa de la cuenta 30.000 → 90.000 (NUT-11)
 - [ ] Subtítulos quemados en todas las piezas
 
 **Antes de publicar:**
 
-- [ ] Confirmar si hay un incentivo real por estar en vivo (NUT-01, bloque 3). Si no lo hay, se corta.
+- [ ] Placa de los 3 bonus (NUT-01)
+- [ ] Los 3 casos reales cargados por Manu, con nombre, número y captura (NUT-03, 04 y 05). Borrar los ejemplos antes de grabar.
 - [ ] Confirmar que "no frené nada" (NUT-08) se puede sostener.
-- [ ] Revisar que ninguna pieza diga la fecha a cámara, "masterclass", "webinar", "sin grabación" ni 3.500.
+- [ ] Revisar que ninguna pieza diga la fecha a cámara, "masterclass", "webinar", "sin grabación" ni 2.200.
