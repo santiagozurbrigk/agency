@@ -5,7 +5,7 @@ Retargeting **solo para los que ya se anotaron**. Corren desde que abre el optin
 **Reglas que se cumplen en las 11 piezas:**
 
 - Le hablamos a alguien que **ya está adentro**. No se pide que se anote, no se dice "cupos limitados" y no se vuelve a presentar a Manu. El único llamado es aparecer el lunes.
-- **La fecha no va en el copy ni se dice a cámara.** Va siempre en la placa: `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`.
+- **La fecha se dice solo en el cierre**, con la misma frase en las 11 piezas: "Nos vemos el lunes 19 de octubre, en vivo." La placa acompaña ese momento: `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`. En el resto del guion y en el copy primario no va la fecha.
 - **El QUÉ sí, el CÓMO nunca.** El Método B.A.S.E. se nombra y no se explica.
 - **Números:** cada uno con su captura en pantalla. Sin captura no hay número. El número total que se repite es uno solo: **más de 3.500 suscriptores activos** en las marcas de Manu. No se usa 2.200 en ninguna pieza.
 - **Palabras prohibidas:** masterclass, webinar, lanzamiento, funnel, lead. Se dice "la clase" o "la clase en vivo privada". Tampoco se dice "sin grabación".
@@ -59,7 +59,7 @@ Tres: los sistemas que uso en mis marcas, que te arman los flujos de email y Wha
 
 **CIERRE + PLACA** (50–58 s)
 
-`[CÁMARA: vuelve a la selfie]` Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
+`[CÁMARA: vuelve a la selfie]` Ya tenés tu lugar. Solo tenés que aparecer. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -89,7 +89,7 @@ En la clase te muestro el Método B.A.S.E., cómo pasé mi marca de compra únic
 
 **CIERRE + PLACA** (34–42 s)
 
-Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
+Ya tenés tu lugar. Solo tenés que aparecer. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -130,7 +130,7 @@ No bajó el CPA. Cambió una sola cosa, y es exactamente lo que vas a ver en la 
 
 **CIERRE + PLACA** (42–52 s) · *fijo*
 
-Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
+Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -161,7 +161,7 @@ No subió el precio ni cambió de proveedor. Cambió una sola cosa, y es exactam
 
 **CIERRE + PLACA** (44–54 s) · *fijo*
 
-Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
+Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -192,7 +192,7 @@ No consiguió una cuenta más segura ni otro canal. Cambió una sola cosa, y es 
 
 **CIERRE + PLACA** (42–52 s) · *fijo*
 
-Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos.
+Vos ya tenés tu lugar. Aparecé y velo con tus propios ojos. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -220,7 +220,7 @@ Yo pensaba exactamente lo mismo. Hoy mis marcas suman más de 3.500 suscriptores
 
 **CIERRE + PLACA** (28–38 s)
 
-En la clase lo ves completo. Ya estás adentro. Nos vemos ahí.
+En la clase lo ves completo. Ya estás adentro. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -245,7 +245,7 @@ Mi churn es de 1,28% `[EDICIÓN: captura del churn]`. De cada 100 suscriptores, 
 
 **CIERRE + PLACA** (28–38 s)
 
-En la clase lo ves completo. Ya estás adentro. Nos vemos ahí.
+En la clase lo ves completo. Ya estás adentro. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -270,7 +270,7 @@ La suscripción no reemplaza a la compra única: va al lado. Mi marca facturaba 
 
 **CIERRE + PLACA** (28–38 s)
 
-En la clase lo ves completo. Ya estás adentro. Nos vemos ahí.
+En la clase lo ves completo. Ya estás adentro. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -314,7 +314,7 @@ O cambiás el modelo, y el CPA pasa a ser un costo que pagás una vez. Eso es el
 
 **CIERRE + PLACA** (38–46 s)
 
-Ya tenés tu lugar. No lo dejes pasar. Aparecé.
+Ya tenés tu lugar. No lo dejes pasar. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -343,7 +343,7 @@ O armás una base que te cobre sola todos los meses, y Meta pasa a ser solo lo q
 
 **CIERRE + PLACA** (38–46 s)
 
-Ya tenés tu lugar. No lo dejes pasar. Aparecé.
+Ya tenés tu lugar. No lo dejes pasar. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -374,7 +374,7 @@ O hacés que cada cliente te compre tres veces, y el margen por cliente pasa de 
 
 **CIERRE + PLACA** (38–46 s)
 
-Ya tenés tu lugar. No lo dejes pasar. Aparecé.
+Ya tenés tu lugar. No lo dejes pasar. Nos vemos el lunes 19 de octubre, en vivo.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -436,4 +436,4 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 - [ ] Antes de grabar NUT-01: los 3 bonus abiertos en la MAC, cada uno en su pestaña, con datos de ejemplo cargados en el Simulador. Revisar que no se vean datos privados, mails ni notificaciones.
 - [ ] Los 3 casos reales cargados por Manu, con nombre, número y captura (NUT-03, 04 y 05). Borrar los ejemplos antes de grabar.
 - [ ] Confirmar que "no frené nada" (NUT-08) se puede sostener.
-- [ ] Revisar que ninguna pieza diga la fecha a cámara, "masterclass", "webinar", "sin grabación" ni 2.200.
+- [ ] Revisar que ninguna pieza diga la fecha fuera del cierre, "masterclass", "webinar", "sin grabación" ni 2.200.
