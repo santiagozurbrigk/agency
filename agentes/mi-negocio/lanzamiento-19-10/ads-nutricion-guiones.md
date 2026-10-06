@@ -11,6 +11,12 @@ Retargeting **solo para los que ya se anotaron**. Corren desde que abre el optin
 - **Palabras prohibidas:** masterclass, webinar, lanzamiento, funnel, lead. Se dice "la clase" o "la clase en vivo privada". Tampoco se dice "sin grabación".
 - **Voz de Manu:** voseo, cadena causal, el número entre guiones y un remate seco.
 
+**Formato de grabación (las 11 piezas):**
+
+- **Talking head casual, grabado con el celular en la mano.** Nada de trípode ni de celular apoyado. Selfie, vertical 9:16, mirando a la lente, como si le mandara un video a un conocido. Un poco de movimiento de la mano está bien: es lo que lo hace casual.
+- **El cambio de cámara en los bonus (NUT-01):** cuando arranca el bloque de los 3 bonus, Manu da vuelta la cámara del celular, de la selfie a la cámara que apunta hacia adelante, y muestra la MAC con los 3 bonus abiertos. Mientras nombra cada uno, va navegando entre ellos en la pantalla. Termina el bloque y vuelve a la selfie para el cierre.
+- **Audio:** la voz tiene que seguir oyéndose clara cuando la cámara apunta a la MAC. Si el celular no la toma bien, conviene un micrófono corbatero inalámbrico.
+
 ---
 
 ## MÉTODO
@@ -33,19 +39,27 @@ Tres: cómo hacer que tu base te cobre sola todos los meses, aunque Meta te baje
 
 **LOS 3 BONUS EN VIVO** (28–50 s)
 
-Y los que estén en vivo se llevan tres bonus.
+`[CÁMARA: selfie]` Y los que estén en vivo se llevan tres bonus. Mirá.
+
+`[CÁMARA: da vuelta el celular y apunta a la MAC. En la pantalla están abiertos los 3 bonus, cada uno en una pestaña o ventana.]`
+
+`[PANTALLA: abre el roadmap]`
 
 Uno: el roadmap paso a paso para migrar tu marca al modelo de suscripción con lo que ya tenés. Para arrancar con cientos de suscriptores el primer mes usando tu base de clientes, tu audiencia y tus anuncios ganadores, sin testear nada de cero.
 
+`[PANTALLA: pasa al Simulador. Se ve la tabla de cohortes y los tres escenarios.]`
+
 Dos: el Simulador de Suscripción. Cargás los números reales de tu marca y ves cómo se vería con suscripción: margen mes a mes, tres escenarios y cuánto CAC podés pagar. Con IVA y Ganancias adentro.
+
+`[PANTALLA: pasa a los sistemas. Se ven los flujos de email y WhatsApp.]`
 
 Tres: los sistemas que uso en mis marcas, que te arman los flujos de email y WhatsApp de suscripción listos para cargar. El simulador te dice qué hacer; este te lo construye.
 
-`[EDICIÓN: placa con los 3 bonus: ROADMAP · SIMULADOR DE SUSCRIPCIÓN · SISTEMAS DE EMAIL Y WHATSAPP]`
+`[EDICIÓN: sobre la toma de la MAC, un texto chico con el nombre de cada bonus a medida que aparece: ROADMAP · SIMULADOR DE SUSCRIPCIÓN · SISTEMAS DE EMAIL Y WHATSAPP]`
 
 **CIERRE + PLACA** (50–58 s)
 
-Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
+`[CÁMARA: vuelve a la selfie]` Ya tenés tu lugar. Solo tenés que aparecer. Te espero.
 
 `[EDICIÓN: placa "CLASE EN VIVO PRIVADA — LUNES 19/10 · 19 HS (ARG)"]`
 
@@ -396,7 +410,7 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 
 ## Checklist de producción
 
-**Grabar (11 videos, talking head de Manu, vertical 9:16):**
+**Grabar (11 videos, talking head de Manu con el celular en la mano, vertical 9:16):**
 
 - [ ] NUT-01 y NUT-02 · método · 35–45 s cada uno
 - [ ] NUT-03, NUT-04 y NUT-05 · casos · 45–60 s cada uno
@@ -418,7 +432,8 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 
 **Antes de publicar:**
 
-- [ ] Placa de los 3 bonus (NUT-01)
+- [ ] Texto con el nombre de cada bonus sobre la toma de la MAC (NUT-01)
+- [ ] Antes de grabar NUT-01: los 3 bonus abiertos en la MAC, cada uno en su pestaña, con datos de ejemplo cargados en el Simulador. Revisar que no se vean datos privados, mails ni notificaciones.
 - [ ] Los 3 casos reales cargados por Manu, con nombre, número y captura (NUT-03, 04 y 05). Borrar los ejemplos antes de grabar.
 - [ ] Confirmar que "no frené nada" (NUT-08) se puede sostener.
 - [ ] Revisar que ninguna pieza diga la fecha a cámara, "masterclass", "webinar", "sin grabación" ni 2.200.
