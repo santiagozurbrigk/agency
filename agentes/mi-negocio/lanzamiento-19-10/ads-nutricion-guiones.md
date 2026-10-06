@@ -281,8 +281,6 @@ En la clase te muestro el camino exacto, con el Método B.A.S.E.
 
 **Headline:** No rompés nada. Sumás.
 
-> Si el caso no aguanta "No frené nada", porque no se puede mostrar o no fue así, se cambia por una frase que sí se pueda probar.
->
 > **Alternativa a esta pieza:** "Ya pagué dos mentorías y me enseñaron a buscar producto. Yo ya tengo producto." Es la más débil como dolor, pero funciona como objeción.
 
 ---
@@ -412,7 +410,8 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 
 **Grabar (11 videos, talking head de Manu con el celular en la mano, vertical 9:16):**
 
-- [ ] NUT-01 y NUT-02 · método · 35–45 s cada uno
+- [ ] NUT-01 · método con los bonus · 50–60 s
+- [ ] NUT-02 · método · 35–45 s
 - [ ] NUT-03, NUT-04 y NUT-05 · casos · 45–60 s cada uno
 - [ ] NUT-06, NUT-07 y NUT-08 · objeciones · 30–45 s cada uno
 - [ ] NUT-09, NUT-10 y NUT-11 · costo de inacción · 40–55 s cada uno
@@ -435,5 +434,4 @@ En la clase te muestro cómo llegar ahí. Ya tenés tu lugar.
 - [ ] Texto con el nombre de cada bonus sobre la toma de la MAC (NUT-01)
 - [ ] Antes de grabar NUT-01: los 3 bonus abiertos en la MAC, cada uno en su pestaña, con datos de ejemplo cargados en el Simulador. Revisar que no se vean datos privados, mails ni notificaciones.
 - [ ] Los 3 casos reales cargados por Manu, con nombre, número y captura (NUT-03, 04 y 05). Borrar los ejemplos antes de grabar.
-- [ ] Confirmar que "no frené nada" (NUT-08) se puede sostener.
 - [ ] Revisar que ninguna pieza diga la fecha fuera del cierre, "masterclass", "webinar", "sin grabación" ni 2.200.
