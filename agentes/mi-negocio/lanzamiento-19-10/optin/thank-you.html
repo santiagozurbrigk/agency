@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0B0B0C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Píxel de Meta: código base. Cargá tu ID en META_PIXEL_ID (vacío = no carga). -->
 <script>
@@ -24,144 +24,145 @@
 <!-- <script src="https://XXXXXX.t.hyros.com/v1/lst/universal-script?ph=..."></script> -->
 
 <style>
-  /* Concepto: un board de diseño (marco con tiradores, notas pegadas, cursor "Vos").
-     Mismo sistema que la optin: negro, hueso y naranja. */
+  /* Concepto: el celular de un dueño de tienda, como en la optin.
+     Gris = "Nueva venta" (cada una te costó un CPA). Naranja = "Cobro recurrente" (sin pauta). */
   :root {
     --negro: #0B0B0C; --negro-2: #141415; --negro-3: #1D1D1F;
     --linea: rgba(255,255,255,.08); --hueso: #F2EDE4; --tinta: #17181C;
     --gris: #8E8E93; --gris-2: #B9B9BE;
     --naranja: #F26A1B; --naranja-oscuro: #B84A0C; --naranja-rgb: 242, 106, 27;
-    --verde: #1FAF55; --verde-2: #25D366; --rojo: #E5352B;
+    --verde: #1FAF55; --verde-2: #25D366; --rojo: #FF3B30;
     --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
     --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    --mano: "Caveat", cursive;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; color: #fff; font-family: var(--cuerpo); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-    background: radial-gradient(900px 520px at 50% -120px, rgba(var(--naranja-rgb), .22), transparent 70%),
-                radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px) 0 0 / 22px 22px, var(--negro); }
+  body { margin: 0; background: var(--negro); color: #fff; font-family: var(--cuerpo); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   h1, h2, h3 { font-family: var(--titulos); line-height: 1.1; margin: 0; letter-spacing: -0.02em; }
   p { margin: 0; }
   img { max-width: 100%; height: auto; display: block; }
   .wrap { max-width: 760px; margin: 0 auto; padding: 0 18px; position: relative; }
   .oculto { display: none !important; }
+  .marca { background: var(--naranja); color: #fff; padding: 0 .16em; border-radius: .14em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 
-  /* Barra del board */
-  .top { position: sticky; top: 0; z-index: 40; background: rgba(11,11,12,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
-  .top .fila { display: flex; align-items: center; gap: 14px; height: 56px; padding: 0 18px; max-width: 1400px; margin: 0 auto; }
+  /* Fondo: el gráfico de suscriptores activos, ya dibujado */
+  .bg-chart { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+  .bg-chart svg { width: 100%; height: 100%; }
+  .bg-chart .grid line { stroke: rgba(255,255,255,.05); stroke-width: 1; stroke-dasharray: 4 6; vector-effect: non-scaling-stroke; }
+  .bg-chart .l { fill: none; stroke: rgba(var(--naranja-rgb), .35); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+  .bg-chart .a { fill: url(#ga); }
+  header, section, footer { position: relative; z-index: 1; }
+
+  /* Barra superior */
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(11,11,12,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--linea); }
+  .top .fila { display: flex; align-items: center; gap: 14px; height: 56px; padding: 0 18px; max-width: 1120px; margin: 0 auto; }
   .logo { display: flex; align-items: center; gap: 10px; font-family: var(--titulos); font-weight: 700; letter-spacing: .16em; font-size: 14px; }
   .logo svg { width: 30px; height: 20px; }
-  .board { display: none; align-items: center; gap: 8px; font-size: 13px; color: var(--gris-2); padding-left: 14px; border-left: 1px solid var(--linea); }
-  .board b { color: var(--naranja); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
-  .board b::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--naranja); }
-  .top-cta { margin-left: auto; background: var(--verde); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 14px; border-radius: 10px; box-shadow: 0 6px 20px rgba(31,175,85,.35); white-space: nowrap; }
-  .top-cta.cal { background: var(--naranja); box-shadow: 0 6px 20px rgba(var(--naranja-rgb), .35); }
+  .estado { display: none; align-items: center; gap: 7px; font-size: 13px; color: var(--gris-2); }
+  .estado i { width: 7px; height: 7px; border-radius: 50%; background: #34C759; box-shadow: 0 0 0 3px rgba(52,199,89,.2); }
+  .top-cta { margin-left: auto; background: var(--verde); color: #fff; text-decoration: none; font-weight: 700; font-size: 14px; padding: 9px 14px; border-radius: 10px; white-space: nowrap; }
+  .top-cta.cal { background: var(--naranja); }
+
+  /* Notificación (componente, igual que en la optin) */
+  .notif { display: flex; gap: 11px; align-items: flex-start; text-align: left; background: rgba(38,38,40,.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 12px 14px; color: #fff; box-shadow: 0 14px 34px rgba(0,0,0,.4); }
+  .notif.claro { background: rgba(246,243,238,.96); color: var(--tinta); }
+  .notif .ic { flex: 0 0 38px; height: 38px; border-radius: 9px; display: grid; place-items: center; }
+  .notif .ic svg { width: 22px; height: 22px; }
+  .ic.tienda { background: var(--naranja); } .ic.wa { background: var(--verde); color: #fff; } .ic.rojo { background: var(--rojo); }
+  .ic.genesis { background: var(--negro); border: 1px solid rgba(255,255,255,.12); }
+  .ic.genesis svg { width: 26px; height: 17px; }
+  .notif .nb { flex: 1; min-width: 0; }
+  .notif .nt { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .notif .nt b { font-size: 14.5px; font-weight: 600; }
+  .notif .nt time { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+  .notif.claro .nt time { color: #7d7a74; }
+  .notif .nb p { font-size: 14px; line-height: 1.34; margin-top: 1px; color: rgba(255,255,255,.92); }
+  .notif.claro .nb p { color: var(--tinta); }
+  .notif .nb p strong { font-weight: 700; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; margin-top: 7px; font-size: 11.5px; font-weight: 600; padding: 3px 8px; border-radius: 999px; color: var(--naranja); background: rgba(var(--naranja-rgb), .14); }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
   /* Hero */
-  .hero { padding: 34px 0 10px; text-align: center; }
-  .alerta { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(180deg, #F0453A, #C9271E); color: #fff; font-weight: 800; font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase;
-    padding: 10px 20px; border-radius: 999px; border: 1px solid rgba(255,255,255,.25); box-shadow: 0 0 0 4px rgba(229,53,43,.18), 0 10px 40px rgba(229,53,43,.55); animation: latido 2.2s ease-in-out infinite; }
-  @keyframes latido { 50% { box-shadow: 0 0 0 7px rgba(229,53,43,.1), 0 10px 50px rgba(229,53,43,.75); } }
-  .marco { position: relative; display: inline-block; margin: 26px auto 0; padding: 14px 22px 16px; border: 1px solid rgba(var(--naranja-rgb), .75); }
-  .marco i { position: absolute; width: 9px; height: 9px; background: #fff; border: 1px solid var(--naranja); }
-  .marco i:nth-child(1) { left: -5px; top: -5px; } .marco i:nth-child(2) { right: -5px; top: -5px; }
-  .marco i:nth-child(3) { left: -5px; bottom: -5px; } .marco i:nth-child(4) { right: -5px; bottom: -5px; }
-  .marco h1 { font-size: clamp(34px, 8.6vw, 62px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
-  .marco h1 span { background: linear-gradient(180deg, #FF8A3D, var(--naranja) 60%, #D9560C); color: #fff; padding: 0 .14em; border-radius: .12em; box-shadow: 0 8px 30px rgba(var(--naranja-rgb), .45); white-space: nowrap; }
-  .medida { position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%); font-size: 10.5px; font-weight: 700; color: #fff; background: var(--naranja); border-radius: 4px; padding: 1px 6px; letter-spacing: .04em; }
+  .hero { padding: 26px 0 10px; text-align: center; overflow-x: clip; }
+  .hero::before { content: ""; position: absolute; left: 50%; top: -160px; transform: translateX(-50%); width: 900px; height: 560px; pointer-events: none; background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .2), transparent 70%); }
+  /* La alerta llega como una notificación que entra desde arriba */
+  .alerta { max-width: 430px; margin: 0 auto; animation: entra .6s .2s cubic-bezier(.2,.8,.2,1) both, vibra .5s 1s ease-in-out 2; }
+  .alerta .nb p strong { color: #fff; }
+  @keyframes entra { from { opacity: 0; transform: translateY(-26px) scale(.97); } }
+  @keyframes vibra { 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+  .hero h1 { font-size: clamp(36px, 9vw, 64px); font-weight: 800; letter-spacing: -0.03em; margin: 26px auto 0; line-height: 1.04; }
 
-  /* Notas pegadas */
-  .nota { position: absolute; z-index: 3; width: 178px; padding: 22px 14px 14px; text-align: center; box-shadow: 0 18px 30px rgba(0,0,0,.45); }
-  .nota::before { content: ""; position: absolute; left: 50%; top: -9px; width: 86px; height: 20px; transform: translateX(-50%) rotate(-2deg); background: rgba(120,120,120,.55); }
-  .nota small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; opacity: .6; }
-  .nota b { display: block; font-family: var(--mano); font-size: 25px; font-weight: 700; line-height: 1.05; margin-top: 4px; }
-  .nota.clara { background: #F4EFE3; color: var(--tinta); }
-  .nota.oscura { background: #26262A; color: #fff; border: 1px solid rgba(255,255,255,.08); }
-  .nota-regalo { right: -150px; top: 74px; transform: rotate(5deg); }
-  .nota-ojo { left: -170px; top: 90px; transform: rotate(-5deg); }
-  .nota { display: none; }
+  /* Notificaciones flotando alrededor del video (solo escritorio ancho) */
+  .flota { display: none; position: absolute; width: 270px; z-index: 3; }
+  .flota.f1 { left: -250px; top: 34px; transform: rotate(-3deg); }
+  .flota.f2 { right: -250px; top: 10px; transform: rotate(3deg); }
+  .flota.f3 { right: -230px; top: 170px; transform: rotate(-2deg); }
+  .flota .notif { opacity: 0; animation: aparece .6s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes aparece { from { opacity: 0; transform: translateY(-20px) scale(.97); } to { opacity: 1; transform: none; } }
+  .flota.f1 .notif { animation-delay: .9s; } .flota.f2 .notif { animation-delay: 1.3s; } .flota.f3 .notif { animation-delay: 1.7s; }
 
   /* Video */
-  .video-sec { position: relative; margin: 46px auto 0; max-width: 720px; }
-  .video { position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden; background: #000; border: 1px solid rgba(var(--naranja-rgb), .45); box-shadow: 0 30px 70px rgba(0,0,0,.6), 0 0 0 6px rgba(var(--naranja-rgb), .06); }
+  .video-sec { position: relative; margin: 30px auto 0; max-width: 720px; }
+  .video { position: relative; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden; background: var(--negro-2); border: 1px solid var(--linea); box-shadow: 0 30px 70px rgba(0,0,0,.55); }
   .video iframe, .video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-  .video .vacio { position: absolute; inset: 0; display: grid; place-items: center; color: var(--gris); font-size: 14px; text-align: center; padding: 20px;
-    background: radial-gradient(60% 60% at 50% 40%, rgba(var(--naranja-rgb), .12), transparent 70%), #0d0d0e; }
+  .video .vacio { position: absolute; inset: 0; display: grid; place-items: center; color: var(--gris); font-size: 14px; text-align: center; padding: 20px; }
   .video .vacio span { display: grid; gap: 12px; justify-items: center; }
-  .video .vacio svg { width: 58px; height: 58px; }
-  .progreso { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: rgba(255,255,255,.12); z-index: 2; }
+  .video .vacio svg { width: 56px; height: 56px; }
+  .progreso { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.1); z-index: 2; }
   .progreso i { display: block; height: 100%; width: 0; background: var(--naranja); }
-  .cursor { position: absolute; right: -14px; top: 22%; z-index: 4; display: none; align-items: flex-start; gap: 2px; pointer-events: none; }
-  .cursor svg { width: 18px; height: 18px; }
-  .cursor span { margin-top: 14px; background: var(--naranja); color: #fff; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
 
-  /* Pedido + botón */
-  .pedido { text-align: center; color: var(--gris-2); font-size: 16.5px; max-width: 36em; margin: 26px auto 0; }
+  /* Pedido + botones */
+  .pedido { text-align: center; color: var(--gris-2); font-size: 16.5px; max-width: 34em; margin: 24px auto 0; }
   .pedido b { color: #fff; }
-  .btn { display: flex; justify-content: center; align-items: center; gap: 12px; width: 100%; border: 0; border-radius: 16px; padding: 20px; cursor: pointer; text-decoration: none; font-family: var(--titulos); font-weight: 800; font-size: 19px; letter-spacing: .04em; text-transform: uppercase; transition: transform .1s, box-shadow .2s; }
+  .btn { display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; max-width: 720px; border: 0; border-radius: 14px; padding: 18px 20px; cursor: pointer; text-decoration: none; font-family: var(--cuerpo); font-weight: 700; font-size: 17px; letter-spacing: .03em; text-transform: uppercase; transition: transform .08s; margin: 0 auto; }
   .btn:active { transform: translateY(2px); }
-  .btn svg { width: 28px; height: 28px; flex: none; }
-  @media (max-width: 480px) { .btn { font-size: 16px; padding: 18px 14px; gap: 10px; } .btn svg { width: 24px; height: 24px; } }
-  .btn-wa { max-width: 720px; margin: 18px auto 0; background: linear-gradient(180deg, var(--verde-2), var(--verde)); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 16px 50px rgba(37,211,102,.38); }
-  .btn-wa:hover { box-shadow: 0 0 0 1px rgba(255,255,255,.25) inset, 0 18px 60px rgba(37,211,102,.55); }
-  .btn-cal { max-width: 720px; margin: 12px auto 0; background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.18); font-family: var(--cuerpo); font-weight: 700; font-size: 14.5px; letter-spacing: .03em; padding: 14px; }
+  .btn svg { width: 24px; height: 24px; flex: none; }
+  .btn-wa { margin-top: 18px; background: linear-gradient(90deg, var(--verde), var(--verde-2)); color: #fff; box-shadow: 0 12px 34px rgba(37,211,102,.32); }
+  .btn-cal { margin-top: 12px; background: #fff; color: var(--negro); box-shadow: 0 0 0 2px var(--naranja); font-size: 14.5px; padding: 14px; }
   .btn-cal svg { width: 18px; height: 18px; color: var(--naranja); }
-  .btn-cal:hover { border-color: rgba(255,255,255,.35); }
-  .aclara { text-align: center; color: var(--gris); font-size: 13.5px; margin-top: 12px; }
+  @media (max-width: 480px) { .btn { font-size: 15.5px; padding: 17px 12px; } }
 
   /* Horario por país */
-  .horas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; max-width: max-content; margin: 34px auto 0; padding: 10px 16px; border-radius: 999px; background: var(--negro-2); border: 1px solid var(--linea); font-size: 14.5px; color: var(--gris-2); font-variant-numeric: tabular-nums; }
-  .horas > svg { width: 17px; height: 17px; fill: none; stroke: var(--naranja); stroke-width: 2; stroke-linecap: round; flex: none; }
+  .horas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 12px; max-width: max-content; margin: 30px auto 0; padding: 9px 15px; border-radius: 999px; background: var(--negro-2); border: 1px solid var(--linea); font-size: 14px; color: var(--gris-2); font-variant-numeric: tabular-nums; }
+  .horas > svg { width: 16px; height: 16px; fill: none; stroke: var(--naranja); stroke-width: 2; stroke-linecap: round; flex: none; }
   .horas .h { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
   .horas .h b { color: #fff; font-weight: 700; }
   .horas .h:first-of-type b { color: var(--naranja); }
   .horas .h small { color: var(--gris); font-size: 11.5px; }
   .bandera { width: 20px; height: 14px; border-radius: 2px; overflow: hidden; flex: none; box-shadow: 0 0 0 1px rgba(255,255,255,.15); }
-  .fecha-l { text-align: center; color: var(--gris); font-size: 13.5px; margin-top: 10px; }
+  .fecha-l { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 8px; color: var(--gris); font-size: 13.5px; margin-top: 10px; }
   .fecha-l b { color: #fff; }
+  .vivo { width: 8px; height: 8px; border-radius: 50%; background: var(--rojo); animation: pulso 1.6s infinite; display: inline-block; }
+  @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(255,59,48,.6); } 70%, 100% { box-shadow: 0 0 0 7px rgba(255,59,48,0); } }
 
-  /* Regalos */
-  .regalos { padding: 54px 18px 120px; text-align: center; }
-  .hojas { padding: 0 !important; }
-  .regalos h2 { font-family: var(--cuerpo); font-size: 18px; font-weight: 600; letter-spacing: 0; line-height: 1.45; max-width: 28em; margin: 0 auto; color: #fff; }
-  .regalos h2 span { color: var(--gris-2); font-weight: 500; }
-  .hojas { display: grid; gap: 16px; max-width: 1000px; margin: 26px auto 0; padding: 0 18px; }
-  .hoja { background: #fff; border-radius: 6px; padding: 10px 10px 14px; text-align: left; color: var(--tinta); box-shadow: 0 20px 44px rgba(0,0,0,.45); transition: transform .3s cubic-bezier(.2,.8,.2,1); }
-  .hoja img { width: 100%; aspect-ratio: 1400 / 762; object-fit: cover; object-position: top left; border-radius: 3px; border: 1px solid #ECE6DB; }
-  .hoja small { display: block; margin-top: 12px; font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--naranja); }
-  .hoja b { display: block; font-family: var(--titulos); font-size: 17px; line-height: 1.2; margin-top: 3px; }
+  /* Regalos: cada uno llega como una notificación con vista previa */
+  .regalos { padding: 56px 18px 70px; text-align: center; }
+  .regalos h2 { font-size: 26px; font-weight: 800; max-width: 18em; margin: 0 auto; }
+  .regalos .sub { color: var(--gris-2); margin-top: 8px; }
+  .previas { display: grid; gap: 14px; max-width: 1040px; margin: 26px auto 0; }
+  .previa { flex-direction: column; gap: 10px; padding: 12px; }
+  .previa .fila-n { display: flex; gap: 11px; align-items: flex-start; }
+  .previa img { width: 100%; aspect-ratio: 1400 / 762; object-fit: cover; object-position: top left; border-radius: 10px; }
 
-  /* Barra de herramientas del board (decorativa, solo escritorio) */
-  .herramientas { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 30; display: none; align-items: center; gap: 4px; padding: 6px; border-radius: 14px; background: rgba(28,28,30,.92); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 14px 40px rgba(0,0,0,.5); }
-  .herramientas span { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; color: var(--gris-2); }
-  .herramientas span.on { background: rgba(var(--naranja-rgb), .2); color: var(--naranja); }
-  .herramientas svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .herramientas em { font-style: normal; font-size: 12.5px; font-weight: 700; color: var(--gris-2); padding: 0 12px 0 14px; border-left: 1px solid rgba(255,255,255,.1); margin-left: 6px; }
+  footer { text-align: center; padding: 26px 0 96px; color: var(--gris); font-size: 13px; border-top: 1px solid var(--linea); }
+  footer .logo { justify-content: center; color: #fff; margin-bottom: 6px; }
 
   /* CTA fijo en el celular */
   .fijo { position: fixed; left: 0; right: 0; bottom: 0; z-index: 50; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(11,11,12,.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--linea); transform: translateY(115%); transition: transform .25s; }
   .fijo.on { transform: none; }
-  .fijo .btn { margin: 0; padding: 15px; font-size: 16px; }
-  .fijo .btn svg { width: 22px; height: 22px; }
-
-  footer { position: relative; text-align: center; padding: 26px 0 96px; color: var(--gris); font-size: 13px; border-top: 1px solid var(--linea); }
-  footer .logo { justify-content: center; color: #fff; margin-bottom: 6px; }
+  .fijo .btn { margin: 0; padding: 15px; font-size: 15.5px; }
 
   @media (min-width: 720px) {
-    .board { display: flex; }
-    .hero { padding-top: 46px; }
-    .hero .wrap { max-width: 1000px; }
-    .marco h1 { white-space: nowrap; font-size: clamp(40px, 6vw, 64px); }
-    .hojas { grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .hoja:hover { transform: translateY(-6px) rotate(-.6deg); }
+    .estado { display: inline-flex; }
+    .hero { padding-top: 40px; }
+    .hero h1 { white-space: nowrap; }
+    .regalos h2 { font-size: 34px; }
+    .previas { grid-template-columns: repeat(3, 1fr); }
     .fijo { display: none; }
+    footer { padding-bottom: 32px; }
   }
-  @media (min-width: 1100px) {
-    .nota, .cursor { display: flex; } .nota { display: block; }
-    .herramientas { display: flex; }
-  }
-  @media (prefers-reduced-motion: reduce) { .alerta { animation: none; } .hoja { transition: none; } }
+  @media (min-width: 1240px) { .flota { display: block; } }
+  @media (prefers-reduced-motion: reduce) { .alerta, .flota .notif { animation: none; opacity: 1; } .vivo { animation: none; } }
 </style>
 </head>
 <body>
@@ -169,33 +170,48 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="i-genesis" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
+    <symbol id="i-bolsa" viewBox="0 0 24 24"><path fill="#fff" d="M7 8V7a5 5 0 0 1 10 0v1h2.2a1 1 0 0 1 1 .93l.8 11A2 2 0 0 1 19 23H5a2 2 0 0 1-2-2.07l.8-11A1 1 0 0 1 4.8 8H7Zm2 0h6V7a3 3 0 0 0-6 0v1Z"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24"><path fill="#fff" d="M12 3a1.6 1.6 0 0 1 1.6 1.6v8.8a1.6 1.6 0 0 1-3.2 0V4.6A1.6 1.6 0 0 1 12 3Zm0 14.2a1.9 1.9 0 1 1 0 3.8 1.9 1.9 0 0 1 0-3.8Z"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.16-1.5A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.13 15.07l-.3-.18-3.06.89.9-2.98-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm-3.3 4.1c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.08 3.17 5.04 4.45 2.46 1.06 2.96.85 3.5.8.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.73-.86-2-.95-.27-.1-.46-.15-.66.14-.2.3-.76.95-.93 1.15-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.49.1-.2.05-.37-.03-.52-.07-.15-.65-1.6-.9-2.18-.23-.57-.47-.49-.65-.5h-.52Z"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><path fill="currentColor" d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h1V3a1 1 0 0 1 1-1Zm13 8H4v9a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-9ZM5 6a1 1 0 0 0-1 1v1h16V7a1 1 0 0 0-1-1H5Z"/></symbol>
   </defs>
 </svg>
 
+<!-- Fondo -->
+<div class="bg-chart" aria-hidden="true">
+  <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+    <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F26A1B" stop-opacity=".14"/><stop offset="1" stop-color="#F26A1B" stop-opacity="0"/></linearGradient></defs>
+    <g class="grid"><line x1="0" y1="200" x2="1000" y2="200"/><line x1="0" y1="400" x2="1000" y2="400"/><line x1="0" y1="600" x2="1000" y2="600"/><line x1="0" y1="800" x2="1000" y2="800"/></g>
+    <path class="a" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200 L 1000 1000 L 0 1000 Z"/>
+    <path class="l" d="M0 960 C 60 955, 90 940, 130 935 S 200 905, 240 900 S 300 880, 330 885 S 400 850, 440 830 S 520 800, 560 790 S 620 770, 650 775 S 720 700, 760 660 S 830 560, 870 500 S 940 330, 1000 200"/>
+  </svg>
+</div>
+
 <header class="top">
   <div class="fila">
     <div class="logo"><svg><use href="#i-genesis"/></svg>GÉNESIS</div>
-    <div class="board">Board: Tu lugar <b>Confirmado</b></div>
+    <span class="estado"><i></i>Tu lugar está reservado</span>
     <a class="top-cta" id="top-cta" href="#" target="_blank" rel="noopener">Entrar al grupo</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <span class="alerta" id="alerta">🚨 Alerta, no te vayas todavía 🚨</span>
-    <div><div class="marco"><i></i><i></i><i></i><i></i><h1 id="titular">tengo 3 <span>REGALOS</span> para vos</h1><span class="medida">Lunes 19/10</span></div></div>
-    <div class="nota clara nota-regalo"><small>Regalo</small><b>SOPs y recursos exclusivos</b></div>
+    <div class="notif alerta" id="alerta" role="alert">
+      <div class="ic rojo"><svg><use href="#i-alerta"/></svg></div>
+      <div class="nb"><div class="nt"><b>Génesis</b><time>ahora</time></div><p><strong>No cierres esta página todavía.</strong> Te falta un paso para entrar a la clase.</p></div>
+    </div>
+    <h1 id="titular">Tengo 3 <span class="marca">regalos</span> para vos</h1>
 
     <div class="video-sec">
-      <div class="nota oscura nota-ojo"><small>Ojo</small><b>Mirá esto antes de irte</b></div>
+      <div class="flota f1"><div class="notif"><div class="ic wa"><svg><use href="#i-wa"/></svg></div><div class="nb"><div class="nt"><b>Grupo Génesis</b><time>hace 3 min</time></div><p><strong>Manu:</strong> Les dejo el SOP de onboarding que uso en mi marca 📎</p></div></div></div>
+      <div class="flota f2"><div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge">Sin pauta</span></div></div></div>
+      <div class="flota f3"><div class="notif claro"><div class="ic genesis"><svg><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><strong>El simulador de suscripción</strong> te espera en la clase.</p></div></div></div>
       <!-- Video de la thank you: pegá el embed (iframe o <video>) adentro de .video, en lugar de .vacio -->
       <div class="video" id="video">
         <div class="vacio"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#F26A1B"/><path d="M10 8.2v7.6l6-3.8z" fill="#fff"/></svg>Acá va el video de la thank you</span></div>
         <div class="progreso"><i id="barra"></i></div>
       </div>
-      <div class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#F26A1B"/></svg><span>Vos</span></div>
     </div>
 
     <p class="pedido">En el grupo de WhatsApp te paso los <b>SOPs y recursos EXCLUSIVOS</b> que uso en mis marcas de suscripción. Y el lunes, <b>el link para entrar a la clase</b>: no llega por mail.</p>
@@ -205,27 +221,19 @@
     <div class="horas" id="horas" aria-label="Horario de la clase en cada país">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
     </div>
-    <p class="fecha-l"><b class="js-fecha"></b> · 100% gratis y en vivo · empieza en <b id="falta"></b></p>
+    <p class="fecha-l"><b class="js-fecha"></b><span>·</span><span><i class="vivo"></i> 100% gratis y en vivo</span><span>·</span><span>empieza en <b id="falta"></b></span></p>
   </div>
 </section>
 
 <section class="regalos">
-  <h2>Estos son los 3 regalos que te llevás por asistir 🎁<br><span>Estate atento al grupo: por ahí te llega todo.</span></h2>
-  <div class="hojas">
-    <div class="hoja"><img src="bonus/bonus-1.webp" alt="Board del roadmap de migración a suscripción" width="1400" height="762" loading="lazy"><small>Regalo 1</small><b>El roadmap para migrar tu marca con lo que ya tenés</b></div>
-    <div class="hoja"><img src="bonus/bonus-2.webp" alt="Simulador de suscripción" width="1400" height="760" loading="lazy"><small>Regalo 2</small><b>El simulador de suscripción</b></div>
-    <div class="hoja"><img src="bonus/bonus-3.webp" alt="Sistema de flows de email armados por IA" width="1400" height="762" loading="lazy"><small>Regalo 3</small><b>La IA que arma los flujos de email</b></div>
+  <h2>Estos son los 3 regalos que te llevás por asistir</h2>
+  <p class="sub">Estate atento al grupo: por ahí te llega todo.</p>
+  <div class="previas">
+    <div class="notif previa"><div class="fila-n"><div class="ic genesis"><svg><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 1</time></div><p><strong>El roadmap para migrar tu marca</strong> con lo que ya tenés.</p></div></div><img src="bonus/bonus-1.webp" alt="Board del roadmap de migración a suscripción" width="1400" height="762" loading="lazy"></div>
+    <div class="notif previa"><div class="fila-n"><div class="ic genesis"><svg><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><strong>El simulador de suscripción.</strong> Cargás tus números y ves cuánto ganarías.</p></div></div><img src="bonus/bonus-2.webp" alt="Simulador de suscripción" width="1400" height="760" loading="lazy"></div>
+    <div class="notif previa"><div class="fila-n"><div class="ic genesis"><svg><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 3</time></div><p><strong>La IA que arma los flujos de email</strong> de tu suscripción.</p></div></div><img src="bonus/bonus-3.webp" alt="Sistema de flows de email armados por IA" width="1400" height="762" loading="lazy"></div>
   </div>
 </section>
-
-<div class="herramientas" aria-hidden="true">
-  <span class="on"><svg viewBox="0 0 24 24"><path d="M5 3l14 8-6 2-3 6z"/></svg></span>
-  <span><svg viewBox="0 0 24 24"><path d="M4 4h16v11l-5 5H4z"/><path d="M15 20v-5h5"/></svg></span>
-  <span><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg></span>
-  <span><svg viewBox="0 0 24 24"><path d="M7 3v18M17 3v18M3 7h18M3 17h18"/></svg></span>
-  <span><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span>
-  <em>100%</em>
-</div>
 
 <div class="fijo" id="fijo"><a class="btn btn-wa" id="btn-wa-2" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Entrar al grupo</a></div>
 
@@ -325,8 +333,8 @@ var BANDERAS = {
   function tick() {
     var resta = inicio.getTime() - Date.now();
     if (resta <= 0) {
-      document.getElementById("alerta").textContent = "🔴 La clase ya empezó";
-      document.getElementById("titular").innerHTML = hayVivo ? '<a href="' + C.EVENT_LOCATION + '" style="color:inherit">Entrá a la clase <span>ACÁ</span></a>' : "La clase <span>YA EMPEZÓ</span>";
+      document.querySelector("#alerta .nb p").innerHTML = "<strong>La clase ya empezó.</strong> El link está en el grupo de WhatsApp.";
+      document.getElementById("titular").innerHTML = hayVivo ? '<a href="' + C.EVENT_LOCATION + '" style="color:inherit">Entrá a la clase <span class="marca">acá</span></a>' : 'La clase <span class="marca">ya empezó</span>';
       document.getElementById("falta").textContent = "vivo ahora";
       clearInterval(timer); return;
     }
