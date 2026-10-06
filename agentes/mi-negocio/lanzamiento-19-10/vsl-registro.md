@@ -1,5 +1,6 @@
 # VSL de registro — Landing de opt-in
 
+Versión 4, 6-oct-2026. Se alinea con la thank you y la landing ya hechas (`optin/thank-you.html`, `optin/index.html`) y con el proceso de ventas (`../ventas/proceso-de-ventas-clase-19-10.md`): los 3 regalos con el nombre y la descripción de la landing, regalos solo para los que están en vivo, el formulario en menos de 30 segundos con el WhatsApp como dato clave, el aviso de que alguien del equipo escribe por WhatsApp y la thank you con un solo paso (entrar al grupo, donde llegan los SOPs y el link de la clase; nada por mail).
 Versión 3, 1-oct-2026. Se separan los dos roadmaps: en la clase Manu muestra el que siguió él; el regalo es "tu roadmap" para pasar tu marca.
 Versión 2, 1-oct-2026. La promesa principal pasa a ser "te muestro el roadmap con el que pasé mi marca de 60 a 156.798.062 por mes" (antes: "la cuenta con tus números").
 Versión 1, 1-oct-2026. Hecho con el agente **VSL Lanzamiento** (`agentes/M5-webinar-pago/agente-vsl-registro.md`).
@@ -10,7 +11,7 @@ Es el video que ve el que llega a la landing desde un ad, un reel o la bio. Un s
 ---
 
 VSL DE REGISTRO — Clase en vivo privada: el roadmap con el que pasé mi marca de 60 a 156 millones por mes
-Duración estimada: ~4 min (647 palabras ÷ 150)
+Duración estimada: ~4 min 50 s (724 palabras ÷ 150)
 
 [BLOQUE 1 — Promesa + dolores]
 
@@ -96,21 +97,29 @@ En vivo, privada y 100% gratis.
 
 Es el mismo roadmap que sigo 1 a 1 con las marcas con las que trabajo. Esta vez lo muestro abierto.
 
-Y los que asisten se llevan tres regalos.
+Y los que están en vivo se llevan tres regalos. No son PDFs para leer y olvidar: son las herramientas que uso en mis marcas.
 
-El primero: tu roadmap. El mío te lo muestro en la clase; este es para que pases tu marca a suscripción con lo que ya tenés. El Simulador de Suscripción, para cargar los números de tu marca. Y los sistemas que uso para armar los flujos de email y WhatsApp de suscripción.
+Uno: tu roadmap para migrar tu marca con lo que ya tenés. Las 4 semanas, paso a paso, para arrancar con suscriptores desde el primer mes.
 
-Y no te anotás solo a una clase.
+Dos: el simulador de suscripción. Cargás los números de tu marca y ves cuánto ganarías en el mes 12 y cuánto podés pagar por cada cliente.
 
-Te anotás a cinco días de preparación. Del 14 al 18 de octubre, en un grupo privado de WhatsApp, te dejo lo que necesitás para llegar el lunes con la cabeza lista.
+Tres: la IA que arma los flujos de email de tu suscripción. Te escribe los 10 flows con tu marca y te dice cómo cargarlos.
+
+Los regalos son para los que están en vivo.
+
+*(En pantalla: las capturas de los 3 regalos, una por vez, mientras Manu los nombra.)*
 
 [BLOQUE 7 — CTA]
 
-Completá el formulario que está abajo de este video.
+Completá el formulario que está abajo de este video. Te lleva menos de 30 segundos.
 
-Después vas a ver una página con el link al grupo de WhatsApp de los anotados. Entrá ahí.
+Poné bien tu WhatsApp, porque por ahí te llega todo. Por mail no te llega nada.
 
-El lunes, 15 minutos antes de arrancar, te llega por ese grupo el link de la clase.
+Cuando termines, vas a ver una página con un solo paso: entrar al grupo de WhatsApp de los anotados. No la cierres sin entrar.
+
+En el grupo te dejo los SOPs y recursos que uso en mis marcas de suscripción. Y el lunes, 15 minutos antes de arrancar, el link de la clase.
+
+Y en estos días te va a escribir alguien de mi equipo por WhatsApp, para conocer tu marca. Contestale: es para que llegues a la clase con tus números.
 
 Es privada: si no te anotás, no podés entrar.
 
@@ -120,27 +129,28 @@ Te espero el lunes 19 a las 19.
 
 Huecos marcados:
 - Ninguno en el guion. Lo que hay que confirmar con Manu antes de grabar:
-  1. **Regalos por asistir:** ¿se entregan solo a los que están en vivo o también a los que ven el replay? El guion dice "los que asisten". Si también van al replay, queda igual; si son solo en vivo, se puede sumar como razón para estar en vivo ("los regalos son para los que están en vivo").
-  2. **Campos del formulario** de la landing: el guion no promete un tiempo ("te lleva 30 segundos") porque no lo sé.
-  3. **Link de la clase por el grupo 15 min antes:** sale de `07-dia-del-vivo.md`. Si también llega por mail, se puede agregar "y por mail".
-  4. Las capturas de los Bloques 1 y 2 (panel de suscriptores y reporte 60M → 156.798.062). Sin captura no se dice el número.
-  5. La captura de la marca con la pauta apagada (Bloque 5).
+  1. **El aviso del SDR (Bloque 7):** el proceso de ventas dice que el SDR escribe apenas entra el opt-in y propone una llamada. Si Manu prefiere no anticiparlo en el video, se cortan las dos oraciones ("Y en estos días…" y "Contestale…") y el guion queda igual.
+  2. **El link de la clase 15 min antes por el grupo:** sale de `contenido/07-dia-del-vivo.md`. La thank you dice "el lunes, el link para entrar a la clase" sin hora; si cambia, se ajusta acá.
+  3. **"Cinco días de preparación" (14 al 18/10):** se sacó del video porque la thank you ya no lo promete; el grupo se vende por los SOPs y el link. Si Manu lo quiere de vuelta, va al final del Bloque 7, antes de "Es privada".
+  4. Las capturas de los Bloques 1 y 2 (panel de suscriptores y reporte 60M → 156.798.062) y la de la marca con la pauta apagada (Bloque 5). Sin captura no se dice el número.
+  5. Las capturas de los 3 regalos para el Bloque 6: son las mismas de la landing (`optin/bonus/`).
 
 ## Chequeo final
 
 - [x] El mecanismo está nombrado (Método B.A.S.E.) y no se explica: no aparecen las letras ni la cuenta del techo.
 - [x] Los dolores van con las frases textuales del lanzamiento (CPA, márgenes, metadependencia) y la objeción de mentorías también textual.
-- [x] Urgencia solo real: la fecha y los regalos por asistir. No se dice "sin grabación", "única vez" ni "cupos limitados" (hay replay y el cupo de asistentes no está definido).
+- [x] Urgencia solo real: la fecha y los regalos para los que están en vivo (igual que la landing: "Te llegan por asistir a la clase en vivo"). No se dice "sin grabación", "única vez" ni "cupos limitados" (hay replay y el cupo de asistentes no está definido).
 - [x] Voseo de punta a punta. Sin "tú", "usted" ni "ustedes".
 - [x] Sin precio, oferta, garantía, "programa" ni Génesis como cosa a comprar. El anclaje de valor es "el mismo roadmap que sigo 1 a 1", sin venderlo.
+- [x] Coincide con la landing y la thank you: mismos 3 regalos, "menos de 30 segundos", un solo paso después del formulario (el grupo) y nada por mail.
 - [x] Sin palabras prohibidas en lo público: masterclass, webinar, lanzamiento, pizarra, tablero, secreto, transformación, "te garantizo".
 - [x] Ninguna oración pasa las 25 palabras. Abre con la promesa, no con la presentación.
-- [x] 647 palabras de guion (tope 750).
+- [x] 724 palabras de guion (tope 750).
 
 ## Notas de edición
 
 - Selfie o estudio, remera negra o hueso lisa. Subtítulos palabra por palabra.
 - Banda fija arriba todo el video: **LUNES 19/10 · 19 HS · EN VIVO** (igual que los ads, para que ad y landing digan lo mismo).
 - "LUNES 19 DE OCTUBRE" en grande cada vez que Manu dice la fecha (Bloques 1, 6 y 7).
-- Cortes a pantalla con el reporte 60M → 156.798.062 (Bloques 1 y 2), el panel de suscriptores (Bloque 2) y la marca con la pauta apagada (Bloque 5).
-- En el Bloque 7, flecha hacia abajo apuntando al formulario.
+- Cortes a pantalla con el reporte 60M → 156.798.062 (Bloques 1 y 2), el panel de suscriptores (Bloque 2), la marca con la pauta apagada (Bloque 5) y las capturas de los 3 regalos (Bloque 6).
+- En el Bloque 7, flecha hacia abajo apuntando al formulario, y el ícono de WhatsApp en pantalla cuando Manu dice "poné bien tu WhatsApp".
