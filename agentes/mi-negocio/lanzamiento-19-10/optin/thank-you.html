@@ -170,7 +170,7 @@
 <header class="top">
   <div class="wrap">
     <div class="logo"><svg><use href="#i-genesis"/></svg>GÉNESIS</div>
-    <a class="top-cta js-cal" href="#" target="_blank" rel="noopener">Agendar</a>
+    <a class="top-cta js-cal" id="top-cta" href="#" target="_blank" rel="noopener">Agendar</a>
   </div>
 </header>
 
@@ -179,7 +179,7 @@
   <div class="wrap">
     <span class="etiqueta"><i></i>Registro confirmado</span>
     <h1 id="titular">Listo. Tu lugar está reservado. <span>Falta un paso para asegurarlo.</span></h1>
-    <p class="bajada">Antes de cerrar esta página, mirá el video. Te explico los <b>3 pasos</b> de abajo. Te toman <b>2 minutos</b>.</p>
+    <p class="bajada">Antes de cerrar esta página, mirá el video. Te explico los <b>2 pasos</b> de abajo. Te toman <b>1 minuto</b>.</p>
 
     <!-- Video de la thank you: pegá adentro el embed. Vacío = no se muestra. -->
     <div class="video" id="video"></div>
@@ -201,35 +201,28 @@
 <!-- Bloque 3: los pasos (sin bloque 2: no hay regalo por completar los pasos) -->
 <section class="pasos-sec">
   <div class="wrap">
-    <div class="kicker">Hacé esto ahora, te toma 2 minutos</div>
-    <h2>Asegurá tu lugar en 3 pasos</h2>
+    <div class="kicker">Hacé esto ahora, te toma 1 minuto</div>
+    <h2>Asegurá tu lugar en 2 pasos</h2>
 
     <div class="paso importante">
       <div class="paso-top"><span class="num">Paso 1</span><span class="imp">Importante</span></div>
-      <h3>Confirmá el mail</h3>
-      <p>Te acaba de llegar un mail mío. Abrilo y tocá el botón <b>Confirmo mi lugar</b>. El lunes, el link para entrar a la clase te llega por ahí.</p>
-      <div class="notif claro" aria-label="Así se ve el mail en tu bandeja">
-        <div class="ic mail"><svg><use href="#i-mail"/></svg></div>
-        <div class="nb"><div class="nt"><b>Manu Dominguez</b><time>ahora</time></div><p><strong>Confirmá tu lugar · Lunes 19, 19 hs</strong><br>Un clic y quedás adentro de la clase.</p></div>
-      </div>
-      <p class="ayuda">Si no aparece, buscá en promociones o spam. Y movelo a principal.</p>
-    </div>
-
-    <div class="paso">
-      <div class="paso-top"><span class="num">Paso 2</span></div>
       <h3>Entrá al grupo de WhatsApp</h3>
-      <p>Ahí pasa todo: los avisos, los videos de antes de la clase y el link para entrar el lunes. Y te voy pasando los <b>recursos y SOPs que uso en el día a día de mis marcas de suscripción</b>.</p>
+      <p>El link para entrar a la clase te lo mando <b>por el grupo, no por mail</b>. Y antes del lunes te paso ahí los videos previos a la clase y los <b>recursos y SOPs que uso en el día a día de mis marcas de suscripción</b>.</p>
+      <div class="notif claro" aria-label="Así se ve el aviso en el grupo">
+        <div class="ic chat"><svg><use href="#i-chat"/></svg></div>
+        <div class="nb"><div class="nt"><b>Génesis · Clase en vivo</b><time>lunes 18:55</time></div><p><strong>Manu:</strong> Arrancamos en 5 minutos. Este es el link para entrar a la clase 👇</p></div>
+      </div>
       <a class="btn btn-verde" id="btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>Entrar al grupo de WhatsApp</a>
     </div>
 
     <div class="paso">
-      <div class="paso-top"><span class="num">Paso 3</span></div>
+      <div class="paso-top"><span class="num">Paso 2</span></div>
       <h3>Agendá la clase</h3>
       <p>Sumala a tu calendario para que nada se te cruce el lunes. Un click y queda bloqueada con recordatorio.</p>
       <a class="btn btn-blanco js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agregar a Google Calendar</a>
     </div>
 
-    <p class="pie">Sin el paso 1 no te llega el link del vivo.</p>
+    <p class="pie">Sin el paso 1 no te llega el link para entrar a la clase.</p>
   </div>
 </section>
 
@@ -248,8 +241,9 @@
 <section class="cierre">
   <div class="wrap">
     <h2>Nos vemos el <span class="js-dia"></span> a las <span class="js-hora"></span> hs (<span class="js-zona-corta"></span>)</h2>
-    <p>Los 3 pasos te toman 2 minutos. Con el mail confirmado y adentro del grupo, el lunes no te perdés nada.</p>
-    <a class="btn btn-naranja js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agregar a Google Calendar</a>
+    <p>Adentro del grupo y con la clase agendada, el lunes no te perdés nada.</p>
+    <a class="btn btn-verde" id="btn-wa-2" href="#" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>Entrar al grupo de WhatsApp</a>
+    <a class="btn btn-blanco js-cal" href="#" target="_blank" rel="noopener" style="margin-top:12px"><svg><use href="#i-cal"/></svg>Agregar a Google Calendar</a>
   </div>
 </section>
 
@@ -272,7 +266,7 @@ var CONFIG = {
   EVENT_DATE: "2026-10-19T19:00:00-03:00",
   EVENT_DURATION_MIN: 90,
   EVENT_TITLE: "Clase en vivo privada · Manu Dominguez",
-  EVENT_DETAILS: "El roadmap con el que pasé mi marca de consumibles de 60 a 156 millones por mes con el modelo de suscripción. El link para entrar te llega por mail y por el grupo de WhatsApp.",
+  EVENT_DETAILS: "El roadmap con el que pasé mi marca de consumibles de 60 a 156 millones por mes con el modelo de suscripción. El link para entrar te llega por el grupo de WhatsApp.",
   EVENT_LOCATION: "#",
   WHATSAPP_URL: "#",
   VIP_URL: "#"
@@ -311,8 +305,16 @@ var ZONA = "America/Argentina/Buenos_Aires", ZONA_CORTA = "Argentina";
   for (var i = 0; i < cals.length; i++) cals[i].href = cal;
 
   /* WhatsApp y VIP */
-  var wa = document.getElementById("btn-wa");
-  if (!C.WHATSAPP_URL || C.WHATSAPP_URL === "#") wa.classList.add("oculto"); else wa.href = C.WHATSAPP_URL;
+  /* El grupo es el paso 1: sin link, los botones se ocultan y la barra de arriba queda en "Agendar" */
+  var hayWa = C.WHATSAPP_URL && C.WHATSAPP_URL !== "#";
+  ["btn-wa", "btn-wa-2"].forEach(function (id) {
+    var b = document.getElementById(id);
+    if (hayWa) b.href = C.WHATSAPP_URL; else b.classList.add("oculto");
+  });
+  if (hayWa) {
+    var top = document.getElementById("top-cta");
+    top.classList.remove("js-cal"); top.href = C.WHATSAPP_URL; top.textContent = "Entrar al grupo"; top.style.background = "#1FAF55";
+  }
   if (C.VIP_URL && C.VIP_URL !== "#") {
     document.getElementById("vip").classList.remove("oculto");
     document.getElementById("btn-vip").href = C.VIP_URL;
