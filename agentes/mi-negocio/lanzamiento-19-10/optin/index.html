@@ -199,6 +199,70 @@
   .barra.hoy em { color: #fff; font-weight: 600; }
 
 
+
+  /* d) Lo que vas a ver en vivo: tres filas editoriales, cada una con su pieza */
+  .temas { max-width: 1040px; margin: 10px auto 0; }
+  .tema { display: grid; gap: 22px; padding: 34px 0; border-top: 1px solid var(--linea); }
+  .tema:first-child { border-top: 0; padding-top: 10px; }
+  .tema .n { display: flex; align-items: baseline; gap: 12px; font-family: var(--titulos); font-weight: 300; font-size: 46px; line-height: .9; letter-spacing: -0.04em; color: var(--naranja); }
+  .tema .n small { display: block; font-family: var(--cuerpo); font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+  .tema h3 { font-size: 27px; font-weight: 800; line-height: 1.12; max-width: 15em; }
+  .tema .bajo { color: var(--gris-2); font-size: 17px; margin-top: 10px; max-width: 26em; }
+  .tema .bajo b { color: #fff; }
+
+  /* Pieza 1: el informe en papel */
+  .informe { background: var(--hueso); color: var(--tinta); border-radius: 6px; padding: 20px 20px 18px; box-shadow: 0 24px 50px rgba(0,0,0,.5); transform: rotate(-1.2deg); position: relative; }
+  .informe .cab { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #7a7266; border-bottom: 1.5px dashed #CFC5B4; padding-bottom: 10px; }
+  .informe .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: end; margin-top: 16px; }
+  .informe .col { display: flex; flex-direction: column; gap: 8px; }
+  .informe .col .b { background: #CFC5B4; border-radius: 3px 3px 0 0; height: 46px; transform-origin: bottom; transition: transform .9s cubic-bezier(.2,.8,.2,1); }
+  .informe .col.hoy .b { background: var(--naranja); height: 120px; }
+  .informe.anim .col .b { transform: scaleY(.08); }
+  .informe.anim.in .col .b { transform: none; }
+  .informe.anim.in .col.hoy .b { transition-delay: .25s; }
+  .informe .col small { font-size: 12px; color: #7a7266; font-weight: 600; }
+  .informe .col b { font-family: var(--titulos); font-size: 19px; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  .informe .col.hoy b { font-size: 23px; color: var(--naranja-oscuro); }
+  .informe .sello { position: absolute; left: 22px; top: 52px; font-family: "Caveat", cursive; font-size: 30px; color: var(--naranja); transform: rotate(-8deg); line-height: 1; }
+
+  /* Pieza 2: el resumen de ventas, cada una con su CPA */
+  .ticket { background: #121213; border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; font-size: 14px; }
+  .ticket .cab { display: flex; justify-content: space-between; padding: 12px 16px; color: var(--gris); font-size: 12px; font-weight: 600; border-bottom: 1px solid var(--linea); }
+  .ticket .fila-t { display: grid; grid-template-columns: 42px 1fr auto; gap: 10px; padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,.04); align-items: center; }
+  .ticket .fila-t span { color: var(--gris); font-size: 12.5px; }
+  .ticket .fila-t em { font-style: normal; font-weight: 700; color: #FF8A70; font-variant-numeric: tabular-nums; }
+  .ticket .pie-t { padding: 13px 16px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,138,112,.07); }
+  .ticket .pie-t b { color: #FF8A70; }
+  .ticket .pie-t span { color: var(--gris-2); font-size: 13px; }
+
+  /* Pieza 3: un cliente en el tiempo */
+  .linea-t { background: #121213; border: 1px solid var(--linea); border-radius: 14px; padding: 18px 16px 16px; }
+  .linea-t .cab { font-size: 12px; font-weight: 600; color: var(--gris); margin-bottom: 18px; }
+  .linea-t .pista { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); }
+  .linea-t .pista::before { content: ""; position: absolute; left: 8%; right: 8%; top: 13px; height: 2px; background: linear-gradient(90deg, #3A3A3C 0 12%, var(--naranja) 22% 100%); }
+  .linea-t .p { position: relative; display: flex; flex-direction: column; align-items: center; gap: 7px; text-align: center; }
+  .linea-t .p i { width: 28px; height: 28px; border-radius: 50%; background: var(--naranja); border: 3px solid #121213; box-shadow: 0 0 0 1.5px var(--naranja); display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 800; color: #fff; transition: transform .4s cubic-bezier(.2,.8,.2,1), opacity .4s; }
+  .linea-t .p:first-child i { background: #3A3A3C; box-shadow: 0 0 0 1.5px #5a5a5e; }
+  .linea-t .p small { font-size: 11px; color: var(--gris-2); line-height: 1.25; }
+  .linea-t .p small b { display: block; color: #fff; font-size: 11.5px; }
+  .linea-t .p:first-child small b { color: var(--gris-2); }
+  .linea-t.anim .p i { transform: scale(.4); opacity: 0; }
+  .linea-t.anim.in .p i { transform: none; opacity: 1; }
+  .linea-t.anim.in .p:nth-child(2) i { transition-delay: .12s; } .linea-t.anim.in .p:nth-child(3) i { transition-delay: .24s; }
+  .linea-t.anim.in .p:nth-child(4) i { transition-delay: .36s; } .linea-t.anim.in .p:nth-child(5) i { transition-delay: .48s; }
+  .linea-t.anim.in .p:nth-child(6) i { transition-delay: .6s; }
+  .linea-t .nota-t { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--linea); display: flex; gap: 18px; font-size: 13px; color: var(--gris-2); flex-wrap: wrap; }
+  .linea-t .nota-t span { display: inline-flex; align-items: center; gap: 7px; }
+  .linea-t .nota-t i { width: 9px; height: 9px; border-radius: 50%; background: var(--naranja); }
+  .linea-t .nota-t span:first-child i { background: #3A3A3C; }
+  @media (min-width: 900px) {
+    .tema { grid-template-columns: 110px minmax(0, 1fr) minmax(0, 1.05fr); gap: 36px; align-items: center; padding: 46px 0; }
+    .tema h3 { font-size: 32px; }
+    .tema .n { display: block; font-size: 56px; }
+    .tema .n small { margin-top: 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .informe.anim .col .b, .linea-t.anim .p i { transform: none; opacity: 1; transition: none; } }
+
   /* d2) Los 3 regalos: tarjetas tangibles con la captura real de cada bonus */
   .bonus-sec .kicker-a { font-family: "Caveat", cursive; font-size: 24px; color: var(--naranja); display: block; margin-top: 14px; }
   .bonus-sec .sec-head h2 { margin-top: 2px; }
@@ -496,33 +560,60 @@
 <section class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="tag-estado"><i></i>Lo que te llevás</span>
+      <span class="tag-estado"><i></i>La clase</span>
       <h2>Lo que vas a ver en vivo</h2>
     </div>
 
-    <div class="bullets">
-      <div class="bullet">
-        <div><b class="k">Primero</b><p>El roadmap que seguí, paso a paso, para pasar mi marca de 60 millones a 156.798.062 por mes.</p></div>
-        <div class="ilus">
-          <div class="ilus-l">Facturación mensual de mi marca</div>
-          <div class="barras">
-            <div class="barra"><small>Antes</small><span style="width:38%"></span><em>60.000.000</em></div>
-            <div class="barra hoy"><small>Hoy</small><span style="width:100%"></span><em>156.798.062</em></div>
+    <div class="temas">
+      <div class="tema">
+        <div class="n">01<small>Primero</small></div>
+        <div>
+          <h3>El roadmap que seguí, paso a paso</h3>
+          <p class="bajo">El que usé para pasar mi marca de <b>60 millones a 156.798.062 por mes</b>.</p>
+        </div>
+        <div class="informe anim" role="img" aria-label="Facturación mensual de mi marca: antes 60.000.000, hoy 156.798.062">
+          <div class="cab"><span>Facturación mensual</span><span>Mi marca</span></div>
+          <span class="sello">×2,6</span>
+          <div class="cols2">
+            <div class="col"><div class="b"></div><small>Antes</small><b>60.000.000</b></div>
+            <div class="col hoy"><div class="b"></div><small>Hoy</small><b>156.798.062</b></div>
           </div>
         </div>
       </div>
-      <div class="bullet">
-        <div><b class="k">Segundo</b><p>Por qué cada venta te cuesta lo mismo que la anterior, y por qué bajar el CPA es la pelea equivocada.</p></div>
-        <div class="ilus stack anim">
-          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>ahora</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
-          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó otro CPA</span></div></div>
+
+      <div class="tema">
+        <div class="n">02<small>Segundo</small></div>
+        <div>
+          <h3>Por qué cada venta te cuesta lo mismo que la anterior</h3>
+          <p class="bajo">Y por qué <b>bajar el CPA es la pelea equivocada</b>.</p>
+        </div>
+        <div class="ticket" role="img" aria-label="Cada venta nueva paga su propio CPA">
+          <div class="cab"><span>Tu tienda · ventas de la semana</span><span>Facebook &amp; Instagram</span></div>
+          <div class="fila-t"><span>Lun</span>Nueva venta · 1 artículo<em>− CPA</em></div>
+          <div class="fila-t"><span>Mar</span>Nueva venta · 1 artículo<em>− CPA</em></div>
+          <div class="fila-t"><span>Mié</span>Nueva venta · 1 artículo<em>− CPA</em></div>
+          <div class="fila-t"><span>Jue</span>Nueva venta · 1 artículo<em>− CPA</em></div>
+          <div class="pie-t"><span>Cada venta arranca de cero</span><b>4 ventas · 4 CPA</b></div>
         </div>
       </div>
-      <div class="bullet">
-        <div><b class="k">Y tercero</b><p>Cómo pasar tu marca al modelo de suscripción sin frenar lo que hoy vendés y sin tirar el producto que ya tenés.</p></div>
-        <div class="ilus stack anim">
-          <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge rec">Sin pauta</span></div></div>
-          <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 5 min</time></div><p>Nueva venta: 1 artículo. Compra única, como siempre.</p></div></div>
+
+      <div class="tema">
+        <div class="n">03<small>Y tercero</small></div>
+        <div>
+          <h3>Cómo pasar tu marca al modelo de suscripción</h3>
+          <p class="bajo">Sin frenar lo que hoy vendés y <b>sin tirar el producto que ya tenés</b>.</p>
+        </div>
+        <div class="linea-t anim" role="img" aria-label="Un mismo cliente: una compra con pauta y después cobros recurrentes sin pauta">
+          <div class="cab">Un mismo cliente, mes a mes</div>
+          <div class="pista">
+            <div class="p"><i>1</i><small><b>Compra</b>con pauta</small></div>
+            <div class="p"><i>2</i><small><b>Cobro</b>sin pauta</small></div>
+            <div class="p"><i>3</i><small><b>Cobro</b>sin pauta</small></div>
+            <div class="p"><i>4</i><small><b>Cobro</b>sin pauta</small></div>
+            <div class="p"><i>5</i><small><b>Cobro</b>sin pauta</small></div>
+            <div class="p"><i>6</i><small><b>Cobro</b>sin pauta</small></div>
+          </div>
+          <div class="nota-t"><span><i></i>Pagás el CPA una vez</span><span><i></i>Cobrás todos los meses</span></div>
         </div>
       </div>
     </div>
