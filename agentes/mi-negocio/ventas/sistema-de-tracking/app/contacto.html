@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quiero que me contacten · Génesis</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/formulario.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
+</svg>
+<div class="top">
+  <div class="fila"><div class="logo"><svg><use href="#logo"/></svg>GÉNESIS</div><span class="paso-n" id="pasoN"></span></div>
+  <div class="progreso"><i id="progreso"></i></div>
+</div>
+<main id="main" aria-live="polite"></main>
+
+<script src="/formulario.js"></script>
+<script>
+Formulario({
+  pasos:[
+    {clave:"nombre", tipo:"texto", titulo:"¿Cómo te llamás?", ayuda:"Dejanos tus datos y hoy mismo te escribimos.", placeholder:"Tu nombre"},
+    {clave:"telefono", tipo:"tel", titulo:"Tu WhatsApp, con código de país", ayuda:"Por acá te contactamos.", placeholder:"+54 9 11 2345 6789"},
+    {clave:"que_falta", tipo:"opciones", titulo:"¿Qué te falta para dar el paso hoy?", otro:true,
+      opciones:["Entender cómo se aplica a mi marca en particular","Saber si mi producto sirve para suscripción","Tengo dudas con la inversión","No sé si tengo tiempo para implementarlo ahora","Lo tengo que hablar con mi socio"]},
+    {clave:"ciclo", tipo:"opciones", titulo:"¿Cada cuánto se le termina el producto a tu cliente?",
+      opciones:["En menos de 30 días","Entre 30 y 60 días","Entre 60 y 90 días","Más de 90 días","No se termina, se compra una vez y listo"]},
+    {clave:"facturacion", tipo:"opciones", titulo:"¿Cuánto está facturando tu marca mensualmente?",
+      opciones:["Menos de 10M","Entre 10M y 30M","Entre 30M y 50M","Entre 50M y 100M","Más de 100M"]},
+    {clave:"inversion", tipo:"opciones", titulo:"Si vemos que encaja con tu marca, ¿con cuánto contás hoy para invertir en resolverlo?",
+      opciones:["Menos de USD 1.000","Entre USD 1.000 y USD 3.000","Entre USD 3.000 y USD 6.000","Más de USD 6.000"]}
+  ],
+  enviar: async (datos, reiniciar) => {
+    const r = await fetch("/api/public/contacto",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(datos)});
+    const d = await r.json().catch(()=>({ok:false}));
+    if(!d.ok) throw new Error(d.error||"No se pudo enviar. Probá de nuevo.");
+    const main=document.getElementById("main");
+    if(d.ruta==="rechazado"){
+      main.innerHTML=`<div class="pantalla panel">
+        <div class="circ"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <h2>Por el momento no podemos ayudarte</h2>
+        <p>El trabajo que hacemos necesita una inversión mínima para que los números te cierren.</p>
+        <p>Si marcaste una opción que no refleja tu situación real, podés cambiarla.</p>
+        <div class="acciones" style="justify-content:center"><button class="btn sec" id="otraVez">Volver a la pregunta</button></div></div>`;
+      document.getElementById("otraVez").onclick=()=>reiniciar("inversion");
+      return;
+    }
+    const nombre=(datos.nombre||"").split(" ")[0];
+    main.innerHTML=`<div class="pantalla panel">
+      <div class="circ"><svg class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h2>Listo${nombre?", "+Formulario.esc(nombre):""}. Ya tenemos tus datos</h2>
+      <p>Hoy mismo te escribimos por WhatsApp para resolver lo que te quedó dando vueltas.</p></div>`;
+  }
+});
+</script>
+</body>
+</html>

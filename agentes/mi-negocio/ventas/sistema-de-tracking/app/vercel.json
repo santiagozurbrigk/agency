@@ -1,0 +1,6 @@
+{
+  "cleanUrls": true,
+  "functions": {
+    "api/grupos.js": { "maxDuration": 300 }
+  }
+}

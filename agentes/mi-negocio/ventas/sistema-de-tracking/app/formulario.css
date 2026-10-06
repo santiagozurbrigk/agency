@@ -1,0 +1,91 @@
+/* Formularios públicos de la clase (Agenda directa y Quiero que me contacten).
+   Misma marca que la landing: negro, hueso y naranja; Inter Tight + Inter. */
+:root{
+  --negro:#0B0B0C; --negro-2:#141415; --negro-3:#1D1D1F;
+  --linea:rgba(255,255,255,.09); --linea-2:rgba(255,255,255,.16);
+  --hueso:#F2EDE4; --gris:#9A9AA0; --gris-2:#C4C2BD;
+  --naranja:#F26A1B; --naranja-2:#D9560C; --naranja-rgb:242,106,27;
+  --mal:#FF7A66;
+  --tit:"Inter Tight","Helvetica Neue",Arial,sans-serif;
+  --txt:"Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{background:radial-gradient(900px 520px at 85% -10%, rgba(var(--naranja-rgb),.20), transparent 60%),
+  radial-gradient(700px 420px at -10% 110%, rgba(var(--naranja-rgb),.10), transparent 60%), var(--negro);
+  color:var(--hueso);font:16px/1.55 var(--txt);-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--naranja);outline-offset:3px}
+
+.top{position:fixed;top:0;left:0;right:0;z-index:5;background:linear-gradient(var(--negro) 60%, transparent)}
+.top .fila{max-width:640px;margin:0 auto;padding:18px 20px 10px;display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--tit);font-weight:700;letter-spacing:.16em;font-size:13px}
+.logo svg{width:32px;height:21px}
+.top .paso-n{margin-left:auto;font-size:13px;color:var(--gris);font-variant-numeric:tabular-nums}
+.progreso{height:3px;background:var(--linea);max-width:640px;margin:0 auto;border-radius:99px;overflow:hidden}
+.progreso i{display:block;height:100%;width:0;background:var(--naranja);border-radius:99px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+
+main{max-width:640px;margin:0 auto;padding:110px 20px 60px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.pantalla{animation:entra .35s cubic-bezier(.2,.8,.2,1)}
+.pantalla.atras{animation:entra-atras .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}}
+@keyframes entra-atras{from{opacity:0;transform:translateY(-18px)}}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--naranja);margin-bottom:12px;letter-spacing:.02em}
+h1,h2{font-family:var(--tit);letter-spacing:-.02em;line-height:1.12}
+h1{font-size:clamp(28px,6vw,40px);margin-bottom:12px}
+h2{font-size:clamp(23px,5vw,31px);margin-bottom:8px}
+.ayuda{color:var(--gris-2);font-size:15.5px;margin-bottom:24px}
+
+.opciones{display:flex;flex-direction:column;gap:10px}
+.op{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:15px 16px;border-radius:14px;border:1.5px solid var(--linea-2);background:rgba(255,255,255,.03);font-size:16px;font-weight:500;transition:border-color .15s,background .15s,transform .08s}
+.op:hover{border-color:rgba(var(--naranja-rgb),.6);background:rgba(var(--naranja-rgb),.06)}
+.op:active{transform:scale(.995)}
+.op .tecla{width:28px;height:28px;border-radius:8px;border:1px solid var(--linea-2);display:grid;place-items:center;font-size:12.5px;font-weight:700;color:var(--gris-2);flex:none;font-family:var(--tit)}
+.op.on{border-color:var(--naranja);background:rgba(var(--naranja-rgb),.14)}
+.op.on .tecla{background:var(--naranja);border-color:var(--naranja);color:#fff}
+.op .chk{margin-left:auto;opacity:0;color:var(--naranja);transition:opacity .15s}
+.op.on .chk{opacity:1}
+
+.campo-txt{width:100%;font:inherit;font-size:clamp(19px,4.6vw,24px);color:var(--hueso);background:transparent;border:0;border-bottom:2px solid var(--linea-2);padding:10px 2px;border-radius:0;transition:border-color .15s}
+.campo-txt:focus{outline:none;border-color:var(--naranja)}
+.campo-txt::placeholder{color:#5c5c62}
+textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp(17px,4.2vw,20px)}
+.otro{margin-top:12px;display:none}
+.otro.on{display:block}
+.otro .campo-txt{font-size:18px}
+
+.acciones{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:52px;padding:0 26px;border-radius:12px;background:var(--naranja);color:#fff;font-weight:700;font-size:16px;letter-spacing:.01em;transition:background .15s,transform .08s;box-shadow:0 10px 30px rgba(var(--naranja-rgb),.28)}
+.btn:hover{background:var(--naranja-2)}
+.btn:active{transform:translateY(1px)}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.btn.sec{background:transparent;border:1.5px solid var(--linea-2);box-shadow:none;color:var(--hueso)}
+.btn.sec:hover{background:rgba(255,255,255,.05)}
+.pista-tecla{font-size:13px;color:var(--gris)}
+.pista-tecla b{color:var(--gris-2);font-weight:600}
+.volver{display:inline-flex;align-items:center;gap:6px;color:var(--gris);font-size:14px;font-weight:500;margin-bottom:22px;padding:4px 0}
+.volver:hover{color:var(--hueso)}
+.error{color:var(--mal);font-size:14.5px;margin-top:12px;min-height:1px}
+.ic{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.calendario{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+.calendario iframe{display:block;width:100%;min-height:760px;border:0}
+.nota{display:flex;align-items:center;gap:8px;color:var(--gris-2);font-size:14px;margin:14px 2px 0}
+.cuenta{font-variant-numeric:tabular-nums;color:var(--naranja);font-weight:700}
+.panel{background:var(--negro-2);border:1px solid var(--linea);border-radius:18px;padding:30px 26px;text-align:center}
+.panel .circ{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;background:rgba(var(--naranja-rgb),.14);color:var(--naranja)}
+.panel .circ .ic{width:28px;height:28px}
+.panel p{color:var(--gris-2);margin-bottom:6px}
+.cargando{display:flex;flex-direction:column;align-items:center;gap:18px;color:var(--gris-2)}
+.spinner{width:34px;height:34px;border-radius:50%;border:3px solid var(--linea-2);border-top-color:var(--naranja);animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+@media (max-width:520px){
+  main{padding-top:96px;justify-content:flex-start}
+  .op{padding:14px}
+  .acciones .btn{flex:1}
+  .pista-tecla{display:none}
+  .calendario iframe{min-height:820px}
+}
+@media (prefers-reduced-motion: reduce){ .pantalla,.pantalla.atras{animation:none} .progreso i{transition:none} }
