@@ -22,12 +22,12 @@ Insumos confirmados para correr `mi-negocio/agentes/creador-webinars.md`. Fuente
   5. Tu estructura de anuncios al CPA nuevo: ángulos, creativos y campañas recalculadas con tu LTV real (DFY).
   6. Tu backend de retención: secuencia post-compra, cadencia de contacto y recuperación de bajas (DFY).
   7. Tus proyecciones de stock y tu reposición, calculadas sobre la base de suscriptores (DFY).
-  8. Tu tablero de suscriptores activos, churn y recompra, con el reporte que mirás cada mes (DFY).
+  8. Tu panel de suscriptores activos, churn y recompra, con el reporte que mirás cada mes (DFY).
   9. Tu cuenta de formalización: en qué punto de la base te cierra pasar a blanco (DFY).
   10. Sesión 1 a 1 con Manu a pedido, una vez instalado el DFY, para revisar números y ajustar.
   11. Chat 1 a 1 directo con Manu y José.
   12. SOPs de cada pieza del sistema.
-- **Bonos de la clase:** los 3 regalos por asistir, que se entregan al terminar la clase: el roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que Manu usa en sus marcas. No hay bonos por entrar a Génesis ni fast-action.
+- **Bonos de la clase:** los 3 regalos por asistir, que se entregan al terminar la clase: el roadmap para migrar tu marca con lo que ya tenés, el simulador de suscripción y la IA que arma los flujos de email (los nombres de la landing). No hay bonos por entrar a Génesis ni fast-action.
 - **Garantía / riesgo inverso:** no hay garantía y no se nombra. El riesgo lo baja la llamada: antes de entrar se ve con sus números, y al que no califica no se le vende.
 - **Deadline y capacidad (reales):** 10 lugares en Génesis. La ventana cierra el jueves 22/10 a las 23:59.
 - **CTA (decisión de Santiago: dos caminos explícitos, los mismos en los 3 pitches y el cierre):** (1) agendar una llamada directa, o (2) dejar tus datos para que te contactemos y sacarte las dudas.

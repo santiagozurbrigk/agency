@@ -96,9 +96,9 @@ Recomendación: la **C** para el que viene de ads (frena con algo que contradice
 
 ### SLIDE 7 · Los 3 regalos por estar en vivo
 ⏱ 45 s
-- **TEXTO EN PANTALLA:** Para los que están en vivo: · Tu roadmap para pasar tu marca a suscripción · El Simulador de Suscripción · Los sistemas de email y WhatsApp que uso en mis marcas
+- **TEXTO EN PANTALLA:** Para los que están en vivo: · El roadmap para migrar tu marca con lo que ya tenés · El simulador de suscripción · La IA que arma los flujos de email
 - **VISUAL:** Las capturas de los 3 regalos, de a una (`optin/bonus/`).
-- **SCRIPT:** "Los que están en vivo se llevan tres regalos, que te mando apenas termina la clase. Uno: tu roadmap, el paso a paso para pasar tu marca a suscripción con lo que ya tenés. Dos: el Simulador de Suscripción. Cargás tus números y ves cuánto podés pagar por cada cliente. Tres: los sistemas de email y WhatsApp que uso en mis marcas, los mismos mensajes que corren hoy. No son PDFs para leer y olvidar: son las herramientas con las que opero. Te digo por dónde vamos a ir."
+- **SCRIPT:** "Los que están en vivo se llevan tres regalos, que te mando apenas termina la clase. Uno: el roadmap para migrar tu marca con lo que ya tenés, paso a paso. Dos: el simulador de suscripción. Cargás tus números y ves cuánto podés pagar por cada cliente. Tres: la IA que arma los flujos de email de tu suscripción: te escribe los 10 flows con tu marca y te dice cómo cargarlos. No son PDFs para leer y olvidar: son las herramientas que uso en mis marcas. Te digo por dónde vamos a ir."
 
 ### SLIDE 8 · La agenda
 ⏱ 35 s
@@ -518,8 +518,8 @@ Recomendación: la **C** para el que viene de ads (frena con algo que contradice
 ### SLIDE 69 · Paso 3: tu techo nuevo
 ⏱ 30 s
 - **TEXTO EN PANTALLA:** Paso 3 · Tu techo nuevo y tu punto operativo.
-- **VISUAL:** Captura del Simulador de Suscripción con los campos para completar.
-- **SCRIPT:** "Con tu margen y tu ciclo, calculás cuánto podrías pagar por cliente con suscripción, y en qué punto operar sin quedarte sin colchón. Para eso es el Simulador que te llevás hoy: cargás tus números y te lo da hecho. Y para que veas que funciona con números reales, hagámoslo ahora con uno de ustedes."
+- **VISUAL:** Captura del simulador de suscripción con los campos para completar.
+- **SCRIPT:** "Con tu margen y tu ciclo, calculás cuánto podrías pagar por cliente con suscripción, y en qué punto operar sin quedarte sin colchón. Para eso es el simulador de suscripción que te llevás hoy: cargás tus números y te lo da hecho. Y para que veas que funciona con números reales, hagámoslo ahora con uno de ustedes."
 
 ### SLIDE 70 · La cuenta en vivo
 ⏱ 3 min (en vivo)
@@ -644,7 +644,7 @@ Recomendación: la **C** para el que viene de ads (frena con algo que contradice
   5. Tu estructura de anuncios al CPA nuevo: ángulos, creativos y campañas recalculadas con tu LTV real (DFY)
   6. Tu backend de retención: secuencia post-compra, cadencia de contacto y recuperación de bajas (DFY)
   7. Tus proyecciones de stock y tu reposición, calculadas sobre la base de suscriptores (DFY)
-  8. Tu tablero de suscriptores activos, churn y recompra, con el reporte que mirás cada mes (DFY)
+  8. Tu panel de suscriptores activos, churn y recompra, con el reporte que mirás cada mes (DFY)
   9. Tu cuenta de formalización: en qué punto de la base te cierra pasar a blanco (DFY)
   10. Sesión 1 a 1 con Manu a pedido, una vez instalado el DFY, para revisar números y ajustar
   11. Chat 1 a 1 directo con Manu y José
@@ -680,7 +680,7 @@ Recomendación: la **C** para el que viene de ads (frena con algo que contradice
 ⏱ 25 s
 - **TEXTO EN PANTALLA:** Si no es para vos, quedate con la cuenta.
 - **VISUAL:** Las capturas de los 3 regalos.
-- **SCRIPT:** "Si hoy no es para vos, quedate con lo que viste: la cuenta, tu techo y el orden. Los tres regalos te los mando cuando termina la clase: tu roadmap, el Simulador de Suscripción y los sistemas de email y WhatsApp que uso en mis marcas. Usalos. Y ahora, preguntas."
+- **SCRIPT:** "Si hoy no es para vos, quedate con lo que viste: la cuenta, tu techo y el orden. Los tres regalos te los mando cuando termina la clase: el roadmap para migrar tu marca, el simulador de suscripción y la IA que arma los flujos de email. Usalos. Y ahora, preguntas."
 
 ### SLIDE 92 · Preguntas y cierre
 ⏱ 10 min (Q&A en vivo)
@@ -729,7 +729,7 @@ Cómo se calculó: el guion leído a 140 palabras por minuto, más unos 6 segund
 | Urgencia | Solo la real: 10 lugares y cierre el 22/10 a las 23:59. Nunca se dice "sin grabación" ni "única vez" |
 | Gráfico del slide 23 | Marcado como ilustrativo, porque no es un dato real |
 
-Para revisar: el componente 8 de la oferta dice "tu **tablero** de suscriptores". El lenguaje público del lanzamiento evita "tablero" (se dice "mis números"). Lo dejé tal cual porque es el texto de la oferta que pasaste. Si querés que coincida con el resto, cambialo por "tu reporte de suscriptores activos…".
+El componente 8 de la oferta dice "panel" en vez de "tablero", palabra que el lenguaje público del lanzamiento evita.
 
 # Criterio de calidad
 
@@ -757,9 +757,9 @@ Para revisar: el componente 8 de la oferta dice "tu **tablero** de suscriptores"
 
 1. **Testimonios A a E:** cambiar los nombres de ejemplo por los reales, con su métrica, su frase y su captura. Si alguno no tiene captura, se saca su slide (regla: sin captura no hay número).
 2. **Links:** `[LINK AGENDA]` y `[LINK DATOS]`.
-3. **El tercer regalo tiene dos nombres.** La landing, la thank you y el VSL dicen "la IA que arma los flujos de email de tu suscripción". Vos me dijiste "los sistemas de email y WhatsApp que usa Manu en sus marcas", y así quedó en la clase. Tienen que coincidir: si en la clase se promete otra cosa que en la landing, el que se registró por la IA lo va a notar.
+3. ~~El nombre del tercer regalo~~ Resuelto: los 3 regalos usan los nombres de la landing.
 4. **Momentos EN VIVO:** que Manu prepare las anécdotas reales. La del slide 55 (qué hace para sostener el 1,28% de churn) figura como pendiente en el brief.
-5. **Capturas:** panel de suscriptores, reportes de 60M y 156.798.062, cobros recurrentes con la pauta apagada, páginas de AG1 y Grüns, Simulador.
+5. **Capturas:** panel de suscriptores, reportes de 60M y 156.798.062, cobros recurrentes con la pauta apagada, páginas de AG1 y Grüns, simulador de suscripción.
 6. **Hook:** elegir A, B o C.
 
 # Checklist pre-clase
