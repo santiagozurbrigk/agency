@@ -150,7 +150,7 @@ SCRIPT: "Son tres errores, y van en cadena: hasta que no rompés el primero, el 
 
 ### Revisión del bloque
 
-- **Tiempo:** 20 slides con unas 1.250 palabras de guion, a 140 palabras por minuto, más las pausas y la aparición de cada idea → unos 10 minutos. ✔
+- **Tiempo:** 20 slides con unas 1.020 palabras de guion (7,3 min a 140 palabras por minuto), más el hook, la pausa del slide 15 y unos 6 s por slide para que aparezcan las ideas → unos 10 minutos. ✔
 - **Regla del SOP:** cero mención de venta, precio o programa en la apertura. ✔ (No aparece "Génesis" ni "trabajar juntos").
 - **Fría:** sin chat ni chistes. El "¿desde dónde me ven?" queda solo en el pre-roll. ✔
 - **Pendientes de este bloque:** el hook elegido, la pregunta del "click" (slide 15), la cantidad de marcas (slide 18), la foto de antes y las capturas.
