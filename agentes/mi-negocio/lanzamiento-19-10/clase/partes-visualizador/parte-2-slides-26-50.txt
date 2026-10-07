@@ -9,151 +9,151 @@ Variación: en vivo
 ## SLIDE 26
 
 TEXTO EN PANTALLA: 1,28% de churn mensual.
-VISUAL: Un gráfico de 100 personas donde se apaga una sola.
+VISUAL: Fondo blanco. Un gráfico de 100 personas donde se apaga una sola.
 SCRIPT: "1,28% de churn. Quiere decir que de cada 100 suscriptores, por mes se da de baja poco más de uno. Los otros 98 y pico siguen. Si el argentino no se quisiera atar a nada, este número sería de 20 o 30%. No lo es. Y lo que más me sorprendió fue otra cosa."
 
 ## SLIDE 27
 
 TEXTO EN PANTALLA: LTV: 3 pedidos como mínimo.
-VISUAL: Tres pedidos iguales, uno detrás del otro.
+VISUAL: Fondo blanco. Tres pedidos iguales, uno detrás del otro.
 SCRIPT: "Cada suscriptor me compra, como mínimo, tres veces. Tres pedidos de un cliente que pagué para conseguir una sola vez. Y no te creas que es porque mi producto es más barato que el de la competencia. Es exactamente al revés."
 
 ## SLIDE 28
 
 TEXTO EN PANTALLA: Mi pote: $12.000 · Marcas parecidas: $4.500
-VISUAL: Los dos precios, lado a lado.
+VISUAL: Fondo blanco. Los dos precios, lado a lado.
 SCRIPT: "Mi pote sale 12.000 pesos, y hay marcas vendiendo algo parecido a 4.500. Casi tres veces más caro. Y aun así, 2.200 personas eligieron suscribirse. Fijate lo que eso te dice: el que se suscribe no está buscando el precio más bajo. Está buscando otra cosa."
 
 ## SLIDE 29
 
 TEXTO EN PANTALLA: Afuera, las marcas que más crecen en consumibles venden una suscripción.
-VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de la página de compra de AG1 y Grüns con la opción de suscripción]
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de la página de compra de AG1 y Grüns con la opción de suscripción]
 SCRIPT: "Afuera esto lo resolvieron hace rato. Entrá a la página de AG1 o de Grüns: lo primero que te ofrecen no es comprar una vez, es suscribirte. Y yo pensaba: eso es afuera. Hasta que lo hice acá y vi que el argentino hace exactamente lo mismo que vos haces todos los días."
 
 ## SLIDE 30
 
 TEXTO EN PANTALLA: ¿Cuántas cosas reponés sin pensar?
-VISUAL: Un detergente, un shampoo, un suplemento.
+VISUAL: Fondo blanco. Un detergente, un shampoo, un suplemento.
 SCRIPT: "Pensá en vos. El detergente, el shampoo, el suplemento. No te sentás a decidir cada vez si lo comprás: se te termina y lo reponés. Es automático. Tu cliente hace exactamente lo mismo con tu producto. La única pregunta es a quién se lo repone."
 
 ## SLIDE 31
 
 TEXTO EN PANTALLA: Se le termina tu producto. ¿Te lo vuelve a comprar a vos, o al anuncio que le aparece ese día?
-VISUAL: Un celular con un anuncio de otra marca, justo el día que se termina el producto.
+VISUAL: Fondo blanco. Un celular con un anuncio de otra marca, justo el día que se termina el producto.
 SCRIPT: "Se le termina tu producto un martes. Ese martes, abre Instagram y le aparece el anuncio de otra marca, con un descuento. ¿A quién le compra? Al que tiene adelante. Vos le vendiste, lo pagaste con tu pauta, y te lo sacó otro. No porque no te quisiera, sino porque nadie le resolvió la reposición."
 
 ## SLIDE 32
 
 TEXTO EN PANTALLA: "En Argentina no están acostumbrados a la suscripción."
-VISUAL: Cita grande. Abajo: "Dueño de marca de consumibles, llamada de septiembre".
+VISUAL: Fondo blanco. Cita grande. Abajo: "Dueño de marca de consumibles, llamada de septiembre".
 SCRIPT: "Esto me lo dijo un dueño de marca en una llamada hace unas semanas, palabra por palabra. Y tiene razón en algo: no están acostumbrados porque nadie se lo ofreció bien. No es un problema del cliente. Es un problema de la oferta."
 OBJECTION ADDRESSED: Objeción 1, pre-manejada en el contenido.
 
 ## SLIDE 33
 
 TEXTO EN PANTALLA: No es que no se suscriban. Es que nadie les ofreció algo que igual iban a volver a comprar.
-VISUAL: La frase sola, en grande. Fondo negro.
+VISUAL: Fondo blanco. La frase sola, en grande.
 SCRIPT: "No es que en Argentina no se suscriban. Es que nadie les ofreció algo que igual iban a volver a comprar. Esa es la diferencia entre una suscripción que no funciona y una que tiene 1,28% de churn. Y como rompimos el primer error, se abre la primera caja."
 
 ## SLIDE 34
 
 TEXTO EN PANTALLA: Regalo #1 · El simulador de suscripción
-VISUAL: La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (optin/bonus/bonus-2.webp)]
+VISUAL: Fondo blanco. La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (optin/bonus/bonus-2.webp)]
 SCRIPT: "El primer regalo es el simulador de suscripción. Cargás los números de tu marca, tu margen, tu ciclo de reposición, y te dice cuánto podrías pagar por cada cliente con suscripción y cómo se vería tu marca en el mes 12. Es el que uso yo. Te lo mando al final, si estás en vivo. Y ahora vamos con el segundo error, que es el que más plata te está costando."
 
 ## SLIDE 35
 
 TEXTO EN PANTALLA: Error 2.
-VISUAL: Los tres casilleros: Error 1 tachado, Error 2 iluminado.
+VISUAL: Fondo blanco. Los tres casilleros: Error 1 tachado, Error 2 iluminado.
 SCRIPT: "El primero era sobre tu cliente. El segundo es sobre vos: sobre dónde creés que está tu problema. Y si estás pautando en Meta, seguro te lo dijeron más de una vez."
 
 ## SLIDE 36
 
 TEXTO EN PANTALLA: LO QUE TE DIJERON · "Tu problema es el CPA."
-VISUAL: La frase entre comillas, con el tag "LO QUE TE DIJERON".
+VISUAL: Fondo blanco. La frase entre comillas, con el tag "LO QUE TE DIJERON".
 SCRIPT: "Seguro te dijeron que tu problema es el CPA. Que te está costando muy caro cada venta, y que si lo bajás, se arregla todo. Y la solución que te dan es siempre la misma."
 OBJECTION ADDRESSED: Creencia 2 (diagnóstico equivocado).
 
 ## SLIDE 37
 
 TEXTO EN PANTALLA: "Mejores creativos · Mejor segmentación · Más pauta"
-VISUAL: Los tres, como recetas pegadas en una heladera.
+VISUAL: Fondo blanco. Los tres, como recetas pegadas en una heladera.
 SCRIPT: "Mejores creativos. Testear más ángulos. Mejor segmentación. Más presupuesto para que el algoritmo aprenda. Y lo hiciste. Y cada cosa funcionó un rato. Hasta que dejó de funcionar. Mirá por qué."
 
 ## SLIDE 38
 
 TEXTO EN PANTALLA: Largás → escalás → 5 competidores → sube el CPM → el CPA pasa de 10 a 20 dólares
-VISUAL: Cadena de flechas que se arma de a un eslabón.
+VISUAL: Fondo blanco. Cadena de flechas que se arma de a un eslabón.
 SCRIPT: "Largás un químico, lo escalás, te salen cinco competidores, te suben los CPM y, por ende, te suben los CPA. Saliste con diez dólares de CPA y ahora tenés veinte. Y ya está: dejás de ser rentable. No hiciste nada mal. Es la cadena."
 
 ## SLIDE 39
 
 TEXTO EN PANTALLA: "Salieron 7 personas a pautar un producto muy parecido al nuestro."
-VISUAL: Cita grande. Abajo: "Dueño de marca de consumibles".
+VISUAL: Fondo blanco. Cita grande. Abajo: "Dueño de marca de consumibles".
 SCRIPT: "Esto también me lo dijo un dueño de marca. Siete personas pautando algo casi igual. Y cada una sube la subasta. La landing te la copian en 48 horas, el producto en un mes. Y vos pagás más por la misma venta."
 
 ## SLIDE 40
 
 TEXTO EN PANTALLA: "Los CPAs nos empezaron a reventar."
-VISUAL: Curva de CPA subiendo. Rótulo: "ilustrativo".
+VISUAL: Fondo blanco. Curva de CPA subiendo. Rótulo: "ilustrativo".
 SCRIPT: "Los CPAs nos empezaron a reventar. Esa frase la escucho en casi todas las llamadas. Y la respuesta automática es bajar el CPA. Pero hay un problema que nadie te dice, y es matemático."
 
 ## SLIDE 41
 
 TEXTO EN PANTALLA: Todo mercado es finito.
-VISUAL: La frase sola. Corte de ritmo.
+VISUAL: Fondo blanco. La frase sola. Corte de ritmo.
 SCRIPT: "Todo mercado es finito. Si constantemente le vendés a clientes nuevos, es cuestión de tiempo que no haya más clientes. Cada mes salís a buscar gente nueva como si fuera infinita. Y cada mes hay menos, y más caros. Ahora mirá la cuenta."
 
 ## SLIDE 42
 
 TEXTO EN PANTALLA: Margen por pedido: $30.000 → Lo máximo que podés pagar por cliente: $30.000
-VISUAL: La cuenta en la pizarra, número por número.
+VISUAL: Fondo blanco. La cuenta en la pizarra, número por número.
 SCRIPT: "Si tu margen por pedido es 30.000 pesos, lo máximo que podés pagar para conseguir ese cliente es 30.000. Si pagás más, perdés plata. Ese es tu techo. Y es el mismo techo que tiene tu competencia, por eso todos pujan igual en la subasta."
 
 ## SLIDE 43
 
 TEXTO EN PANTALLA: Cada venta paga su propio CPA. Aunque sea el mismo cliente.
-VISUAL: Tres pedidos del mismo cliente, cada uno con su CPA pegado.
+VISUAL: Fondo blanco. Tres pedidos del mismo cliente, cada uno con su CPA pegado.
 SCRIPT: "Y fijate esto: si ese cliente te vuelve a comprar, muchas veces es porque lo volviste a pautar. Retargeting, remarketing. Pagaste de nuevo por alguien que ya era tuyo. Cada venta paga su propio CPA, aunque sea la misma persona."
 
 ## SLIDE 44
 
 TEXTO EN PANTALLA: Compra única: tenés un CPA. Suscripción: tenés un CAC. Se paga una vez.
-VISUAL: Dos columnas: en una el costo se repite en cada pedido, en la otra aparece una sola vez.
+VISUAL: Fondo blanco. Dos columnas: en una el costo se repite en cada pedido, en la otra aparece una sola vez.
 SCRIPT: "En compra única tenés un CPA: un costo por cada compra. En suscripción tenés un CAC: un costo por cliente, que se paga una vez. La segunda, la tercera y la cuarta compra entran con el margen de contribución entero. Y eso explica lo que te pasa con el margen."
 
 ## SLIDE 45
 
 TEXTO EN PANTALLA: "7 lucas de ganancia. Sobreviviendo."
-VISUAL: Cita grande.
+VISUAL: Fondo blanco. Cita grande.
 SCRIPT: "Siete lucas de ganancia. Sobreviviendo. Otro dueño de marca. Facturás 60, 70 millones y te queda lo que le queda a un empleado. No es mala suerte: es que cada pedido carga con su propia adquisición. Y hay una tercera consecuencia, la que más miedo da."
 
 ## SLIDE 46
 
 TEXTO EN PANTALLA: "Ayer íbamos 600 lucas abajo... apagamos."
-VISUAL: Cita grande. Debajo: "No tenés la facturación: la alquilás."
+VISUAL: Fondo blanco. Cita grande. Debajo: "No tenés la facturación: la alquilás."
 SCRIPT: "Ayer íbamos 600 lucas abajo, apagamos. Manotazo ahogado. Si toda tu facturación depende de que Meta te deje pautar, no tenés la facturación: la alquilás. Te tiran el ban y al otro día facturás cero. Ahora, pensá en tu número."
 
 ## SLIDE 47
 
 TEXTO EN PANTALLA: ¿Cuánto te cuesta hoy cada venta?
-VISUAL: El segundo casillero de los tres números, resaltado.
+VISUAL: Fondo blanco. El segundo casillero de los tres números, resaltado.
 SCRIPT: "Mirá el segundo número que anotaste: cuánto te cuesta hoy cada venta. Si querés, escribilo en el chat. [Leer dos o tres en voz alta]. Ahora, compará ese número con tu margen por pedido. Si están cerca, estás donde yo estaba. Y fijate que los tres problemas salen del mismo lugar."
 
 ## SLIDE 48
 
 TEXTO EN PANTALLA: CPA · Margen · Meta → No son tres problemas. Es uno.
-VISUAL: Los tres dolores convergen en un solo punto.
+VISUAL: Fondo blanco. Los tres dolores convergen en un solo punto.
 SCRIPT: "El CPA te cuesta lo mismo en cada venta porque cada venta es nueva. El margen no te alcanza porque cada pedido paga su adquisición. Dependés de Meta porque es la única forma que tenés de traer ventas. Es un solo problema: la unidad de venta de tu negocio es la compra, y no el cliente."
 
 ## SLIDE 49
 
 TEXTO EN PANTALLA: No ganás bajando el CPA. Ganás pudiendo pagar más.
-VISUAL: La frase sola, en grande. Fondo negro.
+VISUAL: Fondo blanco. La frase sola, en grande.
 SCRIPT: "No ganás bajando el CPA. Ganás pudiendo pagar más. Si vos podés pagar por cada cliente más que tu competencia, la subasta es tuya, y no hay creativo que te la saque. Por eso te repito la frase de hoy."
 
 ## SLIDE 50
 
 TEXTO EN PANTALLA: Dejá de buscar la compra. Buscá al cliente.
-VISUAL: La frase ancla.
+VISUAL: Fondo blanco. La frase ancla.
 SCRIPT: "Dejá de buscar la compra. Buscá al cliente. Cuando buscás la compra, peleás el CPA de cada venta. Cuando buscás al cliente, lo pagás una vez y te compra muchas. Pero acá aparece el tercer error, y es el más personal de los tres."

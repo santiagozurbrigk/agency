@@ -9,31 +9,31 @@ Variación: en vivo
 ## SLIDE 176
 
 TEXTO EN PANTALLA: 1 · Agendá tu llamada → [LINK AGENDA] · 2 · Dejá tus datos y te escribimos → [LINK DATOS]
-VISUAL: Los dos caminos, con los links.
+VISUAL: Fondo blanco. Los dos caminos, con los links.
 SCRIPT: "Última llamada. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
 
 ## SLIDE 177
 
 TEXTO EN PANTALLA: Tus 3 regalos: · El simulador de suscripción · El roadmap para migrar tu marca · La IA que arma los flujos de email
-VISUAL: Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (optin/bonus/)]
+VISUAL: Fondo blanco. Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (optin/bonus/)]
 SCRIPT: "Te quedaste hasta el final, así que los tres regalos son tuyos: el simulador de suscripción, el roadmap para migrar tu marca y la IA que arma los flujos de email. Te explico cómo recibirlos."
 
 ## SLIDE 178
 
 TEXTO EN PANTALLA: Cómo recibirlos: 1 · Entrá al grupo de WhatsApp → [LINK GRUPO] 2 · Contame qué fue lo más útil de hoy 3 · Te los mando por privado
-VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · QR o link del grupo de WhatsApp]
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · QR o link del grupo de WhatsApp]
 SCRIPT: "Entrá al grupo de WhatsApp, el link está en pantalla y en el chat. Contame ahí qué fue lo más útil de la clase de hoy, y te los mando por privado, uno por uno."
 
 ## SLIDE 179
 
 TEXTO EN PANTALLA: Dejá de buscar la compra. Buscá al cliente.
-VISUAL: La frase ancla, por última vez.
+VISUAL: Fondo blanco. La frase ancla, por última vez.
 SCRIPT: "Y quedate con una sola frase, si te quedás con algo: dejá de buscar la compra. Buscá al cliente."
 
 ## SLIDE 180
 
 TEXTO EN PANTALLA: Gracias. Nos vemos adentro.
-VISUAL: Manu a cámara. Los dos círculos con la lente.
+VISUAL: Fondo blanco. Manu a cámara. Los dos círculos con la lente.
 SCRIPT: "Gracias por quedarte hasta el final, en serio. Te dije que te ibas a ir con tu cuenta hecha, y ya la tenés. Lo que hagas con ella es tuyo. Si querés hacerlo con nosotros, nos vemos adentro. Esto es el Método B.A.S.E."
 
 ## Checklist pre-lanzamiento
