@@ -1,0 +1,158 @@
+# Webinar: Manu Dominguez (Génesis) — Clase en vivo 19/10 (parte 3 de 8, slides 51-75)
+
+Mecanismo único: Método B.A.S.E.
+Audiencia: affluent — cold
+Length objetivo: 92 min (~180 slides)
+Promesa principal: El paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
+Variación: en vivo
+
+## SLIDE 51
+
+TEXTO EN PANTALLA: Error 3.
+VISUAL: Error 1 y Error 2 tachados, Error 3 iluminado.
+SCRIPT: "Los dos primeros te los dijeron otros. El tercero no te lo dijo nadie. Te lo dijiste vos."
+
+## SLIDE 52
+
+TEXTO EN PANTALLA: LO QUE TE DIJISTE A VOS · "No puedo tocar lo que funciona."
+VISUAL: La frase entre comillas, con el tag "LO QUE TE DIJISTE A VOS".
+SCRIPT: "No puedo tocar lo que funciona. Seguro te lo dijiste mientras me escuchabas hace un rato: 'todo muy lindo, pero yo tengo una marca que factura, y no la voy a poner en riesgo'."
+OBJECTION ADDRESSED: Creencia 3 (lo que te dijiste a vos mismo).
+
+## SLIDE 53
+
+TEXTO EN PANTALLA: "Si cambio el modelo, freno las ventas."
+VISUAL: Un gráfico de ventas que se corta.
+SCRIPT: "Si cambio el modelo, freno las ventas. Si freno las ventas, no pago el stock. Si no pago el stock, se cae todo. Y es razonable que lo pienses: tenés un equipo, proveedores, stock comprado. No tenés margen para experimentar."
+
+## SLIDE 54
+
+TEXTO EN PANTALLA: Yo me dije exactamente lo mismo.
+VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · foto de Manu en la época de compra única]
+SCRIPT: "Yo me dije exactamente lo mismo. Facturaba 60 millones por mes, y lo último que quería era tocar algo que funcionaba, aunque cada mes me dejara un poco menos. Hasta que entendí una cosa que lo cambia todo."
+
+## SLIDE 55
+
+TEXTO EN PANTALLA: La suscripción no reemplaza tu compra única. Va al lado.
+VISUAL: Los dos círculos, uno al lado del otro, sin tocarse todavía.
+SCRIPT: "La suscripción no reemplaza tu compra única. Va al lado. No tenés que cambiar el modelo de un día para el otro ni apagar nada. Sumás una opción. Mirá qué pasa en la práctica."
+
+## SLIDE 56
+
+TEXTO EN PANTALLA: Tu producto sigue en la tienda. Mismo precio. Mismo checkout.
+VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · página de producto con la compra única intacta]
+SCRIPT: "Tu producto sigue en la tienda exactamente como está hoy. Mismo precio, mismo checkout, mismos anuncios. Nada de lo que hoy factura se toca. Lo único que cambia es que aparece algo más."
+
+## SLIDE 57
+
+TEXTO EN PANTALLA: "Comprar una vez" · "Suscribirme"
+VISUAL: Los dos botones, lado a lado.
+SCRIPT: "Al lado aparece la opción de suscribirse. El que quiere comprar una vez, compra una vez, como siempre. El que se suscribe, empieza a cobrarse solo. No frenás nada: le sumás una puerta a tu tienda."
+
+## SLIDE 58
+
+TEXTO EN PANTALLA: Si tu producto se termina en 30 días, el primer cobro recurrente llega a los 30.
+VISUAL: Una línea de tiempo: día 0, la compra; día 30, el primer cobro recurrente.
+SCRIPT: "Y el primer cobro recurrente llega cuando se cumple tu ciclo de reposición. Si tu producto se termina en 30 días, el primer cobro llega a los 30. Mientras tanto, la compra única sigue facturando igual que hoy. Y mirá lo que pasa cuando ya está andando."
+
+## SLIDE 59
+
+TEXTO EN PANTALLA: Pauta apagada. Las recurrencias se siguen cobrando, con 50% de margen.
+VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · captura de los cobros recurrentes de la marca de Manu con la pauta apagada]
+SCRIPT: "Esta es otra marca mía, con la pauta apagada. Los cobros recurrentes siguen entrando, con 50% de margen, porque ya no hay costo de adquisición. Lo que no frenó nunca fue lo que ya estaba andando. Lo que frena una marca es otra cosa."
+
+## SLIDE 60
+
+TEXTO EN PANTALLA: Lo que te frena no es cambiar. Es quedarte igual.
+VISUAL: Un calendario donde cada mes arranca en 0.
+SCRIPT: "Lo que te frena no es cambiar. Es quedarte igual: cada mes pagar de nuevo el CPA de cada venta, cada mes arrancar en cero, cada mes un poco más de competencia. Eso sí te frena, solo que despacio, y no te das cuenta."
+
+## SLIDE 61
+
+TEXTO EN PANTALLA: No es frenar lo que vendés. Es sumarle una puerta al lado.
+VISUAL: La frase sola, en grande. Fondo negro.
+SCRIPT: "No es frenar lo que vendés. Es sumarle una puerta al lado. Y por esa puerta, los clientes que ya pagaste empiezan a volver solos. Repasemos los tres errores, porque ahora los ves de otra forma."
+
+## SLIDE 62
+
+TEXTO EN PANTALLA: 1 · No es que no se suscriban: nadie les ofreció lo que igual iban a reponer. 2 · No ganás bajando el CPA: ganás pudiendo pagar más. 3 · No es frenar lo que vendés: es sumarle una puerta al lado.
+VISUAL: Los tres insights, de a uno.
+SCRIPT: "Uno: no es que en Argentina no se suscriban, es que nadie les ofreció algo que igual iban a reponer. Dos: no ganás bajando el CPA, ganás pudiendo pagar más. Tres: no es frenar lo que vendés, es sumarle una puerta al lado. Tres errores, rotos. Y se abre la segunda caja."
+
+## SLIDE 63
+
+TEXTO EN PANTALLA: Regalo #2 · El roadmap para migrar tu marca con lo que ya tenés
+VISUAL: La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (optin/bonus/bonus-1.webp)]
+SCRIPT: "El segundo regalo es el roadmap para migrar tu marca con lo que ya tenés. Las cuatro semanas, paso a paso, para arrancar con suscriptores desde el primer mes, sin tocar tu compra única. Te lo mando al final, si estás en vivo hasta el cierre."
+
+## SLIDE 64
+
+TEXTO EN PANTALLA: Ya sabés por qué nada te funcionó.
+VISUAL: Los tres errores tachados.
+SCRIPT: "Ya sabés por qué cada venta te cuesta lo mismo que la anterior, por qué el margen no te alcanza y por qué no te animabas a tocar nada. No era falta de esfuerzo: estabas jugando con el modelo equivocado."
+
+## SLIDE 65
+
+TEXTO EN PANTALLA: Ahora, lo que sí funciona.
+VISUAL: Transición: los dos círculos se cruzan y aparece la lente.
+SCRIPT: "Ahora que entendés por qué nada te funcionó, te muestro lo que sí funciona. Paso por paso, en orden, para que lo puedas aplicar en tu marca aunque no hagas nada más conmigo."
+
+## SLIDE 66
+
+TEXTO EN PANTALLA: MÉTODO B.A.S.E. · Crecer con los clientes que ya entraron, no saliendo a comprar más.
+VISUAL: Los dos círculos con la lente al medio.
+SCRIPT: "Esto es el Método B.A.S.E. Entra en una línea: crecer con los clientes que ya entraron, no saliendo a comprar más. Y te lo voy a enseñar de verdad, para que lo puedas aplicar mañana en tu marca."
+
+## SLIDE 67
+
+TEXTO EN PANTALLA: Compra única · Suscripción · La lente: el cliente que vuelve
+VISUAL: Los dos círculos rotulados. La lente al medio se ilumina.
+SCRIPT: "Un círculo es tu compra única. El otro es la suscripción. Donde se cruzan, en esta lente, está el cliente que vuelve. Hoy esa lente es chiquita: casi nadie te vuelve a comprar solo. El Método B.A.S.E. es agrandar esa lente."
+
+## SLIDE 68
+
+TEXTO EN PANTALLA: B · Base que cobra sola → A · Adquirís al costo → S · Suscripción al lado de la compra única → E · Escalás con el CAC nuevo
+VISUAL: Las cuatro letras con flechas entre ellas.
+SCRIPT: "Son cuatro pasos, y van en este orden. B: tu base que cobra sola. A: adquirís al costo. S: la suscripción al lado de la compra única. E: escalás con el CAC nuevo. El orden es parte del método: si arrancás por la E, escalás algo que todavía no cobra."
+
+## SLIDE 69
+
+TEXTO EN PANTALLA: Cada paso: qué es · por qué importa · qué hacés mañana
+VISUAL: Tres íconos: una lupa, un signo de exclamación, un tilde.
+SCRIPT: "En cada paso te voy a decir qué es, por qué importa y qué hacés mañana en tu marca. Concreto. Si aplicás esto sin hacer nada más conmigo, igual vas a estar mejor que hoy. Arrancamos por la B."
+
+## SLIDE 70
+
+TEXTO EN PANTALLA: Paso 1 · B · Base que cobra sola
+VISUAL: La letra B en grande.
+SCRIPT: "La B es tu base: todos los que ya te compraron. Hoy es una lista de gente que te compró una vez. Con la B, una parte de esa lista pasa a ser suscriptores que se cobran solos todos los meses. Es el activo más grande que tenés y casi nadie lo mira."
+
+## SLIDE 71
+
+TEXTO EN PANTALLA: Por qué importa: · El 1 del mes arranca cobrado · Si Meta te baja la cuenta, se sigue cobrando
+VISUAL: Un calendario con cobros el día 1 y una cuenta publicitaria tachada.
+SCRIPT: "Importa porque te cambia el día 1: ya no arrancás en cero, arrancás con lo que se cobró solo. Y porque si mañana Meta te baja la cuenta, esa base se sigue cobrando. Pero hay un error que comete casi todo el mundo con su base."
+
+## SLIDE 72
+
+TEXTO EN PANTALLA: Error: usar tu base solo para mandar un 20% OFF cuando el mes viene flojo.
+VISUAL: Un mail de "20% OFF" tachado.
+SCRIPT: "Usarla de bombero. Cuando la venta del mes viene floja, le mandás un 20% de descuento a toda la base, y después te olvidás hasta el próximo incendio. Así le enseñás a tu cliente a esperar el descuento. La B es al revés: la base trabaja todos los meses, sin incendio. Lo que hacés mañana es esto."
+
+## SLIDE 73
+
+TEXTO EN PANTALLA: Mañana: 1 · Exportá los clientes de los últimos 12 meses
+VISUAL: [IMAGEN PENDIENTE · gris #D9D9D9 · captura de una exportación de clientes (Tiendanube o Shopify)]
+SCRIPT: "Uno: entrá a tu tienda y exportá todos los clientes de los últimos doce meses. Tiendanube y Shopify te lo dan en un Excel. No necesitás ninguna herramienta nueva."
+
+## SLIDE 74
+
+TEXTO EN PANTALLA: 2 · Marcá los que compraron 2 veces o más, y cada cuántos días
+VISUAL: El Excel con algunas filas resaltadas.
+SCRIPT: "Dos: marcá los que te compraron dos veces o más, y fijate cuántos días pasaron entre una compra y la otra. Ese es tu ciclo de reposición real. No el de la etiqueta: el que hace tu cliente de verdad."
+
+## SLIDE 75
+
+TEXTO EN PANTALLA: 3 · Esos son tus primeros suscriptores.
+VISUAL: Las filas resaltadas se convierten en una lista nueva.
+SCRIPT: "Tres: esos que volvieron solos, sin que les pautes, son tus primeros suscriptores. Ya te demostraron que reponen. Lo único que les falta es que alguien les resuelva la reposición. Y mirá lo que pasa cuando una base así ya cobra sola."
