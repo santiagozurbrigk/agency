@@ -35,7 +35,7 @@ Insumos confirmados para correr `mi-negocio/agentes/creador-webinars.md`. Fuente
 ## Audiencia
 
 - **Tipo:** Framework A (affluent): tono calmado, frameworks con nombre, cuentas antes que promesas.
-- **Temperatura:** mixta. Vienen de ads, pero pasaron hasta 5 días por el grupo de WhatsApp. El primer minuto va directo al valor, como en frío; después se permite algo de cercanía.
+- **Temperatura:** fría (decisión del 07-oct). La mayoría llega de ads y conoce a Manu hace pocos días: directo al valor desde el segundo 1, cero chitchat, sin "¿de dónde nos ven?" ni chistes.
 - **Avatar:** "Gonza", 27, Córdoba. Arrancó con dropshipping, pasó a un químico propio y factura 60M/mes con Meta Ads. El CPM le subió todo el año, cada venta le deja casi lo mismo que le cuesta y el contador le dijo que si pasa a RI no cierra. Ya pagó dos mentorías de producto ganador. No quiere facturar más: quiere que el 1 del mes ya haya facturación.
 - **Anti-avatar:** el que arranca de cero, el que busca producto ganador, el que vende sin tienda propia (solo retail, mayorista o Mercado Libre).
 - **Nivel de consciencia:** siente el síntoma (CPA, breakeven, miedo a Meta) pero cree que es un problema de creativos, de pauta o de producto. No sabe que es del modelo. Conoce la suscripción de oído y cree que es "para marcas grandes" o "para Estados Unidos".
@@ -81,7 +81,7 @@ El precio no es objeción de la clase (no se dice): se trabaja en la llamada.
 - **Promesa de la clase:** el paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
 - **Recorrido:** CPA → márgenes → metadependencia → los tres son uno (el modelo) → Método B.A.S.E. → Génesis.
 - **Variación:** en vivo, lunes 19/10, 19:00 hs Argentina. Hay replay.
-- **Length objetivo:** 80-90 min (~85-95 slides).
+- **Length objetivo:** 88-90 min, ~180 slides (unos 30 s por slide; cada slide sigue sumando una idea cada 8 a 12 s).
 
 ## Reglas propias que pisan al agente
 
