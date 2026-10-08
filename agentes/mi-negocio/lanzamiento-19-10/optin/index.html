@@ -871,7 +871,11 @@ document.addEventListener("DOMContentLoaded", function () {
        no se le informan a Meta para no entrenarlo con ellos). La thank you lo dispara. */
     try {
       if (FACTURACION_LEAD.indexOf(datos.facturacion) > -1) {
-        sessionStorage.setItem("genesis_lead", JSON.stringify({ id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8), t: Date.now() }));
+        sessionStorage.setItem("genesis_lead", JSON.stringify({
+          id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8), t: Date.now(),
+          /* Coincidencias avanzadas: Meta los encripta (SHA-256) antes de enviarlos */
+          em: datos.email, ph: datos.telefono.replace(/\D/g, ""), fn: datos.nombre.split(" ")[0].toLowerCase()
+        }));
       } else {
         sessionStorage.removeItem("genesis_lead");
       }
