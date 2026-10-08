@@ -152,6 +152,13 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   all=await call(leads,{cookie});
   ok(all.body.manu.reservas===0,"la reserva de Sofía se liberó al agendar");
   ok(all.body.colas.grupo1.includes("demo-sofia"),"Sofía ahora en Grupo 1");
+  ok((sofia.tags||[]).join()==="agenda-directa","ya tenía tag del lanzamiento → no se le agrega otro");
+  // Pre-venta agendada directo en el calendario de Manu: etapa y tag propio
+  let sinTag=(await call(leads,{cookie})).body;
+  sinTag=Object.values(sinTag).filter(Array.isArray).flat().find(l=>!(l.tags||[]).length);
+  r=await call(webhook,{method:"POST",query:{cal:"manu_pre",type:"create"},body:{contact_id:sinTag.id}});
+  const pre=(await call(lead,{cookie,query:{id:sinTag.id}})).body.lead;
+  ok(r.body.ok&&pre.fields.etapa==="Agendado con Manu (pre-venta)"&&(pre.tags||[]).includes("pre-venta-manu"),"pre-venta directa sin tag → etapa y tag pre-venta-manu");
   r=await call(webhook,{method:"POST",body:{type:"AppointmentDelete",appointment:{calendarId:"CAL_MANU",contactId:"demo-sofia"}}});
   ok((await call(lead,{cookie,query:{id:"demo-sofia"}})).body.lead.fields.agendo==="No","cancelación vía webhook");
 

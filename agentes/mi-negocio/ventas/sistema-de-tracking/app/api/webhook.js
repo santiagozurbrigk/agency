@@ -56,10 +56,13 @@ module.exports = async function handler(req, res) {
 
     // Cita creada.
     await store.liberarReserva(contactId);
+    // Si agendó directo en el calendario sin pasar por un formulario, no tiene tag
+    // del lanzamiento y no aparecería en el sistema: se le agrega uno.
+    const tags = store.esDelLanzamiento(lead) ? [] : [esManuPre ? "pre-venta-manu" : "calendario-ghl"];
     if (esManuPre) {
       await store.registrar(contactId, "GHL", "Agendó la pre-venta con Manu", {
         etapa: "Agendado con Manu (pre-venta)", llamada_con: "Manu", agendo: "Sí"
-      }, lead);
+      }, lead, tags);
     } else {
       const con = esManuPost ? "Manu" : "Diego";
       const fields = { etapa: "Llamada agendada", llamada_con: con, agendo: "Sí" };
@@ -69,7 +72,7 @@ module.exports = async function handler(req, res) {
         const carga = await store.cargaManu({ fresco: true });
         if (carga.citas > carga.tope) fields.excede_tope = "Sí";
       }
-      await store.registrar(contactId, "GHL", `Agendó la llamada de venta con ${con}`, fields, lead);
+      await store.registrar(contactId, "GHL", `Agendó la llamada de venta con ${con}`, fields, lead, tags);
     }
     return res.status(200).json({ ok: true });
   } catch (e) {
