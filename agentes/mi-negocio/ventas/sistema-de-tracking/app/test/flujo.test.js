@@ -143,7 +143,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
 
   // Webhook: cita creada en el calendario de Manu post
   const settingsApi=h("api/settings.js");
-  await call(settingsApi,{method:"POST",cookie,body:{calManuPostId:"CAL_MANU",calDiegoId:"CAL_DIEGO"}});
+  await call(settingsApi,{method:"POST",cookie,body:{calManuPostId:"CAL_MANU",calDiegoId:"CAL_DIEGO",calManuPreventaId:"CAL_PRE"}});
   const webhook=h("api/webhook.js");
   r=await call(webhook,{method:"POST",query:{},body:{type:"AppointmentCreate",appointment:{calendarId:"CAL_MANU",contactId:"demo-sofia"}}});
   ok(r.body.ok,"webhook cita creada");
@@ -159,6 +159,9 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   r=await call(webhook,{method:"POST",query:{cal:"manu_pre",type:"create"},body:{contact_id:sinTag.id}});
   const pre=(await call(lead,{cookie,query:{id:sinTag.id}})).body.lead;
   ok(r.body.ok&&pre.fields.etapa==="Agendado con Manu (pre-venta)"&&(pre.tags||[]).includes("pre-venta-manu"),"pre-venta directa sin tag → etapa y tag pre-venta-manu");
+  // Workflow mal filtrado: llega con ?cal=manu_post pero la cita es del calendario de pre-venta → manda el ID
+  r=await call(webhook,{method:"POST",query:{cal:"manu_post",type:"create"},body:{contact_id:sinTag.id,calendar:{id:"CAL_PRE"}}});
+  ok((await call(lead,{cookie,query:{id:sinTag.id}})).body.lead.fields.etapa==="Agendado con Manu (pre-venta)","el ID del calendario le gana al ?cal= del workflow");
   r=await call(webhook,{method:"POST",body:{type:"AppointmentDelete",appointment:{calendarId:"CAL_MANU",contactId:"demo-sofia"}}});
   ok((await call(lead,{cookie,query:{id:"demo-sofia"}})).body.lead.fields.agendo==="No","cancelación vía webhook");
 

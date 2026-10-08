@@ -22,7 +22,8 @@ module.exports = async function handler(req, res) {
     const appt = body.appointment || body.calendar || body;
     const contactId = appt.contactId || body.contactId || body.contact_id
       || (body.contact && body.contact.id) || null;
-    const calendarId = appt.calendarId || body.calendarId || body.calendar_id || null;
+    const calendarId = appt.calendarId || body.calendarId || body.calendar_id
+      || (body.calendar && body.calendar.id) || null;
     const tipo = String(body.type || body.eventType || req.query.type || "").toLowerCase();
     const cancelada = tipo.includes("delete") || tipo.includes("cancel")
       || ["cancelled", "canceled"].includes(String(appt.appointmentStatus || appt.status || "").toLowerCase());
@@ -34,10 +35,15 @@ module.exports = async function handler(req, res) {
     const s = await store.getSettings();
     // El calendario puede venir en la URL (?cal=manu_pre|manu_post|diego), que es
     // lo más simple de configurar en el workflow de GHL, o por su ID en el payload.
-    const cal = String(req.query.cal || "").toLowerCase();
-    const esManuPost = cal === "manu_post" || calendarId === s.calManuPostId;
-    const esManuPre = cal === "manu_pre" || calendarId === s.calManuPreventaId;
-    const esDiego = cal === "diego" || calendarId === s.calDiegoId;
+    // Si el aviso trae el ID de uno de los tres calendarios, manda el ID: así un
+    // workflow mal filtrado (que se dispara con citas de otro calendario) no confunde
+    // una pre-venta con una llamada de venta. Si no lo trae, se usa ?cal=.
+    const porId = { [s.calManuPostId]: "manu_post", [s.calManuPreventaId]: "manu_pre", [s.calDiegoId]: "diego" };
+    const cal = (calendarId && porId[calendarId]) || String(req.query.cal || "").toLowerCase();
+    console.log("webhook", JSON.stringify({ q: req.query.cal || null, calendarId, usado: cal, tipo, contactId }));
+    const esManuPost = cal === "manu_post";
+    const esManuPre = cal === "manu_pre";
+    const esDiego = cal === "diego";
     if (!esManuPost && !esManuPre && !esDiego) {
       return res.status(200).json({ ok: true, ignorado: true, motivo: "Calendario ajeno al proceso" });
     }
