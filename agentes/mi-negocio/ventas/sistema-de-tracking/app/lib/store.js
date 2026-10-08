@@ -58,7 +58,9 @@ async function saveSettings(patch) {
 // El sistema solo trabaja los leads del lanzamiento: los que entraron por el
 // opt-in o por los formularios de la clase. Los contactos viejos de la
 // subcuenta (sin estos tags) no aparecen en ninguna lista.
-const TAGS_LANZAMIENTO = ["optin-19-10", "agenda-directa", "quiero-contacto"];
+// Quien agenda directo en un calendario del proceso sin haber pasado por un
+// formulario recibe "pre-venta-manu" o "calendario-ghl" desde el webhook.
+const TAGS_LANZAMIENTO = ["optin-19-10", "agenda-directa", "quiero-contacto", "pre-venta-manu", "calendario-ghl"];
 const esDelLanzamiento = (l) => (l.tags || []).some(t => TAGS_LANZAMIENTO.includes(String(t).toLowerCase()));
 
 // La foto no lleva el historial (pesa y solo se usa al abrir una ficha).
@@ -210,12 +212,12 @@ function historialCon(lead, quien, que) {
 
 // Suma una línea al historial y, en el mismo pedido, los campos de `fieldsExtra`.
 // Con `base` (ficha completa ya leída) es 1 solo pedido a GHL.
-async function registrar(id, quien, que, fieldsExtra, base) {
+async function registrar(id, quien, que, fieldsExtra, base, addTags) {
   const lead = base || await getLead(id);
   if (!lead) return null;
-  return updateLead(id, {
-    fields: { ...(fieldsExtra || {}), historial_json: historialCon(lead, quien, que) }
-  }, lead);
+  const patch = { fields: { ...(fieldsExtra || {}), historial_json: historialCon(lead, quien, que) } };
+  if (addTags && addTags.length) patch.addTags = addTags;
+  return updateLead(id, patch, lead);
 }
 
 function normTel(t) {
@@ -327,7 +329,7 @@ async function invalidarCitasManu() {
 module.exports = {
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
-  listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
+  esDelLanzamiento, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
   getReservas, reservarManu, liberarReserva, decidirYReservar, renombrarReserva,
   cargaManu, invalidarCitasManu,
   normTel
