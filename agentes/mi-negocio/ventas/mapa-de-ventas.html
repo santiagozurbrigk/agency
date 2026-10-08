@@ -17,7 +17,7 @@
   --closer: #4f46e5;
   --form: #475569;
   --team: #0f766e;
-  --dec-bg: var(--surface)3ea;
+  --dec-bg: #fff3ea;
   --dec-line: #f2b48c;
   --dec-ico: #ea580c;
   --no-bg: #fdf1f0;
@@ -31,18 +31,18 @@
   --bubble-ink: #14280c;
   --p1: #3b5bdb; --p2: #e8590c; --p3: #b08900; --p4: #d6336c; --p5: #7048e8; --p6: #2b8a3e;
   --surface: #ffffff;
-  --soft: var(--soft);
+  --soft: #f2f0eb;
   --on-ink: #ffffff;
   --on-accent: #ffffff;
   --edge-strong: #1b1c1e;
-  --yes-bg: var(--yes-bg);
-  --no-text: var(--no-text);
-  --note-text: var(--note-text);
-  --note-border: var(--note-border);
-  --sh1: var(--sh1);
-  --sh2: var(--sh2);
-  --veil: var(--veil);
-  --vw-bg: var(--vw-bg);
+  --yes-bg: #e3f4e8;
+  --no-text: #7a1f17;
+  --note-text: #5c4a12;
+  --note-border: #ecd9a6;
+  --sh1: rgba(27,28,30,.08);
+  --sh2: rgba(27,28,30,.16);
+  --veil: rgba(255,255,255,.92);
+  --vw-bg: rgba(27,28,30,.06);
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
   --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
@@ -216,6 +216,7 @@ body.panel-open.panel-wide .zoom { right: 682px; }
 .themebtn { pointer-events: auto; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 12px; padding: 0 14px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 10px var(--sh1); min-height: 44px; }
 .themebtn:hover { border-color: var(--ink); }
 .themebtn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.trackbtn .lshort { display: none; }
 .trackbtn { text-decoration: none; border-color: var(--p6); }
 .trackbtn .tdot { width: 9px; height: 9px; border-radius: 50%; background: var(--p6); box-shadow: 0 0 0 3px var(--yes-bg); }
 .board-title a { color: var(--p6); font-weight: 700; }
@@ -251,6 +252,14 @@ body.panel-open.panel-wide .zoom { right: 682px; }
 @media (max-width: 1660px) { .legend { display: none; } }
 .legend { min-height: 44px; }
 @media (max-width: 720px) {
+  .topbar { left: 12px; right: 12px; gap: 8px; }
+  .brand { order: 1; flex: 1 1 auto; min-width: 0; padding: 6px 12px 6px 8px; }
+  .trackbtn { order: 2; padding: 0 12px; }
+  .trackbtn .lfull { display: none; }
+  .trackbtn .lshort { display: inline; }
+  #themebtn { order: 3; padding: 0 13px; }
+  #themelab { display: none; }
+  .tabs { order: 4; flex: 1 1 100%; }
   .minimap { display: none; }
   body.panel-open .zoom { right: 16px; bottom: calc(70% + 12px); }
   .brand small { display: none; }
@@ -269,7 +278,7 @@ body.panel-open.panel-wide .zoom { right: 682px; }
 <div class="topbar">
   <div class="brand"><span class="logo">G</span><span><b>Mapa de ventas</b><small>Génesis · clase 19/10</small></span></div>
   <nav class="tabs" id="tabs" aria-label="Fases"></nav>
-  <a class="themebtn trackbtn" id="trackbtn" href="https://tracking-genesis.vercel.app/" target="_blank" rel="noopener"><span class="tdot"></span>Tracking de leads ↗</a>
+  <a class="themebtn trackbtn" id="trackbtn" href="https://tracking-genesis.vercel.app/" target="_blank" rel="noopener"><span class="tdot"></span><span class="lfull">Tracking de leads ↗</span><span class="lshort">Tracking ↗</span></a>
   <button type="button" class="themebtn" id="themebtn" aria-label="Cambiar a modo oscuro"><span class="ico"></span><span id="themelab">Modo oscuro</span></button>
   <div class="legend" aria-label="Referencias"><span><i style="background:var(--sdr)"></i>SDR</span><span><i style="background:var(--closer)"></i>Closer</span><span><i style="background:var(--form)"></i>Formulario</span><span><i style="background:var(--team)"></i>Equipo</span><span><i class="dia" style="background:var(--dec-ico)"></i>Decisión</span><span><i style="background:var(--note-line)"></i>Nota</span></div>
 </div>
