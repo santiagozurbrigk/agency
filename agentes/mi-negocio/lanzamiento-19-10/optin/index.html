@@ -10,10 +10,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
 
-<!-- Stubs de Meta: la librería real carga diferida -->
+<!-- Meta Pixel Code -->
 <script>
-  !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set', 'autoConfig', false, '1105986771965346'); /* sin eventos automáticos (clics/formularios) */
+fbq('init', '1105986771965346');
+fbq('track', 'PageView');
 </script>
+<!-- End Meta Pixel Code -->
+<!-- El Lead NO se dispara acá: la landing solo anota si el registro califica
+     (facturación de 30M para arriba) y la thank you dispara el Lead una vez. -->
 
 <style>
   /*
@@ -396,6 +409,9 @@
 </style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
+/></noscript>
 
 <!-- Íconos -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -851,6 +867,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     if (AB_TEST) datos.variant = variant;
 
+    /* Píxel: solo los que facturan 30M o más cuentan como Lead (los demás descalificados
+       no se le informan a Meta para no entrenarlo con ellos). La thank you lo dispara. */
+    try {
+      if (FACTURACION_LEAD.indexOf(datos.facturacion) > -1) {
+        sessionStorage.setItem("genesis_lead", JSON.stringify({ id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8), t: Date.now() }));
+      } else {
+        sessionStorage.removeItem("genesis_lead");
+      }
+    } catch (e) {}
+
     btn.disabled = true;
     btn.textContent = "Reservando tu lugar...";
     try {
@@ -869,17 +895,11 @@ document.addEventListener("DOMContentLoaded", function () {
     location.href = THANK_YOU_URL + (THANK_YOU_URL.indexOf("?") > -1 ? "&" : "?") + "email=" + encodeURIComponent(datos.email);
   });
 
-  /* Tracking diferido: píxel, Hyros y player 300 ms después del load (red de seguridad a 3500 ms) */
+  /* Tracking diferido: Hyros y player 300 ms después del load (red de seguridad a 3500 ms).
+     El píxel de Meta va en el <head>, como pide Meta. */
   var cargado = false;
   function cargarTerceros() {
     if (cargado) return; cargado = true;
-    if (META_PIXEL_ID) {
-      var s = document.createElement("script"); s.async = true;
-      s.src = "https://connect.facebook.net/en_US/fbevents.js";
-      document.head.appendChild(s);
-      fbq("init", META_PIXEL_ID);
-      fbq("track", "PageView");
-    }
     if (HYROS_SCRIPT_URL) {
       var h = document.createElement("script"); h.async = true;
       h.src = HYROS_SCRIPT_URL;
@@ -896,14 +916,16 @@ document.addEventListener("DOMContentLoaded", function () {
    - EVENT_DATE: fecha y hora con offset de zona. Ejemplo: "2026-10-19T19:00:00-03:00" = 19 hs de Argentina.
    - EVENT_TZ_LABEL: la hora en las zonas de la audiencia (va en el chip).
    - THANK_YOU_URL: a dónde va el registrado.
-   - META_PIXEL_ID / HYROS_SCRIPT_URL: vacíos = no cargan.
+   - El píxel de Meta (ID 1105986771965346) está en el <head>.
+   - FACTURACION_LEAD: las respuestas de facturación que cuentan como Lead para Meta.
+   - HYROS_SCRIPT_URL: vacío = no carga.
    - AB_TEST: true para probar dos headlines; cada navegador ve siempre la misma.
    - HEADLINE_A / HEADLINE_B: los dos headlines (aceptan HTML).
    ========================================== */
 var EVENT_DATE       = "2026-10-19T19:00:00-03:00";
 var EVENT_TZ_LABEL   = "19:00 hs (Argentina)";
 var THANK_YOU_URL    = "/thank-you";
-var META_PIXEL_ID    = "";
+var FACTURACION_LEAD = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
 var HYROS_SCRIPT_URL = "";
 var AB_TEST          = false;
 var HEADLINE_A       = 'El roadmap con el que pasé mi marca de <span class="marca">60 a 156 millones</span> por mes';
