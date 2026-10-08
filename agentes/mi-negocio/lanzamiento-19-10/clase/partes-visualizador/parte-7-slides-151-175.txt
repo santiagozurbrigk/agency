@@ -1,0 +1,163 @@
+# Webinar: Manu Dominguez (Génesis) — Clase en vivo 19/10 (parte 7 de 8, slides 151-175)
+
+Mecanismo único: Método B.A.S.E.
+Audiencia: affluent — cold
+Length objetivo: 92 min (~180 slides)
+Promesa principal: El paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
+Variación: en vivo
+
+## SLIDE 151
+
+TEXTO EN PANTALLA: "Ya pagué mentorías que no me sirvieron."
+VISUAL: Fondo blanco. Cita grande.
+SCRIPT: "Tercera: ya pagué mentorías que no me sirvieron. Te creo. Si te enseñaron a buscar producto y vos ya tenías producto, te enseñaron lo que no necesitabas."
+OBJECTION ADDRESSED: Objeción 3.
+
+## SLIDE 152
+
+TEXTO EN PANTALLA: [CASO 4 · Rodrigo (nombre de ejemplo)] · [Rubro de ejemplo: cosmética] · [MÉTRICA] · "[FRASE LITERAL]"
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del caso 4, tapando el teléfono]
+SCRIPT: "Rodrigo había pagado [SITUACIÓN: mentorías o cursos] antes de llegar. Acá no buscamos nada: instalamos la suscripción sobre lo que ya vendía, y la mayor parte la hicimos nosotros. Hoy: [MÉTRICA]. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+OBJECTION ADDRESSED: Objeción 3.
+
+## SLIDE 153
+
+TEXTO EN PANTALLA: "Los envíos recurrentes y el stock me van a complicar."
+VISUAL: Fondo blanco. Cita grande.
+SCRIPT: "Cuarta: los envíos recurrentes y el stock me van a complicar la operación. Es al revés: hoy comprás stock a ojo porque no sabés cuánto vas a vender. Con suscriptores, lo sabés."
+OBJECTION ADDRESSED: Objeción 4.
+
+## SLIDE 154
+
+TEXTO EN PANTALLA: [CASO 5 · Valentina (nombre de ejemplo)] · [Rubro de ejemplo: cuidado personal] · [MÉTRICA] · "[FRASE LITERAL]"
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del caso 5, tapando direcciones y nombres]
+SCRIPT: "Las proyecciones de stock y de reposición te las armamos nosotros sobre tu base. Como con Valentina: [MÉTRICA]. Su operación se ordenó, no se complicó."
+OBJECTION ADDRESSED: Objeción 4.
+
+## SLIDE 155
+
+TEXTO EN PANTALLA: "No uso Tiendanube."
+VISUAL: Fondo blanco. Logos de plataformas.
+SCRIPT: "Quinta: no uso Tiendanube. No hace falta. Casi todas las marcas que veo están en Tiendanube o en Shopify, y con cualquiera se puede."
+OBJECTION ADDRESSED: Objeción 5.
+
+## SLIDE 156
+
+TEXTO EN PANTALLA: Se instala en tu tienda, sea cual sea. · [CASO 3 · Tomás: suscripción en Shopify]
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la suscripción de Tomás en Shopify]
+SCRIPT: "Lo instalamos en la tienda que ya tenés, al lado de tu compra única, como en la de Tomás, que está en Shopify. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+OBJECTION ADDRESSED: Objeción 5.
+
+## SLIDE 157
+
+TEXTO EN PANTALLA: Lo que te cuesta quedarte igual.
+VISUAL: Fondo blanco. Un calendario donde cada mes arranca en 0, y el CPA pegado en cada venta.
+SCRIPT: "Y la pregunta que más importa: ¿cuánto te cuesta quedarte como estás? Cada mes en compra única pagás de nuevo el CPA de cada venta. Cada mes la subasta sube. Y cada mes, alguien de tu rubro puede llegar primero. No hacer nada también tiene un costo, solo que no te llega en una factura."
+
+## SLIDE 158
+
+TEXTO EN PANTALLA: Roadmap · Variante · Tienda · Base · Anuncios · Retención · Stock · Panel · Formalización · Manu y José
+VISUAL: Fondo blanco. El stack resumido en una línea.
+SCRIPT: "Todo esto, instalado en tu marca en cuatro meses, con José y conmigo al lado. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 159
+
+TEXTO EN PANTALLA: 10 lugares · Cierra el jueves 22/10 a las 23:59
+VISUAL: Fondo blanco. Los dos datos, en grande.
+SCRIPT: "Son 10 lugares y se cierra el jueves 22 a las 23:59. Después de esa hora no tomamos a nadie más en este ciclo. No es un truco: es la agenda real de José y mía."
+
+## SLIDE 160
+
+TEXTO EN PANTALLA: Las llamadas de esta semana se están llenando.
+VISUAL: Fondo blanco. Un calendario de la semana con horarios ocupados.
+SCRIPT: "Y las llamadas son de esta semana. Cada lugar que se ocupa, se ocupa. Si sabés que es para vos, no lo dejes para el jueves a la noche. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 161
+
+TEXTO EN PANTALLA: El 1 del mes que viene.
+VISUAL: Fondo blanco. Un celular con notificaciones de cobros recurrentes.
+SCRIPT: "Imaginate el 1 de un mes, dentro de unos meses. Abrís el celular y ya entraron los cobros de tus suscriptores. No arrancás en cero. Tus anuncios pueden pagar por cada cliente más que tu competencia. Y si te bajan la cuenta, la base se sigue cobrando."
+
+## SLIDE 162
+
+TEXTO EN PANTALLA: Dejá de buscar la compra. Buscá al cliente.
+VISUAL: Fondo blanco. La frase ancla.
+SCRIPT: "Dejá de buscar la compra. Buscá al cliente. Eso es lo que instalamos en Génesis."
+
+## SLIDE 163
+
+TEXTO EN PANTALLA: 1 · Agendá tu llamada → [LINK AGENDA] · 2 · Dejá tus datos y te escribimos → [LINK DATOS]
+VISUAL: Fondo blanco. Los dos caminos, con los links.
+SCRIPT: "Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat. En la llamada vemos tus números y, si te cierra, arrancamos."
+
+## SLIDE 164
+
+TEXTO EN PANTALLA: El equipo está respondiendo en el chat ahora.
+VISUAL: Fondo blanco. El chat con el mensaje fijado del equipo y los links.
+SCRIPT: "El equipo está en el chat ahora mismo, respondiendo y ayudándote a agendar. Si tenés una duda, escribila: ahora la respondo. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 165
+
+TEXTO EN PANTALLA: Preguntas.
+VISUAL: Fondo blanco. Manu a cámara. Los dos caminos fijos abajo.
+SCRIPT: "Vamos con las preguntas. Respondo todas las que pueda. [Q&A real: no se plantan preguntas. Entre respuesta y respuesta, un caso y la CTA]."
+
+## SLIDE 166
+
+TEXTO EN PANTALLA: "¿Cuánto sale?"
+VISUAL: Fondo blanco. La pregunta.
+SCRIPT: "[Si aparece]. La inversión te la paso en la llamada, con tus números adelante. Primero tengo que saber si te sirve. Si no te sirve, no te lo vendo. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 167
+
+TEXTO EN PANTALLA: "¿Cuándo veo el primer cobro?"
+VISUAL: Fondo blanco. La línea de tiempo del ciclo de reposición.
+SCRIPT: "[Si aparece]. Depende de tu ciclo de reposición. Si tu producto se termina en 30 días, el primer cobro recurrente llega a los 30. Lo calculamos con tu caso en la llamada."
+
+## SLIDE 168
+
+TEXTO EN PANTALLA: "¿Me rompe lo que ya vendo?"
+VISUAL: Fondo blanco. Los dos botones: comprar una vez y suscribirme.
+SCRIPT: "[Si aparece]. No. La suscripción va al lado: tu compra única sigue exactamente igual. Como Tomás. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 169
+
+TEXTO EN PANTALLA: "¿Lo hacés vos o tu equipo?"
+VISUAL: Fondo blanco. Manu y José.
+SCRIPT: "[Si aparece]. Lo instalamos nosotros, José y yo, y tenés chat directo con los dos durante los cuatro meses."
+
+## SLIDE 170
+
+TEXTO EN PANTALLA: "Mi producto se repone cada 2 o 3 meses. ¿Sirve?"
+VISUAL: Fondo blanco. Una línea de tiempo con un ciclo largo.
+SCRIPT: "[Si aparece]. Puede servir, y depende de la cuenta: con un ciclo más largo cambia el LTV y cambia el techo. Eso es justo lo que vemos en la llamada. Si no cierra, te lo digo."
+
+## SLIDE 171
+
+TEXTO EN PANTALLA: "¿Y si todavía facturo menos?"
+VISUAL: Fondo blanco. La pregunta.
+SCRIPT: "[Si aparece]. Si tu marca ya vende y querés ver si te sirve, agendá igual: en la llamada lo vemos con tus números y te decimos qué te conviene hoy. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 172
+
+TEXTO EN PANTALLA: "¿Necesito tener equipo?"
+VISUAL: Fondo blanco. La pregunta.
+SCRIPT: "[Si aparece]. No. La instalación la hacemos nosotros, y te dejamos los SOPs de cada pieza para que, cuando tengas equipo, lo opere sin depender de nadie."
+
+## SLIDE 173
+
+TEXTO EN PANTALLA: 2.200 suscriptores · 1,28% de churn · Joaquín · Camila · Tomás · Rodrigo · Valentina
+VISUAL: Fondo blanco. Las capturas de los casos, en mosaico (gris).
+SCRIPT: "Mientras respondo, mirá esto: mi marca, Joaquín, Camila, Tomás, Rodrigo, Valentina. Distintos productos, la misma cuenta. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 174
+
+TEXTO EN PANTALLA: Si no es para vos, no pasa nada. Llevate lo que aprendiste hoy.
+VISUAL: Fondo blanco. La frase sola.
+SCRIPT: "Y si no es para vos, no pasa nada. Llevate lo que aprendiste hoy: los tres errores, los cuatro pasos y tu cuenta. Aplicalos. En serio."
+
+## SLIDE 175
+
+TEXTO EN PANTALLA: Cierra el jueves 22/10 a las 23:59. El que está adentro, está adentro.
+VISUAL: Fondo blanco. La fecha y la hora, en grande.
+SCRIPT: "Esto cierra el jueves 22 a las 23:59. El que está adentro, está adentro. Después de esa hora, este ciclo se cerró."

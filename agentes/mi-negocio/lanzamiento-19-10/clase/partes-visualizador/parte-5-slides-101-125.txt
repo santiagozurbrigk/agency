@@ -1,0 +1,159 @@
+# Webinar: Manu Dominguez (Génesis) — Clase en vivo 19/10 (parte 5 de 8, slides 101-125)
+
+Mecanismo único: Método B.A.S.E.
+Audiencia: affluent — cold
+Length objetivo: 92 min (~180 slides)
+Promesa principal: El paso a paso para pasar tu marca de consumibles al modelo de suscripción y poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
+Variación: en vivo
+
+## SLIDE 101
+
+TEXTO EN PANTALLA: [CASO 2 · Camila (nombre de ejemplo)] · Error 2: "Mi problema es el CPA" · [Rubro de ejemplo: suplementos]
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · foto o logo del caso 2]
+SCRIPT: "Camila tiene una marca de [RUBRO]. Estaba en el error dos: cada mes buscaba bajar el CPA con creativos nuevos, y cada mes le costaba más. [SITUACIÓN INICIAL]. Hizo la cuenta de la A y recalculó cuánto podía pagar por cliente."
+OBJECTION ADDRESSED: Creencia 2.
+
+## SLIDE 102
+
+TEXTO EN PANTALLA: [MÉTRICA: lo que paga hoy por cliente vs. antes, o su recompra] en [TIEMPO] · "[FRASE LITERAL]"
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del caso 2, tapando datos de clientes]
+SCRIPT: "En [TIEMPO]: [MÉTRICA]. Dejó de pelear el CPA y empezó a pagar más que su competencia. Ella lo dice así: '[FRASE LITERAL]'. Y el tercero estaba en el error más personal."
+
+## SLIDE 103
+
+TEXTO EN PANTALLA: [CASO 3 · Tomás (nombre de ejemplo)] · Error 3: "No puedo tocar lo que funciona" · [Rubro de ejemplo: químicos, con Shopify]
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · foto o logo del caso 3]
+SCRIPT: "Tomás vende [RUBRO]. Estaba en el error tres: facturaba bien y tenía miedo de que, si tocaba algo, se le cayeran las ventas. [SITUACIÓN INICIAL]. Sumó la suscripción al lado, sin tocar nada de lo que vendía."
+OBJECTION ADDRESSED: Creencia 3.
+
+## SLIDE 104
+
+TEXTO EN PANTALLA: [MÉTRICA: compra única intacta + suscripción creciendo] en [TIEMPO] · "[FRASE LITERAL]"
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del caso 3: compra única y suscripción lado a lado]
+SCRIPT: "En [TIEMPO]: [MÉTRICA]. La compra única siguió igual, y al lado empezó a crecer otra facturación que se cobra sola. '[FRASE LITERAL]'."
+
+## SLIDE 105
+
+TEXTO EN PANTALLA: Tres marcas. Tres errores. El mismo principio.
+VISUAL: Fondo blanco. Los tres casos lado a lado (gris).
+SCRIPT: "Tres marcas distintas, tres errores distintos, el mismo principio. Ninguno tenía algo que vos no tengas: una marca que vende, clientes que reponen y una cuenta que no cerraba."
+
+## SLIDE 106
+
+TEXTO EN PANTALLA: No eran distintos a vos.
+VISUAL: Fondo blanco. La frase sola.
+SCRIPT: "No eran distintos a vos. Estaban exactamente donde estás hoy, mirando el mismo Excel, con el mismo miedo a tocar lo que funcionaba."
+
+## SLIDE 107
+
+TEXTO EN PANTALLA: Dejá de buscar la compra. Buscá al cliente.
+VISUAL: Fondo blanco. La frase ancla.
+SCRIPT: "Dejaron de buscar la compra y empezaron a buscar al cliente. Eso es todo. Ahora te quiero hacer una pregunta, y te pido que me la contestes en silencio, para vos."
+
+## SLIDE 108
+
+TEXTO EN PANTALLA: ¿Cuántas veces cambiaste el creativo esperando que esta vez sí?
+VISUAL: Fondo blanco. La pregunta sola.
+SCRIPT: "¿Cuántas veces cambiaste el creativo esperando que esta vez sí? [Pausa real de 3 segundos]. ¿Cuántos meses arrancaste en cero? [Pausa]. ¿Cuántas veces te dijiste 'el mes que viene lo ordeno'?"
+
+## SLIDE 109
+
+TEXTO EN PANTALLA: ¿Cuántas veces lo intentaste solo?
+VISUAL: Fondo blanco. La pregunta sola.
+SCRIPT: "¿Cuántas veces lo intentaste solo, a la noche, después de operar todo el día, sin nadie que te diga si ibas bien? [Pausa]. No te lo pregunto para que te sientas mal. Te lo pregunto porque ya sabés la respuesta."
+
+## SLIDE 110
+
+TEXTO EN PANTALLA: 1 · Tu cliente sí se suscribe · 2 · Ganás pudiendo pagar más · 3 · No frenás nada: sumás una puerta
+VISUAL: Fondo blanco. Los tres errores, cada uno con su insight.
+SCRIPT: "Tu cliente sí se suscribe, si le ofrecés lo que igual iba a reponer. No ganás bajando el CPA, ganás pudiendo pagar más. Y no frenás nada: le sumás una puerta a tu tienda. Eso ya lo sabés."
+
+## SLIDE 111
+
+TEXTO EN PANTALLA: Ya sabés QUÉ hacer. Lo que no tenés es quién te lo instale mientras operás tu marca.
+VISUAL: Fondo blanco. La frase, con "quién te lo instale" resaltado.
+SCRIPT: "Ya sabés qué hacer. Lo que no tenés es quién te lo instale mientras vos seguís operando tu marca: la variante, la tienda, la secuencia a tu base, los anuncios recalculados. Y por eso quiero mostrarte algo."
+
+## SLIDE 112
+
+TEXTO EN PANTALLA: Y por eso quiero mostrarte algo…
+VISUAL: Fondo blanco. Solo la frase.
+SCRIPT: "Y por eso quiero mostrarte algo."
+
+## SLIDE 113
+
+TEXTO EN PANTALLA: Te di el sistema completo.
+VISUAL: Fondo blanco. Pantalla limpia. Manu a cámara.
+SCRIPT: "Te di el sistema completo: los tres errores, los cuatro pasos y la cuenta. Lo podés aplicar mañana. Pero antes de mostrarte nada más, quiero que seas honesto con vos mismo un segundo."
+
+## SLIDE 114
+
+TEXTO EN PANTALLA: ¿Arrancaste algo y lo dejaste a la mitad? · ¿Tuviste un mes bueno y al siguiente volviste a cero? · ¿El miedo a romper lo que funciona no te deja ni arrancar?
+VISUAL: Fondo blanco. Las tres preguntas, de a una, con pausa entre cada una.
+SCRIPT: "¿Arrancaste algo en tu marca y lo dejaste a la mitad? [Pausa]. ¿Tuviste un mes bueno y al siguiente volviste a arrancar en cero? [Pausa]. ¿El miedo a romper lo que funciona no te deja ni empezar? [Pausa]."
+
+## SLIDE 115
+
+TEXTO EN PANTALLA: Si dijiste que sí a alguna, no es tu culpa.
+VISUAL: Fondo blanco. La frase sola.
+SCRIPT: "Si te dijiste que sí a alguna, no es tu culpa. Le pasa a casi todos los dueños de marca con los que hablo. Y no les pasa por falta de información."
+
+## SLIDE 116
+
+TEXTO EN PANTALLA: No es falta de información. Es sobrecarga.
+VISUAL: Fondo blanco. Una agenda desbordada: pedidos, proveedor, campañas, equipo.
+SCRIPT: "No es falta de información: es sobrecarga. Ya tenés los pedidos, el proveedor, las campañas, el equipo, el contador. Y encima ahora tenés que armar una variante, una tienda nueva, una secuencia y recalcular los anuncios."
+
+## SLIDE 117
+
+TEXTO EN PANTALLA: Cada pieza mal hecha te cuesta semanas.
+VISUAL: Fondo blanco. Las piezas del sistema, con una cruz roja en las que salen mal.
+SCRIPT: "Y cada pieza mal hecha te cuesta semanas. Una variante mal precificada atrae al que se da de baja. Una secuencia mal armada no convierte a nadie de tu base. Unos anuncios sin recalcular te dejan pagando el techo viejo. Y mientras tanto, el 1 del mes seguís en cero."
+
+## SLIDE 118
+
+TEXTO EN PANTALLA: Podés aplicar lo mismo que yo y tener resultados completamente diferentes.
+VISUAL: Fondo blanco. La frase sola.
+SCRIPT: "Por eso te dije que podés aplicar lo mismo que yo y tener resultados completamente diferentes. Lo hacés solo, a la noche, sin nadie que te diga si vas bien. Y solo, se pone cuesta arriba."
+
+## SLIDE 119
+
+TEXTO EN PANTALLA: Podés hacerlo solo. O podés dejar que te muestre lo que armamos.
+VISUAL: Fondo blanco. Dos caminos: uno solo, otro acompañado.
+SCRIPT: "Podés hacerlo solo: ya tenés el método, es gratis y funciona. Si es tu caso, perfecto, llevate todo lo de hoy. O podés dejar que te muestre lo que armamos para los que quieren tenerlo instalado más rápido. ¿Te lo muestro?"
+
+## SLIDE 120
+
+TEXTO EN PANTALLA: Lo armé porque yo lo necesitaba, y no existía.
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · foto de Manu en la época de compra única]
+SCRIPT: "Lo armé porque yo lo necesitaba, y no existía. Cuando estaba en 60 millones en compra única, busqué a alguien que me ayudara a pasar a suscripción en Argentina. Lo único que encontré fueron mentorías de producto ganador. Yo ya tenía producto."
+
+## SLIDE 121
+
+TEXTO EN PANTALLA: No abandonás por incapaz. Abandonás porque se pone incómodo y no hay nadie al lado.
+VISUAL: Fondo blanco. La frase sola, en grande.
+SCRIPT: "Y aprendí algo: no abandonás por incapaz. Abandonás porque se pone incómodo y no hay nadie al lado. Cuando la primera semana la variante no convierte, o un suscriptor se da de baja, solo lo dejás. Acompañado, lo ajustás."
+
+## SLIDE 122
+
+TEXTO EN PANTALLA: Así que lo armé para que nadie tenga que hacerlo solo.
+VISUAL: Fondo blanco. Transición.
+SCRIPT: "Así que lo armé para que nadie tenga que hacerlo solo, y para que lo instale alguien que ya lo hizo en su propia marca. Dejame mostrarte exactamente a qué estás entrando."
+
+## SLIDE 123
+
+TEXTO EN PANTALLA: GÉNESIS
+VISUAL: Fondo blanco. Logo de Génesis. Los dos círculos con la lente al medio.
+SCRIPT: "Se llama Génesis. Es donde instalamos el Método B.A.S.E. en tu marca, con vos. No te lo explicamos para que lo hagas: lo hacemos nosotros, al lado de lo que ya vendés. Agendá tu llamada o dejá tus datos y te escribimos. Los links están en el chat."
+
+## SLIDE 124
+
+TEXTO EN PANTALLA: Consultoría 1 a 1 · 4 meses · Hecho por nosotros · Diagnóstico → De Pedido a Suscriptor → Migración sin Frenar → Piso de Facturación
+VISUAL: Fondo blanco. Las cuatro fases como un camino.
+SCRIPT: "Es una consultoría 1 a 1, de 4 meses, hecha por nosotros. Arrancamos por el diagnóstico de tus números. Después, de pedido a suscriptor: la variante y el cobro recurrente instalados. Después, migración sin frenar: ajustar el producto al ciclo sin tocar lo que vende. Y al final, el piso de facturación: retención, reporte y anuncios con el CAC nuevo."
+
+## SLIDE 125
+
+TEXTO EN PANTALLA: Manu y José, con vos.
+VISUAL: Fondo blanco. [IMAGEN PENDIENTE · gris #D9D9D9 · foto de Manu y José]
+SCRIPT: "Lo hacemos José y yo. José es mi socio y está en la entrega de cada marca. Vas a tener a los dos al lado durante los cuatro meses. Ahora te muestro pieza por pieza qué incluye."
