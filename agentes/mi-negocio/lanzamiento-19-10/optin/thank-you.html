@@ -10,15 +10,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Píxel de Meta: código base. Cargá tu ID en META_PIXEL_ID (vacío = no carga). -->
+<!-- Meta Pixel Code -->
 <script>
-  var META_PIXEL_ID = ""; /* hueco: ID del píxel de Meta */
-  if (META_PIXEL_ID) {
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', META_PIXEL_ID);
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('set', 'autoConfig', false, '1105986771965346'); /* sin eventos automáticos (clics/formularios) */
+fbq('init', '1105986771965346');
+/* PageView y Lead solo para registros calificados: ver el script de abajo. */
+</script>
+<!-- End Meta Pixel Code -->
+<script>
+/* Lead: solo si viene de registrarse en la landing con facturación de 30M o más
+   (la landing lo deja anotado). Se dispara una sola vez: recargar o entrar directo no lo repite.
+   OJO: no crear en el Administrador de Eventos una conversión "Lead" por URL de esta página,
+   porque contaría también a los descalificados. */
+try {
+  var leadPend = JSON.parse(sessionStorage.getItem("genesis_lead") || "null");
+  sessionStorage.removeItem("genesis_lead");
+  if (leadPend && Date.now() - leadPend.t < 30 * 60 * 1000) {
     fbq('track', 'PageView');
-    /* fbq('track', 'Lead'); */ /* activar SOLO si el optin no lo dispara ya. Hoy el Lead se define por URL de esta página en el Administrador de Eventos. */
+    fbq('track', 'Lead', { content_name: 'Clase 19/10' }, { eventID: leadPend.id });
   }
+} catch (e) {}
 </script>
 <!-- Script universal de Hyros: hueco. Pegá acá la línea de tu cuenta (una sola vez). -->
 <!-- <script src="https://XXXXXX.t.hyros.com/v1/lst/universal-script?ph=..."></script> -->
