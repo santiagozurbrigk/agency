@@ -56,12 +56,14 @@ Grupo de avisos → tocá el nombre:
 3. Pegalo también donde dice `[LINK GRUPO]` en la slide de regalos de la clase (`clase/v2/05-pitch-qa-cierre.md`) y armá el QR de esa slide con el mismo link.
 4. **No restablezcas el link** después de publicarlo: el viejo deja de funcionar y la thank you queda rota.
 
-### 5b · La tarjeta de bienvenida (lo que ve el que entra)
-No es un mensaje: es la tarjeta automática "Te uniste mediante un enlace de invitación" que WhatsApp arma con la foto, el nombre y **las primeras líneas de la descripción**. Por eso la descripción arranca con una línea gancho de 1 renglón (con emoji) y la segunda línea dice la acción. Todo lo que pase de dos renglones queda escondido detrás de "Más".
+### 5b · Lo que ve el que entra
+En la comunidad, la tarjeta del grupo de avisos es fija de WhatsApp ("¡Te damos la bienvenida a la comunidad!" + "Ver información de la comunidad") y no se puede editar. Lo propio se pone en dos lugares:
+1. **La descripción de la comunidad:** se ve en la pantalla previa al tocar el link de invitación y en "Ver información de la comunidad". Arranca con la línea gancho.
+2. **El primer aviso, fijado:** es lo primero con texto propio que aparece debajo de la tarjeta (paso 6).
 
 ### 5c · Grupos por lead (llamadas)
 Se pueden crear dentro de la comunidad (Comunidad → **Agregar grupo** → **Crear grupo nuevo**), pero:
-- **Todos los miembros de la comunidad ven la lista de grupos** y pueden pedir unirse. Nombre sin la marca del lead (ej: **Llamada · 0412** en vez de "[Marca] · Equipo Manu Dominguez") y, en cada grupo, **Aprobar nuevos miembros: activado**.
+- **Los miembros de la comunidad pueden ver los grupos de los que no son parte** y pedir unirse (probalo desde un teléfono que no sea admin apenas crees el primero). Nombre sin la marca del lead (ej: **Llamada · 0412** en vez de "[Marca] · Equipo Manu Dominguez") y, en cada grupo, **Aprobar nuevos miembros: activado**.
 - La comunidad tiene tope de grupos (100 hoy; verificalo en la app). Al terminar el carrito (22/10), sacá de la comunidad los grupos cerrados para liberar lugar.
 - El lead que entra a su grupo queda también en el grupo de avisos: bien, recibe el link de la clase.
 
