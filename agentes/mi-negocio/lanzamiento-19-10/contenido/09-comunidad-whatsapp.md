@@ -15,7 +15,7 @@ Versión 1, 9-oct-2026. Es el canal único de los registrados: no hay mails (dec
 
 Con ads de adquisición corriendo del 10 al 18/10, pasar de 1.024 registrados es posible, y un segundo grupo duplica el trabajo del día del vivo justo cuando más importa. Además son dueños de marca: que su número no quede expuesto a 1.000 desconocidos (y a la competencia) suma confianza.
 
-**Regla del lanzamiento que se mantiene:** el grupo emite, no conversa. La comunidad tiene **solo el grupo de avisos**, sin subgrupos de charla.
+**Regla del lanzamiento que se mantiene:** el grupo de avisos emite, no conversa. Los únicos otros grupos de la comunidad son los de cada lead con su llamada (paso 5c); no hay grupos de charla abiertos.
 
 ---
 
@@ -31,7 +31,7 @@ Comunidad → tocá el nombre → **Configuración de la comunidad**:
 
 | Ajuste | Valor | Por qué |
 |---|---|---|
-| Quién puede agregar grupos | **Solo admins** | Que nadie abra subgrupos de charla |
+| Quién puede agregar grupos | **Solo admins** | Solo el equipo crea los grupos de cada lead |
 | Invitar miembros / link | Activo | Es el link que va en la thank you |
 
 ### 3 · Configuración del grupo de avisos
@@ -56,6 +56,15 @@ Grupo de avisos → tocá el nombre:
 3. Pegalo también donde dice `[LINK GRUPO]` en la slide de regalos de la clase (`clase/v2/05-pitch-qa-cierre.md`) y armá el QR de esa slide con el mismo link.
 4. **No restablezcas el link** después de publicarlo: el viejo deja de funcionar y la thank you queda rota.
 
+### 5b · La tarjeta de bienvenida (lo que ve el que entra)
+No es un mensaje: es la tarjeta automática "Te uniste mediante un enlace de invitación" que WhatsApp arma con la foto, el nombre y **las primeras líneas de la descripción**. Por eso la descripción arranca con una línea gancho de 1 renglón (con emoji) y la segunda línea dice la acción. Todo lo que pase de dos renglones queda escondido detrás de "Más".
+
+### 5c · Grupos por lead (llamadas)
+Se pueden crear dentro de la comunidad (Comunidad → **Agregar grupo** → **Crear grupo nuevo**), pero:
+- **Todos los miembros de la comunidad ven la lista de grupos** y pueden pedir unirse. Nombre sin la marca del lead (ej: **Llamada · 0412** en vez de "[Marca] · Equipo Manu Dominguez") y, en cada grupo, **Aprobar nuevos miembros: activado**.
+- La comunidad tiene tope de grupos (100 hoy; verificalo en la app). Al terminar el carrito (22/10), sacá de la comunidad los grupos cerrados para liberar lugar.
+- El lead que entra a su grupo queda también en el grupo de avisos: bien, recibe el link de la clase.
+
 ### 6 · Mensaje fijado (apenas la creás)
 Mandá el mensaje "Fijado de bienvenida" de abajo y fijalo (mantener apretado → **Fijar** → 30 días). WhatsApp no le muestra a los que entran los mensajes viejos: el que entra el jueves no ve el video del miércoles. Lo que sí ve siempre es la descripción y lo fijado; por eso el fijado dice todo lo que necesita.
 
@@ -77,6 +86,8 @@ Mandá el mensaje "Fijado de bienvenida" de abajo y fijalo (mantener apretado �
 Foto de Manu (la misma del perfil de IG) o el logo de Génesis, cuadrada, 640×640. Se ve chiquita: cara o logo, sin texto.
 
 ### Descripción de la comunidad
+> 🔴 Lunes 19/10, 19 hs: leé esto antes de la clase 🔴
+>
 > Clase en vivo privada: **lunes 19/10, 19 hs (Argentina)**.
 >
 > Cómo pasé mi marca de consumibles de 60 millones a 156.798.062 por mes con el modelo de suscripción: el paso a paso para poder pagar 2,5 veces más por cada cliente que tu competencia, sin frenar lo que hoy vendés.
