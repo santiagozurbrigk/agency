@@ -67,8 +67,15 @@ Se pueden crear dentro de la comunidad (Comunidad → **Agregar grupo** → **Cr
 - La comunidad tiene tope de grupos (100 hoy; verificalo en la app). Al terminar el carrito (22/10), sacá de la comunidad los grupos cerrados para liberar lugar.
 - El lead que entra a su grupo queda también en el grupo de avisos: bien, recibe el link de la clase.
 
-### 6 · Mensaje fijado (apenas la creás)
-Mandá el mensaje "Fijado de bienvenida" de abajo y fijalo (mantener apretado → **Fijar** → 30 días). WhatsApp no le muestra a los que entran los mensajes viejos: el que entra el jueves no ve el video del miércoles. Lo que sí ve siempre es la descripción y lo fijado; por eso el fijado dice todo lo que necesita.
+### 6 · Mensaje fijado y bienvenida del que entra tarde
+WhatsApp no le muestra al que entra los mensajes anteriores a su ingreso, **y eso incluye el fijado**: el que entra después de que fijaste el mensaje no lo ve. Lo único que ve todo el que entra, entre cuando entre, es la **descripción de la comunidad** (antes de unirse y en "Ver información de la comunidad"). Por eso:
+
+1. **La descripción es la bienvenida permanente.** Tiene que decir sola qué es, cuándo es la clase y que el link llega por acá.
+2. **Reenviar y volver a fijar el fijado de bienvenida una vez por día**, del 10 al 13/10 a las 10:00 (antes de que arranque la nutrición): mandarlo de nuevo, fijarlo (24 h) y borrar la copia del día anterior ("Eliminar para todos"). Así el que entró ayer o anoche lo tiene arriba. No más de una vez por día: cada envío le suena a toda la comunidad.
+3. **Desde el 14/10 no hace falta:** cada día arranca con un recordatorio que repite fecha y hora (`05-nutricion-whatsapp.md`), y el video resumen del 17/10 pone al día al que entra tarde.
+4. **El mensaje del SDR por privado** (`ventas/proceso-de-ventas-clase-19-10.md`, paso 2) llega a cada registrado aunque entre tarde al grupo: que mencione que el link de la clase llega por la comunidad.
+
+Probalo con un teléfono que no sea admin: entrá después de fijar el mensaje y fijate si lo ves. Si en tu versión de WhatsApp sí aparece, alcanza con fijarlo una vez (30 días).
 
 ### 7 · Prueba antes de publicar
 - [ ] Desde un teléfono que no sea admin: abrir el link desde la thank you, entrar y comprobar que no puede escribir y que ve el fijado.
