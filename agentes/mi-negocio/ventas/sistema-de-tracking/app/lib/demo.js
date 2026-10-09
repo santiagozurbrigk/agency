@@ -11,7 +11,7 @@ function seed() {
       id: "demo-martin", nombre: "Martín Pereyra", email: "martin@demo.com", telefono: "+5491155550001",
       tags: [], creado: hoy,
       fields: {
-        ciclo: "Entre 30 y 60 días", facturacion: "Entre 30M y 50M", dueno: "Diego",
+        ciclo: "Entre 30 y 60 días", facturacion: "Entre 30M y 50M", dueno: "Diego", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Instagram_Reels", utm_campaign: "Génesis 19/10", utm_term: "Dueños de marca", utm_content: "VSL-hook-CPA" }), 
         etapa: "Agendado con Manu (pre-venta)", que_vende: "Productos de limpieza para el hogar",
         por_donde: "Tiendanube y Mercado Libre", dolor: "El CPA le sube todos los meses",
         por_que_ahora: "Si sigo así, para fin de año estoy pagando por vender.",
@@ -25,7 +25,7 @@ function seed() {
       id: "demo-lucia", nombre: "Lucía Gómez", email: "lucia@demo.com", telefono: "+5491155550002",
       tags: [], creado: hoy,
       fields: {
-        ciclo: "Entre 30 y 60 días", facturacion: "Entre 10M y 30M", dueno: "Braian",
+        ciclo: "Entre 30 y 60 días", facturacion: "Entre 10M y 30M", dueno: "Braian", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Instagram_Reels", utm_campaign: "Génesis 19/10", utm_term: "Dueños de marca", utm_content: "VSL-hook-CPA" }), 
         etapa: "Confirmado para la clase", que_vende: "Limpieza ecológica",
         dolor: "Sus clientas compran una vez y no vuelven", recurso_enviado: "Sí",
         confirmo_clase: "Sí", intentos: "1"
@@ -35,7 +35,7 @@ function seed() {
       id: "demo-sofia", nombre: "Sofía Núñez", email: "sofia@demo.com", telefono: "+5491155550003",
       tags: [], creado: hoy,
       fields: {
-        ciclo: "En menos de 30 días", facturacion: "Entre 50M y 100M", dueno: "Diego",
+        ciclo: "En menos de 30 días", facturacion: "Entre 50M y 100M", dueno: "Diego", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Facebook_Mobile_Feed", utm_campaign: "Génesis 19/10", utm_term: "Lookalike 1%", utm_content: "Carrusel-casos" }), 
         etapa: "Confirmado para la clase", que_vende: "Cosmética", confirmo_clase: "Sí",
         inversion: "Más de USD 6.000"
       }

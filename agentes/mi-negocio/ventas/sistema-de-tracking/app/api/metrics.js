@@ -85,6 +85,22 @@ module.exports = async function handler(req, res) {
     const origen = Object.fromEntries(Object.values(ORIGEN).map(o => [o, 0]));
     for (const l of leads) for (const t of l.tags || []) if (ORIGEN[t]) origen[ORIGEN[t]]++;
 
+    // Leads por anuncio (UTMs que guarda la landing en «Origen (UTM)»).
+    // "Califica" = facturación de 30M para arriba, el mismo criterio que el Lead del píxel.
+    const FACT_OK = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
+    const anuncios = {};
+    for (const l of leads) {
+      let o = {};
+      try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
+      const nombre = o.utm_content || (o.ad_id ? `Anuncio ${o.ad_id}` : (l.tags || []).includes("optin-19-10") ? "Sin datos de anuncio" : null);
+      if (!nombre) continue;
+      const a = anuncios[nombre] || (anuncios[nombre] = { anuncio: nombre, campana: o.utm_campaign || "", conjunto: o.utm_term || "", leads: 0, califican: 0, ventas: 0 });
+      a.leads++;
+      if (FACT_OK.includes(l.fields.facturacion)) a.califican++;
+      if (l.fields.venta_json) a.ventas++;
+    }
+    const porAnuncio = Object.values(anuncios).sort((x, y) => y.califican - x.califican || y.leads - x.leads);
+
     // Opt-ins por día (hora de Argentina), desde el primero hasta hoy, máximo 30 días.
     const diaAR = (iso) => new Date(new Date(iso).getTime() - 3 * 3600e3).toISOString().slice(0, 10);
     const porDiaMapa = {};
@@ -107,7 +123,7 @@ module.exports = async function handler(req, res) {
         intentos: Object.entries(intentos).map(([op, n]) => ({ op, n })),
         origen: Object.entries(origen).map(([op, n]) => ({ op, n }))
       },
-      porDia,
+      porDia, porAnuncio,
       ok: true,
       embudo: { total, contactados, enConversacion, calificados, agendadosPre, agendadosPost, confirmados, asistieron, presentados, ventas: ventas.length },
       porOferta, porPersona, grupos,
