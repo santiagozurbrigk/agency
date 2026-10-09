@@ -913,6 +913,12 @@ async function renderMetricas(v,s){
     +tarjeta("Grupos después de la clase","",barrasH(grupos,{color:x=>x.op.startsWith("Grupo 1")?"on":"",total:true}))
     +tarjeta("Vendido y cobrado","Por oferta, en USD",plata)+`</div>`;
 
+  const ads=(m.porAnuncio||[]).slice(0,12), maxA=Math.max(1,...ads.map(a=>a.leads));
+  const graficoAds=ads.length?`${ley([["var(--marca-dato)","Califican (30M o más)"],["var(--dato-2)","No califican"]])}<div class="bh">${ads.map(a=>`<div class="bh-f" data-tip="${esc(a.anuncio)}${a.campana?` · ${esc(a.campana)}`:""}${a.conjunto?` · ${esc(a.conjunto)}`:""}: ${a.leads} lead${a.leads===1?"":"s"}, ${a.califican} califican${a.ventas?`, ${a.ventas} venta${a.ventas===1?"":"s"}`:""}">
+      <span class="lab">${esc(a.anuncio)}</span><span class="val">${pct(a.califican,a.leads)}%<small>${a.califican}/${a.leads}</small></span>
+      <span class="pista-b" style="width:${a.leads/maxA*100}%"><i class="on" style="width:${pct(a.califican,a.leads)}%"></i><i style="flex:1"></i></span></div>`).join("")}</div>`:`<div class="sin-datos">Sin opt-ins todavía</div>`;
+  h+=tarjeta("Leads por anuncio","Lo largo de la barra es cuántos leads trajo; lo naranja, cuántos califican. Ordenado por calificados",graficoAds);
+
   h+=`<div class="tarjeta"><h4>Por persona</h4><div class="tabla-scroll"><table class="tabla"><thead><tr><th>Persona</th><th class="n">Leads</th><th class="n">Contactados</th><th class="n">Califican</th><th class="n">Agendas</th><th class="n">Cierres</th><th class="n">Facturado USD</th></tr></thead><tbody>
     ${Object.entries(m.porPersona).map(([n,x])=>`<tr><td><span style="display:inline-flex;align-items:center;gap:8px"><span class="avatar ${claseAvatar(n)}" style="width:24px;height:24px;font-size:10.5px">${esc(iniciales(n))}</span>${esc(n)}</span></td><td class="n">${x.leads}</td><td class="n">${x.contactados}</td><td class="n">${x.calificados}</td><td class="n">${x.agendas}</td><td class="n">${x.cierres}</td><td class="n">${x.facturado.toLocaleString("es-AR")}</td></tr>`).join("")||`<tr><td colspan="7" style="color:var(--tx-3)">Sin datos todavía</td></tr>`}
   </tbody></table></div></div>`;
@@ -923,6 +929,9 @@ async function renderMetricas(v,s){
     el.addEventListener("mouseleave",()=>tip.style.display="none");
   });
 }
+
+// UTMs que guardó la landing en «Origen (UTM)».
+function origenDe(f){try{return JSON.parse(f.origen||"{}")||{};}catch(e){return {};}}
 
 // Barras horizontales: una fila por opción, con cantidad y % del total.
 // color(x) devuelve "on" (naranja), "ok" (verde) o "" (gris).
@@ -1088,6 +1097,8 @@ function cuerpoFicha(l,tab){
     return `<div class="tarjeta"><h4 style="display:flex;align-items:center">Formularios<button class="btn sm fantasma" style="margin-left:auto" onclick="EDITANDO='campos';pintarFicha()">${ic("i-editar")}Editar</button></h4><dl class="dl">
         ${d("Facturación",f.facturacion)}${d("Ciclo de reposición",f.ciclo)}${d("Inversión disponible",f.inversion)}
         ${d("Objetivo a 6 meses",f.objetivo)}${d("Qué lo frena",f.freno)}${d("Hace cuánto y qué probó",f.hace_cuanto)}${d("Qué le falta",f.que_falta)}</dl></div>
+      ${(()=>{const o=origenDe(f);return `<div class="tarjeta"><h4>De dónde vino</h4>${Object.keys(o).length?`<dl class="dl">
+        ${d("Anuncio",o.utm_content||(o.ad_id?"ID "+o.ad_id:""))}${d("Conjunto",o.utm_term)}${d("Campaña",o.utm_campaign)}${d("Ubicación",o.utm_medium)}</dl>`:`<p style="color:var(--tx-3);font-size:13.5px">Sin datos de anuncio: entró sin parámetros en el link.</p>`}</div>`;})()}
       <div class="tarjeta"><h4>De las llamadas</h4><dl class="dl">
         ${d("Qué vende",f.que_vende)}${d("Por dónde vende",f.por_donde)}${d("Cuánto le queda",f.cuanto_queda)}${d("Dolor principal",f.dolor)}
         ${d("Por qué ahora",f.por_que_ahora)}${d("Objeción real",f.objecion)}${d("Le faltó de la clase",f.falto_clase)}${d("Le resonó del recurso",f.resono)}</dl></div>`;

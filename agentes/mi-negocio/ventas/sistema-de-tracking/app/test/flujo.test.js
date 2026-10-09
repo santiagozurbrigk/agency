@@ -140,6 +140,8 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(r.body.ok&&r.body.porOferta["Génesis"].cantidad===1,"métricas: 1 Génesis");
   ok(r.body.porOferta["Génesis"].cobrado===2000&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 2000 de 6000");
   ok(r.body.porPersona["Manu"].cierres===1,"métricas: cierre de Manu");
+  { const a=(r.body.porAnuncio||[]).find(x=>x.anuncio==="VSL-hook-CPA");
+    ok(a&&a.leads===2&&a.califican===1&&a.campana==="Génesis 19/10","métricas: leads por anuncio (2 leads, 1 califica)"); }
 
   // Webhook: cita creada en el calendario de Manu post
   const settingsApi=h("api/settings.js");

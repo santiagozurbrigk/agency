@@ -837,11 +837,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* Tracking de la URL */
+  /* Parámetros del anuncio (los arma Meta desde «Parámetros de URL»). Se guardan al entrar,
+     así no se pierden si la persona vuelve más tarde sin ellos. */
   function tracking() {
     var p = new URLSearchParams(location.search), t = {};
-    p.forEach(function (v, k) { if (k.indexOf("utm_") === 0 || k === "fbclid" || k === "sl") t[k] = v; });
+    p.forEach(function (v, k) { if (k.indexOf("utm_") === 0 || k === "fbclid" || k === "sl" || k === "ad_id") t[k] = v; });
+    try {
+      if (Object.keys(t).length) localStorage.setItem("genesis_utm", JSON.stringify(t));
+      else t = JSON.parse(localStorage.getItem("genesis_utm") || "{}");
+    } catch (e) {}
     return t;
   }
+  tracking();
 
   /* Form */
   var form = document.getElementById("form");
