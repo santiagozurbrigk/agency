@@ -127,13 +127,8 @@ try {
 
   /* Video */
   .video-sec { position: relative; margin: 30px auto 0; max-width: 720px; }
-  .video { position: relative; aspect-ratio: 16/9; border-radius: 18px; overflow: hidden; background: var(--negro-2); border: 1px solid var(--linea); box-shadow: 0 30px 70px rgba(0,0,0,.55); }
+  .video { position: relative; border-radius: 18px; overflow: hidden; background: #000; border: 1px solid var(--linea); box-shadow: 0 30px 70px rgba(0,0,0,.55); }
   .video iframe, .video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-  .video .vacio { position: absolute; inset: 0; display: grid; place-items: center; color: var(--gris); font-size: 14px; text-align: center; padding: 20px; }
-  .video .vacio span { display: grid; gap: 12px; justify-items: center; }
-  .video .vacio svg { width: 56px; height: 56px; }
-  .progreso { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.1); z-index: 2; }
-  .progreso i { display: block; height: 100%; width: 0; background: var(--naranja); }
 
   /* Pedido + botones */
   .pedido { text-align: center; color: var(--gris-2); font-size: 16.5px; max-width: 34em; margin: 24px auto 0; }
@@ -188,6 +183,15 @@ try {
   @media (min-width: 1240px) { .flota { display: block; } }
   @media (prefers-reduced-motion: reduce) { .alerta, .flota .notif { animation: none; opacity: 1; } .vivo { animation: none; } }
 </style>
+<!-- vTurb: precarga del VSL -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac96578e5ed5d53c78620a7/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/6ac96519cdb5dc3b6deefd91/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 </head>
 <body>
 
@@ -231,10 +235,9 @@ try {
       <div class="flota f1"><div class="notif"><div class="ic wa"><svg><use href="#i-wa"/></svg></div><div class="nb"><div class="nt"><b>Grupo Génesis</b><time>hace 3 min</time></div><p><strong>Manu:</strong> Les dejo el SOP de onboarding que uso en mi marca 📎</p></div></div></div>
       <div class="flota f2"><div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>ahora</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge">Sin pauta</span></div></div></div>
       <div class="flota f3"><div class="notif claro"><div class="ic genesis"><svg><use href="#i-genesis"/></svg></div><div class="nb"><div class="nt"><b>Génesis</b><time>regalo 2</time></div><p><strong>El simulador de suscripción</strong> te espera en la clase.</p></div></div></div>
-      <!-- Video de la thank you: pegá el embed (iframe o <video>) adentro de .video, en lugar de .vacio -->
+      <!-- VSL de la thank you (vTurb) -->
       <div class="video" id="video">
-        <div class="vacio"><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#F26A1B"/><path d="M10 8.2v7.6l6-3.8z" fill="#fff"/></svg>Acá va el video de la thank you</span></div>
-        <div class="progreso"><i id="barra"></i></div>
+        <vturb-smartplayer id="vid-6ac96578e5ed5d53c78620a7" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac96578e5ed5d53c78620a7/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
     </div>
 
@@ -348,10 +351,6 @@ var BANDERAS = {
     new IntersectionObserver(function (es) { fijo.classList.toggle("on", !es[0].isIntersecting && es[0].boundingClientRect.top < 0); }).observe(principal);
   }
 
-  /* Barra de progreso: sigue al video si es un <video>; con iframe queda fija */
-  var vid = document.querySelector("#video video"), barra = document.getElementById("barra");
-  if (vid) vid.addEventListener("timeupdate", function () { if (vid.duration) barra.style.width = (vid.currentTime / vid.duration * 100) + "%"; });
-  if (document.querySelector("#video iframe, #video video")) { var v = document.querySelector("#video .vacio"); if (v) v.remove(); }
 
   /* Cuenta regresiva en texto; cuando empieza, cambia el titular */
   function tick() {
