@@ -140,6 +140,13 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(r.body.ok&&r.body.porOferta["Génesis"].cantidad===1,"métricas: 1 Génesis");
   ok(r.body.porOferta["Génesis"].cobrado===2000&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 2000 de 6000");
   ok(r.body.porPersona["Manu"].cierres===1,"métricas: cierre de Manu");
+  { const visita=h("api/public/visita.js"), bio={utm_source:"instagram",utm_medium:"bio",utm_campaign:"genesis-19-10"};
+    let v=await call(visita,{method:"POST",body:JSON.stringify({tracking:bio})});
+    ok(v.body.fuente==="Instagram · bio","visita desde la bio → fuente Instagram · bio");
+    await call(visita,{method:"POST",body:{tracking:bio}});
+    await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Bio Test",email:"bio@test.com",telefono:"+5491100009999",ciclo:"Entre 30 y 60 días",facturacion:"Entre 50M y 100M",tracking:bio}});
+    const m2=(await call(metrics,{cookie})).body; const fb=(m2.porFuente||[]).find(x=>x.fuente==="Instagram · bio");
+    ok(fb&&fb.visitas===2&&fb.registros===1&&fb.califican===1,"por fuente: 2 visitas, 1 registro, 1 califica (bio)"); }
   { const a=(r.body.porAnuncio||[]).find(x=>x.anuncio==="VSL-hook-CPA");
     ok(a&&a.leads===2&&a.califican===1&&a.campana==="Génesis 19/10","métricas: leads por anuncio (2 leads, 1 califica)"); }
 

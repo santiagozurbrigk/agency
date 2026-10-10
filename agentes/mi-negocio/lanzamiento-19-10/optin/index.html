@@ -853,6 +853,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return t;
   }
   tracking();
+  /* Visita: una por sesión, con la fuente del link actual (o la guardada si entró sin parámetros) */
+  try {
+    if (!sessionStorage.getItem("genesis_visita")) {
+      sessionStorage.setItem("genesis_visita", "1");
+      var cuerpo = JSON.stringify({ tracking: tracking() });
+      if (navigator.sendBeacon) navigator.sendBeacon("/api/visita", new Blob([cuerpo], { type: "text/plain" }));
+      else fetch("/api/visita", { method: "POST", body: cuerpo, keepalive: true }).catch(function () {});
+    }
+  } catch (e) {}
 
   /* Form */
   var form = document.getElementById("form");
