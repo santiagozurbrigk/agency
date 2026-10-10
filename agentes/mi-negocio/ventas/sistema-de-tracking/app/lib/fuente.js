@@ -6,6 +6,8 @@ function fuenteDe(t) {
   const src = String(t.utm_source || "").toLowerCase();
   const med = String(t.utm_medium || "").toLowerCase();
   if (src === "instagram" && med === "bio") return "Instagram · bio";
+  // Un UTM propio (que no sea de anuncios) manda aunque Instagram agregue un fbclid al link.
+  if (src && src !== "facebook") return src.charAt(0).toUpperCase() + src.slice(1) + (med ? ` · ${med}` : "");
   if (src === "facebook" || t.fbclid || t.ad_id) return "Anuncios de Meta";
   if (src) return src.charAt(0).toUpperCase() + src.slice(1) + (med ? ` · ${med}` : "");
   return "Directo / sin UTM";
