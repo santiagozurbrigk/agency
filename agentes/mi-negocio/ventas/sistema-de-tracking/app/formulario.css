@@ -20,7 +20,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
 .top{position:fixed;top:0;left:0;right:0;z-index:5;background:linear-gradient(var(--negro) 60%, transparent)}
 .top .fila{max-width:640px;margin:0 auto;padding:18px 20px 10px;display:flex;align-items:center;gap:12px}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--tit);font-weight:700;letter-spacing:.16em;font-size:13px}
-.logo svg{width:32px;height:21px}
+.logo svg{width:28px;height:28px}
 .top .paso-n{margin-left:auto;font-size:13px;color:var(--gris);font-variant-numeric:tabular-nums}
 .progreso{height:3px;background:var(--linea);max-width:640px;margin:0 auto;border-radius:99px;overflow:hidden}
 .progreso i{display:block;height:100%;width:0;background:var(--naranja);border-radius:99px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
