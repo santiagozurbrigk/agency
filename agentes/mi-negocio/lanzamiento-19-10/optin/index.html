@@ -143,7 +143,7 @@ fbq('track', 'PageView');
   .tag-estado i { width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); }
 
   /* ===== b) Above the fold ===== */
-  .hero { position: relative; padding: 24px 0 30px; text-align: center; }
+  .hero { position: relative; padding: 24px 0 30px; text-align: center; overflow-x: clip; } /* el resplandor de 900px no ensancha la página en el celular */
   .hero::before {
     content: ""; position: absolute; left: 50%; top: -120px; transform: translateX(-50%); width: 900px; height: 600px; pointer-events: none;
     background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .24), transparent 70%);
