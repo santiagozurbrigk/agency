@@ -710,12 +710,12 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <h3>Soy Manu Dominguez</h3>
       <div class="bio">
         <p>Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
-        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>220 millones por mes</b>, con <b>2.200 suscriptores activos</b> y <b>1,28% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
+        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>220 millones por mes</b>, con <b>+3.100 suscriptores activos</b> y <b>1,28% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
         <p>En esta clase te muestro el roadmap que seguí, con mis números reales.</p>
       </div>
       <div class="stats">
         <div class="stat naranja"><div class="l">Por mes</div><div class="v">220M</div></div>
-        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">2.200</div></div>
+        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">+3.100</div></div>
         <div class="stat"><div class="l">Churn</div><div class="v">1,28%</div></div>
       </div>
     </div>
@@ -794,7 +794,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* Fondo: la línea de suscriptores se dibuja a medida que bajás.
-     El número final (2.200) es el real; la forma de la curva es ilustrativa. */
+     El número final (+3.100) es el real; la forma de la curva es ilustrativa. */
   var linea = document.getElementById("linea-subs");
   var clip = document.getElementById("clip-rect");
   var punto = document.getElementById("bg-punto");
@@ -813,7 +813,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var x = pt.x / 1000 * innerWidth, y = pt.y / 1000 * innerHeight;
     punto.style.left = x + "px"; punto.style.top = y + "px";
     tip.style.left = (x - 14) + "px"; tip.style.top = y + "px";
-    num.textContent = Math.round(2200 * (p - 0.12) / 0.88).toLocaleString("es-AR");
+    var n = p >= 0.995 ? 3100 : Math.round(3100 * (p - 0.12) / 0.88); /* al llegar abajo, el número completo */
+    num.textContent = (n >= 3100 ? "+" : "") + n.toLocaleString("es-AR");
   }
   function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(dibujar); } }
   addEventListener("scroll", pedir, { passive: true });
