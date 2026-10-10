@@ -19,7 +19,7 @@ Lo que queda para resolver más adelante. Se va sumando a medida que aparece. La
 | 6 | Rotar la clave de Santiago en `USERS_JSON` (viajó por el chat) y borrar los contactos de prueba «Prueba Sistema» y «Prueba Landing» en GHL. | Santiago |
 | 7 | ~~Dónde se guardan los comprobantes~~ Resuelto: Vercel Blob (Storage → Blob en el proyecto). | Hecho |
 | 8 | ~~Probar con la subcuenta real~~ Hecho (04/10): setup de campos, opt-in → sistema, ruteo de la agenda directa, prefill del calendario y webhook de alta y cancelación. | Hecho |
-| 8b | ~~Landing del opt-in~~ Hecho: `optin-genesis.vercel.app`, pide ciclo y facturación y reenvía al sistema. Thank you rediseñada (06/10): el link de la clase llega por el grupo de WhatsApp, no por mail. VSL de registro y de thank you cargados (09/10). Link del grupo de WhatsApp cargado (10/10). Píxel de Meta y dominio applygenesis.com hechos; no usan Hyros. Falta: la foto de Manu (`manu.jpg`). | Santiago |
+| 8b | ~~Landing del opt-in~~ Hecho: `optin-genesis.vercel.app`, pide ciclo y facturación y reenvía al sistema. Thank you rediseñada (06/10): el link de la clase llega por el grupo de WhatsApp, no por mail. VSL de registro y de thank you cargados (09/10). Link del grupo de WhatsApp cargado (10/10). Píxel de Meta y dominio applygenesis.com hechos; no usan Hyros. Foto de Manu cargada (10/10): landing completa. | Santiago |
 | 8c | ~~Blob store privado~~ Hecho (04/10): comprobantes probados, solo se ven logueado. | Hecho |
 
 ## Cosas que vienen del mapa de ventas y siguen abiertas
