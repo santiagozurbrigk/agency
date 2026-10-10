@@ -942,7 +942,7 @@ async function renderMetricas(v,s){
 function origenDe(f){try{return JSON.parse(f.origen||"{}")||{};}catch(e){return {};}}
 // Misma regla que lib/fuente.js del servidor.
 function fuenteDe(t){t=t||{};const s=String(t.utm_source||"").toLowerCase(),m=String(t.utm_medium||"").toLowerCase();
-  if(s==="instagram"&&m==="bio")return "Instagram · bio";if(s==="facebook"||t.fbclid||t.ad_id)return "Anuncios de Meta";
+  if(s==="instagram"&&m==="bio")return "Instagram · bio";if(s&&s!=="facebook")return s.charAt(0).toUpperCase()+s.slice(1)+(m?" · "+m:"");if(s==="facebook"||t.fbclid||t.ad_id)return "Anuncios de Meta";
   if(s)return s.charAt(0).toUpperCase()+s.slice(1)+(m?" · "+m:"");return "Directo / sin UTM";}
 
 // Barras horizontales: una fila por opción, con cantidad y % del total.

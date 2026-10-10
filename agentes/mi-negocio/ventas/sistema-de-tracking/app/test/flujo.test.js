@@ -143,6 +143,9 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   { const visita=h("api/public/visita.js"), bio={utm_source:"instagram",utm_medium:"bio",utm_campaign:"genesis-19-10"};
     let v=await call(visita,{method:"POST",body:JSON.stringify({tracking:bio})});
     ok(v.body.fuente==="Instagram · bio","visita desde la bio → fuente Instagram · bio");
+    { const { fuenteDe }=require("../lib/fuente");
+      ok(fuenteDe({utm_source:"instagram",utm_medium:"historia",fbclid:"x"})==="Instagram · historia","historia con fbclid → Instagram · historia (no anuncios)");
+      ok(fuenteDe({utm_source:"facebook",utm_medium:"Instagram_Reels"})==="Anuncios de Meta"&&fuenteDe({fbclid:"x"})==="Anuncios de Meta","anuncios → Anuncios de Meta"); }
     await call(visita,{method:"POST",body:{tracking:bio}});
     await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Bio Test",email:"bio@test.com",telefono:"+5491100009999",ciclo:"Entre 30 y 60 días",facturacion:"Entre 50M y 100M",tracking:bio}});
     const m2=(await call(metrics,{cookie})).body; const fb=(m2.porFuente||[]).find(x=>x.fuente==="Instagram · bio");
