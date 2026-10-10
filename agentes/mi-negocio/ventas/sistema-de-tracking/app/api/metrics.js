@@ -4,12 +4,13 @@ const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const R = require("../lib/rules");
 const { OPCIONES } = require("../lib/fields");
+const { fuenteDe } = require("../lib/fuente");
 
 module.exports = async function handler(req, res) {
   if (!requiere(req, res)) return;
   try {
-    const [leads, settings, manu] = await Promise.all([
-      store.listLeads(), store.getSettings(), store.cargaManu()
+    const [leads, settings, manu, visitas] = await Promise.all([
+      store.listLeads(), store.getSettings(), store.cargaManu(), store.getVisitas().catch(() => ({}))
     ]);
 
     const etapa = (l) => l.fields.etapa || "Nuevo";
@@ -99,6 +100,20 @@ module.exports = async function handler(req, res) {
       if (FACT_OK.includes(l.fields.facturacion)) a.califican++;
       if (l.fields.venta_json) a.ventas++;
     }
+    // Por fuente: visitas a la landing (aprox.) contra registros del opt-in.
+    const fuentes = {};
+    const f = (n) => fuentes[n] || (fuentes[n] = { fuente: n, visitas: 0, registros: 0, califican: 0 });
+    for (const [n, v] of Object.entries(visitas || {})) f(n).visitas = v;
+    for (const l of leads) {
+      if (!(l.tags || []).includes("optin-19-10")) continue;
+      let o = {};
+      try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
+      const x = f(fuenteDe(o));
+      x.registros++;
+      if (FACT_OK.includes(l.fields.facturacion)) x.califican++;
+    }
+    const porFuente = Object.values(fuentes).sort((a, b) => b.registros - a.registros || b.visitas - a.visitas);
+
     const porAnuncio = Object.values(anuncios).sort((x, y) => y.califican - x.califican || y.leads - x.leads);
 
     // Opt-ins por día (hora de Argentina), desde el primero hasta hoy, máximo 30 días.
@@ -123,7 +138,7 @@ module.exports = async function handler(req, res) {
         intentos: Object.entries(intentos).map(([op, n]) => ({ op, n })),
         origen: Object.entries(origen).map(([op, n]) => ({ op, n }))
       },
-      porDia, porAnuncio,
+      porDia, porAnuncio, porFuente,
       ok: true,
       embudo: { total, contactados, enConversacion, calificados, agendadosPre, agendadosPost, confirmados, asistieron, presentados, ventas: ventas.length },
       porOferta, porPersona, grupos,

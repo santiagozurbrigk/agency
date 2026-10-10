@@ -326,7 +326,52 @@ async function invalidarCitasManu() {
   if (!DEMO) await cache.del("manu_citas");
 }
 
+/* ---------- Visitas a la landing por fuente (aproximado) ---------- */
+const VISITAS_KEY = "trk_visitas";
+let visitasPend = {};          // visitas de esta instancia que todavía no se guardaron
+let guardadoProgramado = false;
+
+async function leerVisitasGuardadas() {
+  if (DEMO) return demo.db().visitas || (demo.db().visitas = {});
+  return cache.swr("visitas", async () => {
+    const cv = await ghl.getCustomValue(VISITAS_KEY);
+    try { return JSON.parse((cv && cv.value) || "{}") || {}; } catch (e) { return {}; }
+  }, { frescoMs: 30 * 1000, viejoMs: 10 * 60 * 1000, ttlSeg: 15 * 60 });
+}
+
+async function guardarVisitas() {
+  guardadoProgramado = false;
+  const pend = visitasPend; visitasPend = {};
+  if (!Object.keys(pend).length) return;
+  try {
+    const cv = DEMO ? null : await ghl.getCustomValue(VISITAS_KEY);
+    let actual = {};
+    try { actual = DEMO ? (demo.db().visitas || {}) : (JSON.parse((cv && cv.value) || "{}") || {}); } catch (e) {}
+    for (const [f, n] of Object.entries(pend)) actual[f] = (actual[f] || 0) + n;
+    if (DEMO) demo.db().visitas = actual;
+    else { await ghl.setCustomValue(VISITAS_KEY, JSON.stringify(actual)); await cache.set("visitas", actual, 15 * 60); }
+  } catch (e) {
+    for (const [f, n] of Object.entries(pend)) visitasPend[f] = (visitasPend[f] || 0) + n; // se reintenta la próxima
+  }
+}
+
+function sumarVisita(fuente) {
+  visitasPend[fuente] = (visitasPend[fuente] || 0) + 1;
+  if (DEMO) return guardarVisitas();
+  if (!guardadoProgramado) {
+    guardadoProgramado = true;
+    cache.waitUntil(new Promise(r => setTimeout(r, 20000)).then(guardarVisitas));
+  }
+}
+
+async function getVisitas() {
+  const guardadas = { ...(await leerVisitasGuardadas()) };
+  for (const [f, n] of Object.entries(visitasPend)) guardadas[f] = (guardadas[f] || 0) + n;
+  return guardadas;
+}
+
 module.exports = {
+  sumarVisita, getVisitas,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
   esDelLanzamiento, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
