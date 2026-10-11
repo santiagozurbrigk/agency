@@ -1,6 +1,6 @@
 // Endpoint público del opt-in (la landing de registro le pega acá).
 // Crea o actualiza el lead en GHL, guarda ciclo y facturación
-// y le asigna dueño (Braian o Diego, de a uno).
+// (Sin dueños: todo el equipo trabaja todos los leads.)
 
 const store = require("../../lib/store");
 
@@ -18,14 +18,6 @@ module.exports = async function handler(req, res) {
     const { nombre, email, telefono, ciclo, facturacion, tracking } = body || {};
     if (!email && !telefono) return res.status(400).json({ ok: false, error: "Falta email o teléfono" });
 
-    // Reparto de a uno: el dueño nuevo es el que tiene menos leads (sale de la foto en caché).
-    const repartir = async () => {
-      const leads = await store.listLeads();
-      const braian = leads.filter(l => l.fields.dueno === "Braian").length;
-      const diego = leads.filter(l => l.fields.dueno === "Diego").length;
-      return braian <= diego ? "Braian" : "Diego";
-    };
-
     const datos = {
       ...(ciclo ? { ciclo } : {}), ...(facturacion ? { facturacion } : {}),
       ...(tracking ? { origen: JSON.stringify(tracking) } : {})
@@ -34,10 +26,9 @@ module.exports = async function handler(req, res) {
     const existente = await store.findLead(telefono, email);
     if (existente) {
       // Puede ser un contacto viejo de la subcuenta: se suma al lanzamiento con el tag,
-      // y si todavía no tenía dueño ni etapa, se le asignan.
+      // y si todavía no tenía etapa, se le asigna.
       const f = existente.fields || {};
       const extra = {};
-      if (!f.dueno) extra.dueno = await repartir();
       if (!f.etapa) { extra.etapa = "Nuevo"; extra.intentos = "0"; }
       await store.updateLead(existente.id, {
         nombre, email, telefono,
@@ -49,7 +40,7 @@ module.exports = async function handler(req, res) {
 
     const lead = await store.createLead({
       nombre, email, telefono,
-      fields: { ...datos, etapa: "Nuevo", dueno: await repartir(), intentos: "0" },
+      fields: { ...datos, etapa: "Nuevo", intentos: "0" },
       tags: ["optin-19-10"]
     });
     return res.status(200).json({ ok: true, id: lead.id });

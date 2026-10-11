@@ -70,7 +70,7 @@ module.exports = async function handler(req, res) {
         etapa: "Agendado con Manu (pre-venta)", llamada_con: "Manu", agendo: "Sí"
       }, lead, tags);
     } else {
-      const con = esManuPost ? "Manu" : "Diego";
+      const con = esManuPost ? "Manu" : "Equipo";
       const fields = { etapa: "Llamada agendada", llamada_con: con, agendo: "Sí" };
       // Red de seguridad del tope: si la cita de Manu entra por encima de 10, se marca.
       // Se cuenta fresco (sin caché) porque acaba de entrar una cita.

@@ -61,7 +61,7 @@ module.exports = async function handler(req, res) {
     const clave = conocido ? conocido.id : "tel:" + store.normTel(telefono);
     const ruta = await store.decidirYReservar(clave, (manuLibre) =>
       R.rutaAgendaDirecta({ ciclo, facturacion, inversion }, manuLibre));
-    const con = ruta === "manu" ? "Manu" : "Diego";
+    const con = ruta === "manu" ? "Manu" : "Equipo";
 
     await guardar({ ...respuestas, llamada_con: con }, `Agenda directa completada → calendario de ${con}`,
       ruta === "manu" ? clave : null);

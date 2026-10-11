@@ -40,24 +40,6 @@ module.exports = async function handler(req, res) {
       o.cobrado += suma(v.pagos.filter(p => p.pagado).map(p => p.monto));
     }
 
-    // Por persona: dueño para la gestión, vendedor para los cierres.
-    const porPersona = {};
-    const p = (n) => porPersona[n] || (porPersona[n] = { leads: 0, contactados: 0, calificados: 0, agendas: 0, cierres: 0, facturado: 0 });
-    for (const l of leads) {
-      const d = l.fields.dueno;
-      if (d) {
-        const x = p(d);
-        x.leads++;
-        if (etapa(l) !== "Nuevo") x.contactados++;
-        if (R.calificaGenesis(l.fields)) x.calificados++;
-        if (l.fields.agendo === "Sí" || etapa(l) === "Agendado con Manu (pre-venta)") x.agendas++;
-      }
-    }
-    for (const v of ventas) {
-      const x = p(v.vendedor || "—");
-      x.cierres++;
-      x.facturado += suma(v.pagos.map(p2 => p2.monto));
-    }
 
     const grupos = { "1": 0, "2": 0, "3": 0 };
     for (const l of leads) {
@@ -142,7 +124,7 @@ module.exports = async function handler(req, res) {
       porDia, porAnuncio, porFuente,
       ok: true,
       embudo: { total, contactados, enConversacion, calificados, agendadosPre, agendadosPost, confirmados, asistieron, presentados, ventas: ventas.length },
-      porOferta, porPersona, grupos,
+      porOferta, grupos,
       manu,
       genesis: { vendidos: (porOferta["Génesis"] || {}).cantidad || 0, lugares: settings.genesisLugares },
       cierre: settings.cierre
