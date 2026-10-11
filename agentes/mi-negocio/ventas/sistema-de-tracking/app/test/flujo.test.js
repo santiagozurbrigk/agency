@@ -63,8 +63,8 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(r.body.ok&&r.body.lead.fields.intentos==="1","+1 intento");
   r=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"etapa",data:{etapa:"Contactado"}}});
   ok(r.body.lead.fields.etapa==="Contactado","cambio de etapa");
-  r=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"reasignar",data:{llamada_con:"Diego"}}});
-  ok(r.body.lead.fields.llamada_con==="Diego","reasignar llamada");
+  r=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"reasignar",data:{llamada_con:"Equipo"}}});
+  ok(r.body.lead.fields.llamada_con==="Equipo","reasignar llamada");
 
   // Agenda directa: lead calificado para Manu
   const agenda=h("api/public/agenda.js");
@@ -80,7 +80,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   // Agenda directa: no calificado → Diego
   r=await call(agenda,{method:"POST",body:{telefono:"+5491155550002",objetivo:"X",freno:"Y",hace_cuanto:"Z",
     ciclo:"Entre 30 y 60 días",facturacion:"Entre 10M y 30M",inversion:"Entre USD 1.000 y USD 3.000"}});
-  ok(r.body.ruta==="diego","agenda directa: Lucía → Diego");
+  ok(r.body.ruta==="diego","agenda directa: Lucía → equipo");
 
   // Agenda directa: menos de 1000 → rechazado + próximo ciclo
   r=await call(agenda,{method:"POST",body:{telefono:"+5491155550004",ciclo:"Más de 90 días",
@@ -91,7 +91,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   // Vuelve a completar con otra inversión → se reactiva
   r=await call(agenda,{method:"POST",body:{telefono:"+5491155550004",ciclo:"Más de 90 días",
     facturacion:"Menos de 10M",inversion:"Entre USD 1.000 y USD 3.000"}});
-  ok(r.body.ruta==="diego","Pablo reintenta y va a Diego");
+  ok(r.body.ruta==="diego","Pablo reintenta y va al equipo");
   const getPablo2=await call(lead,{cookie,query:{id:"demo-pablo"}});
   ok(getPablo2.body.lead.fields.etapa!=="Próximo ciclo","Pablo se reactivó");
 
@@ -139,7 +139,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   r=await call(metrics,{cookie});
   ok(r.body.ok&&r.body.porOferta["Génesis"].cantidad===1,"métricas: 1 Génesis");
   ok(r.body.porOferta["Génesis"].cobrado===2000&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 2000 de 6000");
-  ok(r.body.porPersona["Manu"].cierres===1,"métricas: cierre de Manu");
+  ok(r.body.porPersona===undefined,"métricas: sin «por persona» (ya no hay dueños)");
   { const visita=h("api/public/visita.js"), bio={utm_source:"instagram",utm_medium:"bio",utm_campaign:"genesis-19-10"};
     let v=await call(visita,{method:"POST",body:JSON.stringify({tracking:bio})});
     ok(v.body.fuente==="Instagram · bio","visita desde la bio → fuente Instagram · bio");
@@ -204,7 +204,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     telefono:"+54911666600"+i,ciclo:"En menos de 30 días",facturacion:"Más de 100M",inversion:"Más de USD 6.000"}})));
   const aManu=rafaga.filter(r=>r.body.ruta==="manu").length;
   ok(aManu===2,`ráfaga de 8 con 2 lugares libres → 2 a Manu (fueron ${aManu})`);
-  ok(rafaga.filter(r=>r.body.ruta==="diego").length===6,"el resto de la ráfaga → Diego");
+  ok(rafaga.filter(r=>r.body.ruta==="diego").length===6,"el resto de la ráfaga → equipo");
   await call(settingsApi,{method:"POST",cookie,body:{manuTope:10}});
 
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");

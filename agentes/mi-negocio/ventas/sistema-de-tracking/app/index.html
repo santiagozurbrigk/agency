@@ -512,14 +512,14 @@ const SECCIONES=[
     sub:"Marcá asistencia y señales de compra. Al terminar, armá los 3 grupos."},
   {grupo:"Después de la clase"},
   {id:"g1", nombre:"Grupo 1 · Agendó", cola:"grupo1", icono:"i-g1",
-    sub:"Agendaron en la clase. Ordenados por facturación; la llamada ya tiene asignado Manu o Diego."},
+    sub:"Agendaron en la clase. Ordenados por facturación; la llamada ya tiene asignado Manu o el equipo."},
   {id:"g2", nombre:"Grupo 2 · Para llamar", corto:"Grupo 2 · Llamar", cola:"grupo2", icono:"i-g2",
     sub:"En orden de prioridad: completaron la agenda sin agendar, pidieron contacto (por facturación) y asistieron sin completar nada."},
   {id:"g3", nombre:"Grupo 3 · No asistió", cola:"grupo3", icono:"i-g3",
     sub:"Se anotaron y no aparecieron. Volver a meterlos con la repetición o el recurso."},
   {grupo:"Cierre"},
   {id:"llam", nombre:"Llamadas de venta", corto:"Llamadas", cola:"llamadas", icono:"i-llam",
-    sub:"Pre-venta y post-clase, con Manu o con Diego."},
+    sub:"Pre-venta y post-clase, con Manu o con el equipo."},
   {id:"ventas", nombre:"Ventas y cobros", cola:"ventas", icono:"i-venta",
     sub:"Lo vendido, lo cobrado y las cuotas que faltan."},
   {grupo:"Análisis"},
@@ -592,7 +592,9 @@ function confirmar(titulo,texto,ok,peligro){
   });
 }
 function iniciales(n){const p=String(n||"?").trim().split(/\s+/);return ((p[0]||"?")[0]+((p[1]||"")[0]||"")).toUpperCase();}
-function claseAvatar(d){return d==="Braian"?"b":d==="Diego"?"d":"";}
+function claseAvatar(){return "";}
+// Datos viejos con «Diego» en «Llamada con» se muestran como el calendario del equipo.
+const llamadaCon=v=>v==="Diego"?"Equipo":v;
 function hace(iso){
   if(!iso) return "";
   const s=(Date.now()-new Date(iso))/1000;
@@ -733,12 +735,10 @@ function encabezado(s,acciones){
   return `<div class="ph"><div><h2>${esc(s.nombre)}</h2><p>${esc(s.sub||"")}</p></div>${acciones?`<div class="acc">${acciones}</div>`:""}</div>`;
 }
 function filtroDueno(total,visibles){
-  const op=[["todos","Todos"],["Braian","Braian"],["Diego","Diego"]];
-  return `<div class="filtros"><div class="seg" role="group" aria-label="Filtrar por dueño">${op.map(([v,t])=>`<button class="${FILTRO_DUENO===v?"on":""}" onclick="setDueno('${v}')">${t}</button>`).join("")}</div>
-    <span class="cuenta num">${visibles===total?`${total} lead${total===1?"":"s"}`:`${visibles} de ${total}`}</span></div>`;
+  return `<div class="filtros"><span class="cuenta">${visibles} lead${visibles===1?"":"s"}</span></div>`;
 }
 function setDueno(v){FILTRO_DUENO=v;try{localStorage.setItem("trk_dueno",v);}catch(e){}render();}
-const pasaDueno=l=>FILTRO_DUENO==="todos"||l.fields.dueno===FILTRO_DUENO;
+const pasaDueno=()=>true;
 
 function etiquetas(l){
   const f=l.fields,c=[];
@@ -748,7 +748,7 @@ function etiquetas(l){
   if(f.form_contacto==="Sí")c.push(`<span class="chip vio">Pidió contacto</span>`);
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
-  if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(f.llamada_con)}</span>`);
+  if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
   return c.join("");
 }
 function badgeEtapa(e){e=e||"Nuevo";return `<span class="badge ${TONO_ETAPA[e]||""}">${esc(e)}</span>`;}
@@ -756,9 +756,9 @@ function badgeEtapa(e){e=e||"Nuevo";return `<span class="badge ${TONO_ETAPA[e]||
 function filaLead(l,pos,reg){
   const f=l.fields;
   const intentos=parseInt(f.intentos||"0",10)||0;
-  const detalle=[f.dueno?esc(f.dueno):"", intentos?`${intentos} intento${intentos===1?"":"s"}`:"", f.ultimo_contacto?hace(f.ultimo_contacto):""].filter(Boolean).join(" · ");
+  const detalle=[intentos?`${intentos} intento${intentos===1?"":"s"}`:"", f.ultimo_contacto?hace(f.ultimo_contacto):""].filter(Boolean).join(" · ");
   return `<div class="fila" onclick="abrirFicha('${l.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}')">
-    <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}" title="Dueño: ${esc(f.dueno||"sin asignar")}">${esc(iniciales(l.nombre))}</div>
+    <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}" >${esc(iniciales(l.nombre))}</div>
       <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
       <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
       <div class="movil">${badgeEtapa(f.etapa)}${etiquetas(l)}${reg?`<span class="chip">${esc(horaRegistro(l.creado))} · ${esc(fuenteDe(origenDe(f)))}</span>`:""}</div></div></div>
@@ -939,17 +939,10 @@ async function renderMetricas(v,s){
     +tarjeta("Inversión disponible",`Naranja: llega a Manu (≥USD 3.000)${sinDato(D.inversion)}`,barrasH(D.inversion?D.inversion.valores:[],{color:x=>/3\.000 y|6\.000/.test(x.op)?"on":"",total:true}))
     +`</div>`;
 
-  // Equipo
-  const personas=Object.entries(m.porPersona).filter(([,x])=>x.leads);
-  const maxP=Math.max(1,...personas.map(([,x])=>x.leads));
-  const avance=personas.length?`${ley([["var(--marca-dato)","Contactados"],["var(--dato-2)","Sin contactar"]])}<div class="bh">${personas.map(([n,x])=>`<div class="bh-f" data-tip="${esc(n)}: ${x.contactados} de ${x.leads} contactados · ${x.agendas} agenda${x.agendas===1?"":"s"} · ${x.cierres} cierre${x.cierres===1?"":"s"}">
-      <span class="lab">${esc(n)}</span><span class="val">${pct(x.contactados,x.leads)}%<small>${x.contactados}/${x.leads}</small></span>
-      <span class="pista-b" style="width:${x.leads/maxP*100}%"><i class="on" style="width:${pct(x.contactados,x.leads)}%"></i><i style="flex:1"></i></span></div>`).join("")}</div>`:`<div class="sin-datos">Sin leads asignados todavía</div>`;
   const intentos=D.intentos||[], maxI=Math.max(1,...intentos.map(x=>x.n));
   const graficoInt=`<div class="cols" style="height:150px" role="img" aria-label="Intentos de contacto">${intentos.map(x=>`<div class="c" data-tip="${x.op} intento${x.op==="1"?"":"s"}: ${x.n} lead${x.n===1?"":"s"}">${x.n?`<b>${x.n}</b>`:""}<i class="${x.n?"":"cero"}" style="height:${x.n/maxI*100}%;max-width:56px"></i></div>`).join("")}</div>
     <div class="cols-x">${intentos.map(x=>`<span>${x.op}</span>`).join("")}</div>`;
-  h+=`<div class="grid-2b">`+tarjeta("Avance por persona","Lo largo de la barra es la cantidad de leads de cada uno",avance)
-    +tarjeta("Intentos de contacto","Cuántos leads llevan 0, 1, 2… intentos",graficoInt)+`</div>`;
+  h+=tarjeta("Intentos de contacto","Cuántos leads llevan 0, 1, 2… intentos",graficoInt);
 
   // Origen, grupos y plata
   const grupos=[{op:"Grupo 1 · Agendó",n:m.grupos["1"]},{op:"Grupo 2 · Para llamar",n:m.grupos["2"]},{op:"Grupo 3 · No asistió",n:m.grupos["3"]}];
@@ -973,9 +966,6 @@ async function renderMetricas(v,s){
 
   h+=tarjeta("Leads por anuncio","Lo largo de la barra es cuántos leads trajo; lo naranja, cuántos califican. Ordenado por calificados",graficoAds);
 
-  h+=`<div class="tarjeta"><h4>Por persona</h4><div class="tabla-scroll"><table class="tabla"><thead><tr><th>Persona</th><th class="n">Leads</th><th class="n">Contactados</th><th class="n">Califican</th><th class="n">Agendas</th><th class="n">Cierres</th><th class="n">Facturado USD</th></tr></thead><tbody>
-    ${Object.entries(m.porPersona).map(([n,x])=>`<tr><td><span style="display:inline-flex;align-items:center;gap:8px"><span class="avatar ${claseAvatar(n)}" style="width:24px;height:24px;font-size:10.5px">${esc(iniciales(n))}</span>${esc(n)}</span></td><td class="n">${x.leads}</td><td class="n">${x.contactados}</td><td class="n">${x.calificados}</td><td class="n">${x.agendas}</td><td class="n">${x.cierres}</td><td class="n">${x.facturado.toLocaleString("es-AR")}</td></tr>`).join("")||`<tr><td colspan="7" style="color:var(--tx-3)">Sin datos todavía</td></tr>`}
-  </tbody></table></div></div>`;
   v.innerHTML=h;
   const tip=$("#tip");
   v.querySelectorAll("[data-tip]").forEach(el=>{
@@ -1121,7 +1111,7 @@ function renderConfig(v,s){
     ${inp("cClase","Clase (fecha y hora)",st.clase)}${inp("cCierre","Cierre de la ventana",st.cierre)}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu pre-venta</h4><div class="form-g">${inp("cPreId","ID",st.calManuPreventaId)}${inp("cPreLink","Link",st.calManuPreventaLink)}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu post-clase</h4><div class="form-g">${inp("cPostId","ID",st.calManuPostId)}${inp("cPostLink","Link",st.calManuPostLink)}</div></div>
-  <div class="tarjeta"><h4>Calendario · Diego</h4><div class="form-g">${inp("cDiegoId","ID",st.calDiegoId)}${inp("cDiegoLink","Link",st.calDiegoLink)}</div></div>`;
+  <div class="tarjeta"><h4>Calendario del equipo (llamadas de venta)</h4><div class="form-g">${inp("cDiegoId","ID",st.calDiegoId)}${inp("cDiegoLink","Link",st.calDiegoLink)}</div></div>`;
 }
 async function guardarConfig(){
   try{
@@ -1223,8 +1213,7 @@ function pintarFicha(){
       <div class="f-acc">
         <button class="btn pri sm" onclick="accion('${id}','intento',{},'Intento anotado')">${ic("i-mas")}1 intento</button>
         ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa),"Etapa actualizada")}
-        ${sel("reasignar","llamada_con","Llamada con…",["Manu","Diego"],"Llamada reasignada")}
-        ${sel("reasignar","dueno","Dueño…",["Braian","Diego"],"Dueño reasignado")}
+        ${sel("reasignar","llamada_con","Llamada con…",["Manu","Equipo"],"Llamada reasignada")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
         ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
       </div>
@@ -1247,7 +1236,7 @@ function cuerpoFicha(l,tab){
     const sw=(campo,txt)=>`<button class="sw ${f[campo]==="Sí"?"on":""}" role="switch" aria-checked="${f[campo]==="Sí"}" onclick="marcar('${id}','${campo}','${f[campo]==="Sí"?"No":"Sí"}')"><span>${txt}</span><span class="pista"></span></button>`;
     const h=(t,v)=>`<div class="h"><small>${t}</small><b title="${esc(v||"")}">${esc(v||"—")}</b></div>`;
     return `<div class="tarjeta"><div class="hechos">
-        ${h("Dueño",f.dueno)}${h("Llamada con",f.llamada_con)}${h("Grupo",f.grupo?"Grupo "+f.grupo:"")}
+        ${h("Llamada con",llamadaCon(f.llamada_con))}${h("Grupo",f.grupo?"Grupo "+f.grupo:"")}
         ${h("Facturación",f.facturacion)}${h("Intentos",f.intentos||"0")}${h("Último contacto",f.ultimo_contacto?hace(f.ultimo_contacto):"")}
       </div></div>
       <div class="tarjeta"><h4>Seguimiento</h4><div class="switches">

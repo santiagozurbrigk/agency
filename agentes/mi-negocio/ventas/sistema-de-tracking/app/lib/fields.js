@@ -61,8 +61,8 @@ const OPCIONES = {
     "Venta Mentoría",
     "Próximo ciclo"
   ],
-  dueno: ["Braian", "Diego"],
-  llamada_con: ["Manu", "Diego"],
+  dueno: ["Braian", "Diego"],          // ya no se usa (sin dueños); queda por los datos viejos
+  llamada_con: ["Manu", "Equipo", "Diego"],
   grupo: ["1", "2", "3"],
   si_no: ["Sí", "No"]
 };
