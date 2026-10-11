@@ -267,8 +267,13 @@ async function countAppointments(calendarId, desdeMs, hastaMs) {
   return events.filter(e => !["cancelled", "canceled", "noshow", "invalid"].includes(String(e.appointmentStatus || "").toLowerCase())).length;
 }
 
+async function deleteContact(id) {
+  await api(`/contacts/${id}`, { method: "DELETE" });
+}
+
 module.exports = {
   enabled,
+  deleteContact,
   api,
   loadFieldMap,
   ensureCustomFields,

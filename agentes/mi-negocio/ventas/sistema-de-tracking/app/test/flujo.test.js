@@ -163,6 +163,9 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
     const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
     ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día"); }
+  { const e=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"eliminar"}});
+    const t=(await call(leads,{cookie})).body;
+    ok(e.body.eliminado&&!t.leads.some(l=>l.id==="demo-pablo")&&!t.colas.primerContacto.includes("demo-pablo"),"eliminar lead: sale de la lista y de las colas"); }
   { const a=(r.body.porAnuncio||[]).find(x=>x.anuncio==="VSL-hook-CPA");
     ok(a&&a.leads===2&&a.califican===1&&a.campana==="Génesis 19/10","métricas: leads por anuncio (2 leads, 1 califica)"); }
 

@@ -30,6 +30,13 @@ module.exports = async function handler(req, res) {
     if (!lead) return res.status(404).json({ ok: false, error: "Lead no encontrado" });
     const quien = user.name;
 
+    // Eliminar: borra el contacto de GHL (no se puede deshacer).
+    if (action === "eliminar") {
+      await store.deleteLead(id);
+      console.log("lead eliminado", JSON.stringify({ id, nombre: lead.nombre, email: lead.email, por: quien }));
+      return res.status(200).json({ ok: true, eliminado: true });
+    }
+
     let updated;
     switch (action) {
 

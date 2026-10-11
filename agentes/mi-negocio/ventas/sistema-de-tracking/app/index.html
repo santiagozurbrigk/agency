@@ -568,6 +568,19 @@ function toast(t,mal){
   $("#toasts").appendChild(el);
   setTimeout(()=>{el.style.transition="opacity .25s";el.style.opacity="0";setTimeout(()=>el.remove(),260);},3200);
 }
+async function eliminarLead(id){
+  const l=lead(id)||COMPLETO[id]; if(!l) return;
+  const ok=await confirmar("¿Eliminar a "+(l.nombre||"este lead")+"?","Se borra el contacto en GHL y sale del sistema. No se puede deshacer.","Eliminar",true);
+  if(!ok) return;
+  try{
+    await api("/api/lead",{method:"POST",body:JSON.stringify({id,action:"eliminar"})});
+    VERSION_LOCAL++;
+    if(DATA){for(const k of Object.keys(DATA.colas||{})) if(Array.isArray(DATA.colas[k])) DATA.colas[k]=DATA.colas[k].filter(x=>x!==id);
+      if(Array.isArray(DATA.leads)) DATA.leads=DATA.leads.filter(x=>x.id!==id);}
+    delete COMPLETO[id]; cerrarFicha(); render(); pintarNav(); toast("Lead eliminado");
+    setTimeout(refrescar,800);
+  }catch(e){toast(e.message,true);}
+}
 function confirmar(titulo,texto,ok,peligro){
   return new Promise(res=>{
     $("#modalCaja").innerHTML=`<h3>${esc(titulo)}</h3><p>${esc(texto)}</p>
@@ -806,7 +819,7 @@ function render(){
   const s=SEC(VISTA);
   switch(VISTA){
     case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá, ya asignado a Braian o a Diego."}); break;
-    case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{vacio:"Nadie en seguimiento todavía"}); break;
+    case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{registro:true,vacio:"Nadie en seguimiento todavía"}); break;
     case "g1": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo1:[],{numerar:true,vacio:"Nadie agendó todavía",vacioSub:"Los que agenden con el link 1 de la clase aparecen acá."}); break;
     case "g2": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo2:[],{bloques:[
         {titulo:"1 · Completaron la agenda y no agendaron",filtro:l=>l.fields.form_agenda==="Sí"},
@@ -1213,6 +1226,7 @@ function pintarFicha(){
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Diego"],"Llamada reasignada")}
         ${sel("reasignar","dueno","Dueño…",["Braian","Diego"],"Dueño reasignado")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
+        <button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>
       </div>
       <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>
     </div>
