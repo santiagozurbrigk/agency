@@ -333,6 +333,21 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .ln .col{fill:transparent}.ln .col:hover{fill:var(--panel-2);fill-opacity:.6}
 .grid-2c{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
 @media (max-width:900px){.grid-2c{grid-template-columns:1fr}}
+.ads-det details{border-bottom:1px solid var(--borde)}
+.ads-det summary{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 4px;cursor:pointer;list-style:none;font-size:13.5px}
+.ads-det summary::-webkit-details-marker{display:none}
+.ads-det summary::before{content:"›";position:absolute;margin-left:-14px;color:var(--tx-3);transition:transform .15s}
+.ads-det details[open] summary::before{transform:rotate(90deg)}
+.ads-det summary{position:relative;padding-left:18px}
+.ads-det summary:hover{background:var(--panel-2)}
+.ads-det .ad-n{font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ads-det .ad-m{color:var(--tx-3);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ads-det .ad-c{color:var(--tx-2);font-size:12.5px;white-space:nowrap}
+.ads-det .ad-l{padding:0 0 10px 18px}
+.ad-lead{display:grid;grid-template-columns:minmax(0,1.4fr) 90px minmax(0,1fr) minmax(0,1.2fr) 100px;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-radius:6px;font-size:13px;color:var(--tx-2)}
+.ad-lead:hover{background:var(--panel-2)}
+.ad-lead .nom{color:var(--tx);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:900px){.ads-det summary{grid-template-columns:1fr}.ad-lead{grid-template-columns:1fr auto}.ad-lead span:nth-child(2),.ad-lead span:nth-child(3),.ad-lead span:nth-child(4){display:none}}
 .tip{position:fixed;z-index:70;pointer-events:none;background:var(--tx);color:var(--bg);border-radius:6px;padding:6px 9px;font-size:12px;display:none}
 table.tabla{width:100%;border-collapse:collapse;font-size:13.5px}
 table.tabla th{text-align:left;font-size:12px;font-weight:500;color:var(--tx-3);padding:8px 10px 8px 0;border-bottom:1px solid var(--borde)}
@@ -739,7 +754,8 @@ async function refrescar(){
     DATA=d;
     revisarNuevos(d);
     pintarKpis(); pintarNav();
-    if(!EDITANDO) render();
+    // Métricas y Anuncios traen sus propios datos: se actualizan en el lugar, sin volver arriba.
+    if(!EDITANDO) render({silencioso:true});
     if(FICHA_ID && !EDITANDO) pintarFicha();
   }catch(e){ if(e.message!=="Sesión vencida") toast(e.message,true); }
   finally{
@@ -866,8 +882,9 @@ function lista(ids,opts){
   return h+`<div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${vis.map((l,i)=>filaLead(l,opts.numerar?i+1:0,opts.registro)).join("")}</div>`;
 }
 
-function render(){
+function render(op){
   const v=$("#vista");
+  const silencioso=Boolean(op&&op.silencioso);
   const q=$("#busca").value.trim().toLowerCase();
   if(q&&DATA){
     const digitos=q.replace(/\D/g,"");
@@ -876,8 +893,9 @@ function render(){
     return;
   }
   const s=SEC(VISTA);
+  if(VISTA!=="met"&&VISTA!=="anun") delete v.dataset.vista;
   switch(VISTA){
-    case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá, ya asignado a Braian o a Diego."}); break;
+    case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá."}); break;
     case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{registro:true,vacio:"Nadie en seguimiento todavía"}); break;
     case "g1": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo1:[],{numerar:true,vacio:"Nadie agendó todavía",vacioSub:"Los que agenden con el link 1 de la clase aparecen acá."}); break;
     case "g2": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo2:[],{bloques:[
@@ -889,8 +907,8 @@ function render(){
     case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{vacio:"No hay llamadas de venta agendadas"}); break;
     case "clase": renderClase(v,s); break;
     case "ventas": renderVentas(v,s); break;
-    case "met": renderMetricas(v,s); break;
-    case "anun": renderAnuncios(v,s); break;
+    case "met": renderMetricas(v,s,silencioso); break;
+    case "anun": renderAnuncios(v,s,silencioso); break;
     case "conf": renderConfig(v,s); break;
   }
 }
@@ -951,9 +969,17 @@ function renderVentas(v,s){
 }
 
 /* ---------- Métricas ---------- */
-async function renderMetricas(v,s){
-  v.innerHTML=encabezado(s)+`<div class="tiles">${[1,2,3,4].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:26px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
-  let m; try{m=await api("/api/metrics");}catch(e){v.innerHTML=encabezado(s)+`<div class="lista"><div class="vacio"><b>No se pudieron cargar las métricas</b>${esc(e.message)}</div></div>`;return;}
+// Reemplaza el contenido sin mover el scroll y manteniendo abiertos los detalles desplegados.
+function pintarEnLugar(v,html){
+  const y=scrollY, abiertos=[...v.querySelectorAll("details[open][data-k]")].map(d=>d.dataset.k);
+  v.innerHTML=html;
+  abiertos.forEach(k=>{const d=v.querySelector(`details[data-k="${CSS.escape(k)}"]`);if(d)d.open=true;});
+  scrollTo(0,y);
+}
+async function renderMetricas(v,s,silencioso){
+  const yaPintado=silencioso&&v.dataset.vista==="met";
+  if(!yaPintado) v.innerHTML=encabezado(s)+`<div class="tiles">${[1,2,3,4].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:26px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
+  let m; try{m=await api("/api/metrics");}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+`<div class="lista"><div class="vacio"><b>No se pudieron cargar las métricas</b>${esc(e.message)}</div></div>`;return;}
   if(VISTA!=="met") return;
   const e=m.embudo, pct=(a,b)=>b?Math.round(a/b*100):0;
   const cobrado=Object.values(m.porOferta).reduce((x,o)=>x+o.cobrado,0);
@@ -1024,8 +1050,17 @@ async function renderMetricas(v,s){
   h+=tarjeta("Por fuente","Visitas a la landing (aproximadas, una por sesión) y registros del opt-in, según el link por el que entraron",tablaFuentes);
 
   h+=tarjeta("Leads por anuncio","Lo largo de la barra es cuántos leads trajo; lo naranja, cuántos califican. Ordenado por calificados",graficoAds);
+  // Qué anuncio trajo a qué lead: cada anuncio se despliega con sus leads (clic → ficha).
+  const detalleAds=ads.length?`<div class="ads-det">${(m.porAnuncio||[]).map(a=>`<details data-k="${esc(a.anuncio)}">
+      <summary><span class="ad-n">${esc(a.anuncio)}</span><span class="ad-m">${esc([a.campana,a.conjunto].filter(Boolean).join(" · "))}</span>
+        <span class="ad-c num">${a.leads} lead${a.leads===1?"":"s"} · <b>${a.califican}</b> califican${a.ventas?` · ${a.ventas} venta${a.ventas===1?"":"s"}`:""}</span></summary>
+      <div class="ad-l">${(a.lista||[]).map(x=>`<button class="ad-lead" onclick="abrirFicha('${x.id}')">
+        <span class="nom">${esc(x.nombre||"(sin nombre)")}</span><span>${esc(horaRegistro(x.creado))}</span><span>${esc(x.facturacion||"—")}</span>
+        <span>${badgeEtapa(x.etapa)}</span><span>${x.venta?'<span class="chip ok">Compró</span>':x.califica?'<span class="chip ok">Califica</span>':'<span class="chip">No califica</span>'}</span></button>`).join("")}</div>
+    </details>`).join("")}</div>`:`<div class="sin-datos">Todavía no entró ningún lead desde un anuncio de Meta</div>`;
+  h+=tarjeta("Qué anuncio trajo a cada lead","Tocá un anuncio para ver sus leads; tocá un lead para abrir su ficha. Solo anuncios de Meta (lo orgánico está en «Por fuente»).",detalleAds);
 
-  v.innerHTML=h;
+  pintarEnLugar(v,h); v.dataset.vista="met";
   const tip=$("#tip");
   v.querySelectorAll("[data-tip]").forEach(el=>{
     el.addEventListener("mousemove",ev=>{tip.textContent=el.dataset.tip;tip.style.display="block";tip.style.left=Math.min(ev.clientX+14,innerWidth-tip.offsetWidth-8)+"px";tip.style.top=(ev.clientY+12)+"px";});
@@ -1082,13 +1117,14 @@ function anunRango(r){ANUN.rango=r;render();}
 function anunFechas(){ANUN.desde=$("#aDesde").value;ANUN.hasta=$("#aHasta").value;if(ANUN.desde&&ANUN.hasta){ANUN.rango="rango";render();}}
 function anunModo(m){ANUN.modo=m;render();}
 
-async function renderAnuncios(v,s){
+async function renderAnuncios(v,s,silencioso){
+  const yaPintado=silencioso&&v.dataset.vista==="anun";
   const seg=(op,actual,fn)=>`<div class="seg">${op.map(([k,t])=>`<button class="${actual===k?"on":""}" onclick="${fn}('${k}')">${t}</button>`).join("")}</div>`;
   const filtros=`<div class="rango">${seg([["todo","Todo el lanzamiento"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"]],ANUN.rango,"anunRango")}
     <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta"></div>`;
-  v.innerHTML=encabezado(s)+filtros+`<div class="tiles">${[1,2,3,4,5].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
+  if(!yaPintado) v.innerHTML=encabezado(s)+filtros+`<div class="tiles">${[1,2,3,4,5].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
   const r=rangoAnun();
-  let a;try{a=await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));}catch(e){v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
+  let a;try{a=await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
   if(VISTA!=="anun") return;
   const R=a.resumen, D=a.porDia, x=D.map(d=>d.dia), col=k=>D.map(d=>d[k]);
   const tile=(v2,t,sub)=>`<div class="tile"><div class="t">${t}</div><div class="v num">${v2}</div>${sub?`<div class="s">${sub}</div>`:""}</div>`;
@@ -1137,7 +1173,7 @@ async function renderAnuncios(v,s){
     lineas(x,[{nombre:"Tasa de agenda",datos:col("tasaAgenda"),color:NAR,fmt:fPct}],{pct:true}),[[NAR,"Tasa de agenda"]]);
   h+=`</div>`;
   h+=`<div class="tarjeta"><h4>Inversión, CPL, CPM y panel de anuncios</h4><p style="color:var(--tx-3);font-size:13.5px">Se suman cuando conectemos Meta Ads (fase 2).</p></div>`;
-  v.innerHTML=h;
+  pintarEnLugar(v,h); v.dataset.vista="anun";
   activarTips(v);
 }
 
