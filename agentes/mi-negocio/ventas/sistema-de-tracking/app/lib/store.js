@@ -326,6 +326,15 @@ async function invalidarCitasManu() {
   if (!DEMO) await cache.del("manu_citas");
 }
 
+/* ---------- Eliminar un lead ---------- */
+// Borra el contacto en GHL y lo saca de la foto al instante (queda en «recientes»
+// sin tags, así la lista de GHL atrasada no lo vuelve a mostrar).
+async function deleteLead(id) {
+  if (DEMO) { const db = demo.db(); db.leads = db.leads.filter(l => l.id !== id); return; }
+  await ghl.deleteContact(id);
+  await actualizarFoto({ id, tags: [], fields: {} });
+}
+
 /* ---------- Visitas a la landing por fuente (aproximado) ---------- */
 const VISITAS_KEY = "trk_visitas";
 let visitasPend = {};          // visitas de esta instancia que todavía no se guardaron
@@ -375,7 +384,7 @@ async function getVisitas() {
 }
 
 module.exports = {
-  sumarVisita, getVisitas, diaAR,
+  deleteLead, sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
   esDelLanzamiento, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
