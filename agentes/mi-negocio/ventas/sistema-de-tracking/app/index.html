@@ -1226,7 +1226,7 @@ function pintarFicha(){
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Diego"],"Llamada reasignada")}
         ${sel("reasignar","dueno","Dueño…",["Braian","Diego"],"Dueño reasignado")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
-        <button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>
+        ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
       </div>
       <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>
     </div>

@@ -50,6 +50,19 @@ function sesion(req) {
   } catch (e) { return null; }
 }
 
+// Quién puede hacer acciones delicadas (eliminar leads): Santiago y Matías.
+// Se reconoce por el nombre en USERS_JSON, o con "admin": true en el usuario.
+// En modo demo, todos.
+function esAdmin(s) {
+  if (!s) return false;
+  const lista = usuarios();
+  if (!lista.length) return true;
+  const u = lista.find(u => String(u.email).toLowerCase() === String(s.email).toLowerCase());
+  if (u && u.admin === true) return true;
+  const n = String((u && u.name) || s.name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return /^(santiago|santi|matias|mati)\b/.test(n);
+}
+
 // Para endpoints internos: corta con 401 si no hay sesión.
 function requiere(req, res) {
   const s = sesion(req);
@@ -59,4 +72,4 @@ function requiere(req, res) {
 
 const COOKIE_LOGOUT = "trk=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0";
 
-module.exports = { login, sesion, requiere, COOKIE_LOGOUT };
+module.exports = { login, sesion, requiere, esAdmin, COOKIE_LOGOUT };

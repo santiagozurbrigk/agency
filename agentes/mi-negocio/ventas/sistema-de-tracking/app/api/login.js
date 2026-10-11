@@ -1,4 +1,4 @@
-const { login, COOKIE_LOGOUT } = require("../lib/auth");
+const { login, esAdmin, COOKIE_LOGOUT } = require("../lib/auth");
 
 module.exports = async function handler(req, res) {
   if (req.method === "DELETE") {
@@ -14,5 +14,5 @@ module.exports = async function handler(req, res) {
   const r = login(body.email, body.pass);
   if (!r) return res.status(401).json({ ok: false, error: "Email o clave incorrectos" });
   res.setHeader("Set-Cookie", r.cookie);
-  return res.status(200).json({ ok: true, user: r.user });
+  return res.status(200).json({ ok: true, user: { ...r.user, admin: esAdmin(r.user) } });
 };

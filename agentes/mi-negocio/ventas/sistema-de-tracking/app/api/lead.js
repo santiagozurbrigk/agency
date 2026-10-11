@@ -2,7 +2,7 @@
 // GET  /api/lead?id=...
 // POST /api/lead { id, action, data }
 
-const { requiere } = require("../lib/auth");
+const { requiere, esAdmin } = require("../lib/auth");
 const store = require("../lib/store");
 
 const PRECIOS = {
@@ -32,6 +32,7 @@ module.exports = async function handler(req, res) {
 
     // Eliminar: borra el contacto de GHL (no se puede deshacer).
     if (action === "eliminar") {
+      if (!esAdmin(user)) return res.status(403).json({ ok: false, error: "Solo Santiago y Matías pueden eliminar leads" });
       await store.deleteLead(id);
       console.log("lead eliminado", JSON.stringify({ id, nombre: lead.nombre, email: lead.email, por: quien }));
       return res.status(200).json({ ok: true, eliminado: true });
