@@ -172,6 +172,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .lista{border-top:1px solid var(--borde)}
 .fila{display:grid;grid-template-columns:minmax(220px,2.2fr) minmax(110px,1fr) minmax(150px,1.3fr) minmax(120px,1.6fr) auto;gap:16px;align-items:center;padding:13px 8px;border-bottom:1px solid var(--borde);cursor:pointer;transition:background .12s}
 .fila:hover{background:var(--panel-2)}
+.lista.con-reg .fila{grid-template-columns:minmax(200px,2fr) minmax(130px,1.2fr) minmax(100px,1fr) minmax(140px,1.3fr) minmax(110px,1.4fr) auto}
 .fila.cab{cursor:default;font-size:12px;font-weight:500;color:var(--tx-3);padding-top:10px;padding-bottom:10px}
 .fila.cab:hover{background:none}
 .quien-l{display:flex;align-items:center;gap:12px;min-width:0}
@@ -354,6 +355,7 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
 @media (max-width:1100px){
   .fila{grid-template-columns:minmax(200px,2fr) minmax(100px,1fr) minmax(140px,1.3fr) auto}
   .fila .col-etq{display:none}
+  .lista.con-reg .fila{grid-template-columns:minmax(180px,2fr) minmax(120px,1.2fr) minmax(90px,1fr) minmax(130px,1.3fr) auto}
   .grid-2{grid-template-columns:1fr}
   .grid-3{grid-template-columns:1fr 1fr}
 }
@@ -371,7 +373,8 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
   .tile .meter{display:block}
   .pagina{padding:22px 16px 80px}
   .fila{grid-template-columns:1fr auto;gap:8px;padding:12px 4px}
-  .fila .col-fact,.fila .col-etapa{display:none}
+  .fila .col-fact,.fila .col-etapa,.fila .col-reg{display:none}
+  .lista.con-reg .fila{grid-template-columns:1fr auto}
   .fila.cab{display:none}
   .fila .movil{display:flex}
   #ficha{left:0;top:0;width:100vw;height:100dvh;border-radius:0;border:0;transform:translateY(12px)}
@@ -737,7 +740,7 @@ function etiquetas(l){
 }
 function badgeEtapa(e){e=e||"Nuevo";return `<span class="badge ${TONO_ETAPA[e]||""}">${esc(e)}</span>`;}
 
-function filaLead(l,pos){
+function filaLead(l,pos,reg){
   const f=l.fields;
   const intentos=parseInt(f.intentos||"0",10)||0;
   const detalle=[f.dueno?esc(f.dueno):"", intentos?`${intentos} intento${intentos===1?"":"s"}`:"", f.ultimo_contacto?hace(f.ultimo_contacto):""].filter(Boolean).join(" · ");
@@ -745,7 +748,8 @@ function filaLead(l,pos){
     <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}" title="Dueño: ${esc(f.dueno||"sin asignar")}">${esc(iniciales(l.nombre))}</div>
       <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
       <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
-      <div class="movil">${badgeEtapa(f.etapa)}${etiquetas(l)}</div></div></div>
+      <div class="movil">${badgeEtapa(f.etapa)}${etiquetas(l)}${reg?`<span class="chip">${esc(horaRegistro(l.creado))} · ${esc(fuenteDe(origenDe(f)))}</span>`:""}</div></div></div>
+    ${reg?colRegistro(l):""}
     <div class="col-fact fact">${esc(f.facturacion||"—")}<small>${esc(f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
     <div class="col-etapa">${badgeEtapa(f.etapa)}<div style="color:var(--tx-3);font-size:12px;margin-top:4px">${detalle}</div></div>
     <div class="col-etq etiquetas">${etiquetas(l)}</div>
@@ -753,6 +757,21 @@ function filaLead(l,pos){
   </div>`;
 }
 const CAB=`<div class="fila cab"><div>Lead</div><div class="col-fact">Facturación</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
+const CAB_REG=`<div class="fila cab"><div>Lead</div><div class="col-reg">Registro · origen</div><div class="col-fact">Facturación</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
+// Hora del registro en hora de Argentina: "hoy 14:32", "ayer 09:10" o "12/10 14:32".
+function horaRegistro(iso){
+  if(!iso) return "—";
+  const d=new Date(iso), ar=t=>new Date(t-3*3600e3).toISOString();
+  const dia=ar(d.getTime()).slice(0,10), hh=ar(d.getTime()).slice(11,16);
+  if(dia===ar(Date.now()).slice(0,10)) return "hoy "+hh;
+  if(dia===ar(Date.now()-864e5).slice(0,10)) return "ayer "+hh;
+  const p=dia.split("-");return `${+p[2]}/${+p[1]} ${hh}`;
+}
+function colRegistro(l){
+  const o=origenDe(l.fields), fte=fuenteDe(o);
+  const det=fte==="Anuncios de Meta"?(o.utm_content||(o.ad_id?"ID "+o.ad_id:"")):(o.utm_content||"");
+  return `<div class="col-reg fact" title="${esc(new Date(l.creado||0).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires"}))}">${esc(horaRegistro(l.creado))}<small>${esc(fte)}${det?` · ${esc(det)}`:""}</small></div>`;
+}
 function esqueleto(){
   return `<div class="lista">${[1,2,3,4,5].map(()=>`<div class="fila" style="cursor:default"><div class="quien-l"><div class="avatar"></div><div style="flex:1"><div class="esq" style="width:60%"></div><div class="esq" style="width:35%;margin-top:6px"></div></div></div><div class="esq col-fact"></div><div class="esq col-etapa"></div><div class="esq col-etq"></div><div></div></div>`).join("")}</div>`;
 }
@@ -768,11 +787,11 @@ function lista(ids,opts){
     for(const b of opts.bloques){
       const sub=vis.filter(b.filtro);
       if(!sub.length) continue;
-      h+=`<div class="bloque-tit">${esc(b.titulo)} <span class="n num">${sub.length}</span></div><div class="lista">${CAB}${sub.map(l=>filaLead(l,++pos)).join("")}</div>`;
+      h+=`<div class="bloque-tit">${esc(b.titulo)} <span class="n num">${sub.length}</span></div><div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${sub.map(l=>filaLead(l,++pos,opts.registro)).join("")}</div>`;
     }
     return h;
   }
-  return h+`<div class="lista">${CAB}${vis.map((l,i)=>filaLead(l,opts.numerar?i+1:0)).join("")}</div>`;
+  return h+`<div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${vis.map((l,i)=>filaLead(l,opts.numerar?i+1:0,opts.registro)).join("")}</div>`;
 }
 
 function render(){
@@ -786,7 +805,7 @@ function render(){
   }
   const s=SEC(VISTA);
   switch(VISTA){
-    case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá, ya asignado a Braian o a Diego."}); break;
+    case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá, ya asignado a Braian o a Diego."}); break;
     case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{vacio:"Nadie en seguimiento todavía"}); break;
     case "g1": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo1:[],{numerar:true,vacio:"Nadie agendó todavía",vacioSub:"Los que agenden con el link 1 de la clase aparecen acá."}); break;
     case "g2": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo2:[],{bloques:[
