@@ -86,38 +86,45 @@ Todo lo demás del criterio sigue igual: vende la clase y no el método, sin pre
 
 # v8 — Hooks de referencia (H1–H10), 11-oct-2026
 
-Guiones en `guiones-v8-hooks.md`. Un guion por hook que pasó el usuario, cada uno con un ad de referencia de la Biblioteca de anuncios de Meta.
+Guiones en `guiones-v8-por-dolor.md`: 13, uno por hook que pasó el usuario (H1–H14, sin H6), agrupados por dolor: CPA 4 · Metadependencia 4 · Margen 5. Cada uno tiene un ad de referencia de la Biblioteca de anuncios de Meta.
 
-**Los videos de referencia no se pudieron ver:** la Biblioteca de anuncios devuelve 403 desde la sesión. Los guiones se armaron con el hook textual + el molde de los ads de referencia (`../referencia-ads-nazareno.md`) + el filtro de la v7. Si se pegan las transcripciones de los 9 videos, se ajusta ritmo, duración y la estructura de cada uno.
+**Los videos de referencia no se pudieron ver:** la Biblioteca de anuncios devuelve 403 desde la sesión. Los guiones se armaron con el hook textual + el molde de los ads de referencia (`../referencia-ads-nazareno.md`) + el filtro de la v7. Si se pegan las transcripciones de los 9 videos, se ajusta ritmo, duración y la estructura de cada uno (son 13).
 
-## Matriz v8
+## Matriz v8 (por dolor)
 
-| Ad | Hook (textual) | Dolor / ángulo | Referencia | Duración |
-|---|---|---|---|---|
-| H1 | "Más de 220M es lo que hice este mes SIN tirar CBO madre, ABO, big pocket…" | CPA / estructura de campañas | [1897013864592610](https://www.facebook.com/ads/library/?id=1897013864592610) | ~60 s |
-| H2 | "Hay una sola cosa que separa a los ecommerce como este de los que tiran 10 testeos por semana" | CPA / testeo infinito | [4389433274629368](https://www.facebook.com/ads/library/?id=4389433274629368) | ~62 s |
-| H3 | "No paran de preguntarme cómo hice 220M en un mes sin pauta con 50% de margen" | Metadependencia + márgenes / curiosidad | [1758375595157362](https://www.facebook.com/ads/library/?id=1758375595157362) | ~61 s |
-| H4 | "Hoy, después de 3 años, entendí que pagar un CPA de 75.000 no está mal" | CPA / creencia rota | [2582673965504258](https://www.facebook.com/ads/library/?id=2582673965504258) | ~65 s |
-| H5 | "Este roadmap es el que seguí para pasar mi ecom de químicos al modelo de suscripción y hacer 220M en un mes con 50% de profit" | Regalo 1 como protagonista | [1374604481313843](https://www.facebook.com/ads/library/?id=1374604481313843) | ~59 s |
-| H7 | "Si estás por escalar el testeo que te pegó de tu producto químico, mirá esto" | CPA / escalar un ganador | [1958128105156777](https://www.facebook.com/ads/library/?id=1958128105156777) | ~63 s |
-| H8 | "Hice que mi ecom de químicos facture 220M el mes pasado SIN PAUTAR en Meta" | Metadependencia | [1051341447265079](https://www.facebook.com/ads/library/?id=1051341447265079) | ~60 s |
-| H9 | "Rápido: te voy a mostrar cómo pasar de márgenes de 15-20% a +50% con tu ecom de químicos" | Márgenes / corto | [1081549564444711](https://www.facebook.com/ads/library/?id=1081549564444711) | ~40 s |
-| H10 | "Si no querés cagarla escalando tu ecom de químicos, te voy a mostrar cómo hice 220M sin depender de la pauta" | Metadependencia / escalar | [1071088732529607](https://www.facebook.com/ads/library/?id=1071088732529607) | ~63 s |
+| Dolor | Ad | Hook | Ángulo | Referencia | Duración |
+|---|---|---|---|---|---|
+| CPA | H1 | Más de 220M este mes SIN CBO madre, ABO, big pocket | Estructura de campañas | [1897013864592610](https://www.facebook.com/ads/library/?id=1897013864592610) | ~60 s |
+| CPA | H2 | Una sola cosa separa a los ecommerce como este de los que tiran 10 testeos por semana | Testeo infinito | [4389433274629368](https://www.facebook.com/ads/library/?id=4389433274629368) | ~62 s |
+| CPA | H4 | Después de 3 años entendí que pagar un CPA de 75.000 no está mal | Creencia rota | [2582673965504258](https://www.facebook.com/ads/library/?id=2582673965504258) | ~65 s |
+| CPA | H7 | Si estás por escalar el testeo que te pegó de tu producto químico | Escalar un ganador | [1958128105156777](https://www.facebook.com/ads/library/?id=1958128105156777) | ~63 s |
+| Metadependencia | H3 | No paran de preguntarme cómo hice 220M sin pauta con 50% de margen | Curiosidad | [1758375595157362](https://www.facebook.com/ads/library/?id=1758375595157362) | ~61 s |
+| Metadependencia | H8 | 220M el mes pasado SIN PAUTAR en Meta | Resultado sin pauta | [1051341447265079](https://www.facebook.com/ads/library/?id=1051341447265079) | ~60 s |
+| Metadependencia | H10 | Si no querés cagarla escalando, cómo hice 220M sin depender de la pauta | Escalar sin Meta | [1071088732529607](https://www.facebook.com/ads/library/?id=1071088732529607) | ~63 s |
+| Metadependencia | H14 | ¿+100M con diversidad creativa y toda la guita en Meta? Seguí scrolleando… o dame 30 s | Contrarian | [3603619866470291](https://www.facebook.com/ads/library/?id=3603619866470291) | ~63 s |
+| Margen | H5 | Este roadmap es el que seguí… 220M en un mes con 50% de profit | Regalo 1 protagonista | [1374604481313843](https://www.facebook.com/ads/library/?id=1374604481313843) | ~59 s |
+| Margen | H9 | Rápido: de márgenes de 15-20% a +50% | Corto | [1081549564444711](https://www.facebook.com/ads/library/?id=1081549564444711) | ~40 s |
+| Margen | H11 | Si tenés una marca de químicos conocés a IM8, Grüns, AG1: todas tienen lo mismo en común | Referentes (rompe 'es de EE.UU.') | [1630316731955824](https://www.facebook.com/ads/library/?id=1630316731955824) | ~64 s |
+| Margen | H12 | Voy a revelar todos los sistemas de mi marca de químicos (220M el mes pasado) | Los 3 regalos protagonistas | [1699690927982806](https://www.facebook.com/ads/library/?id=1699690927982806) | ~64 s |
+| Margen | H13 | Rápido: voy a ahorrarte perder mucha plata escalando tu marca de químicos | Corto · facturás más, ganás lo mismo | [978883427881692](https://www.facebook.com/ads/library/?id=978883427881692) | ~45 s |
 
 ## Decisiones
 
-- **Los hooks van textuales**, con "ecom" hablado y "químicos" (son palabras del nicho y filtran solas: CBO, ABO, big pocket, testeo, CPA, profit). El resto del guion sigue la regla v7.1: "ecommerce", nunca "marca" ni "tienda".
+- **Los hooks van textuales**, con "ecom" hablado, "químicos" y, en H11–H14, "marca de químicos" (así los escribió el usuario; choca con la regla v7.1 de no decir "marca", pero "marca de químicos" junto a ecom/Meta no lo usa un local) (son palabras del nicho y filtran solas: CBO, ABO, big pocket, testeo, CPA, profit). El resto del guion sigue la regla v7.1: "ecommerce", nunca "marca" ni "tienda".
 - **"CPA de X" (H4) = 75.000**, el punto operativo de la cuenta canónica (margen 30.000 × LTV 3 = techo 90.000; se opera en 75.000).
 - **"Una sola cosa" (H2) se nombra enseguida:** el modelo / Método B.A.S.E. (la regla vieja era no dejarla genérica).
 - **Filtro en todos**, antes del segundo 27 (en H9, el corto, en el segundo 14).
-- **Mismo caption, titular y descripción que la v7** (arriba). Los 9 van en un conjunto propio para comparar contra la v7 por % de registros calificados.
+- **H11** nombra IM8, Grüns y AG1 (el arquetipo Explorador: "trajo el modelo de afuera") y rompe la objeción "la suscripción es para Estados Unidos".
+- **Mismo caption, titular y descripción que la v7** (arriba). Los 13 van en un conjunto propio para comparar contra la v7 por % de registros calificados.
 
 ## Confirmar antes de grabar (regla madre: todo verdad)
 
-1. **220 millones "sin pauta" / "sin pautar en Meta" (H3, H8, H10).** Hasta ahora el número canónico era "una marca que con la pauta apagada sigue cobrando recurrencias con 50% de margen", no que los 220M se hicieron sin anuncios. Si el mes de 220M tuvo pauta, H3 y H8 no se pueden decir así: H8 pasa a "con la pauta apagada, sigue cobrando…" y H3 a "…cómo hice 220M en un mes con 50% de margen". H10 ("sin depender de la pauta") sí aguanta. Necesita captura: gasto de Meta del mes + cobros.
-2. **"Este mes" (H1, H2) vs. "el mes pasado" (H8) vs. "en un mes" (H3, H5).** Elegir uno y usarlo igual en todos. Hoy es 11-oct: si el mes es septiembre, va "el mes pasado".
+1. **220 millones "sin pauta" / "sin pautar en Meta" (H3, H8, H10, H14).** Hasta ahora el número canónico era "una marca que con la pauta apagada sigue cobrando recurrencias con 50% de margen", no que los 220M se hicieron sin anuncios. Si el mes de 220M tuvo pauta, H3 y H8 no se pueden decir así: H8 pasa a "con la pauta apagada, sigue cobrando…" y H3 a "…cómo hice 220M en un mes con 50% de margen". H10 ("sin depender de la pauta") sí aguanta. Necesita captura: gasto de Meta del mes + cobros.
+2. **"Este mes" (H1, H2) vs. "el mes pasado" (H8, H12) vs. "en un mes" (H3, H5).** Elegir uno y usarlo igual en todos. Hoy es 11-oct: si el mes es septiembre, va "el mes pasado".
 3. **50% de margen / profit sobre los 220M (H3, H5).** Confirmar que es el margen del mes completo, no solo el de las recurrencias.
 4. **15-20% → +50% (H9).** Número nuevo: confirmar que ese era el margen de Manu en compra única. Si no, va "de breakeven a +50%".
 5. **"3 años" (H4).** Confirmar que es el tiempo que Manu peleó el CPA antes de la suscripción.
 6. **220M en `CONTEXTO.md`.** `CONTEXTO.md` y los 9 ads viejos todavía dicen 156.798.062; la landing y estos 9 dicen 220M. No se tocó `CONTEXTO.md` (hay que pedirlo explícitamente).
-7. **Sin H6** en la lista que llegó: si había un sexto hook, se suma.
+7. **Sin H6** en la lista que llegó (tampoco en la segunda): si había un sexto hook, se suma.
+8. **H11:** confirmar que Manu está cómodo nombrando IM8, Grüns y AG1 y que las tres venden con suscripción como modelo principal (AG1 y Grüns sí; IM8, chequear).
+9. **H14 "de 60 a 220 millones por mes"** sin sacar veinte creativos por semana: confirmar que Manu no escaló con volumen de creativos.
