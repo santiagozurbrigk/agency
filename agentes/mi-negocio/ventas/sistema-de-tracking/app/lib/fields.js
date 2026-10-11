@@ -103,6 +103,9 @@ const FIELDS = [
   { key: "intentos",         name: "Intentos de contacto",           type: "NUMERICAL" },
   { key: "ultimo_contacto",  name: "Último contacto",                type: "TEXT" },
   { key: "origen",           name: "Origen (UTM)",                   type: "LARGE_TEXT" },
+  { key: "facturacion_confirmada", name: "Facturación confirmada por el SDR", type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
+  { key: "toco_grupo",       name: "Tocó Entrar al grupo",           type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
+  { key: "toco_grupo_at",    name: "Cuándo tocó Entrar al grupo",    type: "TEXT" },
   { key: "venta_json",       name: "Venta (interno, no tocar)",      type: "LARGE_TEXT" },
   { key: "historial_json",   name: "Historial (interno, no tocar)",  type: "LARGE_TEXT" }
 ];

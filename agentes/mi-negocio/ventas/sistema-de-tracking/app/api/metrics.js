@@ -103,7 +103,8 @@ module.exports = async function handler(req, res) {
     // Por fuente: visitas a la landing (aprox.) contra registros del opt-in.
     const fuentes = {};
     const f = (n) => fuentes[n] || (fuentes[n] = { fuente: n, visitas: 0, registros: 0, califican: 0 });
-    for (const [n, v] of Object.entries(visitas || {})) f(n).visitas = v;
+    // Claves "día|fuente|ab" (las viejas eran solo la fuente).
+    for (const [k, v] of Object.entries(visitas || {})) { const p = k.split("|"); f(p.length >= 2 ? p[1] : k).visitas += v; }
     for (const l of leads) {
       if (!(l.tags || []).includes("optin-19-10")) continue;
       let o = {};

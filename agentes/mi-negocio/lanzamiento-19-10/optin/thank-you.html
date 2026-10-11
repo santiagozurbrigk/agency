@@ -363,6 +363,20 @@ var BANDERAS = {
   if (hayWa) top.href = C.WHATSAPP_URL; else { top.href = cal; top.textContent = "Agendar"; top.classList.add("cal"); }
   if (!hayWa) document.getElementById("fijo").classList.add("oculto");
 
+  /* Clic en «Entrar al grupo»: se avisa al sistema una vez por sesión, con el email del registro */
+  function avisarGrupo() {
+    try {
+      if (sessionStorage.getItem("genesis_grupo")) return;
+      var email = new URLSearchParams(location.search).get("email") || "";
+      if (!email) return;
+      sessionStorage.setItem("genesis_grupo", "1");
+      var cuerpo = JSON.stringify({ email: email });
+      if (navigator.sendBeacon) navigator.sendBeacon("/api/grupo", new Blob([cuerpo], { type: "text/plain" }));
+      else fetch("/api/grupo", { method: "POST", body: cuerpo, keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
+  if (hayWa) ["btn-wa", "btn-wa-2", "top-cta"].forEach(function (id) { document.getElementById(id).addEventListener("click", avisarGrupo); });
+
   /* CTA fijo en el celular cuando el botón principal sale de pantalla */
   var principal = document.getElementById("btn-wa"), fijo = document.getElementById("fijo");
   if (hayWa && "IntersectionObserver" in window) {

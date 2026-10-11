@@ -6,10 +6,11 @@ let _db = null;
 
 function seed() {
   const hoy = new Date().toISOString();
+  const hace = (d) => new Date(Date.now() - d * 864e5).toISOString();
   const leads = [
     {
       id: "demo-martin", nombre: "Martín Pereyra", email: "martin@demo.com", telefono: "+5491155550001",
-      tags: [], creado: hoy,
+      tags: [], creado: hace(2),
       fields: {
         ciclo: "Entre 30 y 60 días", facturacion: "Entre 30M y 50M", dueno: "Diego", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Instagram_Reels", utm_campaign: "Génesis 19/10", utm_term: "Dueños de marca", utm_content: "VSL-hook-CPA" }), 
         etapa: "Agendado con Manu (pre-venta)", que_vende: "Productos de limpieza para el hogar",
@@ -23,7 +24,7 @@ function seed() {
     },
     {
       id: "demo-lucia", nombre: "Lucía Gómez", email: "lucia@demo.com", telefono: "+5491155550002",
-      tags: [], creado: hoy,
+      tags: [], creado: hace(1),
       fields: {
         ciclo: "Entre 30 y 60 días", facturacion: "Entre 10M y 30M", dueno: "Braian", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Instagram_Reels", utm_campaign: "Génesis 19/10", utm_term: "Dueños de marca", utm_content: "VSL-hook-CPA" }), 
         etapa: "Confirmado para la clase", que_vende: "Limpieza ecológica",

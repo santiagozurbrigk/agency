@@ -842,6 +842,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (Object.keys(t).length) localStorage.setItem("genesis_utm", JSON.stringify(t));
       else t = JSON.parse(localStorage.getItem("genesis_utm") || "{}");
     } catch (e) {}
+    if (AB_TEST) t.ab = variant; /* qué titular vio (para el test A/B) */
     return t;
   }
   tracking();

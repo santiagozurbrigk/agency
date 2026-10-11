@@ -319,6 +319,17 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .fu .pista-b{height:14px;position:relative}
 .fu .pista-b i{position:absolute;left:0;top:0;bottom:0;background:var(--marca-dato);border-radius:0 2px 2px 0;min-width:2px;transition:width .5s}
 .fu .val{font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+/* Anuncios: filtros y gráficos de línea */
+.rango{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.rango input[type=date]{width:auto;height:30px;padding:0 8px;font-size:12.5px}
+.rango .sep{color:var(--tx-3);font-size:12.5px}
+.nota-a{font-size:12px;color:var(--tx-3);margin:6px 0 28px;max-width:760px;line-height:1.55}
+.ln{width:100%;height:auto;display:block;overflow:visible}
+.ln text{fill:var(--tx-3);font-size:10px;font-family:var(--txt)}
+.ln .g{stroke:var(--borde);stroke-width:1}
+.ln .col{fill:transparent}.ln .col:hover{fill:var(--panel-2);fill-opacity:.6}
+.grid-2c{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+@media (max-width:900px){.grid-2c{grid-template-columns:1fr}}
 .tip{position:fixed;z-index:70;pointer-events:none;background:var(--tx);color:var(--bg);border-radius:6px;padding:6px 9px;font-size:12px;display:none}
 table.tabla{width:100%;border-collapse:collapse;font-size:13.5px}
 table.tabla th{text-align:left;font-size:12px;font-weight:500;color:var(--tx-3);padding:8px 10px 8px 0;border-bottom:1px solid var(--borde)}
@@ -401,6 +412,7 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
   <symbol id="i-llam" viewBox="0 0 24 24"><path d="M15 3h6v6M21 3l-7 7"/><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-venta" viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></symbol>
   <symbol id="i-met" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-ads" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
   <symbol id="i-conf" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
   <symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
@@ -509,6 +521,7 @@ const SECCIONES=[
     sub:"Lo vendido, lo cobrado y las cuotas que faltan."},
   {grupo:"Análisis"},
   {id:"met", nombre:"Métricas", icono:"i-met", sub:"Cómo viene el lanzamiento, de punta a punta."},
+  {id:"anun", nombre:"Anuncios", icono:"i-ads", sub:"Cómo rinde la pauta: leads, calificados, conversión de la landing y lo que pasa después."},
   {id:"conf", nombre:"Configuración", icono:"i-conf", sub:"Topes, fechas y calendarios de GHL."}
 ];
 const SEC=id=>SECCIONES.find(s=>s.id===id)||SECCIONES[1];
@@ -786,6 +799,7 @@ function render(){
     case "clase": renderClase(v,s); break;
     case "ventas": renderVentas(v,s); break;
     case "met": renderMetricas(v,s); break;
+    case "anun": renderAnuncios(v,s); break;
     case "conf": renderConfig(v,s); break;
   }
 }
@@ -936,6 +950,114 @@ async function renderMetricas(v,s){
     el.addEventListener("mousemove",ev=>{tip.textContent=el.dataset.tip;tip.style.display="block";tip.style.left=Math.min(ev.clientX+14,innerWidth-tip.offsetWidth-8)+"px";tip.style.top=(ev.clientY+12)+"px";});
     el.addEventListener("mouseleave",()=>tip.style.display="none");
   });
+}
+
+/* ---------- Anuncios ---------- */
+let ANUN={rango:"todo",desde:"",hasta:"",modo:"real"};
+const diaAR=d=>new Date((d?new Date(d):new Date()).getTime()-3*3600e3).toISOString().slice(0,10);
+const fDia=d=>{const p=d.split("-");return `${+p[2]}/${+p[1]}`;};
+const fPct=v=>v==null?"—":String(v).replace(".",",")+"%";
+
+// Gráfico de líneas en SVG. series: [{nombre, datos:[n|null], color, punteada, fmt}]
+function lineas(x,series,{pct=false,alto=200}={}){
+  const W=640,H=alto,pl=38,pr=10,pt=10,pb=24,iw=W-pl-pr,ih=H-pt-pb;
+  const vals=series.flatMap(s=>s.datos).filter(v=>v!=null);
+  let max=pct?100:Math.max(1,...vals);
+  if(!pct){const e=Math.pow(10,Math.floor(Math.log10(max)));max=Math.ceil(max/e)*e;if(max<4)max=4;}
+  const X=i=>pl+(x.length<2?iw/2:i*iw/(x.length-1)), Y=v=>pt+ih-(v/max)*ih;
+  const fmt=v=>pct?Math.round(v)+"%":(Math.round(v*10)/10).toLocaleString("es-AR");
+  let g="";
+  for(let k=0;k<=4;k++){const v=max*k/4,y=Y(v);g+=`<line class="g" x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}"/><text x="${pl-6}" y="${y+3}" text-anchor="end">${fmt(v)}</text>`;}
+  const salto=Math.max(1,Math.ceil(x.length/8));
+  x.forEach((d,i)=>{if(i%salto===0||i===x.length-1)g+=`<text x="${X(i)}" y="${H-6}" text-anchor="middle">${fDia(d)}</text>`;});
+  for(const s of series){
+    let tramo=[],path="";
+    const cerrar=()=>{if(tramo.length>1)path+=`<polyline points="${tramo.join(" ")}" fill="none" stroke="${s.color}" stroke-width="2" ${s.punteada?'stroke-dasharray="4 4"':""} stroke-linejoin="round" stroke-linecap="round"/>`;tramo=[];};
+    s.datos.forEach((v,i)=>{if(v==null){cerrar();return;}tramo.push(`${X(i)},${Y(v)}`);});cerrar();
+    s.datos.forEach((v,i)=>{if(v!=null)path+=`<circle cx="${X(i)}" cy="${Y(v)}" r="${x.length>40?1.6:2.6}" fill="${s.color}"/>`;});
+    g+=path;
+  }
+  const ancho=x.length<2?iw:iw/(x.length-1);
+  x.forEach((d,i)=>{const tip=fDia(d)+" · "+series.map(s=>`${s.nombre}: ${s.datos[i]==null?"—":(s.fmt||fmt)(s.datos[i])}`).join(" · ");
+    g+=`<rect class="col" data-tip="${esc(tip)}" x="${X(i)-ancho/2}" y="${pt}" width="${ancho}" height="${ih}"/>`;});
+  return `<svg class="ln" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+function activarTips(v){
+  const tip=$("#tip");
+  v.querySelectorAll("[data-tip]").forEach(el=>{
+    el.addEventListener("mousemove",ev=>{tip.textContent=el.dataset.tip;tip.style.display="block";tip.style.left=Math.min(ev.clientX+14,innerWidth-tip.offsetWidth-8)+"px";tip.style.top=(ev.clientY+12)+"px";});
+    el.addEventListener("mouseleave",()=>tip.style.display="none");
+  });
+}
+function rangoAnun(){
+  const hoy=diaAR(), r=ANUN.rango;
+  if(r==="hoy") return {desde:hoy,hasta:hoy};
+  if(r==="ayer"){const a=diaAR(Date.now()-864e5);return {desde:a,hasta:a};}
+  if(r==="7d") return {desde:diaAR(Date.now()-6*864e5),hasta:hoy};
+  if(r==="rango"&&ANUN.desde&&ANUN.hasta) return {desde:ANUN.desde,hasta:ANUN.hasta};
+  return {};
+}
+function anunRango(r){ANUN.rango=r;render();}
+function anunFechas(){ANUN.desde=$("#aDesde").value;ANUN.hasta=$("#aHasta").value;if(ANUN.desde&&ANUN.hasta){ANUN.rango="rango";render();}}
+function anunModo(m){ANUN.modo=m;render();}
+
+async function renderAnuncios(v,s){
+  const seg=(op,actual,fn)=>`<div class="seg">${op.map(([k,t])=>`<button class="${actual===k?"on":""}" onclick="${fn}('${k}')">${t}</button>`).join("")}</div>`;
+  const filtros=`<div class="rango">${seg([["todo","Todo el lanzamiento"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"]],ANUN.rango,"anunRango")}
+    <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta"></div>`;
+  v.innerHTML=encabezado(s)+filtros+`<div class="tiles">${[1,2,3,4,5].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
+  const r=rangoAnun();
+  let a;try{a=await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));}catch(e){v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
+  if(VISTA!=="anun") return;
+  const R=a.resumen, D=a.porDia, x=D.map(d=>d.dia), col=k=>D.map(d=>d[k]);
+  const tile=(v2,t,sub)=>`<div class="tile"><div class="t">${t}</div><div class="v num">${v2}</div>${sub?`<div class="s">${sub}</div>`:""}</div>`;
+  const card=(tit,sub,cuerpo,leyenda)=>`<div class="tarjeta"><h4>${tit}</h4>${leyenda?`<div class="leyenda">${leyenda.map(([c,t,p])=>`<span><i style="background:${c}${p?";opacity:.55":""}"></i>${t}</span>`).join("")}</div>`:""}${cuerpo}${sub?`<p class="nota-a" style="margin:10px 0 0">${sub}</p>`:""}</div>`;
+  const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)";
+  let h=encabezado(s)+filtros+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)} · días en hora de Argentina. «De pauta» = leads que llegaron desde un anuncio de Meta (UTMs del anuncio). Calificado = facturación de 30M o más.</p>`;
+  h+=`<div class="tiles">
+    ${tile(R.leadsPauta,"Leads de pauta")}
+    ${tile(R.califPauta,"Calificados de pauta","Facturación de 30M o más")}
+    ${tile(`${fPct(R.pctCalifPauta)}`,"% calificado (de pauta)",R.pctCalifPauta==null?"":`${fPct(Math.round((100-R.pctCalifPauta)*10)/10)} no califica`)}
+    ${tile(fPct(R.convLandingPauta),"Conversión landing (pauta)",`${R.visitasPauta} visitas desde anuncios`)}
+    ${tile(fPct(R.convCalifPauta),"Landing → calificado (pauta)")}
+    ${tile(R.tocaronGrupo,"Tocaron «Entrar al grupo»",`${fPct(R.pctGrupoTodos)} de todos · ${fPct(R.pctGrupoPauta)} de pauta (${R.tocaronGrupoPauta})`)}
+    ${tile(fPct(R.tasaContacto),"Tasa de contacto (SDR)","Tienen al menos un intento")}
+    ${tile(fPct(R.pickup),"Pickup","Contestaron / contactados")}
+    ${tile(fPct(R.califReal),"Calificación real","Facturación confirmada por el SDR / calificados")}
+    ${tile(fPct(R.tasaAgenda),"Tasa de agenda","Calificados que agendaron (pre-venta o llamada)")}
+    ${tile(R.leadsSinAnuncio,"Leads sin anuncio","Directos, orgánicos, bio, historias")}
+    ${tile(R.leadsTotal,"Leads en total")}
+  </div>`;
+  if(a.ab){
+    h+=card("Test A/B del titular","Cada visitante ve siempre la misma versión. Calificados por visitante es la métrica que manda.",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitantes</th><th class="n">Leads</th><th class="n">Conversión</th><th class="n">Calificados</th><th class="n">Calif. por visitante</th></tr></thead><tbody>
+      ${a.ab.map(t=>`<tr><td>${t.version}</td><td class="n">${t.visitantes}</td><td class="n">${t.leads}</td><td class="n">${fPct(t.conversion)}</td><td class="n">${t.calificados} <span style="color:var(--tx-3)">(${fPct(t.pctCalif)})</span></td><td class="n"><b>${fPct(t.califPorVisitante)}</b></td></tr>`).join("")}</tbody></table></div>`);
+  }
+  const real=ANUN.modo==="real";
+  h+=`<div class="filtros" style="margin:8px 0 18px"><span style="font-size:12.5px;color:var(--tx-3)">Gráficos de pauta</span>${seg([["real","Real (todos los leads)"],["calif","Calificados"]],ANUN.modo,"anunModo")}</div>`;
+  h+=`<div class="grid-2c">`;
+  h+=card(real?"Leads por día":"Calificados por día","La línea llena es de pauta; la punteada, todos (incluye directos y orgánicos).",
+    lineas(x,[{nombre:"De pauta",datos:col(real?"leadsPauta":"califPauta"),color:NAR},{nombre:"Todos",datos:col(real?"leadsTotal":"califTodos"),color:GRI,punteada:true}]),
+    [[NAR,"De pauta"],[GRI,"Todos",1]]);
+  h+=card("% de leads calificados por día","De los leads de pauta de cada día, cuántos califican (llena) y cuántos no (punteada).",
+    lineas(x,[{nombre:"% calificados",datos:col("pctCalifPauta"),color:VER,fmt:fPct},{nombre:"% no calificados",datos:D.map(d=>d.pctCalifPauta==null?null:Math.round((100-d.pctCalifPauta)*10)/10),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
+    [[VER,"% calificados"],[GRI,"% no calificados",1]]);
+  h+=card("Conversión de la landing por día","Leads y calificados de pauta sobre visitas a la landing desde anuncios (las visitas se cuentan desde el 10/10).",
+    lineas(x,[{nombre:"A lead",datos:col("convLandingPauta"),color:NAR,fmt:fPct},{nombre:"A calificado",datos:col("convCalifPauta"),color:VER,fmt:fPct}],{pct:true}),
+    [[NAR,"Landing → lead"],[VER,"Landing → calificado"]]);
+  h+=card("% que tocó «Entrar al grupo» por día","Personas distintas que tocaron el botón verde de la thank you, sobre los leads de ese día.",
+    lineas(x,[{nombre:"De pauta",datos:col("pctGrupoPauta"),color:NAR,fmt:fPct},{nombre:"Todos",datos:col("pctGrupoTodos"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
+    [[NAR,"Leads de pauta"],[GRI,"Todos",1]]);
+  h+=card("Tasa de contacto y contestaron por día","De los leads registrados ese día: con al menos un intento del SDR (llena) y los que además contestaron (punteada). Los días recientes suben a medida que los SDR trabajan.",
+    lineas(x,[{nombre:"Contactados",datos:col("tasaContacto"),color:NAR,fmt:fPct},{nombre:"Contestaron",datos:col("pctContestaron"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
+    [[NAR,"Tasa de contacto"],[GRI,"Contestaron",1]]);
+  h+=card("Calificación real por día","Calificados confirmados por el SDR sobre todos los calificados del día.",
+    lineas(x,[{nombre:"Calificación real",datos:col("califReal"),color:VER,fmt:fPct}],{pct:true}),[[VER,"Calificación real"]]);
+  h+=card("Tasa de agenda por día","De los calificados de cada día, cuántos agendaron pre-venta o llamada.",
+    lineas(x,[{nombre:"Tasa de agenda",datos:col("tasaAgenda"),color:NAR,fmt:fPct}],{pct:true}),[[NAR,"Tasa de agenda"]]);
+  h+=`</div>`;
+  h+=`<div class="tarjeta"><h4>Inversión, CPL, CPM y panel de anuncios</h4><p style="color:var(--tx-3);font-size:13.5px">Se suman cuando conectemos Meta Ads (fase 2).</p></div>`;
+  v.innerHTML=h;
+  activarTips(v);
 }
 
 // UTMs que guardó la landing en «Origen (UTM)».
@@ -1097,7 +1219,7 @@ function cuerpoFicha(l,tab){
       </div></div>
       <div class="tarjeta"><h4>Seguimiento</h4><div class="switches">
         ${sw("confirmo_clase","Confirmó la clase")}${sw("recurso_enviado","Recurso enviado")}${sw("recurso_visto","Recurso visto")}
-        ${sw("asistio","Asistió a la clase")}${sw("senal_compra","Señal de compra")}${sw("agendo","Agendó llamada")}${sw("se_presento","Se presentó")}
+        ${sw("asistio","Asistió a la clase")}${sw("senal_compra","Señal de compra")}${sw("agendo","Agendó llamada")}${sw("facturacion_confirmada","Facturación confirmada")}${sw("se_presento","Se presentó")}
       </div></div>
       <div class="tarjeta"><h4>Notas del equipo</h4>
         <textarea id="nota" placeholder="Lo que tenga que saber el próximo que hable con este lead…" onfocus="EDITANDO=true">${esc(f.notas||"")}</textarea>
