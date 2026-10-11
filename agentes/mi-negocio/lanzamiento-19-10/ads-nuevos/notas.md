@@ -128,3 +128,19 @@ Guiones en `guiones-v8-por-dolor.md`: 13, uno por hook que pasó el usuario (H1�
 7. **Sin H6** en la lista que llegó (tampoco en la segunda): si había un sexto hook, se suma.
 8. **H11:** confirmar que Manu está cómodo nombrando IM8, Grüns y AG1 y que las tres venden con suscripción como modelo principal (AG1 y Grüns sí; IM8, chequear).
 9. **H14 "de 60 a 220 millones por mes"** sin sacar veinte creativos por semana: confirmar que Manu no escaló con volumen de creativos.
+
+## v8.1 — H15, H16, H17: "Si sos X y estás estancado en X porque X"
+
+Un ad más por dolor con la fórmula que pasó el usuario (ejemplo de referencia: "si sos growth y estás estancado entre $5k y $30k porque tu contenido orgánico funciona cada vez peor…").
+
+| Dolor | Ad | X avatar | X cash | X dolor |
+|---|---|---|---|---|
+| CPA | H15 | dueño de un ecom de químicos | entre 30 y 80 millones por mes | cada mes el CPA te sale más caro y cada venta te cuesta lo mismo que la anterior |
+| Metadependencia | H16 | ídem | ídem | todo lo que facturás sale de Meta y el 1 del mes arrancás otra vez en cero |
+| Margen | H17 | ídem | ídem | facturás bien pero cada pedido te deja siete lucas |
+
+- **El cash es el rango del avatar (30–80M/mes)**: filtra solo, para arriba y para abajo. El que factura 5M no se siente "estancado en 30".
+- **"Si sos dueño de…"** estaba en la lista de frases que Manu no usa. Acá va porque el usuario pidió la fórmula explícitamente; si Manu no la quiere decir, la alternativa es "Si tenés un ecom de químicos y estás estancado…".
+- **H16** usa "una marca que con la pauta apagada sigue cobrando recurrencias con 50% de margen" (el número canónico), no los 220M sin pauta.
+- El dolor del hook usa las frases textuales del avatar de `CONTEXTO.md` ("cada venta me cuesta lo mismo", "el 1 del mes arranco en cero", "7 lucas de ganancia").
+

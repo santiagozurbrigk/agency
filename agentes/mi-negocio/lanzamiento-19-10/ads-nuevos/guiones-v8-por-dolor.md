@@ -1,14 +1,14 @@
 # Ads nuevos de adquisición — v8: hooks de referencia, por dolor
 
-13 guiones, uno por hook que pasó el usuario (11-oct-2026), agrupados por los 3 dolores del lanzamiento. Los hooks se dicen tal cual (con "ecom" y "marca de químicos" donde el usuario los escribió así); el resto del guion dice "ecommerce". Criterio, referencias y lo que hay que confirmar antes de grabar: `notas.md`, sección "v8".
+16 guiones: uno por hook que pasó el usuario (11-oct-2026) más H15–H17 con la fórmula "Si sos X y estás estancado en X porque X", agrupados por los 3 dolores del lanzamiento. Los hooks se dicen tal cual (con "ecom" y "marca de químicos" donde el usuario los escribió así); el resto del guion dice "ecommerce". Criterio, referencias y lo que hay que confirmar antes de grabar: `notas.md`, sección "v8".
 
 Bloques en todos: **HOOK → PRUEBA → FILTRO → ANUNCIO + PROMESA → REGALOS → REMATE + CTA**. El FILTRO va siempre antes del segundo 27.
 
 | Dolor | Ads |
 |---|---|
-| CPA | H1 · H2 · H4 · H7 |
-| Metadependencia | H3 · H8 · H10 · H14 |
-| Margen | H5 · H9 · H11 · H12 · H13 |
+| CPA | H1 · H2 · H4 · H7 · H15 |
+| Metadependencia | H3 · H8 · H10 · H14 · H16 |
+| Margen | H5 · H9 · H11 · H12 · H13 · H17 |
 
 > No hay H6: la lista salta del 5 al 7.
 
@@ -139,6 +139,36 @@ Es lo único que necesitás para escalar tu ganador sin que la competencia te lo
 
 ---
 
+## H15 · CPA · Avatar + cash + dolor · "Si sos dueño de un ecom de químicos y estás estancado…"
+
+**PRIMER FRAME:** el administrador de anuncios con la columna "Costo por compra" subiendo mes a mes. Texto: **"ESTANCADO ENTRE 30M Y 80M"**.
+
+**HOOK** (0–8 s)
+
+Si sos dueño de un ecom de químicos y estás estancado entre 30 y 80 millones por mes porque cada mes el CPA te sale más caro y cada venta te cuesta lo mismo que la anterior, escuchame.
+
+**PRUEBA** (8–20 s)
+
+Yo estuve ahí: 60 millones por mes, compra única, peleando el CPA todos los meses. No salí con otro creativo ni con otro producto. Cambié el modelo: pasé mi ecom a suscripción con el Método B.A.S.E., y hoy tengo 2.200 suscriptores activos, con 1,28% de churn, y puedo pagar 2,5 veces más por cliente que mi competencia.
+
+**FILTRO** (20–26 s)
+
+Ojo: esto es para ecommerce de químicos, suplementos o cosmética en Tiendanube o Shopify. Si tenés un local o vendés solo en Mercado Libre, no es para vos.
+
+**ANUNCIO + PROMESA** (26–40 s)
+
+El lunes 19 de octubre, a las 19, doy una clase en vivo privada, 100% gratis, explicando el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción y poder pagar más por cada cliente que tu competencia, sin frenar lo que hoy vendés. Solo pueden entrar los que se anoten con el link de acá abajo.
+
+**REGALOS** (40–53 s)
+
+Y a los que vengan les regalo tres cosas: el roadmap para migrar tu ecommerce con tu base de compradores y tus campañas actuales, el Simulador de Suscripción para ver cuánto podés pagar por cliente con IVA y Ganancias adentro, y la IA que te escribe los flujos de email de tu suscripción para Klaviyo.
+
+**REMATE + CTA** (53–62 s)
+
+Es lo único que necesitás para salir de ese techo. Hacé clic acá abajo y reservá tu lugar: es privada, si no te anotás no podés entrar. Lunes 19, 19 horas.
+
+---
+
 # Dolor 2 · Metadependencia
 
 Toda la facturación depende de Meta: si cae la cuenta o se apaga la pauta, se termina. Promesa: que la base se cobre sola y el mes arranque cobrado.
@@ -260,6 +290,36 @@ Y a los que vengan les regalo tres cosas: el roadmap para migrar tu ecommerce co
 **REMATE + CTA** (54–63 s)
 
 Es lo único que necesitás para escalar en serio. Hacé clic acá abajo y reservá tu lugar: es privada, si no te anotás no podés entrar. Lunes 19, 19 horas.
+
+---
+
+## H16 · Metadependencia · Avatar + cash + dolor · "Si sos dueño de un ecom de químicos y estás estancado…"
+
+**PRIMER FRAME:** el calendario con el día 1 marcado y la facturación del mes en $0. Texto: **"ESTANCADO ENTRE 30M Y 80M"**.
+
+**HOOK** (0–8 s)
+
+Si sos dueño de un ecom de químicos y estás estancado entre 30 y 80 millones por mes porque todo lo que facturás sale de Meta y el 1 del mes arrancás otra vez en cero, escuchame.
+
+**PRUEBA** (8–20 s)
+
+A mí me pasaba igual: si apagaba la pauta, se apagaba el ecom. Hoy tengo 2.200 suscriptores que se cobran solos todos los meses, con 1,28% de churn, y una marca que con la pauta apagada sigue cobrando recurrencias con 50% de margen. Meta me suma suscriptores nuevos; el mes ya arranca cobrado.
+
+**FILTRO** (20–26 s)
+
+Ojo: esto es para ecommerce de químicos, suplementos o cosmética en Tiendanube o Shopify. Si tenés un local o vendés solo en Mercado Libre, no es para vos.
+
+**ANUNCIO + PROMESA** (26–40 s)
+
+El lunes 19 de octubre, a las 19, doy una clase en vivo privada, 100% gratis, explicando el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción, para que el mes arranque cobrado y, si se te cae la cuenta, tus suscriptores se sigan cobrando. Solo pueden entrar los que se anoten con el link de acá abajo.
+
+**REGALOS** (40–53 s)
+
+Y a los que vengan les regalo tres cosas: el roadmap para armar tu base de suscriptores con los clientes que ya te compraron, no con pauta nueva; el Simulador de Suscripción para ver tu facturación mes a mes con la base cobrando sola, y la IA que te escribe los flujos de email que le cobran a tu base todos los meses.
+
+**REMATE + CTA** (53–62 s)
+
+Es lo único que necesitás para dejar de arrancar en cero. Hacé clic acá abajo y reservá tu lugar: es privada, si no te anotás no podés entrar. Lunes 19, 19 horas.
 
 ---
 
@@ -406,3 +466,33 @@ El lunes 19 de octubre, a las 19, doy una clase en vivo privada, 100% gratis, co
 **CTA** (38–45 s)
 
 Hacé clic acá abajo y reservá tu lugar: es privada, si no te anotás no podés entrar. Lunes 19, 19 horas.
+
+---
+
+## H17 · Margen · Avatar + cash + dolor · "Si sos dueño de un ecom de químicos y estás estancado…"
+
+**PRIMER FRAME:** el Excel del mes: facturación alta, ganancia chica. Texto: **"ESTANCADO ENTRE 30M Y 80M"**.
+
+**HOOK** (0–8 s)
+
+Si sos dueño de un ecom de químicos y estás estancado entre 30 y 80 millones por mes porque facturás bien pero cada pedido te deja siete lucas, escuchame.
+
+**PRUEBA** (8–20 s)
+
+Yo vendía un pote a 12.000 contra ecommerce que lo vendían a 4.500, y cada pedido me dejaba el mismo margen que el anterior. Cuando pasé a suscripción, el mismo cliente me empezó a comprar tres veces como mínimo, y la segunda y la tercera compra me entran con el margen entero, sin pagar pauta de nuevo. Hoy son 2.200 suscriptores activos.
+
+**FILTRO** (20–26 s)
+
+Ojo: esto es para ecommerce de químicos, suplementos o cosmética en Tiendanube o Shopify. Si tenés un local o vendés solo en Mercado Libre, no es para vos.
+
+**ANUNCIO + PROMESA** (26–40 s)
+
+El lunes 19 de octubre, a las 19, doy una clase en vivo privada, 100% gratis, explicando el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción, para que cada recompra te entre con el margen entero, sin tocar lo que hoy vendés. Solo pueden entrar los que se anoten con el link de acá abajo.
+
+**REGALOS** (40–53 s)
+
+Y a los que vengan les regalo tres cosas: el roadmap para migrar tu ecommerce con tu base de compradores, el Simulador de Suscripción para ver cuánto te deja cada cliente mes a mes, no cada pedido, con IVA y Ganancias adentro, y la IA que te escribe los flujos de email de tu suscripción para Klaviyo.
+
+**REMATE + CTA** (53–62 s)
+
+Es lo único que necesitás para dejar de sobrevivir con siete lucas por pedido. Hacé clic acá abajo y reservá tu lugar: es privada, si no te anotás no podés entrar. Lunes 19, 19 horas.
