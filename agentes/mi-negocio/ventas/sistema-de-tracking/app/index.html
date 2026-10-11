@@ -143,6 +143,8 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .kpis{display:flex;gap:22px;flex-wrap:wrap}
 .tema-btn{margin-left:auto;height:32px;border:0;color:var(--tx-2);padding:0 8px}
 .tema-btn:hover{color:var(--tx)}
+.aviso-btn.on{color:var(--naranja)}
+.toast.nuevo{background:var(--naranja);color:#fff;cursor:pointer}
 .kpi{display:flex;align-items:center;gap:10px;min-width:0}
 .kpi .t{font-size:11.5px;color:var(--tx-3);font-weight:500;line-height:1.2}
 .kpi .v{font-family:var(--tit);font-weight:600;font-size:14px;line-height:1.25;font-variant-numeric:tabular-nums}
@@ -425,6 +427,8 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
   <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
   <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-campana" viewBox="0 0 24 24"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-campana-off" viewBox="0 0 24 24"><path d="M8.7 3A6 6 0 0 1 18 8c0 2.8.5 4.8 1.1 6.2M17 17H3s3-2 3-9c0-.7.1-1.4.3-2M10.3 21a1.94 1.94 0 0 0 3.4 0M2 2l20 20"/></symbol>
   <symbol id="i-sol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-luna" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8"/></symbol>
   <symbol id="i-salir" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
@@ -467,7 +471,8 @@ table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-
           <input id="busca" placeholder="Buscar por nombre, email o WhatsApp" autocomplete="off" aria-label="Buscar leads">
           <kbd>/</kbd>
         </div>
-        <button class="btn tema-btn" onclick="cambiarTema()" aria-label="Cambiar entre modo claro y oscuro"><svg class="ic" id="temaIcTop"><use href="#i-sol"/></svg><span id="temaTxt">Modo claro</span></button>
+        <button class="btn tema-btn aviso-btn" id="avisoBtn" onclick="toggleAvisos()" aria-label="Aviso de opt-ins nuevos" title="Sonido y notificación cuando entra un opt-in"><svg class="ic" id="avisoIc"><use href="#i-campana-off"/></svg><span id="avisoTxt">Avisos</span></button>
+        <button class="btn tema-btn" style="margin-left:0" onclick="cambiarTema()" aria-label="Cambiar entre modo claro y oscuro"><svg class="ic" id="temaIcTop"><use href="#i-sol"/></svg><span id="temaTxt">Modo claro</span></button>
         <div class="kpis">
           <div class="kpi" id="kManu"><div><div class="t">Manu</div><div class="v num" id="kManuV">–</div></div><div class="meter"><i id="kManuM" style="width:0"></i></div></div>
           <div class="kpi" title="Lugares de Génesis vendidos"><div><div class="t">Génesis</div><div class="v num" id="kGenV">–</div></div><div class="meter"><i id="kGenM" style="width:0"></i></div></div>
@@ -561,6 +566,58 @@ async function api(path,opts){
   if(!d.ok) throw new Error(d.error||"Algo salió mal");
   return d;
 }
+/* ---------- Aviso de opt-ins nuevos (sonido + notificación del navegador) ---------- */
+let AVISOS=false, CONOCIDOS=null, AUDIO=null, ULT_SONIDO=0;
+try{AVISOS=localStorage.getItem("trk_avisos")==="1";}catch(e){}
+function pintarAvisos(){
+  const b=$("#avisoBtn"); if(!b) return;
+  b.classList.toggle("on",AVISOS);
+  $("#avisoIc").innerHTML=`<use href="#${AVISOS?"i-campana":"i-campana-off"}"/>`;
+  $("#avisoTxt").textContent=AVISOS?"Avisos activos":"Avisos";
+}
+function ding(){
+  try{
+    AUDIO=AUDIO||new (window.AudioContext||window.webkitAudioContext)();
+    if(AUDIO.state==="suspended") AUDIO.resume();
+    const t=AUDIO.currentTime;
+    [[880,0],[1318.5,0.13]].forEach(([f,d])=>{
+      const o=AUDIO.createOscillator(), g=AUDIO.createGain();
+      o.type="sine"; o.frequency.value=f; o.connect(g); g.connect(AUDIO.destination);
+      g.gain.setValueAtTime(0.0001,t+d); g.gain.exponentialRampToValueAtTime(0.25,t+d+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+d+0.45);
+      o.start(t+d); o.stop(t+d+0.5);
+    });
+  }catch(e){}
+}
+async function toggleAvisos(){
+  AVISOS=!AVISOS;
+  try{localStorage.setItem("trk_avisos",AVISOS?"1":"0");}catch(e){}
+  if(AVISOS){
+    ding(); // desbloquea el audio con este clic y sirve de prueba
+    if("Notification" in window && Notification.permission==="default"){try{await Notification.requestPermission();}catch(e){}}
+    const n=("Notification" in window)?Notification.permission:"denied";
+    toast(n==="granted"?"Avisos activos: sonido y notificación cuando entra un opt-in":"Avisos activos con sonido. Las notificaciones del navegador están bloqueadas: se pueden habilitar desde el candado de la barra de direcciones.");
+  } else toast("Avisos desactivados");
+  pintarAvisos();
+}
+function esOptin(l){return (l.tags||[]).includes("optin-19-10");}
+function revisarNuevos(d){
+  const optins=(d.leads||[]).filter(esOptin);
+  if(CONOCIDOS===null){CONOCIDOS=new Set(optins.map(l=>l.id));return;}
+  const nuevos=optins.filter(l=>!CONOCIDOS.has(l.id));
+  nuevos.forEach(l=>CONOCIDOS.add(l.id));
+  if(!nuevos.length||!AVISOS) return;
+  const l=nuevos[0], fte=fuenteDe(origenDe(l.fields));
+  const titulo=nuevos.length===1?"Nuevo opt-in":`${nuevos.length} opt-ins nuevos`;
+  const cuerpo=nuevos.length===1?`${l.nombre||"Sin nombre"} · ${l.fields.facturacion||"sin facturación"} · ${fte}`:nuevos.slice(0,3).map(x=>x.nombre||"Sin nombre").join(", ")+(nuevos.length>3?"…":"");
+  if(Date.now()-ULT_SONIDO>4000){ding();ULT_SONIDO=Date.now();}
+  const el=document.createElement("div");el.className="toast nuevo";el.innerHTML=ic("i-campana")+`<span><b>${esc(titulo)}</b> · ${esc(cuerpo)}</span>`;
+  el.onclick=()=>{el.remove();if(nuevos.length===1)abrirFicha(l.id);else ir("ahora");};
+  $("#toasts").appendChild(el);setTimeout(()=>el.remove(),9000);
+  if(document.visibilityState!=="visible"&&"Notification" in window&&Notification.permission==="granted"){
+    try{const n=new Notification(titulo,{body:cuerpo,icon:"/favicon.svg",tag:"optin"});n.onclick=()=>{window.focus();n.close();if(nuevos.length===1)abrirFicha(l.id);else ir("ahora");};}catch(e){}
+  }
+}
+
 function toast(t,mal){
   const el=document.createElement("div");
   el.className="toast"+(mal?" mal":"");
@@ -659,7 +716,8 @@ function arrancar(){
   $("#meAvatar").className="avatar "+claseAvatar(ME.name);
   $("#avisoDemo").style.display=DEMO?"flex":"none";
   pintarNav(); render(); refrescar();
-  setInterval(()=>{ if(document.visibilityState==="visible") refrescar(); }, 30000);
+  setInterval(()=>{ if(document.visibilityState==="visible"||AVISOS) refrescar(); }, 15000);
+  pintarAvisos();
   setInterval(pintarCierre, 60000);
   document.addEventListener("visibilitychange",()=>{ if(document.visibilityState==="visible") refrescar(); });
 }
@@ -679,6 +737,7 @@ async function refrescar(){
     const d=await api("/api/leads");
     if(v!==VERSION_LOCAL){ vieja=true; return; }
     DATA=d;
+    revisarNuevos(d);
     pintarKpis(); pintarNav();
     if(!EDITANDO) render();
     if(FICHA_ID && !EDITANDO) pintarFicha();
