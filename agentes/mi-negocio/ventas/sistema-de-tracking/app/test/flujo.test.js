@@ -150,6 +150,19 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Bio Test",email:"bio@test.com",telefono:"+5491100009999",ciclo:"Entre 30 y 60 días",facturacion:"Entre 50M y 100M",tracking:bio}});
     const m2=(await call(metrics,{cookie})).body; const fb=(m2.porFuente||[]).find(x=>x.fuente==="Instagram · bio");
     ok(fb&&fb.visitas===2&&fb.registros===1&&fb.califican===1,"por fuente: 2 visitas, 1 registro, 1 califica (bio)"); }
+  { // Anuncios: visitas de pauta, registro de pauta, clic en el grupo y facturación confirmada
+    const ad={utm_source:"facebook",utm_medium:"Instagram_Reels",utm_campaign:"Génesis 19/10",utm_content:"VSL-hook-CPA",ad_id:"123"};
+    for(let i=0;i<4;i++) await call(h("api/public/visita.js"),{method:"POST",body:{tracking:{...ad,ab:i%2?"B":"A"}}});
+    await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Ad Test",email:"ad@test.com",telefono:"+5491100008888",ciclo:"Entre 30 y 60 días",facturacion:"Más de 100M",tracking:{...ad,ab:"A"}}});
+    const g=await call(h("api/public/grupo.js"),{method:"POST",body:JSON.stringify({email:"ad@test.com"})});
+    ok(g.body.ok,"clic en «Entrar al grupo» marca al lead");
+    const an=(await call(h("api/anuncios.js"),{cookie})).body;
+    ok(an.ok&&an.resumen.leadsPauta>=1&&an.resumen.visitasPauta===4&&an.resumen.convLandingPauta===25,"anuncios: 4 visitas de pauta, 1 lead → 25% de conversión");
+    ok(an.resumen.tocaronGrupo>=1,"anuncios: cuenta a los que tocaron el grupo"); ok(an.porDia.length>=1&&an.porDia.every(d=>/^\d{4}-\d{2}-\d{2}$/.test(d.dia)),"anuncios: serie por día");
+    ok(an.ab&&an.ab[0].version==="A"&&an.ab[0].visitantes===2&&an.ab[0].leads===1,"anuncios: test A/B con visitantes y leads por versión");
+    const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
+    const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
+    ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día"); }
   { const a=(r.body.porAnuncio||[]).find(x=>x.anuncio==="VSL-hook-CPA");
     ok(a&&a.leads===2&&a.califican===1&&a.campana==="Génesis 19/10","métricas: leads por anuncio (2 leads, 1 califica)"); }
 

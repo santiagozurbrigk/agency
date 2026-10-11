@@ -355,8 +355,12 @@ async function guardarVisitas() {
   }
 }
 
-function sumarVisita(fuente) {
-  visitasPend[fuente] = (visitasPend[fuente] || 0) + 1;
+// Clave de cada contador: "día|fuente|versión A/B" (día en hora de Argentina).
+function diaAR(d) { return new Date((d ? new Date(d) : new Date()).getTime() - 3 * 3600e3).toISOString().slice(0, 10); }
+
+function sumarVisita(fuente, ab) {
+  const clave = `${diaAR()}|${fuente}|${ab || ""}`;
+  visitasPend[clave] = (visitasPend[clave] || 0) + 1;
   if (DEMO) return guardarVisitas();
   if (!guardadoProgramado) {
     guardadoProgramado = true;
@@ -371,7 +375,7 @@ async function getVisitas() {
 }
 
 module.exports = {
-  sumarVisita, getVisitas,
+  sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
   esDelLanzamiento, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,

@@ -15,7 +15,8 @@ module.exports = async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ ok: false });
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body); } catch (e) { body = {}; } }
-  const fuente = fuenteDe((body && body.tracking) || {});
-  store.sumarVisita(fuente);
+  const t = (body && body.tracking) || {};
+  const fuente = fuenteDe(t);
+  store.sumarVisita(fuente, t.ab === "A" || t.ab === "B" ? t.ab : "");
   return res.status(200).json({ ok: true, fuente });
 };
