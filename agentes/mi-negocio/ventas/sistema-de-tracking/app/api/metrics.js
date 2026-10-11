@@ -75,12 +75,16 @@ module.exports = async function handler(req, res) {
     for (const l of leads) {
       let o = {};
       try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
-      const nombre = o.utm_content || (o.ad_id ? `Anuncio ${o.ad_id}` : (l.tags || []).includes("optin-19-10") ? "Sin datos de anuncio" : null);
-      if (!nombre) continue;
-      const a = anuncios[nombre] || (anuncios[nombre] = { anuncio: nombre, campana: o.utm_campaign || "", conjunto: o.utm_term || "", leads: 0, califican: 0, ventas: 0 });
+      // Solo anuncios de Meta: lo orgánico (bio, reels, historias) va en «Por fuente».
+      if (fuenteDe(o) !== "Anuncios de Meta") continue;
+      const nombre = o.utm_content || (o.ad_id ? `Anuncio ${o.ad_id}` : "Anuncio sin nombre");
+      const a = anuncios[nombre] || (anuncios[nombre] = { anuncio: nombre, campana: o.utm_campaign || "", conjunto: o.utm_term || "", leads: 0, califican: 0, ventas: 0, lista: [] });
+      const califica = FACT_OK.includes(l.fields.facturacion);
       a.leads++;
-      if (FACT_OK.includes(l.fields.facturacion)) a.califican++;
+      if (califica) a.califican++;
       if (l.fields.venta_json) a.ventas++;
+      a.lista.push({ id: l.id, nombre: l.nombre || "", creado: l.creado || null, facturacion: l.fields.facturacion || "",
+        etapa: l.fields.etapa || "Nuevo", califica, venta: Boolean(l.fields.venta_json), conjunto: o.utm_term || "" });
     }
     // Por fuente: visitas a la landing (aprox.) contra registros del opt-in.
     const fuentes = {};
@@ -97,6 +101,7 @@ module.exports = async function handler(req, res) {
     }
     const porFuente = Object.values(fuentes).sort((a, b) => b.registros - a.registros || b.visitas - a.visitas);
 
+    for (const a of Object.values(anuncios)) a.lista.sort((x, y) => String(y.creado).localeCompare(String(x.creado)));
     const porAnuncio = Object.values(anuncios).sort((x, y) => y.califican - x.califican || y.leads - x.leads);
 
     // Opt-ins por día (hora de Argentina), desde el primero hasta hoy, máximo 30 días.
