@@ -23,27 +23,34 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('set', 'autoConfig', false, '1105986771965346'); /* sin eventos automáticos (clics/formularios) */
-/* init, PageView y Lead solo para registros calificados: ver el script de abajo. */
+/* init y PageView para todos; Lead solo para registros calificados: ver el script de abajo. */
 </script>
 <!-- End Meta Pixel Code -->
 <script>
-/* Lead: solo si viene de registrarse en la landing con facturación de 30M o más
-   (la landing lo deja anotado). Se dispara una sola vez: recargar o entrar directo no lo repite.
+/* PageView: para TODOS los que llegan acá. Es lo que los mete en la audiencia "OPT-IN 19/10"
+   (visitantes de /thank-you): quedan excluidos de adquisición y entran a nutrición.
+   Lead: solo si viene de registrarse en la landing con facturación de 30M o más
+   (la landing lo deja anotado), para que adquisición aprenda solo de los calificados.
+   Se dispara una sola vez: recargar o entrar directo no lo repite.
    OJO: no crear en el Administrador de Eventos una conversión "Lead" por URL de esta página,
    porque contaría también a los descalificados. */
+var leadPend = null;
 try {
-  var leadPend = JSON.parse(sessionStorage.getItem("genesis_lead") || "null");
+  leadPend = JSON.parse(sessionStorage.getItem("genesis_lead") || "null");
   sessionStorage.removeItem("genesis_lead");
-  if (leadPend && Date.now() - leadPend.t < 30 * 60 * 1000) {
-    /* Coincidencias avanzadas manuales: email, teléfono y nombre del registro (Meta los encripta) */
-    var match = {};
+  if (!leadPend || Date.now() - leadPend.t >= 30 * 60 * 1000) leadPend = null;
+} catch (e) { leadPend = null; }
+try {
+  /* Coincidencias avanzadas manuales: email, teléfono y nombre del registro (Meta los encripta) */
+  var match = {};
+  if (leadPend) {
     if (leadPend.em) match.em = leadPend.em;
     if (leadPend.ph) match.ph = leadPend.ph;
     if (leadPend.fn) match.fn = leadPend.fn;
-    fbq('init', '1105986771965346', match);
-    fbq('track', 'PageView');
-    fbq('track', 'Lead', { content_name: 'Clase 19/10' }, { eventID: leadPend.id });
   }
+  fbq('init', '1105986771965346', match);
+  fbq('track', 'PageView');
+  if (leadPend) fbq('track', 'Lead', { content_name: 'Clase 19/10' }, { eventID: leadPend.id });
 } catch (e) {}
 </script>
 <!-- Script universal de Hyros: hueco. Pegá acá la línea de tu cuenta (una sola vez). -->
