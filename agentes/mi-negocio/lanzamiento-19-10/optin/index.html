@@ -471,22 +471,22 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
   <div class="wrap">
     <!-- Desktop: lo que te llega a vos (izquierda) y lo que me llega a mí (derecha) -->
     <div class="flota f1"><div class="anim">
-      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 2 min</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
+      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 2 min</time></div><p>Nueva venta: 1 artículo desde Facebook &amp; Instagram.</p><span class="badge cpa" data-txt="badge-tu">Te costó un CPA</span></div></div>
     </div></div>
     <div class="flota f2"><div class="anim">
-      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 2 artículos desde Facebook &amp; Instagram.</p><span class="badge cpa">Te costó un CPA</span></div></div>
+      <div class="notif"><div class="ic tienda-gris"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Tu tienda</b><time>hace 1 h</time></div><p>Nueva venta: 2 artículos desde Facebook &amp; Instagram.</p><span class="badge cpa" data-txt="badge-tu">Te costó un CPA</span></div></div>
     </div></div>
     <div class="flota f3"><div class="anim">
-      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 2 min</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge rec">Sin pauta</span></div></div>
+      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 2 min</time></div><p>Cobro recurrente aprobado. Suscripción mensual.</p><span class="badge rec" data-txt="badge-mi">Sin pauta</span></div></div>
     </div></div>
     <div class="flota f4"><div class="anim">
-      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 1 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, cuarto cobro.</p><span class="badge rec">Sin pauta</span></div></div>
+      <div class="notif"><div class="ic tienda"><svg><use href="#i-bolsa"/></svg></div><div class="nb"><div class="nt"><b>Mi tienda</b><time>hace 1 h</time></div><p>Cobro recurrente aprobado. Suscripción mensual, cuarto cobro.</p><span class="badge rec" data-txt="badge-mi">Sin pauta</span></div></div>
     </div></div>
 
     <div class="copy">
       <span class="pill"><span class="dot"></span>Clase en vivo</span>
       <h1 id="headline">El roadmap con el que pasé mi marca de <span class="marca">60 a 220 millones</span> por mes</h1>
-      <p class="sub" id="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
+      <p class="sub" id="sub" data-txt="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
     </div>
     <script>
     /* ===== LANDINGS POR DOLOR =====
@@ -494,21 +494,77 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
          https://TU-DOMINIO/cpa      (o ?l=cpa)
          https://TU-DOMINIO/margen   (o ?l=margen)
          https://TU-DOMINIO/meta     (o ?l=meta)
-       Cambia el titular (y el subtítulo si cargás «sub»; vacío = queda el de siempre).
        Si la persona vuelve después sin el link, ve la misma landing que la primera vez.
+       Sin link de dolor ve la landing general (lo que está escrito en el HTML).
+
+       - headline: el titular (acepta HTML; <span class="marca">…</span> = resaltado naranja).
+       - textos: reemplazan los elementos con data-txt="…" del HTML. La clave que no está
+         (o que queda vacía) muestra el texto general. Las claves:
+           sub            subtítulo del hero
+           badge-tu       etiqueta de las notificaciones de «Tu tienda» (hero, desktop)
+           badge-mi       etiqueta de las notificaciones de «Mi tienda» (hero, desktop)
+           tema2-titulo   «Lo que vas a ver»: título del punto 02
+           tema2-bajo     «Lo que vas a ver»: bajada del punto 02
+           tema2-ticket   «Lo que vas a ver»: el ticket del punto 02 (HTML completo)
+           tema3-bajo     «Lo que vas a ver»: bajada del punto 03
+           regalo1-desc / regalo2-desc / regalo3-desc   descripción de cada regalo
+           bio-1          primer párrafo de la bio de Manu
+           final-titulo   titular del CTA final
        Para sumar una landing: agregá una clave acá (minúsculas, sin espacios) y su ruta en vercel.json. */
     var LANDINGS = {
       cpa: {
         headline: 'Cómo pagar <span class="marca">2,5 veces más por cada cliente</span> que tu competencia y seguir siendo rentable',
-        sub: ''
+        textos: {
+          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción para dejar de pelear el CPA y poder pagar más por cada cliente.',
+          "tema3-bajo": 'Sin frenar lo que hoy vendés, y <b>pudiendo pagar 2,5 veces más por cada cliente</b> que tu competencia.',
+          "regalo1-desc": 'Un board animado con <b>las 4 semanas</b>, paso a paso, para migrar con tu base de compradores y <b>las campañas que ya tenés</b>.',
+          "regalo2-desc": 'Cargás los números de tu marca y ves <b>cuánto podés pagar por cada cliente</b>, con IVA y Ganancias adentro.',
+          "regalo3-desc": 'La skill que <b>escribe y diseña los 10 flows</b> que retienen al cliente que ya pagaste, con tu marca, listos para Klaviyo.',
+          "final-titulo": 'No ganás bajando el CPA. Ganás pudiendo pagar más por cada cliente.'
+        }
       },
       margen: {
         headline: 'Cómo hacer que la segunda, la tercera y la cuarta compra <span class="marca">entren con el margen entero</span>',
-        sub: ''
+        textos: {
+          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción y pasé de márgenes de 15-20% a más de 50%.',
+          "badge-tu": 'Te dejó 7 lucas',
+          "badge-mi": 'Margen entero',
+          "tema2-titulo": 'Por qué facturás bien y te queda lo que le queda a un empleado',
+          "tema2-bajo": 'Porque en compra única <b>cada pedido paga su propio CPA</b>, y eso se come el margen.',
+          "tema2-ticket": '<div class="cab"><span>Tu tienda · pedidos de la semana</span><span>Lo que te queda</span></div>'
+            + '<div class="fila-t"><span>#1</span>Pedido de $45.000<em>$7.000</em></div>'
+            + '<div class="fila-t"><span>#2</span>Pedido de $45.000<em>$7.000</em></div>'
+            + '<div class="fila-t"><span>#3</span>Pedido de $45.000<em>$7.000</em></div>'
+            + '<div class="fila-t"><span>#4</span>Pedido de $45.000<em>$7.000</em></div>'
+            + '<div class="pie-t"><span>Cada pedido paga su CPA</span><b>15% de margen</b></div>',
+          "tema3-bajo": 'Para que la segunda, la tercera y la cuarta compra <b>entren con el margen entero</b>, sin volver a pagar pauta.',
+          "regalo1-desc": 'Un board animado con <b>las 4 semanas</b>, paso a paso, para que tus compradores vuelvan a comprar <b>sin que pagues otro CPA</b>.',
+          "regalo2-desc": 'Cargás los números de tu marca y ves <b>cuánto margen te deja cada cobro</b> y cuánto ganarías en el mes 12.',
+          "regalo3-desc": 'La skill que <b>escribe y diseña los 10 flows</b> que hacen volver a tu cliente sin pagar pauta, con tu marca, listos para Klaviyo.',
+          "bio-1": 'Facturaba <b>60 millones por mes</b> con un consumible de compra única, y cada pedido me dejaba siete lucas. Sobrevivía.',
+          "final-titulo": 'Pagá la primera venta. Que las siguientes entren con el margen entero.'
+        }
       },
       meta: {
         headline: 'Cómo hacer que tu marca <span class="marca">arranque el mes ya cobrada</span>, sin depender de Meta',
-        sub: ''
+        textos: {
+          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción para que el mes arranque cobrado, aunque se apague la pauta.',
+          "badge-tu": 'Salió de Meta',
+          "tema2-titulo": 'Por qué el 1 de cada mes arrancás en cero',
+          "tema2-bajo": 'Porque <b>todo lo que facturás sale de Meta</b>: si se apaga la pauta, se apaga la marca.',
+          "tema2-ticket": '<div class="cab"><span>Tu tienda · si apagás la pauta</span><span>Esta semana</span></div>'
+            + '<div class="fila-t"><span>Día 1</span>Pauta apagada · 0 ventas<em>$0</em></div>'
+            + '<div class="fila-t"><span>Día 2</span>Pauta apagada · 0 ventas<em>$0</em></div>'
+            + '<div class="fila-t"><span>Día 3</span>Pauta apagada · 0 ventas<em>$0</em></div>'
+            + '<div class="fila-t"><span>Día 4</span>Pauta apagada · 0 ventas<em>$0</em></div>'
+            + '<div class="pie-t"><span>Sin Meta, el mes arranca en cero</span><b>$0 facturado</b></div>',
+          "tema3-bajo": 'Para que tu base <b>se cobre sola todos los meses</b> y Meta solo sume clientes nuevos.',
+          "regalo1-desc": 'Un board animado con <b>las 4 semanas</b>, paso a paso, para que el mes que viene <b>no arranque en cero</b>.',
+          "regalo2-desc": 'Cargás los números de tu marca y ves <b>cuánto cobrarías cada mes sin pautar</b> y cuánto ganarías en el mes 12.',
+          "regalo3-desc": 'La skill que <b>escribe y diseña los 10 flows</b> que cobran y retienen sin depender de Meta, con tu marca, listos para Klaviyo.',
+          "bio-1": 'Facturaba <b>60 millones por mes</b> con un consumible de compra única. Todo salía de Meta, y el 1 de cada mes arrancaba en cero.',
+          "final-titulo": 'Que el 1 del mes tu marca ya arranque cobrada.'
+        }
       }
     };
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
@@ -518,10 +574,20 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       try { k = localStorage.getItem("optin_landing") || ""; } catch (e) { k = ""; }
       return LANDINGS.hasOwnProperty(k) ? k : "";
     })();
-    if (LANDING) {
-      document.getElementById("headline").innerHTML = LANDINGS[LANDING].headline;
-      if (LANDINGS[LANDING].sub) document.getElementById("sub").innerHTML = LANDINGS[LANDING].sub;
+    /* Corre ya (el hero está arriba de este script, así no parpadea) y de nuevo con la página
+       completa, para los textos de más abajo. */
+    function aplicarLanding() {
+      if (!LANDING) return;
+      var v = LANDINGS[LANDING], t = v.textos || {};
+      if (v.headline) document.getElementById("headline").innerHTML = v.headline;
+      var els = document.querySelectorAll("[data-txt]");
+      for (var i = 0; i < els.length; i++) {
+        var html = t[els[i].getAttribute("data-txt")];
+        if (html) els[i].innerHTML = html;
+      }
     }
+    aplicarLanding();
+    document.addEventListener("DOMContentLoaded", aplicarLanding);
     </script>
 
     <!-- VSL de registro (vTurb) -->
@@ -652,10 +718,10 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <div class="tema">
         <div class="n">02<small>Segundo</small></div>
         <div>
-          <h3>Por qué cada venta te cuesta lo mismo que la anterior</h3>
-          <p class="bajo">Y por qué <b>bajar el CPA es la pelea equivocada</b>.</p>
+          <h3 data-txt="tema2-titulo">Por qué cada venta te cuesta lo mismo que la anterior</h3>
+          <p class="bajo" data-txt="tema2-bajo">Y por qué <b>bajar el CPA es la pelea equivocada</b>.</p>
         </div>
-        <div class="ticket" role="img" aria-label="Cada venta nueva paga su propio CPA">
+        <div class="ticket" role="img" aria-label="Ventas de tu tienda" data-txt="tema2-ticket">
           <div class="cab"><span>Tu tienda · ventas de la semana</span><span>Facebook &amp; Instagram</span></div>
           <div class="fila-t"><span>Lun</span>Nueva venta · 1 artículo<em>− CPA</em></div>
           <div class="fila-t"><span>Mar</span>Nueva venta · 1 artículo<em>− CPA</em></div>
@@ -669,7 +735,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         <div class="n">03<small>Y tercero</small></div>
         <div>
           <h3>Cómo pasar tu marca al modelo de suscripción</h3>
-          <p class="bajo">Sin frenar lo que hoy vendés y <b>sin tirar el producto que ya tenés</b>.</p>
+          <p class="bajo" data-txt="tema3-bajo">Sin frenar lo que hoy vendés y <b>sin tirar el producto que ya tenés</b>.</p>
         </div>
         <div class="linea-t anim" role="img" aria-label="Un mismo cliente: una compra con pauta y después cobros recurrentes sin pauta">
           <div class="cab">Un mismo cliente, mes a mes</div>
@@ -705,7 +771,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           <span class="pegote abajo">▶ Recorrido de 8 pasos</span></div>
         <div>
           <h3>El roadmap para migrar tu marca con lo que ya tenés</h3>
-          <p class="desc">Un board animado con <b>las 4 semanas</b>, paso a paso, para arrancar con suscriptores desde el primer mes.</p>
+          <p class="desc" data-txt="regalo1-desc">Un board animado con <b>las 4 semanas</b>, paso a paso, para arrancar con suscriptores desde el primer mes.</p>
           <ul><li>La semana 1: recurrencia, la oferta y las salidas</li><li>Los públicos caliente, tibio y frío, con sus pasos</li><li>La retención desde el día 1 y el Gantt de las 4 semanas</li><li>Las métricas estrella en vivo, con el simulador adentro</li></ul>
         </div>
       </article>
@@ -716,7 +782,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           <span class="pegote dato"><small>Ejemplo · mes 12</small><b>×5,4 vs. compra única</b></span></div>
         <div>
           <h3>El simulador de suscripción</h3>
-          <p class="desc">Cargás los números de tu marca y ves <b>cuánto ganarías en el mes 12</b> y cuánto podés pagar por cada cliente.</p>
+          <p class="desc" data-txt="regalo2-desc">Cargás los números de tu marca y ves <b>cuánto ganarías en el mes 12</b> y cuánto podés pagar por cada cliente.</p>
           <ul><li>Régimen fiscal con puente de IVA</li><li>Compra única, primer cobro y cobros recurrentes</li><li>Regalos con costo según el número de cobro</li><li>Tres escenarios de LTV, cohortes, caja por venta y proyección</li></ul>
         </div>
       </article>
@@ -727,7 +793,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           <span class="pegote abajo">10 flows · listos para Klaviyo</span></div>
         <div>
           <h3>La IA que arma los flujos de email</h3>
-          <p class="desc">La skill que <b>escribe y diseña los 10 flows</b> de tu suscripción, con tu marca, y te dice cómo cargarlos en Klaviyo.</p>
+          <p class="desc" data-txt="regalo3-desc">La skill que <b>escribe y diseña los 10 flows</b> de tu suscripción, con tu marca, y te dice cómo cargarlos en Klaviyo.</p>
           <ul><li>Los 10 flows, con emails de ejemplo de una marca de muestra</li><li>El aviso de cobro, antes y después</li><li>La vida de un suscriptor en 30 días, email por email</li><li>El SOP del sistema, flow por flow</li></ul>
         </div>
       </article>
@@ -746,7 +812,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <span class="tag-estado"><i></i>Tu anfitrión</span>
       <h3>Soy Manu Dominguez</h3>
       <div class="bio">
-        <p>Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
+        <p data-txt="bio-1">Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
         <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>220 millones por mes</b>, con <b>+3.100 suscriptores activos</b> y <b>1,28% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
         <p>En esta clase te muestro el roadmap que seguí, con mis números reales.</p>
       </div>
@@ -764,7 +830,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- g) CTA final -->
 <section class="sec final">
   <div class="wrap">
-    <h2>El roadmap con el que pasé mi marca de 60 a 220 millones por mes.</h2>
+    <h2 data-txt="final-titulo">El roadmap con el que pasé mi marca de 60 a 220 millones por mes.</h2>
     <a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a>
     <p class="chico">Registrate en menos de 30 segundos.</p>
   </div>
