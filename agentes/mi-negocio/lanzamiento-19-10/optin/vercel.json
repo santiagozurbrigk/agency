@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/clase", "destination": "/api/clase" },
-    { "source": "/(a|b)", "destination": "/index.html" },
-    { "source": "/(cpa|margen|meta)", "destination": "/index.html" }
+    { "source": "/(a|b)", "destination": "/" },
+    { "source": "/(cpa|margen|meta)", "destination": "/" }
   ]
 }
