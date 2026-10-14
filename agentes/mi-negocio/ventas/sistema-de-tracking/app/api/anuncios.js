@@ -4,7 +4,8 @@
 //
 // Definiciones:
 //   pauta       = fuente «Anuncios de Meta» (UTMs / fbclid del anuncio)
-//   calificado  = facturación de 30M o más (mismo criterio que el Lead del píxel)
+//   calificado  = invierte 100 dólares por día o más en Meta (leads viejos: facturación de 30M o más);
+//                 mismo criterio que el Lead del píxel
 //   contactado  = tiene algún intento o ya salió de «Nuevo»
 //   contestó    = llegó a «En conversación» o a una etapa posterior
 //   agendó      = pre-venta con Manu o llamada de venta
@@ -13,8 +14,8 @@
 const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const { fuenteDe } = require("../lib/fuente");
+const { calificaOptin } = require("../lib/rules");
 
-const FACT_OK = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
 const SIN_CONTESTAR = ["Nuevo", "Contactado", "Sin respuesta"];
 const PAUTA = "Anuncios de Meta";
 const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,7 +42,7 @@ module.exports = async function handler(req, res) {
       let o = {};
       try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
       const f = l.fields, etapa = f.etapa || "Nuevo";
-      const calif = FACT_OK.includes(f.facturacion);
+      const calif = calificaOptin(f);
       return {
         dia: l.creado ? store.diaAR(l.creado) : hoy,
         pauta: fuenteDe(o) === PAUTA, calif,
@@ -50,7 +51,7 @@ module.exports = async function handler(req, res) {
         agendo: f.agendo === "Sí" || etapa === "Agendado con Manu (pre-venta)" || etapa === "Llamada agendada",
         confirmada: f.facturacion_confirmada === "Sí",
         grupo: f.toco_grupo === "Sí",
-        ab: o.ab === "A" || o.ab === "B" ? o.ab : ""
+        ab: /^[a-z0-9-]{1,20}$/i.test(o.ab || "") ? o.ab : ""
       };
     });
 
@@ -98,10 +99,11 @@ module.exports = async function handler(req, res) {
 
     const porDia = dias.map(d => ({ dia: d, ...resumen(L.filter(l => l.dia === d), V.filter(v => v.dia === d)) }));
 
-    // Test A/B del titular (solo si hay datos con versión).
+    // Test del titular: A/B o landing por dolor (cpa, margen, meta). Solo si hay datos con versión.
     let ab = null;
-    if (L.some(l => l.ab) || V.some(v => v.ab)) {
-      ab = ["A", "B"].map(x => {
+    const versiones = [...new Set(L.map(l => l.ab).concat(V.map(v => v.ab)).filter(Boolean))].sort();
+    if (versiones.length) {
+      ab = versiones.map(x => {
         const ls = L.filter(l => l.ab === x), vis = sumaV(V, v => v.ab === x), cal = cuenta(ls, l => l.calif);
         return { version: x, visitantes: vis, leads: ls.length, conversion: pct(ls.length, vis), calificados: cal, pctCalif: pct(cal, ls.length), califPorVisitante: pct(cal, vis) };
       });

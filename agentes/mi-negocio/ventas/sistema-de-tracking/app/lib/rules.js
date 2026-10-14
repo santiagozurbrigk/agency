@@ -2,6 +2,15 @@
 
 const FACT_ORDEN = ["Más de 100M", "Entre 50M y 100M", "Entre 30M y 50M", "Entre 10M y 30M", "Menos de 10M"];
 
+// Opt-in desde el 14-oct: una sola pregunta, inversión diaria en Meta.
+// De orden mayor a menor; califican los que invierten 100 dólares por día o más.
+const INV_META_ORDEN = ["Más de 1.000 dólares", "De 500 a 1.000 dólares", "De 200 a 500 dólares", "De 100 a 200 dólares", "Menos de 100 dólares", "0, todavía no tengo marca"];
+const INV_META_OK = INV_META_ORDEN.slice(0, 4);
+
+function invierteMetaOk(v) {
+  return INV_META_OK.includes(v);
+}
+
 function esConsumible(ciclo) {
   return Boolean(ciclo) && ciclo !== "No se termina, se compra una vez y listo";
 }
@@ -18,8 +27,15 @@ function invierte3000oMas(inversion) {
   return ["Entre USD 3.000 y USD 6.000", "Más de USD 6.000"].includes(inversion);
 }
 
+// Califica en el opt-in (el mismo criterio que el Lead del píxel).
+// Leads nuevos: inversión diaria en Meta. Leads viejos (sin esa respuesta): facturación de 30M o más.
+function calificaOptin(f) {
+  return f.inversion_meta ? invierteMetaOk(f.inversion_meta) : factura30oMas(f.facturacion);
+}
+
 // Regla 5.1: califica para Génesis.
 function calificaGenesis(f) {
+  if (f.inversion_meta) return invierteMetaOk(f.inversion_meta);
   return esConsumible(f.ciclo) && factura30oMas(f.facturacion);
 }
 
@@ -31,11 +47,18 @@ function rutaAgendaDirecta(f, manuLibre) {
   return paraManu && manuLibre ? "manu" : "diego";
 }
 
-// Orden por facturación: más facturación, más arriba. Sin facturación, al final.
+// Orden por tamaño: más facturación (o más inversión en Meta), más arriba. Sin dato, al final.
+// Equivalencia aproximada entre las dos escalas para mezclar leads viejos y nuevos.
+const RANGO_INV_META = [0, 1, 2, 3, 4, 5];
+const RANGO_FACT = [0, 1, 3, 4, 5];
+function rangoTamano(f) {
+  const im = INV_META_ORDEN.indexOf(f.inversion_meta);
+  if (im !== -1) return RANGO_INV_META[im];
+  const fa = FACT_ORDEN.indexOf(f.facturacion);
+  return fa === -1 ? 99 : RANGO_FACT[fa];
+}
 function porFacturacion(a, b) {
-  const ia = FACT_ORDEN.indexOf(a.fields.facturacion);
-  const ib = FACT_ORDEN.indexOf(b.fields.facturacion);
-  return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  return rangoTamano(a.fields) - rangoTamano(b.fields);
 }
 
 // Regla 5.6 + lo acordado: a qué grupo va cada lead después de la clase.
@@ -78,6 +101,6 @@ function ordenPrimerContacto(a, b) {
 
 module.exports = {
   esConsumible, factura30oMas, factura50oMas, invierte3000oMas,
-  calificaGenesis, rutaAgendaDirecta, grupoDelLead,
+  invierteMetaOk, calificaOptin, calificaGenesis, rutaAgendaDirecta, grupoDelLead,
   porFacturacion, ordenGrupo2, ordenPrimerContacto
 };

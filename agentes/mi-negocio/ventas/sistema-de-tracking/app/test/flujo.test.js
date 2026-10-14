@@ -163,6 +163,17 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
     const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
     ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día"); }
+  { // Opt-in nuevo (14-oct): una sola pregunta, inversión diaria en Meta
+    const ad={utm_source:"facebook",utm_medium:"Instagram_Reels",utm_content:"Ad-inversion",ad_id:"456"};
+    await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Inv Si",email:"invsi@test.com",telefono:"+5491100007777",inversion_meta:"De 100 a 200 dólares",tracking:ad}});
+    await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Inv No",email:"invno@test.com",telefono:"+5491100006666",inversion_meta:"Menos de 100 dólares",tracking:ad}});
+    const m3=(await call(metrics,{cookie})).body; const a3=(m3.porAnuncio||[]).find(x=>x.anuncio==="Ad-inversion");
+    ok(a3&&a3.leads===2&&a3.califican===1,"opt-in nuevo: 100 dólares por día califica, menos de 100 no");
+    ok(a3&&a3.lista.some(x=>x.facturacion==="De 100 a 200 dólares por día"),"opt-in nuevo: la lista muestra la inversión por día");
+    const todos=(await call(leads,{cookie})).body.leads; const tg=e=>(todos.find(l=>l.email===e)||{}).tags||[];
+    ok(tg("invsi@test.com").includes("optin-19-10")&&tg("invsi@test.com").includes("optin-calificado-19-10"),"opt-in nuevo: el que califica lleva las dos etiquetas");
+    ok(tg("invno@test.com").includes("optin-19-10")&&!tg("invno@test.com").includes("optin-calificado-19-10"),"opt-in nuevo: el que no califica lleva solo la de optin");
+    const im=m3.distribucion.inversion_meta; ok(im&&im.valores.find(x=>x.op==="De 100 a 200 dólares").n===1,"opt-in nuevo: distribución de inversión diaria en Meta"); }
   { const e=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"eliminar"}});
     const t=(await call(leads,{cookie})).body;
     ok(e.body.eliminado&&!t.leads.some(l=>l.id==="demo-pablo")&&!t.colas.primerContacto.includes("demo-pablo"),"eliminar lead: sale de la lista y de las colas"); }

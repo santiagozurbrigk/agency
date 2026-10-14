@@ -519,6 +519,8 @@ try{ FILTRO_DUENO=localStorage.getItem("trk_dueno")||"todos"; VISTA=localStorage
 
 const $=s=>document.querySelector(s);
 const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML};
+/* Tamaño del lead: inversión diaria en Meta (opt-in desde el 14-oct) o, en los leads viejos, la facturación. */
+const tamano=f=>f.inversion_meta?f.inversion_meta+" por día":(f.facturacion||"");
 const ic=(n,cls)=>`<svg class="ic ${cls||""}"><use href="#${n}"/></svg>`;
 
 const SECCIONES=[
@@ -623,7 +625,7 @@ function revisarNuevos(d){
   if(!nuevos.length||!AVISOS) return;
   const l=nuevos[0], fte=fuenteDe(origenDe(l.fields));
   const titulo=nuevos.length===1?"Nuevo opt-in":`${nuevos.length} opt-ins nuevos`;
-  const cuerpo=nuevos.length===1?`${l.nombre||"Sin nombre"} · ${l.fields.facturacion||"sin facturación"} · ${fte}`:nuevos.slice(0,3).map(x=>x.nombre||"Sin nombre").join(", ")+(nuevos.length>3?"…":"");
+  const cuerpo=nuevos.length===1?`${l.nombre||"Sin nombre"} · ${tamano(l.fields)||"sin facturación"} · ${fte}`:nuevos.slice(0,3).map(x=>x.nombre||"Sin nombre").join(", ")+(nuevos.length>3?"…":"");
   if(Date.now()-ULT_SONIDO>4000){ding();ULT_SONIDO=Date.now();}
   const el=document.createElement("div");el.className="toast nuevo";el.innerHTML=ic("i-campana")+`<span><b>${esc(titulo)}</b> · ${esc(cuerpo)}</span>`;
   el.onclick=()=>{el.remove();if(nuevos.length===1)abrirFicha(l.id);else ir("ahora");};
@@ -838,14 +840,14 @@ function filaLead(l,pos,reg){
       <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
       <div class="movil">${badgeEtapa(f.etapa)}${etiquetas(l)}${reg?`<span class="chip">${esc(horaRegistro(l.creado))} · ${esc(fuenteDe(origenDe(f)))}</span>`:""}</div></div></div>
     ${reg?colRegistro(l):""}
-    <div class="col-fact fact">${esc(f.facturacion||"—")}<small>${esc(f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
+    <div class="col-fact fact">${esc(tamano(f)||"—")}<small>${esc(f.inversion_meta?"Meta por día":f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
     <div class="col-etapa">${badgeEtapa(f.etapa)}<div style="color:var(--tx-3);font-size:12px;margin-top:4px">${detalle}</div></div>
     <div class="col-etq etiquetas">${etiquetas(l)}</div>
     <div class="acciones-f"><button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
   </div>`;
 }
-const CAB=`<div class="fila cab"><div>Lead</div><div class="col-fact">Facturación</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
-const CAB_REG=`<div class="fila cab"><div>Lead</div><div class="col-reg">Registro · origen</div><div class="col-fact">Facturación</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
+const CAB=`<div class="fila cab"><div>Lead</div><div class="col-fact">Facturación / Meta</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
+const CAB_REG=`<div class="fila cab"><div>Lead</div><div class="col-reg">Registro · origen</div><div class="col-fact">Facturación / Meta</div><div class="col-etapa">Etapa</div><div class="col-etq">Estado</div><div></div></div>`;
 // Hora del registro en hora de Argentina: "hoy 14:32", "ayer 09:10" o "12/10 14:32".
 function horaRegistro(iso){
   if(!iso) return "—";
@@ -926,7 +928,7 @@ function renderClase(v,s){
   h+=filtroDueno(todos.length,activos.length);
   h+=`<div class="lista">${activos.map(l=>`<div class="fila clase">
       <div class="quien-l" onclick="abrirFicha('${l.id}')" style="cursor:pointer"><div class="avatar ${claseAvatar(l.fields.dueno)}">${esc(iniciales(l.nombre))}</div><div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div><div class="sub">${esc(l.telefono||"")}</div></div></div>
-      <div class="col-fact fact">${esc(l.fields.facturacion||"—")}</div>
+      <div class="col-fact fact">${esc(tamano(l.fields)||"—")}</div>
       <button class="toggle-pill ${l.fields.asistio==="Sí"?"on":""}" onclick="marcar('${l.id}','asistio','${l.fields.asistio==="Sí"?"No":"Sí"}')" aria-pressed="${l.fields.asistio==="Sí"}">${ic("i-check")}<span>${l.fields.asistio==="Sí"?"Asistió":"Asistió"}</span></button>
       <button class="toggle-pill nar ${l.fields.senal_compra==="Sí"?"on":""}" onclick="marcar('${l.id}','senal_compra','${l.fields.senal_compra==="Sí"?"No":"Sí"}')" aria-pressed="${l.fields.senal_compra==="Sí"}">${ic("i-rayo")}<span>Señal de compra</span></button>
     </div>`).join("")||`<div class="vacio"><b>No hay leads activos</b></div>`}</div>`;
@@ -1019,7 +1021,8 @@ async function renderMetricas(v,s,silencioso){
   const sinDato=(d)=>d&&d.sinDato?` · ${d.sinDato} sin responder`:"";
   const CALIFICA=new Set(["Entre 30M y 50M","Entre 50M y 100M","Más de 100M"]);
   h+=`<div class="grid-3">`
-    +tarjeta("Facturación mensual",`Naranja: califican para Génesis (≥30M)${sinDato(D.facturacion)}`,barrasH(D.facturacion?D.facturacion.valores:[],{color:x=>CALIFICA.has(x.op)?"on":"",total:true}))
+    +tarjeta("Inversión diaria en Meta",`Pregunta del opt-in. Naranja: califican (100 dólares por día o más)${sinDato(D.inversion_meta)}`,barrasH(D.inversion_meta?D.inversion_meta.valores:[],{color:x=>/^De |^Más/.test(x.op)?"on":"",total:true}))
+    +tarjeta("Facturación mensual",`Leads de antes del 14-oct. Naranja: califican para Génesis (≥30M)${sinDato(D.facturacion)}`,barrasH(D.facturacion?D.facturacion.valores:[],{color:x=>CALIFICA.has(x.op)?"on":"",total:true}))
     +tarjeta("Ciclo de reposición",`Naranja: producto consumible${sinDato(D.ciclo)}`,barrasH(D.ciclo?D.ciclo.valores:[],{color:x=>/una vez/.test(x.op)?"":"on",total:true}))
     +tarjeta("Inversión disponible",`Naranja: llega a Manu (≥USD 3.000)${sinDato(D.inversion)}`,barrasH(D.inversion?D.inversion.valores:[],{color:x=>/3\.000 y|6\.000/.test(x.op)?"on":"",total:true}))
     +`</div>`;
@@ -1130,10 +1133,10 @@ async function renderAnuncios(v,s,silencioso){
   const tile=(v2,t,sub)=>`<div class="tile"><div class="t">${t}</div><div class="v num">${v2}</div>${sub?`<div class="s">${sub}</div>`:""}</div>`;
   const card=(tit,sub,cuerpo,leyenda)=>`<div class="tarjeta"><h4>${tit}</h4>${leyenda?`<div class="leyenda">${leyenda.map(([c,t,p])=>`<span><i style="background:${c}${p?";opacity:.55":""}"></i>${t}</span>`).join("")}</div>`:""}${cuerpo}${sub?`<p class="nota-a" style="margin:10px 0 0">${sub}</p>`:""}</div>`;
   const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)";
-  let h=encabezado(s)+filtros+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)} · días en hora de Argentina. «De pauta» = leads que llegaron desde un anuncio de Meta (UTMs del anuncio). Calificado = facturación de 30M o más.</p>`;
+  let h=encabezado(s)+filtros+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)} · días en hora de Argentina. «De pauta» = leads que llegaron desde un anuncio de Meta (UTMs del anuncio). Calificado = invierte 100 dólares por día o más en Meta (leads de antes del 14-oct: facturación de 30M o más).</p>`;
   h+=`<div class="tiles">
     ${tile(R.leadsPauta,"Leads de pauta")}
-    ${tile(R.califPauta,"Calificados de pauta","Facturación de 30M o más")}
+    ${tile(R.califPauta,"Calificados de pauta","Meta: 100 dólares por día o más")}
     ${tile(`${fPct(R.pctCalifPauta)}`,"% calificado (de pauta)",R.pctCalifPauta==null?"":`${fPct(Math.round((100-R.pctCalifPauta)*10)/10)} no califica`)}
     ${tile(fPct(R.convLandingPauta),"Conversión landing (pauta)",`${R.visitasPauta} visitas desde anuncios`)}
     ${tile(fPct(R.convCalifPauta),"Landing → calificado (pauta)")}
@@ -1146,8 +1149,8 @@ async function renderAnuncios(v,s,silencioso){
     ${tile(R.leadsTotal,"Leads en total")}
   </div>`;
   if(a.ab){
-    h+=card("Test A/B del titular","Cada visitante ve siempre la misma versión. Calificados por visitante es la métrica que manda.",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitantes</th><th class="n">Leads</th><th class="n">Conversión</th><th class="n">Calificados</th><th class="n">Calif. por visitante</th></tr></thead><tbody>
-      ${a.ab.map(t=>`<tr><td>${t.version}</td><td class="n">${t.visitantes}</td><td class="n">${t.leads}</td><td class="n">${fPct(t.conversion)}</td><td class="n">${t.calificados} <span style="color:var(--tx-3)">(${fPct(t.pctCalif)})</span></td><td class="n"><b>${fPct(t.califPorVisitante)}</b></td></tr>`).join("")}</tbody></table></div>`);
+    h+=card("Test de titulares y landings","A / B: test de titular. cpa / margen / meta: landing de cada dolor, según el anuncio. Cada visitante ve siempre la misma versión. Calificados por visitante es la métrica que manda.",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitantes</th><th class="n">Leads</th><th class="n">Conversión</th><th class="n">Calificados</th><th class="n">Calif. por visitante</th></tr></thead><tbody>
+      ${a.ab.map(t=>`<tr><td>${esc(t.version)}</td><td class="n">${t.visitantes}</td><td class="n">${t.leads}</td><td class="n">${fPct(t.conversion)}</td><td class="n">${t.calificados} <span style="color:var(--tx-3)">(${fPct(t.pctCalif)})</span></td><td class="n"><b>${fPct(t.califPorVisitante)}</b></td></tr>`).join("")}</tbody></table></div>`);
   }
   const real=ANUN.modo==="real";
   h+=`<div class="filtros" style="margin:8px 0 18px"><span style="font-size:12.5px;color:var(--tx-3)">Gráficos de pauta</span>${seg([["real","Real (todos los leads)"],["calif","Calificados"]],ANUN.modo,"anunModo")}</div>`;
@@ -1332,7 +1335,7 @@ function cuerpoFicha(l,tab){
     const h=(t,v)=>`<div class="h"><small>${t}</small><b title="${esc(v||"")}">${esc(v||"—")}</b></div>`;
     return `<div class="tarjeta"><div class="hechos">
         ${h("Llamada con",llamadaCon(f.llamada_con))}${h("Grupo",f.grupo?"Grupo "+f.grupo:"")}
-        ${h("Facturación",f.facturacion)}${h("Intentos",f.intentos||"0")}${h("Último contacto",f.ultimo_contacto?hace(f.ultimo_contacto):"")}
+        ${f.inversion_meta?h("Meta por día",f.inversion_meta):h("Facturación",f.facturacion)}${h("Intentos",f.intentos||"0")}${h("Último contacto",f.ultimo_contacto?hace(f.ultimo_contacto):"")}
       </div></div>
       <div class="tarjeta"><h4>Seguimiento</h4><div class="switches">
         ${sw("confirmo_clase","Confirmó la clase")}${sw("recurso_enviado","Recurso enviado")}${sw("recurso_visto","Recurso visto")}
@@ -1346,7 +1349,7 @@ function cuerpoFicha(l,tab){
     if(EDITANDO==="campos") return editorCampos(l);
     const d=(t,v)=>`<dt>${t}</dt><dd class="${v?"":"vacio-dd"}">${esc(v||"Sin dato")}</dd>`;
     return `<div class="tarjeta"><h4 style="display:flex;align-items:center">Formularios<button class="btn sm fantasma" style="margin-left:auto" onclick="EDITANDO='campos';pintarFicha()">${ic("i-editar")}Editar</button></h4><dl class="dl">
-        ${d("Facturación",f.facturacion)}${d("Ciclo de reposición",f.ciclo)}${d("Inversión disponible",f.inversion)}
+        ${d("Inversión diaria en Meta",f.inversion_meta)}${d("Facturación",f.facturacion)}${d("Ciclo de reposición",f.ciclo)}${d("Inversión disponible",f.inversion)}
         ${d("Objetivo a 6 meses",f.objetivo)}${d("Qué lo frena",f.freno)}${d("Hace cuánto y qué probó",f.hace_cuanto)}${d("Qué le falta",f.que_falta)}</dl></div>
       ${(()=>{const o=origenDe(f);return `<div class="tarjeta"><h4>De dónde vino</h4>${Object.keys(o).length?`<dl class="dl">
         ${d("Fuente",fuenteDe(o))}${d("Anuncio",o.utm_content||(o.ad_id?"ID "+o.ad_id:""))}${d("Conjunto",o.utm_term)}${d("Campaña",o.utm_campaign)}${d("Ubicación",o.utm_medium)}</dl>`:`<p style="color:var(--tx-3);font-size:13.5px">Sin datos de anuncio: entró sin parámetros en el link.</p>`}</div>`;})()}

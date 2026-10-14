@@ -23,15 +23,18 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('set', 'autoConfig', false, '1105986771965346'); /* sin eventos automáticos (clics/formularios) */
-/* init y PageView para todos; Lead solo para registros calificados: ver el script de abajo. */
+/* init y PageView para todos; Optin para todos los registrados; Lead solo para los calificados: ver el script de abajo. */
 </script>
 <!-- End Meta Pixel Code -->
 <script>
 /* PageView: para TODOS los que llegan acá. Es lo que los mete en la audiencia "OPT-IN 19/10"
    (visitantes de /thank-you): quedan excluidos de adquisición y entran a nutrición.
-   Lead: solo si viene de registrarse en la landing con facturación de 30M o más
-   (la landing lo deja anotado), para que adquisición aprenda solo de los calificados.
-   Se dispara una sola vez: recargar o entrar directo no lo repite.
+   Optin (evento personalizado): TODOS los que vienen de registrarse en la landing, califiquen o no.
+   Es el público de los anuncios de nutrición (público personalizado: personas que
+   dispararon «Optin»). No se usa para optimizar.
+   Lead: solo los que invierten 100 dólares por día o más en Meta (la landing lo deja anotado
+   en calif), para que adquisición optimice y aprenda solo de los calificados.
+   Se disparan una sola vez: recargar o entrar directo no los repite.
    OJO: no crear en el Administrador de Eventos una conversión "Lead" por URL de esta página,
    porque contaría también a los descalificados. */
 var leadPend = null;
@@ -50,7 +53,11 @@ try {
   }
   fbq('init', '1105986771965346', match);
   fbq('track', 'PageView');
-  if (leadPend) fbq('track', 'Lead', { content_name: 'Clase 19/10' }, { eventID: leadPend.id });
+  if (leadPend) {
+    fbq('trackCustom', 'Optin', { content_name: 'Clase 19/10', califica: leadPend.calif ? 'si' : 'no' }, { eventID: leadPend.id + '-optin' });
+    /* calif === undefined: anotado por una versión vieja de la landing, que solo anotaba a los calificados */
+    if (leadPend.calif !== false) fbq('track', 'Lead', { content_name: 'Clase 19/10' }, { eventID: leadPend.id });
+  }
 } catch (e) {}
 </script>
 <!-- Script universal de Hyros: hueco. Pegá acá la línea de tu cuenta (una sola vez). -->
