@@ -486,8 +486,43 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     <div class="copy">
       <span class="pill"><span class="dot"></span>Clase en vivo</span>
       <h1 id="headline">El roadmap con el que pasé mi marca de <span class="marca">60 a 220 millones</span> por mes</h1>
-      <p class="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
+      <p class="sub" id="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
     </div>
+    <script>
+    /* ===== LANDINGS POR DOLOR =====
+       Cada anuncio lleva a la landing de su dolor. En el link del anuncio usá:
+         https://TU-DOMINIO/cpa      (o ?l=cpa)
+         https://TU-DOMINIO/margen   (o ?l=margen)
+         https://TU-DOMINIO/meta     (o ?l=meta)
+       Cambia el titular (y el subtítulo si cargás «sub»; vacío = queda el de siempre).
+       Si la persona vuelve después sin el link, ve la misma landing que la primera vez.
+       Para sumar una landing: agregá una clave acá (minúsculas, sin espacios) y su ruta en vercel.json. */
+    var LANDINGS = {
+      cpa: {
+        headline: 'Cómo pagar <span class="marca">2,5 veces más por cada cliente</span> que tu competencia y seguir siendo rentable',
+        sub: ''
+      },
+      margen: {
+        headline: 'Cómo hacer que la segunda, la tercera y la cuarta compra <span class="marca">entren con el margen entero</span>',
+        sub: ''
+      },
+      meta: {
+        headline: 'Cómo hacer que tu marca <span class="marca">arranque el mes ya cobrada</span>, sin depender de Meta',
+        sub: ''
+      }
+    };
+    /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
+    var LANDING = (function () {
+      var k = (new URLSearchParams(location.search).get("l") || location.pathname.replace(/^\/+|\/+$/g, "")).toLowerCase();
+      if (LANDINGS.hasOwnProperty(k)) { try { localStorage.setItem("optin_landing", k); } catch (e) {} return k; }
+      try { k = localStorage.getItem("optin_landing") || ""; } catch (e) { k = ""; }
+      return LANDINGS.hasOwnProperty(k) ? k : "";
+    })();
+    if (LANDING) {
+      document.getElementById("headline").innerHTML = LANDINGS[LANDING].headline;
+      if (LANDINGS[LANDING].sub) document.getElementById("sub").innerHTML = LANDINGS[LANDING].sub;
+    }
+    </script>
 
     <!-- VSL de registro (vTurb) -->
     <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6ac837548f7a49438d7617bc" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac837548f7a49438d7617bc/v4/player.js", s.async=!0,document.head.appendChild(s); </script></div>
@@ -753,9 +788,11 @@ document.addEventListener("DOMContentLoaded", function () {
   var tz = document.querySelectorAll("[data-tz]");
   for (var z = 0; z < tz.length; z++) tz[z].textContent = EVENT_TZ_LABEL;
 
-  /* A/B de headline */
-  var variant = "A";
-  if (AB_TEST) {
+  /* Versión del titular: la landing del dolor (si vino de un anuncio con link de landing)
+     o, si no, el A/B de headline */
+  var variant = LANDING || "A";
+  var conVersion = Boolean(LANDING) || AB_TEST;
+  if (!LANDING && AB_TEST) {
     try { variant = localStorage.getItem("optin_variant") || ""; } catch (e) { variant = ""; }
     if (variant !== "A" && variant !== "B") {
       variant = Math.random() < 0.5 ? "A" : "B";
@@ -842,7 +879,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (Object.keys(t).length) localStorage.setItem("genesis_utm", JSON.stringify(t));
       else t = JSON.parse(localStorage.getItem("genesis_utm") || "{}");
     } catch (e) {}
-    if (AB_TEST) t.ab = variant; /* qué titular vio (para el test A/B) */
+    if (conVersion) t.ab = variant; /* qué titular vio: cpa / margen / meta, o A / B */
     return t;
   }
   tracking();
@@ -887,7 +924,7 @@ document.addEventListener("DOMContentLoaded", function () {
       facturacion: facturacion.value,
       tracking: tracking()
     };
-    if (AB_TEST) datos.variant = variant;
+    if (conVersion) datos.variant = variant;
 
     /* Píxel: solo los que facturan 30M o más cuentan como Lead (los demás descalificados
        no se le informan a Meta para no entrenarlo con ellos). La thank you lo dispara. */
@@ -946,7 +983,8 @@ document.addEventListener("DOMContentLoaded", function () {
    - FACTURACION_LEAD: las respuestas de facturación que cuentan como Lead para Meta.
    - HYROS_SCRIPT_URL: vacío = no carga.
    - AB_TEST: true para probar dos headlines; cada navegador ve siempre la misma.
-   - HEADLINE_A / HEADLINE_B: los dos headlines (aceptan HTML).
+   - HEADLINE_A / HEADLINE_B: los dos headlines (aceptan HTML). Solo para quien entra sin link de landing.
+   - Las landings por dolor (/cpa, /margen, /meta) se configuran en LANDINGS, justo abajo del titular.
    ========================================== */
 var EVENT_DATE       = "2026-10-19T19:00:00-03:00";
 var EVENT_TZ_LABEL   = "19:00 hs (Argentina)";

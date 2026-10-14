@@ -50,7 +50,7 @@ module.exports = async function handler(req, res) {
         agendo: f.agendo === "Sí" || etapa === "Agendado con Manu (pre-venta)" || etapa === "Llamada agendada",
         confirmada: f.facturacion_confirmada === "Sí",
         grupo: f.toco_grupo === "Sí",
-        ab: o.ab === "A" || o.ab === "B" ? o.ab : ""
+        ab: /^[a-z0-9-]{1,20}$/i.test(o.ab || "") ? o.ab : ""
       };
     });
 
@@ -98,10 +98,11 @@ module.exports = async function handler(req, res) {
 
     const porDia = dias.map(d => ({ dia: d, ...resumen(L.filter(l => l.dia === d), V.filter(v => v.dia === d)) }));
 
-    // Test A/B del titular (solo si hay datos con versión).
+    // Test del titular: A/B o landing por dolor (cpa, margen, meta). Solo si hay datos con versión.
     let ab = null;
-    if (L.some(l => l.ab) || V.some(v => v.ab)) {
-      ab = ["A", "B"].map(x => {
+    const versiones = [...new Set(L.map(l => l.ab).concat(V.map(v => v.ab)).filter(Boolean))].sort();
+    if (versiones.length) {
+      ab = versiones.map(x => {
         const ls = L.filter(l => l.ab === x), vis = sumaV(V, v => v.ab === x), cal = cuenta(ls, l => l.calif);
         return { version: x, visitantes: vis, leads: ls.length, conversion: pct(ls.length, vis), calificados: cal, pctCalif: pct(cal, ls.length), califPorVisitante: pct(cal, vis) };
       });

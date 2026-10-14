@@ -1,1 +1,6 @@
-{ "cleanUrls": true }
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(cpa|margen|meta)", "destination": "/index.html" }
+  ]
+}

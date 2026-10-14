@@ -17,6 +17,6 @@ module.exports = async function handler(req, res) {
   if (typeof body === "string") { try { body = JSON.parse(body); } catch (e) { body = {}; } }
   const t = (body && body.tracking) || {};
   const fuente = fuenteDe(t);
-  store.sumarVisita(fuente, t.ab === "A" || t.ab === "B" ? t.ab : "");
+  store.sumarVisita(fuente, /^[a-z0-9-]{1,20}$/i.test(t.ab || "") ? t.ab : ""); // versión: A/B o landing (cpa, margen, meta)
   return res.status(200).json({ ok: true, fuente });
 };
