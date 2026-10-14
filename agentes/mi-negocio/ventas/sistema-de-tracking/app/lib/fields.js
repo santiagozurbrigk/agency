@@ -17,6 +17,15 @@ const OPCIONES = {
     "Entre 50M y 100M",
     "Más de 100M"
   ],
+  // Pregunta del opt-in desde el 14-oct (reemplaza ciclo y facturación en la landing).
+  inversion_meta: [
+    "0, todavía no tengo marca",
+    "Menos de 100 dólares",
+    "De 100 a 200 dólares",
+    "De 200 a 500 dólares",
+    "De 500 a 1.000 dólares",
+    "Más de 1.000 dólares"
+  ],
   inversion: [
     "Menos de USD 1.000",
     "Entre USD 1.000 y USD 3.000",
@@ -71,6 +80,7 @@ const OPCIONES = {
 const FIELDS = [
   { key: "ciclo",            name: "Ciclo de reposición",            type: "SINGLE_OPTIONS", options: OPCIONES.ciclo },
   { key: "facturacion",      name: "Facturación mensual",            type: "SINGLE_OPTIONS", options: OPCIONES.facturacion },
+  { key: "inversion_meta",   name: "Inversión diaria en Meta",       type: "SINGLE_OPTIONS", options: OPCIONES.inversion_meta },
   { key: "inversion",        name: "Inversión disponible",           type: "SINGLE_OPTIONS", options: OPCIONES.inversion },
   { key: "objetivo",         name: "Objetivo a 6 meses",             type: "TEXT" },
   { key: "freno",            name: "Qué lo frena",                   type: "TEXT" },

@@ -1,5 +1,5 @@
 // Endpoint público del opt-in (la landing de registro le pega acá).
-// Crea o actualiza el lead en GHL, guarda ciclo y facturación
+// Crea o actualiza el lead en GHL, guarda la inversión diaria en Meta (y ciclo y facturación, si vienen)
 // (Sin dueños: todo el equipo trabaja todos los leads.)
 
 const store = require("../../lib/store");
@@ -15,11 +15,12 @@ module.exports = async function handler(req, res) {
   try {
     let body = req.body;
     if (typeof body === "string") { try { body = JSON.parse(body); } catch (e) { return res.status(400).json({ ok: false, error: "JSON inválido" }); } }
-    const { nombre, email, telefono, ciclo, facturacion, tracking } = body || {};
+    const { nombre, email, telefono, ciclo, facturacion, inversion_meta, tracking } = body || {};
     if (!email && !telefono) return res.status(400).json({ ok: false, error: "Falta email o teléfono" });
 
     const datos = {
       ...(ciclo ? { ciclo } : {}), ...(facturacion ? { facturacion } : {}),
+      ...(inversion_meta ? { inversion_meta } : {}),
       ...(tracking ? { origen: JSON.stringify(tracking) } : {})
     };
 

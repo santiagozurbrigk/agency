@@ -114,6 +114,7 @@ Los formularios 4.3 y 4.4 los sirve el sistema, en páginas propias en Vercel, i
 
 - **Consumible:** cualquier respuesta del ciclo salvo «No se termina, se compra una vez y listo».
 - **Califica para Génesis:** consumible **y** factura más de 30M («Entre 30M y 50M», «Entre 50M y 100M» o «Más de 100M»).
+- **Desde el 14-oct** el opt-in hace una sola pregunta, «¿Cuánto estás invirtiendo en Meta por día?» (0, todavía no tengo marca · Menos de 100 dólares · De 100 a 200 · De 200 a 500 · De 500 a 1.000 · Más de 1.000 dólares). Califica quien invierte 100 dólares por día o más; es el mismo criterio del Lead del píxel. Los leads anteriores siguen calificando por ciclo y facturación, y el orden «por facturación» mezcla las dos escalas.
 - Si no califica para Génesis, se le ofrece la Mentoría.
 - En las llamadas, lo decide quien está hablando con el lead. Los datos del formulario son el punto de partida.
 

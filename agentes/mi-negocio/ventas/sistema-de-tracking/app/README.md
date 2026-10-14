@@ -9,7 +9,7 @@ App web del equipo de ventas. Se monta sobre GHL: todo lo que se carga acá se e
 | `/` | La app del equipo: colas, grupos, fichas, ventas, métricas, configuración. Pide login. |
 | `/agendar` | Formulario público de **Agenda directa** (link 1 de la clase). Decide solo si muestra el calendario de Manu o el de Diego. |
 | `/contacto` | Formulario público de **Quiero que me contacten** (link 2 de la clase). |
-| `/api/public/optin` | Endpoint para la landing de registro: crea el lead, guarda ciclo y facturación y reparte dueño (Braian/Diego de a uno). |
+| `/api/public/optin` | Endpoint para la landing de registro: crea el lead y guarda la inversión diaria en Meta (desde el 14-oct; antes, ciclo y facturación). |
 | `/api/webhook` | Recibe los avisos de GHL (cita creada o cancelada) y actualiza al lead. |
 
 **Modo demo:** sin `GHL_API_TOKEN` ni `GHL_LOCATION_ID`, la app corre con datos de ejemplo (clave de acceso: cualquier email + «demo»). Sirve para mirar, no para operar: en Vercel la memoria no persiste.

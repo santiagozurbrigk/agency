@@ -69,8 +69,8 @@ module.exports = async function handler(req, res) {
     for (const l of leads) for (const t of l.tags || []) if (ORIGEN[t]) origen[ORIGEN[t]]++;
 
     // Leads por anuncio (UTMs que guarda la landing en «Origen (UTM)»).
-    // "Califica" = facturación de 30M para arriba, el mismo criterio que el Lead del píxel.
-    const FACT_OK = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
+    // "Califica" = el mismo criterio que el Lead del píxel (inversión en Meta de 100 dólares por día
+    // o más; los leads viejos, facturación de 30M para arriba).
     const anuncios = {};
     for (const l of leads) {
       let o = {};
@@ -79,11 +79,11 @@ module.exports = async function handler(req, res) {
       if (fuenteDe(o) !== "Anuncios de Meta") continue;
       const nombre = o.utm_content || (o.ad_id ? `Anuncio ${o.ad_id}` : "Anuncio sin nombre");
       const a = anuncios[nombre] || (anuncios[nombre] = { anuncio: nombre, campana: o.utm_campaign || "", conjunto: o.utm_term || "", leads: 0, califican: 0, ventas: 0, lista: [] });
-      const califica = FACT_OK.includes(l.fields.facturacion);
+      const califica = R.calificaOptin(l.fields);
       a.leads++;
       if (califica) a.califican++;
       if (l.fields.venta_json) a.ventas++;
-      a.lista.push({ id: l.id, nombre: l.nombre || "", creado: l.creado || null, facturacion: l.fields.facturacion || "",
+      a.lista.push({ id: l.id, nombre: l.nombre || "", creado: l.creado || null, facturacion: l.fields.inversion_meta ? l.fields.inversion_meta + " por día" : (l.fields.facturacion || ""),
         etapa: l.fields.etapa || "Nuevo", califica, venta: Boolean(l.fields.venta_json), conjunto: o.utm_term || "" });
     }
     // Por fuente: visitas a la landing (aprox.) contra registros del opt-in.
@@ -97,7 +97,7 @@ module.exports = async function handler(req, res) {
       try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
       const x = f(fuenteDe(o));
       x.registros++;
-      if (FACT_OK.includes(l.fields.facturacion)) x.califican++;
+      if (R.calificaOptin(l.fields)) x.califican++;
     }
     const porFuente = Object.values(fuentes).sort((a, b) => b.registros - a.registros || b.visitas - a.visitas);
 
@@ -119,6 +119,7 @@ module.exports = async function handler(req, res) {
 
     return res.status(200).json({
       distribucion: {
+        inversion_meta: contar("inversion_meta", OPCIONES.inversion_meta),
         facturacion: contar("facturacion", OPCIONES.facturacion),
         ciclo: contar("ciclo", OPCIONES.ciclo),
         inversion: contar("inversion", OPCIONES.inversion),

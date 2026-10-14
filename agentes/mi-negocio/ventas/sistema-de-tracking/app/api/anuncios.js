@@ -4,7 +4,8 @@
 //
 // Definiciones:
 //   pauta       = fuente «Anuncios de Meta» (UTMs / fbclid del anuncio)
-//   calificado  = facturación de 30M o más (mismo criterio que el Lead del píxel)
+//   calificado  = invierte 100 dólares por día o más en Meta (leads viejos: facturación de 30M o más);
+//                 mismo criterio que el Lead del píxel
 //   contactado  = tiene algún intento o ya salió de «Nuevo»
 //   contestó    = llegó a «En conversación» o a una etapa posterior
 //   agendó      = pre-venta con Manu o llamada de venta
@@ -13,8 +14,8 @@
 const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const { fuenteDe } = require("../lib/fuente");
+const { calificaOptin } = require("../lib/rules");
 
-const FACT_OK = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
 const SIN_CONTESTAR = ["Nuevo", "Contactado", "Sin respuesta"];
 const PAUTA = "Anuncios de Meta";
 const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,7 +42,7 @@ module.exports = async function handler(req, res) {
       let o = {};
       try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
       const f = l.fields, etapa = f.etapa || "Nuevo";
-      const calif = FACT_OK.includes(f.facturacion);
+      const calif = calificaOptin(f);
       return {
         dia: l.creado ? store.diaAR(l.creado) : hoy,
         pauta: fuenteDe(o) === PAUTA, calif,

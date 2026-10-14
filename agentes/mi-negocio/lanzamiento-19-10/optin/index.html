@@ -156,9 +156,16 @@ fbq('track', 'PageView');
   }
   .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); animation: pulso 1.6s infinite; }
   @keyframes pulso { 50% { opacity: .25; } }
-  .hero h1 { font-size: 29px; font-weight: 800; margin: 14px auto 12px; line-height: 1.12; max-width: 15em; }
+  .hero h1 { font-size: 24px; font-weight: 800; margin: 14px auto 12px; line-height: 1.16; max-width: 20em; }
   .hero .sub { color: var(--gris-2); font-size: 16px; max-width: 34em; margin: 0 auto 18px; }
   .hero .sub b { color: #fff; }
+  .hero .sub .n { color: var(--naranja); font-weight: 800; }
+  /* Lo que incluye, debajo del titular */
+  .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 4px auto 14px; }
+  .tags span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 8px; border: 1px solid var(--linea); background: var(--negro-2); font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gris-2); }
+  @media (min-width: 768px) { .tags { gap: 8px; } .tags span { padding: 6px 10px; font-size: 11.5px; letter-spacing: .08em; } }
+  .tags span::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--naranja); }
+  .tags span:nth-child(2)::before { background: #fff; }
   .vsl {
     max-width: 760px; margin: 22px auto 0; border-radius: 18px; overflow: hidden;
     background: #000; border: 1px solid var(--linea);
@@ -374,7 +381,7 @@ fbq('track', 'PageView');
     body { padding-bottom: 0; }
     .sticky { display: none; }
     .hero { padding: 48px 0 40px; }
-    .hero h1 { font-size: 44px; }
+    .hero h1 { font-size: 38px; }
     .hero .sub { font-size: 18px; }
     .sec-head h2 { font-size: 38px; }
     .host { grid-template-columns: 340px 1fr; }
@@ -391,7 +398,7 @@ fbq('track', 'PageView');
   /* ===== 1120 px ===== */
   @media (min-width: 1120px) {
     .hero { padding: 60px 0 46px; }
-    .hero h1 { font-size: 56px; max-width: 14em; }
+    .hero h1 { font-size: 46px; max-width: 20em; }
   }
   /* Notificaciones flotando a los costados: solo si hay margen */
   @media (min-width: 1380px) {
@@ -484,9 +491,10 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div></div>
 
     <div class="copy">
-      <span class="pill"><span class="dot"></span>Clase en vivo</span>
-      <h1 id="headline">El roadmap con el que pasé mi marca de <span class="marca">60 a 220 millones</span> por mes</h1>
-      <p class="sub" id="sub" data-txt="sub"><b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles al modelo de suscripción.</p>
+      <span class="pill"><span class="dot"></span>Lunes 19 de octubre · 19 hs Arg</span>
+      <h1 id="headline">Cómo un ecommerce hizo <span class="marca">+$220M con 40% de margen</span>, cambiando del modelo de compra única al modelo de suscripción</h1>
+      <div class="tags" aria-label="Qué incluye"><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span></div>
+      <p class="sub" id="sub" data-txt="sub">Te voy a dar <span class="n">TODO</span> lo que necesitás para transformar tu ecommerce de compra única a <b>ECOMMERCE DE SUSCRIPCIONES</b> de <span class="n">+$100M</span> (sin depender del CPA ni de META).</p>
     </div>
     <script>
     /* ===== LANDINGS POR DOLOR =====
@@ -500,7 +508,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
        - headline: el titular (acepta HTML; <span class="marca">…</span> = resaltado naranja).
        - textos: reemplazan los elementos con data-txt="…" del HTML. La clave que no está
          (o que queda vacía) muestra el texto general. Las claves:
-           sub            subtítulo del hero
            badge-tu       etiqueta de las notificaciones de «Tu tienda» (hero, desktop)
            badge-mi       etiqueta de las notificaciones de «Mi tienda» (hero, desktop)
            tema2-titulo   «Lo que vas a ver»: título del punto 02
@@ -515,7 +522,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       cpa: {
         headline: 'Cómo pagar <span class="marca">2,5 veces más por cada cliente</span> que tu competencia y seguir siendo rentable',
         textos: {
-          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción para dejar de pelear el CPA y poder pagar más por cada cliente.',
           "tema3-bajo": 'Sin frenar lo que hoy vendés, y <b>pudiendo pagar 2,5 veces más por cada cliente</b> que tu competencia.',
           "regalo1-desc": 'Un board animado con <b>las 4 semanas</b>, paso a paso, para migrar con tu base de compradores y <b>las campañas que ya tenés</b>.',
           "regalo2-desc": 'Cargás los números de tu marca y ves <b>cuánto podés pagar por cada cliente</b>, con IVA y Ganancias adentro.',
@@ -526,7 +532,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       margen: {
         headline: 'Cómo hacer que la segunda, la tercera y la cuarta compra <span class="marca">entren con el margen entero</span>',
         textos: {
-          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción y pasé de márgenes de 15-20% a más de 50%.',
           "badge-tu": 'Te dejó 7 lucas',
           "badge-mi": 'Margen entero',
           "tema2-titulo": 'Por qué facturás bien y te queda lo que le queda a un empleado',
@@ -548,7 +553,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       meta: {
         headline: 'Cómo hacer que tu marca <span class="marca">arranque el mes ya cobrada</span>, sin depender de Meta',
         textos: {
-          "sub": '<b>Lunes 19 de octubre, 19 hs.</b> En una clase en vivo privada te muestro, paso a paso, cómo pasé mi marca de consumibles a suscripción para que el mes arranque cobrado, aunque se apague la pauta.',
           "badge-tu": 'Salió de Meta',
           "tema2-titulo": 'Por qué el 1 de cada mes arrancás en cero',
           "tema2-bajo": 'Porque <b>todo lo que facturás sale de Meta</b>: si se apaga la pauta, se apaga la marca.',
@@ -567,6 +571,15 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         }
       }
     };
+    /* ===== TEST A/B DE HEADLINE (link general) =====
+       Quien entra por el link general (sin /cpa, /margen ni /meta) ve el A o el B, 50 y 50.
+       Cada navegador ve siempre el mismo. La versión viaja con la visita y con el registro
+       (tracking.ab), y el tablero de tracking compara A contra B.
+       Para apagarlo: AB_TEST = false (todos ven el A). */
+    var AB_TEST    = true;
+    var HEADLINE_A = 'Cómo un ecommerce hizo <span class="marca">+$220M con 40% de margen</span>, cambiando del modelo de compra única al modelo de suscripción';
+    var HEADLINE_B = 'Cómo un ecommerce hizo <span class="marca">+$220M sin pautar un solo peso en Meta</span>, con +40% de margen de forma recurrente únicamente cambiando al modelo de suscripción';
+
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
     var LANDING = (function () {
       var k = (new URLSearchParams(location.search).get("l") || location.pathname.replace(/^\/+|\/+$/g, "")).toLowerCase();
@@ -588,6 +601,17 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     }
     aplicarLanding();
     document.addEventListener("DOMContentLoaded", aplicarLanding);
+
+    /* Versión que ve: la landing del dolor o, en el link general, A o B (clave nueva del test del 14-oct). */
+    var VERSION = LANDING || "A";
+    if (!LANDING && AB_TEST) {
+      try { VERSION = localStorage.getItem("optin_ab_1410") || ""; } catch (e) { VERSION = ""; }
+      if (VERSION !== "A" && VERSION !== "B") {
+        VERSION = Math.random() < 0.5 ? "A" : "B";
+        try { localStorage.setItem("optin_ab_1410", VERSION); } catch (e) {}
+      }
+    }
+    if (!LANDING) document.getElementById("headline").innerHTML = VERSION === "B" ? HEADLINE_B : HEADLINE_A;
     </script>
 
     <!-- VSL de registro (vTurb) -->
@@ -651,25 +675,15 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           </div>
         </div>
         <div>
-          <label for="ciclo">¿Cada cuánto se le termina el producto a tu cliente?</label>
-          <select id="ciclo" name="ciclo" required>
+          <label for="inversion_meta">¿Cuánto estás invirtiendo en Meta por día?</label>
+          <select id="inversion_meta" name="inversion_meta" required>
             <option value="" selected disabled>Elegí una opción</option>
-            <option>En menos de 30 días</option>
-            <option>Entre 30 y 60 días</option>
-            <option>Entre 60 y 90 días</option>
-            <option>Más de 90 días</option>
-            <option>No se termina, se compra una vez y listo</option>
-          </select>
-        </div>
-        <div>
-          <label for="facturacion">¿Cuánto está facturando tu marca mensualmente?</label>
-          <select id="facturacion" name="facturacion" required>
-            <option value="" selected disabled>Elegí una opción</option>
-            <option>Menos de 10M</option>
-            <option>Entre 10M y 30M</option>
-            <option>Entre 30M y 50M</option>
-            <option>Entre 50M y 100M</option>
-            <option>Más de 100M</option>
+            <option>0, todavía no tengo marca</option>
+            <option>Menos de 100 dólares</option>
+            <option>De 100 a 200 dólares</option>
+            <option>De 200 a 500 dólares</option>
+            <option>De 500 a 1.000 dólares</option>
+            <option>Más de 1.000 dólares</option>
           </select>
         </div>
         <div class="hp" aria-hidden="true">
@@ -854,18 +868,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var tz = document.querySelectorAll("[data-tz]");
   for (var z = 0; z < tz.length; z++) tz[z].textContent = EVENT_TZ_LABEL;
 
-  /* Versión del titular: la landing del dolor (si vino de un anuncio con link de landing)
-     o, si no, el A/B de headline */
-  var variant = LANDING || "A";
+  /* Versión del titular (la elige el script de arriba del hero, así no parpadea) */
+  var variant = VERSION;
   var conVersion = Boolean(LANDING) || AB_TEST;
-  if (!LANDING && AB_TEST) {
-    try { variant = localStorage.getItem("optin_variant") || ""; } catch (e) { variant = ""; }
-    if (variant !== "A" && variant !== "B") {
-      variant = Math.random() < 0.5 ? "A" : "B";
-      try { localStorage.setItem("optin_variant", variant); } catch (e) {}
-    }
-    document.getElementById("headline").innerHTML = variant === "A" ? HEADLINE_A : HEADLINE_B;
-  }
 
   /* Countdown */
   var objetivo = new Date(EVENT_DATE).getTime();
@@ -966,8 +971,8 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
     err.style.display = "none";
-    var nombre = form.nombre, email = form.email, tel = form.tel, ciclo = form.ciclo, facturacion = form.facturacion;
-    [nombre, email, tel, ciclo, facturacion].forEach(function (i) { i.classList.remove("campo-error"); });
+    var nombre = form.nombre, email = form.email, tel = form.tel, inversion = form.inversion_meta;
+    [nombre, email, tel, inversion].forEach(function (i) { i.classList.remove("campo-error"); });
 
     if (form.empresa.value) return; /* anti-spam */
 
@@ -976,8 +981,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { email.classList.add("campo-error"); ok = false; }
     var numero = tel.value.replace(/\D/g, "").replace(/^0+/, "");
     if (numero.length < 6) { tel.classList.add("campo-error"); ok = false; }
-    if (!ciclo.value) { ciclo.classList.add("campo-error"); ok = false; }
-    if (!facturacion.value) { facturacion.classList.add("campo-error"); ok = false; }
+    if (!inversion.value) { inversion.classList.add("campo-error"); ok = false; }
     /* Argentina: WhatsApp necesita el 9 después del +54 */
     if (form.pais.value === "54") { numero = numero.replace(/^15/, ""); if (numero.charAt(0) !== "9") numero = "9" + numero; }
     if (!ok) return;
@@ -986,24 +990,23 @@ document.addEventListener("DOMContentLoaded", function () {
       nombre: nombre.value.trim(),
       email: email.value.trim().toLowerCase(),
       telefono: "+" + form.pais.value + numero,
-      ciclo: ciclo.value,
-      facturacion: facturacion.value,
+      inversion_meta: inversion.value,
       tracking: tracking()
     };
     if (conVersion) datos.variant = variant;
+    /* Califica = invierte 100 dólares por día o más. Va también al webhook de GHL, para etiquetar. */
+    var califica = INVERSION_LEAD.indexOf(datos.inversion_meta) > -1;
+    datos.califica = califica ? "Sí" : "No";
 
-    /* Píxel: solo los que facturan 30M o más cuentan como Lead (los demás descalificados
-       no se le informan a Meta para no entrenarlo con ellos). La thank you lo dispara. */
+    /* Píxel (lo dispara la thank you): TODOS los registrados mandan el evento Optin;
+       solo los que califican mandan Lead, que es con el que optimizan las campañas
+       (los descalificados no se informan como Lead para no entrenar a Meta con ellos). */
     try {
-      if (FACTURACION_LEAD.indexOf(datos.facturacion) > -1) {
-        sessionStorage.setItem("genesis_lead", JSON.stringify({
-          id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8), t: Date.now(),
-          /* Coincidencias avanzadas: Meta los encripta (SHA-256) antes de enviarlos */
-          em: datos.email, ph: datos.telefono.replace(/\D/g, ""), fn: datos.nombre.split(" ")[0].toLowerCase()
-        }));
-      } else {
-        sessionStorage.removeItem("genesis_lead");
-      }
+      sessionStorage.setItem("genesis_lead", JSON.stringify({
+        id: "lead-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8), t: Date.now(), calif: califica,
+        /* Coincidencias avanzadas: Meta los encripta (SHA-256) antes de enviarlos */
+        em: datos.email, ph: datos.telefono.replace(/\D/g, ""), fn: datos.nombre.split(" ")[0].toLowerCase()
+      }));
     } catch (e) {}
 
     btn.disabled = true;
@@ -1046,20 +1049,16 @@ document.addEventListener("DOMContentLoaded", function () {
    - EVENT_TZ_LABEL: la hora en las zonas de la audiencia (va en el chip).
    - THANK_YOU_URL: a dónde va el registrado.
    - El píxel de Meta (ID 1105986771965346) está en el <head>.
-   - FACTURACION_LEAD: las respuestas de facturación que cuentan como Lead para Meta.
    - HYROS_SCRIPT_URL: vacío = no carga.
-   - AB_TEST: true para probar dos headlines; cada navegador ve siempre la misma.
-   - HEADLINE_A / HEADLINE_B: los dos headlines (aceptan HTML). Solo para quien entra sin link de landing.
+   - INVERSION_LEAD: las respuestas de inversión diaria en Meta que cuentan como Lead para Meta.
+   - El test A/B de headline (AB_TEST, HEADLINE_A, HEADLINE_B) está arriba, junto al titular.
    - Las landings por dolor (/cpa, /margen, /meta) se configuran en LANDINGS, justo abajo del titular.
    ========================================== */
 var EVENT_DATE       = "2026-10-19T19:00:00-03:00";
 var EVENT_TZ_LABEL   = "19:00 hs (Argentina)";
 var THANK_YOU_URL    = "/thank-you";
-var FACTURACION_LEAD = ["Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
+var INVERSION_LEAD   = ["De 100 a 200 dólares", "De 200 a 500 dólares", "De 500 a 1.000 dólares", "Más de 1.000 dólares"];
 var HYROS_SCRIPT_URL = "";
-var AB_TEST          = false;
-var HEADLINE_A       = 'El roadmap con el que pasé mi marca de <span class="marca">60 a 220 millones</span> por mes';
-var HEADLINE_B       = 'Cómo pasé mi marca de consumibles de <span class="marca">60 a 220 millones</span> por mes con suscripción';
 // El webhook de GHL NO va acá: vive en la variable de entorno GHL_WEBHOOK_URL de Vercel.
 </script>
 </body>
