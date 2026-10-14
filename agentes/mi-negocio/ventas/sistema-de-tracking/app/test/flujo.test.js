@@ -170,6 +170,9 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const m3=(await call(metrics,{cookie})).body; const a3=(m3.porAnuncio||[]).find(x=>x.anuncio==="Ad-inversion");
     ok(a3&&a3.leads===2&&a3.califican===1,"opt-in nuevo: 100 dólares por día califica, menos de 100 no");
     ok(a3&&a3.lista.some(x=>x.facturacion==="De 100 a 200 dólares por día"),"opt-in nuevo: la lista muestra la inversión por día");
+    const todos=(await call(leads,{cookie})).body.leads; const tg=e=>(todos.find(l=>l.email===e)||{}).tags||[];
+    ok(tg("invsi@test.com").includes("optin-19-10")&&tg("invsi@test.com").includes("optin-calificado-19-10"),"opt-in nuevo: el que califica lleva las dos etiquetas");
+    ok(tg("invno@test.com").includes("optin-19-10")&&!tg("invno@test.com").includes("optin-calificado-19-10"),"opt-in nuevo: el que no califica lleva solo la de optin");
     const im=m3.distribucion.inversion_meta; ok(im&&im.valores.find(x=>x.op==="De 100 a 200 dólares").n===1,"opt-in nuevo: distribución de inversión diaria en Meta"); }
   { const e=await call(lead,{method:"POST",cookie,body:{id:"demo-pablo",action:"eliminar"}});
     const t=(await call(leads,{cookie})).body;

@@ -3,6 +3,13 @@
 // (Sin dueños: todo el equipo trabaja todos los leads.)
 
 const store = require("../../lib/store");
+const { calificaOptin } = require("../../lib/rules");
+
+// Etiquetas en GHL (se usan para los públicos de Meta):
+//   optin-19-10            → TODOS los registrados: público de los anuncios de nutrición.
+//   optin-calificado-19-10 → solo los que califican (invierten 100 dólares por día o más en Meta).
+const TAG_OPTIN = "optin-19-10";
+const TAG_CALIFICADO = "optin-calificado-19-10";
 
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,6 +31,8 @@ module.exports = async function handler(req, res) {
       ...(tracking ? { origen: JSON.stringify(tracking) } : {})
     };
 
+    const tags = calificaOptin(datos) ? [TAG_OPTIN, TAG_CALIFICADO] : [TAG_OPTIN];
+
     const existente = await store.findLead(telefono, email);
     if (existente) {
       // Puede ser un contacto viejo de la subcuenta: se suma al lanzamiento con el tag,
@@ -34,7 +43,7 @@ module.exports = async function handler(req, res) {
       await store.updateLead(existente.id, {
         nombre, email, telefono,
         fields: { ...datos, ...extra },
-        addTags: ["optin-19-10"]
+        addTags: tags
       }, existente);
       return res.status(200).json({ ok: true, id: existente.id, repetido: true });
     }
@@ -42,7 +51,7 @@ module.exports = async function handler(req, res) {
     const lead = await store.createLead({
       nombre, email, telefono,
       fields: { ...datos, etapa: "Nuevo", intentos: "0" },
-      tags: ["optin-19-10"]
+      tags
     });
     return res.status(200).json({ ok: true, id: lead.id });
   } catch (e) {

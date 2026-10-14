@@ -360,7 +360,7 @@ fbq('track', 'PageView');
     background: radial-gradient(100% 70% at 50% 0%, rgba(var(--naranja-rgb), .3), transparent 70%), #0f0f10; }
   .lock-date { font-size: 15px; font-weight: 600; color: var(--hueso); }
   .lock-time { font-family: var(--titulos); font-weight: 300; font-size: 76px; line-height: 1; letter-spacing: -0.04em; color: var(--hueso); margin-bottom: 18px; }
-  .final h2 { font-size: 26px; font-weight: 800; max-width: 18em; margin: 0 auto 20px; }
+  .final h2 { font-size: 22px; font-weight: 800; max-width: 22em; margin: 0 auto 20px; line-height: 1.2; }
   .final .chico { font-size: 13.5px; color: var(--gris); margin-top: 12px; }
 
   /* h) Footer */
@@ -387,7 +387,7 @@ fbq('track', 'PageView');
     .host { grid-template-columns: 340px 1fr; }
     .foto { position: sticky; top: 110px; }
     .stat .v { font-size: 26px; }
-    .final h2 { font-size: 34px; }
+    .final h2 { font-size: 30px; }
   }
   @media (min-width: 960px) {
     .bullets { grid-template-columns: repeat(3, 1fr); }
@@ -571,17 +571,25 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         }
       }
     };
-    /* ===== TEST A/B DE HEADLINE (link general) =====
-       Quien entra por el link general (sin /cpa, /margen ni /meta) ve el A o el B, 50 y 50.
-       Cada navegador ve siempre el mismo. La versión viaja con la visita y con el registro
-       (tracking.ab), y el tablero de tracking compara A contra B.
-       Para apagarlo: AB_TEST = false (todos ven el A). */
+    /* ===== TEST A/B DE HEADLINE =====
+       Link para los anuncios: https://TU-DOMINIO/clase → redirige 50 y 50 a /a o /b
+       (lo hace api/clase.js, que conserva los utm y deja una cookie para que la misma
+       persona caiga siempre en la misma versión).
+         /a → headline A · /b → headline B (también sirven solos, para revisar cada versión).
+       Quien entra al link general (/) sin /a ni /b también se reparte 50 y 50 acá.
+       La versión viaja con la visita y con el registro (tracking.ab), y el tablero de tracking
+       compara A contra B. El cierre de la página repite el headline de su versión.
+       Para apagar el reparto del link general: AB_TEST = false (todos ven el A). */
     var AB_TEST    = true;
     var HEADLINE_A = 'Cómo un ecommerce hizo <span class="marca">+$220M con 40% de margen</span>, cambiando del modelo de compra única al modelo de suscripción';
     var HEADLINE_B = 'Cómo un ecommerce hizo <span class="marca">+$220M sin pautar un solo peso en Meta</span>, con +40% de margen de forma recurrente únicamente cambiando al modelo de suscripción';
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
+    /* /a o /b (o ?v=a): versión del test fijada por el link de redirección. Gana sobre todo lo guardado. */
+    var AB_FIJA = (location.pathname.replace(/^\/+|\/+$/g, "") || new URLSearchParams(location.search).get("v") || "").toUpperCase();
+    if (AB_FIJA !== "A" && AB_FIJA !== "B") AB_FIJA = "";
     var LANDING = (function () {
+      if (AB_FIJA) return "";
       var k = (new URLSearchParams(location.search).get("l") || location.pathname.replace(/^\/+|\/+$/g, "")).toLowerCase();
       if (LANDINGS.hasOwnProperty(k)) { try { localStorage.setItem("optin_landing", k); } catch (e) {} return k; }
       try { k = localStorage.getItem("optin_landing") || ""; } catch (e) { k = ""; }
@@ -604,14 +612,23 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 
     /* Versión que ve: la landing del dolor o, en el link general, A o B (clave nueva del test del 14-oct). */
     var VERSION = LANDING || "A";
-    if (!LANDING && AB_TEST) {
+    if (AB_FIJA) {
+      VERSION = AB_FIJA;
+      try { localStorage.setItem("optin_ab_1410", VERSION); } catch (e) {}
+    } else if (!LANDING && AB_TEST) {
       try { VERSION = localStorage.getItem("optin_ab_1410") || ""; } catch (e) { VERSION = ""; }
       if (VERSION !== "A" && VERSION !== "B") {
         VERSION = Math.random() < 0.5 ? "A" : "B";
         try { localStorage.setItem("optin_ab_1410", VERSION); } catch (e) {}
       }
     }
-    if (!LANDING) document.getElementById("headline").innerHTML = VERSION === "B" ? HEADLINE_B : HEADLINE_A;
+    if (!LANDING) {
+      document.getElementById("headline").innerHTML = VERSION === "B" ? HEADLINE_B : HEADLINE_A;
+      /* El cierre repite el headline de su versión (sin el resaltado) */
+      document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("final-titulo").textContent = document.getElementById("headline").textContent;
+      });
+    }
     </script>
 
     <!-- VSL de registro (vTurb) -->
@@ -844,7 +861,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- g) CTA final -->
 <section class="sec final">
   <div class="wrap">
-    <h2 data-txt="final-titulo">El roadmap con el que pasé mi marca de 60 a 220 millones por mes.</h2>
+    <h2 id="final-titulo" data-txt="final-titulo">Cómo un ecommerce hizo +$220M con 40% de margen, cambiando del modelo de compra única al modelo de suscripción</h2>
     <a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a>
     <p class="chico">Registrate en menos de 30 segundos.</p>
   </div>
