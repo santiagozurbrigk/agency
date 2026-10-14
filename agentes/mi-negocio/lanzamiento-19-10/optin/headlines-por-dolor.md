@@ -2,6 +2,77 @@
 
 14-oct-2026. Sale de la call con Naza (Fathom "Impromptu Google Meet Meeting", 14-oct, 50 min). Naza pidió "mándenme 10 ideas de headlines, se las validamos con Tiago".
 
+## v2 — Con la fórmula de la landing de Limitless (webinar.applylimitless.com)
+
+### Cómo está armado su headline
+
+> Cómo una cuenta de **apenas 1.700 seguidores** hizo **$115.000** **en su primer webinar**, copiando lo único que **Hormozi**, **Iman Gadzhi** y **Brez** tienen en común…
+
+| Pieza | En su headline | Para qué sirve |
+|---|---|---|
+| 1. Sujeto en tercera persona | "una cuenta" (es la de Naza, pero no dice "yo") | Lo convierte en un caso, no en un ego. Genera curiosidad |
+| 2. Handicap con "apenas" + número | "de apenas 1.700 seguidores" | Ataca la creencia "necesito una audiencia grande". Hace pensar "si él pudo, yo también" |
+| 3. Resultado con número | "hizo $115.000" | El resultado final, no el punto de partida |
+| 4. **Slot del dolor o creencia** | "en su primer webinar" / "sin depender del contenido" | Es lo que testean: hay dos versiones con la misma estructura y solo cambia este pedazo. **Es la pieza que cambia en cada landing por dolor** |
+| 5. Mecanismo con autoridad prestada | "copiando lo único que Hormozi, Iman Gadzhi y Brez tienen en común…" | Insinúa que es una sola cosa (simple), se apoya en nombres que el avatar respeta y no revela el cómo. Los puntos suspensivos dejan el loop abierto |
+
+**Subtítulo (habla al lector, no del caso):** "Te voy a dar **TODO** lo que necesitás para hacer tu **PRIMER WEBINAR** de **+$100,000 dólares** (sin quemar tu audiencia)". Tiene tres partes: qué te llevás, tu resultado y la objeción entre paréntesis. Debajo, chips con lo que incluye: Agentes de IA · Software · Procesos · SOPs.
+
+**Visual:** cada número y cada nombre va resaltado con su propio color. En el celular el headline ocupa 5 líneas, con letra más chica (~22-24 px) y adentro de un recuadro.
+
+**El resto de la página, para tomar ideas:**
+- Barra de arriba con la prueba siempre visible: "Board: $115k con 1.700 seguidores · En vivo".
+- Las secciones se llaman "Frame 01 · La prueba", "Frame 02 · Qué incluye", etc.: prueba → qué incluye → "los más grandes lo hacen así" → anfitrión → cierre.
+- Una sola pregunta filtro, con la moneda explícita ("$1,500 - $2,500 **dólares**").
+- La bio es una historia de contraste: lo mismo, $2M, le tomó 3 años de una forma y menos de 1 con webinars.
+
+### Cómo se traduce a Manu
+
+| Pieza | Para Manu |
+|---|---|
+| Sujeto | "una marca de químicos argentina" / "una marca" |
+| Handicap | **"3 veces más cara que su competencia"** (el pote a 12.000 contra 4.500) o **Argentina, "donde nadie se suscribe"** |
+| Resultado | "$220 millones en un mes" |
+| Slot del dolor | CPA: "sin depender del CPA" · Margen: "con 50% de margen" · Meta: "sin pautar en Meta" |
+| Mecanismo y autoridad | **"copiando lo único que AG1, Grüns e IM8 tienen en común…"**: son marcas de suplementos por suscripción que el avatar conoce. Ya las usa el hook del H12 |
+
+### Opciones
+
+Todas siguen la fórmula y terminan con **", copiando lo único que AG1, Grüns e IM8 tienen en común…"**. Medidas en nuestra landing: entran en 5 líneas en el celular (igual que la de Limitless) si el titular baja a **24 px**.
+
+**CPA (`/cpa`)**
+- **CPA-A ⭐** Cómo una marca **3 veces más cara que su competencia** hizo **$220 millones** **sin depender del CPA**…
+- **CPA-B** Cómo una marca de químicos argentina hizo **$220 millones en un mes** **pagando el CPA una sola vez**…
+- **CPA-C** Cómo una marca de químicos argentina **paga 2,5 veces más por cliente** que su competencia…
+
+**Margen (`/margen`)**
+- **MAR-A ⭐** Cómo una marca de químicos argentina hizo **$220 millones en un mes** **con 50% de margen**…
+- **MAR-B** Cómo una marca de químicos **pasó de 15-20% de margen a más de 50%**…
+- **MAR-C** Cómo una marca argentina, **donde «nadie se suscribe»**, llegó a **50% de margen**…
+
+**Metadependencia (`/meta`)**
+- **META-A ⭐** Cómo una marca de químicos argentina hizo **$220 millones el mes pasado** **sin pautar en Meta**…
+- **META-B** Cómo una marca de químicos **arranca cada mes con 2.200 suscriptores ya cobrados**…
+- **META-C** Cómo una marca de químicos argentina hizo **$220 millones en un mes** **sin depender de Meta**…
+
+**Cierre alternativo**, por si el avatar no conoce Grüns ni IM8: "…con el único modelo que usan las marcas de suplementos más grandes del mundo…". Es menos específico, así que lo testearía en segundo lugar.
+
+### Subtítulos por dolor (misma estructura que el de Limitless)
+
+- **CPA:** Te voy a dar **TODO** lo que necesitás para pasar tu ecommerce a **SUSCRIPCIÓN** y pagar **2,5 veces más por cada cliente** (sin frenar lo que hoy vendés).
+- **Margen:** Te voy a dar **TODO** lo que necesitás para pasar tu ecommerce a **SUSCRIPCIÓN** y que cada recompra entre **con el margen entero** (sin cambiar tu producto).
+- **Meta:** Te voy a dar **TODO** lo que necesitás para pasar tu ecommerce a **SUSCRIPCIÓN** y que el 1 del mes tu marca **ya arranque cobrada** (aunque apagues la pauta).
+- **Chips debajo:** ROADMAP · SIMULADOR · IA PARA KLAVIYO · SOPs
+
+### A confirmar además de lo de abajo
+
+- **MAR-B:** el salto "de 15-20% a más de 50%" sale del hook del H11. ¿Es el recorrido real de la marca de Manu?
+- **"Lo único que tienen en común"** es la suscripción: AG1, Grüns e IM8 venden por suscripción. Conviene que Manu lo diga así en la clase para cerrar el loop.
+
+---
+
+# v1 (primera tanda, antes de ver la landing de Limitless)
+
 ## Lo que dijo Naza sobre la landing
 
 **Diagnóstico:** el CPM, el costo por view y el CTR (promedio arriba del 12%) están bien. Lo que está roto es la conversión de la landing: **4% de opt-in, cuando en tráfico frío debería ser 10% como mínimo y puede llegar al 30%.** Las dos causas son la promesa y las preguntas filtro.
