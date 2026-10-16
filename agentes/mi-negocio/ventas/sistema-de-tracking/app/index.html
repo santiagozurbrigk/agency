@@ -356,6 +356,11 @@ table.tabla td{padding:11px 10px 11px 0;border-bottom:1px solid var(--borde)}
 table.tabla tr:last-child td{border-bottom:0}
 table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-nums}
 .tabla-scroll{overflow-x:auto}
+.fseg{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:0 0 14px}
+.fseg-g{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fseg-t{font-size:12px;color:var(--tx-3)}
+.fseg .seg button .n{font-size:11px;color:var(--tx-3);margin-left:3px}
+.fseg .seg button.on .n{color:var(--tx-2)}
 /* Anuncios (atribución) */
 .subtabs{display:flex;gap:4px;border-bottom:1px solid var(--borde);margin:-6px 0 18px;overflow-x:auto}
 .subtabs button{padding:10px 14px;font-size:14px;font-weight:500;color:var(--tx-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
@@ -895,6 +900,39 @@ function encabezado(s,acciones){
 function filtroDueno(total,visibles){
   return `<div class="filtros"><span class="cuenta">${visibles} lead${visibles===1?"":"s"}</span></div>`;
 }
+/* Filtros de Seguimiento: etapa, califica o no, intentos y último contacto. Se recuerdan en el navegador. */
+const ETAPAS_SEG=["Contactado","En conversación","Sin respuesta","Califica · pre-venta","Ruta a la clase","Confirmado para la clase"];
+let FSEG={etapa:"todas",califica:"todos",intentos:"todos",frio:false};
+try{FSEG={...FSEG,...JSON.parse(localStorage.getItem("trk_fseg")||"{}")};}catch(e){}
+const intentosDe=l=>parseInt(l.fields.intentos||"0",10)||0;
+// Sin contacto hace más de 24 h (o nunca anotado).
+const frio=l=>{const u=l.fields.ultimo_contacto;return !u||Date.now()-new Date(u).getTime()>864e5;};
+function pasaSeg(l,salvo){
+  if(!l) return false;
+  const f=l.fields, n=intentosDe(l);
+  if(salvo!=="etapa"&&FSEG.etapa!=="todas"&&(f.etapa||"Nuevo")!==FSEG.etapa) return false;
+  if(salvo!=="califica"&&FSEG.califica!=="todos"&&Boolean(l.calc&&l.calc.califica)!==(FSEG.califica==="si")) return false;
+  if(salvo!=="intentos"&&FSEG.intentos!=="todos"&&(FSEG.intentos==="3+"?n<3:n!==+FSEG.intentos)) return false;
+  if(salvo!=="frio"&&FSEG.frio&&!frio(l)) return false;
+  return true;
+}
+function setSeg(k,v){FSEG[k]=v;try{localStorage.setItem("trk_fseg",JSON.stringify(FSEG));}catch(e){}render();}
+function filtrosSeg(ids){
+  const ls=ids.map(lead).filter(Boolean);
+  // Cada cantidad cuenta con los otros filtros aplicados, así se ve cuántos quedarían.
+  const cuenta=(k,fn)=>ls.filter(l=>pasaSeg(l,k)&&fn(l)).length;
+  const btn=(k,v,t,fn)=>{const n=cuenta(k,fn);return `<button class="${FSEG[k]===v?"on":""}" onclick="setSeg('${k}',${typeof v==="string"?`'${v}'`:v})">${esc(t)} <span class="n num">${n}</span></button>`;};
+  const grupo=(tit,html)=>`<div class="fseg-g"><span class="fseg-t">${tit}</span><div class="seg">${html}</div></div>`;
+  const activos=FSEG.etapa!=="todas"||FSEG.califica!=="todos"||FSEG.intentos!=="todos"||FSEG.frio;
+  return `<div class="fseg">
+    ${grupo("Etapa",btn("etapa","todas","Todas",()=>true)+ETAPAS_SEG.map(e=>btn("etapa",e,e,l=>(l.fields.etapa||"Nuevo")===e)).join(""))}
+    ${grupo("Califica",btn("califica","todos","Todos",()=>true)+btn("califica","si","Califica",l=>Boolean(l.calc&&l.calc.califica))+btn("califica","no","No califica",l=>!(l.calc&&l.calc.califica)))}
+    ${grupo("Intentos",btn("intentos","todos","Todos",()=>true)+[["0","Sin intentos"],["1","1 intento"],["2","2 intentos"]].map(([x,t])=>btn("intentos",x,t,l=>intentosDe(l)===+x)).join("")+btn("intentos","3+","3 o más",l=>intentosDe(l)>=3))}
+    ${grupo("Último contacto",`<button class="${FSEG.frio?"on":""}" onclick="setSeg('frio',${!FSEG.frio})">Hace más de 24 h <span class="n num">${cuenta("frio",frio)}</span></button>`)}
+    ${activos?`<button class="btn sm fantasma" onclick="limpiarSeg()">Sacar filtros</button>`:""}
+  </div>`;
+}
+function limpiarSeg(){FSEG={etapa:"todas",califica:"todos",intentos:"todos",frio:false};try{localStorage.removeItem("trk_fseg");}catch(e){}render();}
 function setDueno(v){FILTRO_DUENO=v;try{localStorage.setItem("trk_dueno",v);}catch(e){}render();}
 const pasaDueno=()=>true;
 
@@ -981,7 +1019,9 @@ function render(op){
   if(VISTA!=="met"&&VISTA!=="anun") delete v.dataset.vista;
   switch(VISTA){
     case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,wa:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá."}); break;
-    case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{registro:true,wa:true,vacio:"Nadie en seguimiento todavía"}); break;
+    case "seg": { const ids=DATA?DATA.colas.seguimiento:[];
+      v.innerHTML=encabezado(s)+filtrosSeg(ids)+lista(ids.filter(id=>pasaSeg(lead(id))),{registro:true,wa:true,
+        vacio:ids.length?"Ningún lead con estos filtros":"Nadie en seguimiento todavía",vacioSub:ids.length?"Probá sacando algún filtro.":undefined}); break; }
     case "g1": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo1:[],{numerar:true,vacio:"Nadie agendó todavía",vacioSub:"Los que agenden con el link 1 de la clase aparecen acá."}); break;
     case "g2": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo2:[],{bloques:[
         {titulo:"1 · Completaron la agenda y no agendaron",filtro:l=>l.fields.form_agenda==="Sí"},
