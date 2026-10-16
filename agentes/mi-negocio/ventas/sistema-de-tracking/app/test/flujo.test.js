@@ -174,6 +174,14 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
     ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día");
     ok(an.meta===null,"anuncios: sin variables de Meta, meta = null");
+    ok(an.respuestas&&an.respuestas.pais.some(p=>p.op==="Argentina")&&an.origen.some(o=>o.op==="Anuncios de Meta"),"anuncios: país por prefijo y origen de los opt-ins");
+    ok(an.ab.some(v=>v.version==="B")&&an.ab[0].porDia.length===an.porDia.length&&an.test&&"ganador" in an.test,"anuncios: test A/B con serie por día y ganador");
+    // Inicio del lanzamiento: «Todo el lanzamiento» arranca ahí
+    const st=h("api/settings.js");
+    const malo=await call(st,{method:"POST",cookie,body:{inicioLanzamiento:"no-es-fecha"}}); ok(malo.statusCode===400,"inicio del lanzamiento inválido rechazado");
+    await call(st,{method:"POST",cookie,body:{inicioLanzamiento:hoy}});
+    const an3=(await call(h("api/anuncios.js"),{cookie})).body; ok(an3.desde===hoy&&an3.inicio===hoy,"anuncios: «Todo el lanzamiento» arranca en el inicio configurado");
+    await call(st,{method:"POST",cookie,body:{inicioLanzamiento:""}});
     // Meta Ads con respuestas simuladas
     process.env.META_ACCESS_TOKEN="TOKEN_SECRETO"; process.env.META_AD_ACCOUNT_ID="act_42";
     const fetchReal=global.fetch; let pedidos=[];

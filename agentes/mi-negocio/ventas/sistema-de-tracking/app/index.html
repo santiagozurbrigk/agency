@@ -355,6 +355,77 @@ table.tabla td{padding:11px 10px 11px 0;border-bottom:1px solid var(--borde)}
 table.tabla tr:last-child td{border-bottom:0}
 table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-nums}
 .tabla-scroll{overflow-x:auto}
+/* Anuncios (atribución) */
+.subtabs{display:flex;gap:4px;border-bottom:1px solid var(--borde);margin:-6px 0 18px;overflow-x:auto}
+.subtabs button{padding:10px 14px;font-size:14px;font-weight:500;color:var(--tx-3);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.subtabs button:hover{color:var(--tx)} .subtabs button.on{color:var(--tx);border-bottom-color:var(--marca-dato)}
+.rango .rango-der{margin-left:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.vivo{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--tx-2)} .vivo i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.aviso-err{font-size:13px;color:var(--tx-2);background:var(--warn-suave);border-radius:var(--radio-s);padding:10px 12px;margin:0 0 18px}
+.sec-t{margin:34px 0 14px} .sec-t h3{font-family:var(--tit);font-size:19px;font-weight:600} .sec-t p{font-size:13px;color:var(--tx-3);margin-top:4px;max-width:640px}
+.sec-t.fila{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.chk{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--tx-2);cursor:pointer} .chk input{width:auto}
+.akpis{display:grid;gap:14px;margin-bottom:14px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.akpi{position:relative;border:1px solid var(--borde);border-radius:var(--radio);background:var(--panel);padding:16px 16px 14px;min-height:118px;overflow:hidden}
+.akpi .kt{font-size:12.5px;color:var(--tx-2)} .akpi .kv{font-family:var(--tit);font-size:30px;font-weight:650;margin-top:6px;line-height:1.05}
+.akpi .ks{font-size:12px;color:var(--tx-3);margin-top:8px;line-height:1.45}
+.akpi.chico .kv,.akpi.chico .kt{max-width:calc(100% - 104px)} .akpi .kd{margin-top:8px}
+.akpi .kg{margin-top:10px;width:100%;max-width:220px;margin-left:auto}
+.akpi.chico .kg{position:absolute;right:12px;top:30px;width:96px;margin:0}
+.akpi.chico{min-height:96px} .akpi.chico .kv{font-size:24px}
+.akpi .i{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--borde-2);font-size:9.5px;color:var(--tx-3);cursor:help;vertical-align:1px}
+svg.spark{width:100%;height:auto;display:block}
+.delta{font-size:12px;color:var(--tx-3)} .delta.up{color:var(--ok)} .delta.down{color:var(--mal)}
+.caja{border:1px solid var(--borde);border-radius:var(--radio);background:var(--panel);padding:16px;margin-bottom:14px;min-width:0}
+.caja.sin-p{padding:0} .caja.muda{background:transparent;border-style:dashed}
+.caja-c{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap} .caja-c h5{font-size:13.5px;font-weight:600;margin-bottom:10px}
+.caja-d{font-size:12px;color:var(--tx-3)}
+.grid-2c .caja{margin-bottom:14px}
+svg.ln text.val{font-size:9.5px;fill:var(--tx-2)}
+.emb-stats{display:flex;gap:18px;flex-wrap:wrap;justify-content:flex-end;font-size:12.5px;color:var(--tx-3);margin-bottom:12px} .emb-stats b{color:var(--tx);font-variant-numeric:tabular-nums}
+.embudo{display:flex;gap:10px;align-items:stretch;overflow-x:auto;padding-top:4px}
+.eb{flex:1;min-width:84px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.eb-v{font-size:13px;font-weight:600} .eb-bar{height:170px;width:100%;display:flex;align-items:flex-end}
+.eb-bar i{display:block;width:100%;border-radius:4px 4px 0 0;min-height:2px;position:relative}
+.eb-bar i.m{background:var(--marca-dato)} .eb-bar i.o{background:var(--ok)}
+.eb-v span{font-size:11.5px;font-weight:500;color:var(--tx-3)}
+.eb-t{font-size:11.5px;color:var(--tx-2);text-align:center;line-height:1.3}
+.resp{margin-bottom:12px} .resp-c{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;margin-bottom:5px} .resp-c .num{color:var(--tx-3)} .resp-c b{color:var(--tx)}
+.resp-b{height:7px;border-radius:4px;background:var(--panel-2);overflow:hidden} .resp-b i{display:block;height:100%;background:var(--marca-dato);border-radius:4px} .resp-b i.ok{background:var(--ok)}
+.chip-c{display:inline-block;font-size:11px;padding:1px 7px;border-radius:999px;background:var(--ok-suave);color:var(--ok);font-weight:500;vertical-align:1px}
+.pais{display:grid;grid-template-columns:minmax(90px,1.2fr) 1fr auto auto;gap:10px;align-items:center;font-size:13px;padding:4px 0}
+.pais .p-b{height:5px;background:var(--panel-2);border-radius:3px;overflow:hidden} .pais .p-b i{display:block;height:100%;background:var(--marca-dato)}
+.pais .num{color:var(--tx-3);text-align:right;min-width:70px} .pais .num b{color:var(--tx)}
+.orig-t{font-size:13px;color:var(--tx-2);margin-bottom:10px} .orig-t b{font-family:var(--tit);font-size:28px;color:var(--tx);margin-right:6px}
+.apilada{display:flex;height:10px;border-radius:5px;overflow:hidden;background:var(--panel-2);margin-bottom:10px} .apilada i{display:block;height:100%}
+.pto{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:8px}
+table.tabla tr.total td{font-weight:600;border-top:1px solid var(--borde-2)}
+table.tabla td small{display:block;font-size:11.5px;color:var(--tx-3);font-weight:400}
+details.como{border:1px solid var(--borde);border-radius:var(--radio);padding:14px 16px;margin:28px 0 8px;background:var(--panel)}
+details.como summary{cursor:pointer;font-size:14px;font-weight:600} details.como ul{margin:12px 0 0 18px;font-size:13px;color:var(--tx-2);line-height:1.6}
+.fila-ctl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0 4px}
+.vers{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:14px}
+.ver{border:1px solid var(--borde);border-radius:var(--radio);background:var(--panel);padding:16px} .ver.gana{border-color:var(--marca-dato)}
+.ver .kt{font-size:12.5px;color:var(--tx-2)} .ver .kv{font-family:var(--tit);font-size:30px;font-weight:650;margin-top:6px} .ver .ks{font-size:12px;color:var(--tx-3)}
+.ver-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--borde);margin-top:12px;padding-top:10px}
+.ver-g span{display:block;font-size:11.5px;color:var(--tx-3)} .ver-g b{font-size:15px}
+.conf{max-width:440px;margin-top:14px} .conf-b{position:relative;height:8px;background:var(--panel-2);border-radius:4px}
+.conf-b i{display:block;height:100%;border-radius:4px} .conf-b span{position:absolute;top:-4px;width:2px;height:16px;background:var(--tx-2)}
+.conf-t{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--tx-3);margin-top:6px} .conf-t b{color:var(--tx)}
+.ads-ctl{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0 12px}
+.busca-ads{flex:1;min-width:180px;max-width:340px;height:32px}
+.cols-w{position:relative;margin-left:auto}
+.cols-m{position:absolute;right:0;top:36px;z-index:30;background:var(--panel);border:1px solid var(--borde-2);border-radius:var(--radio-s);box-shadow:var(--sombra-2);padding:8px 10px;min-width:200px}
+.cols-m label{display:flex;align-items:center;gap:8px;font-size:13px;padding:4px 0;cursor:pointer} .cols-m input{width:auto}
+table.tabla-ads td.nom{min-width:240px;white-space:normal}
+table.tabla-ads .lnk{font:inherit;color:inherit;text-align:left;cursor:pointer} table.tabla-ads .lnk:hover{text-decoration:underline}
+table.tabla-ads .flecha{width:16px;flex:none;color:var(--tx-3);font-size:11px;line-height:20px}
+table.tabla-ads tr.sel td{background:var(--naranja-suave)}
+table.tabla-ads .gbar{display:block;height:3px;background:var(--panel-2);border-radius:2px;margin-top:5px;min-width:80px} table.tabla-ads .gbar i{display:block;height:100%;background:var(--marca-dato);border-radius:2px}
+.ent{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--tx-3)} .ent::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--borde-2)}
+.ent.on{color:var(--tx)} .ent.on::before{background:var(--ok)} .ent.rev::before{background:var(--warn)} .ent.mal::before{background:var(--mal)}
+.detalle{margin-top:18px} .det-c{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px} .det-c h3{font-family:var(--tit);font-size:18px;margin-top:2px}
+@media (max-width:640px){.akpi .kg{max-width:150px}.akpi.chico .kg{position:static;width:100%;margin-top:8px}.akpi.chico .kv,.akpi.chico .kt{max-width:100%}.cols-w{margin-left:0}}
 table.tabla-ads td,table.tabla-ads th{white-space:nowrap;padding-left:8px}
 table.tabla-ads th.ordenable{cursor:pointer;user-select:none}
 table.tabla-ads tr.abre{cursor:pointer}
@@ -1085,11 +1156,25 @@ async function renderMetricas(v,s,silencioso){
   });
 }
 
-/* ---------- Anuncios ---------- */
-let ANUN={rango:"todo",desde:"",hasta:"",modo:"real",estado:"todos",orden:"inversion",dir:-1,cerrados:new Set(),ultimo:null,v:null,s:null};
+/* ---------- Anuncios (atribución) ---------- */
+// Columnas de la tabla de anuncios: [clave, título, formato, menos es mejor (semáforo), visible por defecto]
+const COLS_ADS=[
+  ["entrega","Entrega",null,null,1],["presupuesto","Presupuesto diario","usd",null,1],["inversion","Importe gastado","usd",null,1],
+  ["leads","Opt-ins","n",null,1],["calif","Calif.","n",null,0],["cpl","CPL","usd",1,1],["cplCalif","CPL calificado","usd",1,1],
+  ["pctCalif","% calificado","pct",0,1],["pctGrupo","Entran al grupo","pct",0,1],["ctr","CTR link","pct",0,1],["cpm","CPM","usd",1,0],
+  ["clicALanding","Clic → landing","pct",0,0],["convLanding","Conv. landing","pct",0,0],["frecuencia","Frec.","dec",null,0],
+  ["agendas","Agendas","n",null,1],["ventas","Ventas","n",null,1]];
+let ANUN={tab:"funnel",rango:"todo",desde:"",hasta:"",modo:"real",estado:"todos",nivel:"campana",busca:"",orden:"inversion",dir:-1,
+  cerrados:new Set(),sel:null,version:"final",valores:false,colsMenu:false,ultimo:null,at:null,v:null,s:null,
+  cols:(()=>{try{const c=JSON.parse(localStorage.getItem("anun_cols")||"null");if(Array.isArray(c))return c;}catch(e){}return COLS_ADS.filter(c=>c[4]).map(c=>c[0]);})()};
 const diaAR=d=>new Date((d?new Date(d):new Date()).getTime()-3*3600e3).toISOString().slice(0,10);
 const fDia=d=>{const p=d.split("-");return `${+p[2]}/${+p[1]}`;};
 const fPct=v=>v==null?"—":String(v).replace(".",",")+"%";
+const usd2=n=>n==null?"—":"USD "+Number(n).toLocaleString("es-AR",{maximumFractionDigits:2});
+const fNum=n=>n==null?"—":Number(n).toLocaleString("es-AR");
+const fDec=v=>v==null?"—":String(Math.round(v*100)/100).replace(".",",");
+const FMT={usd:usd2,pct:fPct,n:fNum,dec:fDec};
+const dv=(a,b)=>b?Math.round(a/b*100)/100:null, pc=(a,b)=>b?Math.round(a/b*1000)/10:null;
 
 // Gráfico de líneas en SVG. series: [{nombre, datos:[n|null], color, punteada, fmt}]
 function lineas(x,series,{pct=false,alto=200}={}){
@@ -1122,6 +1207,7 @@ function activarTips(v){
     el.addEventListener("mouseleave",()=>tip.style.display="none");
   });
 }
+
 function rangoAnun(){
   const hoy=diaAR(), r=ANUN.rango;
   if(r==="hoy") return {desde:hoy,hasta:hoy};
@@ -1132,135 +1218,349 @@ function rangoAnun(){
 }
 function anunRango(r){ANUN.rango=r;render();}
 function anunFechas(){ANUN.desde=$("#aDesde").value;ANUN.hasta=$("#aHasta").value;if(ANUN.desde&&ANUN.hasta){ANUN.rango="rango";render();}}
-function anunModo(m){ANUN.modo=m;render();}
+// Cambios de vista que no necesitan volver a pedir los datos.
+function anunPintar(){renderAnuncios(ANUN.v,ANUN.s,true,true);}
+function anunModo(m){ANUN.modo=m;anunPintar();}
+function anunTab(t){ANUN.tab=t;anunPintar();}
+function anunEstado(k){ANUN.estado=k;anunPintar();}
+function anunNivel(k){ANUN.nivel=k;ANUN.sel=null;anunPintar();}
+function anunVersion(k){ANUN.version=k;anunPintar();}
+function anunValores(c){ANUN.valores=c;anunPintar();}
+function anunOrden(k){if(ANUN.orden===k)ANUN.dir*=-1;else{ANUN.orden=k;ANUN.dir=-1;}anunPintar();}
+function anunToggle(k,ev){if(ev)ev.stopPropagation();ANUN.cerrados.has(k)?ANUN.cerrados.delete(k):ANUN.cerrados.add(k);anunPintar();}
+function anunSel(tipo,id,ev){if(ev)ev.stopPropagation();ANUN.sel=ANUN.sel&&ANUN.sel.id===id&&ANUN.sel.tipo===tipo?null:{tipo,id};anunPintar();
+  if(ANUN.sel)setTimeout(()=>{const d=$("#adDetalle");if(d)d.scrollIntoView({behavior:"smooth",block:"nearest"});},50);}
+function anunColsMenu(){ANUN.colsMenu=!ANUN.colsMenu;anunPintar();}
+function anunCol(k,on){ANUN.cols=on?[...new Set([...ANUN.cols,k])]:ANUN.cols.filter(c=>c!==k);try{localStorage.setItem("anun_cols",JSON.stringify(ANUN.cols));}catch(e){}anunPintar();}
+function anunBusca(el){ANUN.busca=el.value;const pos=el.selectionStart;anunPintar();const i=$("#aBusca");if(i){i.focus();try{i.setSelectionRange(pos,pos);}catch(e){}}}
 
-const usd2=n=>n==null?"—":"USD "+Number(n).toLocaleString("es-AR",{maximumFractionDigits:2});
-function anunEstado(k){ANUN.estado=k;renderAnuncios(ANUN.v,ANUN.s,true,true);}
-function anunOrden(k){if(ANUN.orden===k)ANUN.dir*=-1;else{ANUN.orden=k;ANUN.dir=-1;}renderAnuncios(ANUN.v,ANUN.s,true,true);}
-function anunToggle(k){ANUN.cerrados.has(k)?ANUN.cerrados.delete(k):ANUN.cerrados.add(k);renderAnuncios(ANUN.v,ANUN.s,true,true);}
-// Métricas de una fila (anuncio, conjunto o campaña) a partir de sus sumas.
-function metricasMeta(x){
-  const d=(a,b)=>b?Math.round(a/b*100)/100:null, p=(a,b)=>b?Math.round(a/b*1000)/10:null;
-  return {...x,cpl:d(x.inversion,x.leads),cplCalif:d(x.inversion,x.calif),cpm:x.impresiones?Math.round(x.inversion/x.impresiones*100000)/100:null,
-    ctr:p(x.clics,x.impresiones),clicALanding:p(x.lpv,x.clics),convLanding:p(x.leads,x.lpv)};
+// Mini gráfico de tendencia. El último tramo va punteado si el día todavía no cerró.
+function spark(datos,{color="var(--marca-dato)",abierto=false,w=120,h=38}={}){
+  const pts=datos.map((v,i)=>[i,v]).filter(p=>p[1]!=null);
+  if(pts.length<2) return "";
+  const vals=pts.map(p=>p[1]), mn=Math.min(...vals), mx=Math.max(...vals), r=mx-mn||1;
+  const X=i=>2+i*(w-8)/(datos.length-1), Y=v=>h-4-(v-mn)/r*(h-10);
+  const P=pts.map(([i,v])=>`${X(i)},${Y(v)}`);
+  const corte=abierto?P.length-1:P.length;
+  const firme=P.slice(0,corte), ult=pts[pts.length-1];
+  let g=`<polygon points="${X(pts[0][0])},${h} ${firme.join(" ")} ${X(pts[corte-1][0])},${h}" fill="${color}" fill-opacity=".14"/>`;
+  g+=`<polyline points="${firme.join(" ")}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linejoin="round"/>`;
+  if(abierto) g+=`<polyline points="${P[P.length-2]} ${P[P.length-1]}" fill="none" stroke="${color}" stroke-width="1.8" stroke-dasharray="2 3"/>`;
+  g+=`<circle cx="${X(ult[0])}" cy="${Y(ult[1])}" r="3" fill="var(--bg)" stroke="${color}" stroke-width="1.6"/>`;
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" aria-hidden="true">${g}</svg>`;
 }
-function panelMeta(M,x,card,seg){
-  const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)",D=M.porDia,col=k=>D.map(d=>d[k]);
-  let h=`<div class="grid-2c">`;
-  h+=card("Inversión por día","Gasto diario en Meta.",lineas(x,[{nombre:"Inversión",datos:col("inversion"),color:NAR,fmt:usd2}]),[[NAR,"Inversión (USD)"]]);
-  h+=card("CPL real y calificado por día","Inversión del día sobre leads de pauta (llena) y sobre calificados (punteada).",
-    lineas(x,[{nombre:"CPL real",datos:col("cpl"),color:NAR,fmt:usd2},{nombre:"CPL calificado",datos:col("cplCalif"),color:VER,punteada:true,fmt:usd2}]),[[NAR,"CPL real"],[VER,"CPL calificado",1]]);
-  h+=card("CTR y clic → landing por día","CTR: clics en el enlace sobre impresiones. Clic → landing: vistas de la landing sobre clics.",
-    lineas(x,[{nombre:"CTR",datos:col("ctr"),color:NAR,fmt:fPct},{nombre:"Clic → landing",datos:col("clicALanding"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),[[NAR,"CTR"],[GRI,"Clic → landing",1]]);
-  h+=card("CPM por día","Costo cada 1.000 impresiones.",lineas(x,[{nombre:"CPM",datos:col("cpm"),color:NAR,fmt:usd2}]),[[NAR,"CPM (USD)"]]);
-  h+=`</div>`;
+// Flecha de hoy contra ayer: verde si mejora, rojo si empeora.
+function delta(hoy,ayer,menosMejor){
+  if(hoy==null||ayer==null||!ayer) return "";
+  const c=Math.round((hoy-ayer)/Math.abs(ayer)*100);
+  if(!c) return `<span class="delta">Igual que ayer</span>`;
+  const mejora=menosMejor?c<0:c>0;
+  return `<span class="delta ${mejora?"up":"down"}">${c>0?"↑":"↓"} ${c>0?"+":""}${c}% vs ayer</span>`;
+}
+function kpi({t,v,sub="",d="",serie=null,color,abierto,tip,chico}){
+  return `<div class="akpi${chico?" chico":""}"><div class="kt">${t}${tip?` <span class="i" data-tip="${esc(tip)}">i</span>`:""}</div>
+    <div class="kv num">${v}</div>${sub?`<div class="ks">${sub}</div>`:""}${d?`<div class="kd">${d}</div>`:""}
+    ${serie?`<div class="kg">${spark(serie,{color,abierto})}</div>`:""}</div>`;
+}
+// Gráfico de doble eje: izq (área o línea) a la izquierda, der (línea) a la derecha.
+// El día de hoy, si está en el rango, va punteado porque todavía no cerró.
+function doble(x,izq,der,{abierto=false,alto=220}={}){
+  const W=680,H=alto,pl=50,pr=der?50:12,pt=14,pb=24,iw=W-pl-pr,ih=H-pt-pb;
+  const escala=(s)=>{const vs=s.datos.filter(v=>v!=null);let mx=s.pct?Math.min(100,Math.max(1,...vs)*1.15):Math.max(1e-9,...vs);
+    if(!s.pct){const e=Math.pow(10,Math.floor(Math.log10(mx||1)));mx=Math.ceil(mx/e)*e||1;}else mx=Math.ceil(mx/10)*10||10;return mx;};
+  const series=[izq,der].filter(Boolean), mx=series.map(escala);
+  const X=i=>pl+(x.length<2?iw/2:i*iw/(x.length-1)), Y=(v,k)=>pt+ih-(v/mx[k])*ih;
+  const eti=(v,s)=>s.pct?Math.round(v)+"%":(s.fmt===usd2?"$":"")+(v>=1000?Math.round(v).toLocaleString("es-AR"):(Math.round(v*10)/10).toLocaleString("es-AR"));
+  let g="";
+  for(let k=0;k<=4;k++){const y=pt+ih-ih*k/4;g+=`<line class="g" x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}"/><text x="${pl-6}" y="${y+3}" text-anchor="end">${eti(mx[0]*k/4,izq)}</text>`;
+    if(der) g+=`<text x="${W-pr+6}" y="${y+3}" text-anchor="start">${eti(mx[1]*k/4,der)}</text>`;}
+  const salto=Math.max(1,Math.ceil(x.length/8));
+  x.forEach((d,i)=>{if(i%salto===0||i===x.length-1)g+=`<text x="${X(i)}" y="${H-6}" text-anchor="middle">${fDia(d)}</text>`;});
+  series.forEach((s,k)=>{
+    const pts=s.datos.map((v,i)=>v==null?null:[X(i),Y(v,k)]);
+    const n=pts.length, corte=abierto&&n>1?n-1:n;
+    const firmes=pts.slice(0,corte).filter(Boolean);
+    if(s.area&&firmes.length>1) g+=`<polygon points="${firmes[0][0]},${pt+ih} ${firmes.map(p=>p.join(",")).join(" ")} ${firmes[firmes.length-1][0]},${pt+ih}" fill="${s.color}" fill-opacity=".14"/>`;
+    // Tramos continuos (los días sin dato cortan la línea).
+    let tramo=[];const cerrar=()=>{if(tramo.length>1)g+=`<polyline points="${tramo.join(" ")}" fill="none" stroke="${s.color}" stroke-width="2" ${s.punteada?'stroke-dasharray="4 4"':""} stroke-linejoin="round"/>`;tramo=[];};
+    pts.slice(0,corte).forEach(p=>{if(!p){cerrar();return;}tramo.push(p.join(","));});cerrar();
+    if(abierto&&n>1&&pts[n-1]&&pts[n-2]) g+=`<polyline points="${pts[n-2].join(",")} ${pts[n-1].join(",")}" fill="none" stroke="${s.color}" stroke-width="2" stroke-dasharray="2 4"/>`;
+    pts.forEach((p,i)=>{if(!p)return;const ult=abierto&&i===n-1;
+      g+=`<circle cx="${p[0]}" cy="${p[1]}" r="${x.length>40?1.6:3}" fill="${ult?"var(--bg)":s.color}" stroke="${s.color}" stroke-width="1.5"/>`;
+      if(ANUN.valores&&s.datos[i]!=null) g+=`<text class="val" x="${p[0]}" y="${p[1]-8}" text-anchor="middle">${(s.fmt||String)(s.datos[i])}</text>`;});
+  });
+  const ancho=x.length<2?iw:iw/(x.length-1);
+  x.forEach((d,i)=>{const tip=fDia(d)+(abierto&&i===x.length-1?" (en curso)":"")+" · "+series.map(s=>`${s.nombre}: ${s.datos[i]==null?"—":(s.fmt||String)(s.datos[i])}`).join(" · ");
+    g+=`<rect class="col" data-tip="${esc(tip)}" x="${X(i)-ancho/2}" y="${pt}" width="${ancho}" height="${ih}"/>`;});
+  return `<svg class="ln" viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+const leyendaHtml=(items)=>`<div class="leyenda">${items.map(([c,t,p])=>`<span><i style="background:${c}${p?";opacity:.55":""}"></i>${t}</span>`).join("")}</div>`;
+const caja=(tit,cuerpo,{sub="",der="",cls=""}={})=>`<div class="caja ${cls}"><div class="caja-c"><h5>${tit}</h5>${der?`<span class="caja-d">${der}</span>`:""}</div>${cuerpo}${sub?`<p class="nota-a" style="margin:10px 0 0">${sub}</p>`:""}</div>`;
+const seccion=(tit,sub)=>`<div class="sec-t"><h3>${tit}</h3>${sub?`<p>${sub}</p>`:""}</div>`;
 
-  // Tabla Campaña → Conjunto → Anuncio.
-  const ads=M.anuncios.filter(a=>ANUN.estado==="todos"||(ANUN.estado==="activos"?a.activo:!a.activo));
-  const SUMA=["inversion","impresiones","clics","lpv","leads","calif","agendas","ventas"];
-  const sumar=(arr,extra)=>{const o={...extra};SUMA.forEach(k=>o[k]=arr.reduce((t,a)=>t+(a[k]||0),0));return metricasMeta(o);};
-  const campanas=[];
-  for(const a of ads){
-    let c=campanas.find(c=>c.id===a.campanaId); if(!c){c={id:a.campanaId,nombre:a.campana,conjuntos:[]};campanas.push(c);}
-    let j=c.conjuntos.find(j=>j.id===a.conjuntoId); if(!j){j={id:a.conjuntoId,nombre:a.conjunto,ads:[]};c.conjuntos.push(j);}
-    j.ads.push({...a,nombre:a.anuncio});
-  }
-  const ord=(arr)=>arr.sort((p,q)=>{const a=p[ANUN.orden],b=q[ANUN.orden];if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;
-    return typeof a==="string"?ANUN.dir*-1*a.localeCompare(b):ANUN.dir*(a-b);});
-  campanas.forEach(c=>{c.conjuntos.forEach(j=>{Object.assign(j,sumar(j.ads));ord(j.ads);});Object.assign(c,sumar(c.conjuntos.flatMap(j=>j.ads)));ord(c.conjuntos);});
-  ord(campanas);
-  // Semáforo contra el promedio de la cuenta: verde si es mejor; rojo si es 25% peor o más.
-  const P=M.resumen;
-  const sem=(k,v,menosMejor)=>{const ref=P[k];if(v==null||!ref)return "";const r=menosMejor?v/ref:ref/v;return r<1?"ok":r>=1.25?"mal":"";};
-  const COLS=[["nombre","Nombre"],["inversion","Inversión",usd2],["leads","Leads"],["calif","Calif."],["cpl","CPL",usd2,1],["cplCalif","CPL calif.",usd2,1],
-    ["ctr","CTR",fPct,0],["cpm","CPM",usd2,1],["clicALanding","Clic → landing",fPct,0],["convLanding","Conv. landing",fPct,0],["frecuencia","Frec.",v=>v==null?"—":String(Math.round(v*100)/100).replace(".",",")],["agendas","Agendas"],["ventas","Ventas"]];
-  const celdas=(r)=>COLS.slice(1).map(([k,,f,menos])=>{const v=r[k];const c=menos===undefined?"":sem(k,v,menos===1);
-    return `<td class="n ${c?"sem-"+c:""}">${f?f(v):(v==null?"—":v)}</td>`;}).join("");
-  const fila=(r,nivel,clave,hijos)=>{const cerrado=ANUN.cerrados.has(clave);
-    return `<tr class="niv-${nivel}${hijos?" abre":""}" ${hijos?`onclick="anunToggle('${esc(clave)}')"`:""}><td><span style="padding-left:${nivel*16}px">${hijos?`<span class="flecha">${cerrado?"▸":"▾"}</span>`:""}${esc(r.nombre||"(sin nombre)")}</span>${nivel===2?` <span class="chip ${r.activo?"ok":""}">${r.activo?"Activo":"Apagado"}</span>`:""}</td>${celdas(r)}</tr>`;};
-  let filas="";
-  for(const c of campanas){filas+=fila(c,0,"c:"+c.id,true);if(ANUN.cerrados.has("c:"+c.id))continue;
-    for(const j of c.conjuntos){filas+=fila(j,1,"s:"+j.id,true);if(ANUN.cerrados.has("s:"+j.id))continue;
-      for(const a of j.ads)filas+=fila(a,2,"a:"+a.adId,false);}}
-  const cab=COLS.map(([k,t])=>`<th class="${k==="nombre"?"":"n"} ordenable" onclick="anunOrden('${k}')">${t}${ANUN.orden===k?(ANUN.dir<0?" ↓":" ↑"):""}</th>`).join("");
-  const nota=`Verde: mejor que el promedio de la cuenta. Rojo: 25% peor o más. Tocá una campaña o un conjunto para abrirlo o cerrarlo, y un encabezado para ordenar.${M.sinCruzar?` ${M.sinCruzar} lead${M.sinCruzar===1?"":"s"} de pauta no se pudo${M.sinCruzar===1?"":"ieron"} unir a un anuncio de Meta (UTMs distintos al nombre del anuncio).`:""}`;
-  h+=card("Anuncios: campaña → conjunto → anuncio",nota,
-    `<div class="filtros" style="margin:0 0 10px">${seg([["todos","Todos"],["activos","Activos"],["apagados","Apagados"]],ANUN.estado,"anunEstado")}</div>`+
-    (campanas.length?`<div class="tabla-scroll"><table class="tabla tabla-ads"><thead><tr>${cab}</tr></thead><tbody>${filas}</tbody></table></div>`:`<div class="sin-datos">Sin anuncios con inversión en este rango</div>`));
-  return h;
-}
 async function renderAnuncios(v,s,silencioso,deCache){
   const yaPintado=silencioso&&v.dataset.vista==="anun";
   ANUN.v=v; ANUN.s=s;
   const seg=(op,actual,fn)=>`<div class="seg">${op.map(([k,t])=>`<button class="${actual===k?"on":""}" onclick="${fn}('${k}')">${t}</button>`).join("")}</div>`;
+  const tabs=`<div class="subtabs">${[["funnel","Funnel y ads"],["landings","Landings"],["ads","Anuncios"]].map(([k,t])=>`<button class="${ANUN.tab===k?"on":""}" onclick="anunTab('${k}')">${t}</button>`).join("")}</div>`;
   const filtros=`<div class="rango">${seg([["todo","Todo el lanzamiento"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"]],ANUN.rango,"anunRango")}
-    <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta"></div>`;
-  if(!yaPintado) v.innerHTML=encabezado(s)+filtros+`<div class="tiles">${[1,2,3,4,5].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
+    <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta">
+    <span class="rango-der">${ANUN.at?`<span class="vivo"><i></i>Actualizado ${ANUN.at}</span>`:""}${seg([["real","Opt-ins reales"],["calif","Solo calificados"]],ANUN.modo,"anunModo")}</span></div>`;
+  if(!yaPintado) v.innerHTML=encabezado(s)+tabs+filtros+`<div class="akpis">${[1,2,3,4,5].map(()=>`<div class="akpi"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
   const r=rangoAnun();
-  let a;try{a=deCache&&ANUN.ultimo?ANUN.ultimo:await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));ANUN.ultimo=a;}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
+  let a;try{
+    if(deCache&&ANUN.ultimo) a=ANUN.ultimo;
+    else{a=await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));ANUN.ultimo=a;ANUN.at=new Date().toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit"});}
+  }catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+tabs+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
   if(VISTA!=="anun") return;
-  const R=a.resumen, D=a.porDia, x=D.map(d=>d.dia), col=k=>D.map(d=>d[k]);
-  const tile=(v2,t,sub)=>`<div class="tile"><div class="t">${t}</div><div class="v num">${v2}</div>${sub?`<div class="s">${sub}</div>`:""}</div>`;
-  const card=(tit,sub,cuerpo,leyenda)=>`<div class="tarjeta"><h4>${tit}</h4>${leyenda?`<div class="leyenda">${leyenda.map(([c,t,p])=>`<span><i style="background:${c}${p?";opacity:.55":""}"></i>${t}</span>`).join("")}</div>`:""}${cuerpo}${sub?`<p class="nota-a" style="margin:10px 0 0">${sub}</p>`:""}</div>`;
-  const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)";
-  let h=encabezado(s)+filtros+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)} · días en hora de Argentina. «De pauta» = leads que llegaron desde un anuncio de Meta (UTMs del anuncio). Calificado = invierte 100 dólares por día o más en Meta (leads de antes del 14-oct: facturación de 30M o más).</p>`;
-  const M=a.meta&&!a.meta.error?a.meta:null, MR=M&&M.resumen;
-  if(MR) h+=`<div class="tiles">
-    ${tile(usd2(MR.inversion),"Inversión en Meta",`${MR.impresiones.toLocaleString("es-AR")} impresiones`)}
-    ${tile(usd2(MR.cpl),"CPL real","Inversión / leads de pauta")}
-    ${tile(usd2(MR.cplCalif),"CPL calificado","Inversión / calificados de pauta")}
-    ${tile(usd2(MR.cpm),"CPM","Cada 1.000 impresiones")}
-    ${tile(fPct(MR.ctr),"CTR",`${MR.clics.toLocaleString("es-AR")} clics en el enlace`)}
-    ${tile(fPct(MR.clicALanding),"Clic → landing",`${MR.lpv.toLocaleString("es-AR")} vistas de la landing. Si baja, la página carga lento`)}
-    ${tile(fPct(MR.convLanding),"Conversión landing (Meta)","Leads de pauta / vistas de la landing que informa Meta")}
-    ${tile(MR.frecuencia==null?"—":String(Math.round(MR.frecuencia*100)/100).replace(".",","),"Frecuencia","Veces que vio un anuncio cada persona")}
-  </div>`;
-  h+=`<div class="tiles">
-    ${tile(R.leadsPauta,"Leads de pauta")}
-    ${tile(R.califPauta,"Calificados de pauta","Meta: 100 dólares por día o más")}
-    ${tile(`${fPct(R.pctCalifPauta)}`,"% calificado (de pauta)",R.pctCalifPauta==null?"":`${fPct(Math.round((100-R.pctCalifPauta)*10)/10)} no califica`)}
-    ${tile(fPct(R.convLandingPauta),"Conversión landing (pauta)",`${R.visitasPauta} visitas desde anuncios`)}
-    ${tile(fPct(R.convCalifPauta),"Landing → calificado (pauta)")}
-    ${tile(R.tocaronGrupo,"Tocaron «Entrar al grupo»",`${fPct(R.pctGrupoTodos)} de todos · ${fPct(R.pctGrupoPauta)} de pauta (${R.tocaronGrupoPauta})`)}
-    ${tile(fPct(R.tasaContacto),"Tasa de contacto (SDR)","Tienen al menos un intento")}
-    ${tile(fPct(R.pickup),"Pickup","Contestaron / contactados")}
-    ${tile(fPct(R.califReal),"Calificación real","Facturación confirmada por el SDR / calificados")}
-    ${tile(fPct(R.tasaAgenda),"Tasa de agenda","Calificados que agendaron (pre-venta o llamada)")}
-    ${tile(R.leadsSinAnuncio,"Leads sin anuncio","Directos, orgánicos, bio, historias")}
-    ${tile(R.leadsTotal,"Leads en total")}
-  </div>`;
-  if(a.ab){
-    h+=card("Test de titulares y landings","A / B: test de titular. cpa / margen / meta: landing de cada dolor, según el anuncio. Cada visitante ve siempre la misma versión. Calificados por visitante es la métrica que manda.",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitantes</th><th class="n">Leads</th><th class="n">Conversión</th><th class="n">Calificados</th><th class="n">Calif. por visitante</th></tr></thead><tbody>
-      ${a.ab.map(t=>`<tr><td>${esc(t.version)}</td><td class="n">${t.visitantes}</td><td class="n">${t.leads}</td><td class="n">${fPct(t.conversion)}</td><td class="n">${t.calificados} <span style="color:var(--tx-3)">(${fPct(t.pctCalif)})</span></td><td class="n"><b>${fPct(t.califPorVisitante)}</b></td></tr>`).join("")}</tbody></table></div>`);
-  }
-  const real=ANUN.modo==="real";
-  h+=`<div class="filtros" style="margin:8px 0 18px"><span style="font-size:12.5px;color:var(--tx-3)">Gráficos de pauta</span>${seg([["real","Real (todos los leads)"],["calif","Calificados"]],ANUN.modo,"anunModo")}</div>`;
-  h+=`<div class="grid-2c">`;
-  h+=card(real?"Leads por día":"Calificados por día","La línea llena es de pauta; la punteada, todos (incluye directos y orgánicos).",
-    lineas(x,[{nombre:"De pauta",datos:col(real?"leadsPauta":"califPauta"),color:NAR},{nombre:"Todos",datos:col(real?"leadsTotal":"califTodos"),color:GRI,punteada:true}]),
-    [[NAR,"De pauta"],[GRI,"Todos",1]]);
-  h+=card("% de leads calificados por día","De los leads de pauta de cada día, cuántos califican (llena) y cuántos no (punteada).",
-    lineas(x,[{nombre:"% calificados",datos:col("pctCalifPauta"),color:VER,fmt:fPct},{nombre:"% no calificados",datos:D.map(d=>d.pctCalifPauta==null?null:Math.round((100-d.pctCalifPauta)*10)/10),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
-    [[VER,"% calificados"],[GRI,"% no calificados",1]]);
-  h+=card("Conversión de la landing por día","Leads y calificados de pauta sobre visitas a la landing desde anuncios (las visitas se cuentan desde el 10/10).",
-    lineas(x,[{nombre:"A lead",datos:col("convLandingPauta"),color:NAR,fmt:fPct},{nombre:"A calificado",datos:col("convCalifPauta"),color:VER,fmt:fPct}],{pct:true}),
-    [[NAR,"Landing → lead"],[VER,"Landing → calificado"]]);
-  h+=card("% que tocó «Entrar al grupo» por día","Personas distintas que tocaron el botón verde de la thank you, sobre los leads de ese día.",
-    lineas(x,[{nombre:"De pauta",datos:col("pctGrupoPauta"),color:NAR,fmt:fPct},{nombre:"Todos",datos:col("pctGrupoTodos"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
-    [[NAR,"Leads de pauta"],[GRI,"Todos",1]]);
-  h+=card("Tasa de contacto y contestaron por día","De los leads registrados ese día: con al menos un intento del SDR (llena) y los que además contestaron (punteada). Los días recientes suben a medida que los SDR trabajan.",
-    lineas(x,[{nombre:"Contactados",datos:col("tasaContacto"),color:NAR,fmt:fPct},{nombre:"Contestaron",datos:col("pctContestaron"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),
-    [[NAR,"Tasa de contacto"],[GRI,"Contestaron",1]]);
-  h+=card("Calificación real por día","Calificados confirmados por el SDR sobre todos los calificados del día.",
-    lineas(x,[{nombre:"Calificación real",datos:col("califReal"),color:VER,fmt:fPct}],{pct:true}),[[VER,"Calificación real"]]);
-  h+=card("Tasa de agenda por día","De los calificados de cada día, cuántos agendaron pre-venta o llamada.",
-    lineas(x,[{nombre:"Tasa de agenda",datos:col("tasaAgenda"),color:NAR,fmt:fPct}],{pct:true}),[[NAR,"Tasa de agenda"]]);
-  h+=`</div>`;
-  if(!a.meta) h+=`<div class="tarjeta"><h4>Inversión, CPL, CPM y panel de anuncios</h4><p style="color:var(--tx-3);font-size:13.5px">Falta conectar Meta Ads: cargá META_ACCESS_TOKEN y META_AD_ACCOUNT_ID en Vercel.</p></div>`;
-  else if(a.meta.error) h+=`<div class="tarjeta"><h4>No se pudieron traer los datos de Meta</h4><p style="color:var(--tx-3);font-size:13.5px">${esc(a.meta.error)}</p></div>`;
-  else h+=panelMeta(M,x,card,seg);
+  const filtros2=filtros.replace(/<span class="rango-der">[\s\S]*<\/span><\/div>$/,`<span class="rango-der"><span class="vivo"><i></i>Actualizado ${ANUN.at||""}</span>${seg([["real","Opt-ins reales"],["calif","Solo calificados"]],ANUN.modo,"anunModo")}</span></div>`);
+  const enCurso=a.hasta===a.hoy;
+  let h=encabezado(s)+tabs+filtros2+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)}, en hora de Argentina, según el día en que se registró cada lead.${enCurso?" Hoy todavía está en curso.":""}${!a.inicio&&ANUN.rango==="todo"?` <b>«Todo el lanzamiento» arranca en el primer lead: poné el inicio del lanzamiento en Configuración para no mezclar lanzamientos anteriores.</b>`:""}</p>`;
+  const M=a.meta&&!a.meta.error&&a.meta.resumen?a.meta:null;
+  if(a.meta&&a.meta.error) h+=`<div class="aviso-err"><b>No se pudieron traer los datos de Meta.</b> ${esc(a.meta.error)}</div>`;
+  else if(!a.meta) h+=`<div class="aviso-err">Falta conectar Meta Ads: cargá META_ACCESS_TOKEN y META_AD_ACCOUNT_ID en Vercel.</div>`;
+  if(ANUN.tab==="landings") h+=tabLandings(a,M,seg,enCurso);
+  else if(ANUN.tab==="ads") h+=tabAds(a,M,seg,enCurso);
+  else h+=tabFunnel(a,M,enCurso);
   pintarEnLugar(v,h); v.dataset.vista="anun";
   activarTips(v);
+}
+
+/* ----- Funnel y ads ----- */
+function tabFunnel(a,M,abierto){
+  const R=a.resumen, D=a.porDia, x=D.map(d=>d.dia), col=k=>D.map(d=>d[k]), cal=ANUN.modo==="calif";
+  const MD=M?M.porDia:[], mc=k=>MD.map(d=>d[k]), MR=M&&M.resumen;
+  const hoyAyer=(arr)=>abierto&&arr.length>1?[arr[arr.length-1],arr[arr.length-2]]:[null,null];
+  const NAR="var(--marca-dato)",VER="var(--ok)",BLA="var(--tx-2)";
+  let h=seccion("Cómo viene la pauta","Totales del rango. La flecha compara hoy con ayer: verde mejora, rojo empeora.");
+  const [invH,invA]=hoyAyer(mc("inversion")), leadsSerie=col(cal?"califPauta":"leadsPauta"), [lH,lA]=hoyAyer(leadsSerie);
+  const cplK=cal?"cplCalif":"cpl", [cH,cA]=hoyAyer(mc(cplK));
+  const convSerie=M?mc("convLanding"):col(cal?"convCalifPauta":"convLandingPauta"), [vH,vA]=hoyAyer(convSerie);
+  const grSerie=col("tocaronGrupo"), [gH,gA]=hoyAyer(grSerie);
+  const conv=M?(cal?pc(MR.calif,MR.lpv):MR.convLanding):(cal?R.convCalifPauta:R.convLandingPauta);
+  h+=`<div class="akpis k5">
+    ${M?kpi({t:"Inversión en ads",v:usd2(MR.inversion),sub:abierto?`Hoy van ${usd2(invH)} · ayer ${usd2(invA)}`:"",serie:mc("inversion"),abierto,tip:"Gasto en Meta en el rango."}):""}
+    ${kpi({t:cal?"Calificados":"Opt-ins",v:fNum(cal?R.califTodos:R.leadsTotal),sub:`${fNum(cal?R.califPauta:R.leadsPauta)} pauta · ${fNum(cal?R.califTodos-R.califPauta:R.leadsSinAnuncio)} sin anuncio${abierto?`<br>Hoy van ${fNum(lH)} · ayer ${fNum(lA)}`:""}`,serie:leadsSerie,abierto,tip:cal?"Invierten 100 dólares por día o más en Meta.":"Todos los registros del opt-in. Los de pauta llegaron con UTMs o fbclid de un anuncio."})}
+    ${M?kpi({t:cal?"CPL calificado":"CPL",v:usd2(MR[cplK]),d:delta(cH,cA,true),serie:mc(cplK),abierto,tip:cal?"Inversión / calificados de pauta.":"Inversión / opt-ins de pauta. Directos y orgánicos no entran."}):""}
+    ${kpi({t:"Conversión de la landing",v:fPct(conv),d:delta(vH,vA),serie:convSerie,abierto,tip:M?"Opt-ins de pauta / vistas de la landing que informa Meta.":"Opt-ins de pauta / visitas a la landing desde anuncios."})}
+    ${kpi({t:"Tocaron «Entrar al grupo»",v:fNum(R.tocaronGrupo),sub:`${fPct(R.pctGrupoTodos)} de los opt-ins${abierto?` · hoy ${fNum(gH)} · ayer ${fNum(gA)}`:""}`,serie:grSerie,color:VER,abierto,tip:"Personas distintas que tocaron el botón verde de la página de gracias."})}
+  </div>`;
+  if(M){const [mH,mA]=hoyAyer(mc("cpm")),[tH,tA]=hoyAyer(mc("ctr")),pcs=col("pctCalifPauta"),[pH,pA]=hoyAyer(pcs);
+    h+=`<div class="akpis k4">
+      ${kpi({t:"CPM",v:usd2(MR.cpm),d:delta(mH,mA,true),serie:mc("cpm"),abierto,chico:1,tip:"Inversión por cada 1.000 impresiones."})}
+      ${kpi({t:"CTR",v:fPct(MR.ctr),d:delta(tH,tA),serie:mc("ctr"),abierto,chico:1,tip:"Clics en el enlace / impresiones."})}
+      ${kpi({t:"Frecuencia",v:fDec(MR.frecuencia),sub:`${fNum(MR.alcance)} personas alcanzadas`,chico:1,tip:"Veces que cada persona vio un anuncio en el rango."})}
+      ${kpi({t:"% de calificados",v:fPct(R.pctCalifPauta),d:delta(pH,pA),serie:pcs,abierto,chico:1,tip:"Calificados / opt-ins de pauta."})}
+    </div>`;}
+
+  // Embudo
+  const pasos=[];
+  if(M){pasos.push(["Clics en el link",MR.clics,"m"],["Entraron a la landing",MR.lpv,"m"]);}
+  else pasos.push(["Visitas a la landing",R.visitasPauta,"m"]);
+  pasos.push(["Opt-ins",R.leadsPauta,"m"],["Calificados",R.califPauta,"o"],["Tocaron «Entrar al grupo»",R.tocaronGrupoPauta,"o"]);
+  const mxE=Math.max(1,...pasos.map(p=>p[1]||0));
+  h+=seccion("Cómo baja el tráfico","Del clic en el anuncio al botón del grupo, solo pauta. El % de cada barra es cuántos siguen del paso anterior.");
+  h+=caja("",`${M?`<div class="emb-stats"><span>Impresiones <b>${fNum(MR.impresiones)}</b></span><span>Alcance <b>${fNum(MR.alcance)}</b> frec. ${fDec(MR.frecuencia)}</span><span>CTR al link <b>${fPct(MR.ctr)}</b></span></div>`:""}
+    <div class="embudo">${pasos.map((p,i)=>{const prev=i?pasos[i-1][1]:null,ret=i&&prev?Math.round(p[1]/prev*100):null;
+      return `<div class="eb"><div class="eb-v num">${fNum(p[1])}${ret!=null?` <span>${ret}%</span>`:""}</div><div class="eb-bar"><i class="${p[2]}" style="height:${(p[1]||0)/mxE*100}%"></i></div><div class="eb-t">${p[0]}</div></div>`;}).join("")}</div>`,
+    {sub:"Los pasos del formulario, la página de gracias y el grupo de WhatsApp se suman cuando registremos esos eventos."});
+
+  // Día a día
+  h+=`<div class="sec-t fila"><div><h3>Día a día</h3><p>${abierto?"El tramo punteado es hoy, que todavía no cerró.":"Un punto por día."}</p></div><label class="chk"><input type="checkbox" ${ANUN.valores?"checked":""} onchange="anunValores(this.checked)">Mostrar valores</label></div>`;
+  if(M){
+    const inv={nombre:"Inversión",datos:mc("inversion"),color:BLA,fmt:usd2,punteada:true};
+    h+=caja(`Inversión y ${cal?"CPL calificado":"CPL"} por día`,leyendaHtml([[NAR,"Inversión"],[BLA,cal?"CPL calificado":"CPL"]])+doble(x,{nombre:"Inversión",datos:mc("inversion"),color:NAR,fmt:usd2,area:1},{nombre:cal?"CPL calificado":"CPL",datos:mc(cplK),color:BLA,fmt:usd2},{abierto}),{der:"Inversión a la izquierda · CPL a la derecha",cls:"ancha"});
+    h+=`<div class="grid-2c">`;
+    h+=caja("Conversión de la landing vs inversión por día",leyendaHtml([[NAR,"Conversión"],[BLA,"Inversión",1]])+doble(x,{nombre:"Conversión",datos:mc("convLanding"),color:NAR,fmt:fPct,pct:1,area:1},inv,{abierto}));
+    h+=caja("Inversión vs % de opt-ins calificados por día",leyendaHtml([[VER,"% calificados"],[BLA,"Inversión",1]])+doble(x,{nombre:"% calificados",datos:col("pctCalifPauta"),color:VER,fmt:fPct,pct:1,area:1},inv,{abierto}));
+    h+=caja("% que toca «Entrar al grupo» vs inversión por día",leyendaHtml([[VER,"Tocan el botón"],[BLA,"Inversión",1]])+doble(x,{nombre:"Tocan el botón",datos:col("pctGrupoPauta"),color:VER,fmt:fPct,pct:1,area:1},inv,{abierto}));
+    h+=caja("CTR vs inversión por día",leyendaHtml([[NAR,"CTR"],[BLA,"Inversión",1]])+doble(x,{nombre:"CTR",datos:mc("ctr"),color:NAR,fmt:fPct,pct:1,area:1},inv,{abierto}));
+    h+=`</div>`;
+  } else {
+    h+=`<div class="grid-2c">`;
+    h+=caja(cal?"Calificados por día":"Opt-ins por día",leyendaHtml([[NAR,"De pauta"],["var(--tx-3)","Todos",1]])+lineas(x,[{nombre:"De pauta",datos:col(cal?"califPauta":"leadsPauta"),color:NAR},{nombre:"Todos",datos:col(cal?"califTodos":"leadsTotal"),color:"var(--tx-3)",punteada:true}]));
+    h+=caja("Conversión de la landing por día",leyendaHtml([[NAR,"Landing → opt-in"],[VER,"Landing → calificado"]])+lineas(x,[{nombre:"A opt-in",datos:col("convLandingPauta"),color:NAR,fmt:fPct},{nombre:"A calificado",datos:col("convCalifPauta"),color:VER,fmt:fPct}],{pct:true}));
+    h+=`</div>`;
+  }
+
+  // Qué respondieron
+  const RS=a.respuestas||{total:0,inversion:[],pais:[]};
+  const INV_ORDEN=["Más de 1.000 dólares","De 500 a 1.000 dólares","De 200 a 500 dólares","De 100 a 200 dólares","Menos de 100 dólares","0, todavía no tengo marca"];
+  const inv=[...RS.inversion].sort((p,q)=>(INV_ORDEN.indexOf(p.op)+99)%99-(INV_ORDEN.indexOf(q.op)+99)%99);
+  const totInv=inv.reduce((t,o)=>t+o.n,0);
+  h+=seccion("Qué respondieron en el formulario","La pregunta de calificación y el país del teléfono, sobre los opt-ins de pauta del rango.");
+  h+=`<div class="grid-2c">`;
+  h+=caja("¿Cuánto invertís por día en Meta?",inv.length?inv.map(o=>{const ok=o.calif>0;const p=pc(o.n,totInv);
+    return `<div class="resp"><div class="resp-c"><span>${esc(o.op)}${ok?` <span class="chip-c">califica</span>`:""}</span><span class="num"><b>${fPct(Math.round(p))}</b> ${fNum(o.n)}</span></div><div class="resp-b"><i class="${ok?"ok":""}" style="width:${p}%"></i></div></div>`;}).join(""):`<div class="sin-datos">Sin respuestas en el rango (la pregunta está desde el 14/10)</div>`,{der:`${fNum(totInv)} respuestas`});
+  const totP=RS.pais.reduce((t,o)=>t+o.n,0);
+  h+=caja("País (según el prefijo del teléfono)",RS.pais.length?RS.pais.slice(0,12).map(o=>{const p=pc(o.n,totP);
+    return `<div class="pais"><span class="p-n">${esc(o.op)}</span><span class="p-b"><i style="width:${p}%"></i></span><span class="num"><b>${fPct(Math.round(p))}</b> ${fNum(o.n)}</span><span class="chip-c">${fPct(Math.round(pc(o.calif,o.n)||0))} calif.</span></div>`;}).join(""):`<div class="sin-datos">Sin datos</div>`,{der:fNum(totP)});
+  h+=`</div>`;
+
+  // De dónde vienen
+  const O=a.origen||[], totO=O.reduce((t,o)=>t+o.n,0);
+  const COLORES=["var(--marca-dato)","var(--tx-2)","var(--tx-3)","var(--borde-2)","var(--panel-3)"];
+  h+=seccion("De dónde vienen los opt-ins","Todos los opt-ins del rango: de pauta y sin anuncio (bio, historias, directo).");
+  h+=caja("",`<div class="orig-t"><b class="num">${fNum(totO)}</b> opt-ins en total</div>
+    <div class="apilada">${O.map((o,i)=>`<i style="width:${pc(o.n,totO)}%;background:${COLORES[Math.min(i,4)]}" data-tip="${esc(o.op)}: ${fNum(o.n)}"></i>`).join("")}</div>
+    ${leyendaHtml(O.slice(0,6).map((o,i)=>[COLORES[Math.min(i,4)],`${esc(o.op)} ${Math.round(pc(o.n,totO)||0)}%`]))}
+    <div class="tabla-scroll"><table class="tabla"><thead><tr><th>Fuente</th><th class="n">Opt-ins</th><th class="n">% del total</th><th class="n">Calificados</th><th class="n">% calif.</th><th class="n">Tocaron el grupo</th><th class="n">% grupo</th></tr></thead><tbody>
+    ${O.map((o,i)=>`<tr><td><span class="pto" style="background:${COLORES[Math.min(i,4)]}"></span>${esc(o.op)}</td><td class="n">${fNum(o.n)}</td><td class="n">${fPct(pc(o.n,totO))}</td><td class="n">${fNum(o.calif)}</td><td class="n">${fPct(pc(o.calif,o.n))}</td><td class="n">${fNum(o.grupo)}</td><td class="n">${fPct(pc(o.grupo,o.n))}</td></tr>`).join("")}
+    <tr class="total"><td>Total</td><td class="n">${fNum(totO)}</td><td class="n">100%</td><td class="n">${fNum(O.reduce((t,o)=>t+o.calif,0))}</td><td class="n">${fPct(pc(O.reduce((t,o)=>t+o.calif,0),totO))}</td><td class="n">${fNum(O.reduce((t,o)=>t+o.grupo,0))}</td><td class="n">${fPct(pc(O.reduce((t,o)=>t+o.grupo,0),totO))}</td></tr></tbody></table></div>`);
+
+  // Después del registro: lo que hace el equipo (esto no lo tiene un panel de ads)
+  h+=seccion("Después del registro","Lo que pasa con los leads cuando los trabaja el equipo.");
+  h+=`<div class="akpis k4">
+    ${kpi({t:"Tasa de contacto",v:fPct(R.tasaContacto),sub:"Tienen al menos un intento",serie:col("tasaContacto"),abierto,chico:1})}
+    ${kpi({t:"Pickup",v:fPct(R.pickup),sub:"Contestaron / contactados",chico:1})}
+    ${kpi({t:"Calificación real",v:fPct(R.califReal),sub:"Facturación confirmada por el SDR",serie:col("califReal"),color:VER,abierto,chico:1})}
+    ${kpi({t:"Tasa de agenda",v:fPct(R.tasaAgenda),sub:"Calificados que agendaron",serie:col("tasaAgenda"),abierto,chico:1})}</div>`;
+  h+=`<div class="grid-2c">`;
+  h+=caja("Tasa de contacto y contestaron por día",leyendaHtml([[NAR,"Tasa de contacto"],["var(--tx-3)","Contestaron",1]])+lineas(x,[{nombre:"Contactados",datos:col("tasaContacto"),color:NAR,fmt:fPct},{nombre:"Contestaron",datos:col("pctContestaron"),color:"var(--tx-3)",punteada:true,fmt:fPct}],{pct:true}),{sub:"De los leads registrados ese día. Los días recientes suben a medida que los SDR trabajan."});
+  h+=caja("Tasa de agenda por día",leyendaHtml([[NAR,"Tasa de agenda"]])+lineas(x,[{nombre:"Tasa de agenda",datos:col("tasaAgenda"),color:NAR,fmt:fPct}],{pct:true}),{sub:"De los calificados de cada día, cuántos agendaron pre-venta o llamada."});
+  h+=`</div>`;
+  h+=`<details class="como"><summary>Cómo se calcula cada número</summary><ul>
+    <li><b>Opt-in de pauta:</b> llegó con UTMs o fbclid de un anuncio de Meta. Directos, orgánicos y bio cuentan en el total pero no en el CPL.</li>
+    <li><b>Calificado:</b> invierte 100 dólares por día o más en Meta (antes del 14/10: facturación de 30M o más). Es el mismo criterio que el evento Lead del píxel.</li>
+    <li><b>CPL:</b> inversión / opt-ins de pauta. <b>CPL calificado:</b> inversión / calificados de pauta.</li>
+    <li><b>Conversión de la landing:</b> opt-ins de pauta / vistas de la landing que informa Meta (sin Meta: visitas que cuenta la landing).</li>
+    <li><b>CTR:</b> clics en el enlace / impresiones. <b>CPM:</b> inversión cada 1.000 impresiones. <b>Frecuencia:</b> dato de Meta.</li>
+    <li><b>Días:</b> hora de Argentina según el día de registro del lead. Los números de Meta usan la zona horaria de la cuenta publicitaria.</li></ul></details>`;
+  return h;
+}
+
+/* ----- Landings ----- */
+function tabLandings(a,M,seg,abierto){
+  const AB=a.ab||[], R=a.resumen, D=a.porDia, x=D.map(d=>d.dia);
+  const NAR="var(--marca-dato)",VER="var(--ok)",BLA="var(--tx-2)";
+  const VCOL=["var(--marca-dato)","var(--tx)","var(--ok)","var(--vio)","var(--azul)"];
+  if(ANUN.version!=="final"&&!AB.find(v=>v.version===ANUN.version)) ANUN.version="final";
+  const sel=AB.find(v=>v.version===ANUN.version);
+  let h=`<div class="fila-ctl">${seg([["final","Resultado final"]].concat(AB.map(v=>[v.version,v.version.length===1?"Versión "+v.version:"Landing "+v.version])),ANUN.version,"anunVersion")}
+    <span class="nota-a" style="margin:0">${sel?`Solo la versión ${esc(sel.version)}.`:AB.length?`Suma de las ${AB.length} versiones.`:"Todavía no hay versiones con datos."}</span></div>`;
+  h+=seccion("Cómo convierte la landing",sel?`Versión ${esc(sel.version)}: de pauta y orgánico.`:"Todas las versiones juntas, de pauta y orgánico.");
+  const vis=sel?sel.visitantes:R.visitasTodas, ops=sel?sel.leads:R.leadsTotal, cal=sel?sel.calificados:R.califTodos, gr=sel?sel.grupo:R.tocaronGrupo;
+  const serieConv=sel?sel.porDia.map(d=>d.conversion):D.map(d=>pc(d.leadsTotal,d.visitasTodas));
+  const [cH,cA]=abierto&&serieConv.length>1?[serieConv[serieConv.length-1],serieConv[serieConv.length-2]]:[null,null];
+  const MR=M&&M.resumen;
+  h+=`<div class="akpis k3">
+    ${!sel&&MR?kpi({t:"Clics → visitas",v:fPct(MR.clicALanding),sub:`${fNum(MR.clics)} clics → ${fNum(MR.lpv)} visitas`,serie:M.porDia.map(d=>d.clicALanding),abierto,tip:"Vistas de la landing / clics en el enlace, según Meta. Si baja, la página está tardando en cargar."}):""}
+    ${kpi({t:"Conversión",v:fPct(pc(ops,vis)),sub:`${fNum(vis)} visitas → ${fNum(ops)} opt-ins`,d:delta(cH,cA),serie:serieConv,abierto,tip:"Opt-ins / visitas a la landing (las visitas que cuenta la landing, una por sesión)."})}
+    ${kpi({t:"Opt-ins → «Entrar al grupo»",v:fPct(pc(gr,ops)),sub:`${fNum(ops)} opt-ins → ${fNum(gr)} tocaron el botón`,color:VER,tip:"Opt-ins que tocaron el botón del grupo en la página de gracias."})}
+    ${kpi({t:"Opt-ins",v:fNum(ops),sub:`${fNum(cal)} calificados (${fPct(pc(cal,ops))})`,serie:sel?sel.porDia.map(d=>d.leads):D.map(d=>d.leadsTotal),abierto})}
+  </div>`;
+  if(AB.length){
+    const T=a.test||{}, mejor=T.ganador;
+    h+=seccion("Test de versiones","Cada visitante ve siempre la misma versión. Opt-ins por visitante es la métrica que manda.");
+    h+=`<div class="vers">${AB.map(v=>`<div class="ver${v.version===mejor&&v.conversion!=null?" gana":""}"><div class="kt">${v.version.length===1?"Versión "+esc(v.version):"Landing "+esc(v.version)}${v.version===mejor&&v.conversion!=null?` <span class="chip-c">va ganando</span>`:""}</div>
+      <div class="kv num">${fPct(v.conversion)}</div><div class="ks">opt-ins por visitante</div>
+      <div class="ver-g"><div><span>Visitas</span><b class="num">${fNum(v.visitantes)}</b></div><div><span>Opt-ins</span><b class="num">${fNum(v.leads)}</b></div><div><span>% calificado</span><b class="num">${fPct(v.pctCalif)}</b></div></div></div>`).join("")}</div>`;
+    const conf=T.confianza;
+    h+=caja("",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitas</th><th class="n">Opt-ins</th><th class="n">Calificados</th><th class="n">Tocaron el grupo</th><th class="n">Calif. por visitante</th><th class="n">Opt-ins por visitante</th></tr></thead><tbody>
+      ${AB.map(v=>`<tr><td><b>${v.version.length===1?"Versión "+esc(v.version):"Landing "+esc(v.version)}</b></td><td class="n">${fNum(v.visitantes)}</td><td class="n">${fNum(v.leads)}</td><td class="n">${fNum(v.calificados)}<small>${fPct(v.pctCalif)} de los opt-ins</small></td><td class="n">${fNum(v.grupo)}<small>${fPct(v.pctGrupo)}</small></td><td class="n">${fPct(v.califPorVisitante)}</td><td class="n ${v.version===mejor&&v.conversion!=null?"sem-ok":""}"><b>${fPct(v.conversion)}</b></td></tr>`).join("")}</tbody></table></div>
+      <div class="conf"><div class="conf-b"><i style="width:${conf||0}%;background:${conf>=95?"var(--ok)":"var(--warn)"}"></i><span style="left:95%"></span></div>
+      <div class="conf-t"><span>Confianza del test: <b>${conf==null?"—":fPct(conf)}</b>${T.p!=null?` (p = ${String(T.p).replace(".",",")})`:""}</span><span>Hay ganador desde 95%</span></div>
+      ${conf==null?`<p class="nota-a" style="margin:8px 0 0">Para calcularla hacen falta visitas en al menos dos versiones.</p>`:""}</div>`);
+    h+=seccion("Día a día",abierto?"El tramo punteado es hoy, que todavía no cerró.":"");
+    h+=`<div class="grid-2c">`;
+    h+=caja("Conversión por versión por día",leyendaHtml(AB.map((v,i)=>[VCOL[i%5],v.version.length===1?"Versión "+v.version:v.version]))+lineas(x,AB.map((v,i)=>({nombre:v.version,datos:v.porDia.map(d=>d.conversion),color:VCOL[i%5],fmt:fPct})),{pct:true}));
+    if(M) h+=caja("Clics → visitas por día",leyendaHtml([[NAR,"Visitas (Meta)"],[VER,"% que llega"]])+doble(x,{nombre:"Visitas",datos:M.porDia.map(d=>d.lpv),color:NAR,fmt:fNum,area:1},{nombre:"% que llega",datos:M.porDia.map(d=>d.clicALanding),color:VER,fmt:fPct,pct:1},{abierto}),{der:"si el % baja, la landing está tardando en cargar"});
+    h+=`</div>`;
+  }
+  h+=caja("Próximamente",`<p class="nota-a" style="margin:0">Para ver esto hay que registrar eventos nuevos en la landing y en la página de gracias (etapa 3): hasta dónde scrollean, cuánto ven del video, tiempo en la página, en qué paso se traba el formulario y los errores, celular contra computadora, velocidad de carga y qué tocan en la página de gracias.</p>`,{cls:"muda"});
+  return h;
+}
+
+/* ----- Anuncios ----- */
+function tabAds(a,M,seg,abierto){
+  if(!M) return `<div class="vacio"><b>Sin datos de Meta</b>La tabla de anuncios necesita la conexión con Meta Ads.</div>`;
+  const MR=M.resumen, MD=M.porDia, R=a.resumen, D=a.porDia, x=D.map(d=>d.dia);
+  const NAR="var(--marca-dato)",VER="var(--ok)",BLA="var(--tx-2)";
+  const hoyAyer=(arr)=>abierto&&arr.length>1?[arr[arr.length-1],arr[arr.length-2]]:[null,null];
+  const [iH,iA]=hoyAyer(MD.map(d=>d.inversion)),[lH,lA]=hoyAyer(D.map(d=>d.leadsPauta)),[cH,cA]=hoyAyer(MD.map(d=>d.cpl));
+  let h=seccion("Anuncios","Como el Administrador de anuncios, pero con lo que pasa después del clic: si se registran, si califican, si tocan el grupo, si agendan y si compran.");
+  h+=`<div class="akpis k4">
+    ${kpi({t:"Gasto",v:usd2(MR.inversion),sub:abierto?`Hoy van ${usd2(iH)} · ayer ${usd2(iA)}`:"",serie:MD.map(d=>d.inversion),abierto})}
+    ${kpi({t:"Opt-ins de pauta",v:fNum(R.leadsPauta),sub:abierto?`Hoy van ${fNum(lH)} · ayer ${fNum(lA)}`:"",serie:D.map(d=>d.leadsPauta),abierto})}
+    ${kpi({t:"CPL",v:usd2(MR.cpl),d:delta(cH,cA,true),serie:MD.map(d=>d.cpl),abierto})}
+    ${kpi({t:"Anuncios activos",v:fNum(MR.activos),sub:[MR.enRevision?`${MR.enRevision} en revisión`:"",MR.rechazados?`${MR.rechazados} rechazado${MR.rechazados===1?"":"s"}`:""].filter(Boolean).join(" · ")||"Con entrega activa en Meta"})}
+  </div>`;
+
+  // Filas según el nivel: campañas (con conjuntos y anuncios adentro), conjuntos o anuncios.
+  const SUMA=["inversion","impresiones","clics","lpv","leads","calif","agendas","ventas","grupo"];
+  const met=(o)=>({...o,cpl:dv(o.inversion,o.leads),cplCalif:dv(o.inversion,o.calif),cpm:o.impresiones?Math.round(o.inversion/o.impresiones*100000)/100:null,
+    ctr:pc(o.clics,o.impresiones),clicALanding:pc(o.lpv,o.clics),convLanding:pc(o.leads,o.lpv),pctCalif:pc(o.calif,o.leads),pctGrupo:pc(o.grupo,o.leads)});
+  const sumar=(ads,extra)=>{const o={...extra};SUMA.forEach(k=>o[k]=ads.reduce((t,a)=>t+(a[k]||0),0));return met(o);};
+  const busca=ANUN.busca.trim().toLowerCase();
+  const estOk=(e)=>ANUN.estado==="todos"||(ANUN.estado==="activos"?e==="Activo":e!=="Activo");
+  const C=M.campanas||{}, J=M.conjuntos||{};
+  const ads=M.anuncios.map(x=>met({...x,nombre:x.anuncio}));
+  const conjuntos={}, campanas={};
+  for(const x of ads){(conjuntos[x.conjuntoId]||(conjuntos[x.conjuntoId]={id:x.conjuntoId,nombre:x.conjunto,campanaId:x.campanaId,campana:x.campana,ads:[]})).ads.push(x);}
+  for(const j of Object.values(conjuntos)){Object.assign(j,sumar(j.ads),{entrega:(J[j.id]||{}).estado||(j.ads.some(x=>x.activo)?"Activo":"Apagado"),presupuesto:(J[j.id]||{}).presupuesto??null});
+    (campanas[j.campanaId]||(campanas[j.campanaId]={id:j.campanaId,nombre:j.campana,conjuntos:[]})).conjuntos.push(j);}
+  for(const c of Object.values(campanas)){Object.assign(c,sumar(c.conjuntos.flatMap(j=>j.ads)),{entrega:(C[c.id]||{}).estado||(c.conjuntos.some(j=>j.entrega==="Activo")?"Activo":"Apagado")});
+    const pc0=(C[c.id]||{}).presupuesto; const pj=c.conjuntos.reduce((t,j)=>t+(j.presupuesto||0),0);
+    c.presupuesto=pc0??(pj||null); c.presSub=pc0==null&&pj?"suma de conjuntos":"";}
+  const ord=(arr)=>arr.sort((p,q)=>{const k=ANUN.orden,a1=p[k],b1=q[k];if(a1==null&&b1==null)return 0;if(a1==null)return 1;if(b1==null)return -1;
+    return typeof a1==="string"?ANUN.dir*-1*String(a1).localeCompare(b1):ANUN.dir*(a1-b1);});
+  const coincide=(o)=>!busca||String(o.nombre||"").toLowerCase().includes(busca);
+  const nivel=ANUN.nivel;
+  let lista;
+  if(nivel==="anuncio") lista=ord(ads.filter(x=>estOk(x.entrega)&&coincide(x)).map(x=>({...x,sub:x.conjunto,tipo:"anuncio",key:x.adId})));
+  else if(nivel==="conjunto") lista=ord(Object.values(conjuntos).filter(j=>estOk(j.entrega)&&coincide(j)).map(j=>({...j,sub:`${j.campana} · ${j.ads.length} anuncio${j.ads.length===1?"":"s"}`,tipo:"conjunto",key:j.id})));
+  else lista=ord(Object.values(campanas).filter(c=>estOk(c.entrega)&&(coincide(c)||c.conjuntos.some(j=>coincide(j)||j.ads.some(coincide)))).map(c=>({...c,sub:`${c.conjuntos.length} conjunto${c.conjuntos.length===1?"":"s"}`,tipo:"campana",key:c.id})));
+  const maxInv=Math.max(1,...lista.map(o=>o.inversion||0));
+  const cols=COLS_ADS.filter(c=>ANUN.cols.includes(c[0]));
+  const sem=(k,v,menos)=>{const ref=k==="pctCalif"?pc(MR.calif,MR.leads):k==="pctGrupo"?pc(R.tocaronGrupoPauta,R.leadsPauta):MR[k];if(v==null||!ref||menos==null)return "";const r=menos?v/ref:ref/v;return r<1?"sem-ok":r>=1.25?"sem-mal":"";};
+  const celda=(o,[k,,f,menos])=>{
+    if(k==="entrega") return `<td><span class="ent ${o.entrega==="Activo"?"on":o.entrega==="En revisión"?"rev":o.entrega==="Rechazado"?"mal":""}">${esc(o.entrega||"—")}</span></td>`;
+    if(k==="presupuesto") return `<td class="n">${o.presupuesto!=null?usd2(o.presupuesto):"—"}${o.presSub?`<small>${o.presSub}</small>`:""}</td>`;
+    if(k==="inversion") return `<td class="n">${usd2(o.inversion)}<span class="gbar"><i style="width:${(o.inversion||0)/maxInv*100}%"></i></span></td>`;
+    if(k==="frecuencia") return `<td class="n">${o.tipo==="anuncio"||o.nivel===2?fDec(o.frecuencia):"—"}</td>`;
+    return `<td class="n ${sem(k,o[k],menos)}">${FMT[f](o[k])}</td>`;};
+  const fila=(o,nv,hijos)=>{const cerrado=!ANUN.cerrados.has("x:"+o.key), abre=hijos&&!cerrado;
+    return `<tr class="niv-${nv}${ANUN.sel&&ANUN.sel.id===o.key?" sel":""}">
+      <td class="nom"><span style="padding-left:${nv*18}px;display:inline-flex;align-items:flex-start;gap:6px">${hijos?`<button class="flecha" onclick="anunToggle('x:${esc(o.key)}',event)" aria-label="${abre?"Cerrar":"Abrir"}">${abre?"▾":"▸"}</button>`:`<span class="flecha"></span>`}
+      <span><button class="lnk" onclick="anunSel('${o.tipo}','${esc(o.key)}',event)">${esc(o.nombre||"(sin nombre)")}</button>${o.sub?`<small>${esc(o.sub)}</small>`:""}</span></span></td>${cols.map(c=>celda({...o,nivel:nv},c)).join("")}</tr>`;};
+  let filas="";
+  for(const o of lista){
+    if(nivel!=="campana"){filas+=fila(o,0,false);continue;}
+    filas+=fila(o,0,true); if(!ANUN.cerrados.has("x:"+o.key)) continue;
+    for(const j of ord([...o.conjuntos]).filter(j=>!busca||coincide(o)||coincide(j)||j.ads.some(coincide))){
+      const jo={...j,tipo:"conjunto",key:j.id,sub:`${j.ads.length} anuncio${j.ads.length===1?"":"s"}`};
+      filas+=fila(jo,1,true); if(!ANUN.cerrados.has("x:"+j.id)) continue;
+      for(const x of ord([...j.ads]).filter(x=>estOk(x.entrega))) filas+=fila({...x,tipo:"anuncio",key:x.adId,sub:""},2,false);
+    }
+  }
+  const tot=met({...MR,grupo:R.tocaronGrupoPauta,leads:MR.leads,calif:MR.calif,agendas:ads.reduce((t,x)=>t+x.agendas,0),ventas:ads.reduce((t,x)=>t+x.ventas,0)});
+  const cab=`<tr><th class="ordenable" onclick="anunOrden('nombre')">Nombre${ANUN.orden==="nombre"?(ANUN.dir<0?" ↓":" ↑"):""}</th>${cols.map(([k,t])=>`<th class="n ordenable${ANUN.orden===k?" on":""}" onclick="anunOrden('${k}')">${t}${ANUN.orden===k?(ANUN.dir<0?" ▼":" ▲"):""}</th>`).join("")}</tr>`;
+  const totFila=`<tr class="total"><td>Total de la cuenta</td>${cols.map(([k,,f])=>k==="entrega"||k==="presupuesto"?"<td></td>":k==="inversion"?`<td class="n">${usd2(tot.inversion)}</td>`:k==="frecuencia"?`<td class="n">${fDec(MR.frecuencia)}</td>`:`<td class="n">${FMT[f](tot[k])}</td>`).join("")}</tr>`;
+  h+=`<div class="ads-ctl">${seg([["campana","Campañas"],["conjunto","Conjuntos"],["anuncio","Anuncios"]],nivel,"anunNivel")}
+    <input id="aBusca" class="busca-ads" type="search" placeholder="Buscar por nombre" value="${esc(ANUN.busca)}" oninput="anunBusca(this)">
+    ${seg([["todos","Todos"],["activos","Activos"],["apagados","Apagados"]],ANUN.estado,"anunEstado")}
+    <div class="cols-w"><button class="btn sm" onclick="anunColsMenu()">Columnas</button>${ANUN.colsMenu?`<div class="cols-m">${COLS_ADS.map(([k,t])=>`<label><input type="checkbox" ${ANUN.cols.includes(k)?"checked":""} onchange="anunCol('${k}',this.checked)">${t}</label>`).join("")}</div>`:""}</div></div>`;
+  h+=lista.length?`<div class="tabla-scroll caja sin-p"><table class="tabla tabla-ads"><thead>${cab}</thead><tbody>${filas}${totFila}</tbody></table></div>`:`<div class="sin-datos">Sin ${nivel==="anuncio"?"anuncios":nivel==="conjunto"?"conjuntos":"campañas"} con inversión en este rango${busca?" que coincidan con la búsqueda":""}</div>`;
+  h+=`<p class="nota-a">Tocá el nombre para ver sus gráficos por día; la flecha abre lo que tiene adentro. Tocá un encabezado para ordenar. En verde, lo que está mejor que el promedio de la cuenta; en rojo, lo que está 25% peor o más.${M.sinCruzar?` <b>${M.sinCruzar} opt-in${M.sinCruzar===1?"":"s"} de pauta no se ${M.sinCruzar===1?"pudo":"pudieron"} unir a un anuncio</b> (el utm_content no coincide con el nombre del anuncio en Meta).`:""}</p>`;
+
+  // Gráficos de la fila elegida
+  if(ANUN.sel){
+    const s=ANUN.sel;
+    const elegidos=s.tipo==="anuncio"?ads.filter(x=>x.adId===s.id):s.tipo==="conjunto"?ads.filter(x=>x.conjuntoId===s.id):ads.filter(x=>x.campanaId===s.id);
+    const nombre=s.tipo==="anuncio"?(elegidos[0]||{}).anuncio:s.tipo==="conjunto"?(elegidos[0]||{}).conjunto:(elegidos[0]||{}).campana;
+    const dia=x.map(d=>{const o={inversion:0,impresiones:0,clics:0,lpv:0,leads:0,calif:0};
+      for(const e of elegidos){const z=(e.serie||{})[d];if(z){o.inversion+=z[0];o.impresiones+=z[1];o.clics+=z[2];o.lpv+=z[3];}const l=(e.leadsDia||{})[d];if(l){o.leads+=l[0];o.calif+=l[1];}}
+      return met(o);});
+    const cd=k=>dia.map(o=>o[k]), inv={nombre:"Inversión",datos:cd("inversion"),color:BLA,fmt:usd2,punteada:true};
+    h+=`<div id="adDetalle" class="detalle"><div class="det-c"><div><span class="nota-a" style="margin:0">${s.tipo==="anuncio"?"Anuncio":s.tipo==="conjunto"?"Conjunto":"Campaña"}</span><h3>${esc(nombre||"")}</h3></div><button class="icon-btn" onclick="anunSel('${s.tipo}','${esc(s.id)}')" aria-label="Cerrar">${ic("i-x")}</button></div>
+      <div class="grid-2c">
+      ${caja("CPL vs inversión",leyendaHtml([[NAR,"CPL"],[BLA,"Inversión",1]])+doble(x,{nombre:"CPL",datos:cd("cpl"),color:NAR,fmt:usd2,area:1},inv,{abierto}))}
+      ${caja("CPL calificado vs inversión",leyendaHtml([[VER,"CPL calificado"],[BLA,"Inversión",1]])+doble(x,{nombre:"CPL calificado",datos:cd("cplCalif"),color:VER,fmt:usd2,area:1},inv,{abierto}))}
+      ${caja("CTR vs inversión",leyendaHtml([[NAR,"CTR"],[BLA,"Inversión",1]])+doble(x,{nombre:"CTR",datos:cd("ctr"),color:NAR,fmt:fPct,pct:1,area:1},inv,{abierto}))}
+      ${caja("Conversión de la landing vs inversión",leyendaHtml([[NAR,"Conversión"],[BLA,"Inversión",1]])+doble(x,{nombre:"Conversión",datos:cd("convLanding"),color:NAR,fmt:fPct,pct:1,area:1},inv,{abierto}))}
+      </div></div>`;
+  }
+  return h;
 }
 
 // UTMs que guardó la landing en «Origen (UTM)».
@@ -1289,7 +1589,8 @@ function renderConfig(v,s){
   v.innerHTML=encabezado(s,`<button class="btn" onclick="correrSetup()">Sincronizar campos con GHL</button><button class="btn pri" onclick="guardarConfig()">Guardar cambios</button>`)+
   `<div class="tarjeta"><h4>Topes y fechas</h4><div class="form-g">
     ${inp("cManuTope","Tope de llamadas post-clase de Manu",st.manuTope,"number")}${inp("cGenLug","Lugares de Génesis",st.genesisLugares,"number")}
-    ${inp("cClase","Clase (fecha y hora)",st.clase)}${inp("cCierre","Cierre de la ventana",st.cierre)}</div></div>
+    ${inp("cClase","Clase (fecha y hora)",st.clase)}${inp("cCierre","Cierre de la ventana",st.cierre)}
+    ${inp("cInicio","Inicio del lanzamiento (desde acá cuenta «Todo el lanzamiento» en Anuncios)",st.inicioLanzamiento||"","date")}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu pre-venta</h4><div class="form-g">${inp("cPreId","ID",st.calManuPreventaId)}${inp("cPreLink","Link",st.calManuPreventaLink)}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu post-clase</h4><div class="form-g">${inp("cPostId","ID",st.calManuPostId)}${inp("cPostLink","Link",st.calManuPostLink)}</div></div>
   <div class="tarjeta"><h4>Calendario del equipo (llamadas de venta)</h4><div class="form-g">${inp("cDiegoId","ID",st.calDiegoId)}${inp("cDiegoLink","Link",st.calDiegoLink)}</div></div>`;
@@ -1297,7 +1598,7 @@ function renderConfig(v,s){
 async function guardarConfig(){
   try{
     await api("/api/settings",{method:"POST",body:JSON.stringify({
-      manuTope:$("#cManuTope").value, genesisLugares:$("#cGenLug").value, clase:$("#cClase").value, cierre:$("#cCierre").value,
+      manuTope:$("#cManuTope").value, genesisLugares:$("#cGenLug").value, clase:$("#cClase").value, cierre:$("#cCierre").value, inicioLanzamiento:$("#cInicio").value,
       calManuPreventaId:$("#cPreId").value, calManuPreventaLink:$("#cPreLink").value,
       calManuPostId:$("#cPostId").value, calManuPostLink:$("#cPostLink").value,
       calDiegoId:$("#cDiegoId").value, calDiegoLink:$("#cDiegoLink").value })});

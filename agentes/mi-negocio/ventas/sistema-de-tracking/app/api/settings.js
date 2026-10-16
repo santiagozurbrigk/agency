@@ -16,6 +16,11 @@ module.exports = async function handler(req, res) {
       for (const k of ["manuTope", "genesisLugares"]) {
         if (body[k] != null) patch[k] = Math.max(0, parseInt(body[k], 10) || 0);
       }
+      if (body.inicioLanzamiento != null) {
+        const d = String(body.inicioLanzamiento).trim();
+        if (d && !/^\d{4}-\d{2}-\d{2}$/.test(d)) return res.status(400).json({ ok: false, error: "El inicio del lanzamiento tiene que ser una fecha" });
+        patch.inicioLanzamiento = d;
+      }
       for (const k of ["cierre", "clase", "calManuPreventaId", "calManuPreventaLink",
                         "calManuPostId", "calManuPostLink", "calDiegoId", "calDiegoLink"]) {
         if (body[k] != null) patch[k] = String(body[k]).trim();
