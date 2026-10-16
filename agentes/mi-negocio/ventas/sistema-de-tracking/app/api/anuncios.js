@@ -15,6 +15,7 @@ const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const { fuenteDe } = require("../lib/fuente");
 const { calificaOptin } = require("../lib/rules");
+const meta = require("../lib/meta");
 
 const SIN_CONTESTAR = ["Nuevo", "Contactado", "Sin respuesta"];
 const PAUTA = "Anuncios de Meta";
@@ -30,6 +31,42 @@ function diasEntre(desde, hasta) {
   return out;
 }
 const pct = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : null);
+
+const div = (a, b) => (b ? Math.round((a / b) * 100) / 100 : null);
+const norm = (x) => String(x || "").trim().toLowerCase();
+
+// Une los números de Meta con los leads de pauta.
+// Cada lead se asigna a un anuncio por ad_id; si no, por el nombre del anuncio (utm_content),
+// desempatando por conjunto (utm_term) y campaña (utm_campaign).
+function cruzarMeta(d, pauta, porDia) {
+  const ads = d.anuncios.map(a => ({ ...a, leads: 0, calif: 0, agendas: 0, ventas: 0 }));
+  let sinCruzar = 0;
+  for (const l of pauta) {
+    const u = l.utm;
+    let c = ads.filter(a => (u.adId && a.adId === u.adId) || (u.anuncio && (norm(a.anuncio) === norm(u.anuncio) || a.adId === u.anuncio)));
+    if (c.length > 1 && u.conjunto) { const x = c.filter(a => norm(a.conjunto) === norm(u.conjunto) || a.conjuntoId === u.conjunto); if (x.length) c = x; }
+    if (c.length > 1 && u.campana) { const x = c.filter(a => norm(a.campana) === norm(u.campana) || a.campanaId === u.campana); if (x.length) c = x; }
+    if (!c.length) { sinCruzar++; continue; }
+    const a = c[0];
+    a.leads++; if (l.calif) a.calif++; if (l.agendo) a.agendas++; if (l.venta) a.ventas++;
+  }
+  const metricas = (x) => ({
+    cpl: div(x.inversion, x.leads), cplCalif: div(x.inversion, x.calif),
+    cpm: x.impresiones ? Math.round((x.inversion / x.impresiones) * 100000) / 100 : null,
+    ctr: pct(x.clics, x.impresiones), clicALanding: pct(x.lpv, x.clics), convLanding: pct(x.leads, x.lpv)
+  });
+  const t = d.total, leads = pauta.length, calif = pauta.filter(l => l.calif).length;
+  const resumen = { ...t, leads, calif, ...metricas({ ...t, leads, calif }) };
+  const dia = Object.fromEntries(d.porDia.map(x => [x.dia, x]));
+  const serie = porDia.map(p => {
+    const x = dia[p.dia] || { inversion: 0, impresiones: 0, clics: 0, lpv: 0 };
+    return { dia: p.dia, inversion: x.inversion, ...metricas({ ...x, leads: p.leadsPauta, calif: p.califPauta }) };
+  });
+  return {
+    resumen, porDia: serie, sinCruzar,
+    anuncios: ads.map(a => ({ ...a, ...metricas(a) }))
+  };
+}
 
 module.exports = async function handler(req, res) {
   if (!requiere(req, res)) return;
@@ -51,6 +88,8 @@ module.exports = async function handler(req, res) {
         agendo: f.agendo === "Sí" || etapa === "Agendado con Manu (pre-venta)" || etapa === "Llamada agendada",
         confirmada: f.facturacion_confirmada === "Sí",
         grupo: f.toco_grupo === "Sí",
+        venta: Boolean(f.venta_json),
+        utm: { campana: o.utm_campaign || "", conjunto: o.utm_term || "", anuncio: o.utm_content || "", adId: o.ad_id || "" },
         ab: /^[a-z0-9-]{1,20}$/i.test(o.ab || "") ? o.ab : ""
       };
     });
@@ -109,7 +148,17 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    return res.status(200).json({ ok: true, desde, hasta: dias[dias.length - 1] || hasta, resumen: resumen(L, V), porDia, ab, meta: null });
+    // Fase 2: Meta Ads. Si falla, el resto del panel sigue andando y se muestra el error.
+    let m = null;
+    if (meta.enabled()) {
+      try {
+        m = cruzarMeta(await meta.datos(desde, dias[dias.length - 1] || hasta), L.filter(l => l.pauta), porDia);
+      } catch (e) {
+        m = { error: e.message };
+      }
+    }
+
+    return res.status(200).json({ ok: true, desde, hasta: dias[dias.length - 1] || hasta, resumen: resumen(L, V), porDia, ab, meta: m });
   } catch (e) {
     return res.status(500).json({ ok: false, error: e.message });
   }

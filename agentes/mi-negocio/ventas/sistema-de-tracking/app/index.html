@@ -355,6 +355,14 @@ table.tabla td{padding:11px 10px 11px 0;border-bottom:1px solid var(--borde)}
 table.tabla tr:last-child td{border-bottom:0}
 table.tabla td.n,table.tabla th.n{text-align:right;font-variant-numeric:tabular-nums}
 .tabla-scroll{overflow-x:auto}
+table.tabla-ads td,table.tabla-ads th{white-space:nowrap;padding-left:8px}
+table.tabla-ads th.ordenable{cursor:pointer;user-select:none}
+table.tabla-ads tr.abre{cursor:pointer}
+table.tabla-ads tr.niv-0 td{font-weight:600}
+table.tabla-ads tr.niv-1 td:first-child{color:var(--tx-2)}
+table.tabla-ads .flecha{display:inline-block;width:14px;color:var(--tx-3)}
+table.tabla-ads td.sem-ok{color:var(--ok)}
+table.tabla-ads td.sem-mal{color:var(--mal)}
 
 /* ===================== Modal y toast ===================== */
 #modal{position:fixed;inset:0;display:none;place-items:center;z-index:60;padding:20px;background:rgba(0,0,0,.4)}
@@ -1078,7 +1086,7 @@ async function renderMetricas(v,s,silencioso){
 }
 
 /* ---------- Anuncios ---------- */
-let ANUN={rango:"todo",desde:"",hasta:"",modo:"real"};
+let ANUN={rango:"todo",desde:"",hasta:"",modo:"real",estado:"todos",orden:"inversion",dir:-1,cerrados:new Set(),ultimo:null,v:null,s:null};
 const diaAR=d=>new Date((d?new Date(d):new Date()).getTime()-3*3600e3).toISOString().slice(0,10);
 const fDia=d=>{const p=d.split("-");return `${+p[2]}/${+p[1]}`;};
 const fPct=v=>v==null?"—":String(v).replace(".",",")+"%";
@@ -1126,20 +1134,87 @@ function anunRango(r){ANUN.rango=r;render();}
 function anunFechas(){ANUN.desde=$("#aDesde").value;ANUN.hasta=$("#aHasta").value;if(ANUN.desde&&ANUN.hasta){ANUN.rango="rango";render();}}
 function anunModo(m){ANUN.modo=m;render();}
 
-async function renderAnuncios(v,s,silencioso){
+const usd2=n=>n==null?"—":"USD "+Number(n).toLocaleString("es-AR",{maximumFractionDigits:2});
+function anunEstado(k){ANUN.estado=k;renderAnuncios(ANUN.v,ANUN.s,true,true);}
+function anunOrden(k){if(ANUN.orden===k)ANUN.dir*=-1;else{ANUN.orden=k;ANUN.dir=-1;}renderAnuncios(ANUN.v,ANUN.s,true,true);}
+function anunToggle(k){ANUN.cerrados.has(k)?ANUN.cerrados.delete(k):ANUN.cerrados.add(k);renderAnuncios(ANUN.v,ANUN.s,true,true);}
+// Métricas de una fila (anuncio, conjunto o campaña) a partir de sus sumas.
+function metricasMeta(x){
+  const d=(a,b)=>b?Math.round(a/b*100)/100:null, p=(a,b)=>b?Math.round(a/b*1000)/10:null;
+  return {...x,cpl:d(x.inversion,x.leads),cplCalif:d(x.inversion,x.calif),cpm:x.impresiones?Math.round(x.inversion/x.impresiones*100000)/100:null,
+    ctr:p(x.clics,x.impresiones),clicALanding:p(x.lpv,x.clics),convLanding:p(x.leads,x.lpv)};
+}
+function panelMeta(M,x,card,seg){
+  const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)",D=M.porDia,col=k=>D.map(d=>d[k]);
+  let h=`<div class="grid-2c">`;
+  h+=card("Inversión por día","Gasto diario en Meta.",lineas(x,[{nombre:"Inversión",datos:col("inversion"),color:NAR,fmt:usd2}]),[[NAR,"Inversión (USD)"]]);
+  h+=card("CPL real y calificado por día","Inversión del día sobre leads de pauta (llena) y sobre calificados (punteada).",
+    lineas(x,[{nombre:"CPL real",datos:col("cpl"),color:NAR,fmt:usd2},{nombre:"CPL calificado",datos:col("cplCalif"),color:VER,punteada:true,fmt:usd2}]),[[NAR,"CPL real"],[VER,"CPL calificado",1]]);
+  h+=card("CTR y clic → landing por día","CTR: clics en el enlace sobre impresiones. Clic → landing: vistas de la landing sobre clics.",
+    lineas(x,[{nombre:"CTR",datos:col("ctr"),color:NAR,fmt:fPct},{nombre:"Clic → landing",datos:col("clicALanding"),color:GRI,punteada:true,fmt:fPct}],{pct:true}),[[NAR,"CTR"],[GRI,"Clic → landing",1]]);
+  h+=card("CPM por día","Costo cada 1.000 impresiones.",lineas(x,[{nombre:"CPM",datos:col("cpm"),color:NAR,fmt:usd2}]),[[NAR,"CPM (USD)"]]);
+  h+=`</div>`;
+
+  // Tabla Campaña → Conjunto → Anuncio.
+  const ads=M.anuncios.filter(a=>ANUN.estado==="todos"||(ANUN.estado==="activos"?a.activo:!a.activo));
+  const SUMA=["inversion","impresiones","clics","lpv","leads","calif","agendas","ventas"];
+  const sumar=(arr,extra)=>{const o={...extra};SUMA.forEach(k=>o[k]=arr.reduce((t,a)=>t+(a[k]||0),0));return metricasMeta(o);};
+  const campanas=[];
+  for(const a of ads){
+    let c=campanas.find(c=>c.id===a.campanaId); if(!c){c={id:a.campanaId,nombre:a.campana,conjuntos:[]};campanas.push(c);}
+    let j=c.conjuntos.find(j=>j.id===a.conjuntoId); if(!j){j={id:a.conjuntoId,nombre:a.conjunto,ads:[]};c.conjuntos.push(j);}
+    j.ads.push({...a,nombre:a.anuncio});
+  }
+  const ord=(arr)=>arr.sort((p,q)=>{const a=p[ANUN.orden],b=q[ANUN.orden];if(a==null&&b==null)return 0;if(a==null)return 1;if(b==null)return -1;
+    return typeof a==="string"?ANUN.dir*-1*a.localeCompare(b):ANUN.dir*(a-b);});
+  campanas.forEach(c=>{c.conjuntos.forEach(j=>{Object.assign(j,sumar(j.ads));ord(j.ads);});Object.assign(c,sumar(c.conjuntos.flatMap(j=>j.ads)));ord(c.conjuntos);});
+  ord(campanas);
+  // Semáforo contra el promedio de la cuenta: verde si es mejor; rojo si es 25% peor o más.
+  const P=M.resumen;
+  const sem=(k,v,menosMejor)=>{const ref=P[k];if(v==null||!ref)return "";const r=menosMejor?v/ref:ref/v;return r<1?"ok":r>=1.25?"mal":"";};
+  const COLS=[["nombre","Nombre"],["inversion","Inversión",usd2],["leads","Leads"],["calif","Calif."],["cpl","CPL",usd2,1],["cplCalif","CPL calif.",usd2,1],
+    ["ctr","CTR",fPct,0],["cpm","CPM",usd2,1],["clicALanding","Clic → landing",fPct,0],["convLanding","Conv. landing",fPct,0],["frecuencia","Frec.",v=>v==null?"—":String(Math.round(v*100)/100).replace(".",",")],["agendas","Agendas"],["ventas","Ventas"]];
+  const celdas=(r)=>COLS.slice(1).map(([k,,f,menos])=>{const v=r[k];const c=menos===undefined?"":sem(k,v,menos===1);
+    return `<td class="n ${c?"sem-"+c:""}">${f?f(v):(v==null?"—":v)}</td>`;}).join("");
+  const fila=(r,nivel,clave,hijos)=>{const cerrado=ANUN.cerrados.has(clave);
+    return `<tr class="niv-${nivel}${hijos?" abre":""}" ${hijos?`onclick="anunToggle('${esc(clave)}')"`:""}><td><span style="padding-left:${nivel*16}px">${hijos?`<span class="flecha">${cerrado?"▸":"▾"}</span>`:""}${esc(r.nombre||"(sin nombre)")}</span>${nivel===2?` <span class="chip ${r.activo?"ok":""}">${r.activo?"Activo":"Apagado"}</span>`:""}</td>${celdas(r)}</tr>`;};
+  let filas="";
+  for(const c of campanas){filas+=fila(c,0,"c:"+c.id,true);if(ANUN.cerrados.has("c:"+c.id))continue;
+    for(const j of c.conjuntos){filas+=fila(j,1,"s:"+j.id,true);if(ANUN.cerrados.has("s:"+j.id))continue;
+      for(const a of j.ads)filas+=fila(a,2,"a:"+a.adId,false);}}
+  const cab=COLS.map(([k,t])=>`<th class="${k==="nombre"?"":"n"} ordenable" onclick="anunOrden('${k}')">${t}${ANUN.orden===k?(ANUN.dir<0?" ↓":" ↑"):""}</th>`).join("");
+  const nota=`Verde: mejor que el promedio de la cuenta. Rojo: 25% peor o más. Tocá una campaña o un conjunto para abrirlo o cerrarlo, y un encabezado para ordenar.${M.sinCruzar?` ${M.sinCruzar} lead${M.sinCruzar===1?"":"s"} de pauta no se pudo${M.sinCruzar===1?"":"ieron"} unir a un anuncio de Meta (UTMs distintos al nombre del anuncio).`:""}`;
+  h+=card("Anuncios: campaña → conjunto → anuncio",nota,
+    `<div class="filtros" style="margin:0 0 10px">${seg([["todos","Todos"],["activos","Activos"],["apagados","Apagados"]],ANUN.estado,"anunEstado")}</div>`+
+    (campanas.length?`<div class="tabla-scroll"><table class="tabla tabla-ads"><thead><tr>${cab}</tr></thead><tbody>${filas}</tbody></table></div>`:`<div class="sin-datos">Sin anuncios con inversión en este rango</div>`));
+  return h;
+}
+async function renderAnuncios(v,s,silencioso,deCache){
   const yaPintado=silencioso&&v.dataset.vista==="anun";
+  ANUN.v=v; ANUN.s=s;
   const seg=(op,actual,fn)=>`<div class="seg">${op.map(([k,t])=>`<button class="${actual===k?"on":""}" onclick="${fn}('${k}')">${t}</button>`).join("")}</div>`;
   const filtros=`<div class="rango">${seg([["todo","Todo el lanzamiento"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"]],ANUN.rango,"anunRango")}
     <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta"></div>`;
   if(!yaPintado) v.innerHTML=encabezado(s)+filtros+`<div class="tiles">${[1,2,3,4,5].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
   const r=rangoAnun();
-  let a;try{a=await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
+  let a;try{a=deCache&&ANUN.ultimo?ANUN.ultimo:await api("/api/anuncios"+(r.desde?`?desde=${r.desde}&hasta=${r.hasta}`:""));ANUN.ultimo=a;}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+filtros+`<div class="vacio"><b>No se pudieron cargar los datos</b>${esc(e.message)}</div>`;return;}
   if(VISTA!=="anun") return;
   const R=a.resumen, D=a.porDia, x=D.map(d=>d.dia), col=k=>D.map(d=>d[k]);
   const tile=(v2,t,sub)=>`<div class="tile"><div class="t">${t}</div><div class="v num">${v2}</div>${sub?`<div class="s">${sub}</div>`:""}</div>`;
   const card=(tit,sub,cuerpo,leyenda)=>`<div class="tarjeta"><h4>${tit}</h4>${leyenda?`<div class="leyenda">${leyenda.map(([c,t,p])=>`<span><i style="background:${c}${p?";opacity:.55":""}"></i>${t}</span>`).join("")}</div>`:""}${cuerpo}${sub?`<p class="nota-a" style="margin:10px 0 0">${sub}</p>`:""}</div>`;
   const NAR="var(--marca-dato)",VER="var(--ok)",GRI="var(--tx-3)";
   let h=encabezado(s)+filtros+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)} · días en hora de Argentina. «De pauta» = leads que llegaron desde un anuncio de Meta (UTMs del anuncio). Calificado = invierte 100 dólares por día o más en Meta (leads de antes del 14-oct: facturación de 30M o más).</p>`;
+  const M=a.meta&&!a.meta.error?a.meta:null, MR=M&&M.resumen;
+  if(MR) h+=`<div class="tiles">
+    ${tile(usd2(MR.inversion),"Inversión en Meta",`${MR.impresiones.toLocaleString("es-AR")} impresiones`)}
+    ${tile(usd2(MR.cpl),"CPL real","Inversión / leads de pauta")}
+    ${tile(usd2(MR.cplCalif),"CPL calificado","Inversión / calificados de pauta")}
+    ${tile(usd2(MR.cpm),"CPM","Cada 1.000 impresiones")}
+    ${tile(fPct(MR.ctr),"CTR",`${MR.clics.toLocaleString("es-AR")} clics en el enlace`)}
+    ${tile(fPct(MR.clicALanding),"Clic → landing",`${MR.lpv.toLocaleString("es-AR")} vistas de la landing. Si baja, la página carga lento`)}
+    ${tile(fPct(MR.convLanding),"Conversión landing (Meta)","Leads de pauta / vistas de la landing que informa Meta")}
+    ${tile(MR.frecuencia==null?"—":String(Math.round(MR.frecuencia*100)/100).replace(".",","),"Frecuencia","Veces que vio un anuncio cada persona")}
+  </div>`;
   h+=`<div class="tiles">
     ${tile(R.leadsPauta,"Leads de pauta")}
     ${tile(R.califPauta,"Calificados de pauta","Meta: 100 dólares por día o más")}
@@ -1181,7 +1256,9 @@ async function renderAnuncios(v,s,silencioso){
   h+=card("Tasa de agenda por día","De los calificados de cada día, cuántos agendaron pre-venta o llamada.",
     lineas(x,[{nombre:"Tasa de agenda",datos:col("tasaAgenda"),color:NAR,fmt:fPct}],{pct:true}),[[NAR,"Tasa de agenda"]]);
   h+=`</div>`;
-  h+=`<div class="tarjeta"><h4>Inversión, CPL, CPM y panel de anuncios</h4><p style="color:var(--tx-3);font-size:13.5px">Se suman cuando conectemos Meta Ads (fase 2).</p></div>`;
+  if(!a.meta) h+=`<div class="tarjeta"><h4>Inversión, CPL, CPM y panel de anuncios</h4><p style="color:var(--tx-3);font-size:13.5px">Falta conectar Meta Ads: cargá META_ACCESS_TOKEN y META_AD_ACCOUNT_ID en Vercel.</p></div>`;
+  else if(a.meta.error) h+=`<div class="tarjeta"><h4>No se pudieron traer los datos de Meta</h4><p style="color:var(--tx-3);font-size:13.5px">${esc(a.meta.error)}</p></div>`;
+  else h+=panelMeta(M,x,card,seg);
   pintarEnLugar(v,h); v.dataset.vista="anun";
   activarTips(v);
 }
