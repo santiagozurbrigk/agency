@@ -172,7 +172,32 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(an.ab&&an.ab[0].version==="A"&&an.ab[0].visitantes===2&&an.ab[0].leads===1,"anuncios: test A/B con visitantes y leads por versión");
     const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
     const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
-    ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día"); }
+    ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día");
+    ok(an.meta===null,"anuncios: sin variables de Meta, meta = null");
+    // Meta Ads con respuestas simuladas
+    process.env.META_ACCESS_TOKEN="TOKEN_SECRETO"; process.env.META_AD_ACCOUNT_ID="act_42";
+    const fetchReal=global.fetch; let pedidos=[];
+    global.fetch=async(url)=>{ pedidos.push(String(url)); const u=new URL(url);
+      const json=(d)=>({json:async()=>d});
+      if(u.pathname.endsWith("/ads")) return json({data:[{id:"123",effective_status:"ACTIVE"},{id:"999",effective_status:"PAUSED"}]});
+      if(u.searchParams.get("level")==="ad") return json({data:[
+        {campaign_id:"c1",campaign_name:"Génesis 19/10",adset_id:"s1",adset_name:"Dueños de marca",ad_id:"123",ad_name:"VSL-hook-CPA",spend:"100",impressions:"10000",inline_link_clicks:"200",reach:"8000",frequency:"1.25",actions:[{action_type:"landing_page_view",value:"150"}]},
+        {campaign_id:"c1",campaign_name:"Génesis 19/10",adset_id:"s1",adset_name:"Dueños de marca",ad_id:"999",ad_name:"Otro",spend:"50",impressions:"5000",inline_link_clicks:"100",reach:"4000",frequency:"1.25",actions:[{action_type:"landing_page_view",value:"70"}]}]});
+      if(u.searchParams.get("time_increment")) return json({data:[{date_start:hoy,spend:"150",impressions:"15000",inline_link_clicks:"300",actions:[{action_type:"landing_page_view",value:"220"}]}]});
+      return json({data:[{spend:"150",impressions:"15000",inline_link_clicks:"300",reach:"12000",frequency:"1.25",actions:[{action_type:"landing_page_view",value:"220"}]}]});
+    };
+    try {
+      const err0=global.fetch; global.fetch=async()=>({json:async()=>({error:{message:"Token TOKEN_SECRETO inválido"}})});
+      const e=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
+      ok(e.ok&&e.meta&&/^Meta:/.test(e.meta.error)&&!e.meta.error.includes("TOKEN_SECRETO"),"meta: error de Meta se muestra sin el token y el panel sigue");
+      global.fetch=err0;
+      const mt=(await call(h("api/anuncios.js"),{cookie})).body.meta;
+      ok(mt&&mt.resumen.inversion===150&&mt.resumen.ctr===2&&mt.resumen.clicALanding===73.3,"meta: inversión, CTR y clic → landing");
+      ok(mt.resumen.cpl===Math.round(150/mt.resumen.leads*100)/100&&mt.resumen.leads>=1,"meta: CPL real = inversión / leads de pauta");
+      const a123=mt.anuncios.find(x=>x.adId==="123"), a999=mt.anuncios.find(x=>x.adId==="999");
+      ok(a123&&a123.leads>=1&&a123.activo&&a999&&!a999.activo&&a999.leads===0,"meta: leads cruzados al anuncio por ad_id, activo/apagado");
+      ok(pedidos.every(u=>u.includes("act_42/")&&!u.includes("act_act_")),"meta: cuenta con o sin «act_»");
+    } finally { global.fetch=fetchReal; delete process.env.META_ACCESS_TOKEN; delete process.env.META_AD_ACCOUNT_ID; } }
   { // Opt-in nuevo (14-oct): una sola pregunta, inversión diaria en Meta
     const ad={utm_source:"facebook",utm_medium:"Instagram_Reels",utm_content:"Ad-inversion",ad_id:"456"};
     await call(h("api/public/optin.js"),{method:"POST",body:{nombre:"Inv Si",email:"invsi@test.com",telefono:"+5491100007777",inversion_meta:"De 100 a 200 dólares",tracking:ad}});
