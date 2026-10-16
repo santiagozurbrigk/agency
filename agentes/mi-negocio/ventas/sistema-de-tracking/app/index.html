@@ -945,7 +945,11 @@ async function armarGrupos(){
 /* ---------- Ventas ---------- */
 function renderVentas(v,s){
   if(!DATA){v.innerHTML=encabezado(s)+esqueleto();return;}
-  const filas=DATA.colas.ventas.map(lead).filter(Boolean).map(l=>({l,v:venta(l)})).filter(x=>x.v);
+  const todas=DATA.colas.ventas.map(lead).filter(Boolean).map(l=>({l,v:venta(l)}));
+  const filas=todas.filter(x=>x.v);
+  // Etapa de venta sin la venta registrada (quedaron así por moverlos a mano a «Venta …»):
+  // no tienen plan de pagos, así que se listan aparte para registrarla.
+  const sinRegistrar=todas.filter(x=>!x.v).map(x=>x.l);
   const suma=a=>a.reduce((x,y)=>x+y,0);
   const total=suma(filas.map(x=>suma(x.v.pagos.map(p=>p.monto))));
   const cobrado=suma(filas.map(x=>suma(x.v.pagos.filter(p=>p.pagado).map(p=>p.monto))));
@@ -954,6 +958,8 @@ function renderVentas(v,s){
     <div class="tile"><div class="t">Vendido</div><div class="v num">${usd(total)}</div><div class="s">${filas.length} venta${filas.length===1?"":"s"}</div></div>
     <div class="tile"><div class="t">Cobrado</div><div class="v num">${usd(cobrado)}</div><div class="meter"><i style="width:${total?cobrado/total*100:0}%;background:var(--ok)"></i></div></div>
     <div class="tile"><div class="t">Por cobrar</div><div class="v num">${usd(total-cobrado)}</div></div></div>`;
+  if(sinRegistrar.length) h+=`<div class="tarjeta"><h4>Cerrados sin la venta registrada</h4><p style="color:var(--tx-3);font-size:13.5px;margin-bottom:10px">Están en etapa de venta pero falta cargar la oferta y la forma de pago, así que no suman a lo vendido ni a lo cobrado. Abrilos y registrala en la pestaña Venta.</p>
+    ${sinRegistrar.map(l=>`<button class="btn sm" style="margin:0 6px 6px 0" onclick="abrirFicha('${l.id}','venta')">${esc(l.nombre||"(sin nombre)")} · ${esc(l.fields.etapa)}</button>`).join("")}</div>`;
   if(!filas.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-venta")}</div><b>Todavía no hay ventas</b>Se registran desde la ficha de cada lead, en la pestaña Venta.</div></div>`;return;}
   h+=`<div class="lista"><div class="fila cab"><div>Lead</div><div class="col-fact">Oferta</div><div class="col-etapa">Cobro</div><div class="col-etq">Vendió</div><div></div></div>`;
   for(const {l,v:vt} of filas){
@@ -1310,7 +1316,7 @@ function pintarFicha(){
       </div>
       <div class="f-acc">
         <button class="btn pri sm" onclick="accion('${id}','intento',{},'Intento anotado')">${ic("i-mas")}1 intento</button>
-        ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa),"Etapa actualizada")}
+        ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa&&!e.startsWith("Venta")),"Etapa actualizada")}
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Equipo"],"Llamada reasignada")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
         ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
