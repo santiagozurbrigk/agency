@@ -140,7 +140,10 @@ module.exports = async function handler(req, res) {
 
     // Test del titular: A/B o landing por dolor (cpa, margen, meta). Solo si hay datos con versión.
     let ab = null;
-    const versiones = [...new Set(L.map(l => l.ab).concat(V.map(v => v.ab)).filter(Boolean))].sort();
+    const versiones = [...new Set(L.map(l => l.ab).concat(V.map(v => v.ab)).filter(Boolean))];
+    // Si hay datos del test de titular, A y B salen siempre, aunque una tenga 0.
+    if (versiones.some(x => x === "A" || x === "B")) for (const x of ["A", "B"]) if (!versiones.includes(x)) versiones.push(x);
+    versiones.sort();
     if (versiones.length) {
       ab = versiones.map(x => {
         const ls = L.filter(l => l.ab === x), vis = sumaV(V, v => v.ab === x), cal = cuenta(ls, l => l.calif);
@@ -149,7 +152,7 @@ module.exports = async function handler(req, res) {
     }
 
     // Fase 2: Meta Ads. Si falla, el resto del panel sigue andando y se muestra el error.
-    let m = null;
+    let m = meta.problema() ? { error: meta.problema() } : null;
     if (meta.enabled()) {
       try {
         m = cruzarMeta(await meta.datos(desde, dias[dias.length - 1] || hasta), L.filter(l => l.pauta), porDia);

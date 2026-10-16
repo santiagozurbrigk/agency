@@ -358,9 +358,20 @@ async function guardarVisitas() {
     try { actual = DEMO ? (demo.db().visitas || {}) : (JSON.parse((cv && cv.value) || "{}") || {}); } catch (e) {}
     for (const [f, n] of Object.entries(pend)) actual[f] = (actual[f] || 0) + n;
     if (DEMO) demo.db().visitas = actual;
-    else { await ghl.setCustomValue(VISITAS_KEY, JSON.stringify(actual)); await cache.set("visitas", actual, 15 * 60); }
+    else {
+      const valor = JSON.stringify(actual);
+      await ghl.setCustomValue(VISITAS_KEY, valor);
+      await cache.set("visitas", actual, 15 * 60);
+      console.log("visitas guardadas", JSON.stringify({ nuevas: Object.values(pend).reduce((a, b) => a + b, 0), claves: Object.keys(actual).length, largo: valor.length }));
+    }
   } catch (e) {
     for (const [f, n] of Object.entries(pend)) visitasPend[f] = (visitasPend[f] || 0) + n; // se reintenta la próxima
+    console.error("visitas: no se pudieron guardar", e.message);
+    // Reintento programado, así no dependen de que llegue otra visita a esta instancia.
+    if (!DEMO && !guardadoProgramado) {
+      guardadoProgramado = true;
+      cache.waitUntil(new Promise(r => setTimeout(r, 60000)).then(guardarVisitas));
+    }
   }
 }
 

@@ -10,14 +10,25 @@ const VERSION = process.env.META_API_VERSION || "v24.0";
 const TTL = 5 * 60 * 1000;
 const cache = new Map(); // clave -> { at, v }
 
+// Acepta el número solo, «act_123», «act=123» o la URL del Administrador de anuncios.
 function config() {
-  const token = process.env.META_ACCESS_TOKEN || "";
-  const cuenta = String(process.env.META_AD_ACCOUNT_ID || "").trim().replace(/^act_/, "");
-  return { token, cuenta };
+  const token = String(process.env.META_ACCESS_TOKEN || "").trim();
+  const crudo = String(process.env.META_AD_ACCOUNT_ID || "");
+  const m = crudo.match(/act[_=](\d+)/) || crudo.match(/\d{5,}/g);
+  const cuenta = m ? (m[1] && /act/.test(m[0]) ? m[1] : m[0]) : "";
+  return { token, cuenta, hayToken: Boolean(token), hayCuenta: Boolean(crudo.trim()) };
 }
 function enabled() {
   const { token, cuenta } = config();
-  return Boolean(token && /^\d+$/.test(cuenta));
+  return Boolean(token && cuenta);
+}
+// Por qué no está conectado (null si no hay nada cargado: Meta todavía no se usa).
+function problema() {
+  const c = config();
+  if (enabled() || (!c.hayToken && !c.hayCuenta)) return null;
+  if (!c.hayToken) return "Falta META_ACCESS_TOKEN en Vercel (o no se aplicó: hace falta un deploy después de cargarla).";
+  if (!c.hayCuenta) return "Falta META_AD_ACCOUNT_ID en Vercel (o no se aplicó: hace falta un deploy después de cargarla).";
+  return "META_AD_ACCOUNT_ID no tiene un número de cuenta publicitaria válido. Tiene que ser el número que aparece después de act= en el Administrador de anuncios.";
 }
 
 // GET a la Graph API siguiendo la paginación. El token nunca aparece en los errores.
@@ -83,4 +94,4 @@ async function datos(desde, hasta) {
   return v;
 }
 
-module.exports = { enabled, datos };
+module.exports = { enabled, problema, datos };
