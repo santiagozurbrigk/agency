@@ -19,6 +19,7 @@ const DEFAULTS = {
   genesisLugares: 10,      // lugares de Génesis (editable si se abren más)
   cierre: "2026-10-22T23:59:00-03:00",
   clase: "2026-10-19T19:00:00-03:00",
+  inicioLanzamiento: "",   // AAAA-MM-DD: desde cuándo cuenta «Todo el lanzamiento» en Anuncios
   // IDs y links de los calendarios de GHL (se cargan en Configuración):
   calManuPreventaId: "", calManuPreventaLink: "",
   calManuPostId: "", calManuPostLink: "",

@@ -53,6 +53,15 @@ async function get(ruta, params) {
 }
 
 const num = (v) => { const n = Number(v); return Number.isFinite(n) ? n : 0; };
+// Estado de entrega de Meta en palabras.
+function entrega(s) {
+  if (!s) return "";
+  if (s === "ACTIVE") return "Activo";
+  if (["IN_PROCESS", "PENDING_REVIEW", "PREAPPROVED"].includes(s)) return "En revisión";
+  if (s === "DISAPPROVED") return "Rechazado";
+  if (s === "WITH_ISSUES") return "Con problemas";
+  return "Apagado";
+}
 const accion = (fila, tipo) => num(((fila.actions || []).find(a => a.action_type === tipo) || {}).value);
 
 // Normaliza una fila de insights.
@@ -73,21 +82,33 @@ async function datos(desde, hasta) {
   const rango = JSON.stringify({ since: desde, until: hasta });
   const base = "spend,impressions,inline_link_clicks,actions";
   const act = `act_${cuenta}`;
-  const [total, dias, ads, estados] = await Promise.all([
+  const [total, dias, ads, adsDia, estados, conjuntos, campanas] = await Promise.all([
     get(`${act}/insights`, { level: "account", time_range: rango, fields: base + ",reach,frequency" }),
     get(`${act}/insights`, { level: "account", time_range: rango, time_increment: "1", fields: base, limit: "500" }),
     get(`${act}/insights`, { level: "ad", time_range: rango, limit: "500",
       fields: base + ",reach,frequency,campaign_id,campaign_name,adset_id,adset_name,ad_id,ad_name" }),
-    get(`${act}/ads`, { fields: "id,effective_status", limit: "500" }).catch(() => [])
+    get(`${act}/insights`, { level: "ad", time_range: rango, time_increment: "1", limit: "500", fields: base + ",ad_id" }).catch(() => []),
+    get(`${act}/ads`, { fields: "id,effective_status", limit: "500" }).catch(() => []),
+    get(`${act}/adsets`, { fields: "id,effective_status,daily_budget", limit: "500" }).catch(() => []),
+    get(`${act}/campaigns`, { fields: "id,effective_status,daily_budget", limit: "500" }).catch(() => [])
   ]);
 
   const estadoDe = Object.fromEntries(estados.map(a => [a.id, a.effective_status]));
+  // Presupuestos en centavos de la moneda de la cuenta.
+  const mapa = (arr) => Object.fromEntries(arr.map(x => [x.id, { estado: entrega(x.effective_status), presupuesto: x.daily_budget ? num(x.daily_budget) / 100 : null }]));
+  const serieDe = {};
+  for (const d of adsDia) {
+    const f = fila(d);
+    (serieDe[d.ad_id] || (serieDe[d.ad_id] = {}))[d.date_start] = [f.inversion, f.impresiones, f.clics, f.lpv];
+  }
   const v = {
     total: fila(total[0] || {}),
     porDia: dias.map(d => ({ dia: d.date_start, ...fila(d) })),
+    conjuntos: mapa(conjuntos), campanas: mapa(campanas),
     anuncios: ads.map(a => ({
       campanaId: a.campaign_id, campana: a.campaign_name || "", conjuntoId: a.adset_id, conjunto: a.adset_name || "",
-      adId: a.ad_id, anuncio: a.ad_name || "", activo: estadoDe[a.ad_id] === "ACTIVE", ...fila(a)
+      adId: a.ad_id, anuncio: a.ad_name || "", entrega: entrega(estadoDe[a.ad_id]), activo: estadoDe[a.ad_id] === "ACTIVE",
+      serie: serieDe[a.ad_id] || {}, ...fila(a)
     }))
   };
   cache.set(clave, { at: Date.now(), v });
