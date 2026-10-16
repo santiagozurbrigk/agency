@@ -173,6 +173,8 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
     const an2=(await call(h("api/anuncios.js"),{cookie,query:{desde:hoy,hasta:hoy}})).body;
     ok(an2.porDia.length===1&&an2.desde===hoy,"anuncios: filtro de un día");
+    const largo=(await call(h("api/anuncios.js"),{cookie,query:{desde:"2025-01-01",hasta:hoy}})).body;
+    ok(largo.hasta===hoy&&largo.porDia.length===120&&largo.porDia[119].dia===hoy&&largo.resumen.leadsTotal>=1,"anuncios: rango largo se queda con los días más recientes (incluye hoy)");
     ok(an.meta===null,"anuncios: sin variables de Meta, meta = null");
     ok(an.respuestas&&an.respuestas.pais.some(p=>p.op==="Argentina")&&an.origen.some(o=>o.op==="Anuncios de Meta"),"anuncios: país por prefijo y origen de los opt-ins");
     ok(an.ab.some(v=>v.version==="B")&&an.ab[0].porDia.length===an.porDia.length&&an.test&&"ganador" in an.test,"anuncios: test A/B con serie por día y ganador");

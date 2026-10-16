@@ -21,14 +21,17 @@ const SIN_CONTESTAR = ["Nuevo", "Contactado", "Sin respuesta"];
 const PAUTA = "Anuncios de Meta";
 const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+// Días del rango, como mucho los últimos MAX_DIAS: si el rango es más largo se queda con
+// los más recientes (antes se cortaba al final y dejaba afuera los días de este lanzamiento).
+const MAX_DIAS = 120;
 function diasEntre(desde, hasta) {
   const out = [];
-  for (let t = Date.parse(desde + "T12:00:00Z"); out.length < 120; t += 864e5) {
+  for (let t = Date.parse(hasta + "T12:00:00Z"); out.length < MAX_DIAS; t -= 864e5) {
     const d = new Date(t).toISOString().slice(0, 10);
-    if (d > hasta) break;
+    if (d < desde) break;
     out.push(d);
   }
-  return out;
+  return out.reverse();
 }
 const pct = (a, b) => (b ? Math.round((a / b) * 1000) / 10 : null);
 
