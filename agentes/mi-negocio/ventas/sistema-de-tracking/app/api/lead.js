@@ -10,6 +10,22 @@ const PRECIOS = {
   "Mentoría": { PIF: [2000], "2 cuotas": [1100, 1100] }
 };
 
+// Montos de cuotas cargados a mano: de 1 a 24, números mayores a 0 (redondeados a centavos).
+function montosValidos(lista) {
+  if (!Array.isArray(lista) || lista.length < 1 || lista.length > 24) return null;
+  const montos = lista.map(m => Math.round(Number(m) * 100) / 100);
+  return montos.every(m => Number.isFinite(m) && m > 0) ? montos : null;
+}
+
+// Día de pago elegido a mano. «AAAA-MM-DD» se guarda al mediodía de Argentina
+// para que no se corra de día al mostrarlo. Devuelve null si no es una fecha.
+function fechaPago(v) {
+  if (!v) return null;
+  const s = String(v);
+  const d = new Date(/^\d{4}-\d{2}-\d{2}$/.test(s) ? s + "T12:00:00-03:00" : s);
+  return isNaN(d) ? null : d.toISOString();
+}
+
 module.exports = async function handler(req, res) {
   const user = requiere(req, res);
   if (!user) return;
@@ -95,13 +111,16 @@ module.exports = async function handler(req, res) {
       }
 
       // Registrar la venta: oferta + forma de pago. Arma el plan de pagos.
+      // Con forma «Personalizado» las cuotas vienen a mano en data.montos.
       case "venta": {
         const { oferta, forma, vendedor } = data;
-        const montos = (PRECIOS[oferta] || {})[forma];
-        if (!montos) return res.status(400).json({ ok: false, error: "Oferta o forma de pago inválida" });
+        if (!PRECIOS[oferta]) return res.status(400).json({ ok: false, error: "Oferta inválida" });
+        const montos = forma === "Personalizado" ? montosValidos(data.montos) : PRECIOS[oferta][forma];
+        if (!montos) return res.status(400).json({ ok: false, error: "Forma de pago o montos inválidos" });
         const venta = {
           oferta, forma, vendedor: vendedor || quien,
           fecha: new Date().toISOString(),
+          nota: String(data.nota || "").trim(),
           pagos: montos.map((m, i) => ({ n: i + 1, monto: m, pagado: false, fecha: null, comprobante: null }))
         };
         updated = await store.registrar(id, quien, `Venta ${oferta} · ${forma} · vendió ${venta.vendedor}`, {
@@ -119,10 +138,33 @@ module.exports = async function handler(req, res) {
         const p = venta.pagos.find(p => p.n === data.n);
         if (!p) return res.status(400).json({ ok: false, error: "Pago inexistente" });
         p.pagado = Boolean(data.pagado);
-        p.fecha = data.pagado ? (data.fecha || new Date().toISOString()) : null;
+        p.fecha = data.pagado ? (fechaPago(data.fecha) || new Date().toISOString()) : null;
         if (data.comprobante) p.comprobante = data.comprobante;
         updated = await store.registrar(id, quien,
           `Pago ${p.n} de ${venta.pagos.length} ${p.pagado ? "cobrado" : "desmarcado"} (${venta.oferta})`,
+          { venta_json: JSON.stringify(venta) }, lead);
+        break;
+      }
+
+      // Editar la venta a mano: monto de cada cuota, si está cobrada y el día que pagó,
+      // agregar o quitar cuotas, y la nota. Los comprobantes se mantienen por número de cuota.
+      case "editar_venta": {
+        let venta;
+        try { venta = JSON.parse(lead.fields.venta_json || "null"); } catch (e) { venta = null; }
+        if (!venta) return res.status(400).json({ ok: false, error: "Este lead no tiene una venta registrada" });
+        const pagos = Array.isArray(data.pagos) ? data.pagos : null;
+        const montos = pagos && montosValidos(pagos.map(p => p && p.monto));
+        if (!montos) return res.status(400).json({ ok: false, error: "Revisá los montos: tienen que ser números mayores a 0 (de 1 a 24 cuotas)" });
+        const previos = venta.pagos || [];
+        venta.pagos = pagos.map((p, i) => {
+          const pagado = Boolean(p.pagado);
+          const fecha = pagado ? (fechaPago(p.fecha) || (previos[i] && previos[i].fecha) || new Date().toISOString()) : null;
+          return { n: i + 1, monto: montos[i], pagado, fecha, comprobante: (previos[i] && previos[i].comprobante) || null };
+        });
+        const preset = (PRECIOS[venta.oferta] || {})[venta.forma];
+        if (!preset || preset.join() !== montos.join()) venta.forma = "Personalizado";
+        if (data.nota !== undefined) venta.nota = String(data.nota || "").trim();
+        updated = await store.registrar(id, quien, `Venta editada a mano (${venta.oferta} · ${venta.pagos.length} cuota${venta.pagos.length === 1 ? "" : "s"})`,
           { venta_json: JSON.stringify(venta) }, lead);
         break;
       }
