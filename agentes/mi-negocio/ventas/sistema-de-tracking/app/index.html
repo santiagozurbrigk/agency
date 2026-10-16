@@ -969,7 +969,7 @@ function renderVentas(v,s){
       <div class="quien-l"><div class="avatar ${claseAvatar(l.fields.dueno)}">${esc(iniciales(l.nombre))}</div><div style="min-width:0"><div class="nom">${esc(l.nombre)}</div><div class="sub">${new Date(vt.fecha).toLocaleDateString("es-AR")}</div>
         <div class="movil"><span class="badge ok">${esc(vt.oferta)} · ${pag}/${vt.pagos.length}</span></div></div></div>
       <div class="col-fact fact">${esc(vt.oferta)}<small>${esc(vt.forma)}</small></div>
-      <div class="col-etapa"><div class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div><div class="num" style="font-size:12px;color:var(--tx-3);margin-top:5px">${pag} de ${vt.pagos.length} pagos · ${usd(cob)} de ${tot.toLocaleString("es-AR")}</div></div>
+      <div class="col-etapa"><div class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div><div class="num" style="font-size:12px;color:var(--tx-3);margin-top:5px">${pag} de ${vt.pagos.length} pagos · ${usd(cob)} de ${tot.toLocaleString("es-AR")}${tot-cob>0?` · falta ${usd(tot-cob)}`:""}</div></div>
       <div class="col-etq etiquetas"><span class="chip">${esc(vt.vendedor)}</span>${sinComp?`<span class="chip warn">${ic("i-clip")}${sinComp} sin comprobante</span>`:""}</div>
       <div></div></div>`;
   }
@@ -1237,12 +1237,12 @@ async function correrSetup(){
    Ficha
    ============================================================ */
 function abrirFicha(id,tab){
-  if(FICHA_ID!==id){FICHA_TAB=tab||"resumen";EDITANDO=false;} else if(tab) FICHA_TAB=tab;
+  if(FICHA_ID!==id){FICHA_TAB=tab||"resumen";EDITANDO=false;VENTA_EDIT=null;} else if(tab) FICHA_TAB=tab;
   FICHA_ID=id; pintarFicha();
   $("#velo").classList.add("on"); $("#ficha").classList.add("on"); document.body.style.overflow="hidden";
   api("/api/lead?id="+encodeURIComponent(id)).then(d=>{COMPLETO[id]=d.lead;if(FICHA_ID===id&&!EDITANDO)pintarFicha();}).catch(()=>{});
 }
-function cerrarFicha(){FICHA_ID=null;EDITANDO=false;$("#velo").classList.remove("on");$("#ficha").classList.remove("on");document.body.style.overflow="";}
+function cerrarFicha(){FICHA_ID=null;EDITANDO=false;VENTA_EDIT=null;$("#velo").classList.remove("on");$("#ficha").classList.remove("on");document.body.style.overflow="";}
 const esMovil=()=>matchMedia("(max-width:900px)").matches;
 // Si se cruza el corte celular/escritorio con la ficha abierta, se rearma.
 let _eraMovil=null;
@@ -1391,24 +1391,42 @@ function guardarCampos(id){
   accion(id,"campos",data,"Ficha guardada");
 }
 
-let VENTA_OF="Génesis", VENTA_FO="PIF";
+let VENTA_OF="Génesis", VENTA_FO="PIF", VENTA_EDIT=null;
+const sumaM=a=>a.reduce((x,y)=>x+y,0);
+// Fecha guardada → «AAAA-MM-DD» del día local, para el input de fecha.
+const diaInput=f=>f?new Date(f).toLocaleDateString("en-CA"):"";
+const hoyInput=()=>new Date().toLocaleDateString("en-CA");
 function cuerpoVenta(l){
   const vt=venta(l), id=l.id;
   if(!vt){
-    if(!OFERTAS[VENTA_OF][VENTA_FO]) VENTA_FO="PIF";
+    if(VENTA_FO!=="Personalizado"&&!OFERTAS[VENTA_OF][VENTA_FO]) VENTA_FO="PIF";
+    const formas=Object.entries(OFERTAS[VENTA_OF]).concat([["Personalizado","montos a mano"]]);
     return `<div class="tarjeta"><h4>Registrar una venta</h4>
       <div class="opciones">${Object.keys(OFERTAS).map(o=>`<button class="op ${VENTA_OF===o?"on":""}" onclick="VENTA_OF='${o}';pintarFicha()"><b>${o}</b><small>${o==="Génesis"?"Consultoría 1 a 1 · 4 meses":"3 meses · clases y comunidad"}</small></button>`).join("")}</div>
       <div style="margin-top:14px"><label style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Forma de pago</label>
-        <div class="seg">${Object.entries(OFERTAS[VENTA_OF]).map(([k,p])=>`<button class="${VENTA_FO===k?"on":""}" onclick="VENTA_FO='${k}';pintarFicha()">${k} · ${p}</button>`).join("")}</div></div>
+        <div class="seg">${formas.map(([k,p])=>`<button class="${VENTA_FO===k?"on":""}" onclick="VENTA_FO='${k}';pintarFicha()">${k} · ${p}</button>`).join("")}</div></div>
+      ${VENTA_FO==="Personalizado"?`<div class="form-g" style="margin-top:14px">
+        <div><label for="vTotal">Monto total (USD)</label><input id="vTotal" type="number" min="1" step="0.01" inputmode="decimal" placeholder="5000" onfocus="EDITANDO=true"></div>
+        <div><label for="vCuotas">Cuotas</label><input id="vCuotas" type="number" min="1" max="24" step="1" value="1" onfocus="EDITANDO=true"></div></div>
+        <p style="color:var(--tx-3);font-size:12.5px;margin-top:6px">Se divide en cuotas iguales. Después podés cambiar el monto de cada una y marcar lo que ya pagó.</p>`:""}
+      <div style="margin-top:14px"><label for="vNota" style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Nota de la venta (opcional)</label>
+        <textarea id="vNota" placeholder="Ej.: paga la 2° cuota cuando cobre a fin de mes" onfocus="EDITANDO=true"></textarea></div>
       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn pri" onclick="registrarVenta('${id}')">Registrar la venta</button></div></div>`;
   }
-  const suma=a=>a.reduce((x,y)=>x+y,0);
-  const cob=suma(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=suma(vt.pagos.map(p=>p.monto));
-  return `<div class="tarjeta">
+  const cob=sumaM(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=sumaM(vt.pagos.map(p=>p.monto));
+  const resumen=`<div class="tarjeta">
       <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><h3 style="font-size:20px">${esc(vt.oferta)}</h3><span style="color:var(--tx-2)">${esc(vt.forma)} · vendió ${esc(vt.vendedor)} · ${new Date(vt.fecha).toLocaleDateString("es-AR")}</span></div>
       <div style="margin:14px 0 6px" class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div>
-      <div class="num" style="font-size:13px;color:var(--tx-2)">Cobrado ${usd(cob)} de ${tot.toLocaleString("es-AR")}</div></div>
-    <div class="tarjeta"><h4>Pagos</h4><div class="pagos">${vt.pagos.map(p=>`
+      <div class="num" style="font-size:13px;color:var(--tx-2)">Cobrado ${usd(cob)} de ${usd(tot)} · <b style="color:var(--tx)">Falta pagar ${usd(tot-cob)}</b></div>
+      ${vt.nota?`<p style="margin-top:12px;font-size:13.5px;white-space:pre-wrap">${esc(vt.nota)}</p>`:""}</div>`;
+  if(VENTA_EDIT===id) return resumen+`<div class="tarjeta"><h4>Editar pagos</h4>
+      <p style="color:var(--tx-3);font-size:12.5px;margin-bottom:6px">Monto de cada cuota, si ya la pagó y qué día. Si pagó una parte, dejá esa parte como una cuota cobrada y el resto en otra.</p>
+      <div class="pagos" id="editPagos">${vt.pagos.map((p,i)=>filaEdicion(p,i)).join("")}</div>
+      <div style="margin-top:10px"><button class="btn sm" onclick="agregarCuota()">${ic("i-mas")}Agregar cuota</button></div>
+      <div style="margin-top:14px"><label for="eNota" style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Nota de la venta</label>
+        <textarea id="eNota" onfocus="EDITANDO=true">${esc(vt.nota||"")}</textarea></div>
+      <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn sm fantasma" onclick="cancelarEdicionVenta()">Cancelar</button><button class="btn sm pri" onclick="guardarEdicionVenta('${id}')">Guardar pagos</button></div></div>`;
+  return resumen+`<div class="tarjeta"><h4>Pagos</h4><div class="pagos">${vt.pagos.map(p=>`
       <div class="pago ${p.pagado?"cobrado":""}">
         <div class="marca-p">${p.pagado?ic("i-check"):p.n}</div>
         <div class="info"><b class="num">${usd(p.monto)}</b> · pago ${p.n} de ${vt.pagos.length}<small>${p.pagado?`Cobrado el ${new Date(p.fecha).toLocaleDateString("es-AR")}`:"Pendiente"}</small></div>
@@ -1416,9 +1434,51 @@ function cuerpoVenta(l){
           :`<label class="btn sm" style="cursor:pointer">${ic("i-clip")}Adjuntar<input type="file" accept="image/*,application/pdf" style="display:none" onchange="subirComprobante('${id}',${p.n},this)"></label>`}
         <button class="btn sm ${p.pagado?"":"pri"}" onclick="accion('${id}','pago',{n:${p.n},pagado:${!p.pagado}},'${p.pagado?"Pago desmarcado":"Pago cobrado"}')">${p.pagado?"Desmarcar":"Marcar cobrado"}</button>
       </div>`).join("")}</div>
-      <div style="display:flex;justify-content:flex-end;margin-top:14px"><button class="btn sm fantasma peligro" onclick="anularVenta('${id}')">Anular venta</button></div></div>`;
+      <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn sm" onclick="editarVenta('${id}')">Editar pagos y nota</button><button class="btn sm fantasma peligro" onclick="anularVenta('${id}')">Anular venta</button></div></div>`;
 }
-function registrarVenta(id){ accion(id,"venta",{oferta:VENTA_OF,forma:VENTA_FO},"Venta registrada"); }
+function filaEdicion(p,i){
+  return `<div class="pago ${p.pagado?"cobrado":""}" data-fila>
+    <div class="marca-p">${i+1}</div>
+    <div style="flex:1;min-width:120px"><label style="font-size:11.5px;color:var(--tx-3)">Monto (USD)</label><input data-monto type="number" min="1" step="0.01" inputmode="decimal" value="${p.monto||""}" onfocus="EDITANDO=true"></div>
+    <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer"><input data-pagado type="checkbox" style="width:auto" ${p.pagado?"checked":""} onchange="const f=this.closest('[data-fila]');f.classList.toggle('cobrado',this.checked);const d=f.querySelector('[data-fecha]');if(this.checked&&!d.value)d.value=hoyInput();">Pagó</label>
+    <div style="min-width:140px"><label style="font-size:11.5px;color:var(--tx-3)">Día que pagó</label><input data-fecha type="date" value="${p.pagado?diaInput(p.fecha):""}" onfocus="EDITANDO=true"></div>
+    <button class="icon-btn" title="Quitar cuota" aria-label="Quitar cuota" onclick="quitarCuota(this)">${ic("i-x")}</button>
+  </div>`;
+}
+function leerEdicion(){
+  return [...document.querySelectorAll("#editPagos [data-fila]")].map(f=>({
+    monto:Number(f.querySelector("[data-monto]").value),
+    pagado:f.querySelector("[data-pagado]").checked,
+    fecha:f.querySelector("[data-fecha]").value||null }));
+}
+function renumerarCuotas(){ document.querySelectorAll("#editPagos [data-fila] .marca-p").forEach((m,i)=>m.textContent=i+1); }
+function agregarCuota(){
+  const c=$("#editPagos"); c.insertAdjacentHTML("beforeend",filaEdicion({monto:"",pagado:false,fecha:null},c.children.length)); EDITANDO=true;
+}
+function quitarCuota(b){
+  if(document.querySelectorAll("#editPagos [data-fila]").length<=1){toast("La venta tiene que tener al menos una cuota",true);return;}
+  b.closest("[data-fila]").remove(); renumerarCuotas(); EDITANDO=true;
+}
+function editarVenta(id){ VENTA_EDIT=id; EDITANDO=true; pintarFicha(); }
+function cancelarEdicionVenta(){ VENTA_EDIT=null; EDITANDO=false; pintarFicha(); }
+async function guardarEdicionVenta(id){
+  const pagos=leerEdicion();
+  if(pagos.some(p=>!(p.monto>0))){toast("Cada cuota necesita un monto mayor a 0",true);return;}
+  VENTA_EDIT=null;
+  await accion(id,"editar_venta",{pagos,nota:$("#eNota").value},"Venta actualizada");
+}
+function registrarVenta(id){
+  const data={oferta:VENTA_OF,forma:VENTA_FO,nota:($("#vNota")||{}).value||""};
+  if(VENTA_FO==="Personalizado"){
+    const total=Number($("#vTotal").value), n=parseInt($("#vCuotas").value,10);
+    if(!(total>0)){toast("Poné el monto total de la venta",true);return;}
+    if(!(n>=1&&n<=24)){toast("Las cuotas van de 1 a 24",true);return;}
+    // Cuotas iguales; la última absorbe el redondeo para que sumen el total exacto.
+    const base=Math.floor(total/n*100)/100;
+    data.montos=Array.from({length:n},(_,i)=>i<n-1?base:Math.round((total-base*(n-1))*100)/100);
+  }
+  accion(id,"venta",data,"Venta registrada");
+}
 async function anularVenta(id){
   if(await confirmar("Anular la venta","El lead vuelve a «No cerró · seguimiento» y se borran sus pagos registrados.","Anular venta",true)) accion(id,"anular_venta",{},"Venta anulada");
 }

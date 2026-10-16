@@ -133,12 +133,22 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(venta.pagos[0].pagado===true&&venta.pagos[1].pagado===false,"pago 1 cobrado, pago 2 pendiente");
   r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"venta",data:{oferta:"Mentoría",forma:"3 cuotas"}}});
   ok(r.statusCode===400,"Mentoría en 3 cuotas rechazada");
+  r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"venta",data:{oferta:"Génesis",forma:"Personalizado",montos:[]}}});
+  ok(r.statusCode===400,"venta personalizada sin montos rechazada");
+  // Venta editada a mano: pagó una parte, el resto en otra cuota, con día de pago y nota
+  r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"editar_venta",data:{
+    pagos:[{monto:1500,pagado:true,fecha:"2026-10-10"},{monto:2000,pagado:false},{monto:2500,pagado:false}],nota:"Paga el resto a fin de mes"}}});
+  { const v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(v.pagos.length===3&&v.pagos[0].monto===1500&&v.pagos[0].pagado&&new Date(v.pagos[0].fecha).toLocaleDateString("en-CA",{timeZone:"America/Argentina/Buenos_Aires"})==="2026-10-10","editar venta: monto y día de pago a mano");
+    ok(v.forma==="Personalizado"&&v.nota==="Paga el resto a fin de mes","editar venta: forma Personalizado y nota"); }
+  r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"editar_venta",data:{pagos:[{monto:0}]}}});
+  ok(r.statusCode===400,"editar venta con monto 0 rechazada");
 
   // Métricas
   const metrics=h("api/metrics.js");
   r=await call(metrics,{cookie});
   ok(r.body.ok&&r.body.porOferta["Génesis"].cantidad===1,"métricas: 1 Génesis");
-  ok(r.body.porOferta["Génesis"].cobrado===2000&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 2000 de 6000");
+  ok(r.body.porOferta["Génesis"].cobrado===1500&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 1500 de 6000 (venta editada a mano)");
   ok(r.body.porPersona===undefined,"métricas: sin «por persona» (ya no hay dueños)");
   { const visita=h("api/public/visita.js"), bio={utm_source:"instagram",utm_medium:"bio",utm_campaign:"genesis-19-10"};
     let v=await call(visita,{method:"POST",body:JSON.stringify({tracking:bio})});
