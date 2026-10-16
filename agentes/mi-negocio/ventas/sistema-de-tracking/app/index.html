@@ -1434,13 +1434,16 @@ function tabFunnel(a,M,abierto){
 }
 
 /* ----- Landings ----- */
+// Nombre de cada versión del test de la landing.
+const VERSION_NOMBRE={"1":"Form abajo del video","2":"Form arriba del video","3":"Sin video","A":"Titular A (test del 14/10)","B":"Titular B (test del 14/10)"};
+const nombreVersion=v=>(v.length===1?"Versión "+v:"Landing "+v)+(VERSION_NOMBRE[v]?" · "+VERSION_NOMBRE[v]:"");
 function tabLandings(a,M,seg,abierto){
   const AB=a.ab||[], R=a.resumen, D=a.porDia, x=D.map(d=>d.dia);
   const NAR="var(--marca-dato)",VER="var(--ok)",BLA="var(--tx-2)";
   const VCOL=["var(--marca-dato)","var(--tx)","var(--ok)","var(--vio)","var(--azul)"];
   if(ANUN.version!=="final"&&!AB.find(v=>v.version===ANUN.version)) ANUN.version="final";
   const sel=AB.find(v=>v.version===ANUN.version);
-  let h=`<div class="fila-ctl">${seg([["final","Resultado final"]].concat(AB.map(v=>[v.version,v.version.length===1?"Versión "+v.version:"Landing "+v.version])),ANUN.version,"anunVersion")}
+  let h=`<div class="fila-ctl">${seg([["final","Resultado final"]].concat(AB.map(v=>[v.version,nombreVersion(v.version)])),ANUN.version,"anunVersion")}
     <span class="nota-a" style="margin:0">${sel?`Solo la versión ${esc(sel.version)}.`:AB.length?`Suma de las ${AB.length} versiones.`:"Todavía no hay versiones con datos."}</span></div>`;
   h+=seccion("Cómo convierte la landing",sel?`Versión ${esc(sel.version)}: de pauta y orgánico.`:"Todas las versiones juntas, de pauta y orgánico.");
   const vis=sel?sel.visitantes:R.visitasTodas, ops=sel?sel.leads:R.leadsTotal, cal=sel?sel.calificados:R.califTodos, gr=sel?sel.grupo:R.tocaronGrupo;
@@ -1456,18 +1459,18 @@ function tabLandings(a,M,seg,abierto){
   if(AB.length){
     const T=a.test||{}, mejor=T.ganador;
     h+=seccion("Test de versiones","Cada visitante ve siempre la misma versión. Opt-ins por visitante es la métrica que manda.");
-    h+=`<div class="vers">${AB.map(v=>`<div class="ver${v.version===mejor&&v.conversion!=null?" gana":""}"><div class="kt">${v.version.length===1?"Versión "+esc(v.version):"Landing "+esc(v.version)}${v.version===mejor&&v.conversion!=null?` <span class="chip-c">va ganando</span>`:""}</div>
+    h+=`<div class="vers">${AB.map(v=>`<div class="ver${v.version===mejor&&v.conversion!=null?" gana":""}"><div class="kt">${esc(nombreVersion(v.version))}${v.version===mejor&&v.conversion!=null?` <span class="chip-c">va ganando</span>`:""}</div>
       <div class="kv num">${fPct(v.conversion)}</div><div class="ks">opt-ins por visitante</div>
       <div class="ver-g"><div><span>Visitas</span><b class="num">${fNum(v.visitantes)}</b></div><div><span>Opt-ins</span><b class="num">${fNum(v.leads)}</b></div><div><span>% calificado</span><b class="num">${fPct(v.pctCalif)}</b></div></div></div>`).join("")}</div>`;
     const conf=T.confianza;
     h+=caja("",`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Versión</th><th class="n">Visitas</th><th class="n">Opt-ins</th><th class="n">Calificados</th><th class="n">Tocaron el grupo</th><th class="n">Calif. por visitante</th><th class="n">Opt-ins por visitante</th></tr></thead><tbody>
-      ${AB.map(v=>`<tr><td><b>${v.version.length===1?"Versión "+esc(v.version):"Landing "+esc(v.version)}</b></td><td class="n">${fNum(v.visitantes)}</td><td class="n">${fNum(v.leads)}</td><td class="n">${fNum(v.calificados)}<small>${fPct(v.pctCalif)} de los opt-ins</small></td><td class="n">${fNum(v.grupo)}<small>${fPct(v.pctGrupo)}</small></td><td class="n">${fPct(v.califPorVisitante)}</td><td class="n ${v.version===mejor&&v.conversion!=null?"sem-ok":""}"><b>${fPct(v.conversion)}</b></td></tr>`).join("")}</tbody></table></div>
+      ${AB.map(v=>`<tr><td><b>${esc(nombreVersion(v.version))}</b></td><td class="n">${fNum(v.visitantes)}</td><td class="n">${fNum(v.leads)}</td><td class="n">${fNum(v.calificados)}<small>${fPct(v.pctCalif)} de los opt-ins</small></td><td class="n">${fNum(v.grupo)}<small>${fPct(v.pctGrupo)}</small></td><td class="n">${fPct(v.califPorVisitante)}</td><td class="n ${v.version===mejor&&v.conversion!=null?"sem-ok":""}"><b>${fPct(v.conversion)}</b></td></tr>`).join("")}</tbody></table></div>
       <div class="conf"><div class="conf-b"><i style="width:${conf||0}%;background:${conf>=95?"var(--ok)":"var(--warn)"}"></i><span style="left:95%"></span></div>
       <div class="conf-t"><span>Confianza del test: <b>${conf==null?"—":fPct(conf)}</b>${T.p!=null?` (p = ${String(T.p).replace(".",",")})`:""}</span><span>Hay ganador desde 95%</span></div>
       ${conf==null?`<p class="nota-a" style="margin:8px 0 0">Para calcularla hacen falta visitas en al menos dos versiones.</p>`:""}</div>`);
     h+=seccion("Día a día",abierto?"El tramo punteado es hoy, que todavía no cerró.":"");
     h+=`<div class="grid-2c">`;
-    h+=caja("Conversión por versión por día",leyendaHtml(AB.map((v,i)=>[VCOL[i%5],v.version.length===1?"Versión "+v.version:v.version]))+lineas(x,AB.map((v,i)=>({nombre:v.version,datos:v.porDia.map(d=>d.conversion),color:VCOL[i%5],fmt:fPct})),{pct:true}));
+    h+=caja("Conversión por versión por día",leyendaHtml(AB.map((v,i)=>[VCOL[i%5],nombreVersion(v.version)]))+lineas(x,AB.map((v,i)=>({nombre:v.version,datos:v.porDia.map(d=>d.conversion),color:VCOL[i%5],fmt:fPct})),{pct:true}));
     if(M) h+=caja("Clics → visitas por día",leyendaHtml([[NAR,"Visitas (Meta)"],[VER,"% que llega"]])+doble(x,{nombre:"Visitas",datos:M.porDia.map(d=>d.lpv),color:NAR,fmt:fNum,area:1},{nombre:"% que llega",datos:M.porDia.map(d=>d.clicALanding),color:VER,fmt:fPct,pct:1},{abierto}),{der:"si el % baja, la landing está tardando en cargar"});
     h+=`</div>`;
   }

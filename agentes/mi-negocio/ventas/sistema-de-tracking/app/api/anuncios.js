@@ -174,8 +174,10 @@ module.exports = async function handler(req, res) {
     // Test del titular: A/B o landing por dolor (cpa, margen, meta). Solo si hay datos con versión.
     let ab = null;
     const versiones = [...new Set(L.map(l => l.ab).concat(V.map(v => v.ab)).filter(Boolean))];
-    // Si hay datos del test de titular, A y B salen siempre, aunque una tenga 0.
-    if (versiones.some(x => x === "A" || x === "B")) for (const x of ["A", "B"]) if (!versiones.includes(x)) versiones.push(x);
+    // Si hay datos de un test, todas sus versiones salen siempre, aunque alguna tenga 0:
+    // 1, 2 y 3 (orden del form y el video, desde el 16/10) o A y B (test de titular del 14/10).
+    for (const grupo of [["1", "2", "3"], ["A", "B"]])
+      if (versiones.some(x => grupo.includes(x))) for (const x of grupo) if (!versiones.includes(x)) versiones.push(x);
     versiones.sort();
     if (versiones.length) {
       ab = versiones.map(x => {
