@@ -981,7 +981,7 @@ function render(op){
   if(VISTA!=="met"&&VISTA!=="anun") delete v.dataset.vista;
   switch(VISTA){
     case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,wa:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá."}); break;
-    case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{registro:true,vacio:"Nadie en seguimiento todavía"}); break;
+    case "seg": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.seguimiento:[],{registro:true,wa:true,vacio:"Nadie en seguimiento todavía"}); break;
     case "g1": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo1:[],{numerar:true,vacio:"Nadie agendó todavía",vacioSub:"Los que agenden con el link 1 de la clase aparecen acá."}); break;
     case "g2": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo2:[],{bloques:[
         {titulo:"1 · Completaron la agenda y no agendaron",filtro:l=>l.fields.form_agenda==="Sí"},
