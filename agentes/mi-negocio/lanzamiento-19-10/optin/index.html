@@ -417,6 +417,59 @@ fbq('track', 'PageView');
     .anim .notif { opacity: 1; transition: none; }
     .pill .dot { animation: none; }
   }
+
+  /* ===== Dopamina: color, brillo y movimiento ===== */
+  @property --giro { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+  /* Resaltados del titular: cada idea con su color, con brillo */
+  .marca { background: linear-gradient(135deg, #FF8A3D, var(--naranja) 45%, #C2410C); box-shadow: 0 6px 22px rgba(var(--naranja-rgb), .42), inset 0 1px 0 rgba(255,255,255,.35); text-shadow: 0 1px 0 rgba(0,0,0,.18); }
+  .marca.m-ver { background: linear-gradient(135deg, #34D399, #16A34A 55%, #166534); box-shadow: 0 6px 22px rgba(34,197,94,.38), inset 0 1px 0 rgba(255,255,255,.3); }
+  .marca.m-vio { background: linear-gradient(135deg, #A78BFA, #7C3AED 55%, #5B21B6); box-shadow: 0 6px 22px rgba(139,92,246,.45), inset 0 1px 0 rgba(255,255,255,.3); }
+  .marca.m-azul { background: linear-gradient(135deg, #60A5FA, #2563EB 55%, #1E40AF); box-shadow: 0 6px 22px rgba(59,130,246,.42), inset 0 1px 0 rgba(255,255,255,.3); }
+  .hero h1 .marca { padding: 0 .18em; border-radius: .2em; }
+  .hero .sub .n { background: linear-gradient(90deg, #FFB067, var(--naranja)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  /* Fondo del hero: manchas de color que respiran */
+  .hero::after { content: ""; position: absolute; inset: -10% -20% auto; height: 760px; z-index: -1; pointer-events: none;
+    background: radial-gradient(38% 42% at 12% 30%, rgba(139,92,246,.20), transparent 70%), radial-gradient(34% 40% at 88% 26%, rgba(59,130,246,.16), transparent 70%), radial-gradient(30% 34% at 50% 70%, rgba(236,72,153,.10), transparent 70%);
+    animation: respirar 9s ease-in-out infinite alternate; }
+  @keyframes respirar { to { transform: translateY(18px) scale(1.04); opacity: .8; } }
+  /* Franja de temas en movimiento */
+  .marquesina { overflow: hidden; background: linear-gradient(90deg, #7C2D12, var(--naranja) 30%, #FF8A3D 50%, var(--naranja) 70%, #7C2D12); color: #fff; margin: -24px 0 22px; box-shadow: 0 8px 30px rgba(var(--naranja-rgb), .25); }
+  .mq-pista { display: flex; width: max-content; animation: marquesina 28s linear infinite; }
+  .mq-pista span { display: inline-flex; align-items: center; gap: 16px; padding: 8px 8px; font-size: 11.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap; }
+  .mq-pista span::after { content: "✦"; opacity: .7; margin-left: 8px; }
+  @keyframes marquesina { to { transform: translateX(-50%); } }
+  /* Pill de la fecha con borde brillante */
+  .pill { box-shadow: 0 0 0 1px rgba(var(--naranja-rgb), .25), 0 0 24px rgba(var(--naranja-rgb), .25); }
+  /* Botones: degradé, latido y destello que cruza */
+  .btn-naranja, .head-cta { position: relative; overflow: hidden; isolation: isolate; }
+  .btn-naranja { background: linear-gradient(180deg, #FF9147, var(--naranja) 55%, #D9560F); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 14px 36px rgba(var(--naranja-rgb), .5), 0 0 0 5px rgba(var(--naranja-rgb), .14); animation: latido 2.6s ease-in-out infinite; }
+  .btn-naranja::after, .head-cta::after { content: ""; position: absolute; top: 0; left: -70%; width: 45%; height: 100%; z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: destello 3.4s ease-in-out infinite; }
+  .head-cta { box-shadow: 0 0 22px rgba(var(--naranja-rgb), .45); }
+  @keyframes destello { 0% { left: -70%; } 55%, 100% { left: 135%; } }
+  @keyframes latido { 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 18px 46px rgba(var(--naranja-rgb), .7), 0 0 0 9px rgba(var(--naranja-rgb), .1); } }
+  /* Tarjeta del formulario con aro de color que gira y resplandor */
+  .form-card { box-shadow: 0 30px 80px rgba(var(--naranja-rgb), .22), 0 30px 60px rgba(0,0,0,.45); }
+  .form-card::before, .form-card::after { content: ""; position: absolute; inset: -3px; border-radius: 25px; z-index: -1;
+    background: conic-gradient(from var(--giro), var(--naranja), #EC4899, #8B5CF6, #3B82F6, #22C55E, var(--naranja)); animation: girar 7s linear infinite; }
+  .form-card::after { inset: -6px; filter: blur(22px); opacity: .55; z-index: -2; }
+  @keyframes girar { to { --giro: 360deg; } }
+  .form-card h2 { background: linear-gradient(90deg, var(--tinta), #7C2D12); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  /* Cuenta regresiva con brillo */
+  .cd-grande div:first-child { background: linear-gradient(180deg, #FF9147, var(--naranja) 60%, #C2410C); box-shadow: 0 10px 30px rgba(var(--naranja-rgb), .45); }
+  .cd-grande div:not(:first-child) { background: linear-gradient(180deg, #1c1c1f, var(--negro-2)); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+  .timebar { background: linear-gradient(90deg, #C2410C, var(--naranja) 30%, #FF8A3D 50%, var(--naranja) 70%, #C2410C); background-size: 200% 100%; animation: brillo-barra 6s linear infinite; }
+  @keyframes brillo-barra { to { background-position: -200% 0; } }
+  /* Video con marco iluminado */
+  .vsl-sec { padding: 0 0 8px; }
+  [data-orden="2"] .vsl-sec { padding: 6px 0 36px; }
+  .vsl { box-shadow: 0 0 0 1px rgba(var(--naranja-rgb), .35), 0 24px 70px rgba(var(--naranja-rgb), .22), 0 0 60px rgba(139,92,246,.14); }
+  /* Números de los temas con degradé */
+  .tema .n { background: linear-gradient(180deg, #FFB067, var(--naranja) 60%, #EC4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tema .n small { -webkit-text-fill-color: var(--gris); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero::after, .mq-pista, .btn-naranja, .btn-naranja::after, .head-cta::after, .form-card::before, .form-card::after, .timebar { animation: none; }
+  }
 </style>
 <!-- vTurb: precarga del VSL -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
@@ -476,6 +529,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 
 <!-- b) Above the fold -->
 <header class="hero">
+  <div class="marquesina" aria-hidden="true"><div class="mq-pista"><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span><span>Suscripciones</span><span>+40% de margen</span><span>Sin depender de Meta</span><span>Cobros recurrentes</span><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span><span>Suscripciones</span><span>+40% de margen</span><span>Sin depender de Meta</span><span>Cobros recurrentes</span><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span><span>Suscripciones</span><span>+40% de margen</span><span>Sin depender de Meta</span><span>Cobros recurrentes</span><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span><span>Suscripciones</span><span>+40% de margen</span><span>Sin depender de Meta</span><span>Cobros recurrentes</span></div></div>
   <div class="wrap">
     <!-- Desktop: lo que te llega a vos (izquierda) y lo que me llega a mí (derecha) -->
     <div class="flota f1"><div class="anim">
@@ -572,23 +626,25 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         }
       }
     };
-    /* ===== TEST A/B DE HEADLINE =====
-       Link para los anuncios: https://TU-DOMINIO/clase → redirige 50 y 50 a /a o /b
-       (lo hace api/clase.js, que conserva los utm y deja una cookie para que la misma
-       persona caiga siempre en la misma versión).
-         /a → headline A · /b → headline B (también sirven solos, para revisar cada versión).
-       Quien entra al link general (/) sin /a ni /b también se reparte 50 y 50 acá.
-       La versión viaja con la visita y con el registro (tracking.ab), y el tablero de tracking
-       compara A contra B. El cierre de la página repite el headline de su versión.
-       Para apagar el reparto del link general: AB_TEST = false (todos ven el A). */
+    /* ===== TEST DE 3 VERSIONES (dónde va el formulario) =====
+       Link para los anuncios: https://TU-DOMINIO/clase → reparte en partes iguales a /1, /2 o /3
+       (lo hace api/clase.js, que conserva los utm y deja una cookie para que la misma persona
+       caiga siempre en la misma versión).
+         /1 → video y el formulario abajo · /2 → formulario arriba del video · /3 → formulario sin video
+       (también sirven solos, para revisar cada versión; los links viejos /a y /b caen en la 1 y la 2).
+       Quien entra al link general (/) sin versión también se reparte en partes iguales acá.
+       La versión viaja con la visita y con el registro (tracking.ab) y el tablero de tracking
+       las compara. Las landings por dolor (/cpa, /margen, /meta) usan siempre el orden de la 1.
+       Para apagar el reparto del link general: AB_TEST = false (todos ven la 1). */
     var AB_TEST    = true;
-    var HEADLINE_A = 'Cómo un ecommerce hizo <span class="marca">+$220M con 40% de margen</span>, cambiando del modelo de compra única al modelo de suscripción';
-    var HEADLINE_B = 'Cómo un ecommerce hizo <span class="marca">+$220M sin pautar un solo peso en Meta</span>, con +40% de margen de forma recurrente únicamente cambiando al modelo de suscripción';
+    var VERSIONES  = ["1", "2", "3"];
+    var HEADLINE   = 'Cómo un ecommerce hizo <span class="marca m-nar">+$220M</span> con <span class="marca m-ver">+40% de margen</span> y <span class="marca m-vio">sin pautar un solo peso en Meta</span>, cambiando al <span class="marca m-azul">modelo de suscripción</span>';
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
-    /* /a o /b (o ?v=a): versión del test fijada por el link de redirección. Gana sobre todo lo guardado. */
-    var AB_FIJA = (location.pathname.replace(/^\/+|\/+$/g, "") || new URLSearchParams(location.search).get("v") || "").toUpperCase();
-    if (AB_FIJA !== "A" && AB_FIJA !== "B") AB_FIJA = "";
+    /* /1, /2 o /3 (o ?v=2): versión fijada por el link de redirección. Gana sobre todo lo guardado. */
+    var AB_FIJA = (location.pathname.replace(/^\/+|\/+$/g, "") || new URLSearchParams(location.search).get("v") || "").toLowerCase();
+    AB_FIJA = { a: "1", b: "2" }[AB_FIJA] || AB_FIJA;
+    if (VERSIONES.indexOf(AB_FIJA) === -1) AB_FIJA = "";
     var LANDING = (function () {
       if (AB_FIJA) return "";
       var k = (new URLSearchParams(location.search).get("l") || location.pathname.replace(/^\/+|\/+$/g, "")).toLowerCase();
@@ -611,29 +667,29 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     aplicarLanding();
     document.addEventListener("DOMContentLoaded", aplicarLanding);
 
-    /* Versión que ve: la landing del dolor o, en el link general, A o B (clave nueva del test del 14-oct). */
-    var VERSION = LANDING || "A";
+    /* Versión que ve: la landing del dolor o, en el link general, 1, 2 o 3 (clave nueva del test del 16-oct). */
+    var VERSION = LANDING || "1";
     if (AB_FIJA) {
       VERSION = AB_FIJA;
-      try { localStorage.setItem("optin_ab_1410", VERSION); } catch (e) {}
+      try { localStorage.setItem("optin_v_1610", VERSION); } catch (e) {}
     } else if (!LANDING && AB_TEST) {
-      try { VERSION = localStorage.getItem("optin_ab_1410") || ""; } catch (e) { VERSION = ""; }
-      if (VERSION !== "A" && VERSION !== "B") {
-        VERSION = Math.random() < 0.5 ? "A" : "B";
-        try { localStorage.setItem("optin_ab_1410", VERSION); } catch (e) {}
+      try { VERSION = localStorage.getItem("optin_v_1610") || ""; } catch (e) { VERSION = ""; }
+      if (VERSIONES.indexOf(VERSION) === -1) {
+        VERSION = VERSIONES[Math.floor(Math.random() * VERSIONES.length)];
+        try { localStorage.setItem("optin_v_1610", VERSION); } catch (e) {}
       }
     }
+    /* Orden de la página: 1 = video y form abajo · 2 = form arriba del video · 3 = form sin video */
+    var ORDEN = LANDING ? "1" : VERSION;
+    document.documentElement.setAttribute("data-orden", ORDEN);
     if (!LANDING) {
-      document.getElementById("headline").innerHTML = VERSION === "B" ? HEADLINE_B : HEADLINE_A;
+      document.getElementById("headline").innerHTML = HEADLINE;
       /* El cierre repite el headline de su versión (sin el resaltado) */
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("final-titulo").textContent = document.getElementById("headline").textContent;
       });
     }
     </script>
-
-    <!-- VSL de registro (vTurb) -->
-    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6ac837548f7a49438d7617bc" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac837548f7a49438d7617bc/v4/player.js", s.async=!0,document.head.appendChild(s); </script></div>
 
     <div class="chips">
       <span class="chip"><svg class="ci" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><b>Lunes 19 de octubre</b></span>
@@ -642,6 +698,13 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div>
   </div>
 </header>
+
+<!-- b2) VSL de registro (vTurb). En la versión 2 va debajo del formulario; en la 3 no se carga. -->
+<section class="vsl-sec" id="vsl-sec">
+  <div class="wrap">
+    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6ac837548f7a49438d7617bc" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> if (ORDEN === "3") { var v3 = document.getElementById("vsl-sec"); v3.parentNode.removeChild(v3); } else { var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac837548f7a49438d7617bc/v4/player.js", s.async=!0,document.head.appendChild(s); } </script></div>
+  </div>
+</section>
 
 <!-- c) Form -->
 <section class="form-sec" id="registro">
@@ -721,6 +784,11 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+<script>
+  /* Versión 2: el formulario va arriba del video. */
+  if (ORDEN === "2") { var vs = document.getElementById("vsl-sec"), rg = document.getElementById("registro"); if (vs && rg) vs.parentNode.insertBefore(rg, vs); }
+</script>
 
 <!-- d) Lo que vas a ver en vivo -->
 <section class="sec">
@@ -862,7 +930,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- g) CTA final -->
 <section class="sec final">
   <div class="wrap">
-    <h2 id="final-titulo" data-txt="final-titulo">Cómo un ecommerce hizo +$220M con 40% de margen, cambiando del modelo de compra única al modelo de suscripción</h2>
+    <h2 id="final-titulo" data-txt="final-titulo">Cómo un ecommerce hizo +$220M con +40% de margen y sin pautar un solo peso en Meta, cambiando al modelo de suscripción</h2>
     <a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a>
     <p class="chico">Registrate en menos de 30 segundos.</p>
   </div>
