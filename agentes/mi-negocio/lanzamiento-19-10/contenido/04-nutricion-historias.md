@@ -85,11 +85,11 @@ Tipo: venta directa. Creencia a instalar: "mañana voy y llevo mis números".
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
 | 1 | Hook | "Mañana." | Fondo negro con "19 HS" en rojo. |
-| 2 | Qué pasa | "Mañana a las 19 te muestro cuánto podés pagar por cada cliente de tu marca." | Selfie en el estudio armado. |
-| 3 | Qué te llevás | "El roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas." | Lista sobre fondo negro. |
-| 4 | Preparación | "Traé tus números: CPA, margen por pedido, ticket y cada cuánto te recompran." | Hoja con los 4 datos escritos a mano. |
-| 5 | Prueba | "La misma cuenta que me llevó de 60 millones a 156.798.062 por mes." | [CARGAR: reporte de facturación] |
-| 6 | CTA | "Últimas horas para anotarte: mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
+| 2 | Qué pasa | "Mañana a las 19 te muestro como hice para escalar mi ecom de químicos a +$220.000.000 SOLAMENTE de recurrencias, gracias al modelo de suscripción." | Selfie en el estudio armado. |
+| 3 | Qué te llevás | "El roadmap para migrar tu marca · el Simulador de Suscripción · los sistemas de email y WhatsApp que uso en mis marcas. (texto escondido chico: y algunos regalitos más que preapré)" | Lista sobre fondo negro. |
+| 4 | Preparación | "Prepara lapicera y cuaderno, no se imaginan la CANTIDAD de data que voy a soltar, uh se me escapo" | Hoja con los 4 datos escritos a mano. |
+| 5 | Prueba | "Cuando digo todo, es LITERALMENTE todo lo que me llevo años, mucha plata y muchisima prueba y error entender." | [CARGAR: reporte de facturación] |
+| 6 | CTA | "Últimas horas para registrarte, no duermas: mandame SUSCRIPCIÓN." | Sticker de link `[LINK REGISTRO]`. |
 | 7 | Cierre | Encuesta: "¿Venís mañana?" SÍ / SÍ, CON MIS NÚMEROS | Selfie. |
 
 **Dolor:** — **Creencia:** mañana es el día. **Al terminar tiene que pensar:** "Mañana voy, con mis números."
