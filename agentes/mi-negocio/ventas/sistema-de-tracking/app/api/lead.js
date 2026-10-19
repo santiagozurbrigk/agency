@@ -87,7 +87,11 @@ module.exports = async function handler(req, res) {
       // Marcar sí/no: confirmo_clase, recurso_enviado, recurso_visto, asistio,
       // senal_compra, agendo, se_presento, excede_tope...
       case "marcar": {
-        updated = await store.registrar(id, quien, `${data.campo} → ${data.valor}`, {
+        if (data.campo === "llamado_apl") await store.asegurarCampos(["llamado_apl"]);
+        const texto = data.campo === "llamado_apl"
+          ? (data.valor === "Sí" ? "Aplicación: ya lo llamé" : "Aplicación: vuelve a «por llamar»")
+          : `${data.campo} → ${data.valor}`;
+        updated = await store.registrar(id, quien, texto, {
           [data.campo]: data.valor, ultimo_contacto: new Date().toISOString()
         }, lead);
         break;

@@ -197,6 +197,9 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.mal{color:var(--mal)}
 .chip.azul,.chip.vio{color:var(--tx-2)}
 .chip svg.ic{width:13px;height:13px}
+.toggle-pill.llam.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.toggle-pill.llam svg{width:14px;height:14px}
+@media (max-width:520px){.toggle-pill.llam span{display:none}}
 .apl-on{color:var(--ok);font-weight:500} .apl-on small{font-weight:400}
 .apl-resp span,.apl-resp small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .apl-resp{min-width:0}
@@ -947,7 +950,7 @@ function etiquetas(l){
   if(f.senal_compra==="Sí")c.push(`<span class="chip warn">${ic("i-rayo")}Señal de compra</span>`);
   if(f.form_agenda==="Sí"&&f.agendo!=="Sí")c.push(`<span class="chip azul">Agenda sin agendar</span>`);
   if(f.form_contacto==="Sí")c.push(`<span class="chip vio">Pidió contacto</span>`);
-  if((l.tags||[]).includes("aplicacion-19-10"))c.push(`<span class="chip ok">${ic("i-check")}Aplicó</span>`);
+  if((l.tags||[]).includes("aplicacion-19-10"))c.push(`<span class="chip ok">${ic("i-check")}Aplicó${f.llamado_apl==="Sí"?" · llamado":""}</span>`);
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
@@ -1056,6 +1059,12 @@ if(FAPL!=="todas"&&!INV_APL[+FAPL]) FAPL="todas";
 function setApl(v){FAPL=v;try{localStorage.setItem("trk_fapl",v);}catch(e){}render();}
 const nivelInv=l=>INV_APL.indexOf(l.fields.inversion||"");
 const pasaApl=l=>FAPL==="todas"||nivelInv(l)===+FAPL;
+// Por llamar / ya llamados (la marca «Ya lo llamé»).
+let FLLAM="todas";
+try{FLLAM=localStorage.getItem("trk_fllam")||"todas";}catch(e){}
+function setLlam(v){FLLAM=v;try{localStorage.setItem("trk_fllam",v);}catch(e){}render();}
+const llamado=l=>l.fields.llamado_apl==="Sí";
+const pasaLlam=l=>FLLAM==="todas"||(FLLAM==="si")===llamado(l);
 // Fila de una aplicación: abre la ficha directo en «Lo que dijo», donde están todas las respuestas.
 function filaApl(l,pos){
   const f=l.fields, n=nivelInv(l);
@@ -1070,7 +1079,7 @@ function filaApl(l,pos){
     <div class="col-fact fact${FACT_ALTA.has(f.facturacion)?" apl-on":""}">${esc(f.facturacion||"—")}<small>${esc(f.ciclo||"")}</small></div>
     <div class="col-etapa fact${n>=2?" apl-on":""}">${esc(f.inversion||"—")}<div style="margin-top:4px">${badgeEtapa(f.etapa)}</div></div>
     <div class="col-etq fact apl-resp"><span title="${esc(f.objetivo||"")}">${esc(corto(f.objetivo)||"—")}</span><small title="${esc(f.freno||"")}">${esc(corto(f.freno))}</small></div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}</div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
   </div>`;
 }
 function renderAplicaciones(v,s){
@@ -1081,14 +1090,18 @@ function renderAplicaciones(v,s){
   const c3=todas.filter(l=>nivelInv(l)>=2).length, menos=todas.filter(l=>nivelInv(l)===0).length;
   const alta=todas.filter(l=>FACT_ALTA.has(l.fields.facturacion)).length;
   const pc=n=>todas.length?Math.round(n/todas.length*100)+"%":"—";
+  const nLl=todas.filter(llamado).length;
   let h=encabezado(s);
   h+=`<div class="tiles">
     <div class="tile"><div class="t">Aplicaciones</div><div class="v num">${todas.length}</div><div class="s">${deHoy} hoy</div></div>
+    <div class="tile"><div class="t">Por llamar</div><div class="v num">${todas.length-nLl}</div><div class="s">${nLl} ya llamado${nLl===1?"":"s"}</div></div>
     <div class="tile"><div class="t">Invierten USD 3.000 o más</div><div class="v num">${c3}</div><div class="s">${pc(c3)} de las aplicaciones</div></div>
     <div class="tile"><div class="t">Facturan 30M o más</div><div class="v num">${alta}</div><div class="s">${pc(alta)} de las aplicaciones</div></div>
     <div class="tile"><div class="t">Menos de USD 1.000</div><div class="v num">${menos}</div><div class="s">Pasan a Próximo ciclo</div></div></div>`;
   const op=[["todas","Todas",todas.length]].concat(INV_APL.map((t,k)=>[String(k),t,todas.filter(l=>nivelInv(l)===k).length]));
-  const vis=todas.filter(pasaApl);
+  const vis=todas.filter(l=>pasaApl(l)&&pasaLlam(l));
+  const opL=[["todas","Todas",todas.length],["no","Por llamar",todas.length-nLl],["si","Ya llamados",nLl]];
+  h+=`<div class="filtros"><span class="fseg-t">Llamada</span><div class="seg">${opL.map(([k,t,n])=>`<button class="${FLLAM===k?"on":""}" onclick="setLlam('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`).join("")}</div></div>`;
   h+=`<div class="filtros"><span class="fseg-t">Capital para invertir</span><div class="seg">${op.map(([k,t,n])=>`<button class="${FAPL===k?"on":""}" onclick="setApl('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`).join("")}</div><span class="cuenta">${vis.length} aplicaci${vis.length===1?"ón":"ones"}</span></div>`;
   if(!vis.length){h+=`<div class="lista"><div class="vacio"><div class="circ">${ic("i-clip")}</div><b>${todas.length?"Ninguna aplicación con este filtro":"Todavía no hay aplicaciones"}</b>${todas.length?"Probá con otro filtro.":"Las que completen applygenesis.com/aplication aparecen acá al instante."}</div></div>`;v.innerHTML=h;return;}
   h+=`<div class="lista con-reg"><div class="fila cab"><div>Lead</div><div class="col-reg">Aplicó · origen</div><div class="col-fact">Facturación · ciclo</div><div class="col-etapa">Inversión · etapa</div><div class="col-etq">Objetivo · freno</div><div></div></div>${vis.map((l,i)=>filaApl(l,vis.length-i)).join("")}</div>`;
@@ -1826,7 +1839,7 @@ function cuerpoFicha(l,tab){
       </div></div>
       <div class="tarjeta"><h4>Seguimiento</h4><div class="switches">
         ${sw("confirmo_clase","Confirmó la clase")}${sw("recurso_enviado","Recurso enviado")}${sw("recurso_visto","Recurso visto")}
-        ${sw("asistio","Asistió a la clase")}${sw("senal_compra","Señal de compra")}${sw("agendo","Agendó llamada")}${sw("facturacion_confirmada","Facturación confirmada")}${sw("se_presento","Se presentó")}
+        ${sw("asistio","Asistió a la clase")}${sw("senal_compra","Señal de compra")}${sw("agendo","Agendó llamada")}${sw("facturacion_confirmada","Facturación confirmada")}${sw("se_presento","Se presentó")}${(l.tags||[]).includes("aplicacion-19-10")?sw("llamado_apl","Ya lo llamé (aplicación)"):""}
       </div></div>
       <div class="tarjeta"><h4>Notas del equipo</h4>
         <textarea id="nota" placeholder="Lo que tenga que saber el próximo que hable con este lead…" onfocus="EDITANDO=true">${esc(f.notas||"")}</textarea>
