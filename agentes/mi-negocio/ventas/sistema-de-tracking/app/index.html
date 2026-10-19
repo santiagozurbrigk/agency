@@ -197,6 +197,9 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.mal{color:var(--mal)}
 .chip.azul,.chip.vio{color:var(--tx-2)}
 .chip svg.ic{width:13px;height:13px}
+.apl-on{color:var(--ok);font-weight:500} .apl-on small{font-weight:400}
+.apl-resp span,.apl-resp small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.apl-resp{min-width:0}
 .vacio{padding:64px 24px;text-align:center;color:var(--tx-3);font-size:13.5px}
 .vacio .circ{width:44px;height:44px;border-radius:50%;border:1px solid var(--borde-2);display:grid;place-items:center;margin:0 auto 14px;color:var(--tx-3)}
 .vacio b{display:block;color:var(--tx);font-family:var(--tit);font-weight:600;font-size:15px;margin-bottom:4px}
@@ -618,6 +621,8 @@ const SECCIONES=[
   {grupo:"Clase"},
   {id:"clase", nombre:"Día de la clase", icono:"i-vivo",
     sub:"Marcá asistencia y señales de compra. Al terminar, armá los 3 grupos."},
+  {id:"apl", nombre:"Aplicaciones", cola:"aplicaciones", icono:"i-clip",
+    sub:"Los que completaron applygenesis.com/aplication, la más reciente arriba. Tocá una para ver todas las respuestas."},
   {grupo:"Después de la clase"},
   {id:"g1", nombre:"Grupo 1 · Agendó", cola:"grupo1", icono:"i-g1",
     sub:"Agendaron en la clase. Ordenados por facturación; la llamada ya tiene asignado Manu o el equipo."},
@@ -1032,6 +1037,7 @@ function render(op){
     case "g3": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo3:[],{numerar:true,vacio:"Nadie en el Grupo 3",vacioSub:"Se llena al armar los grupos después de la clase."}); break;
     case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{vacio:"No hay llamadas de venta agendadas"}); break;
     case "clase": renderClase(v,s); break;
+    case "apl": renderAplicaciones(v,s); break;
     case "ventas": renderVentas(v,s); break;
     case "met": renderMetricas(v,s,silencioso); break;
     case "anun": renderAnuncios(v,s,silencioso); break;
@@ -1039,6 +1045,59 @@ function render(op){
   }
 }
 $("#busca").addEventListener("input",()=>render());
+
+/* ---------- Aplicaciones (/aplication) ---------- */
+const INV_APL=["Menos de USD 1.000","Entre USD 1.000 y USD 3.000","Entre USD 3.000 y USD 6.000","Más de USD 6.000"];
+const FACT_ALTA=new Set(["Entre 30M y 50M","Entre 50M y 100M","Más de 100M"]);
+let FAPL="todas";
+try{FAPL=localStorage.getItem("trk_fapl")||"todas";}catch(e){}
+function setApl(v){FAPL=v;try{localStorage.setItem("trk_fapl",v);}catch(e){}render();}
+const nivelInv=l=>INV_APL.indexOf(l.fields.inversion||"");
+function pasaApl(l){
+  const n=nivelInv(l);
+  if(FAPL==="3k") return n>=2;
+  if(FAPL==="1k") return n>=1;
+  if(FAPL==="menos") return n===0;
+  return true;
+}
+// Fila de una aplicación: abre la ficha directo en «Lo que dijo», donde están todas las respuestas.
+function filaApl(l,pos){
+  const f=l.fields, n=nivelInv(l);
+  const cuando=f.aplico_at||l.creado;
+  const corto=s=>String(s||"").replace(/^Otro: /,"Otro · ");
+  return `<div class="fila" onclick="abrirFicha('${l.id}','dijo')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}','dijo')">
+    <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}">${esc(iniciales(l.nombre))}</div>
+      <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
+      <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
+      <div class="movil"><span class="chip">${esc(horaRegistro(cuando))}</span><span class="chip ${n>=2?"ok":""}">${esc(f.inversion||"—")}</span><span class="chip">${esc(f.facturacion||"")}</span>${f.posible_duplicado==="Sí"?`<span class="chip mal">${ic("i-dup")}Sin optin</span>`:""}</div></div></div>
+    <div class="col-reg fact" title="${esc(new Date(cuando||0).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires"}))}">${esc(horaRegistro(cuando))}<small>${f.posible_duplicado==="Sí"?"Sin optin previo":esc(fuenteDe(origenDe(f)))}</small></div>
+    <div class="col-fact fact${FACT_ALTA.has(f.facturacion)?" apl-on":""}">${esc(f.facturacion||"—")}<small>${esc(f.ciclo||"")}</small></div>
+    <div class="col-etapa fact${n>=2?" apl-on":""}">${esc(f.inversion||"—")}<div style="margin-top:4px">${badgeEtapa(f.etapa)}</div></div>
+    <div class="col-etq fact apl-resp"><span title="${esc(f.objetivo||"")}">${esc(corto(f.objetivo)||"—")}</span><small title="${esc(f.freno||"")}">${esc(corto(f.freno))}</small></div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}</div>
+  </div>`;
+}
+function renderAplicaciones(v,s){
+  if(!DATA){v.innerHTML=encabezado(s)+esqueleto();return;}
+  const todas=(DATA.colas.aplicaciones||[]).map(lead).filter(Boolean);
+  const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
+  const deHoy=todas.filter(l=>{const c=l.fields.aplico_at||l.creado;return c&&new Date(new Date(c).getTime()-3*3600e3).toISOString().slice(0,10)===hoy;}).length;
+  const c3=todas.filter(l=>nivelInv(l)>=2).length, c1=todas.filter(l=>nivelInv(l)>=1).length, menos=todas.filter(l=>nivelInv(l)===0).length;
+  const alta=todas.filter(l=>FACT_ALTA.has(l.fields.facturacion)).length;
+  const pc=n=>todas.length?Math.round(n/todas.length*100)+"%":"—";
+  let h=encabezado(s);
+  h+=`<div class="tiles">
+    <div class="tile"><div class="t">Aplicaciones</div><div class="v num">${todas.length}</div><div class="s">${deHoy} hoy</div></div>
+    <div class="tile"><div class="t">Invierten USD 3.000 o más</div><div class="v num">${c3}</div><div class="s">${pc(c3)} de las aplicaciones</div></div>
+    <div class="tile"><div class="t">Facturan 30M o más</div><div class="v num">${alta}</div><div class="s">${pc(alta)} de las aplicaciones</div></div>
+    <div class="tile"><div class="t">Menos de USD 1.000</div><div class="v num">${menos}</div><div class="s">Pasan a Próximo ciclo</div></div></div>`;
+  const op=[["todas","Todas",todas.length],["3k","USD 3.000+",c3],["1k","USD 1.000+",c1],["menos","Menos de 1.000",menos]];
+  const vis=todas.filter(pasaApl);
+  h+=`<div class="filtros"><div class="seg">${op.map(([k,t,n])=>`<button class="${FAPL===k?"on":""}" onclick="setApl('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`).join("")}</div><span class="cuenta">${vis.length} aplicaci${vis.length===1?"ón":"ones"}</span></div>`;
+  if(!vis.length){h+=`<div class="lista"><div class="vacio"><div class="circ">${ic("i-clip")}</div><b>${todas.length?"Ninguna aplicación con este filtro":"Todavía no hay aplicaciones"}</b>${todas.length?"Probá con otro filtro.":"Las que completen applygenesis.com/aplication aparecen acá al instante."}</div></div>`;v.innerHTML=h;return;}
+  h+=`<div class="lista con-reg"><div class="fila cab"><div>Lead</div><div class="col-reg">Aplicó · origen</div><div class="col-fact">Facturación · ciclo</div><div class="col-etapa">Inversión · etapa</div><div class="col-etq">Objetivo · freno</div><div></div></div>${vis.map((l,i)=>filaApl(l,vis.length-i)).join("")}</div>`;
+  v.innerHTML=h;
+}
 
 /* ---------- Día de la clase ---------- */
 function renderClase(v,s){

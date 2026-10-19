@@ -51,6 +51,10 @@ module.exports = async function handler(req, res) {
 
       ventas: leads.filter(l => etapa(l).startsWith("Venta")).map(l => l.id),
 
+      aplicaciones: leads.filter(l => (l.tags || []).includes("aplicacion-19-10"))
+        .sort((a, b) => String(b.fields.aplico_at || b.creado || "").localeCompare(String(a.fields.aplico_at || a.creado || "")))
+        .map(l => l.id),
+
       proximoCiclo: leads.filter(l => etapa(l) === "Próximo ciclo").map(l => l.id)
     };
 

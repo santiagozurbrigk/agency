@@ -54,7 +54,8 @@ module.exports = async function handler(req, res) {
 
     await store.enSegundoPlano(async () => {
       const lead = encontrado.lead || (encontrado.conocido ? await store.getLead(encontrado.conocido.id) : null);
-      const fields = {};
+      await store.asegurarCampos(["aplico_at"]).catch(e => console.error("campos:", e.message));
+      const fields = { aplico_at: new Date().toISOString() };
       for (const [k] of PREGUNTAS) if (limpio(body[k])) fields[k] = limpio(body[k]);
 
       // Historial: todas las respuestas juntas, y por dónde llegó a la aplicación.
