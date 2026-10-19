@@ -1,10 +1,34 @@
 // Formulario público de aplicación (applygenesis.com/aplication).
-// Guarda las respuestas en la ficha del lead (lo busca por WhatsApp o email; si no existe, lo crea)
-// con el tag aplicacion-19-10. Como los otros formularios: responde al instante y guarda en GHL en segundo plano.
+// Une la aplicación con el lead del optin: lo busca primero con los datos con los que se registró
+// (`optin`: los guarda la landing en el navegador, o vienen en el link) y después con lo que escribió.
+// Guarda todas las respuestas en la ficha, con el tag aplicacion-19-10, sin pisar el email ni el
+// WhatsApp del optin (si escribió otros, quedan en el historial). Si no hay optin, crea el lead.
+// Como los otros formularios: responde al instante y guarda en GHL en segundo plano.
 
 const store = require("../../lib/store");
 
 const TAG = "aplicacion-19-10";
+const PREGUNTAS = [
+  ["objetivo", "Objetivo a 6 meses"], ["freno", "Qué lo frena"], ["hace_cuanto", "Hace cuánto y qué probó"],
+  ["ciclo", "Ciclo"], ["facturacion", "Facturación"], ["inversion", "Inversión"]
+];
+
+const limpio = (v) => String(v || "").trim();
+const mismoTel = (a, b) => store.normTel(a) === store.normTel(b);
+
+// Busca el lead: primero con los datos del optin, después con los que escribió en la aplicación.
+async function buscar(optin, telefono, email) {
+  const intentos = [[optin.telefono, optin.email], [telefono, email]].filter(([t, e]) => t || e);
+  for (const [t, e] of intentos) {
+    const c = await store.enFoto(t, e);
+    if (c) return { conocido: c };
+  }
+  for (const [t, e] of intentos) {
+    const l = await store.findLead(t, e);
+    if (l) return { lead: l };
+  }
+  return {};
+}
 
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -17,42 +41,51 @@ module.exports = async function handler(req, res) {
   try {
     let body = req.body;
     if (typeof body === "string") { try { body = JSON.parse(body); } catch (e) { return res.status(400).json({ ok: false, error: "JSON inválido" }); } }
-    const { nombre, email, telefono, objetivo, freno, hace_cuanto, ciclo, facturacion, inversion, tracking } = body || {};
+    body = body || {};
+    const nombre = limpio(body.nombre), email = limpio(body.email).toLowerCase(), telefono = limpio(body.telefono);
     if (!telefono || !email) return res.status(400).json({ ok: false, error: "Falta el WhatsApp o el email" });
+    const optin = { telefono: limpio(body.optin && body.optin.telefono), email: limpio(body.optin && body.optin.email).toLowerCase() };
+    const tracking = body.tracking && typeof body.tracking === "object" && Object.keys(body.tracking).length ? body.tracking : null;
+    const link = body.tracking_link && typeof body.tracking_link === "object" ? body.tracking_link : {};
 
     // Menos de USD 1.000 → "Por el momento no podemos ayudarte" + Próximo ciclo (regla 5.4).
-    const rechazado = inversion === "Menos de USD 1.000";
-    const conocido = await store.enFoto(telefono, email);
+    const rechazado = body.inversion === "Menos de USD 1.000";
+    const encontrado = await buscar(optin, telefono, email);
 
     await store.enSegundoPlano(async () => {
-      const lead = conocido ? await store.getLead(conocido.id) : await store.findLead(telefono, email);
-      const fields = {
-        objetivo: objetivo || "", freno: freno || "", hace_cuanto: hace_cuanto || "",
-        ciclo: ciclo || "", facturacion: facturacion || "", inversion: inversion || ""
-      };
-      let que;
-      if (rechazado) {
-        fields.etapa = "Próximo ciclo";
-        que = "Completó la aplicación: inversión < USD 1.000 → Próximo ciclo";
-      } else {
-        if (lead && (lead.fields || {}).etapa === "Próximo ciclo") fields.etapa = "En conversación";
-        que = `Completó la aplicación (${facturacion || "sin facturación"} · ${inversion || "sin inversión"})`;
-      }
+      const lead = encontrado.lead || (encontrado.conocido ? await store.getLead(encontrado.conocido.id) : null);
+      const fields = {};
+      for (const [k] of PREGUNTAS) if (limpio(body[k])) fields[k] = limpio(body[k]);
+
+      // Historial: todas las respuestas juntas, y por dónde llegó a la aplicación.
+      const via = Object.keys(link).length ? ` · vía ${[link.utm_source, link.utm_medium, link.utm_content].filter(Boolean).join(" / ")}` : "";
+      const lineas = [`Completó la aplicación${via}`];
+      if (rechazado) lineas[0] += " → inversión < USD 1.000 → Próximo ciclo";
+      for (const [k, t] of PREGUNTAS) if (fields[k]) lineas.push(`${t}: ${fields[k]}`);
+
+      if (rechazado) fields.etapa = "Próximo ciclo";
+      else if (lead && (lead.fields || {}).etapa === "Próximo ciclo") fields.etapa = "En conversación";
+
       if (lead) {
         const f = lead.fields || {};
         if (!f.etapa && !fields.etapa) { fields.etapa = "Nuevo"; fields.intentos = "0"; }
         if (!f.origen && tracking) fields.origen = JSON.stringify(tracking);
-        await store.updateLead(lead.id, {
-          nombre, email, telefono,
-          fields: { ...fields, historial_json: store.historialCon(lead, "Sistema", que) },
-          addTags: [TAG]
-        }, lead);
+        // Los datos del optin mandan: solo se completan si faltaban.
+        const patch = { fields, addTags: [TAG] };
+        if (!limpio(lead.nombre) && nombre) patch.nombre = nombre;
+        if (!lead.email) patch.email = email;
+        else if (lead.email.toLowerCase() !== email) lineas.push(`Email en la aplicación: ${email}`);
+        if (!lead.telefono) patch.telefono = telefono;
+        else if (!mismoTel(lead.telefono, telefono)) lineas.push(`WhatsApp en la aplicación: ${telefono}`);
+        patch.fields.historial_json = store.historialCon(lead, "Sistema", lineas.join("\n"));
+        await store.updateLead(lead.id, patch, lead);
       } else {
+        lineas[0] += " (sin optin previo: no se encontró con este email ni WhatsApp)";
         await store.createLead({
-          nombre: nombre || "", email, telefono,
-          fields: { etapa: "Nuevo", intentos: "0", ...fields,
-            ...(tracking ? { origen: JSON.stringify(tracking) } : {}),
-            historial_json: store.historialCon(null, "Sistema", que) },
+          nombre, email, telefono,
+          fields: { etapa: "Nuevo", intentos: "0", posible_duplicado: "Sí", ...fields,
+            ...(tracking || Object.keys(link).length ? { origen: JSON.stringify(tracking || link) } : {}),
+            historial_json: store.historialCon(null, "Sistema", lineas.join("\n")) },
           tags: [TAG]
         });
       }

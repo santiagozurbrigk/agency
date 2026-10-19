@@ -167,28 +167,34 @@ textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp
   var r = {}, otros = {};          /* respuestas y texto del «Otro» por clave */
   var i = -1, direccion = 1, enviando = false;   /* -1 = pantalla de inicio */
 
-  /* Parámetros del anuncio: los de este link o los que guardó la landing. */
-  function tracking() {
-    var p = new URLSearchParams(location.search), t = {};
+  /* De dónde vino: el anuncio por el que se registró en la landing (guardado por la landing)
+     y, aparte, los UTM de este link. Los de este link NO pisan los del anuncio. */
+  var Q = new URLSearchParams(location.search);
+  function utmDe(p) {
+    var t = {};
     p.forEach(function (v, k) { if (k.indexOf("utm_") === 0 || k === "fbclid" || k === "sl" || k === "ad_id") t[k] = v; });
-    try {
-      if (Object.keys(t).length) localStorage.setItem("genesis_utm", JSON.stringify(t));
-      else t = JSON.parse(localStorage.getItem("genesis_utm") || "{}");
-    } catch (e) {}
     return t;
   }
-  tracking();
+  var UTM_LINK = utmDe(Q);
+  function trackingOptin() {
+    try { return JSON.parse(localStorage.getItem("genesis_utm") || "{}"); } catch (e) { return {}; }
+  }
 
-  /* Si viene de la landing / thank you, precarga lo que ya dejó (o lo que venga en el link). */
-  (function () {
-    var q = new URLSearchParams(location.search);
-    try {
-      var g = JSON.parse(sessionStorage.getItem("genesis_lead") || "null");
-      if (g && g.em) r.email = g.em;
-    } catch (e) {}
-    if (q.get("email")) r.email = q.get("email");
-    if (q.get("nombre")) r.nombre = q.get("nombre");
+  /* Con quién se registró en el optin, para unir la aplicación con su lead aunque escriba otro email o WhatsApp.
+     Viene del navegador (lo guarda la landing al registrarse) o del link (?email=…&telefono=…, campos de GHL). */
+  var valido = function (v) { return v && v.indexOf("{{") < 0 ? String(v).trim() : ""; };
+  var OPTIN = (function () {
+    var o = {};
+    try { o = JSON.parse(localStorage.getItem("genesis_optin") || "{}") || {}; } catch (e) {}
+    try { var g = JSON.parse(sessionStorage.getItem("genesis_lead") || "null"); if (g && g.em && !o.email) o.email = g.em; } catch (e) {}
+    var em = valido(Q.get("email")), tel = valido(Q.get("telefono") || Q.get("phone"));
+    if (em) o.email = em.toLowerCase();
+    if (tel) o.telefono = tel;
+    return { email: o.email || "", telefono: o.telefono || "", nombre: o.nombre || "" };
   })();
+  if (OPTIN.email) r.email = OPTIN.email;
+  if (OPTIN.telefono) r.telefono = OPTIN.telefono.charAt(0) === "+" ? OPTIN.telefono : "+" + OPTIN.telefono.replace(/\D/g, "");
+  if (valido(Q.get("nombre")) || OPTIN.nombre) r.nombre = valido(Q.get("nombre")) || OPTIN.nombre;
 
   function progreso() {
     var n = Math.max(0, i);
@@ -322,7 +328,7 @@ textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp
   async function terminar() {
     if (enviando) return;
     enviando = true;
-    var datos = { tracking: tracking() };
+    var datos = { tracking: trackingOptin(), tracking_link: UTM_LINK, optin: { email: OPTIN.email, telefono: OPTIN.telefono } };
     PASOS.forEach(function (p) { var v = r[p.clave]; datos[p.clave] = v === "Otro" ? "Otro: " + (otros[p.clave] || "") : v; });
     $("#progreso").style.width = "100%";
     $("#pasoN").textContent = "";

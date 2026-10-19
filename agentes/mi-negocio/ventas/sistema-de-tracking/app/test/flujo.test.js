@@ -126,6 +126,23 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(rocio&&JSON.parse(rocio.fields.origen||"{}").utm_source==="ig","aplicación guarda el origen");
     ok((t.body.leads.find(l=>l.email==="tomas@marca.com")||{fields:{}}).fields.etapa==="Próximo ciclo","aplicación < USD 1.000 → Próximo ciclo");
   }
+  // Aplicación de alguien que ya hizo el optin, con otro email y WhatsApp: se une por los datos del optin
+  r=await call(aplicacion,{method:"POST",body:{nombre:"Pablo R",email:"pablo.otro@marca.com",telefono:"+5491177770000",
+    optin:{email:"pablo@demo.com",telefono:"+5491155550004"},tracking_link:{utm_source:"whatsapp",utm_medium:"grupo"},
+    objetivo:"Tener un piso de facturación todos los meses",freno:"El CPA me sube todos los meses",hace_cuanto:"Desde junio",
+    ciclo:"Entre 30 y 60 días",facturacion:"Entre 50M y 100M",inversion:"Más de USD 6.000"}});
+  ok(r.body.ok&&r.body.ruta==="aplicado","aplicación con datos del optin ok");
+  {
+    const t=await call(leads,{cookie});
+    const pablo=t.body.leads.find(l=>l.id==="demo-pablo");
+    ok(pablo.tags.includes("aplicacion-19-10")&&pablo.fields.facturacion==="Entre 50M y 100M"&&pablo.fields.hace_cuanto==="Desde junio","aplicación unida al lead del optin (no crea otro)");
+    ok(pablo.email==="pablo@demo.com"&&pablo.telefono==="+5491155550004"&&pablo.nombre==="Pablo Ruiz","no pisa email, WhatsApp ni nombre del optin");
+    ok(!t.body.leads.some(l=>l.email==="pablo.otro@marca.com"),"no se crea un lead duplicado");
+    const lead1=h("api/lead.js");
+    const fi=await call(lead1,{cookie,query:{id:"demo-pablo"}});
+    const hist=JSON.stringify((fi.body.lead||fi.body).fields||{});
+    ok(/vía whatsapp \/ grupo/.test(hist)&&/WhatsApp en la aplicación: \+5491177770000/.test(hist)&&/Email en la aplicación/.test(hist),"historial con la aplicación, la vía y los datos distintos");
+  }
 
   // Grupos: marcar asistencia y armar
   await call(lead,{method:"POST",cookie,body:{id:"demo-carla",action:"marcar",data:{campo:"asistio",valor:"Sí"}}});
