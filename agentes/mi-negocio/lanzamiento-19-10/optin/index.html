@@ -1132,6 +1132,8 @@ document.addEventListener("DOMContentLoaded", function () {
         em: datos.email, ph: datos.telefono.replace(/\D/g, ""), fn: datos.nombre.split(" ")[0].toLowerCase()
       }));
     } catch (e) {}
+    /* Con qué datos se registró: la aplicación (/aplication) los usa para unirse con este lead. */
+    try { localStorage.setItem("genesis_optin", JSON.stringify({ email: datos.email, telefono: datos.telefono, nombre: datos.nombre })); } catch (e) {}
 
     btn.disabled = true;
     btn.textContent = "Reservando tu lugar...";

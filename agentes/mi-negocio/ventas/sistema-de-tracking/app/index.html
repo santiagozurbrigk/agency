@@ -275,7 +275,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .ev.sis::before{background:var(--azul)} .ev.ghl::before{background:var(--vio)} .ev.per::before{background:var(--naranja)}
 .ev .q{font-size:12px;color:var(--tx-3)}
 .ev .q b{color:var(--tx-2);font-weight:500}
-.ev .a{font-size:13.5px}
+.ev .a{font-size:13.5px;white-space:pre-line}
 
 /* ===================== Día de la clase ===================== */
 .toggle-pill{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:999px;border:1px solid var(--borde-2);font-weight:500;font-size:12.5px;color:var(--tx-2);white-space:nowrap}
@@ -942,6 +942,7 @@ function etiquetas(l){
   if(f.senal_compra==="Sí")c.push(`<span class="chip warn">${ic("i-rayo")}Señal de compra</span>`);
   if(f.form_agenda==="Sí"&&f.agendo!=="Sí")c.push(`<span class="chip azul">Agenda sin agendar</span>`);
   if(f.form_contacto==="Sí")c.push(`<span class="chip vio">Pidió contacto</span>`);
+  if((l.tags||[]).includes("aplicacion-19-10"))c.push(`<span class="chip ok">${ic("i-check")}Aplicó</span>`);
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
