@@ -109,6 +109,24 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     que_falta:"Tengo dudas con la inversión",ciclo:"Entre 30 y 60 días",facturacion:"Entre 10M y 30M",inversion:"Entre USD 1.000 y USD 3.000"}});
   ok(r.body.ok&&r.body.ruta==="contacto","quiero que me contacten ok");
 
+  // Aplicación (applygenesis.com/aplication)
+  const aplicacion=h("api/public/aplicacion.js");
+  r=await call(aplicacion,{method:"POST",body:{nombre:"Rocío Paz",email:"rocio@marca.com",telefono:"+5491166660003",
+    objetivo:"Mejorar mis márgenes por cada venta",freno:"Otro: no tengo equipo",hace_cuanto:"Hace un año",
+    ciclo:"En menos de 30 días",facturacion:"Entre 30M y 50M",inversion:"Entre USD 3.000 y USD 6.000",tracking:{utm_source:"ig"}}});
+  ok(r.body.ok&&r.body.ruta==="aplicado","aplicación ok");
+  r=await call(aplicacion,{method:"POST",body:{nombre:"Tomás Ruiz",email:"tomas@marca.com",telefono:"+5491166660004",inversion:"Menos de USD 1.000"}});
+  ok(r.body.ok&&r.body.ruta==="rechazado","aplicación con inversión < USD 1.000 → rechazado");
+  r=await call(aplicacion,{method:"POST",body:{nombre:"Sin datos"}});
+  ok(r.statusCode===400,"aplicación sin WhatsApp ni email → 400");
+  {
+    const t=await call(leads,{cookie});
+    const rocio=t.body.leads.find(l=>l.email==="rocio@marca.com");
+    ok(rocio&&rocio.tags.includes("aplicacion-19-10")&&rocio.fields.facturacion==="Entre 30M y 50M"&&rocio.fields.freno==="Otro: no tengo equipo","aplicación guarda respuestas y tag en la ficha");
+    ok(rocio&&JSON.parse(rocio.fields.origen||"{}").utm_source==="ig","aplicación guarda el origen");
+    ok((t.body.leads.find(l=>l.email==="tomas@marca.com")||{fields:{}}).fields.etapa==="Próximo ciclo","aplicación < USD 1.000 → Próximo ciclo");
+  }
+
   // Grupos: marcar asistencia y armar
   await call(lead,{method:"POST",cookie,body:{id:"demo-carla",action:"marcar",data:{campo:"asistio",valor:"Sí"}}});
   const grupos=h("api/grupos.js");

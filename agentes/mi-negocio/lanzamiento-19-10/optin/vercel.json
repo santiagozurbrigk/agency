@@ -3,6 +3,7 @@
   "rewrites": [
     { "source": "/clase", "destination": "/api/clase" },
     { "source": "/(1|2|3|a|b)", "destination": "/" },
-    { "source": "/(cpa|margen|meta)", "destination": "/" }
+    { "source": "/(cpa|margen|meta)", "destination": "/" },
+    { "source": "/(application|aplicacion|aplicar)", "destination": "/aplication" }
   ]
 }
