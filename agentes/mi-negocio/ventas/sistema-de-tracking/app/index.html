@@ -1049,17 +1049,13 @@ $("#busca").addEventListener("input",()=>render());
 /* ---------- Aplicaciones (/aplication) ---------- */
 const INV_APL=["Menos de USD 1.000","Entre USD 1.000 y USD 3.000","Entre USD 3.000 y USD 6.000","Más de USD 6.000"];
 const FACT_ALTA=new Set(["Entre 30M y 50M","Entre 50M y 100M","Más de 100M"]);
+// Filtro por la respuesta a «¿con cuánto contás hoy para invertir?»: "todas" o el índice de la opción.
 let FAPL="todas";
 try{FAPL=localStorage.getItem("trk_fapl")||"todas";}catch(e){}
+if(FAPL!=="todas"&&!INV_APL[+FAPL]) FAPL="todas";
 function setApl(v){FAPL=v;try{localStorage.setItem("trk_fapl",v);}catch(e){}render();}
 const nivelInv=l=>INV_APL.indexOf(l.fields.inversion||"");
-function pasaApl(l){
-  const n=nivelInv(l);
-  if(FAPL==="3k") return n>=2;
-  if(FAPL==="1k") return n>=1;
-  if(FAPL==="menos") return n===0;
-  return true;
-}
+const pasaApl=l=>FAPL==="todas"||nivelInv(l)===+FAPL;
 // Fila de una aplicación: abre la ficha directo en «Lo que dijo», donde están todas las respuestas.
 function filaApl(l,pos){
   const f=l.fields, n=nivelInv(l);
@@ -1082,7 +1078,7 @@ function renderAplicaciones(v,s){
   const todas=(DATA.colas.aplicaciones||[]).map(lead).filter(Boolean);
   const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
   const deHoy=todas.filter(l=>{const c=l.fields.aplico_at||l.creado;return c&&new Date(new Date(c).getTime()-3*3600e3).toISOString().slice(0,10)===hoy;}).length;
-  const c3=todas.filter(l=>nivelInv(l)>=2).length, c1=todas.filter(l=>nivelInv(l)>=1).length, menos=todas.filter(l=>nivelInv(l)===0).length;
+  const c3=todas.filter(l=>nivelInv(l)>=2).length, menos=todas.filter(l=>nivelInv(l)===0).length;
   const alta=todas.filter(l=>FACT_ALTA.has(l.fields.facturacion)).length;
   const pc=n=>todas.length?Math.round(n/todas.length*100)+"%":"—";
   let h=encabezado(s);
@@ -1091,9 +1087,9 @@ function renderAplicaciones(v,s){
     <div class="tile"><div class="t">Invierten USD 3.000 o más</div><div class="v num">${c3}</div><div class="s">${pc(c3)} de las aplicaciones</div></div>
     <div class="tile"><div class="t">Facturan 30M o más</div><div class="v num">${alta}</div><div class="s">${pc(alta)} de las aplicaciones</div></div>
     <div class="tile"><div class="t">Menos de USD 1.000</div><div class="v num">${menos}</div><div class="s">Pasan a Próximo ciclo</div></div></div>`;
-  const op=[["todas","Todas",todas.length],["3k","USD 3.000+",c3],["1k","USD 1.000+",c1],["menos","Menos de 1.000",menos]];
+  const op=[["todas","Todas",todas.length]].concat(INV_APL.map((t,k)=>[String(k),t,todas.filter(l=>nivelInv(l)===k).length]));
   const vis=todas.filter(pasaApl);
-  h+=`<div class="filtros"><div class="seg">${op.map(([k,t,n])=>`<button class="${FAPL===k?"on":""}" onclick="setApl('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`).join("")}</div><span class="cuenta">${vis.length} aplicaci${vis.length===1?"ón":"ones"}</span></div>`;
+  h+=`<div class="filtros"><span class="fseg-t">Capital para invertir</span><div class="seg">${op.map(([k,t,n])=>`<button class="${FAPL===k?"on":""}" onclick="setApl('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`).join("")}</div><span class="cuenta">${vis.length} aplicaci${vis.length===1?"ón":"ones"}</span></div>`;
   if(!vis.length){h+=`<div class="lista"><div class="vacio"><div class="circ">${ic("i-clip")}</div><b>${todas.length?"Ninguna aplicación con este filtro":"Todavía no hay aplicaciones"}</b>${todas.length?"Probá con otro filtro.":"Las que completen applygenesis.com/aplication aparecen acá al instante."}</div></div>`;v.innerHTML=h;return;}
   h+=`<div class="lista con-reg"><div class="fila cab"><div>Lead</div><div class="col-reg">Aplicó · origen</div><div class="col-fact">Facturación · ciclo</div><div class="col-etapa">Inversión · etapa</div><div class="col-etq">Objetivo · freno</div><div></div></div>${vis.map((l,i)=>filaApl(l,vis.length-i)).join("")}</div>`;
   v.innerHTML=h;
