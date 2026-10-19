@@ -162,6 +162,16 @@ async function enFoto(telefono, email) {
   return l ? liviano(copia(l)) : null;
 }
 
+// Crea en GHL los campos del sistema que todavía no existen (por ejemplo, uno agregado
+// en una versión nueva), sin tener que tocar «Configurar GHL». Una vez por instancia.
+let _camposOk = false;
+async function asegurarCampos(keys) {
+  if (DEMO || _camposOk) return;
+  const map = await ghl.loadFieldMap();
+  if (keys.some(k => !map.byKey[k])) { await ghl.ensureCustomFields(); await ghl.loadFieldMap(true); }
+  _camposOk = true;
+}
+
 // Corre `fn` después de responder (Vercel mantiene viva la función hasta que termine).
 // En modo demo se espera, para que todo sea determinista.
 async function enSegundoPlano(fn) {
@@ -399,7 +409,7 @@ module.exports = {
   deleteLead, sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
-  esDelLanzamiento, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
+  esDelLanzamiento, asegurarCampos, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
   getReservas, reservarManu, liberarReserva, decidirYReservar, renombrarReserva,
   cargaManu, invalidarCitasManu,
   normTel
