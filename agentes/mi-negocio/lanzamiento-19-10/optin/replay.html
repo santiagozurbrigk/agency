@@ -12,8 +12,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<!-- VTurb: player del replay -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ad7d6ec489daf179a949ede/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/6ad7d5666dc9a179e895b082/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://license.vturb.com">
 
 <!-- Meta Pixel Code -->
 <script>
@@ -137,8 +144,12 @@ a{color:inherit}
 .pola::before{content:"";position:absolute;top:-12px;left:50%;width:86px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(160,156,148,.55);z-index:1}
 .pola img{width:100%;height:auto;background:#111}
 .pola figcaption{font-family:var(--mano);font-size:22px;color:#2a2622;text-align:center;padding-top:8px}
-.tests{columns:2;column-gap:30px;margin-top:44px}
-.tests .pola{break-inside:avoid;margin-bottom:34px;display:block}
+/* Muro de comentarios del chat en vivo */
+.tests{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:22px 20px;margin-top:44px}
+.msj{position:relative;margin:0;padding:8px;background:#fff;border-radius:10px;box-shadow:0 16px 34px rgba(0,0,0,.45);max-width:100%}
+.msj::before{content:"";position:absolute;top:-10px;left:50%;width:62px;height:18px;transform:translateX(-50%) rotate(-3deg);background:rgba(160,156,148,.6)}
+.msj:nth-child(3n+1){transform:rotate(-1.6deg)} .msj:nth-child(3n+2){transform:rotate(1.2deg)} .msj:nth-child(3n){transform:rotate(-.6deg)}
+.msj img{display:block;width:min(calc(var(--n) * 1.6px),100%);height:auto;border-radius:4px}
 /* Informe de facturación (el mismo de la landing) */
 .informe{max-width:520px;margin:44px auto 0;background:var(--papel);color:#1b1a18;border-radius:4px;padding:22px 24px 20px;box-shadow:0 20px 44px rgba(0,0,0,.5);transform:rotate(-1deg);position:relative}
 .informe::before{content:"";position:absolute;top:-12px;left:50%;width:86px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(160,156,148,.55)}
@@ -188,7 +199,8 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
   .sel-box{margin-top:34px;padding:18px 14px}
   .frame{margin-top:70px;padding:48px 14px 34px}
   .polas{grid-template-columns:1fr}
-  .tests{columns:1}
+  .tests{gap:16px 12px}
+  .msj img{width:min(calc(var(--n) * 1.2px),100%)}
   .pasos{gap:10px}
   .paso .tarj{min-height:80px;padding:12px 8px}
   .paso h3{font-size:19px}
@@ -267,9 +279,9 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
 
     <!-- Frame 03: testimonios (se muestra solo si hay imágenes en TESTIMONIOS) -->
     <section class="frame" id="frame-tests" hidden>
-      <span class="frame-tag">Frame 03 · Testimonios</span>
-      <span class="kick">capturas reales de sus resultados ↓</span>
-      <h2>Marcas que ya pasaron al modelo de suscripción</h2>
+      <span class="frame-tag">Frame 03 · Comentarios en vivo</span>
+      <span class="kick">capturas reales del chat de la clase ↓</span>
+      <h2>Lo que dijeron los que estuvieron <span class="hl nar">en vivo</span></h2>
       <div class="tests" id="tests"></div>
     </section>
     <div class="cta-wrap" data-tras="frame-tests" hidden><a class="cta" href="#aplicar" data-offer>Aplicar a Génesis</a></div>
@@ -315,12 +327,13 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
    4) CERRAR_AL_VENCER -> true = al vencer se saca el video y queda el cartel de "replay cerrado"
                           (la aplicación sigue abierta). false = el video queda arriba.
    5) OFFER_LABEL      -> texto de todos los botones (todos bajan a la aplicación).
-   6) PRUEBAS / GRANDES / TESTIMONIOS -> capturas para cada frame: { src: "/replay-assets/archivo.jpg", alt: "…", pie: "…" }.
+   6) PRUEBAS / GRANDES -> capturas para cada frame: { src: "/replay-assets/archivo.jpg", alt: "…", pie: "…" }.
+      TESTIMONIOS        -> recortes del chat en vivo: { src, w, h } (ancho y alto reales del recorte).
                           PRUEBAS vacío = se muestra el informe de facturación de la landing (60M → 220M).
                           GRANDES o TESTIMONIOS vacíos = ese frame no se muestra.
    ===================================================== */
 var VTURB_CUENTA     = "f742aa68-fd02-43e3-862f-368d962ade9f";
-var REPLAY_PLAYER_ID = "";
+var REPLAY_PLAYER_ID = "6ad7d6ec489daf179a949ede"; // grabación de la clase del 19/10
 var REPLAY_DEADLINE  = "2026-10-22T23:59:00-03:00";
 var MOSTRAR_CUENTA   = true;
 var CERRAR_AL_VENCER = false;
@@ -329,7 +342,21 @@ var APLICACION_URL   = "/aplication?utm_source=replay&utm_medium=pagina&utm_camp
 var PRUEBAS     = [];
 var GRANDES     = [];
 var GRANDES_PIE = "";
-var TESTIMONIOS = [];
+// Comentarios del chat de la clase en vivo (19/10). Son recortes chicos: se muestran como mensajes, no como polaroids.
+var TESTIMONIOS = [
+  { src: "/replay-assets/vivo-01.png", w: 239, h: 59 },
+  { src: "/replay-assets/vivo-02.png", w: 157, h: 56 },
+  { src: "/replay-assets/vivo-03.png", w: 200, h: 49 },
+  { src: "/replay-assets/vivo-04.png", w: 188, h: 59 },
+  { src: "/replay-assets/vivo-05.png", w: 307, h: 122 },
+  { src: "/replay-assets/vivo-06.png", w: 175, h: 53 },
+  { src: "/replay-assets/vivo-07.png", w: 270, h: 155 },
+  { src: "/replay-assets/vivo-08.png", w: 222, h: 58 },
+  { src: "/replay-assets/vivo-09.png", w: 252, h: 52 },
+  { src: "/replay-assets/vivo-10.png", w: 297, h: 69 },
+  { src: "/replay-assets/vivo-11.png", w: 199, h: 102 },
+  { src: "/replay-assets/vivo-12.png", w: 159, h: 58 }
+];
 
 (function () {
   var $ = function (s) { return document.querySelector(s); };
@@ -368,7 +395,8 @@ var TESTIMONIOS = [];
   }
   var n = 1;
   if (mostrar("frame-grandes", GRANDES, "grandes", GRANDES.map(pola).join(""))) { n++; $("#frame-grandes .frame-tag").firstChild.nodeValue = "Frame 0" + n + " · Los más grandes"; $("#grandes-pie").textContent = GRANDES_PIE; }
-  if (mostrar("frame-tests", TESTIMONIOS, "tests", TESTIMONIOS.map(pola).join(""))) { n++; $("#frame-tests .frame-tag").firstChild.nodeValue = "Frame 0" + n + " · Testimonios"; }
+  var msj = function (x, i) { return '<figure class="msj"><img src="' + esc(x.src) + '" alt="Comentario en el chat de la clase en vivo" width="' + x.w + '" height="' + x.h + '" style="--n:' + x.w + '" loading="lazy"></figure>'; };
+  if (mostrar("frame-tests", TESTIMONIOS, "tests", TESTIMONIOS.map(msj).join(""))) { n++; $("#frame-tests .frame-tag").firstChild.nodeValue = "Frame 0" + n + " · Comentarios en vivo"; }
   $("#n-apl").textContent = "Frame 0" + (n + 1);
 
   /* Botones: todos bajan a la aplicación */
