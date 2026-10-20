@@ -186,7 +186,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .etiquetas{display:flex;gap:4px 12px;flex-wrap:wrap}
 .btn.wa{color:#1e9e57;border-color:rgba(30,158,87,.35);text-decoration:none} @media (max-width:520px){.btn.wa .wa-t{display:none}} .btn.wa:hover{background:rgba(30,158,87,.08)} .btn.wa svg{width:14px;height:14px}
 .acciones-f{display:flex;gap:4px;justify-content:flex-end}
-@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
+@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa):not(.resp){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
 /* Estado: punto de color + texto, sin relleno */
 .badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;white-space:nowrap;color:var(--tx)}
 .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
@@ -197,6 +197,10 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.mal{color:var(--mal)}
 .chip.azul,.chip.vio{color:var(--tx-2)}
 .chip svg.ic{width:13px;height:13px}
+.chip.resp{font-weight:600} .chip.resp.r-jose{color:var(--azul)} .chip.resp.r-manu{color:var(--naranja)}
+select.sel.resp{max-width:132px} select.sel.resp.r-jose{color:var(--azul);border-color:var(--azul)} select.sel.resp.r-manu{color:var(--naranja);border-color:var(--naranja)}
+.col-etapa .badge{white-space:normal}
+@media (max-width:900px){.fila.con-resp,.lista.con-reg .fila.con-resp{grid-template-columns:1fr}.fila.con-resp .acciones-f{justify-content:flex-start;padding-left:44px}}
 .toggle-pill.llam.on{background:var(--ok);border-color:var(--ok);color:#fff}
 .toggle-pill.llam svg{width:14px;height:14px}
 @media (max-width:520px){.toggle-pill.llam span{display:none}}
@@ -954,15 +958,16 @@ function etiquetas(l){
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
+  if(f.responsable)c.push(`<span class="chip resp r-${esc(f.responsable.toLowerCase())}">Resp.: ${esc(f.responsable)}</span>`);
   return c.join("");
 }
 function badgeEtapa(e){e=e||"Nuevo";return `<span class="badge ${TONO_ETAPA[e]||""}">${esc(e)}</span>`;}
 
-function filaLead(l,pos,reg,wa){
+function filaLead(l,pos,reg,wa,resp){
   const f=l.fields;
   const intentos=parseInt(f.intentos||"0",10)||0;
   const detalle=[intentos?`${intentos} intento${intentos===1?"":"s"}`:"", f.ultimo_contacto?hace(f.ultimo_contacto):""].filter(Boolean).join(" · ");
-  return `<div class="fila" onclick="abrirFicha('${l.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}')">
+  return `<div class="fila${resp?" con-resp":""}" onclick="abrirFicha('${l.id}')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}')">
     <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}" >${esc(iniciales(l.nombre))}</div>
       <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
       <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
@@ -971,7 +976,7 @@ function filaLead(l,pos,reg,wa){
     <div class="col-fact fact">${esc(tamano(f)||"—")}<small>${esc(f.inversion_meta?"Meta por día":f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
     <div class="col-etapa">${badgeEtapa(f.etapa)}<div style="color:var(--tx-3);font-size:12px;margin-top:4px">${detalle}</div></div>
     <div class="col-etq etiquetas">${etiquetas(l)}</div>
-    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
+    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${resp?selResp(l):""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
   </div>`;
 }
 // Link directo al chat de WhatsApp (wa.me usa el número con código de país, sin + ni espacios).
@@ -1007,11 +1012,11 @@ function lista(ids,opts){
     for(const b of opts.bloques){
       const sub=vis.filter(b.filtro);
       if(!sub.length) continue;
-      h+=`<div class="bloque-tit">${esc(b.titulo)} <span class="n num">${sub.length}</span></div><div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${sub.map(l=>filaLead(l,++pos,opts.registro,opts.wa)).join("")}</div>`;
+      h+=`<div class="bloque-tit">${esc(b.titulo)} <span class="n num">${sub.length}</span></div><div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${sub.map(l=>filaLead(l,++pos,opts.registro,opts.wa,opts.resp)).join("")}</div>`;
     }
     return h;
   }
-  return h+`<div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${vis.map((l,i)=>filaLead(l,opts.numerar?i+1:0,opts.registro,opts.wa)).join("")}</div>`;
+  return h+`<div class="lista${opts.registro?" con-reg":""}">${opts.registro?CAB_REG:CAB}${vis.map((l,i)=>filaLead(l,opts.numerar?i+1:0,opts.registro,opts.wa,opts.resp)).join("")}</div>`;
 }
 
 function render(op){
@@ -1038,7 +1043,7 @@ function render(op){
         {titulo:"3 · Asistieron sin completar nada",filtro:l=>l.fields.form_agenda!=="Sí"&&l.fields.form_contacto!=="Sí"}],
         vacio:"El Grupo 2 está vacío",vacioSub:"Se llena con los formularios de la clase y al armar los grupos."}); break;
     case "g3": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo3:[],{numerar:true,vacio:"Nadie en el Grupo 3",vacioSub:"Se llena al armar los grupos después de la clase."}); break;
-    case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{vacio:"No hay llamadas de venta agendadas"}); break;
+    case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{wa:true,resp:true,vacio:"No hay llamadas de venta agendadas"}); break;
     case "clase": renderClase(v,s); break;
     case "apl": renderAplicaciones(v,s); break;
     case "ventas": renderVentas(v,s); break;
@@ -1070,7 +1075,7 @@ function filaApl(l,pos){
   const f=l.fields, n=nivelInv(l);
   const cuando=f.aplico_at||l.creado;
   const corto=s=>String(s||"").replace(/^Otro: /,"Otro · ");
-  return `<div class="fila" onclick="abrirFicha('${l.id}','dijo')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}','dijo')">
+  return `<div class="fila con-resp" onclick="abrirFicha('${l.id}','dijo')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}','dijo')">
     <div class="quien-l">${pos?`<span class="pos num">${pos}</span>`:""}<div class="avatar ${claseAvatar(f.dueno)}">${esc(iniciales(l.nombre))}</div>
       <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
       <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
@@ -1079,7 +1084,7 @@ function filaApl(l,pos){
     <div class="col-fact fact${FACT_ALTA.has(f.facturacion)?" apl-on":""}">${esc(f.facturacion||"—")}<small>${esc(f.ciclo||"")}</small></div>
     <div class="col-etapa fact${n>=2?" apl-on":""}">${esc(f.inversion||"—")}<div style="margin-top:4px">${badgeEtapa(f.etapa)}</div></div>
     <div class="col-etq fact apl-resp"><span title="${esc(f.objetivo||"")}">${esc(corto(f.objetivo)||"—")}</span><small title="${esc(f.freno||"")}">${esc(corto(f.freno))}</small></div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
   </div>`;
 }
 function renderAplicaciones(v,s){
@@ -1750,6 +1755,7 @@ function cambiosOptimistas(l,action,data){
   if(action==="marcar") return {[data.campo]:data.valor};
   if(action==="etapa") return {etapa:data.etapa};
   if(action==="grupo") return {grupo:data.grupo};
+  if(action==="responsable") return {responsable:data.responsable||""};
   if(action==="reasignar") return {...(data.dueno?{dueno:data.dueno}:{}),...(data.llamada_con?{llamada_con:data.llamada_con,excede_tope:"No"}:{})};
   if(action==="intento") return {intentos:String((parseInt(f.intentos||"0",10)||0)+1),ultimo_contacto:new Date().toISOString()};
   return null;
@@ -1789,6 +1795,13 @@ async function accion(id,action,data,msgOk){
   }
 }
 function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
+// Responsable de la llamada (Jose o Manu): solo para guiarse visualmente.
+const RESPONSABLES=["Jose","Manu"];
+function selResp(l){
+  const r=l.fields.responsable||"";
+  return `<select class="btn sm sel resp ${r?"r-"+r.toLowerCase():""}" aria-label="Responsable" title="Responsable de la llamada" onclick="event.stopPropagation()" onchange="event.stopPropagation();accion('${l.id}','responsable',{responsable:this.value},this.value?'Responsable: '+this.value:'Sin responsable')">
+    <option value="" ${r?"":"selected"}>${r?"Sin responsable":"Responsable…"}</option>${RESPONSABLES.map(o=>`<option ${o===r?"selected":""}>${o}</option>`).join("")}</select>`;
+}
 
 function pintarFicha(){
   const id=FICHA_ID; const l=lead(id)||COMPLETO[id]; if(!l){cerrarFicha();return;}
@@ -1813,6 +1826,7 @@ function pintarFicha(){
         ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa&&!e.startsWith("Venta")),"Etapa actualizada")}
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Equipo"],"Llamada reasignada")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
+        ${selResp(l)}
         ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
       </div>
       <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>
