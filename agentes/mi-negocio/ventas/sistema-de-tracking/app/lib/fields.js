@@ -119,6 +119,7 @@ const FIELDS = [
   { key: "toco_grupo_at",    name: "Cuándo tocó Entrar al grupo",    type: "TEXT" },
   { key: "aplico_at",        name: "Cuándo aplicó",                  type: "TEXT" },
   { key: "responsable",      name: "Responsable (visual)",           type: "SINGLE_OPTIONS", options: OPCIONES.responsable },
+  { key: "estado_llamada",   name: "Estado de la llamada (visual)",  type: "TEXT" },
   { key: "llamado_apl",      name: "Ya lo llamé (aplicación)",       type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "venta_json",       name: "Venta (interno, no tocar)",      type: "LARGE_TEXT" },
   { key: "historial_json",   name: "Historial (interno, no tocar)",  type: "LARGE_TEXT" }
