@@ -163,13 +163,14 @@ async function enFoto(telefono, email) {
 }
 
 // Crea en GHL los campos del sistema que todavía no existen (por ejemplo, uno agregado
-// en una versión nueva), sin tener que tocar «Configurar GHL». Una vez por instancia.
-let _camposOk = false;
+// en una versión nueva), sin tener que tocar «Configurar GHL». Una vez por campo y por instancia.
+const _camposOk = new Set();
 async function asegurarCampos(keys) {
-  if (DEMO || _camposOk) return;
+  const faltan = (keys || []).filter(k => !_camposOk.has(k));
+  if (DEMO || !faltan.length) return;
   const map = await ghl.loadFieldMap();
-  if (keys.some(k => !map.byKey[k])) { await ghl.ensureCustomFields(); await ghl.loadFieldMap(true); }
-  _camposOk = true;
+  if (faltan.some(k => !map.byKey[k])) { await ghl.ensureCustomFields(); await ghl.loadFieldMap(true); }
+  faltan.forEach(k => _camposOk.add(k));
 }
 
 // Corre `fn` después de responder (Vercel mantiene viva la función hasta que termine).

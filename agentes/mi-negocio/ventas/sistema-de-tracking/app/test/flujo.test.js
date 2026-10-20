@@ -142,6 +142,12 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const fi=await call(lead1,{cookie,query:{id:"demo-pablo"}});
     const hist=JSON.stringify((fi.body.lead||fi.body).fields||{});
     ok(/vía whatsapp \/ grupo/.test(hist)&&/WhatsApp en la aplicación: \+5491177770000/.test(hist)&&/Email en la aplicación/.test(hist),"historial con la aplicación, la vía y los datos distintos");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"marcar",data:{campo:"llamado_apl",valor:"Sí"}}});
+    const t2=await call(leads,{cookie});
+    ok(t2.body.leads.find(l=>l.id==="demo-pablo").fields.llamado_apl==="Sí","marcar «Ya lo llamé» en una aplicación");
+    const fi2=await call(lead1,{cookie,query:{id:"demo-pablo"}});
+    ok(/Aplicación: ya lo llamé/.test(JSON.stringify((fi2.body.lead||fi2.body).fields||{})),"«Ya lo llamé» queda en el historial");
+    ok(t2.body.colas.aplicaciones.includes("demo-pablo"),"Pablo en la cola de aplicaciones");
   }
 
   // Grupos: marcar asistencia y armar
