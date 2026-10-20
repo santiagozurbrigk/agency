@@ -156,6 +156,11 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.statusCode===400,"responsable inválido → 400");
     r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"responsable",data:{responsable:""}}});
     ok(r.body.ok&&(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.responsable==="","sacar responsable");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"estado_llamada",data:{estado_llamada:"No contestó"}}});
+    ok(r.body.ok&&(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.estado_llamada==="No contestó","estado de la llamada");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"estado_llamada",data:{estado_llamada:"  Quiere que lo llamen el jueves a la tarde porque está de viaje hasta el miércoles  "}}});
+    const est=(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.estado_llamada;
+    ok(est.length===60&&est.startsWith("Quiere"),"estado libre recortado a 60 caracteres");
   }
 
   // Grupos: marcar asistencia y armar

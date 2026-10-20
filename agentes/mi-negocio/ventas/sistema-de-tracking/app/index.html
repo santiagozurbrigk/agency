@@ -186,7 +186,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .etiquetas{display:flex;gap:4px 12px;flex-wrap:wrap}
 .btn.wa{color:#1e9e57;border-color:rgba(30,158,87,.35);text-decoration:none} @media (max-width:520px){.btn.wa .wa-t{display:none}} .btn.wa:hover{background:rgba(30,158,87,.08)} .btn.wa svg{width:14px;height:14px}
 .acciones-f{display:flex;gap:4px;justify-content:flex-end}
-@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa):not(.resp){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
+@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa):not(.rsp):not(.estado){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
 /* Estado: punto de color + texto, sin relleno */
 .badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;white-space:nowrap;color:var(--tx)}
 .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
@@ -197,10 +197,15 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .chip.ok{color:var(--ok)} .chip.warn{color:var(--warn)} .chip.mal{color:var(--mal)}
 .chip.azul,.chip.vio{color:var(--tx-2)}
 .chip svg.ic{width:13px;height:13px}
-.chip.resp{font-weight:600} .chip.resp.r-jose{color:var(--azul)} .chip.resp.r-manu{color:var(--naranja)}
-select.sel.resp{max-width:132px} select.sel.resp.r-jose{color:var(--azul);border-color:var(--azul)} select.sel.resp.r-manu{color:var(--naranja);border-color:var(--naranja)}
+.chip.rsp{font-weight:600} .chip.rsp.r-jose{color:var(--azul)} .chip.rsp.r-manu{color:var(--naranja)}
+select.sel.rsp{max-width:132px} select.sel.rsp.r-jose{color:var(--azul);border-color:var(--azul)} select.sel.rsp.r-manu{color:var(--naranja);border-color:var(--naranja)}
 .col-etapa .badge{white-space:normal}
-@media (max-width:900px){.fila.con-resp,.lista.con-reg .fila.con-resp{grid-template-columns:1fr}.fila.con-resp .acciones-f{justify-content:flex-start;padding-left:44px}}
+select.sel.estado{max-width:150px} select.sel.estado.e-ok{color:var(--ok);border-color:var(--ok)} select.sel.estado.e-warn{color:var(--warn);border-color:var(--warn)}
+select.sel.estado.e-azul{color:var(--azul);border-color:var(--azul)} select.sel.estado.e-mal{color:var(--mal);border-color:var(--mal)} select.sel.estado.e-otro{color:var(--tx);border-color:var(--tx-3)}
+/* Filas con responsable y estado: los controles van en una segunda línea, a lo ancho */
+.fila.con-resp .acciones-f{grid-column:1/-1;justify-content:flex-start;flex-wrap:wrap;padding-left:74px;margin-top:-4px}
+@media (max-width:900px){.fila.con-resp,.lista.con-reg .fila.con-resp{grid-template-columns:1fr}.fila.con-resp .acciones-f{padding-left:44px;margin-top:0}}
+select.sel.rsp,select.sel.estado{vertical-align:middle}
 .toggle-pill.llam.on{background:var(--ok);border-color:var(--ok);color:#fff}
 .toggle-pill.llam svg{width:14px;height:14px}
 @media (max-width:520px){.toggle-pill.llam span{display:none}}
@@ -958,7 +963,8 @@ function etiquetas(l){
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
-  if(f.responsable)c.push(`<span class="chip resp r-${esc(f.responsable.toLowerCase())}">Resp.: ${esc(f.responsable)}</span>`);
+  if(f.responsable)c.push(`<span class="chip rsp r-${esc(f.responsable.toLowerCase())}">Resp.: ${esc(f.responsable)}</span>`);
+  if(f.estado_llamada)c.push(`<span class="chip ${TONO_ESTADO[f.estado_llamada]||""}">${ic("i-tel")}${esc(f.estado_llamada)}</span>`);
   return c.join("");
 }
 function badgeEtapa(e){e=e||"Nuevo";return `<span class="badge ${TONO_ETAPA[e]||""}">${esc(e)}</span>`;}
@@ -976,7 +982,7 @@ function filaLead(l,pos,reg,wa,resp){
     <div class="col-fact fact">${esc(tamano(f)||"—")}<small>${esc(f.inversion_meta?"Meta por día":f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
     <div class="col-etapa">${badgeEtapa(f.etapa)}<div style="color:var(--tx-3);font-size:12px;margin-top:4px">${detalle}</div></div>
     <div class="col-etq etiquetas">${etiquetas(l)}</div>
-    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${resp?selResp(l):""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
+    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${resp?selResp(l)+selEstado(l):""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
   </div>`;
 }
 // Link directo al chat de WhatsApp (wa.me usa el número con código de país, sin + ni espacios).
@@ -1084,7 +1090,7 @@ function filaApl(l,pos){
     <div class="col-fact fact${FACT_ALTA.has(f.facturacion)?" apl-on":""}">${esc(f.facturacion||"—")}<small>${esc(f.ciclo||"")}</small></div>
     <div class="col-etapa fact${n>=2?" apl-on":""}">${esc(f.inversion||"—")}<div style="margin-top:4px">${badgeEtapa(f.etapa)}</div></div>
     <div class="col-etq fact apl-resp"><span title="${esc(f.objetivo||"")}">${esc(corto(f.objetivo)||"—")}</span><small title="${esc(f.freno||"")}">${esc(corto(f.freno))}</small></div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
   </div>`;
 }
 function renderAplicaciones(v,s){
@@ -1756,6 +1762,7 @@ function cambiosOptimistas(l,action,data){
   if(action==="etapa") return {etapa:data.etapa};
   if(action==="grupo") return {grupo:data.grupo};
   if(action==="responsable") return {responsable:data.responsable||""};
+  if(action==="estado_llamada") return {estado_llamada:String(data.estado_llamada||"").trim().slice(0,60)};
   if(action==="reasignar") return {...(data.dueno?{dueno:data.dueno}:{}),...(data.llamada_con?{llamada_con:data.llamada_con,excede_tope:"No"}:{})};
   if(action==="intento") return {intentos:String((parseInt(f.intentos||"0",10)||0)+1),ultimo_contacto:new Date().toISOString()};
   return null;
@@ -1795,11 +1802,28 @@ async function accion(id,action,data,msgOk){
   }
 }
 function marcar(id,campo,valor){accion(id,"marcar",{campo,valor});}
+// Estado de la llamada: opciones fijas o un texto libre con «Otro…». Solo visual.
+const ESTADOS_LL=["Ya lo llamé","No contestó","Llamar de nuevo","Mandé mensaje","Esperando respuesta","Agendó llamada","No le interesa"];
+const TONO_ESTADO={"Ya lo llamé":"ok","Agendó llamada":"ok","No contestó":"warn","Llamar de nuevo":"warn","Mandé mensaje":"azul","Esperando respuesta":"azul","No le interesa":"mal"};
+function selEstado(l){
+  const e=l.fields.estado_llamada||"", propio=e&&!ESTADOS_LL.includes(e);
+  return `<select class="btn sm sel estado ${e?"e-"+(TONO_ESTADO[e]||"otro"):""}" aria-label="Estado de la llamada" title="Estado de la llamada" onclick="event.stopPropagation()" onchange="event.stopPropagation();elegirEstado('${l.id}',this)">
+    <option value="" ${e?"":"selected"}>${e?"Sin estado":"Estado…"}</option>${ESTADOS_LL.map(o=>`<option ${o===e?"selected":""}>${o}</option>`).join("")}${propio?`<option selected>${esc(e)}</option>`:""}<option value="__otro">Otro…</option></select>`;
+}
+function elegirEstado(id,el){
+  let v=el.value;
+  if(v==="__otro"){
+    v=(prompt("Escribí el estado (máximo 60 caracteres):",(lead(id)||{fields:{}}).fields.estado_llamada||"")||"").trim().slice(0,60);
+    if(!v){render();if(FICHA_ID===id)pintarFicha();return;}
+  }
+  accion(id,"estado_llamada",{estado_llamada:v},v?"Estado: "+v:"Sin estado");
+}
+
 // Responsable de la llamada (Jose o Manu): solo para guiarse visualmente.
 const RESPONSABLES=["Jose","Manu"];
 function selResp(l){
   const r=l.fields.responsable||"";
-  return `<select class="btn sm sel resp ${r?"r-"+r.toLowerCase():""}" aria-label="Responsable" title="Responsable de la llamada" onclick="event.stopPropagation()" onchange="event.stopPropagation();accion('${l.id}','responsable',{responsable:this.value},this.value?'Responsable: '+this.value:'Sin responsable')">
+  return `<select class="btn sm sel rsp ${r?"r-"+r.toLowerCase():""}" aria-label="Responsable" title="Responsable de la llamada" onclick="event.stopPropagation()" onchange="event.stopPropagation();accion('${l.id}','responsable',{responsable:this.value},this.value?'Responsable: '+this.value:'Sin responsable')">
     <option value="" ${r?"":"selected"}>${r?"Sin responsable":"Responsable…"}</option>${RESPONSABLES.map(o=>`<option ${o===r?"selected":""}>${o}</option>`).join("")}</select>`;
 }
 
@@ -1826,7 +1850,7 @@ function pintarFicha(){
         ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa&&!e.startsWith("Venta")),"Etapa actualizada")}
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Equipo"],"Llamada reasignada")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
-        ${selResp(l)}
+        ${selResp(l)}${selEstado(l)}
         ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
       </div>
       <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>

@@ -77,6 +77,15 @@ module.exports = async function handler(req, res) {
         break;
       }
 
+      // Estado de la llamada («No contestó», «Llamar de nuevo», o un texto libre). Solo visual,
+      // como el responsable: no cambia reglas, colas ni el último contacto. Vacío = sin estado.
+      case "estado_llamada": {
+        const valor = String(data.estado_llamada || "").trim().slice(0, 60);
+        await store.asegurarCampos(["estado_llamada"]);
+        updated = await store.registrar(id, quien, valor ? `Estado → ${valor}` : "Sin estado", { estado_llamada: valor }, lead);
+        break;
+      }
+
       // +1 intento de contacto sin respuesta.
       case "intento": {
         const n = (parseInt(lead.fields.intentos || "0", 10) || 0) + 1;
