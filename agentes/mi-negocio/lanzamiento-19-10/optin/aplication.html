@@ -121,6 +121,9 @@ textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp
   .acciones .btn{flex:1}
   .pista-tecla{display:none}
 }
+/* Embebida en otra página (/replay): sin logo arriba y con menos aire */
+.embed .top .logo{display:none}
+.embed main{padding-top:64px;min-height:auto}
 @media (prefers-reduced-motion: reduce){ .pantalla,.pantalla.atras,.kicker i{animation:none} .progreso i{transition:none} }
 </style>
 </head>
@@ -136,6 +139,7 @@ textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp
 
 <script>
 (function () {
+  if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add("embed");
   var FACT = ["Menos de 10M", "Entre 10M y 30M", "Entre 30M y 50M", "Entre 50M y 100M", "Más de 100M"];
   var CICLO = ["En menos de 30 días", "Entre 30 y 60 días", "Entre 60 y 90 días", "Más de 90 días", "No se termina, se compra una vez y listo"];
   var INV = ["Menos de USD 1.000", "Entre USD 1.000 y USD 3.000", "Entre USD 3.000 y USD 6.000", "Más de USD 6.000"];
