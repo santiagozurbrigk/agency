@@ -248,7 +248,8 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
       <p class="sub">En esta <b>GRABACIÓN EXCLUSIVA</b> te muestro <span class="t-nar">el roadmap</span> con el que pasé mi marca de consumibles de <b>60 a 220 millones por mes</b> con el <span class="hl nar">modelo de suscripción</span>.</p>
       <p class="sub">La grabación no se va a subir a ningún lado, <span class="t-nar">SOLO SE VE ACÁ</span>.</p>
 
-      <div class="video" id="video"></div>
+      <!-- Embed de VTurb, tal cual lo da VTurb (player de la grabación de la clase del 19/10) -->
+      <div class="video" id="video"><vturb-smartplayer id="vid-6ad7d6ec489daf179a949ede" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ad7d6ec489daf179a949ede/v4/player.js", s.async=!0,document.head.appendChild(s); </script></div>
       <div class="cta-wrap"><a class="cta" href="#aplicar" data-offer>Aplicar a Génesis</a></div>
     </div>
     <div class="notas-bajo" aria-hidden="true">
@@ -320,8 +321,8 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
 <script>
 /* ================= CONFIG DEL REPLAY =================
    Lo único que cambia entre lanzamientos.
-   1) REPLAY_PLAYER_ID -> ID del player de VTurb con la grabación (misma cuenta que el VSL de la landing).
-                          Vacío = se ve el cartel "Estamos subiendo la grabación".
+   1) Video          -> el embed de VTurb va pegado tal cual en el HTML (<div id="video">). Para cambiar
+                          la grabación, se reemplaza ese embed y las precargas del <head>.
    2) REPLAY_DEADLINE  -> hasta cuándo queda arriba el replay (con zona horaria). Hoy: cierre del carrito.
    3) MOSTRAR_CUENTA   -> true = barra naranja con la cuenta regresiva arriba.
    4) CERRAR_AL_VENCER -> true = al vencer se saca el video y queda el cartel de "replay cerrado"
@@ -332,8 +333,6 @@ footer .logo{justify-content:center;margin-bottom:14px;color:#fff}
                           PRUEBAS vacío = se muestra el informe de facturación de la landing (60M → 220M).
                           GRANDES o TESTIMONIOS vacíos = ese frame no se muestra.
    ===================================================== */
-var VTURB_CUENTA     = "f742aa68-fd02-43e3-862f-368d962ade9f";
-var REPLAY_PLAYER_ID = "6ad7d6ec489daf179a949ede"; // grabación de la clase del 19/10
 var REPLAY_DEADLINE  = "2026-10-22T23:59:00-03:00";
 var MOSTRAR_CUENTA   = true;
 var CERRAR_AL_VENCER = false;
@@ -364,23 +363,12 @@ var TESTIMONIOS = [
   var fin = new Date(REPLAY_DEADLINE).getTime();
   var vencido = function () { return Date.now() >= fin; };
 
-  /* Video */
-  function pintarVideo() {
-    var v = $("#video");
-    if (CERRAR_AL_VENCER && vencido()) {
-      v.innerHTML = '<div class="ph"><div><b>El replay ya no está disponible</b><small>Si querés implementarlo en tu marca, completá la aplicación acá abajo.</small></div></div>';
-      return;
-    }
-    if (!REPLAY_PLAYER_ID) {
-      v.innerHTML = '<div class="ph"><div><div class="sp"></div><b>Estamos subiendo la grabación</b><small>En unos minutos la vas a poder ver acá.</small></div></div>';
-      return;
-    }
-    v.innerHTML = '<vturb-smartplayer id="vid-' + esc(REPLAY_PLAYER_ID) + '" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>';
-    var s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/" + VTURB_CUENTA + "/players/" + encodeURIComponent(REPLAY_PLAYER_ID) + "/v4/player.js";
-    s.async = true; document.head.appendChild(s);
+  /* Video: el embed de VTurb está en el HTML. Solo se reemplaza si el replay vence y está CERRAR_AL_VENCER. */
+  function cerrarVideo() {
+    if (!(CERRAR_AL_VENCER && vencido())) return;
+    $("#video").innerHTML = '<div class="ph"><div><b>El replay ya no está disponible</b><small>Si querés implementarlo en tu marca, completá la aplicación acá abajo.</small></div></div>';
   }
-  pintarVideo();
+  cerrarVideo();
 
   /* Frames con capturas */
   var pola = function (x) { return '<figure class="pola"><img src="' + esc(x.src) + '" alt="' + esc(x.alt || "") + '" loading="lazy">' + (x.pie ? '<figcaption>' + esc(x.pie) + '</figcaption>' : "") + '</figure>'; };
@@ -420,7 +408,7 @@ var TESTIMONIOS = [
       var s = Math.max(0, Math.floor((fin - Date.now()) / 1000));
       $("#tb-d").textContent = dos(Math.floor(s / 86400)); $("#tb-h").textContent = dos(Math.floor(s % 86400 / 3600));
       $("#tb-m").textContent = dos(Math.floor(s % 3600 / 60)); $("#tb-s").textContent = dos(s % 60);
-      if (s <= 0) { $("#timebar").hidden = true; pintarVideo(); return; }
+      if (s <= 0) { $("#timebar").hidden = true; cerrarVideo(); return; }
       setTimeout(tic, 1000);
     };
     tic();
