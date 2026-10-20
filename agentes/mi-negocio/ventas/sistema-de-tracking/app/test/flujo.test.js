@@ -148,6 +148,14 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const fi2=await call(lead1,{cookie,query:{id:"demo-pablo"}});
     ok(/Aplicación: ya lo llamé/.test(JSON.stringify((fi2.body.lead||fi2.body).fields||{})),"«Ya lo llamé» queda en el historial");
     ok(t2.body.colas.aplicaciones.includes("demo-pablo"),"Pablo en la cola de aplicaciones");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"responsable",data:{responsable:"Jose"}}});
+    const t3=await call(leads,{cookie}); const pb=t3.body.leads.find(l=>l.id==="demo-pablo");
+    ok(r.body.ok&&pb.fields.responsable==="Jose","asignar responsable Jose");
+    ok(pb.fields.ultimo_contacto===t2.body.leads.find(l=>l.id==="demo-pablo").fields.ultimo_contacto,"el responsable no toca el último contacto");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"responsable",data:{responsable:"Diego"}}});
+    ok(r.statusCode===400,"responsable inválido → 400");
+    r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"responsable",data:{responsable:""}}});
+    ok(r.body.ok&&(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.responsable==="","sacar responsable");
   }
 
   // Grupos: marcar asistencia y armar

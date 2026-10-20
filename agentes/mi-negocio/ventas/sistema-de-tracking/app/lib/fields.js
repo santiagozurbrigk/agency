@@ -73,6 +73,7 @@ const OPCIONES = {
   dueno: ["Braian", "Diego"],          // ya no se usa (sin dueños); queda por los datos viejos
   llamada_con: ["Manu", "Equipo", "Diego"],
   grupo: ["1", "2", "3"],
+  responsable: ["Jose", "Manu"],   // solo visual: quién se ocupa de la llamada
   si_no: ["Sí", "No"]
 };
 
@@ -117,6 +118,7 @@ const FIELDS = [
   { key: "toco_grupo",       name: "Tocó Entrar al grupo",           type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "toco_grupo_at",    name: "Cuándo tocó Entrar al grupo",    type: "TEXT" },
   { key: "aplico_at",        name: "Cuándo aplicó",                  type: "TEXT" },
+  { key: "responsable",      name: "Responsable (visual)",           type: "SINGLE_OPTIONS", options: OPCIONES.responsable },
   { key: "llamado_apl",      name: "Ya lo llamé (aplicación)",       type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "venta_json",       name: "Venta (interno, no tocar)",      type: "LARGE_TEXT" },
   { key: "historial_json",   name: "Historial (interno, no tocar)",  type: "LARGE_TEXT" }

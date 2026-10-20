@@ -67,6 +67,16 @@ module.exports = async function handler(req, res) {
         break;
       }
 
+      // Responsable de la llamada (Jose o Manu). Es solo una guía visual: no cambia
+      // reglas, colas ni el último contacto. Vacío = sin responsable.
+      case "responsable": {
+        const valor = String(data.responsable || "");
+        if (valor && !["Jose", "Manu"].includes(valor)) return res.status(400).json({ ok: false, error: "Responsable inválido" });
+        await store.asegurarCampos(["responsable"]);
+        updated = await store.registrar(id, quien, valor ? `Responsable → ${valor}` : "Sin responsable", { responsable: valor }, lead);
+        break;
+      }
+
       // +1 intento de contacto sin respuesta.
       case "intento": {
         const n = (parseInt(lead.fields.intentos || "0", 10) || 0) + 1;
