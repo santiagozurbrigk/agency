@@ -12,7 +12,7 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ## Antes de grabar — completar o confirmar
 
-- **"Es la última vez que la doy en vivo"**: va solo si es verdad. Las referencias lo usan, pero la regla del lanzamiento es urgencia solo real. Si no se confirma, se dice la versión alternativa marcada en cada guion.
+- **Última vez en vivo (confirmado 21-oct):** la repesca del viernes 23 es la última vez que la clase se da en vivo. Se dice en los 3 guiones y en los captions.
 - **Promesa de la clase (21-oct):** "Cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones". Reemplaza al 60 → 156.798.062. Va en el anuncio de la repesca de los 3 guiones y en los captions.
 - Regalos: los mismos de la landing (roadmap · Simulador de Suscripción · la IA de los flujos de email para Klaviyo). Si la repesca cambia los regalos, se cambia ese bloque.
 
@@ -40,8 +40,7 @@ El lunes 19 di una clase en vivo privada y entraron 200 personas. Pero un montó
 
 **ANUNCIO DE LA REPESCA** (29–38 s)
 
-Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Para entrar, simplemente anotate con el link de acá abajo.
-*(Si se confirma: "Y es la última vez que la doy en vivo.")*
+Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Y es la última vez que la doy en vivo. Para entrar, simplemente anotate con el link de acá abajo.
 
 **QUÉ TE LLEVÁS** (38–56 s)
 
@@ -53,7 +52,7 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 
 **CAPTION**
 
-> Más de 250 millones factura mi ecom de químicos, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este viernes 23 de octubre, a las 18, la vuelvo a dar** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> Más de 250 millones factura mi ecom de químicos, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este viernes 23 de octubre, a las 18, la vuelvo a dar por última vez en vivo** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -69,13 +68,13 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 | Y spoiler: ninguno es con un creativo mejor ni con un CPA más bajo que el tuyo. | (cara) |
 | **PRUEBA** (17–28 s) — Es con esto *(levanta el pote)*: con suscripción. El cliente compra una vez y te paga todos los meses. Y es lo mismo que me permitió escalar mi ecom de químicos a más de 250 millones, con 2.200 suscriptores activos. | (pote del producto) → panel de suscriptores: 2.200 activos · 1,28% churn. |
 | **FILTRO** (28–34 s) — Ojo: esto es para ecommerce de consumibles en Tiendanube o Shopify que ya facturan más de 30 millones por mes. Locales y Mercado Libre, no. | Lista con tachado rojo: ~~Local a la calle~~ · ~~Solo Mercado Libre~~ → ✅ **Ecommerce + Meta Ads**. |
-| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este viernes 23 de octubre la vuelvo a dar para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. *(Si se confirma: "por última vez".)* | Banda: **VIERNES 23/10 · 18 HS**. |
+| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este viernes 23 de octubre la vuelvo a dar por última vez en vivo, para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. | Banda: **VIERNES 23/10 · 18 HS**. |
 | **QUÉ TE LLEVÁS** (45–62 s) — Cómo migrar tu base de compradores a suscripción el primer mes, sin frenar lo que hoy vendés. Cuánto podés pagar por cada cliente cuando te compra tres veces y no una. Cómo armar los flujos de email que le cobran a tu base todos los meses. Y todo lo que tenés que hacer para que el suscriptor se quede. | (empezar a mostrar las slides de la clase) |
 | **CTA** (62–70 s) — Es el mismo método con el que tengo 1,28% de churn. Este viernes 23 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
 
 **CAPTION**
 
-> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este viernes 23 de octubre, a las 18, vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este viernes 23 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -114,7 +113,7 @@ Entre estar estancado y eso no hay más esfuerzo ni más pauta. Hay un sistema r
 **LA CLASE DEL 19 + REPESCA** (62–74 s)
 
 El lunes 19 di una clase privada mostrándolo y entraron 200 personas. Pero un montón de gente se quedó afuera. Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones.
-*(Si se confirma: "Y es la última vez.")*
+Y es la última vez que la doy en vivo.
 
 **CTA** (74–78 s)
 
@@ -122,7 +121,7 @@ El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos ve
 
 **CAPTION**
 
-> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este viernes 23 de octubre, a las 18, vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este viernes 23 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
