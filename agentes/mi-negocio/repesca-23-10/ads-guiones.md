@@ -12,8 +12,6 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ## Antes de grabar — completar o confirmar
 
-- `[HORA]` — horario de la repesca del viernes 23.
-- `[N]` — cuántas personas entraron en vivo el lunes 19 (número real, del cruce de asistentes de Zoom). Si no impacta, se corta esa frase y queda "un montón de gente se quedó afuera".
 - **"Es la última vez que la doy en vivo"**: va solo si es verdad. Las referencias lo usan, pero la regla del lanzamiento es urgencia solo real. Si no se confirma, se dice la versión alternativa marcada en cada guion.
 - **220 millones**: es el número del v8 (H1). Si no está confirmado, usar "de 60 millones a 156.798.062 por mes" (el de los ads anteriores).
 - Regalos: los mismos de la landing (roadmap · Simulador de Suscripción · la IA de los flujos de email para Klaviyo). Si la repesca cambia los regalos, se cambia ese bloque.
@@ -22,7 +20,7 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ## RP-1 · El número · "Con 2.200 suscriptores, sin pelear el CPA"
 
-**PRIMER FRAME:** reporte de facturación del mes en pantalla. Texto: **"+220M ESTE MES · VIERNES 23/10"**.
+**PRIMER FRAME:** reporte de facturación del mes en pantalla. Texto: **"+220M ESTE MES · VIERNES 23/10 · 18 HS"**.
 
 **HOOK** (0–6 s)
 
@@ -38,11 +36,11 @@ Esto es para ecommerce de suplementos, cosmética o limpieza, en Tiendanube o Sh
 
 **LA CLASE DEL 19** (21–29 s)
 
-El lunes 19 di una clase en vivo privada y entraron [N] personas. Pero un montón de gente no pudo entrar.
+El lunes 19 di una clase en vivo privada y entraron 200 personas. Pero un montón de gente no pudo entrar.
 
 **ANUNCIO DE LA REPESCA** (29–38 s)
 
-Así que este viernes 23 de octubre, a las [HORA], la vuelvo a dar para todos los que se la perdieron. Para entrar, simplemente anotate con el link de acá abajo.
+Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Para entrar, simplemente anotate con el link de acá abajo.
 *(Si se confirma: "Y es la última vez que la doy en vivo.")*
 
 **QUÉ TE LLEVÁS** (38–56 s)
@@ -55,7 +53,7 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 
 **CAPTION**
 
-> Más de 220 millones facturó mi ecommerce este mes, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada y mucha gente se quedó afuera, así que **este viernes 23 de octubre, a las [HORA], la vuelvo a dar** para los que se la perdieron. Te muestro el Método B.A.S.E., el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> Más de 220 millones facturó mi ecommerce este mes, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada y mucha gente se quedó afuera, así que **este viernes 23 de octubre, a las 18, la vuelvo a dar** para los que se la perdieron. Te muestro el Método B.A.S.E., el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -71,19 +69,19 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 | Y spoiler: ninguno es con un creativo mejor ni con un CPA más bajo que el tuyo. | (cara) |
 | **PRUEBA** (17–28 s) — Es con esto *(levanta el pote)*: con suscripción. El cliente compra una vez y te paga todos los meses. Y es lo mismo que me permitió pasar mi ecommerce de 60 millones a más de 220 por mes, con 2.200 suscriptores activos. | (pote del producto) → panel de suscriptores: 2.200 activos · 1,28% churn. |
 | **FILTRO** (28–34 s) — Ojo: esto es para ecommerce de consumibles en Tiendanube o Shopify que ya facturan más de 30 millones por mes. Locales y Mercado Libre, no. | Lista con tachado rojo: ~~Local a la calle~~ · ~~Solo Mercado Libre~~ → ✅ **Ecommerce + Meta Ads**. |
-| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con [N] personas, y como mucha gente no pudo entrar, este viernes 23 de octubre la vuelvo a dar para todos los que se la perdieron. *(Si se confirma: "por última vez".)* | Banda: **VIERNES 23/10 · [HORA]**. |
+| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este viernes 23 de octubre la vuelvo a dar para todos los que se la perdieron. *(Si se confirma: "por última vez".)* | Banda: **VIERNES 23/10 · 18 HS**. |
 | **QUÉ TE LLEVÁS** (45–62 s) — Cómo migrar tu base de compradores a suscripción el primer mes, sin frenar lo que hoy vendés. Cuánto podés pagar por cada cliente cuando te compra tres veces y no una. Cómo armar los flujos de email que le cobran a tu base todos los meses. Y todo lo que tenés que hacer para que el suscriptor se quede. | (empezar a mostrar las slides de la clase) |
 | **CTA** (62–70 s) — Es el mismo método con el que tengo 1,28% de churn. Este viernes 23 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
 
 **CAPTION**
 
-> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este viernes 23 de octubre, a las [HORA], vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este viernes 23 de octubre, a las 18, vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: el paso a paso para pasar tu ecommerce de consumibles al modelo de suscripción. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
 ## RP-3 · Tres situaciones · "No hace falta otro producto ganador"
 
-**PRIMER FRAME:** administrador de anuncios con "costo por compra" subiendo. Texto: **"ESTANCADO ENTRE 30 Y 80M? · VIERNES 23/10"**.
+**PRIMER FRAME:** administrador de anuncios con "costo por compra" subiendo. Texto: **"¿ESTANCADO ENTRE 30 Y 80M? · VIERNES 23/10 · 18 HS"**.
 
 **HOOK** (0–8 s)
 
@@ -115,7 +113,7 @@ Entre estar estancado y eso no hay más esfuerzo ni más pauta. Hay un sistema r
 
 **LA CLASE DEL 19 + REPESCA** (62–74 s)
 
-El lunes 19 di una clase privada mostrándolo y entraron [N] personas. Pero un montón de gente se quedó afuera. Así que este viernes 23 de octubre, a las [HORA], la vuelvo a dar para todos los que se la perdieron.
+El lunes 19 di una clase privada mostrándolo y entraron 200 personas. Pero un montón de gente se quedó afuera. Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron.
 *(Si se confirma: "Y es la última vez.")*
 
 **CTA** (74–78 s)
@@ -124,7 +122,7 @@ El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos ve
 
 **CAPTION**
 
-> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este viernes 23 de octubre, a las [HORA], vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: el paso a paso para pasar tu ecommerce de consumibles a suscripción. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este viernes 23 de octubre, a las 18, vuelvo a dar la clase privada del lunes 19** para los que se la perdieron: el paso a paso para pasar tu ecommerce de consumibles a suscripción. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -132,5 +130,5 @@ El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos ve
 
 - **RP-3 no usa casos de clientes:** el brief dice "caso de éxito, solo Manu" y "datos o marcas de clientes sin su permiso, no". Las tres situaciones son frases reales de llamadas (las mismas de los dolores del lanzamiento) contadas en primera persona donde le pasaron a Manu, y sin nombres. Si aparecen resultados de alumnos de Génesis con permiso y captura, ese bloque se puede pasar al formato de la referencia (nombre, nicho, número del primer mes).
 - **RP-2:** AG1, Dollar Shave Club y Huel son marcas de consumibles por suscripción conocidas en el avatar que mira referentes de EE.UU. Si se prefieren referentes locales, se cambian los logos y la primera línea; el resto queda igual.
-- **Titular (los 3):** SOLO ECOMMERCE · VIERNES 23/10 · [HORA]
+- **Titular (los 3):** SOLO ECOMMERCE · VIERNES 23/10 · 18 HS
 - **Descripción (los 3):** Repetición de la clase privada del 19/10: el paso a paso para pasar tu ecommerce de consumibles a suscripción.
