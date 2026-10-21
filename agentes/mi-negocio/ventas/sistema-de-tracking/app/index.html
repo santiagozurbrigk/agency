@@ -1409,19 +1409,21 @@ function renderCalendario(v,s,op){
   let h=encabezado(s,botonesLlam());
   h+=`<div class="cal-nav"><button class="btn sm" onclick="moverSemana(-1)" aria-label="Semana anterior">‹</button><button class="btn sm" onclick="moverSemana(0)">Hoy</button><button class="btn sm" onclick="moverSemana(1)" aria-label="Semana siguiente">›</button>
     <span class="rango">${fmt(dias[0])} – ${fmt(dias[6])}</span>${CAL.cargando&&CAL.citas?`<span style="font-size:12px;color:var(--tx-3)">actualizando…</span>`:""}
-    <span class="cal-ley"><span><i style="background:var(--naranja)"></i>Manu</span><span><i style="background:var(--azul)"></i>Equipo</span><span><i style="border:1.5px dashed var(--tx-3)"></i>Pre-venta</span></span></div>`;
+    <span class="cal-ley"><span><i style="background:var(--naranja)"></i>Manu</span><span><i style="background:var(--azul)"></i>Jose / equipo</span><span><i style="border:1.5px dashed var(--tx-3)"></i>Pre-venta</span></span></div>`;
   if(CAL.error){v.innerHTML=h+`<div class="tarjeta"><b>No pudimos traer las citas</b><p style="color:var(--tx-3);font-size:13.5px">${esc(CAL.error)}</p></div>`;return;}
   if(!CAL.citas){v.innerHTML=h+esqueleto();return;}
-  const citas=CAL.citas.map(c=>({...c,d:new Date(c.inicio),f:c.fin?new Date(c.fin):new Date(new Date(c.inicio).getTime()+45*60000)}));
+  // El color sale del responsable de la ficha (Jose o Manu); sin responsable, del calendario donde agendó.
+  const quienDe=c=>{const l=c.leadId&&lead(c.leadId);return (l&&l.fields.responsable)||c.con;};
+  const citas=CAL.citas.map(c=>({...c,quien:quienDe(c),d:new Date(c.inicio),f:c.fin?new Date(c.fin):new Date(new Date(c.inicio).getTime()+45*60000)}));
   const del=d=>citas.filter(c=>c.d.toDateString()===d.toDateString());
-  const titulo=c=>`${c.nombre} · ${hhmm(c.d)}–${hhmm(c.f)} · ${c.tipo} con ${c.con}${c.noShow?" · no se presentó":""}`;
+  const titulo=c=>`${c.nombre} · ${hhmm(c.d)}–${hhmm(c.f)} · ${c.tipo} con ${c.quien}${c.noShow?" · no se presentó":""}`;
   const abrir=c=>c.leadId?`onclick="abrirFicha('${c.leadId}','resumen')"`:"";
   if(matchMedia("(max-width:900px)").matches){
     let a="";
     for(const d of dias){
       const cs=del(d); if(!cs.length&&d.toDateString()!==hoy) continue;
       a+=`<div class="agenda-d ${d.toDateString()===hoy?"hoy":""}">${d.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"})}</div>`;
-      a+=cs.length?cs.map(c=>`<div class="agenda-e" ${abrir(c)}><span class="barra-c ${c.con==="Manu"?"":"eq"}"></span><span class="hr">${hhmm(c.d)}</span><div style="min-width:0;flex:1"><b style="font-weight:500">${esc(c.nombre)}</b><div style="font-size:12.5px;color:var(--tx-3)">${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.tipo)} con ${esc(c.con)}${c.noShow?" · no se presentó":""}</div></div>${waLink(c.telefono)?`<a class="btn sm wa" href="${waLink(c.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}</a>`:""}</div>`).join("")
+      a+=cs.length?cs.map(c=>`<div class="agenda-e" ${abrir(c)}><span class="barra-c ${c.quien==="Manu"?"":"eq"}"></span><span class="hr">${hhmm(c.d)}</span><div style="min-width:0;flex:1"><b style="font-weight:500">${esc(c.nombre)}</b><div style="font-size:12.5px;color:var(--tx-3)">${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.tipo)} con ${esc(c.quien)}${c.noShow?" · no se presentó":""}</div></div>${waLink(c.telefono)?`<a class="btn sm wa" href="${waLink(c.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}</a>`:""}</div>`).join("")
         :`<div class="agenda-e" style="cursor:default;color:var(--tx-3)">Sin llamadas</div>`;
     }
     v.innerHTML=h+(citas.length?a:`<div class="vacio"><div class="circ">${ic("i-llam")}</div><b>No hay llamadas esta semana</b>Pasá a la semana siguiente o volvé a la lista.</div>`);
@@ -1443,8 +1445,8 @@ function renderCalendario(v,s,op){
     for(const c of cs){
       const n=Math.max(1,...cs.filter(o=>o.d<c.f&&o.f>c.d).map(o=>o.k+1));
       const top=y(c.d), hgt=Math.max(24,y(c.f)-top-2);
-      g+=`<div class="cal-ev ${c.con==="Manu"?"":"eq"} ${c.tipo==="Pre-venta"?"pre":""} ${c.noShow?"ns":""}" style="top:${top}px;height:${hgt}px;left:calc(${c.k/n*100}% + 4px);right:auto;width:calc(${100/n}% - 8px)" title="${esc(titulo(c))}" ${abrir(c)}>
-        <b>${esc(c.nombre)}</b><small>${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.con)}${c.tipo==="Pre-venta"?" · pre-venta":""}</small></div>`;
+      g+=`<div class="cal-ev ${c.quien==="Manu"?"":"eq"} ${c.tipo==="Pre-venta"?"pre":""} ${c.noShow?"ns":""}" style="top:${top}px;height:${hgt}px;left:calc(${c.k/n*100}% + 4px);right:auto;width:calc(${100/n}% - 8px)" title="${esc(titulo(c))}" ${abrir(c)}>
+        <b>${esc(c.nombre)}</b><small>${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.quien)}${c.tipo==="Pre-venta"?" · pre-venta":""}</small></div>`;
     }
     g+=`</div>`;
   }
