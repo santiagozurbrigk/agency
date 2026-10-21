@@ -267,6 +267,23 @@ async function countAppointments(calendarId, desdeMs, hastaMs) {
   return events.filter(e => !["cancelled", "canceled", "noshow", "invalid"].includes(String(e.appointmentStatus || "").toLowerCase())).length;
 }
 
+// Citas de un calendario entre dos fechas (ms), con su contacto y horario.
+async function listAppointments(calendarId, desdeMs, hastaMs) {
+  if (!calendarId) return [];
+  const qs = new URLSearchParams({
+    locationId: LOCATION,
+    calendarId,
+    startTime: String(desdeMs),
+    endTime: String(hastaMs)
+  });
+  const data = await api(`/calendars/events?${qs}`);
+  return (data.events || []).map(e => ({
+    id: e.id, calendarId: e.calendarId || calendarId, contactId: e.contactId,
+    titulo: e.title || "", inicio: e.startTime, fin: e.endTime,
+    estado: String(e.appointmentStatus || "").toLowerCase()
+  }));
+}
+
 async function deleteContact(id) {
   await api(`/contacts/${id}`, { method: "DELETE" });
 }
@@ -284,5 +301,6 @@ module.exports = {
   createContact,
   getCustomValue,
   setCustomValue,
-  countAppointments
+  countAppointments,
+  listAppointments
 };

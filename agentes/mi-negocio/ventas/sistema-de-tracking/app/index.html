@@ -479,6 +479,33 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 .modal-caja .acc{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
 .modal-caja.ancha{width:min(620px,100%)}
 .fila.cli{grid-template-columns:minmax(200px,1.8fr) minmax(170px,1.3fr) minmax(110px,.9fr) minmax(150px,1.2fr) minmax(150px,1.3fr)}
+.cal{border:1px solid var(--borde);border-radius:10px;overflow:auto;background:var(--bg)}
+.cal-g{display:grid;grid-template-columns:52px repeat(7,minmax(118px,1fr));min-width:880px;position:relative}
+.cal-d{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--borde);border-left:1px solid var(--borde);padding:8px 10px;font-size:12px;color:var(--tx-3)}
+.cal-d b{display:block;font-size:17px;color:var(--tx);font-weight:600}
+.cal-d.hoy b{color:var(--naranja)}
+.cal-h{font-size:11px;color:var(--tx-3);text-align:right;padding:0 8px;transform:translateY(-7px)}
+.cal-col{position:relative;border-left:1px solid var(--borde)}
+.cal-col .linea{position:absolute;left:0;right:0;border-top:1px solid var(--borde)}
+.cal-col.hoy{background:var(--panel-2)}
+.cal-ev{position:absolute;left:4px;right:4px;border-radius:6px;padding:4px 7px;font-size:12px;line-height:1.3;overflow:hidden;cursor:pointer;border-left:3px solid var(--naranja);background:color-mix(in srgb,var(--naranja) 14%,var(--bg));color:var(--tx)}
+.cal-ev.eq{border-left-color:var(--azul);background:color-mix(in srgb,var(--azul) 14%,var(--bg))}
+.cal-ev.pre{border-left-style:dashed}
+.cal-ev.ns{opacity:.55;text-decoration:line-through}
+.cal-ev b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-ev small{color:var(--tx-2);font-size:11px}
+.cal-ev:hover{filter:brightness(.97)}
+.cal-ahora{position:absolute;left:0;right:0;border-top:2px solid var(--mal);z-index:1}
+.cal-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.cal-nav .rango{font-weight:600;font-size:15px;margin:0 6px}
+.cal-ley{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--tx-3);margin-left:auto}
+.cal-ley i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.agenda-d{font-size:12.5px;font-weight:600;color:var(--tx-3);padding:14px 4px 6px;border-bottom:1px solid var(--borde)}
+.agenda-d.hoy{color:var(--naranja)}
+.agenda-e{display:flex;gap:12px;align-items:center;padding:11px 4px;border-bottom:1px solid var(--borde);cursor:pointer}
+.agenda-e .hr{font-variant-numeric:tabular-nums;font-weight:600;width:48px;flex:none}
+.agenda-e .barra-c{width:3px;align-self:stretch;border-radius:2px;background:var(--naranja);flex:none}
+.agenda-e .barra-c.eq{background:var(--azul)}
 .vence-mal{color:var(--mal)!important} .vence-warn{color:var(--warn)!important}
 @media (max-width:900px){.fila.cli{grid-template-columns:1fr}.fila.cli .col-cto{display:none}}
 #toasts{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:80;max-width:calc(100vw - 40px)}
@@ -1077,7 +1104,8 @@ function render(op){
         {titulo:"3 · Asistieron sin completar nada",filtro:l=>l.fields.form_agenda!=="Sí"&&l.fields.form_contacto!=="Sí"}],
         vacio:"El Grupo 2 está vacío",vacioSub:"Se llena con los formularios de la clase y al armar los grupos."}); break;
     case "g3": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.grupo3:[],{numerar:true,vacio:"Nadie en el Grupo 3",vacioSub:"Se llena al armar los grupos después de la clase."}); break;
-    case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{wa:true,resp:true,vacio:"No hay llamadas de venta agendadas"}); break;
+    case "llam": if(LLVISTA==="cal"){renderCalendario(v,s,op);break;}
+      v.innerHTML=encabezado(s,botonesLlam())+lista(DATA?DATA.colas.llamadas:[],{wa:true,resp:true,vacio:"No hay llamadas de venta agendadas"}); break;
     case "clase": renderClase(v,s); break;
     case "apl": renderAplicaciones(v,s); break;
     case "zoom": renderZoom(v,s); break;
@@ -1345,6 +1373,88 @@ function renderVentas(v,s){
       <div></div></div>`;
   }
   v.innerHTML=h+`</div>`;
+}
+
+/* ---------- Llamadas · calendario ---------- */
+// Semana de lunes a domingo con las citas de los 3 calendarios de GHL (horario real).
+// En el celular se muestra como agenda: día por día, en orden.
+let LLVISTA="lista", CAL_SEM=0, CAL={clave:null,citas:null,cargando:false,error:null,t:0};
+try{LLVISTA=localStorage.getItem("trk_llvista")||"lista";}catch(e){}
+const CAL_H0=8, CAL_H1=23, CAL_PX=56; // de 8 a 23 hs, 56 px por hora
+function botonesLlam(){
+  return `<div class="seg"><button class="${LLVISTA==="lista"?"on":""}" onclick="setLlvista('lista')">Lista</button><button class="${LLVISTA==="cal"?"on":""}" onclick="setLlvista('cal')">Calendario</button></div>`;
+}
+function setLlvista(v){LLVISTA=v;try{localStorage.setItem("trk_llvista",v);}catch(e){}render();}
+// Lunes 00:00 (hora local) de la semana actual + n semanas.
+function lunes(n){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7)+7*n);return d;}
+function moverSemana(n){CAL_SEM=n===0?0:CAL_SEM+n;render();}
+function cargarCitas(desde,hasta,silencioso){
+  const clave=desde+"|"+hasta;
+  if(CAL.cargando) return;
+  if(CAL.clave!==clave){CAL.citas=null;CAL.error=null;CAL.t=0;}
+  CAL.clave=clave; CAL.cargando=true;
+  api(`/api/calendario?desde=${desde}&hasta=${hasta}`).then(d=>{if(CAL.clave===clave){CAL.citas=d.citas;CAL.error=null;CAL.t=Date.now();}})
+    .catch(e=>{if(CAL.clave===clave&&!CAL.citas)CAL.error=e.message;})
+    .finally(()=>{CAL.cargando=false;if(VISTA==="llam"&&LLVISTA==="cal"&&!EDITANDO)render({silencioso:true});});
+}
+const hhmm=d=>d.toLocaleTimeString("es-AR",{hour:"2-digit",minute:"2-digit",hour12:false});
+function renderCalendario(v,s,op){
+  const ini=lunes(CAL_SEM), fin=new Date(ini); fin.setDate(fin.getDate()+7);
+  const clave=ini.getTime()+"|"+fin.getTime();
+  // Se vuelven a pedir al cambiar de semana o si tienen más de 30 s.
+  if(CAL.clave!==clave||!CAL.citas||Date.now()-CAL.t>30000) cargarCitas(ini.getTime(),fin.getTime());
+  const dias=Array.from({length:7},(_,i)=>{const d=new Date(ini);d.setDate(d.getDate()+i);return d;});
+  const hoy=new Date().toDateString();
+  const fmt=d=>d.toLocaleDateString("es-AR",{day:"numeric",month:"short"});
+  let h=encabezado(s,botonesLlam());
+  h+=`<div class="cal-nav"><button class="btn sm" onclick="moverSemana(-1)" aria-label="Semana anterior">‹</button><button class="btn sm" onclick="moverSemana(0)">Hoy</button><button class="btn sm" onclick="moverSemana(1)" aria-label="Semana siguiente">›</button>
+    <span class="rango">${fmt(dias[0])} – ${fmt(dias[6])}</span>${CAL.cargando&&CAL.citas?`<span style="font-size:12px;color:var(--tx-3)">actualizando…</span>`:""}
+    <span class="cal-ley"><span><i style="background:var(--naranja)"></i>Manu</span><span><i style="background:var(--azul)"></i>Equipo</span><span><i style="border:1.5px dashed var(--tx-3)"></i>Pre-venta</span></span></div>`;
+  if(CAL.error){v.innerHTML=h+`<div class="tarjeta"><b>No pudimos traer las citas</b><p style="color:var(--tx-3);font-size:13.5px">${esc(CAL.error)}</p></div>`;return;}
+  if(!CAL.citas){v.innerHTML=h+esqueleto();return;}
+  const citas=CAL.citas.map(c=>({...c,d:new Date(c.inicio),f:c.fin?new Date(c.fin):new Date(new Date(c.inicio).getTime()+45*60000)}));
+  const del=d=>citas.filter(c=>c.d.toDateString()===d.toDateString());
+  const titulo=c=>`${c.nombre} · ${hhmm(c.d)}–${hhmm(c.f)} · ${c.tipo} con ${c.con}${c.noShow?" · no se presentó":""}`;
+  const abrir=c=>c.leadId?`onclick="abrirFicha('${c.leadId}','resumen')"`:"";
+  if(matchMedia("(max-width:900px)").matches){
+    let a="";
+    for(const d of dias){
+      const cs=del(d); if(!cs.length&&d.toDateString()!==hoy) continue;
+      a+=`<div class="agenda-d ${d.toDateString()===hoy?"hoy":""}">${d.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"})}</div>`;
+      a+=cs.length?cs.map(c=>`<div class="agenda-e" ${abrir(c)}><span class="barra-c ${c.con==="Manu"?"":"eq"}"></span><span class="hr">${hhmm(c.d)}</span><div style="min-width:0;flex:1"><b style="font-weight:500">${esc(c.nombre)}</b><div style="font-size:12.5px;color:var(--tx-3)">${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.tipo)} con ${esc(c.con)}${c.noShow?" · no se presentó":""}</div></div>${waLink(c.telefono)?`<a class="btn sm wa" href="${waLink(c.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}</a>`:""}</div>`).join("")
+        :`<div class="agenda-e" style="cursor:default;color:var(--tx-3)">Sin llamadas</div>`;
+    }
+    v.innerHTML=h+(citas.length?a:`<div class="vacio"><div class="circ">${ic("i-llam")}</div><b>No hay llamadas esta semana</b>Pasá a la semana siguiente o volvé a la lista.</div>`);
+    return;
+  }
+  // Rango de horas: 8 a 23, ampliado si hay citas fuera.
+  let h0=CAL_H0,h1=CAL_H1;
+  for(const c of citas){h0=Math.min(h0,c.d.getHours());h1=Math.max(h1,Math.ceil(c.f.getHours()+c.f.getMinutes()/60));}
+  const alto=(h1-h0)*CAL_PX, y=d=>((d.getHours()+d.getMinutes()/60)-h0)*CAL_PX;
+  let g=`<div class="cal-g"><div class="cal-d" style="border-left:0"></div>${dias.map(d=>`<div class="cal-d ${d.toDateString()===hoy?"hoy":""}">${d.toLocaleDateString("es-AR",{weekday:"short"})}<b>${d.getDate()}</b></div>`).join("")}`;
+  g+=`<div style="position:relative;height:${alto}px">${Array.from({length:h1-h0},(_,i)=>`<div class="cal-h" style="position:absolute;top:${i*CAL_PX}px;right:0">${i?String(h0+i).padStart(2,"0")+":00":""}</div>`).join("")}</div>`;
+  for(const d of dias){
+    const esHoy=d.toDateString()===hoy;
+    g+=`<div class="cal-col ${esHoy?"hoy":""}" style="height:${alto}px">${Array.from({length:h1-h0},(_,i)=>`<div class="linea" style="top:${i*CAL_PX}px"></div>`).join("")}`;
+    if(esHoy){const n=new Date();if(n.getHours()>=h0&&n.getHours()<h1)g+=`<div class="cal-ahora" style="top:${y(n)}px"></div>`;}
+    // Citas superpuestas: se reparten el ancho de la columna.
+    const cs=del(d); const carril=[]; 
+    for(const c of cs){let k=0;while(carril[k]&&carril[k]>c.d)k++;carril[k]=c.f;c.k=k;}
+    for(const c of cs){
+      const n=Math.max(1,...cs.filter(o=>o.d<c.f&&o.f>c.d).map(o=>o.k+1));
+      const top=y(c.d), hgt=Math.max(24,y(c.f)-top-2);
+      g+=`<div class="cal-ev ${c.con==="Manu"?"":"eq"} ${c.tipo==="Pre-venta"?"pre":""} ${c.noShow?"ns":""}" style="top:${top}px;height:${hgt}px;left:calc(${c.k/n*100}% + 4px);right:auto;width:calc(${100/n}% - 8px)" title="${esc(titulo(c))}" ${abrir(c)}>
+        <b>${esc(c.nombre)}</b><small>${hhmm(c.d)}–${hhmm(c.f)} · ${esc(c.con)}${c.tipo==="Pre-venta"?" · pre-venta":""}</small></div>`;
+    }
+    g+=`</div>`;
+  }
+  g+=`</div>`;
+  const previo=$("#calScroll"), scrollPrevio=previo?previo.scrollTop:null;
+  v.innerHTML=h+`<div class="cal" id="calScroll" style="max-height:calc(100vh - 260px)">${g}</div>`+(citas.length?"":`<p style="color:var(--tx-3);font-size:13px;margin-top:10px">No hay llamadas agendadas esta semana.</p>`);
+  // Al abrir una semana: scroll a la primera cita (o a las 9). En los refrescos se queda donde estaba.
+  const sc=$("#calScroll");
+  if(CAL.scrollClave!==clave||scrollPrevio==null){CAL.scrollClave=clave;const pri=citas.length?Math.min(...citas.map(c=>y(c.d))):y(new Date(2000,0,1,9));sc.scrollTop=Math.max(0,pri-CAL_PX/2);}
+  else sc.scrollTop=scrollPrevio;
 }
 
 /* ---------- Clientes ---------- */

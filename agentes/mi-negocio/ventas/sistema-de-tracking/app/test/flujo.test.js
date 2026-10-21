@@ -400,6 +400,26 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(v.pagos[0].vence&&dia(v.pagos[0].vence)===dia(v.fecha),"venta sin fecha: cierre hoy y la cuota vence hoy");
   }
 
+  // Calendario de llamadas: horario desde el webhook y citas por rango
+  { const webhookApi=h("api/webhook.js"), cal=h("api/calendario.js"), lead=h("api/lead.js");
+    let r=await call(webhookApi,{method:"POST",query:{cal:"diego"},body:{type:"AppointmentCreate",appointment:{contactId:"demo-lucia",startTime:"2026-10-23 16:00:00",endTime:"2026-10-23T16:45:00-03:00"}}});
+    const lu=(await call(lead,{cookie,query:{id:"demo-lucia"}})).body.lead;
+    ok(r.body.ok&&lu.fields.cita_at==="2026-10-23T19:00:00.000Z"&&lu.fields.cita_fin==="2026-10-23T19:45:00.000Z","webhook: guarda el horario de la cita (sin zona = hora de Argentina)");
+    const d=Date.parse("2026-10-19T03:00:00Z");
+    r=await call(cal,{cookie,query:{desde:String(d),hasta:String(d+7*864e5)}});
+    const c=r.body.citas.find(x=>x.leadId==="demo-lucia");
+    ok(c&&c.con==="Equipo"&&c.tipo==="Venta"&&c.inicio==="2026-10-23T19:00:00.000Z","calendario: la cita aparece en su semana, con el equipo");
+    r=await call(cal,{cookie,query:{desde:String(d+7*864e5),hasta:String(d+14*864e5)}});
+    ok(!r.body.citas.some(x=>x.leadId==="demo-lucia"),"calendario: fuera del rango no aparece");
+    r=await call(cal,{cookie,query:{desde:"0",hasta:"1"}});
+    ok(r.statusCode===400,"calendario: rango inválido rechazado");
+    r=await call(cal,{query:{desde:String(d),hasta:String(d+864e5)}});
+    ok(r.statusCode===401,"calendario: sin sesión → 401");
+    await call(webhookApi,{method:"POST",query:{cal:"diego"},body:{type:"AppointmentDelete",appointment:{contactId:"demo-lucia"}}});
+    r=await call(cal,{cookie,query:{desde:String(d),hasta:String(d+7*864e5)}});
+    ok(!r.body.citas.some(x=>x.leadId==="demo-lucia"),"calendario: la cita cancelada desaparece");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});
