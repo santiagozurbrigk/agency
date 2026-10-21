@@ -473,10 +473,14 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 /* ===================== Modal y toast ===================== */
 #modal{position:fixed;inset:0;display:none;place-items:center;z-index:60;padding:20px;background:rgba(0,0,0,.4)}
 #modal.on{display:grid}
-.modal-caja{width:min(420px,100%);background:var(--bg);border:1px solid var(--borde-2);border-radius:12px;padding:22px;box-shadow:var(--sombra-2)}
+.modal-caja{width:min(420px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--bg);border:1px solid var(--borde-2);border-radius:12px;padding:22px;box-shadow:var(--sombra-2)}
 .modal-caja h3{font-size:17px;margin-bottom:8px}
 .modal-caja p{color:var(--tx-2);font-size:14px}
 .modal-caja .acc{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
+.modal-caja.ancha{width:min(620px,100%)}
+.fila.cli{grid-template-columns:minmax(200px,1.8fr) minmax(170px,1.3fr) minmax(110px,.9fr) minmax(150px,1.2fr) minmax(150px,1.3fr)}
+.vence-mal{color:var(--mal)!important} .vence-warn{color:var(--warn)!important}
+@media (max-width:900px){.fila.cli{grid-template-columns:1fr}.fila.cli .col-cto{display:none}}
 #toasts{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:80;max-width:calc(100vw - 40px)}
 .toast{display:flex;align-items:center;gap:10px;background:var(--tx);color:var(--bg);border-radius:8px;padding:10px 14px;font-size:13px;animation:entra .2s ease}
 .toast.mal{background:var(--mal);color:#fff}
@@ -632,6 +636,8 @@ let ME=null, DEMO=false, DATA=null, VISTA="ahora", FICHA_ID=null, FICHA_TAB="res
 const COMPLETO={};               // fichas completas (con historial), por id
 let FILTRO_DUENO="todos";
 try{ FILTRO_DUENO=localStorage.getItem("trk_dueno")||"todos"; VISTA=localStorage.getItem("trk_vista")||"ahora"; }catch(e){}
+// /clientes abre directo la vista de clientes (el link se puede compartir).
+if(location.pathname.replace(/\/+$/,"")==="/clientes") VISTA="clientes";
 
 const $=s=>document.querySelector(s);
 const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML};
@@ -664,6 +670,8 @@ const SECCIONES=[
     sub:"Pre-venta y post-clase, con Manu o con el equipo."},
   {id:"ventas", nombre:"Ventas y cobros", cola:"ventas", icono:"i-venta",
     sub:"Lo vendido, lo cobrado y las cuotas que faltan."},
+  {id:"clientes", nombre:"Clientes", cola:"ventas", icono:"i-check",
+    sub:"Los que cerraron: fecha de cierre, contacto, cada cuota con su vencimiento, lo cobrado y los comprobantes."},
   {grupo:"Análisis"},
   {id:"met", nombre:"Métricas", icono:"i-met", sub:"Cómo viene el lanzamiento, de punta a punta."},
   {id:"anun", nombre:"Anuncios", icono:"i-ads", sub:"Cómo rinde la pauta: leads, calificados, conversión de la landing y lo que pasa después."},
@@ -777,6 +785,7 @@ async function eliminarLead(id){
 }
 function confirmar(titulo,texto,ok,peligro){
   return new Promise(res=>{
+    $("#modalCaja").classList.remove("ancha");
     $("#modalCaja").innerHTML=`<h3>${esc(titulo)}</h3><p>${esc(texto)}</p>
       <div class="acc"><button class="btn" id="mNo">Cancelar</button><button class="btn ${peligro?"peligro":"pri"}" id="mSi">${esc(ok||"Confirmar")}</button></div>`;
     $("#modal").classList.add("on");
@@ -919,6 +928,7 @@ function pintarNav(){
 function ir(id){
   VISTA=id; EDITANDO=false;
   try{localStorage.setItem("trk_vista",id);}catch(e){}
+  try{history.replaceState(null,"",id==="clientes"?"/clientes":"/");}catch(e){}
   $("#busca").value="";
   pintarNav(); render(); $("#side").classList.remove("on");
   window.scrollTo({top:0});
@@ -1072,6 +1082,7 @@ function render(op){
     case "apl": renderAplicaciones(v,s); break;
     case "zoom": renderZoom(v,s); break;
     case "ventas": renderVentas(v,s); break;
+    case "clientes": renderClientes(v,s); break;
     case "met": renderMetricas(v,s,silencioso); break;
     case "anun": renderAnuncios(v,s,silencioso); break;
     case "conf": renderConfig(v,s); break;
@@ -1334,6 +1345,134 @@ function renderVentas(v,s){
       <div></div></div>`;
   }
   v.innerHTML=h+`</div>`;
+}
+
+/* ---------- Clientes ---------- */
+// Cada cliente es un lead con la venta registrada. Las cuotas tienen vencimiento:
+// la primera el día del cierre y las siguientes, un mes después cada una (se editan en la ficha).
+let FCLI="todos";
+const DIA_MS=86400000;
+function diasHasta(iso){ if(!iso) return null; const d=new Date(diaInput(iso)+"T12:00:00"), h=new Date(hoyInput()+"T12:00:00"); return Math.round((d-h)/DIA_MS); }
+function proximoPago(vt){ return (vt.pagos||[]).filter(p=>!p.pagado).sort((a,b)=>String(a.vence||"9").localeCompare(String(b.vence||"9")))[0]||null; }
+function estadoCliente(vt){
+  const pend=(vt.pagos||[]).filter(p=>!p.pagado);
+  if(!pend.length) return "pago";
+  const prox=proximoPago(vt), d=diasHasta(prox&&prox.vence);
+  if(d!=null&&d<0) return "vencido";
+  if(d!=null&&d<=7) return "pronto";
+  return "al-dia";
+}
+function textoVence(p){
+  if(!p.vence) return "Sin vencimiento";
+  const d=diasHasta(p.vence), f=new Date(p.vence).toLocaleDateString("es-AR");
+  if(d<0) return `Venció el ${f} · hace ${-d} día${d===-1?"":"s"}`;
+  if(d===0) return `Vence hoy (${f})`;
+  return `Vence el ${f} · en ${d} día${d===1?"":"s"}`;
+}
+const claseVence=p=>{const d=diasHasta(p.vence);return d==null?"":d<0?"vence-mal":d<=7?"vence-warn":"";};
+function setFcli(f){FCLI=f;render();}
+function clientes(){
+  if(!DATA) return [];
+  return DATA.colas.ventas.map(lead).filter(Boolean).map(l=>({l,v:venta(l)})).filter(x=>x.v)
+    .sort((a,b)=>String(b.v.fecha).localeCompare(String(a.v.fecha)));
+}
+function renderClientes(v,s){
+  const acc=`<button class="btn sm" onclick="exportarClientes()">Exportar CSV</button><button class="btn sm pri" onclick="altaCliente()">${ic("i-mas")}Agregar cliente</button>`;
+  if(!DATA){v.innerHTML=encabezado(s,acc)+esqueleto();return;}
+  const todos=clientes();
+  const pend=x=>x.v.pagos.filter(p=>!p.pagado);
+  const vencidas=todos.flatMap(x=>pend(x).filter(p=>(diasHasta(p.vence)??1)<0));
+  const total=sumaM(todos.map(x=>sumaM(x.v.pagos.map(p=>p.monto))));
+  const cobrado=sumaM(todos.map(x=>sumaM(x.v.pagos.filter(p=>p.pagado).map(p=>p.monto))));
+  let h=encabezado(s,acc);
+  h+=`<div class="tiles">
+    <div class="tile"><div class="t">Clientes</div><div class="v num">${todos.length}</div><div class="s">${todos.filter(x=>x.v.oferta==="Génesis").length} Génesis · ${todos.filter(x=>x.v.oferta==="Mentoría").length} Mentoría</div></div>
+    <div class="tile"><div class="t">Cobrado</div><div class="v num">${usd(cobrado)}</div><div class="meter"><i style="width:${total?cobrado/total*100:0}%;background:var(--ok)"></i></div></div>
+    <div class="tile"><div class="t">Por cobrar</div><div class="v num">${usd(total-cobrado)}</div></div>
+    <div class="tile"><div class="t">Cuotas vencidas</div><div class="v num ${vencidas.length?"vence-mal":""}">${vencidas.length}</div><div class="s">${usd(sumaM(vencidas.map(p=>p.monto)))}</div></div></div>`;
+  const FILTROS=[["todos","Todos",todos.length],["vencido","Con cuota vencida"],["pronto","Vence en 7 días"],["al-dia","Al día"],["pago","Pagaron todo"]];
+  h+=`<div class="filtros"><div class="seg">${FILTROS.map(([k,t])=>{const n=k==="todos"?todos.length:todos.filter(x=>estadoCliente(x.v)===k).length;return `<button class="${FCLI===k?"on":""}" onclick="setFcli('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`;}).join("")}</div></div>`;
+  const vis=FCLI==="todos"?todos:todos.filter(x=>estadoCliente(x.v)===FCLI);
+  if(!vis.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${todos.length?"Ningún cliente con este filtro":"Todavía no hay clientes"}</b>${todos.length?"Probá con otro filtro.":"Registrá la venta desde la ficha del lead (pestaña Venta) o cargalo con «Agregar cliente»."}</div></div>`;return;}
+  h+=`<div class="lista"><div class="fila cab cli"><div>Cliente</div><div class="col-cto">Contacto</div><div>Oferta · cierre</div><div>Próximo pago</div><div>Cobro</div></div>`;
+  for(const {l,v:vt} of vis){
+    const c=vt.cliente||{}, prox=proximoPago(vt);
+    const cob=sumaM(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=sumaM(vt.pagos.map(p=>p.monto));
+    const pag=vt.pagos.filter(p=>p.pagado).length, sinComp=vt.pagos.filter(p=>p.pagado&&!p.comprobante).length;
+    const wa=waLink(l.telefono);
+    h+=`<div class="fila cli" onclick="abrirFicha('${l.id}','venta')">
+      <div class="quien-l"><div class="avatar">${esc(iniciales(l.nombre))}</div><div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div><div class="sub">${esc(c.marca||"Sin marca cargada")}${c.instagram?` · ${esc(c.instagram)}`:""}</div></div></div>
+      <div class="col-cto fact" onclick="event.stopPropagation()">${wa?`<a href="${wa}" target="_blank" rel="noopener" style="color:inherit">${esc(l.telefono)}</a>`:esc(l.telefono||"Sin WhatsApp")}<small>${esc(l.email||"Sin email")}</small></div>
+      <div class="fact">${esc(vt.oferta)} · ${esc(vt.forma)}<small>Cerró el ${new Date(vt.fecha).toLocaleDateString("es-AR")} · ${esc(vt.vendedor)}</small></div>
+      <div class="fact">${prox?`<b class="num">${usd(prox.monto)}</b> · cuota ${prox.n}<small class="${claseVence(prox)}">${textoVence(prox)}</small>`:`<span class="badge ok">Pagó todo</span>`}</div>
+      <div><div class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div><div class="num" style="font-size:12px;color:var(--tx-3);margin-top:5px">${pag} de ${vt.pagos.length} cuotas · ${usd(cob)} de ${usd(tot)}${sinComp?` · <span class="vence-warn">${sinComp} sin comprobante</span>`:""}</div></div>
+    </div>`;
+  }
+  v.innerHTML=h+`</div>`;
+}
+function exportarClientes(){
+  const filas=[["Cliente","Marca","WhatsApp","Email","Instagram","Web","Documento","País","Oferta","Forma","Vendió","Cierre","Cuota","Monto USD","Vence","Pagado","Día de pago","Comprobante"]];
+  const dia=f=>f?diaInput(f):"";
+  for(const {l,v:vt} of clientes()){
+    const c=vt.cliente||{};
+    for(const p of vt.pagos) filas.push([l.nombre,c.marca,l.telefono,l.email,c.instagram,c.web,c.documento,c.pais,vt.oferta,vt.forma,vt.vendedor,dia(vt.fecha),`${p.n} de ${vt.pagos.length}`,p.monto,dia(p.vence),p.pagado?"Sí":"No",dia(p.fecha),p.comprobante?"Sí":"No"]);
+  }
+  const csv="﻿"+filas.map(f=>f.map(x=>`"${String(x??"").replace(/"/g,'""')}"`).join(";")).join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  a.download=`clientes-genesis-${hoyInput()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+// Alta manual: para los que cerraron por fuera de las colas (repesca, DM, referido).
+// Si el WhatsApp o el email ya existen, la venta se carga en ese contacto.
+let ALTA={oferta:"Génesis",forma:"PIF"};
+function altaCliente(){
+  const formas=Object.entries(OFERTAS[ALTA.oferta]).concat([["Personalizado","montos a mano"]]);
+  if(ALTA.forma!=="Personalizado"&&!OFERTAS[ALTA.oferta][ALTA.forma]) ALTA.forma="PIF";
+  const val=id=>{const e=$("#"+id);return e?e.value:"";};
+  const prev={aNom:val("aNom"),aTel:val("aTel"),aMail:val("aMail"),aMarca:val("aMarca"),aIg:val("aIg"),aFecha:val("aFecha")||hoyInput(),aVend:val("aVend")||(ME&&ME.name)||"",aTotal:val("aTotal"),aCuotas:val("aCuotas")||"1",aNota:val("aNota")};
+  $("#modalCaja").classList.add("ancha");
+  $("#modalCaja").innerHTML=`<h3>Agregar cliente</h3><p>Para los que cerraron por fuera de las colas. Si el WhatsApp o el email ya están cargados, la venta se suma a ese contacto.</p>
+    <div class="form-g" style="margin-top:14px">
+      <div class="full"><label for="aNom">Nombre y apellido</label><input id="aNom" value="${esc(prev.aNom)}"></div>
+      <div><label for="aTel">WhatsApp (con código de país)</label><input id="aTel" inputmode="tel" placeholder="+54 9 11 2345 6789" value="${esc(prev.aTel)}"></div>
+      <div><label for="aMail">Email</label><input id="aMail" type="email" value="${esc(prev.aMail)}"></div>
+      <div><label for="aMarca">Marca / ecommerce</label><input id="aMarca" value="${esc(prev.aMarca)}"></div>
+      <div><label for="aIg">Instagram</label><input id="aIg" placeholder="@marca" value="${esc(prev.aIg)}"></div>
+      <div><label for="aFecha">Fecha de cierre</label><input id="aFecha" type="date" value="${esc(prev.aFecha)}"></div>
+      <div><label for="aVend">Vendió</label><input id="aVend" value="${esc(prev.aVend)}"></div>
+    </div>
+    <div style="margin-top:14px"><div class="seg">${Object.keys(OFERTAS).map(o=>`<button class="${ALTA.oferta===o?"on":""}" onclick="ALTA.oferta='${o}';altaCliente()">${o}</button>`).join("")}</div></div>
+    <div style="margin-top:10px"><div class="seg" style="flex-wrap:wrap">${formas.map(([k,pr])=>`<button class="${ALTA.forma===k?"on":""}" onclick="ALTA.forma='${k}';altaCliente()">${k} · ${pr}</button>`).join("")}</div></div>
+    ${ALTA.forma==="Personalizado"?`<div class="form-g" style="margin-top:14px"><div><label for="aTotal">Monto total (USD)</label><input id="aTotal" type="number" min="1" step="0.01" value="${esc(prev.aTotal)}"></div><div><label for="aCuotas">Cuotas</label><input id="aCuotas" type="number" min="1" max="24" step="1" value="${esc(prev.aCuotas)}"></div></div>`:""}
+    <div style="margin-top:14px"><label for="aNota" style="display:block;font-size:12px;font-weight:500;color:var(--tx-3);margin-bottom:5px">Nota (opcional)</label><textarea id="aNota">${esc(prev.aNota)}</textarea></div>
+    <p style="font-size:12.5px;margin-top:8px">La primera cuota vence el día del cierre y cada una de las siguientes, un mes después. Los vencimientos, los pagos y los comprobantes se cargan en la ficha.</p>
+    <div class="acc"><button class="btn" onclick="cerrarAlta()">Cancelar</button><button class="btn pri" id="aOk" onclick="guardarAlta()">Agregar cliente</button></div>`;
+  $("#modal").classList.add("on");
+  if(!prev.aNom) setTimeout(()=>$("#aNom").focus(),30);
+}
+function cerrarAlta(){$("#modal").classList.remove("on");$("#modalCaja").classList.remove("ancha");}
+async function guardarAlta(){
+  const data={nombre:$("#aNom").value.trim(),telefono:$("#aTel").value.trim(),email:$("#aMail").value.trim(),
+    fecha:$("#aFecha").value,vendedor:$("#aVend").value.trim(),nota:$("#aNota").value,
+    oferta:ALTA.oferta,forma:ALTA.forma,cliente:{marca:$("#aMarca").value,instagram:$("#aIg").value}};
+  if(!data.nombre){toast("Falta el nombre",true);return;}
+  if(!data.telefono&&!data.email){toast("Poné el WhatsApp o el email",true);return;}
+  if(ALTA.forma==="Personalizado"){
+    const total=Number($("#aTotal").value), n=parseInt($("#aCuotas").value,10);
+    if(!(total>0)){toast("Poné el monto total",true);return;}
+    if(!(n>=1&&n<=24)){toast("Las cuotas van de 1 a 24",true);return;}
+    const base=Math.floor(total/n*100)/100;
+    data.montos=Array.from({length:n},(_,i)=>i<n-1?base:Math.round((total-base*(n-1))*100)/100);
+  }
+  $("#aOk").disabled=true;
+  try{
+    const d=await api("/api/clientes",{method:"POST",body:JSON.stringify(data)});
+    cerrarAlta(); toast(d.existia?"Venta cargada en el contacto que ya existía":"Cliente agregado");
+    VERSION_LOCAL++;
+    if(DATA){const i=DATA.leads.findIndex(l=>l.id===d.lead.id);const nuevo={...d.lead,calc:i>=0?DATA.leads[i].calc:{}};
+      if(i>=0)DATA.leads[i]=nuevo;else DATA.leads.push(nuevo);
+      if(!DATA.colas.ventas.includes(d.lead.id))DATA.colas.ventas.push(d.lead.id);}
+    COMPLETO[d.lead.id]=d.lead; render(); pintarNav(); abrirFicha(d.lead.id,"venta"); refrescar();
+  }catch(e){ $("#aOk").disabled=false; toast(e.message,true); }
 }
 
 /* ---------- Métricas ---------- */
@@ -1899,7 +2038,7 @@ async function correrSetup(){
    Ficha
    ============================================================ */
 function abrirFicha(id,tab){
-  if(FICHA_ID!==id){FICHA_TAB=tab||"resumen";EDITANDO=false;VENTA_EDIT=null;} else if(tab) FICHA_TAB=tab;
+  if(FICHA_ID!==id){FICHA_TAB=tab||"resumen";EDITANDO=false;VENTA_EDIT=null;CLI_EDIT=null;} else if(tab) FICHA_TAB=tab;
   FICHA_ID=id; pintarFicha();
   $("#velo").classList.add("on"); $("#ficha").classList.add("on"); document.body.style.overflow="hidden";
   api("/api/lead?id="+encodeURIComponent(id)).then(d=>{COMPLETO[id]=d.lead;if(FICHA_ID===id&&!EDITANDO)pintarFicha();}).catch(()=>{});
@@ -2100,18 +2239,21 @@ function cuerpoVenta(l){
         <div><label for="vTotal">Monto total (USD)</label><input id="vTotal" type="number" min="1" step="0.01" inputmode="decimal" placeholder="5000" onfocus="EDITANDO=true"></div>
         <div><label for="vCuotas">Cuotas</label><input id="vCuotas" type="number" min="1" max="24" step="1" value="1" onfocus="EDITANDO=true"></div></div>
         <p style="color:var(--tx-3);font-size:12.5px;margin-top:6px">Se divide en cuotas iguales. Después podés cambiar el monto de cada una y marcar lo que ya pagó.</p>`:""}
+      <div class="form-g" style="margin-top:14px"><div><label for="vFecha">Fecha de cierre</label><input id="vFecha" type="date" value="${hoyInput()}" onfocus="EDITANDO=true"></div></div>
+      <p style="color:var(--tx-3);font-size:12.5px;margin-top:6px">La primera cuota vence el día del cierre y cada una de las siguientes, un mes después. Se pueden cambiar después.</p>
       <div style="margin-top:14px"><label for="vNota" style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Nota de la venta (opcional)</label>
         <textarea id="vNota" placeholder="Ej.: paga la 2° cuota cuando cobre a fin de mes" onfocus="EDITANDO=true"></textarea></div>
       <div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn pri" onclick="registrarVenta('${id}')">Registrar la venta</button></div></div>`;
   }
   const cob=sumaM(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=sumaM(vt.pagos.map(p=>p.monto));
   const resumen=`<div class="tarjeta">
-      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><h3 style="font-size:20px">${esc(vt.oferta)}</h3><span style="color:var(--tx-2)">${esc(vt.forma)} · vendió ${esc(vt.vendedor)} · ${new Date(vt.fecha).toLocaleDateString("es-AR")}</span></div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><h3 style="font-size:20px">${esc(vt.oferta)}</h3><span style="color:var(--tx-2)">${esc(vt.forma)} · vendió ${esc(vt.vendedor)} · cerró el ${new Date(vt.fecha).toLocaleDateString("es-AR")}</span></div>
       <div style="margin:14px 0 6px" class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div>
       <div class="num" style="font-size:13px;color:var(--tx-2)">Cobrado ${usd(cob)} de ${usd(tot)} · <b style="color:var(--tx)">Falta pagar ${usd(tot-cob)}</b></div>
-      ${vt.nota?`<p style="margin-top:12px;font-size:13.5px;white-space:pre-wrap">${esc(vt.nota)}</p>`:""}</div>`;
+      ${vt.nota?`<p style="margin-top:12px;font-size:13.5px;white-space:pre-wrap">${esc(vt.nota)}</p>`:""}</div>`+tarjetaCliente(l,vt);
   if(VENTA_EDIT===id) return resumen+`<div class="tarjeta"><h4>Editar pagos</h4>
-      <p style="color:var(--tx-3);font-size:12.5px;margin-bottom:6px">Monto de cada cuota, si ya la pagó y qué día. Si pagó una parte, dejá esa parte como una cuota cobrada y el resto en otra.</p>
+      <p style="color:var(--tx-3);font-size:12.5px;margin-bottom:6px">Monto y vencimiento de cada cuota, si ya la pagó y qué día. Si pagó una parte, dejá esa parte como una cuota cobrada y el resto en otra.</p>
+      <div class="form-g" style="margin:8px 0 12px"><div><label for="eFecha">Fecha de cierre</label><input id="eFecha" type="date" value="${diaInput(vt.fecha)}" onfocus="EDITANDO=true"></div></div>
       <div class="pagos" id="editPagos">${vt.pagos.map((p,i)=>filaEdicion(p,i)).join("")}</div>
       <div style="margin-top:10px"><button class="btn sm" onclick="agregarCuota()">${ic("i-mas")}Agregar cuota</button></div>
       <div style="margin-top:14px"><label for="eNota" style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Nota de la venta</label>
@@ -2120,17 +2262,43 @@ function cuerpoVenta(l){
   return resumen+`<div class="tarjeta"><h4>Pagos</h4><div class="pagos">${vt.pagos.map(p=>`
       <div class="pago ${p.pagado?"cobrado":""}">
         <div class="marca-p">${p.pagado?ic("i-check"):p.n}</div>
-        <div class="info"><b class="num">${usd(p.monto)}</b> · pago ${p.n} de ${vt.pagos.length}<small>${p.pagado?`Cobrado el ${new Date(p.fecha).toLocaleDateString("es-AR")}`:"Pendiente"}</small></div>
+        <div class="info"><b class="num">${usd(p.monto)}</b> · pago ${p.n} de ${vt.pagos.length}<small class="${p.pagado?"":claseVence(p)}">${p.pagado?`Cobrado el ${new Date(p.fecha).toLocaleDateString("es-AR")}${p.vence?` · vencía el ${new Date(p.vence).toLocaleDateString("es-AR")}`:""}`:`Pendiente · ${textoVence(p)}`}</small></div>
         ${p.comprobante?`<a class="btn sm" href="${esc(/^https?:/.test(p.comprobante)?p.comprobante:"/api/comprobante?path="+encodeURIComponent(p.comprobante))}" target="_blank">${ic("i-clip")}Ver comprobante</a>`
           :`<label class="btn sm" style="cursor:pointer">${ic("i-clip")}Adjuntar<input type="file" accept="image/*,application/pdf" style="display:none" onchange="subirComprobante('${id}',${p.n},this)"></label>`}
         <button class="btn sm ${p.pagado?"":"pri"}" onclick="accion('${id}','pago',{n:${p.n},pagado:${!p.pagado}},'${p.pagado?"Pago desmarcado":"Pago cobrado"}')">${p.pagado?"Desmarcar":"Marcar cobrado"}</button>
       </div>`).join("")}</div>
       <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn sm" onclick="editarVenta('${id}')">Editar pagos y nota</button><button class="btn sm fantasma peligro" onclick="anularVenta('${id}')">Anular venta</button></div></div>`;
 }
+// Datos del cliente: contacto (va al contacto de GHL) + marca, Instagram, web, documento y país (van en la venta).
+let CLI_EDIT=null;
+const CAMPOS_CLI=[["marca","Marca / ecommerce"],["instagram","Instagram"],["web","Web / tienda"],["documento","DNI / CUIT"],["pais","País"]];
+function tarjetaCliente(l,vt){
+  const c=vt.cliente||{}, id=l.id;
+  if(CLI_EDIT===id) return `<div class="tarjeta"><h4>Datos del cliente</h4>
+    <div class="form-g">
+      <div class="full"><label for="cNom">Nombre y apellido</label><input id="cNom" value="${esc(l.nombre||"")}" onfocus="EDITANDO=true"></div>
+      <div><label for="cTel">WhatsApp</label><input id="cTel" inputmode="tel" value="${esc(l.telefono||"")}" onfocus="EDITANDO=true"></div>
+      <div><label for="cMail">Email</label><input id="cMail" type="email" value="${esc(l.email||"")}" onfocus="EDITANDO=true"></div>
+      ${CAMPOS_CLI.map(([k,t])=>`<div><label for="c_${k}">${t}</label><input id="c_${k}" value="${esc(c[k]||"")}" onfocus="EDITANDO=true"></div>`).join("")}
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px"><button class="btn sm fantasma" onclick="CLI_EDIT=null;EDITANDO=false;pintarFicha()">Cancelar</button><button class="btn sm pri" onclick="guardarCliente('${id}')">Guardar datos</button></div></div>`;
+  const wa=waLink(l.telefono);
+  const filas=[["WhatsApp",wa?`<a href="${wa}" target="_blank" rel="noopener">${esc(l.telefono)}</a>`:esc(l.telefono||"—")],["Email",l.email?`<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>`:"—"]]
+    .concat(CAMPOS_CLI.map(([k,t])=>[t,esc(c[k]||"—")]));
+  return `<div class="tarjeta"><div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><h4>Datos del cliente</h4><button class="btn sm" onclick="CLI_EDIT='${id}';EDITANDO=true;pintarFicha()">${ic("i-editar")}Editar</button></div>
+    <div class="dl">${filas.map(([k,v])=>`<div style="color:var(--tx-3)">${k}</div><div>${v}</div>`).join("")}</div></div>`;
+}
+async function guardarCliente(id){
+  const cliente={}; for(const [k] of CAMPOS_CLI) cliente[k]=$("#c_"+k).value;
+  const data={nombre:$("#cNom").value.trim(),telefono:$("#cTel").value.trim(),email:$("#cMail").value.trim(),cliente};
+  CLI_EDIT=null;
+  await accion(id,"cliente",data,"Datos del cliente guardados");
+}
 function filaEdicion(p,i){
   return `<div class="pago ${p.pagado?"cobrado":""}" data-fila>
     <div class="marca-p">${i+1}</div>
     <div style="flex:1;min-width:120px"><label style="font-size:11.5px;color:var(--tx-3)">Monto (USD)</label><input data-monto type="number" min="1" step="0.01" inputmode="decimal" value="${p.monto||""}" onfocus="EDITANDO=true"></div>
+    <div style="min-width:140px"><label style="font-size:11.5px;color:var(--tx-3)">Vence</label><input data-vence type="date" value="${diaInput(p.vence)}" onfocus="EDITANDO=true"></div>
     <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer"><input data-pagado type="checkbox" style="width:auto" ${p.pagado?"checked":""} onchange="const f=this.closest('[data-fila]');f.classList.toggle('cobrado',this.checked);const d=f.querySelector('[data-fecha]');if(this.checked&&!d.value)d.value=hoyInput();">Pagó</label>
     <div style="min-width:140px"><label style="font-size:11.5px;color:var(--tx-3)">Día que pagó</label><input data-fecha type="date" value="${p.pagado?diaInput(p.fecha):""}" onfocus="EDITANDO=true"></div>
     <button class="icon-btn" title="Quitar cuota" aria-label="Quitar cuota" onclick="quitarCuota(this)">${ic("i-x")}</button>
@@ -2139,12 +2307,15 @@ function filaEdicion(p,i){
 function leerEdicion(){
   return [...document.querySelectorAll("#editPagos [data-fila]")].map(f=>({
     monto:Number(f.querySelector("[data-monto]").value),
+    vence:f.querySelector("[data-vence]").value||null,
     pagado:f.querySelector("[data-pagado]").checked,
     fecha:f.querySelector("[data-fecha]").value||null }));
 }
 function renumerarCuotas(){ document.querySelectorAll("#editPagos [data-fila] .marca-p").forEach((m,i)=>m.textContent=i+1); }
 function agregarCuota(){
-  const c=$("#editPagos"); c.insertAdjacentHTML("beforeend",filaEdicion({monto:"",pagado:false,fecha:null},c.children.length)); EDITANDO=true;
+  const c=$("#editPagos"), venc=[...c.querySelectorAll("[data-vence]")].map(i=>i.value).filter(Boolean).sort().pop();
+  let vence=null; if(venc){const d=new Date(venc+"T12:00:00");d.setMonth(d.getMonth()+1);vence=d.toISOString();}
+  c.insertAdjacentHTML("beforeend",filaEdicion({monto:"",pagado:false,fecha:null,vence},c.children.length)); EDITANDO=true;
 }
 function quitarCuota(b){
   if(document.querySelectorAll("#editPagos [data-fila]").length<=1){toast("La venta tiene que tener al menos una cuota",true);return;}
@@ -2156,10 +2327,10 @@ async function guardarEdicionVenta(id){
   const pagos=leerEdicion();
   if(pagos.some(p=>!(p.monto>0))){toast("Cada cuota necesita un monto mayor a 0",true);return;}
   VENTA_EDIT=null;
-  await accion(id,"editar_venta",{pagos,nota:$("#eNota").value},"Venta actualizada");
+  await accion(id,"editar_venta",{pagos,nota:$("#eNota").value,fecha:$("#eFecha").value},"Venta actualizada");
 }
 function registrarVenta(id){
-  const data={oferta:VENTA_OF,forma:VENTA_FO,nota:($("#vNota")||{}).value||""};
+  const data={oferta:VENTA_OF,forma:VENTA_FO,nota:($("#vNota")||{}).value||"",fecha:($("#vFecha")||{}).value||""};
   if(VENTA_FO==="Personalizado"){
     const total=Number($("#vTotal").value), n=parseInt($("#vCuotas").value,10);
     if(!(total>0)){toast("Poné el monto total de la venta",true);return;}

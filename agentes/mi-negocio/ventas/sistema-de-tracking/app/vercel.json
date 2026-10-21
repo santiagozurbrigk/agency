@@ -1,5 +1,11 @@
 {
   "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/clientes",
+      "destination": "/index.html"
+    }
+  ],
   "functions": {
     "api/grupos.js": {
       "maxDuration": 300

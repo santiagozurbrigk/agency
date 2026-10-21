@@ -373,6 +373,33 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.statusCode===401,"zoom: sin sesión → 401");
   }
 
+  // Clientes: fecha de cierre, vencimientos, datos del cliente y alta manual
+  { const lead=h("api/lead.js"), clientesApi=h("api/clientes.js"), V=h("lib/ventas.js");
+    const dia=iso=>new Date(iso).toLocaleDateString("en-CA",{timeZone:"America/Argentina/Buenos_Aires"});
+    ok(dia(V.sumarMeses("2026-01-31T15:00:00.000Z",1))==="2026-02-28","vencimientos: el 31 pasa al último día del mes");
+    let r=await call(clientesApi,{method:"POST",cookie,body:{nombre:"Carla Cliente",telefono:"+54 9 11 5555 0999",email:"carla@cliente.com",
+      oferta:"Génesis",forma:"3 cuotas",fecha:"2026-10-23",cliente:{marca:"Limpia Ya",instagram:"@limpiaya",otro:"x"}}});
+    ok(r.statusCode===200&&!r.body.existia&&(r.body.lead.tags||[]).includes("cliente-genesis"),"alta manual: crea el contacto con tag cliente-genesis");
+    const idC=r.body.lead.id; let v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(r.body.lead.fields.etapa==="Venta Génesis"&&dia(v.fecha)==="2026-10-23","alta manual: etapa de venta y fecha de cierre");
+    ok(v.pagos.map(p=>dia(p.vence)).join()==="2026-10-23,2026-11-23,2026-12-23","alta manual: cuota 1 vence al cierre y las demás cada mes");
+    ok(v.cliente.marca==="Limpia Ya"&&v.cliente.otro===undefined,"alta manual: datos del cliente, sin campos de más");
+    r=await call(clientesApi,{method:"POST",cookie,body:{nombre:"Carla",email:"carla@cliente.com",oferta:"Génesis",forma:"PIF"}});
+    ok(r.statusCode===409,"alta manual: si ya tiene una venta, no la pisa");
+    r=await call(clientesApi,{method:"POST",cookie,body:{nombre:"Sin datos",oferta:"Génesis",forma:"PIF"}});
+    ok(r.statusCode===400,"alta manual: sin WhatsApp ni email rechazada");
+    r=await call(lead,{method:"POST",cookie,body:{id:idC,action:"editar_venta",data:{fecha:"2026-10-20",
+      pagos:[{monto:2000,vence:"2026-10-20",pagado:true,fecha:"2026-10-21"},{monto:2000,vence:"2026-11-05"},{monto:2000}]}}});
+    v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(dia(v.fecha)==="2026-10-20"&&dia(v.pagos[1].vence)==="2026-11-05"&&dia(v.pagos[2].vence)==="2026-12-23","editar venta: fecha de cierre y vencimientos a mano (vacío conserva el anterior)");
+    r=await call(lead,{method:"POST",cookie,body:{id:idC,action:"cliente",data:{email:"carla@nuevo.com",cliente:{web:"limpiaya.com"}}}});
+    v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(r.body.lead.email==="carla@nuevo.com"&&v.cliente.web==="limpiaya.com"&&v.cliente.marca==="Limpia Ya","datos del cliente: contacto y marca/web sin perder lo anterior");
+    r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"venta",data:{oferta:"Mentoría",forma:"PIF"}}});
+    v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(v.pagos[0].vence&&dia(v.pagos[0].vence)===dia(v.fecha),"venta sin fecha: cierre hoy y la cuota vence hoy");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});
