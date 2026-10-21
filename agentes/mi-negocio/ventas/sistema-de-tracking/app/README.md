@@ -7,7 +7,7 @@ App web del equipo de ventas. Se monta sobre GHL: todo lo que se carga acá se e
 | Página | Qué es |
 | --- | --- |
 | `/` | La app del equipo: colas, grupos, fichas, ventas, métricas, configuración. Pide login. |
-| `/` → Llamadas → **Calendario** | Semana de lunes a domingo con las citas de los 3 calendarios de GHL (horario real, Manu en naranja, el equipo en azul, la pre-venta con borde punteado). En el celular se ve como agenda día por día. Tocar una cita abre la ficha. |
+| `/` → Llamadas → **Calendario** | Semana de lunes a domingo con las citas de los 3 calendarios de GHL (horario real; el color sale del responsable de la ficha: Manu en naranja, Jose en azul; sin responsable, según el calendario; la pre-venta con borde punteado). En el celular se ve como agenda día por día. Tocar una cita abre la ficha. |
 | `/clientes` | La vista **Clientes** de la app (mismo login): los que cerraron, con fecha de cierre, contacto, cada cuota con su vencimiento, lo cobrado y los comprobantes. Filtros por cuota vencida / vence en 7 días / al día / pagaron todo, alta manual y exportación a CSV. |
 | `/agendar` | Formulario público de **Agenda directa** (link 1 de la clase). Decide solo si muestra el calendario de Manu o el de Diego. |
 | `/contacto` | Formulario público de **Quiero que me contacten** (link 2 de la clase). |
