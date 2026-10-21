@@ -317,6 +317,62 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(rafaga.filter(r=>r.body.ruta==="diego").length===6,"el resto de la ráfaga → equipo");
   await call(settingsApi,{method:"POST",cookie,body:{manuTope:10}});
 
+  // Zoom: cruce de asistentes con los opt-ins (SOP)
+  {
+    const Z=require(path.join(APP,"lib/zoom.js"));
+    const csv=[
+      "Informe de asistentes",
+      "Tema,Identificación del seminario web,Hora de inicio real,Duración real (minutos),Espectadores exclusivos,Usuarios totales,Vistas simultáneas máximas,Habilitar registro",
+      '"Clase",123,"19/10/2026 06:50:00 PM",100,6,9,5,No',
+      "Detalles del anfitrión",
+      "Asistió,Nombre de usuario (nombre original),Correo electrónico,Hora de incorporación,Hora de salida,Tiempo en la sesión (minutos),Es invitado,Nombre de país/región",
+      'Sí,Manu,manu@host.com,"19/10/2026 06:50:00 PM","19/10/2026 08:30:00 PM",100,No,Argentina',
+      "Detalles de panelista",
+      "Asistió,Nombre de usuario (nombre original),Correo electrónico,Hora de incorporación,Hora de salida,Tiempo en la sesión (minutos),Es invitado,Nombre de país/región",
+      'Sí,Equipo,equipo@host.com,"19/10/2026 06:51:00 PM","19/10/2026 08:30:00 PM",99,Sí,Argentina',
+      "Detalles de asistente",
+      "Asistió,Nombre de usuario (nombre original),Correo electrónico,Hora de incorporación,Hora de salida,Tiempo en la sesión (minutos),Es invitado,Nombre de país/región",
+      // Martín: compu y celular a la vez (se superponen) → la unión, no la suma
+      'Sí,Martín,martin@demo.com,"19/10/2026 07:00:00 PM","19/10/2026 08:30:00 PM",90,Sí,Argentina',
+      'Sí,iPhone,martin@demo.com,"19/10/2026 07:10:00 PM","19/10/2026 08:00:00 PM",50,Sí,Argentina',
+      // Lucía: mail con typo de dominio
+      'Sí,Lu,lucia@demo.con,"19/10/2026 07:20:00 PM","19/10/2026 07:50:00 PM",30,Sí,Uruguay',
+      // Sofía: otro mail, pero nombre y apellido únicos → cruza por nombre
+      'Sí,Sofía Nuñez,otra@mail.com,"19/10/2026 07:05:00 PM","19/10/2026 08:10:00 PM",65,Sí,Argentina',
+      // Pablo suelto con otro mail → NO se cruza (solo nombre)
+      'Sí,Pablo,pablito@mail.com,"19/10/2026 07:05:00 PM","19/10/2026 07:40:00 PM",35,Sí,Argentina',
+      // el panelista también aparece como asistente, y un bot
+      'Sí,Equipo,equipo@host.com,"19/10/2026 06:51:00 PM","19/10/2026 06:52:00 PM",1,Sí,Argentina',
+      "Sí,Lautaro's Notetaker,,\"19/10/2026 07:06:40 PM\",\"19/10/2026 07:16:38 PM\",10,Sí,Estados Unidos",
+      // fila sin mail de alguien que ya está con mail → se une por nombre
+      'Sí,Pablo,,"19/10/2026 07:45:00 PM","19/10/2026 07:50:00 PM",5,Sí,Argentina'
+    ].join("\n");
+    const inf=Z.leerInforme(csv);
+    ok(inf.meta.personas===4,"zoom: 4 personas (sin anfitrión, panelista ni bot)");
+    const mt=inf.personas.find(p=>p.email==="martin@demo.com");
+    ok(mt.minutos===90&&mt.veces===2,"zoom: minutos = unión de intervalos, no la suma");
+    ok(mt.hastaElFinal===true&&mt.salioMin===100,"zoom: se quedó hasta el final");
+    ok(inf.personas.find(p=>p.email==="lucia@demo.com"),"zoom: typo de dominio corregido");
+    ok(inf.personas.find(p=>p.email==="pablito@mail.com").minutos===40,"zoom: fila sin mail unida por nombre");
+    ok(inf.meta.personasZoom===6||inf.meta.personasZoom===5,"zoom: cuenta como Zoom (mails crudos + filas sin mail)");
+    const zoomApi=h("api/zoom.js");
+    r=await call(zoomApi,{method:"POST",cookie,body:{csv}});
+    ok(r.body.ok&&r.body.zoom.identificados===3&&r.body.zoom.viaNombre===1,"zoom: 3 cruzados (2 por mail, 1 por nombre)");
+    ok(r.body.zoom.sinIdentificar.length===1&&r.body.zoom.sinIdentificar[0].e==="pablito@mail.com","zoom: «Pablo» suelto queda sin identificar");
+    const t=await call(leads,{cookie});
+    const L=id=>t.body.leads.find(l=>l.id===id)||{fields:{}};
+    const zm=JSON.parse(L("demo-martin").fields.zoom_json||"{}");
+    ok(zm.m===90&&zm.v===2&&zm.f===1&&L("demo-martin").fields.asistio==="Sí","zoom: ficha de Martín con minutos, veces y asistió");
+    ok(JSON.parse(L("demo-sofia").fields.zoom_json||"{}").via==="nombre","zoom: Sofía cruzada por nombre");
+    ok(!L("demo-pablo").fields.zoom_json,"zoom: Pablo (otro mail, sin apellido) no se toca");
+    r=await call(zoomApi,{method:"POST",cookie,body:{hitos:{apertura:"19:00",oferta:"70",precio:"85",qa:"95"}}});
+    ok(r.body.ok&&r.body.zoom.hitos.precio===85&&r.body.zoom.identificados===3,"zoom: hitos guardados sin perder el cruce");
+    r=await call(zoomApi,{cookie});
+    ok(r.body.ok&&r.body.zoom.hitos.oferta===70,"zoom: GET devuelve el último cruce");
+    r=await call(zoomApi,{method:"POST",body:{csv}});
+    ok(r.statusCode===401,"zoom: sin sesión → 401");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});

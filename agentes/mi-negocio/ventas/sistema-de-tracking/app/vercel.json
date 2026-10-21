@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "functions": {
-    "api/grupos.js": { "maxDuration": 300 }
+    "api/grupos.js": {
+      "maxDuration": 300
+    },
+    "api/zoom.js": {
+      "maxDuration": 300
+    }
   }
 }

@@ -200,6 +200,20 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .chip.rsp{font-weight:600} .chip.rsp.r-jose{color:var(--azul)} .chip.rsp.r-manu{color:var(--naranja)}
 select.sel.rsp{max-width:132px} select.sel.rsp.r-jose{color:var(--azul);border-color:var(--azul)} select.sel.rsp.r-manu{color:var(--naranja);border-color:var(--naranja)}
 .col-etapa .badge{white-space:normal}
+/* Asistentes de Zoom */
+.lista.con-reg .fila.zf{grid-template-columns:minmax(200px,2fr) minmax(130px,1.1fr) minmax(120px,1fr) minmax(170px,1.4fr) minmax(100px,.9fr) auto}
+.zbar{height:5px;border-radius:99px;background:var(--panel-2);margin-top:6px;overflow:hidden;max-width:140px}.zbar i{display:block;height:100%;background:var(--naranja)}
+.fila.zs{grid-template-columns:minmax(160px,1.4fr) minmax(200px,1.6fr) 90px minmax(170px,1.3fr) minmax(100px,1fr)}
+.zver-f{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.zver-f .t{display:block;font-size:12px;color:var(--tx-3)} .zver-f b{display:block;font-family:var(--tit);font-size:22px;font-weight:600;margin:2px 0}
+.zver-f small{font-size:12.5px;color:var(--tx-3)} .zver-f small.ok{color:var(--ok)} .zver-f small.mal,.t-mal{color:var(--mal)}
+.zver-n{font-size:13px;color:var(--tx-3);margin:10px 0 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.zhitos{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.zhitos label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--tx-3)}
+.zhitos input{height:34px;padding:0 10px;border-radius:8px;border:1px solid var(--borde-2);background:var(--bg);color:var(--tx);font:inherit;font-size:14px;width:150px}
+.ztabla{width:100%;border-collapse:collapse;font-size:13.5px}.ztabla th{text-align:left;font-weight:500;color:var(--tx-3);font-size:12px;padding:8px 10px;border-bottom:1px solid var(--borde)}
+.ztabla td{padding:10px;border-bottom:1px solid var(--borde)}
+.zpasos{margin:6px 0 0 18px;padding:0;font-size:14px;line-height:1.8}
+@media (max-width:900px){.zver-f{grid-template-columns:1fr 1fr}.fila.zs{grid-template-columns:1fr 1fr}.fila.zs.cab{display:none}.lista.con-reg .fila.zf{grid-template-columns:1fr}}
 select.sel.estado{max-width:150px} select.sel.estado.e-ok{color:var(--ok);border-color:var(--ok)} select.sel.estado.e-warn{color:var(--warn);border-color:var(--warn)}
 select.sel.estado.e-azul{color:var(--azul);border-color:var(--azul)} select.sel.estado.e-mal{color:var(--mal);border-color:var(--mal)} select.sel.estado.e-otro{color:var(--tx);border-color:var(--tx-3)}
 /* Filas con responsable y estado: los controles van en una segunda línea, a lo ancho */
@@ -526,6 +540,7 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 9.2c.3 1.7 2.1 3.6 3.9 4.1l1.1-1.1 1.8.8-.3 1.6c-3 .3-6.9-3.3-6.9-6.5l1.5-.4.8 1.8z"/></symbol>
   <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-seg" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+  <symbol id="i-asis" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
   <symbol id="i-vivo" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="m17 10 4-2v8l-4-2"/></symbol>
   <symbol id="i-g1" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
   <symbol id="i-g2" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
@@ -633,6 +648,8 @@ const SECCIONES=[
   {grupo:"Clase"},
   {id:"clase", nombre:"Día de la clase", icono:"i-vivo",
     sub:"Marcá asistencia y señales de compra. Al terminar, armá los 3 grupos."},
+  {id:"zoom", nombre:"Asistentes de la clase", corto:"Asistentes (Zoom)", icono:"i-asis",
+    sub:"El informe de asistentes de Zoom cruzado con los opt-ins: quién vio cuánto y en qué momento se fue, para llamar sabiendo con quién hablás."},
   {id:"apl", nombre:"Aplicaciones", cola:"aplicaciones", icono:"i-clip",
     sub:"Los que completaron applygenesis.com/aplication, la más reciente arriba. Tocá una para ver todas las respuestas."},
   {grupo:"Después de la clase"},
@@ -963,6 +980,7 @@ function etiquetas(l){
   if(f.excede_tope==="Sí")c.push(`<span class="chip mal">${ic("i-alerta")}Excede tope Manu</span>`);
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
+  if(f.zoom_json){try{const z=JSON.parse(f.zoom_json);c.push(`<span class="chip ${z.m>=60?"ok":""}">${ic("i-vivo")}Vio ${z.m} min</span>`);}catch(e){}}
   if(f.responsable)c.push(`<span class="chip rsp r-${esc(f.responsable.toLowerCase())}">Resp.: ${esc(f.responsable)}</span>`);
   if(f.estado_llamada)c.push(`<span class="chip ${TONO_ESTADO[f.estado_llamada]||""}">${ic("i-tel")}${esc(f.estado_llamada)}</span>`);
   return c.join("");
@@ -1052,6 +1070,7 @@ function render(op){
     case "llam": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.llamadas:[],{wa:true,resp:true,vacio:"No hay llamadas de venta agendadas"}); break;
     case "clase": renderClase(v,s); break;
     case "apl": renderAplicaciones(v,s); break;
+    case "zoom": renderZoom(v,s); break;
     case "ventas": renderVentas(v,s); break;
     case "met": renderMetricas(v,s,silencioso); break;
     case "anun": renderAnuncios(v,s,silencioso); break;
@@ -1059,6 +1078,144 @@ function render(op){
   }
 }
 $("#busca").addEventListener("input",()=>render());
+
+/* ---------- Asistentes de la clase (informe de Zoom) ---------- */
+// SOP: una ficha por persona con lo que vio. El cruce lo hace /api/zoom; acá se clasifica
+// y se ordena con los hitos de la clase (minuto de la oferta, del precio y del Q&A).
+let ZOOM=null, ZOOM_CARGANDO=false, ZTAB="primero";
+try{ZTAB=localStorage.getItem("trk_ztab")||"primero";}catch(e){}
+const INV_ORDEN=["Más de 1.000 dólares","De 500 a 1.000 dólares","De 200 a 500 dólares","De 100 a 200 dólares","Menos de 100 dólares","0, todavía no tengo marca"];
+const FACT_ORDEN_C=["Más de 100M","Entre 50M y 100M","Entre 30M y 50M","Entre 10M y 30M","Menos de 10M"];
+const tramoDe=f=>f.inversion_meta||f.facturacion||"Sin dato";
+function rangoTramo(f){const i=INV_ORDEN.indexOf(f.inversion_meta);if(i>=0)return i;const j=FACT_ORDEN_C.indexOf(f.facturacion);return j>=0?[0,1,3,4,5][j]:99;}
+function zoomDe(l){try{return l.fields.zoom_json?JSON.parse(l.fields.zoom_json):null;}catch(e){return null;}}
+function cargarZoom(){if(ZOOM_CARGANDO)return;ZOOM_CARGANDO=true;api("/api/zoom").then(d=>{ZOOM=d.zoom||{};}).catch(()=>{ZOOM={};}).finally(()=>{ZOOM_CARGANDO=false;if(VISTA==="zoom")render();});}
+function hitosZ(){return (ZOOM&&ZOOM.hitos)||{};}
+// Minuto (desde el inicio real de la sesión) en que se abrió la puerta: por defecto, la hora de la clase.
+function aperturaMin(){
+  if(!ZOOM||!ZOOM.inicio)return null;
+  const hh=hitosZ().apertura||((DATA&&DATA.settings&&DATA.settings.clase)||"").slice(11,16)||"19:00";
+  const dia=new Date(ZOOM.inicio-3*3600e3).toISOString().slice(0,10);
+  return Math.round((new Date(`${dia}T${hh}:00-03:00`).getTime()-ZOOM.inicio)/60000);
+}
+function salidaZ(z){
+  const h=hitosZ();
+  if(z.f) return {t:"Se quedó hasta el final",k:"ok"};
+  if(h.precio!=null&&z.s>=h.precio) return {t:"Se fue después del precio",k:"warn"};
+  if(h.oferta!=null&&z.s>=h.oferta) return {t:"Se fue durante la oferta",k:"azul"};
+  if(h.oferta!=null) return {t:"Se fue antes de la oferta",k:""};
+  return {t:`Se fue en el minuto ${z.s}`,k:""};
+}
+const tardeZ=z=>{const a=aperturaMin();return a!=null&&z.i!=null&&z.i>a+15;};
+function setZtab(t){ZTAB=t;try{localStorage.setItem("trk_ztab",t);}catch(e){}render();}
+function filaZoom(l,pos){
+  const f=l.fields, z=zoomDe(l), sal=salidaZ(z), dur=(ZOOM&&ZOOM.duracion)||100;
+  return `<div class="fila con-resp zf" onclick="abrirFicha('${l.id}','dijo')" tabindex="0" onkeydown="if(event.key==='Enter')abrirFicha('${l.id}','dijo')">
+    <div class="quien-l"><span class="pos num">${pos}</span><div class="avatar">${esc(iniciales(l.nombre))}</div>
+      <div style="min-width:0"><div class="nom">${esc(l.nombre||z.n||"(sin nombre)")}</div>
+      <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
+      <div class="sub" style="font-size:12px">${esc(l.email||"")}</div>
+      <div class="movil"><span class="chip ${l.calc&&l.calc.califica?"ok":""}">${esc(tramoDe(f))}</span><span class="chip">${z.m} min</span><span class="chip ${sal.k}">${esc(sal.t)}</span></div></div></div>
+    <div class="col-reg fact${l.calc&&l.calc.califica?" apl-on":""}">${esc(tramoDe(f))}<small>${f.inversion_meta?"Meta por día":f.facturacion?"Facturación":""}</small></div>
+    <div class="col-fact fact"><b class="num">${z.m} min</b><div class="zbar"><i style="width:${Math.min(100,z.m/dur*100)}%"></i></div></div>
+    <div class="col-etapa fact"><span class="chip ${sal.k}">${esc(sal.t)}</span>${tardeZ(z)?`<small>Llegó tarde (min ${z.i})</small>`:""}</div>
+    <div class="col-etq fact">${z.v>1?`Entró ${z.v} veces`:"Entró 1 vez"}<small>${esc(z.p||"")}</small></div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}</div>
+  </div>`;
+}
+function filaNoVino(l,pos){
+  const f=l.fields;
+  return `<div class="fila con-resp zf" onclick="abrirFicha('${l.id}','dijo')" tabindex="0">
+    <div class="quien-l"><span class="pos num">${pos}</span><div class="avatar">${esc(iniciales(l.nombre))}</div>
+      <div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
+      <div class="sub">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar WhatsApp">${esc(l.telefono)}${ic("i-copiar")}</button>`:""}</div>
+      <div class="sub" style="font-size:12px">${esc(l.email||"")}</div>
+      <div class="movil"><span class="chip ${l.calc&&l.calc.califica?"ok":""}">${esc(tramoDe(f))}</span></div></div></div>
+    <div class="col-reg fact${l.calc&&l.calc.califica?" apl-on":""}">${esc(tramoDe(f))}<small>${f.inversion_meta?"Meta por día":f.facturacion?"Facturación":""}</small></div>
+    <div class="col-fact fact">—</div><div class="col-etapa">${badgeEtapa(f.etapa)}</div><div class="col-etq fact">No vino</div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}</div>
+  </div>`;
+}
+async function importarZoom(input){
+  const file=input.files&&input.files[0]; input.value="";
+  if(!file) return;
+  const csv=await file.text();
+  toast("Cruzando los asistentes… puede tardar un minuto");
+  try{
+    const d=await api("/api/zoom",{method:"POST",body:JSON.stringify({csv})});
+    ZOOM=d.zoom; toast(`Listo: ${d.zoom.identificados} asistentes cruzados con su lead · ${d.zoom.sinIdentificar.length} sin identificar`);
+    if(d.errores&&d.errores.length) toast(`${d.errores.length} no se pudieron guardar en GHL. Volvé a importar el mismo archivo.`,true);
+    refrescar(); render();
+  }catch(e){toast(e.message,true);}
+}
+async function guardarHitos(){
+  const v=id=>$("#"+id).value.trim();
+  try{const d=await api("/api/zoom",{method:"POST",body:JSON.stringify({hitos:{apertura:v("zApertura"),oferta:v("zOferta"),precio:v("zPrecio"),qa:v("zQa")}})});ZOOM=d.zoom;toast("Hitos guardados");render();}
+  catch(e){toast(e.message,true);}
+}
+function renderZoom(v,s){
+  if(ZOOM===null){cargarZoom();v.innerHTML=encabezado(s)+esqueleto();return;}
+  if(!DATA){v.innerHTML=encabezado(s)+esqueleto();return;}
+  const boton=`<label class="btn pri" style="cursor:pointer">${ic("i-mas")}Importar asistentes de Zoom<input type="file" accept=".csv,text/csv" hidden onchange="importarZoom(this)"></label>`;
+  let h=encabezado(s,boton);
+  if(!ZOOM.at){
+    v.innerHTML=h+`<div class="tarjeta"><h4>Cómo se hace</h4><ol class="zpasos">
+      <li>Entrá a <b>zoom.us</b> con la cuenta host → <b>Analíticas y reportes → Informes → Seminario web</b>.</li>
+      <li>Bajá el <b>informe de Asistentes completo</b> (el que trae «Detalles del anfitrión / panelista / asistente»).</li>
+      <li>Tocá <b>Importar asistentes de Zoom</b> y elegí el CSV. El sistema cruza cada persona con su opt-in.</li></ol></div>`;
+    return;
+  }
+  const z=ZOOM, ver=z.verificacion||{}, hit=hitosZ();
+  const asis=DATA.leads.filter(l=>zoomDe(l));
+  const ord=(a,b)=>rangoTramo(a.fields)-rangoTramo(b.fields)||(zoomDe(b).m-zoomDe(a).m);
+  const primero=asis.filter(l=>l.calc&&l.calc.califica&&zoomDe(l).m>=60).sort(ord);
+  const resto=asis.filter(l=>!(l.calc&&l.calc.califica&&zoomDe(l).m>=60)).sort(ord);
+  const noVino=DATA.leads.filter(l=>esOptin(l)&&!zoomDe(l)).sort((a,b)=>rangoTramo(a.fields)-rangoTramo(b.fields));
+  const sinId=z.sinIdentificar||[];
+  // Verificación (SOP: que la cuenta coincida con Zoom y que no quede más del 15% sin identificar)
+  const okCuenta=ver.coincide, okId=z.pctSinIdentificar<=15;
+  h+=`<div class="tarjeta zver"><div class="zver-f">
+      <div><span class="t">Último cruce</span><b>${esc(new Date(z.at).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}))}</b><small>${esc(z.tema||"")}</small></div>
+      <div><span class="t">Personas únicas</span><b class="num">${ver.personas}</b><small class="${okCuenta?"ok":"mal"}">${okCuenta?"✓":"⚠"} Zoom: ${ver.exclusivos} espectadores exclusivos${ver.cuentaZoom!==ver.exclusivos?` (cuento ${ver.cuentaZoom})`:""}</small></div>
+      <div><span class="t">Cruzados con su lead</span><b class="num">${z.identificados}</b><small>${z.viaMail} por mail · ${z.viaNombre} por nombre</small></div>
+      <div><span class="t">Sin identificar</span><b class="num ${okId?"":"t-mal"}">${sinId.length} <span style="font-size:14px">(${z.pctSinIdentificar}%)</span></b><small class="${okId?"":"mal"}">${okId?"Dentro del 15%":"⚠ Más del 15%: falta una lista de registrados"}</small></div>
+    </div>
+    <p class="zver-n">De ${ver.cuentaZoom} que cuenta Zoom quedan ${ver.personas} personas: ${(ver.typos||[]).length} mails con typo unidos a su mail bien escrito${(ver.unidosPorNombre||[]).length?`, ${(ver.unidosPorNombre||[]).length} filas sin mail unidas por nombre`:""}${(ver.bots||[]).length?`, ${(ver.bots||[]).length} bot de notas afuera`:""}. El anfitrión y los panelistas no cuentan.</p></div>`;
+  // Hitos de la clase
+  h+=`<div class="tarjeta"><h4 style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">Hitos de la clase <small style="font-weight:400;color:var(--tx-3)">minuto de la grabación (desde el inicio de la sesión de Zoom). Con esto «se fue en el minuto 72» pasa a ser «se fue después del precio».</small></h4>
+    <div class="zhitos">
+      <label>Apertura (hora)<input id="zApertura" type="time" value="${esc(hit.apertura||((DATA.settings&&DATA.settings.clase)||"").slice(11,16)||"19:00")}"></label>
+      <label>Empezó la oferta (min)<input id="zOferta" type="number" min="0" max="${z.duracion||300}" value="${hit.oferta??""}" placeholder="ej. 70"></label>
+      <label>Dijo el precio (min)<input id="zPrecio" type="number" min="0" max="${z.duracion||300}" value="${hit.precio??""}" placeholder="ej. 85"></label>
+      <label>Abrió el Q&amp;A (min)<input id="zQa" type="number" min="0" max="${z.duracion||300}" value="${hit.qa??""}" placeholder="ej. 95"></label>
+      <button class="btn sm" onclick="guardarHitos()">Guardar hitos</button></div>
+    ${hit.oferta==null?`<p class="zver-n" style="margin-top:8px">${ic("i-alerta")} Cargá los minutos mirando la grabación: sin la oferta y el precio, «en qué momento se fue» solo muestra el minuto.</p>`:""}</div>`;
+  const tabs=[["primero","Llamar primero",primero.length],["resto","Resto de asistentes",resto.length],["novino","No vinieron",noVino.length],["sinid","Sin identificar",sinId.length],["resumen","Resumen",null]];
+  h+=`<div class="filtros"><div class="seg">${tabs.map(([k,t,n])=>`<button class="${ZTAB===k?"on":""}" onclick="setZtab('${k}')">${t}${n!=null?` <span class="num" style="color:var(--tx-3)">${n}</span>`:""}</button>`).join("")}</div></div>`;
+  const cab=`<div class="fila cab zf"><div>Lead</div><div class="col-reg">Calificación</div><div class="col-fact">Minutos vistos</div><div class="col-etapa">En qué momento se fue</div><div class="col-etq">Veces · país</div><div></div></div>`;
+  const vacio=(t,sub)=>`<div class="lista"><div class="vacio"><b>${t}</b>${sub||""}</div></div>`;
+  if(ZTAB==="primero") h+=`<p class="zver-n">Califican y se quedaron 60 minutos o más: escucharon la oferta entera y tienen con qué pagarla. Si solo llegan a llamar a una parte, que sea esta.</p>`+(primero.length?`<div class="lista con-reg">${cab}${primero.map((l,i)=>filaZoom(l,i+1)).join("")}</div>`:vacio("Nadie en este corte"));
+  else if(ZTAB==="resto") h+=resto.length?`<div class="lista con-reg">${cab}${resto.map((l,i)=>filaZoom(l,i+1)).join("")}</div>`:vacio("No hay más asistentes");
+  else if(ZTAB==="novino") h+=`<p class="zver-n">Opt-ins que no aparecen en Zoom. Levantaron la mano y no vinieron: el replay es la excusa para escribirles.</p>`+(noVino.length?`<div class="lista con-reg"><div class="fila cab zf"><div>Lead</div><div class="col-reg">Calificación</div><div class="col-fact"></div><div class="col-etapa">Etapa</div><div class="col-etq"></div><div></div></div>${noVino.map((l,i)=>filaNoVino(l,i+1)).join("")}</div>`:vacio("Vinieron todos"));
+  else if(ZTAB==="sinid") h+=`<p class="zver-n">Entraron a Zoom pero no se pudieron cruzar con ningún opt-in: se registraron con otro mail, o el nombre es incompleto o se repite. No se adivina: mejor sin identificar que un teléfono equivocado.</p>`+(sinId.length?`<div class="lista"><div class="fila cab zs"><div>Nombre en Zoom</div><div>Mail</div><div>Minutos</div><div>En qué momento se fue</div><div>Veces · país</div></div>${sinId.slice().sort((a,b)=>b.m-a.m).map(x=>{const sal=salidaZ({f:x.f,s:x.s});return `<div class="fila zs" style="cursor:default"><div class="nom">${esc(x.n||"(sin nombre)")}</div><div class="fact">${x.e?`<button class="copiar" onclick="copiar('${esc(x.e)}',event)">${esc(x.e)}${ic("i-copiar")}</button>`:"—"}</div><div class="fact num">${x.m} min</div><div><span class="chip ${sal.k}">${esc(sal.t)}</span></div><div class="fact">${x.v} ${x.v===1?"vez":"veces"}<small>${esc(x.p||"")}</small></div></div>`;}).join("")}</div>`:vacio("Todos identificados"));
+  else {
+    // Resumen por tramo de calificación
+    const tramos=new Map();
+    const base=DATA.leads.filter(l=>esOptin(l)||zoomDe(l));
+    for(const l of base){const t=tramoDe(l.fields);if(!tramos.has(t))tramos.set(t,{t,r:rangoTramo(l.fields),reg:0,asis:[]});const o=tramos.get(t);if(esOptin(l))o.reg++;if(zoomDe(l))o.asis.push(zoomDe(l));}
+    const filas=[...tramos.values()].sort((a,b)=>a.r-b.r).map(o=>{
+      const n=o.asis.length, prom=n?Math.round(o.asis.reduce((s,z)=>s+z.m,0)/n):0, mas60=o.asis.filter(z=>z.m>=60).length;
+      const cnt={};o.asis.forEach(z=>{const k=salidaZ(z).t;cnt[k]=(cnt[k]||0)+1;});
+      const moda=Object.entries(cnt).sort((a,b)=>b[1]-a[1])[0];
+      return `<tr><td>${esc(o.t)}</td><td class="num">${o.reg}</td><td class="num">${n}</td><td class="num">${o.reg?Math.round(n/o.reg*100)+"%":"—"}</td><td class="num">${n?prom+" min":"—"}</td><td class="num">${mas60}</td><td>${moda?esc(moda[0])+` <small style="color:var(--tx-3)">(${moda[1]})</small>`:"—"}</td></tr>`;}).join("");
+    // Minuto en que se fue más gente (excluye el final)
+    const porMin={};asis.map(zoomDe).filter(z=>!z.f).forEach(z=>{const b=Math.floor(z.s/5)*5;porMin[b]=(porMin[b]||0)+1;});
+    const pico=Object.entries(porMin).sort((a,b)=>b[1]-a[1])[0];
+    h+=`<div class="tarjeta" style="overflow-x:auto"><table class="ztabla"><thead><tr><th>Tramo</th><th>Registrados</th><th>Asistieron</th><th>% asistencia</th><th>Minutos promedio</th><th>60 min o más</th><th>La mayoría…</th></tr></thead><tbody>${filas}</tbody></table>
+      ${pico?`<p class="zver-n" style="margin-top:12px">La mayor cantidad de gente se fue entre el minuto <b>${pico[0]}</b> y el <b>${+pico[0]+5}</b> (${pico[1]} personas). ${asis.filter(l=>zoomDe(l).f).length} se quedaron hasta el final.</p>`:""}</div>`;
+  }
+  v.innerHTML=h;
+}
 
 /* ---------- Aplicaciones (/aplication) ---------- */
 const INV_APL=["Menos de USD 1.000","Entre USD 1.000 y USD 3.000","Entre USD 3.000 y USD 6.000","Más de USD 6.000"];
@@ -1889,6 +2046,8 @@ function cuerpoFicha(l,tab){
     return `<div class="tarjeta"><h4 style="display:flex;align-items:center">Formularios<button class="btn sm fantasma" style="margin-left:auto" onclick="EDITANDO='campos';pintarFicha()">${ic("i-editar")}Editar</button></h4><dl class="dl">
         ${d("Inversión diaria en Meta",f.inversion_meta)}${d("Facturación",f.facturacion)}${d("Ciclo de reposición",f.ciclo)}${d("Inversión disponible",f.inversion)}
         ${d("Objetivo a 6 meses",f.objetivo)}${d("Qué lo frena",f.freno)}${d("Hace cuánto y qué probó",f.hace_cuanto)}${d("Qué le falta",f.que_falta)}</dl></div>
+      ${(()=>{const z=zoomDe(l);if(!z)return "";const sal=salidaZ(z);return `<div class="tarjeta"><h4>En la clase en vivo (Zoom)</h4><dl class="dl">
+        ${d("Minutos vistos",z.m+" min"+(ZOOM&&ZOOM.duracion?` de ${ZOOM.duracion}`:""))}${d("En qué momento se fue",sal.t+(z.f?"":` (min ${z.s})`))}${d("Entró",`en el minuto ${z.i}`+(tardeZ(z)?" · llegó tarde":""))}${d("Veces que entró",String(z.v))}${d("País",z.p)}${d("Nombre en Zoom",z.n)}</dl></div>`;})()}
       ${(()=>{const o=origenDe(f);return `<div class="tarjeta"><h4>De dónde vino</h4>${Object.keys(o).length?`<dl class="dl">
         ${d("Fuente",fuenteDe(o))}${d("Anuncio",o.utm_content||(o.ad_id?"ID "+o.ad_id:""))}${d("Conjunto",o.utm_term)}${d("Campaña",o.utm_campaign)}${d("Ubicación",o.utm_medium)}</dl>`:`<p style="color:var(--tx-3);font-size:13.5px">Sin datos de anuncio: entró sin parámetros en el link.</p>`}</div>`;})()}
       <div class="tarjeta"><h4>De las llamadas</h4><dl class="dl">

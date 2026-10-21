@@ -387,6 +387,26 @@ async function guardarVisitas() {
   }
 }
 
+/* ---------- Asistencia de Zoom (último cruce) ---------- */
+// El resumen del último informe de asistentes cruzado (verificación, sin identificar
+// y los hitos de la clase) se guarda en un custom value. Lo de cada lead va en su ficha (zoom_json).
+const ZOOM_KEY = "trk_zoom";
+async function getZoom() {
+  if (DEMO) return demo.db().zoom || null;
+  try {
+    return await cache.swr("zoom", async () => {
+      const cv = await ghl.getCustomValue(ZOOM_KEY);
+      return cv && cv.value ? JSON.parse(cv.value) : null;
+    }, POL_SETTINGS);
+  } catch (e) { return null; }
+}
+async function saveZoom(valor) {
+  if (DEMO) { demo.db().zoom = valor; return valor; }
+  await ghl.setCustomValue(ZOOM_KEY, JSON.stringify(valor));
+  await cache.set("zoom", valor, POL_SETTINGS.ttlSeg);
+  return valor;
+}
+
 // Clave de cada contador: "día|fuente|versión A/B" (día en hora de Argentina).
 function diaAR(d) { return new Date((d ? new Date(d) : new Date()).getTime() - 3 * 3600e3).toISOString().slice(0, 10); }
 
@@ -410,7 +430,7 @@ module.exports = {
   deleteLead, sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,
-  esDelLanzamiento, asegurarCampos, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
+  esDelLanzamiento, asegurarCampos, getZoom, saveZoom, listLeads, getLead, findLead, enFoto, enSegundoPlano, updateLead, createLead, registrar, historialCon,
   getReservas, reservarManu, liberarReserva, decidirYReservar, renombrarReserva,
   cargaManu, invalidarCitasManu,
   normTel
