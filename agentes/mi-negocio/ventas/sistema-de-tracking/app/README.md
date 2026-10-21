@@ -7,6 +7,7 @@ App web del equipo de ventas. Se monta sobre GHL: todo lo que se carga acá se e
 | Página | Qué es |
 | --- | --- |
 | `/` | La app del equipo: colas, grupos, fichas, ventas, métricas, configuración. Pide login. |
+| `/` → Llamadas → **Calendario** | Semana de lunes a domingo con las citas de los 3 calendarios de GHL (horario real, Manu en naranja, el equipo en azul, la pre-venta con borde punteado). En el celular se ve como agenda día por día. Tocar una cita abre la ficha. |
 | `/clientes` | La vista **Clientes** de la app (mismo login): los que cerraron, con fecha de cierre, contacto, cada cuota con su vencimiento, lo cobrado y los comprobantes. Filtros por cuota vencida / vence en 7 días / al día / pagaron todo, alta manual y exportación a CSV. |
 | `/agendar` | Formulario público de **Agenda directa** (link 1 de la clase). Decide solo si muestra el calendario de Manu o el de Diego. |
 | `/contacto` | Formulario público de **Quiero que me contacten** (link 2 de la clase). |
@@ -49,6 +50,7 @@ App web del equipo de ventas. Se monta sobre GHL: todo lo que se carga acá se e
 
 - **La etapa vive en un campo personalizado** («Etapa del proceso»), no en un pipeline de GHL: la API v2 no crea pipelines y el equipo opera desde esta app. Si después quieren el pipeline visual en GHL, se crea a mano y se agrega el espejo.
 - **La configuración** (tope de Manu, lugares de Génesis, fechas, calendarios) se guarda en el custom value `trk_settings`.
+- **Horario de las llamadas:** el calendario lee las citas de GHL (`/calendars/events`, en caché 20 s) y además el webhook guarda el inicio y el fin de cada cita en el lead («Llamada de venta · inicio / fin»), así se ve aunque falte configurar un calendario.
 - **Clientes** = leads con la venta registrada. Cada cuota tiene vencimiento: la primera el día del cierre y las siguientes, un mes después (se editan en la ficha). Marca, Instagram, web, DNI/CUIT y país van dentro de la venta; nombre, email y WhatsApp, en el contacto de GHL. El alta manual (`/api/clientes`) busca el contacto por WhatsApp o email y, si no existe, lo crea con el tag `cliente-genesis`.
 - **Ventas y pagos** viven en el campo «Venta (interno, no tocar)» del contacto, como JSON; los comprobantes en un Blob store **privado** de Vercel (en el JSON queda la ruta; se ven solo logueado, por `/api/comprobante?path=...`).
 

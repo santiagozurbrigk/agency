@@ -51,9 +51,21 @@ module.exports = async function handler(req, res) {
     const lead = await store.getLead(contactId);
     if (!lead) return res.status(200).json({ ok: true, ignorado: true, motivo: "Lead no encontrado" });
 
+    // Horario de la cita (los workflows de GHL lo mandan con distintos nombres).
+    const fecha = (v) => {
+      if (!v) return "";
+      const s = String(v).trim().replace(" ", "T");
+      // Sin zona horaria: es hora de Argentina.
+      const d = new Date(/T\d{2}:\d{2}(:\d{2})?(\.\d+)?$/.test(s) ? s + "-03:00" : s);
+      return isNaN(d) ? "" : d.toISOString();
+    };
+    const inicio = fecha(appt.startTime || appt.start_time || body.startTime || body.start_time || (body.calendar && body.calendar.startTime));
+    const fin = fecha(appt.endTime || appt.end_time || body.endTime || body.end_time || (body.calendar && body.calendar.endTime));
+    await store.asegurarCampos(["cita_at", "cita_fin"]);
+
     if (cancelada) {
       await store.registrar(contactId, "GHL", "Cita cancelada", {
-        agendo: "No",
+        agendo: "No", cita_at: "", cita_fin: "",
         etapa: "Canceló · a reagendar"
       }, lead);
       if (esManuPost) await store.invalidarCitasManu();
@@ -67,11 +79,12 @@ module.exports = async function handler(req, res) {
     const tags = store.esDelLanzamiento(lead) ? [] : [esManuPre ? "pre-venta-manu" : "calendario-ghl"];
     if (esManuPre) {
       await store.registrar(contactId, "GHL", "Agendó la pre-venta con Manu", {
-        etapa: "Agendado con Manu (pre-venta)", llamada_con: "Manu", agendo: "Sí"
+        etapa: "Agendado con Manu (pre-venta)", llamada_con: "Manu", agendo: "Sí",
+        ...(inicio ? { cita_at: inicio, cita_fin: fin } : {})
       }, lead, tags);
     } else {
       const con = esManuPost ? "Manu" : "Equipo";
-      const fields = { etapa: "Llamada agendada", llamada_con: con, agendo: "Sí" };
+      const fields = { etapa: "Llamada agendada", llamada_con: con, agendo: "Sí", ...(inicio ? { cita_at: inicio, cita_fin: fin } : {}) };
       // Red de seguridad del tope: si la cita de Manu entra por encima de 10, se marca.
       // Se cuenta fresco (sin caché) porque acaba de entrar una cita.
       if (esManuPost) {

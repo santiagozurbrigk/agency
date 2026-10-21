@@ -14,6 +14,8 @@ function seed() {
       fields: {
         ciclo: "Entre 30 y 60 días", facturacion: "Entre 30M y 50M", dueno: "Diego", origen: JSON.stringify({ utm_source: "facebook", utm_medium: "Instagram_Reels", utm_campaign: "Génesis 19/10", utm_term: "Dueños de marca", utm_content: "VSL-hook-CPA" }), 
         etapa: "Agendado con Manu (pre-venta)", que_vende: "Productos de limpieza para el hogar",
+        cita_at: new Date(new Date(Date.now() + 864e5).toISOString().slice(0, 10) + "T15:00:00-03:00").toISOString(),
+        cita_fin: new Date(new Date(Date.now() + 864e5).toISOString().slice(0, 10) + "T15:45:00-03:00").toISOString(),
         por_donde: "Tiendanube y Mercado Libre", dolor: "El CPA le sube todos los meses",
         por_que_ahora: "Si sigo así, para fin de año estoy pagando por vender.",
         objetivo: "Poder pagar más por cada cliente y seguir siendo rentable",

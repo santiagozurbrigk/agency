@@ -334,6 +334,47 @@ async function cargaManu({ fresco } = {}) {
   return { citas, reservas, total: citas + reservas, tope: s.manuTope };
 }
 
+// Citas de los 3 calendarios del proceso entre dos fechas, para el calendario de Llamadas.
+// Manda lo que dice GHL (en caché 20 s por rango); se suman los leads con horario guardado
+// por el webhook que no aparezcan ahí (por ejemplo, si un calendario no está configurado).
+const CALS = [["calManuPreventaId", "Manu", "Pre-venta"], ["calManuPostId", "Manu", "Venta"], ["calDiegoId", "Equipo", "Venta"]];
+const CANCELADAS = ["cancelled", "canceled", "invalid"];
+async function citasRango(desdeMs, hastaMs) {
+  const [s, leads] = await Promise.all([getSettings(), listLeads()]);
+  const porId = new Map(leads.map(l => [l.id, l]));
+  const citas = [];
+  if (!DEMO) {
+    for (const [k, con, tipo] of CALS) {
+      if (!s[k]) continue;
+      const evs = await cache.swr(`citas|${s[k]}|${desdeMs}|${hastaMs}`,
+        () => ghl.listAppointments(s[k], desdeMs, hastaMs), POL_CITAS);
+      for (const e of evs) {
+        if (CANCELADAS.includes(e.estado) || !e.inicio) continue;
+        const l = porId.get(e.contactId);
+        citas.push({ id: e.id, leadId: l ? l.id : null, nombre: l ? l.nombre : (e.titulo || "Sin contacto"),
+          telefono: l ? l.telefono : "", inicio: new Date(e.inicio).toISOString(),
+          fin: e.fin ? new Date(e.fin).toISOString() : null, con, tipo,
+          noShow: e.estado === "noshow", fuente: "ghl" });
+      }
+    }
+  }
+  const ya = new Set(citas.map(c => c.leadId + "|" + c.inicio));
+  for (const l of leads) {
+    const f = l.fields || {};
+    if (!f.cita_at || f.agendo === "No") continue;
+    const t = new Date(f.cita_at).getTime();
+    if (isNaN(t) || t < desdeMs || t >= hastaMs) continue;
+    const inicio = new Date(t).toISOString();
+    if (ya.has(l.id + "|" + inicio)) continue;
+    citas.push({ id: "lead-" + l.id, leadId: l.id, nombre: l.nombre, telefono: l.telefono, inicio,
+      fin: f.cita_fin ? new Date(f.cita_fin).toISOString() : null,
+      con: f.llamada_con === "Manu" || f.etapa === "Agendado con Manu (pre-venta)" ? "Manu" : "Equipo",
+      tipo: f.etapa === "Agendado con Manu (pre-venta)" ? "Pre-venta" : "Venta",
+      noShow: false, fuente: "lead" });
+  }
+  return citas.sort((a, b) => a.inicio.localeCompare(b.inicio));
+}
+
 async function invalidarCitasManu() {
   if (!DEMO) await cache.del("manu_citas");
 }
@@ -427,6 +468,7 @@ async function getVisitas() {
 }
 
 module.exports = {
+  citasRango,
   deleteLead, sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,

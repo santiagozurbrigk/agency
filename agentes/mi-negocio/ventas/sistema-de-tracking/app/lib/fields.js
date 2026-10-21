@@ -108,6 +108,8 @@ const FIELDS = [
   { key: "form_agenda",      name: "Completó Agenda directa",        type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "form_contacto",    name: "Completó Quiero que me contacten", type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "agendo",           name: "Agendó llamada de venta",        type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
+  { key: "cita_at",          name: "Llamada de venta · inicio",      type: "TEXT" },
+  { key: "cita_fin",         name: "Llamada de venta · fin",         type: "TEXT" },
   { key: "se_presento",      name: "Se presentó a la llamada",       type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "excede_tope",      name: "Excede el tope de Manu",         type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "posible_duplicado",name: "Posible duplicado",              type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
