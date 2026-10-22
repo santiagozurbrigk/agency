@@ -2478,7 +2478,7 @@ function cuerpoFicha(l,tab){
     const d=(t,v)=>`<dt>${t}</dt><dd class="${v?"":"vacio-dd"}">${esc(v||"Sin dato")}</dd>`;
     return `<div class="tarjeta"><h4 style="display:flex;align-items:center">Formularios<button class="btn sm fantasma" style="margin-left:auto" onclick="EDITANDO='campos';pintarFicha()">${ic("i-editar")}Editar</button></h4><dl class="dl">
         ${d("Inversión diaria en Meta",f.inversion_meta)}${d("Facturación",f.facturacion)}${d("Ciclo de reposición",f.ciclo)}${d("Inversión disponible",f.inversion)}
-        ${d("Objetivo a 6 meses",f.objetivo)}${d("Qué lo frena",f.freno)}${d("Hace cuánto y qué probó",f.hace_cuanto)}${d("Qué le falta",f.que_falta)}</dl></div>
+        ${d("Objetivo a 6 meses",f.objetivo)}${d("Qué lo frena",f.freno)}${d("Hace cuánto y qué probó",f.hace_cuanto)}${d("Hace cuánto conoce a Manu",f.conoce_manu)}${d("Qué le falta",f.que_falta)}</dl></div>
       ${(()=>{const z=zoomDe(l);if(!z)return "";const sal=salidaZ(z);return `<div class="tarjeta"><h4>En la clase en vivo (Zoom)</h4><dl class="dl">
         ${d("Minutos vistos",z.m+" min"+(ZOOM&&ZOOM.duracion?` de ${ZOOM.duracion}`:""))}${d("En qué momento se fue",sal.t+(z.f?"":` (min ${z.s})`))}${d("Entró",`en el minuto ${z.i}`+(tardeZ(z)?" · llegó tarde":""))}${d("Veces que entró",String(z.v))}${d("País",z.p)}${d("Nombre en Zoom",z.n)}</dl></div>`;})()}
       ${(()=>{const o=origenDe(f);return `<div class="tarjeta"><h4>De dónde vino</h4>${Object.keys(o).length?`<dl class="dl">

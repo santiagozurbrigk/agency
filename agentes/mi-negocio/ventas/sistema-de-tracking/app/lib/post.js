@@ -8,6 +8,8 @@
 
 const ESTADOS = ["Nuevo lead", "No atendió", "Agendado", "No se cerró", "Cliente · falta onboarding", "Cliente"];
 const SDRS = ["Mati", "Santi"];
+// WhatsApp de cada SDR: el formulario de aplicación termina ahí. Se pueden cambiar en Configuración.
+const WA_SDR = { Mati: "https://wa.link/9xcaz0", Santi: "https://wa.link/xqbxzd" };
 const OFERTAS = ["Génesis", "OS Fast", "Subscriptions"];
 const LLAMADAS_MAX = 3;
 
@@ -59,4 +61,4 @@ function nombreGrupo(lead, callAt) {
   return `${nombre} / ${hora} / ${ar.getUTCDate()}/${ar.getUTCMonth() + 1}`;
 }
 
-module.exports = { ESTADOS, SDRS, OFERTAS, LLAMADAS_MAX, TILDES, leer, sdrPara, nombreAgenda, nombreGrupo };
+module.exports = { ESTADOS, SDRS, WA_SDR, OFERTAS, LLAMADAS_MAX, TILDES, leer, sdrPara, nombreAgenda, nombreGrupo };
