@@ -1,4 +1,4 @@
-# Ads de repesca — Clase en vivo privada · viernes 23/10
+# Ads de repesca — Clase en vivo privada · sábado 24/10
 
 3 guiones para traer a los que no entraron a la clase del lunes 19/10. Calcan la estructura de las 3 referencias que pasó el usuario (21-oct-2026), adaptadas a Manu:
 
@@ -12,7 +12,8 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ## Antes de grabar — completar o confirmar
 
-- **Última vez en vivo (confirmado 21-oct):** la repesca del viernes 23 es la última vez que la clase se da en vivo. Se dice en los 3 guiones y en los captions.
+- **Fecha (22-oct):** la clase pasó al **sábado 24 a las 18 hs** (antes viernes 23).
+- **Última vez en vivo (confirmado 21-oct):** la repesca del sábado 24 es la última vez que la clase se da en vivo. Se dice en los 3 guiones y en los captions.
 - **Promesa de la clase (21-oct):** "Cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones". Reemplaza al 60 → 156.798.062. Va en el anuncio de la repesca de los 3 guiones y en los captions.
 - Regalos: los mismos de la landing (roadmap · Simulador de Suscripción · la IA de los flujos de email para Klaviyo). Si la repesca cambia los regalos, se cambia ese bloque.
 
@@ -20,7 +21,7 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ## RP-1 · El número · "Con 2.200 suscriptores, sin pelear el CPA"
 
-**PRIMER FRAME:** reporte de facturación del mes en pantalla. Texto: **"+$250M · VIERNES 23/10 · 18 HS"**.
+**PRIMER FRAME:** reporte de facturación del mes en pantalla. Texto: **"+$250M · SÁBADO 24/10 · 18 HS"**.
 
 **HOOK** (0–6 s)
 
@@ -40,7 +41,7 @@ El lunes 19 di una clase en vivo privada y entraron 200 personas. Pero un montó
 
 **ANUNCIO DE LA REPESCA** (29–38 s)
 
-Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Y es la última vez que la doy en vivo. Para entrar, simplemente anotate con el link de acá abajo.
+Así que este sábado 24 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Y es la última vez que la doy en vivo. Para entrar, simplemente anotate con el link de acá abajo.
 
 **QUÉ TE LLEVÁS** (38–56 s)
 
@@ -48,11 +49,11 @@ Ahí te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones 
 
 **REMATE + CTA** (56–66 s)
 
-Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que tu competencia. Hacé clic en este anuncio y reservá tu lugar: es privada, si no te anotás no podés entrar. Viernes 23. Te espero ahí.
+Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que tu competencia. Hacé clic en este anuncio y reservá tu lugar: es privada, si no te anotás no podés entrar. Sábado 24. Te espero ahí.
 
 **CAPTION**
 
-> Más de 250 millones factura mi ecom de químicos, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este viernes 23 de octubre, a las 18, la vuelvo a dar por última vez en vivo** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> Más de 250 millones factura mi ecom de químicos, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este sábado 24 de octubre, a las 18, la vuelvo a dar por última vez en vivo** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -68,19 +69,19 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 | Y spoiler: ninguno es con un creativo mejor ni con un CPA más bajo que el tuyo. | (cara) |
 | **PRUEBA** (17–28 s) — Es con esto *(levanta el pote)*: con suscripción. El cliente compra una vez y te paga todos los meses. Y es lo mismo que me permitió escalar mi ecom de químicos a más de 250 millones, con 2.200 suscriptores activos. | (pote del producto) → panel de suscriptores: 2.200 activos · 1,28% churn. |
 | **FILTRO** (28–34 s) — Ojo: esto es para ecommerce de consumibles en Tiendanube o Shopify que ya facturan más de 30 millones por mes. Locales y Mercado Libre, no. | Lista con tachado rojo: ~~Local a la calle~~ · ~~Solo Mercado Libre~~ → ✅ **Ecommerce + Meta Ads**. |
-| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este viernes 23 de octubre la vuelvo a dar por última vez en vivo, para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. | Banda: **VIERNES 23/10 · 18 HS**. |
+| **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este sábado 24 de octubre la vuelvo a dar por última vez en vivo, para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. | Banda: **SÁBADO 24/10 · 18 HS**. |
 | **QUÉ TE LLEVÁS** (45–62 s) — Cómo migrar tu base de compradores a suscripción el primer mes, sin frenar lo que hoy vendés. Cuánto podés pagar por cada cliente cuando te compra tres veces y no una. Cómo armar los flujos de email que le cobran a tu base todos los meses. Y todo lo que tenés que hacer para que el suscriptor se quede. | (empezar a mostrar las slides de la clase) |
-| **CTA** (62–70 s) — Es el mismo método con el que tengo 1,28% de churn. Este viernes 23 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
+| **CTA** (62–70 s) — Es el mismo método con el que tengo 1,28% de churn. Este sábado 24 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
 
 **CAPTION**
 
-> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este viernes 23 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> AG1, Dollar Shave Club y Huel no venden con un creativo mejor que el tuyo. Venden con suscripción. **Este sábado 24 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
 ## RP-3 · Tres situaciones · "No hace falta otro producto ganador"
 
-**PRIMER FRAME:** administrador de anuncios con "costo por compra" subiendo. Texto: **"¿ESTANCADO ENTRE 30 Y 80M? · VIERNES 23/10 · 18 HS"**.
+**PRIMER FRAME:** administrador de anuncios con "costo por compra" subiendo. Texto: **"¿ESTANCADO ENTRE 30 Y 80M? · SÁBADO 24/10 · 18 HS"**.
 
 **HOOK** (0–8 s)
 
@@ -112,16 +113,16 @@ Entre estar estancado y eso no hay más esfuerzo ni más pauta. Hay un sistema r
 
 **LA CLASE DEL 19 + REPESCA** (62–74 s)
 
-El lunes 19 di una clase privada mostrándolo y entraron 200 personas. Pero un montón de gente se quedó afuera. Así que este viernes 23 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones.
+El lunes 19 di una clase privada mostrándolo y entraron 200 personas. Pero un montón de gente se quedó afuera. Así que este sábado 24 de octubre, a las 18, la vuelvo a dar para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones.
 Y es la última vez que la doy en vivo.
 
 **CTA** (74–78 s)
 
-El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos vemos el viernes.
+El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos vemos el sábado.
 
 **CAPTION**
 
-> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este viernes 23 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> ¿Estancado entre 30 y 80 millones, testeando creativos que no pegan? No te falta otro producto ganador: te falta que el mismo cliente te compre tres veces. **Este sábado 24 de octubre, a las 18, vuelvo a dar por última vez en vivo la clase privada del lunes 19** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -129,5 +130,5 @@ El link está acá abajo. Es privada: si no te anotás, no podés entrar. Nos ve
 
 - **RP-3 no usa casos de clientes:** el brief dice "caso de éxito, solo Manu" y "datos o marcas de clientes sin su permiso, no". Las tres situaciones son frases reales de llamadas (las mismas de los dolores del lanzamiento) contadas en primera persona donde le pasaron a Manu, y sin nombres. Si aparecen resultados de alumnos de Génesis con permiso y captura, ese bloque se puede pasar al formato de la referencia (nombre, nicho, número del primer mes).
 - **RP-2:** AG1, Dollar Shave Club y Huel son marcas de consumibles por suscripción conocidas en el avatar que mira referentes de EE.UU. Si se prefieren referentes locales, se cambian los logos y la primera línea; el resto queda igual.
-- **Titular (los 3):** SOLO ECOMMERCE · VIERNES 23/10 · 18 HS
+- **Titular (los 3):** SOLO ECOMMERCE · SÁBADO 24/10 · 18 HS
 - **Descripción (los 3):** Cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones.

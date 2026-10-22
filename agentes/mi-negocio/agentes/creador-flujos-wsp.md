@@ -2,7 +2,7 @@
 
 Copia del doc «CREADOR DE FLUJOS DE WSP» (Limitless, 21-oct-2026): playbook + prompt del agente. Looms de referencia: [Flujo WhatsApp API con Go High Level](https://www.loom.com/share/34f12a5db4d347f7b9aaa6ddeda8e2bf) · [Cómo funciona el flujo de WhatsApp privado](https://www.loom.com/share/bcf6b61c0ba74eb4b1f17b5759a377eb).
 
-Para usarlo en Claude Code: *"usá el agente de `mi-negocio/agentes/creador-flujos-wsp.md`"*. Los datos de Génesis salen de `CONTEXTO.md` y `brief-genesis.md`; los flujos van en la carpeta del evento (ej: `repesca-23-10/flujo-wsp-api/`).
+Para usarlo en Claude Code: *"usá el agente de `mi-negocio/agentes/creador-flujos-wsp.md`"*. Los datos de Génesis salen de `CONTEXTO.md` y `brief-genesis.md`; los flujos van en la carpeta del evento (ej: `repesca-24-10/flujo-wsp-api/`).
 
 ---
 
