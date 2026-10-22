@@ -3,12 +3,12 @@
 Jueves 22 al sábado 24. Base: la nutrición del grupo de la clase del 19 (`../lanzamiento-19-10/contenido/05-nutricion-whatsapp.md` y `07-dia-del-vivo.md`), comprimida a dos días antes de la clase y el día de la clase.
 
 **Clase:** sábado 24 de octubre, **18 hs** (Argentina), en vivo. **Es la última vez que la doy en vivo.**
-**Promesa:** cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones.
+**Promesa:** cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 **Regalos por asistir:** el roadmap para migrar tu ecommerce a suscripción · el Simulador de Suscripción · la IA que te escribe los flujos de email para Klaviyo.
 
 ## Reglas
 
-- **El grupo emite, no conversa.** Solo escriben los admins. Las interacciones son reacciones con emoji o van al privado (`[WA PRIVADO]`).
+- **El grupo emite, no conversa.** Solo escriben los admins. Las interacciones son reacciones con emoji.
 - **La fecha y la hora aparecen en cada mensaje** hasta que arranca la clase.
 - **Nunca dos formatos iguales seguidos** (texto, video selfie, audio, imagen).
 - **Link de la clase recién desde 15 minutos antes** (17:45 del sábado).
@@ -25,7 +25,7 @@ Jueves 22 al sábado 24. Base: la nutrición del grupo de la clase del 19 (`../l
 | Vie 23 | El margen y Meta → los 3 problemas son uno solo | 5 |
 | Sáb 24 | La clase: asistencia, cuenta regresiva y en vivo | 13 |
 
-**Datos a completar antes de mandar:** `[LINK GRUPO]` · `[LINK CLASE]` · `[WA PRIVADO]`.
+**Dato que se completa el sábado:** `[LINK CLASE]`, el link de Zoom. Se pega a las 17:45 y en los mensajes siguientes. Es el único lugar donde se pasa.
 
 ---
 
@@ -37,11 +37,13 @@ Jueves 22 al sábado 24. Base: la nutrición del grupo de la clase del 19 (`../l
 >
 > Este grupo es para los que se anotaron a la clase en vivo privada del **sábado 24 a las 18 hs**.
 >
-> Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones: el paso a paso para pasar tu ecommerce de consumibles a suscripción, sin frenar lo que hoy vendés.
+> Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción: el paso a paso para pasar tu ecommerce de consumibles a suscripción, sin frenar lo que hoy vendés.
 >
 > Es la última vez que la doy en vivo.
 >
-> Hasta el sábado te dejo acá lo que necesitás para llegar con la cabeza lista. Pocos mensajes, nada de ruido. 👇
+> Hasta el sábado te dejo acá lo que necesitás para llegar con la cabeza lista. Pocos mensajes, nada de ruido.
+>
+> Y lo más importante: **el link para entrar a la clase lo paso solo por este grupo, 15 minutos antes.** No te salgas. 👇
 
 ### 12:30 · Video selfie (1-2 min) · El CPA
 
@@ -90,7 +92,7 @@ Texto debajo:
 
 ### 09:30 · Texto · Recordatorio
 
-> Mañana, sábado 24, a las 18 hs. Clase en vivo privada: cómo escalé mi ecom de químicos a más de 250 millones con suscripciones. Última vez en vivo. 🔴
+> Mañana, sábado 24, a las 18 hs. Clase en vivo privada: cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción. Última vez en vivo. 🔴
 
 ### 12:30 · Video selfie (1-2 min) · El margen
 
@@ -147,7 +149,7 @@ Texto debajo:
 ### 09:00 · Video selfie (15-25 s) · Hoy es el día
 
 Guion:
-> Buen día. Hoy es el día. A las 18 doy la clase en vivo donde te muestro cómo escalé mi ecom de químicos a más de 250 millones con suscripciones. Es la última vez que la doy en vivo. Te espero.
+> Buen día. Hoy es el día. A las 18 doy la clase en vivo donde te muestro cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción. Es la última vez que la doy en vivo. Te espero.
 
 Texto:
 > Hoy, sábado 24, a las 18 hs. 🔴 Última vez en vivo.
@@ -243,11 +245,11 @@ Imagen: Manu frente a la cámara.
 ### ~19:45 · Audio + texto · Gracias
 
 Guion (al terminar):
-> Gracias por quedarte. Fue la última vez en vivo y estuvo buenísima. Los regalos te llegan por acá en un rato. Y si sentís que esto es para tu ecommerce, mañana te cuento cómo seguimos.
+> Gracias por quedarte. Fue la última vez en vivo y estuvo buenísima. Los regalos ya los tenés: los di en vivo. Y si sentís que esto es para tu ecommerce, mañana te cuento cómo seguimos.
 
 Texto:
-> Gracias por estar. Los regalos te llegan por acá en un rato.
+> Gracias por estar. Si te quedaste hasta el final, los regalos ya los tenés.
 
 ---
 
-> **Después de la clase (domingo en adelante):** la repetición, Génesis y el cierre no entran en este rango. Los mensajes del sábado del documento anterior (repetición, objeciones, "quedan [N] lugares", cierre) se pueden mover al domingo 25 cuando esté definido el cierre.
+> **Después de la clase:** el domingo 25 sigue en `post-clase-whatsapp.md` (repetición, Génesis y cierre a las 23:59).

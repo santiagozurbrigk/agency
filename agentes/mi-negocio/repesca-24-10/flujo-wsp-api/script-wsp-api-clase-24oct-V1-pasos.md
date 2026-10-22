@@ -1,5 +1,7 @@
 # Script WhatsApp API — Clase privada del sábado 24/10 · Capa 1 (pasos)
 
+> **DESCARTADO (22-oct):** no se usa para esta clase. Para salir por WhatsApp API, GHL tiene que aprobar la cuenta y tarda 72 horas: no llega para el sábado. Queda como base para el próximo evento.
+
 Hecho con el agente `../../agentes/creador-flujos-wsp.md` (21-oct-2026).
 
 - **Clase:** sábado 24 de octubre (antes viernes 23; cambió el 22-oct), **18:00 hs ARG**, en vivo, por Zoom. Duración ~90 min (termina ~19:30).

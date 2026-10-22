@@ -6,13 +6,12 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
 - **El llamado a la acción es agendar la llamada** (`[LINK AGENDA]`). Sin precio y sin link de pago.
-- **Urgencia solo real:** los lugares que quedan (`[N]`) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
+- **Urgencia solo real:** los lugares que quedan (4; si se cierra una venta durante el día, bajarlo en los mensajes que siguen) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
 **Datos a completar antes de mandar:**
-- `[LINK REPLAY]` y hasta cuándo está la repetición.
+- https://applygenesis.com/replay y hasta cuándo está la repetición.
 - `[LINK AGENDA]`.
-- `[N]`: lugares que quedan.
 
 ## Resumen
 
@@ -20,7 +19,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 |---|---|---|---|
 | P-1 | 09:00 | La repetición de anoche | Repetición (agenda en la PD) |
 | P-2 | 14:00 | "¿Y si rompo lo que hoy vende?" | Agenda |
-| P-3 | 20:00 | Quedan [N] lugares | Agenda |
+| P-3 | 20:00 | Quedan 4 lugares | Agenda |
 | P-4 | 22:30 | Cierra en una hora y media | Agenda |
 
 ---
@@ -34,9 +33,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Acá está la repetición de la clase de anoche:
 >
-> **[Ver la repetición →]** `[LINK REPLAY]`
->
-> `[CONFIRMAR: hasta cuándo está. Si se baja, decirlo acá con la hora real.]`
+> **[Ver la repetición →]** https://applygenesis.com/replay
 >
 > Si no llegaste, miralo con tus números al lado: margen por pedido, CPA y cada cuánto se le termina el producto a tu cliente. Es la cuenta que vas a querer hacer.
 >
@@ -77,12 +74,12 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 
 ## P-3 · Domingo 25 · 20:00
 
-**Asunto:** Quedan [N] lugares
+**Asunto:** Quedan 4 lugares
 **Preheader:** Génesis cierra hoy a las 23:59.
 
 > Hola,
 >
-> Quedan **[N] lugares** en Génesis.
+> Quedan **4 lugares** en Génesis.
 >
 > Son pocos a propósito: es 1 a 1 y lo hacemos nosotros.
 >
