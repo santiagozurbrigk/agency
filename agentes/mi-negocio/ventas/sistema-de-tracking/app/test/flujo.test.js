@@ -459,6 +459,11 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.body.lead.fields.post_estado==="Cliente","onboarding terminado → Cliente");
     all=await call(leadsApi,{cookie});
     ok(all.body.colas.ventas.includes(id),"el cliente aparece en Ventas y Clientes");
+    { await call(settingsApi,{method:"POST",cookie,body:{sdrMatiWa:"",sdrSantiWa:""}});
+      const r2=await call(apl,{method:"POST",body:{nombre:"Nuevo",email:"nuevo@post.com",telefono:"+54 9 11 7777 0003",inversion:"Más de USD 6.000",conoce_manu:"Hace menos de 1 mes",por_que_ahora:"El CPA se fue al doble"}});
+      ok(r2.body.wa===P.WA_SDR[r2.body.sdr],"sin walink en Configuración usa el de Mati o Santi por defecto");
+      const nu=(await call(leadsApi,{cookie})).body.leads.find(l=>l.email==="nuevo@post.com");
+      ok(nu.fields.conoce_manu==="Hace menos de 1 mes"&&nu.fields.por_que_ahora==="El CPA se fue al doble","aplicación: guarda hace cuánto conoce a Manu y por qué ahora"); }
     r=await call(apl,{method:"POST",body:{nombre:"Bajo",email:"bajo@post.com",telefono:"+54 9 11 7777 0002",inversion:"Menos de USD 1.000"}});
     ok(r.body.ruta==="rechazado"&&!r.body.wa,"inversión < USD 1.000: sin walink");
     all=await call(leadsApi,{cookie});

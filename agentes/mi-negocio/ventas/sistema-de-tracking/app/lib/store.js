@@ -26,7 +26,7 @@ const DEFAULTS = {
   calDiegoId: "", calDiegoLink: "",
   // Proceso post webinar (clase del 24/10)
   postDesde: "2026-10-24",  // AAAA-MM-DD: las aplicaciones desde este día entran al proceso
-  sdrMatiWa: "", sdrSantiWa: "", // walink de cada SDR: el formulario de aplicación termina ahí
+  sdrMatiWa: "https://wa.link/9xcaz0", sdrSantiWa: "https://wa.link/xqbxzd", // walink de cada SDR (lib/post.js WA_SDR)
   closers: ""               // nombres separados por coma
 };
 

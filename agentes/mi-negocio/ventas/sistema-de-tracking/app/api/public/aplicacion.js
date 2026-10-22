@@ -11,6 +11,7 @@ const P = require("../../lib/post");
 const TAG = "aplicacion-19-10";
 const PREGUNTAS = [
   ["objetivo", "Objetivo a 6 meses"], ["freno", "Qué lo frena"], ["hace_cuanto", "Hace cuánto y qué probó"],
+  ["conoce_manu", "Hace cuánto conoce a Manu"], ["por_que_ahora", "Por qué ahora"],
   ["ciclo", "Ciclo"], ["facturacion", "Facturación"], ["inversion", "Inversión"]
 ];
 
@@ -57,11 +58,11 @@ module.exports = async function handler(req, res) {
     const previo = (encontrado.conocido || encontrado.lead || {}).fields || {};
     const sdr = P.SDRS.includes(previo.sdr) ? previo.sdr : P.sdrPara(email, telefono);
     const settings = await store.getSettings();
-    const wa = rechazado ? "" : (sdr === "Mati" ? settings.sdrMatiWa : settings.sdrSantiWa) || "";
+    const wa = rechazado ? "" : (sdr === "Mati" ? settings.sdrMatiWa : settings.sdrSantiWa) || P.WA_SDR[sdr] || "";
 
     await store.enSegundoPlano(async () => {
       const lead = encontrado.lead || (encontrado.conocido ? await store.getLead(encontrado.conocido.id) : null);
-      await store.asegurarCampos(["aplico_at", "sdr", "post_estado"]).catch(e => console.error("campos:", e.message));
+      await store.asegurarCampos(["aplico_at", "sdr", "post_estado", "conoce_manu"]).catch(e => console.error("campos:", e.message));
       const fields = { aplico_at: new Date().toISOString() };
       if (!rechazado) {
         fields.sdr = sdr;
