@@ -21,6 +21,7 @@
    estados se leen por un punto de color, no por píldoras rellenas.
    ===================================================================== */
 :root{
+  color-scheme:light;
   --naranja:#F26A1B; --naranja-2:#D9560C; --naranja-suave:rgba(242,106,27,.10);
   --marca-dato:#D9560C; --dato-2:#D6D3CE;
   --bg:#FFFFFF; --panel:#FFFFFF; --panel-2:#F6F6F5; --panel-3:#EDEDEB;
@@ -40,6 +41,7 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
+    color-scheme:dark;
     --marca-dato:#E35F12; --dato-2:#3A3A3D;
     --bg:#0B0B0C; --panel:#0B0B0C; --panel-2:#161618; --panel-3:#202023;
     --borde:#1D1D20; --borde-2:#2B2B2F;
@@ -55,6 +57,7 @@
   }
 }
 :root[data-theme="dark"]{
+  color-scheme:dark;
   --marca-dato:#E35F12; --dato-2:#3A3A3D;
   --bg:#0B0B0C; --panel:#0B0B0C; --panel-2:#161618; --panel-3:#202023;
   --borde:#1D1D20; --borde-2:#2B2B2F;
@@ -115,10 +118,22 @@ svg.ic{width:17px;height:17px;flex:none;stroke:currentColor;fill:none;stroke-wid
 #app{display:none;min-height:100%}
 .lay{display:grid;grid-template-columns:228px 1fr;min-height:100vh}
 aside.side{position:sticky;top:0;height:100vh;background:var(--bg);border-right:1px solid var(--borde);display:flex;flex-direction:column;padding:20px 10px 12px;overflow-y:auto}
-.side .marca{padding:0 10px 22px}
+/* Barras de scroll finas y del color del tema (la del sistema queda blanca en modo oscuro en Windows) */
+*{scrollbar-width:thin;scrollbar-color:var(--borde-2) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--borde-2);border-radius:99px;border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:var(--tx-3);background-clip:padding-box}
+::-webkit-scrollbar-corner{background:transparent}
+/* Menú lateral: la barra aparece solo al pasar el mouse */
+aside.side{scrollbar-color:transparent transparent}
+aside.side:hover{scrollbar-color:var(--borde-2) transparent}
+aside.side::-webkit-scrollbar-thumb{background:transparent;background-clip:padding-box}
+aside.side:hover::-webkit-scrollbar-thumb{background:var(--borde-2);background-clip:padding-box}
+.side .marca{padding:0 10px 14px}
 .side nav{display:flex;flex-direction:column;gap:1px;flex:1}
-.side .grupo{font-size:11.5px;font-weight:500;color:var(--tx-3);padding:16px 10px 6px}
-.side .item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;color:var(--tx-2);font-weight:450;text-align:left;width:100%;font-size:13.5px}
+.side .grupo{font-size:11.5px;font-weight:500;color:var(--tx-3);padding:12px 10px 4px}
+.side .item{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:7px;color:var(--tx-2);font-weight:450;text-align:left;width:100%;font-size:13.5px}
 .side .item svg{color:var(--tx-3)}
 .side .item:hover{background:var(--panel-2);color:var(--tx)}
 .side .item.on{background:var(--panel-2);color:var(--tx);font-weight:550}
