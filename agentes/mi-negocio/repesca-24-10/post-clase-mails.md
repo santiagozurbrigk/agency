@@ -5,13 +5,12 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 ## Reglas
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
-- **El llamado a la acción es agendar la llamada** (`[LINK AGENDA]`). Sin precio y sin link de pago.
+- **El llamado a la acción es agendar la llamada** con el formulario de aplicación (https://applygenesis.com/aplication?utm_source=email&utm_medium=post-clase&utm_campaign=genesis-24-10): el lead aplica y agenda. Sin precio y sin link de pago.
 - **Urgencia solo real:** los lugares que quedan (4; si se cierra una venta durante el día, bajarlo en los mensajes que siguen) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
-**Datos a completar antes de mandar:**
+**Antes de mandar:**
 - **Antes del domingo a las 9:** cargar en https://applygenesis.com/replay el video de la clase del sábado (hoy tiene el del lunes 19).
-- `[LINK AGENDA]`.
 
 ## Resumen
 
@@ -41,7 +40,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Manu
 >
-> PD: para agendar la llamada: `[LINK AGENDA]`
+> PD: para agendar la llamada: https://applygenesis.com/aplication?utm_source=email&utm_medium=post-clase&utm_campaign=genesis-24-10
 
 ---
 
@@ -64,7 +63,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Si querés verlo con tu ecommerce, agendá la llamada:
 >
-> **[Agendar la llamada →]** `[LINK AGENDA]`
+> **[Agendar la llamada →]** https://applygenesis.com/aplication?utm_source=email&utm_medium=post-clase&utm_campaign=genesis-24-10
 >
 > Génesis cierra hoy a las 23:59.
 >
@@ -87,7 +86,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Si lo estás pensando, la llamada es para eso: ves tu cuenta con tus números y decidís.
 >
-> **[Agendar la llamada →]** `[LINK AGENDA]`
+> **[Agendar la llamada →]** https://applygenesis.com/aplication?utm_source=email&utm_medium=post-clase&utm_campaign=genesis-24-10
 >
 > Cierra hoy a las 23:59.
 >
@@ -106,6 +105,6 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Si todavía estás pensando si es para tu ecommerce, agendá ahora y lo vemos con tus números:
 >
-> **[Agendar la llamada →]** `[LINK AGENDA]`
+> **[Agendar la llamada →]** https://applygenesis.com/aplication?utm_source=email&utm_medium=post-clase&utm_campaign=genesis-24-10
 >
 > Manu
