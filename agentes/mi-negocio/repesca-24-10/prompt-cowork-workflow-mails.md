@@ -36,7 +36,7 @@ Necesito que armes un workflow de mails en GoHighLevel (GHL), en la subcuenta de
 ```
 Hola,
 
-Te anotaste a la clase en vivo privada del sábado 24 a las 18 hs. Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción. Es la última vez que la doy en vivo.
+Este sábado 24 a las 18 hs doy la clase en vivo privada por última vez. Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 
 Antes quiero dejarte una idea, porque es la base de todo lo que vamos a ver.
 

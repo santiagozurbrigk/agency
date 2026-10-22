@@ -2,6 +2,8 @@
 
 Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../lanzamiento-19-10/contenido/06-nutricion-mails.md`) y los del día del vivo (`07-dia-del-vivo.md`). Siguen la misma cadena que el grupo de WhatsApp (`nutricion-whatsapp.md`), pero cada mail se sostiene solo: mucha gente lee el mail y no el grupo.
 
+**Para quién:** los que se registran para el sábado y también la base que se registró para la clase del lunes 19. Por eso ningún mail dice "te anotaste": sirven para los dos.
+
 **Clase:** sábado 24 de octubre, **18 hs** (Argentina), en vivo. **Es la última vez que la doy en vivo.**
 **Promesa:** cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 
@@ -36,7 +38,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 > Hola,
 >
-> Te anotaste a la clase en vivo privada del **sábado 24 a las 18 hs**. Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción. Es la última vez que la doy en vivo.
+> Este **sábado 24 a las 18 hs** doy la clase en vivo privada por última vez. Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 >
 > Antes quiero dejarte una idea, porque es la base de todo lo que vamos a ver.
 >
