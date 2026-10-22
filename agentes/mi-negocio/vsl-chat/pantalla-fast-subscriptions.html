@@ -127,6 +127,37 @@
     .ventas { grid-template-columns: 1fr 1fr; }
     .contraste, .camino, .pilares, .casos, .puertas { grid-template-columns: 1fr; }
   }
+
+  /* Oferta: qué incluye */
+  .oferta { display: grid; gap: 16px; }
+  .of-fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .of-fila.dos { grid-template-columns: repeat(2, 1fr); }
+  .bloque { background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); border: 1px solid rgba(255,255,255,.075); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .bloque .tag { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); }
+  .bloque .tag em { font-style: normal; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(232,130,58,.4); border-radius: 999px; padding: 2px 9px; }
+  .bloque h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .bloque h3 small { display: block; font-size: 13px; font-weight: 300; letter-spacing: 0; opacity: .6; margin-top: 6px; }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .lista li { font-size: 15px; font-weight: 300; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.07); display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+  .lista li::before { content: "✓"; color: var(--naranja); font-weight: 500; }
+  .lista li b { font-weight: 500; }
+  .cuentas { display: flex; gap: 28px; flex-wrap: wrap; }
+  .cuentas div { display: grid; gap: 2px; }
+  .cuentas b { font-size: 44px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cuentas span { font-size: 12px; font-weight: 400; opacity: .65; }
+  .bloque.info { grid-template-columns: 240px 1fr; gap: 28px; }
+  .sops { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; min-width: 0; }
+  .sops span { font-size: 13px; font-weight: 400; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); }
+  .sops span b { color: var(--naranja); font-weight: 500; margin-right: 4px; font-size: 11px; letter-spacing: .1em; }
+  .sops .herr { border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.10); }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+  .bonus-head h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 300; letter-spacing: -0.03em; }
+  .bloque.bonus { border-color: rgba(232,130,58,.32); }
+  .bloque.destacado { border-color: rgba(232,130,58,.55); background: linear-gradient(180deg, rgba(232,130,58,.14), rgba(232,130,58,.03)); box-shadow: 0 0 70px rgba(201,92,24,.2); }
+  .descuento { white-space: nowrap; font-size: clamp(40px, 4.4vw, 54px); font-weight: 200; letter-spacing: -0.05em; line-height: .95; color: var(--naranja); font-variant-numeric: tabular-nums; }
+  .descuento small { white-space: normal; display: block; font-size: 15px; font-weight: 300; letter-spacing: 0; color: inherit; opacity: .85; margin-top: 10px; }
+  .of-cierre { font-size: 20px; font-weight: 300; opacity: .75; max-width: 46ch; }
+  @media (max-width: 860px) { .of-fila, .of-fila.dos, .bloque.info { grid-template-columns: 1fr; } }
 </style>
 
 <div class="wrap">
@@ -136,7 +167,7 @@
       <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--tinta-2)" stroke-width="2"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--tinta-2)" stroke-width="2"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
       FAST SUBSCRIPTIONS
     </div>
-    <div class="chips"><span class="chip">Mentoría</span><span class="chip">3 meses</span><span class="chip">Grupal</span><span class="chip">Lo implementás vos, con nosotros al lado</span></div>
+    <div class="chips"><span class="chip">Mentoría</span><span class="chip">3 meses</span><span class="chip">Done with you</span><span class="chip">Software propio</span></div>
   </header>
 
   <section class="hero">
@@ -211,42 +242,47 @@
       <p class="eyebrow">Qué incluye</p>
       <h2>3 meses, con nosotros al lado</h2>
     </div>
-    <div class="pilares">
-      <div class="pilar">
-        <small>Uno</small><h3>Acompañamiento</h3>
-        <ul>
-          <li><b>Chat 1 a 1 directo con José.</b> Cuando te trabás, le escribís.</li>
-          <li><b>1 clase grupal por semana</b> con Manu.</li>
-          <li><b>2 clases grupales por semana</b> con José.</li>
-        </ul>
+    <div class="oferta">
+      <div class="of-fila">
+        <div class="bloque">
+          <div class="tag">01 <em>Núcleo</em></div>
+          <h3>Fast Subscriptions</h3>
+          <ul class="lista"><li><span><b>3 meses</b></span></li><li><span><b>Software propio</b></span></li><li><span>Acceso 1 a 1 para <b>2 personas de tu equipo</b></span></li><li><span>Tablero de <b>suscriptores y bajas</b></span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">02 <em>Done with you</em></div>
+          <h3>DWY Roadmap<small>Lo hacemos con vos</small></h3>
+          <ul class="lista"><li><span>Auditoría + roadmap</span></li><li><span>Suscripción instalada</span></li><li><span>Ofertas</span></li><li><span>Creación de anuncios</span></li><li><span>Procesos de retención</span></li><li><span>Proyección de stock</span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">03 <em>3 por semana</em></div>
+          <h3>Acompañamiento<small>Grupos de 6 a 8 personas en promedio</small></h3>
+          <div class="cuentas"><div><b>12</b><span>grupales con Manu</span></div><div><b>24</b><span>grupales con José</span></div></div>
+          <ul class="lista"><li><span><b>12 llamadas grupales</b> con Manu</span></li><li><span><b>24 llamadas grupales</b> con José</span></li><li><span><b>Chat 1 a 1</b> con José</span></li></ul>
+        </div>
       </div>
-      <div class="pilar">
-        <small>Dos</small><h3>El sistema</h3>
-        <ul>
-          <li><b>Curso grabado en Whop.</b></li>
-          <li>SOPs y roadmaps: qué hacer hoy, mañana y en qué orden.</li>
-          <li>Sistemas y contactos.</li>
-        </ul>
+      <div class="bloque info">
+        <div style="display:grid;gap:12px;align-content:start">
+          <div class="tag">04 <em>Información</em></div>
+          <h3>Todos los SOPs<small>13 áreas del negocio, más las herramientas</small></h3>
+        </div>
+        <div class="sops"><span><b>SOPs</b>Investigación</span><span><b>SOPs</b>Operaciones</span><span><b>SOPs</b>Funnels</span><span><b>SOPs</b>Retención</span><span><b>SOPs</b>Oferta</span><span><b>SOPs</b>Blackhat</span><span><b>SOPs</b>Ads</span><span><b>SOPs</b>Landings</span><span><b>SOPs</b>Atención al cliente</span><span><b>SOPs</b>Logística</span><span><b>SOPs</b>Media buying</span><span><b>SOPs</b>Copywriting y guiones</span><span><b>SOPs</b>Edición y creativos</span><span class="herr"><b>+</b>Herramientas: agentes, flujos, skills y dashboards</span></div>
       </div>
-      <div class="pilar">
-        <small>Tres</small><h3>La comunidad</h3>
-        <ul>
-          <li>Otros que están en tu mismo punto.</li>
-          <li>Para preguntar y compartir lo que te funciona.</li>
-          <li>Para tener con quién hablarlo.</li>
-        </ul>
+      <div class="bonus-head"><p class="eyebrow">Bonus</p><h3>Además, entrando ahora</h3></div>
+      <div class="of-fila dos">
+        <div class="bloque bonus">
+          <div class="tag">Bonus 1 <em>Contactos</em></div>
+          <h3>Tu agenda de proveedores</h3>
+          <ul class="lista"><li><span>Proveedores</span></li><li><span>Laboratorios</span></li><li><span>Contadores especializados</span></li><li><span>Logística propia</span></li><li><span>Abogados especializados</span></li><li><span>Bolsa de trabajo</span></li><li><span>Contacto de registro: INPI, ANMAT y SENASA</span></li></ul>
+        </div>
+        <div class="bloque bonus">
+          <div class="tag">Bonus 2 <em>Puentify</em></div>
+          <h3>Puentify</h3>
+          <ul class="lista"><li><span>Contacto directo con Puentify</span></li><li><span><b>1 mes gratis</b></span></li><li><span>Onboarding prioritario</span></li><li><span>Instalación con el equipo de Puentify</span></li></ul>
+        </div>
       </div>
     </div>
-    <div class="semana">
-      <div class="semana-fila">
-        <span class="clase c-manu">Clase con Manu</span>
-        <span class="clase c-jose">Clase con José</span>
-        <span class="clase c-jose">Clase con José</span>
-        <span class="clase c-chat">+ chat con José todos los días</span>
-      </div>
-      <p><b>3 clases por semana, durante 3 meses.</b> No estás solo con esto.</p>
-    </div>
-    <p class="aclaracion">No es "lo hacemos por vos". Es <b>lo hacés vos, con alguien que ya lo hizo mirando lo que hacés.</b> La inversión la vemos en la llamada.</p>
+    <p class="of-cierre">La inversión la vemos en la llamada, con tus números adelante.</p>
   </section>
 
   <section class="sec" id="casos">

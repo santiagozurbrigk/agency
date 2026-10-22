@@ -163,6 +163,37 @@
     .items { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { .techo .pista i { transition: none; } }
+
+  /* Oferta: qué incluye */
+  .oferta { display: grid; gap: 16px; }
+  .of-fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .of-fila.dos { grid-template-columns: repeat(2, 1fr); }
+  .bloque { background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); border: 1px solid rgba(255,255,255,.075); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .bloque .tag { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); }
+  .bloque .tag em { font-style: normal; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(232,130,58,.4); border-radius: 999px; padding: 2px 9px; }
+  .bloque h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .bloque h3 small { display: block; font-size: 13px; font-weight: 300; letter-spacing: 0; opacity: .6; margin-top: 6px; }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .lista li { font-size: 15px; font-weight: 300; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.07); display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+  .lista li::before { content: "✓"; color: var(--naranja); font-weight: 500; }
+  .lista li b { font-weight: 500; }
+  .cuentas { display: flex; gap: 28px; flex-wrap: wrap; }
+  .cuentas div { display: grid; gap: 2px; }
+  .cuentas b { font-size: 44px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cuentas span { font-size: 12px; font-weight: 400; opacity: .65; }
+  .bloque.info { grid-template-columns: 240px 1fr; gap: 28px; }
+  .sops { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; min-width: 0; }
+  .sops span { font-size: 13px; font-weight: 400; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); }
+  .sops span b { color: var(--naranja); font-weight: 500; margin-right: 4px; font-size: 11px; letter-spacing: .1em; }
+  .sops .herr { border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.10); }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+  .bonus-head h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 300; letter-spacing: -0.03em; }
+  .bloque.bonus { border-color: rgba(232,130,58,.32); }
+  .bloque.destacado { border-color: rgba(232,130,58,.55); background: linear-gradient(180deg, rgba(232,130,58,.14), rgba(232,130,58,.03)); box-shadow: 0 0 70px rgba(201,92,24,.2); }
+  .descuento { white-space: nowrap; font-size: clamp(40px, 4.4vw, 54px); font-weight: 200; letter-spacing: -0.05em; line-height: .95; color: var(--naranja); font-variant-numeric: tabular-nums; }
+  .descuento small { white-space: normal; display: block; font-size: 15px; font-weight: 300; letter-spacing: 0; color: inherit; opacity: .85; margin-top: 10px; }
+  .of-cierre { font-size: 20px; font-weight: 300; opacity: .75; max-width: 46ch; }
+  @media (max-width: 860px) { .of-fila, .of-fila.dos, .bloque.info { grid-template-columns: 1fr; } }
 </style>
 
 <div class="wrap">
@@ -170,9 +201,9 @@
   <header class="top">
     <div class="logo">
       <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="2"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="2"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
-      GÉNESIS
+      GENESIS OS
     </div>
-    <div class="chips"><span class="chip">Método B.A.S.E.</span><span class="chip">Consultoría 1 a 1</span><span class="chip">4 meses</span><span class="chip">Hecho por nosotros</span></div>
+    <div class="chips"><span class="chip">Método B.A.S.E.</span><span class="chip">4 meses</span><span class="chip">Done with you</span><span class="chip">Software propio</span></div>
   </header>
 
   <section class="hero">
@@ -300,47 +331,62 @@
 
   <section class="sec" id="incluye">
     <div class="sec-head">
-      <p class="eyebrow">Qué incluye Génesis</p>
-      <h2>4 meses, 1 a 1, hecho por nosotros</h2>
+      <p class="eyebrow">Qué incluye Genesis OS</p>
+      <h2>4 meses, con nosotros al lado</h2>
     </div>
-    <div class="grupos">
-      <div class="grupo">
-        <h3>Diagnóstico<small>Arrancamos por tus números</small></h3>
-        <ul class="items">
-          <li><span class="k">1</span><div><b>Roadmap de conversión</b><span>Auditoría de tus números: margen real por pedido, CPA actual y techo de pauta con LTV.</span></div></li>
-        </ul>
+    <div class="oferta">
+      <div class="of-fila">
+        <div class="bloque">
+          <div class="tag">01 <em>Núcleo</em></div>
+          <h3>Genesis OS</h3>
+          <ul class="lista"><li><span><b>4 meses</b></span></li><li><span><b>Software propio</b></span></li><li><span>Acceso 1 a 1 para <b>2 personas de tu equipo</b></span></li><li><span>Tablero de <b>suscriptores y bajas</b></span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">02 <em>Done with you</em></div>
+          <h3>DWY Roadmap<small>Lo hacemos con vos</small></h3>
+          <ul class="lista"><li><span>Auditoría + roadmap</span></li><li><span>Suscripción instalada</span></li><li><span>Ofertas</span></li><li><span>Creación de anuncios</span></li><li><span>Procesos de retención</span></li><li><span>Proyección de stock</span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">03 <em>3 por semana</em></div>
+          <h3>Acompañamiento<small>Grupos de 6 a 8 personas en promedio</small></h3>
+          <div class="cuentas"><div><b>16</b><span>grupales con Manu</span></div><div><b>32</b><span>grupales con José</span></div></div>
+          <ul class="lista"><li><span><b>Llamadas 1 a 1</b> con Manu o José, a pedido</span></li><li><span><b>16 llamadas grupales</b> con Manu</span></li><li><span><b>32 llamadas grupales</b> con José</span></li><li><span><b>Chat 1 a 1</b> con Manu y José</span></li></ul>
+        </div>
       </div>
-      <div class="grupo">
-        <h3>Lo hacemos nosotros<small>Vos seguís operando tu marca</small></h3>
-        <ul class="items">
-          <li><span class="k">2</span><div><b>Variante de suscripción <span class="dfy">DFY</span></b><span>Definida, precificada y validada contra tu ciclo de reposición real.</span></div></li>
-          <li><span class="k">3</span><div><b>Tienda con suscripción <span class="dfy">DFY</span></b><span>Cobro recurrente, checkout y landing al lado de la compra única. Tiendanube, Shopify o la que uses.</span></div></li>
-          <li><span class="k">4</span><div><b>Conversión de tu base <span class="dfy">DFY</span></b><span>Secuencia de mail y WhatsApp a los que ya te compraron.</span></div></li>
-          <li><span class="k">5</span><div><b>Anuncios al CPA nuevo <span class="dfy">DFY</span></b><span>Ángulos, creativos y campañas recalculadas con tu LTV.</span></div></li>
-          <li><span class="k">6</span><div><b>Backend de retención <span class="dfy">DFY</span></b><span>Postventa, cadencia de contacto y recuperación de bajas.</span></div></li>
-          <li><span class="k">7</span><div><b>Stock y reposición <span class="dfy">DFY</span></b><span>Proyecciones sobre tu base de suscriptores.</span></div></li>
-          <li><span class="k">8</span><div><b>Tablero de suscriptores <span class="dfy">DFY</span></b><span>Activos, churn y recompra, con reporte semanal.</span></div></li>
-          <li><span class="k">9</span><div><b>Cuenta de formalización <span class="dfy">DFY</span></b><span>En qué punto de tu base te cierra pasar a blanco.</span></div></li>
-        </ul>
+      <div class="bloque info">
+        <div style="display:grid;gap:12px;align-content:start">
+          <div class="tag">04 <em>Información</em></div>
+          <h3>Todos los SOPs<small>13 áreas del negocio, más las herramientas</small></h3>
+        </div>
+        <div class="sops"><span><b>SOPs</b>Investigación</span><span><b>SOPs</b>Operaciones</span><span><b>SOPs</b>Funnels</span><span><b>SOPs</b>Retención</span><span><b>SOPs</b>Oferta</span><span><b>SOPs</b>Blackhat</span><span><b>SOPs</b>Ads</span><span><b>SOPs</b>Landings</span><span><b>SOPs</b>Atención al cliente</span><span><b>SOPs</b>Logística</span><span><b>SOPs</b>Media buying</span><span><b>SOPs</b>Copywriting y guiones</span><span><b>SOPs</b>Edición y creativos</span><span class="herr"><b>+</b>Herramientas: agentes, flujos, skills y dashboards</span></div>
       </div>
-      <div class="grupo">
-        <h3>Acompañamiento<small>Manu y José, con vos</small></h3>
-        <ul class="items">
-          <li><span class="k">10</span><div><b>Sesiones con Manu</b><span>Hasta instalar la suscripción. Después, chequeo semanal 1 a 1.</span></div></li>
-          <li><span class="k">11</span><div><b>Chat 1 a 1 directo</b><span>Con Manu y José. Cuando algo no anda, nos escribís.</span></div></li>
-          <li><span class="k">12</span><div><b>SOPs de cada pieza</b><span>Para que quede en tu marca y lo opere tu equipo.</span></div></li>
-        </ul>
+      <div class="bonus-head"><p class="eyebrow">Bonus</p><h3>Además, entrando ahora</h3></div>
+      <div class="of-fila">
+        <div class="bloque bonus">
+          <div class="tag">Bonus 1 <em>Contactos</em></div>
+          <h3>Tu agenda de proveedores</h3>
+          <ul class="lista"><li><span>Proveedores</span></li><li><span>Laboratorios</span></li><li><span>Contadores especializados</span></li><li><span>Logística propia</span></li><li><span>Abogados especializados</span></li><li><span>Bolsa de trabajo</span></li><li><span>Contacto de registro: INPI, ANMAT y SENASA</span></li></ul>
+        </div>
+        <div class="bloque bonus">
+          <div class="tag">Bonus 2 <em>Puentify</em></div>
+          <h3>Puentify</h3>
+          <ul class="lista"><li><span>Contacto directo con Puentify</span></li><li><span><b>1 mes gratis</b></span></li><li><span>Onboarding prioritario</span></li><li><span>Instalación con el equipo de Puentify</span></li></ul>
+        </div>
+      <div class="bloque destacado">
+        <div class="tag">Bonus 3 <em>10 cupos</em></div>
+        <div class="descuento">USD 3.000<small>de descuento si entrás en los 10 cupos</small></div>
+      </div>
       </div>
     </div>
-    <p class="cierre-incluye">La inversión la vemos en la llamada, <b>con tus números adelante.</b></p>
+    <p class="of-cierre">La inversión la vemos en la llamada, con tus números adelante.</p>
   </section>
 
   <section class="diez" id="lugares">
     <div class="puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
     <div>
-      <p class="eyebrow">Cupo</p>
+      <p class="eyebrow">Cupos limitados</p>
       <h2>Tomamos 10 marcas</h2>
-      <p>Es 1 a 1 y la instalación la hacemos José y Manu. Queremos que las 10 marcas que entren terminen siendo casos de éxito.</p>
+      <p>Queremos que el servicio sea lo más personalizado posible y que las 10 marcas que entren terminen siendo casos de éxito.</p>
     </div>
   </section>
 
