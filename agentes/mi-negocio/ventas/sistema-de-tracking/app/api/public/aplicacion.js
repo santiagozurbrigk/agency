@@ -6,6 +6,7 @@
 // Como los otros formularios: responde al instante y guarda en GHL en segundo plano.
 
 const store = require("../../lib/store");
+const P = require("../../lib/post");
 
 const TAG = "aplicacion-19-10";
 const PREGUNTAS = [
@@ -51,16 +52,27 @@ module.exports = async function handler(req, res) {
     // Menos de USD 1.000 → "Por el momento no podemos ayudarte" + Próximo ciclo (regla 5.4).
     const rechazado = body.inversion === "Menos de USD 1.000";
     const encontrado = await buscar(optin, telefono, email);
+    // Proceso post webinar: SDR fijo por persona (50/50 entre Mati y Santi). El formulario termina
+    // en el WhatsApp de ese SDR.
+    const previo = (encontrado.conocido || encontrado.lead || {}).fields || {};
+    const sdr = P.SDRS.includes(previo.sdr) ? previo.sdr : P.sdrPara(email, telefono);
+    const settings = await store.getSettings();
+    const wa = rechazado ? "" : (sdr === "Mati" ? settings.sdrMatiWa : settings.sdrSantiWa) || "";
 
     await store.enSegundoPlano(async () => {
       const lead = encontrado.lead || (encontrado.conocido ? await store.getLead(encontrado.conocido.id) : null);
-      await store.asegurarCampos(["aplico_at"]).catch(e => console.error("campos:", e.message));
+      await store.asegurarCampos(["aplico_at", "sdr", "post_estado"]).catch(e => console.error("campos:", e.message));
       const fields = { aplico_at: new Date().toISOString() };
+      if (!rechazado) {
+        fields.sdr = sdr;
+        const f0 = (lead && lead.fields) || {};
+        if (!f0.post_estado && !String(f0.etapa || "").startsWith("Venta")) fields.post_estado = "Nuevo lead";
+      }
       for (const [k] of PREGUNTAS) if (limpio(body[k])) fields[k] = limpio(body[k]);
 
       // Historial: todas las respuestas juntas, y por dónde llegó a la aplicación.
       const via = Object.keys(link).length ? ` · vía ${[link.utm_source, link.utm_medium, link.utm_content].filter(Boolean).join(" / ")}` : "";
-      const lineas = [`Completó la aplicación${via}`];
+      const lineas = [`Completó la aplicación${via}${rechazado ? "" : ` · SDR: ${sdr}`}`];
       if (rechazado) lineas[0] += " → inversión < USD 1.000 → Próximo ciclo";
       for (const [k, t] of PREGUNTAS) if (fields[k]) lineas.push(`${t}: ${fields[k]}`);
 
@@ -92,7 +104,7 @@ module.exports = async function handler(req, res) {
       }
     });
 
-    return res.status(200).json({ ok: true, ruta: rechazado ? "rechazado" : "aplicado" });
+    return res.status(200).json({ ok: true, ruta: rechazado ? "rechazado" : "aplicado", sdr: rechazado ? "" : sdr, wa });
   } catch (e) {
     return res.status(500).json({ ok: false, error: e.message });
   }

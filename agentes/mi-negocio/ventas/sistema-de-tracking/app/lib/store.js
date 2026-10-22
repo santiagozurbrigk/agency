@@ -23,7 +23,11 @@ const DEFAULTS = {
   // IDs y links de los calendarios de GHL (se cargan en Configuración):
   calManuPreventaId: "", calManuPreventaLink: "",
   calManuPostId: "", calManuPostLink: "",
-  calDiegoId: "", calDiegoLink: ""
+  calDiegoId: "", calDiegoLink: "",
+  // Proceso post webinar (clase del 24/10)
+  postDesde: "2026-10-24",  // AAAA-MM-DD: las aplicaciones desde este día entran al proceso
+  sdrMatiWa: "", sdrSantiWa: "", // walink de cada SDR: el formulario de aplicación termina ahí
+  closers: ""               // nombres separados por coma
 };
 
 // Frescura de cada cosa en caché.
@@ -375,6 +379,15 @@ async function citasRango(desdeMs, hastaMs) {
   return citas.sort((a, b) => a.inicio.localeCompare(b.inicio));
 }
 
+// Las opciones nuevas de un campo de opciones (por ejemplo «Venta OS Fast» en la etapa) se
+// suben a GHL una vez por instancia, antes de usarlas.
+let _opcionesOk = false;
+async function asegurarOpciones() {
+  if (DEMO || _opcionesOk) return;
+  await ghl.ensureCustomFields();
+  _opcionesOk = true;
+}
+
 async function invalidarCitasManu() {
   if (!DEMO) await cache.del("manu_citas");
 }
@@ -468,7 +481,7 @@ async function getVisitas() {
 }
 
 module.exports = {
-  citasRango,
+  citasRango, asegurarOpciones,
   deleteLead, sumarVisita, getVisitas, diaAR,
   DEMO, RESERVA_MIN,
   getSettings, saveSettings,

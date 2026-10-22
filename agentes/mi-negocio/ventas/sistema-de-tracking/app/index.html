@@ -506,6 +506,18 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 .agenda-e .hr{font-variant-numeric:tabular-nums;font-weight:600;width:48px;flex:none}
 .agenda-e .barra-c{width:3px;align-self:stretch;border-radius:2px;background:var(--naranja);flex:none}
 .agenda-e .barra-c.eq{background:var(--azul)}
+.fila.post{grid-template-columns:minmax(210px,1.8fr) 70px minmax(150px,1fr) minmax(200px,1.6fr) minmax(120px,.9fr)}
+@media (max-width:900px){.fila.post{grid-template-columns:1fr}.fila.post .col-post-x{display:none}}
+.fase{border:1px solid var(--borde);border-radius:10px;padding:14px 16px;margin-bottom:14px}
+.fase.actual{border-color:var(--naranja);box-shadow:0 0 0 1px var(--naranja) inset}
+.fase.hecha{opacity:.72}
+.fase h5{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;margin-bottom:10px}
+.fase h5 .n{font-size:11px;color:var(--tx-3);font-variant-numeric:tabular-nums}
+.fase h5 .quien{margin-left:auto;font-size:11px;font-weight:500;color:var(--tx-3)}
+.fase .pista-txt{font-size:12.5px;color:var(--tx-3);margin:6px 0 10px}
+.fase .fila-acc{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.fase ul.log{list-style:none;margin:6px 0;padding:0;font-size:12.5px;color:var(--tx-2)}
+.fase ul.log li{padding:4px 0;border-bottom:1px dashed var(--borde)}
 .vence-mal{color:var(--mal)!important} .vence-warn{color:var(--warn)!important}
 @media (max-width:900px){.fila.cli{grid-template-columns:1fr}.fila.cli .col-cto{display:none}}
 #toasts{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:80;max-width:calc(100vw - 40px)}
@@ -692,6 +704,9 @@ const SECCIONES=[
     sub:"En orden de prioridad: completaron la agenda sin agendar, pidieron contacto (por facturación) y asistieron sin completar nada."},
   {id:"g3", nombre:"Grupo 3 · No asistió", cola:"grupo3", icono:"i-g3",
     sub:"Se anotaron y no aparecieron. Volver a meterlos con la repetición o el recurso."},
+  {grupo:"Post webinar 24/10"},
+  {id:"post", nombre:"Proceso post webinar", corto:"Proceso de ventas", cola:"post", icono:"i-llam",
+    sub:"Del formulario de aplicación al onboarding, fase por fase: primer contacto, calificación, setteo, handoff, día de la call, cierre y onboarding."},
   {grupo:"Cierre"},
   {id:"llam", nombre:"Llamadas de venta", corto:"Llamadas", cola:"llamadas", icono:"i-llam",
     sub:"Pre-venta y post-clase, con Manu o con el equipo."},
@@ -726,7 +741,9 @@ function pasoDe(e){
   return 0;
 }
 const OFERTAS={ "Génesis":{PIF:"USD 5.000","2 cuotas":"2 × USD 2.850","3 cuotas":"3 × USD 2.000"},
-                "Mentoría":{PIF:"USD 2.000","2 cuotas":"2 × USD 1.100"} };
+                "Mentoría":{PIF:"USD 2.000","2 cuotas":"2 × USD 1.100"},
+                "OS Fast":{}, "Subscriptions":{} };
+const DESC_OFERTA={"Génesis":"Consultoría 1 a 1","Mentoría":"3 meses · clases y comunidad","OS Fast":"Montos a mano","Subscriptions":"Montos a mano"};
 
 /* ============================================================
    Utilidades
@@ -1111,6 +1128,7 @@ function render(op){
     case "zoom": renderZoom(v,s); break;
     case "ventas": renderVentas(v,s); break;
     case "clientes": renderClientes(v,s); break;
+    case "post": renderPost(v,s); break;
     case "met": renderMetricas(v,s,silencioso); break;
     case "anun": renderAnuncios(v,s,silencioso); break;
     case "conf": renderConfig(v,s); break;
@@ -1457,6 +1475,148 @@ function renderCalendario(v,s,op){
   const sc=$("#calScroll");
   if(CAL.scrollClave!==clave||scrollPrevio==null){CAL.scrollClave=clave;const pri=citas.length?Math.min(...citas.map(c=>y(c.d))):y(new Date(2000,0,1,9));sc.scrollTop=Math.max(0,pri-CAL_PX/2);}
   else sc.scrollTop=scrollPrevio;
+}
+
+/* ---------- Proceso post webinar (clase del 24/10) ---------- */
+// El mapa de ventas en 7 fases. El estado y el detalle de cada fase los guarda /api/lead (action "post").
+const ESTADOS_POST=["Nuevo lead","No atendió","Agendado","No se cerró","Cliente · falta onboarding","Cliente"];
+const TONO_POST={"Nuevo lead":"","No atendió":"warn","Agendado":"nar","No se cerró":"mal","Cliente · falta onboarding":"azul","Cliente":"ok"};
+const OFERTAS_POST=["Génesis","OS Fast","Subscriptions"];
+const TILDES_POST={
+  recursos:[["vsl","R1 · VSL de su oferta"],["testimonio","R2 · Testimonio de su oferta"],["doc","R3 · Documento a medida"]],
+  handoff:[["manu","Audio de Manu presentando al closer"],["closer","Audio del closer: confirma día y hora"]],
+  recordatorios:[["h3","Audio 2–3 h antes (el link llega 10 min antes)"],["m30","Mensaje 30 min antes"],["m10","Link de la llamada 10 min antes"]],
+  onboarding:[["bienvenida","Mensaje de bienvenida en el grupo"],["discord","Link al Discord"],["skool","Acceso al campus viejo en Skool"],["canal","Canal 1 a 1 en Discord"]]};
+let FPOST={estado:"todos",sdr:"todos"};
+try{FPOST=Object.assign(FPOST,JSON.parse(localStorage.getItem("trk_fpost")||"{}"));}catch(e){}
+function setFpost(k,v){FPOST[k]=v;try{localStorage.setItem("trk_fpost",JSON.stringify(FPOST));}catch(e){}render();}
+function badgePost(e){return `<span class="badge ${TONO_POST[e]||""}">${esc(e)}</span>`;}
+function procesoDe(l){
+  let p={};try{p=JSON.parse(l.fields.post_json||"{}")||{};}catch(e){}
+  p.llamadas=p.llamadas||[];p.seguimientos=p.seguimientos||[];
+  for(const k of ["recursos","handoff","recordatorios","onboarding","cierre"]) p[k]=p[k]||{};
+  return p;
+}
+const sdrDe=(l)=>l.fields.sdr||"";
+function agendaComo(l){
+  const n=String(l.nombre||"").trim().split(/\s+/)[0]||"Lead";
+  const r=String(l.fields.inversion||l.fields.facturacion||"").replace(/^Entre\s+/i,"").replace(/USD\s*/gi,"").replace(/\s+y\s+/i," a ").replace(/\./g,"").trim();
+  return r?`${n} / ${r}`:n;
+}
+function grupoComo(l,callAt){
+  const n=String(l.nombre||"").trim().split(/\s+/)[0]||"Lead";
+  if(!callAt) return n;
+  const d=new Date(callAt); if(isNaN(d)) return n;
+  const h=d.toLocaleTimeString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",hour:"numeric",minute:"2-digit",hour12:false}).replace(/:00$/,"");
+  const dm=d.toLocaleDateString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",day:"numeric",month:"numeric"});
+  return `${n} / ${h}hs / ${dm}`;
+}
+const fechaCorta=iso=>iso?new Date(iso).toLocaleString("es-AR",{timeZone:"America/Argentina/Buenos_Aires",weekday:"short",day:"numeric",month:"numeric",hour:"2-digit",minute:"2-digit"}):"";
+const todosHechos=(o,lista)=>lista.every(([k])=>o[k]);
+// Fase en la que está (1 a 7) y lo próximo que hay que hacer.
+function proximoPost(l){
+  const e=l.fields.post_estado||"Nuevo lead", p=procesoDe(l);
+  const sinResp=p.llamadas.filter(x=>!x.atendio).length, atendio=p.llamadas.some(x=>x.atendio);
+  if(e==="Cliente") return {fase:8,txt:"Onboarding terminado"};
+  if(e==="Cliente · falta onboarding") return {fase:7,txt:"Onboarding: "+(TILDES_POST.onboarding.find(([k])=>!p.onboarding[k])||[0,"pasar a Cliente"])[1]};
+  if(e==="No se cerró") return {fase:6,txt:"No se cerró"+(p.cierre.razon?": "+p.cierre.razon:"")};
+  if(e==="Agendado"){
+    if(!p.confirmo) return {fase:3,txt:"Setteo: que confirme día y hora"};
+    if(!p.grupo||!todosHechos(p.recursos,TILDES_POST.recursos)) return {fase:3,txt:"Grupo y recursos"};
+    if(!todosHechos(p.handoff,TILDES_POST.handoff)) return {fase:4,txt:"Handoff al closer"};
+    if(p.call_at&&new Date(p.call_at)>new Date()) return {fase:5,txt:"Call "+fechaCorta(p.call_at)};
+    return {fase:6,txt:"Cierre: ¿se cerró?"};
+  }
+  if(e==="No atendió") return {fase:1,txt:`Seguimiento #${p.seguimientos.length+1}`};
+  if(atendio) return {fase:2,txt:"Calificar y agendar con el closer"};
+  return {fase:1,txt:sinResp?`Llamar de nuevo (${sinResp} de 3 sin respuesta)`:"Primera llamada"};
+}
+function renderPost(v,s){
+  if(!DATA){v.innerHTML=encabezado(s)+esqueleto();return;}
+  const ids=DATA.colas.post||[], todosL=ids.map(lead).filter(Boolean);
+  const est=l=>l.fields.post_estado||"Nuevo lead";
+  const porSdr=todosL.filter(l=>FPOST.sdr==="todos"||sdrDe(l)===FPOST.sdr);
+  let h=encabezado(s);
+  h+=`<div class="tiles">${ESTADOS_POST.map(e=>`<div class="tile" style="cursor:pointer" onclick="setFpost('estado','${FPOST.estado===e?"todos":e}')"><div class="t">${esc(e)}</div><div class="v num">${porSdr.filter(l=>est(l)===e).length}</div>${FPOST.estado===e?`<div class="s">filtrando</div>`:""}</div>`).join("")}</div>`;
+  h+=`<div class="filtros"><div class="seg">${[["todos","Todos"],["Mati","Mati"],["Santi","Santi"]].map(([k,t])=>`<button class="${FPOST.sdr===k?"on":""}" onclick="setFpost('sdr','${k}')">${t} <span class="num" style="color:var(--tx-3)">${k==="todos"?todosL.length:todosL.filter(l=>sdrDe(l)===k).length}</span></button>`).join("")}</div>
+    ${FPOST.estado!=="todos"?`<button class="btn sm fantasma" onclick="setFpost('estado','todos')">${ic("i-x")}${esc(FPOST.estado)}</button>`:""}</div>`;
+  const vis=porSdr.filter(l=>FPOST.estado==="todos"||est(l)===FPOST.estado);
+  if(!vis.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-llam")}</div><b>${todosL.length?"Nadie con este filtro":"Todavía no aplicó nadie"}</b>${todosL.length?"Probá con otro filtro.":"Los que completen el formulario de aplicación desde el "+esc(DATA.settings.postDesde||"")+" aparecen acá solos."}</div></div>`;return;}
+  h+=`<div class="lista"><div class="fila cab post"><div>Lead · cómo agendarlo</div><div>SDR</div><div>Estado</div><div>Próximo paso</div><div class="col-post-x">Aplicó</div></div>`;
+  for(const l of vis){
+    const pr=proximoPost(l), ag=agendaComo(l), wa=waLink(l.telefono);
+    h+=`<div class="fila post" onclick="abrirFicha('${l.id}','proceso')">
+      <div class="quien-l"><div class="avatar">${esc(iniciales(l.nombre))}</div><div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div>
+        <div class="sub"><button class="copiar" onclick="copiar('${esc(ag).replace(/'/g,"&#39;")}',event)" title="Copiar cómo agendarlo">${esc(ag)}</button>${wa?`<a href="${wa}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="WhatsApp">${ic("i-wa")}</a>`:""}</div></div></div>
+      <div><span class="chip">${esc(sdrDe(l)||"—")}</span></div>
+      <div>${badgePost(est(l))}</div>
+      <div class="fact">${pr.fase<=7?`<small style="display:inline">Fase ${pr.fase} · </small>`:""}${esc(pr.txt)}</div>
+      <div class="col-post-x fact"><small>${l.fields.aplico_at?hace(l.fields.aplico_at):"—"}</small></div>
+    </div>`;
+  }
+  v.innerHTML=h+`</div>`;
+}
+function postAcc(id,op,data,msg){accion(id,"post",Object.assign({op},data||{}),msg);}
+function swPost(id,fase,clave,on,txt,des){
+  return `<button class="sw ${on?"on":""}" role="switch" aria-checked="${on}" ${des?`disabled style="opacity:.5"`:""} onclick="postAcc('${id}','tilde',{fase:'${fase}',clave:'${clave}',valor:${!on}})"><span>${esc(txt)}</span><span class="pista"></span></button>`;
+}
+function cuerpoProceso(l){
+  const id=l.id, p=procesoDe(l), e=l.fields.post_estado||"Nuevo lead", pr=proximoPost(l);
+  const st=DATA?DATA.settings:{}, closers=String(st.closers||"").split(",").map(x=>x.trim()).filter(Boolean);
+  const fase=(n,titulo,quien,cuerpo)=>`<div class="fase ${pr.fase===n?"actual":pr.fase>n&&e!=="No se cerró"?"hecha":""}"><h5><span class="n">${String(n).padStart(2,"0")}</span>${titulo}<span class="quien">${quien}</span></h5>${cuerpo}</div>`;
+  const ag=agendaComo(l), sinResp=p.llamadas.filter(x=>!x.atendio).length;
+  let h=`<div class="tarjeta" style="margin-bottom:16px"><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${badgePost(e)}<span style="font-size:13px;color:var(--tx-2)">Próximo paso: <b>${esc(pr.txt)}</b></span>
+    <select class="btn sm sel" style="margin-left:auto" aria-label="Cambiar estado" onchange="if(this.value)postAcc('${id}','estado',{estado:this.value},'Estado actualizado')"><option value="">Cambiar estado…</option>${ESTADOS_POST.filter(x=>x!==e).map(x=>`<option>${x}</option>`).join("")}</select></div></div>`;
+  // 01 · Primer contacto
+  h+=fase(1,"Primer contacto","SDR",`
+    <div class="fila-acc"><span style="font-size:12.5px;color:var(--tx-3)">Agendalo en el celular como</span><button class="btn sm" onclick="copiar('${esc(ag).replace(/'/g,"&#39;")}')">${ic("i-copiar")}${esc(ag)}</button>
+      <div class="seg" style="margin-left:auto">${["Mati","Santi"].map(x=>`<button class="${sdrDe(l)===x?"on":""}" onclick="postAcc('${id}','sdr',{sdr:'${x}'},'SDR: ${x}')">${x}</button>`).join("")}</div></div>
+    <ul class="log">${p.llamadas.map((x,i)=>`<li>Llamada ${i+1} · ${x.atendio?"<b>atendió</b>":"sin respuesta"} · ${fechaCorta(x.t)} · ${esc(x.q||"")}</li>`).join("")||`<li>Todavía no se lo llamó. Se lo llama 3 veces.</li>`}</ul>
+    <div class="fila-acc"><button class="btn sm" onclick="postAcc('${id}','llamada',{atendio:false},'Llamada sin respuesta anotada')">No atendió esta llamada (${sinResp}/3)</button><button class="btn sm pri" onclick="postAcc('${id}','llamada',{atendio:true},'Atendió')">Atendió</button></div>
+    ${sinResp>=3||e==="No atendió"?`
+      <button class="sw ${p.audio?"on":""}" role="switch" aria-checked="${!!p.audio}" onclick="postAcc('${id}','audio',{valor:${!p.audio}})"><span>Le dejamos un audio</span><span class="pista"></span></button>
+      <ul class="log">${p.seguimientos.map((x,i)=>`<li>Seguimiento ${i+1} · ${fechaCorta(x.t)} · ${esc(x.q||"")}${x.nota?" · "+esc(x.nota):""}</li>`).join("")}</ul>
+      <div class="pista-txt">Seguimiento al otro día. Si ya es el 2.º seguimiento, llamalo el mismo día en otro horario.</div>
+      <div class="fila-acc"><input id="segNota" placeholder="Qué hiciste (opcional)" style="flex:1;min-width:160px" onfocus="EDITANDO=true"><button class="btn sm" onclick="postAcc('${id}','seguimiento',{nota:($('#segNota')||{}).value||''},'Seguimiento anotado')">Anotar seguimiento</button></div>`:""}`);
+  // 02 · Calificación y agenda
+  const callIn=p.call_at?new Date(new Date(p.call_at).getTime()-3*3600e3).toISOString().slice(0,16):"";
+  h+=fase(2,"Descubrimiento, calificación y agenda","SDR",`
+    <div class="pista-txt">Hace cuánto hace ecom · si ya pagó otras mentorías · qué problemas tiene · qué le pareció la clase. La agenda se cierra en la misma cold call.</div>
+    <div class="form-g">
+      <div class="full"><label>¿A qué califica?</label><div class="seg" id="pOferta">${OFERTAS_POST.map(o=>`<button class="${(p.oferta||"")===o?"on":""}" onclick="this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on'));this.classList.add('on');EDITANDO=true">${o}</button>`).join("")}</div></div>
+      <div><label for="pCloser">Closer</label><input id="pCloser" list="lCloser" value="${esc(p.closer||"")}" onfocus="EDITANDO=true"><datalist id="lCloser">${closers.map(c=>`<option value="${esc(c)}">`).join("")}</datalist></div>
+      <div><label for="pCall">Día y hora de la call (Argentina)</label><input id="pCall" type="datetime-local" value="${callIn}" onfocus="EDITANDO=true"></div>
+    </div>
+    <div class="fila-acc"><button class="btn sm pri" onclick="agendarPost('${id}')">${p.call_at?"Actualizar la agenda":"Agendar con el closer"}</button></div>`);
+  // 03 · Setteo
+  const grupo=grupoComo(l,p.call_at);
+  h+=fase(3,"Setteo desde la cuenta de Manu","Manu (WSP)",`
+    <div class="pista-txt">El lead tiene que sentir que le escribe Manu en persona. Los recursos se mandan recién cuando confirma.</div>
+    ${swPost(id,"setteo","confirmo",!!p.confirmo,"Confirmó día y hora")}
+    ${swPost(id,"setteo","grupo",!!p.grupo,"Grupo creado con el lead y el closer",!p.confirmo)}
+    <div class="fila-acc"><span style="font-size:12.5px;color:var(--tx-3)">Nombre del grupo</span><button class="btn sm" onclick="copiar('${esc(grupo).replace(/'/g,"&#39;")}')">${ic("i-copiar")}${esc(grupo)}</button></div>
+    ${TILDES_POST.recursos.map(([k,t])=>swPost(id,"recursos",k,!!p.recursos[k],t+(p.oferta&&k!=="doc"?` (${p.oferta})`:""),!p.confirmo)).join("")}`);
+  // 04 · Handoff
+  h+=fase(4,"Handoff al closer","Manu → closer",TILDES_POST.handoff.map(([k,t])=>swPost(id,"handoff",k,!!p.handoff[k],t)).join("")+`<div class="pista-txt">Si el lead tiene dudas antes de la call, las responde el closer en el grupo.</div>`);
+  // 05 · Día de la call
+  h+=fase(5,"Día de la call"+(p.call_at?" · "+esc(fechaCorta(p.call_at)):""),"Closer",TILDES_POST.recordatorios.map(([k,t])=>swPost(id,"recordatorios",k,!!p.recordatorios[k],t)).join(""));
+  // 06 · Cierre
+  const vt=venta(l);
+  h+=fase(6,"Cierre","Closer",vt?`<div style="font-size:13px">Se cerró: <b>${esc(vt.oferta)}</b> · ${esc(vt.forma)}${vt.sena?` · señó ${usd(vt.sena)}`:""}. <a href="#" onclick="tabFicha('venta');return false">Ver la venta y los pagos</a></div>`:
+    e==="No se cerró"?`<div style="font-size:13px">No se cerró: ${esc(p.cierre.razon||"")}${p.cierre.fathom?` · <a href="${esc(p.cierre.fathom)}" target="_blank" rel="noopener">Fathom</a>`:""}</div>`:`
+    <div class="fila-acc"><button class="btn sm pri" onclick="VENTA_OF=${JSON.stringify(p.oferta||"Génesis").replace(/"/g,"&quot;")};VENTA_FO=Object.keys(OFERTAS[VENTA_OF])[0]||'Personalizado';tabFicha('venta')">Se cerró: registrar la venta</button></div>
+    <div class="form-g" style="margin-top:10px"><div class="full"><label for="pRazon">Si no se cerró: la razón</label><input id="pRazon" onfocus="EDITANDO=true"></div><div class="full"><label for="pFathom">Fathom</label><input id="pFathom" type="url" placeholder="https://fathom.video/…" onfocus="EDITANDO=true"></div></div>
+    <div class="fila-acc"><button class="btn sm" onclick="postAcc('${id}','no_cerro',{razon:$('#pRazon').value,fathom:$('#pFathom').value},'Anotado: no se cerró')">No se cerró</button></div>`);
+  // 07 · Onboarding
+  h+=fase(7,"Onboarding","Mati / Santi (cuenta de Manu)",
+    `<div class="pista-txt">El campus nuevo y el plan de la mentoría arrancan el 1/11. Mientras tanto, acceso al campus viejo en Skool.</div>`+
+    TILDES_POST.onboarding.map(([k,t])=>swPost(id,"onboarding",k,!!p.onboarding[k],t,e!=="Cliente · falta onboarding"&&e!=="Cliente")).join("")+
+    (e==="Cliente · falta onboarding"?`<div class="fila-acc"><button class="btn sm pri" onclick="postAcc('${id}','estado',{estado:'Cliente'},'Pasó a Cliente')">${ic("i-check")}Onboarding terminado: pasar a Cliente</button></div>`:""));
+  return h;
+}
+function agendarPost(id){
+  const of=document.querySelector("#pOferta button.on");
+  postAcc(id,"agendar",{oferta:of?of.textContent:"",closer:$("#pCloser").value,call_at:$("#pCall").value},"Agendado con el closer");
 }
 
 /* ---------- Clientes ---------- */
@@ -2128,7 +2288,11 @@ function renderConfig(v,s){
     ${inp("cInicio","Inicio del lanzamiento (desde acá cuenta «Todo el lanzamiento» en Anuncios)",st.inicioLanzamiento||"","date")}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu pre-venta</h4><div class="form-g">${inp("cPreId","ID",st.calManuPreventaId)}${inp("cPreLink","Link",st.calManuPreventaLink)}</div></div>
   <div class="tarjeta"><h4>Calendario · Manu post-clase</h4><div class="form-g">${inp("cPostId","ID",st.calManuPostId)}${inp("cPostLink","Link",st.calManuPostLink)}</div></div>
-  <div class="tarjeta"><h4>Calendario del equipo (llamadas de venta)</h4><div class="form-g">${inp("cDiegoId","ID",st.calDiegoId)}${inp("cDiegoLink","Link",st.calDiegoLink)}</div></div>`;
+  <div class="tarjeta"><h4>Calendario del equipo (llamadas de venta)</h4><div class="form-g">${inp("cDiegoId","ID",st.calDiegoId)}${inp("cDiegoLink","Link",st.calDiegoLink)}</div></div>
+  <div class="tarjeta"><h4>Proceso post webinar</h4><div class="form-g">
+    ${inp("cPostDesde","Entran al proceso los que aplicaron desde",st.postDesde||"","date")}${inp("cClosers","Closers (separados por coma)",st.closers||"")}
+    ${inp("cSdrMati","WhatsApp de Mati (walink)",st.sdrMatiWa||"")}${inp("cSdrSanti","WhatsApp de Santi (walink)",st.sdrSantiWa||"")}</div>
+    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">El formulario de aplicación reparte 50/50 entre Mati y Santi y, al terminar, abre el WhatsApp del SDR que le tocó. Sin walink, muestra «te escribimos por WhatsApp».</p></div>`;
 }
 async function guardarConfig(){
   try{
@@ -2136,7 +2300,8 @@ async function guardarConfig(){
       manuTope:$("#cManuTope").value, genesisLugares:$("#cGenLug").value, clase:$("#cClase").value, cierre:$("#cCierre").value, inicioLanzamiento:$("#cInicio").value,
       calManuPreventaId:$("#cPreId").value, calManuPreventaLink:$("#cPreLink").value,
       calManuPostId:$("#cPostId").value, calManuPostLink:$("#cPostLink").value,
-      calDiegoId:$("#cDiegoId").value, calDiegoLink:$("#cDiegoLink").value })});
+      calDiegoId:$("#cDiegoId").value, calDiegoLink:$("#cDiegoLink").value,
+      postDesde:$("#cPostDesde").value, closers:$("#cClosers").value, sdrMatiWa:$("#cSdrMati").value, sdrSantiWa:$("#cSdrSanti").value })});
     EDITANDO=false; toast("Configuración guardada"); refrescar();
   }catch(e){toast(e.message,true);}
 }
@@ -2243,7 +2408,9 @@ function pintarFicha(){
   const movil=esMovil(); _eraMovil=movil;
   // En escritorio el resumen va fijo a la izquierda; en celular es una pestaña más.
   let tab=FICHA_TAB; if(!movil&&tab==="resumen") tab="dijo";
-  const tabs=(movil?[["resumen","Resumen"]]:[]).concat([["dijo","Lo que dijo"],["venta","Venta"],["historial","Historial"]]);
+  const enPost=Boolean(f.post_estado)||(DATA&&DATA.colas.post&&DATA.colas.post.includes(id));
+  const tabs=(movil?[["resumen","Resumen"]]:[]).concat(enPost?[["proceso","Proceso"]]:[]).concat([["dijo","Lo que dijo"],["venta","Venta"],["historial","Historial"]]);
+  if(tab==="proceso"&&!enPost) tab="dijo";
   const sel=(acc,dataKey,label,ops,msg)=>`<select class="btn sm sel"  aria-label="${label}" onchange="if(this.value)accion('${id}','${acc}',{${dataKey}:this.value},'${msg}')"><option value="">${label}</option>${ops.map(o=>`<option>${o}</option>`).join("")}</select>`;
   $("#ficha").innerHTML=`
   <div class="f-cab">
@@ -2251,7 +2418,7 @@ function pintarFicha(){
       <div class="avatar lg ${claseAvatar(f.dueno)}">${esc(iniciales(l.nombre))}</div>
       <div class="datos"><h3>${esc(l.nombre||"(sin nombre)")}</h3>
         <div class="contacto">${l.telefono?`<button class="copiar" onclick="copiar('${esc(l.telefono)}',event)" title="Copiar">${ic("i-tel")}${esc(l.telefono)}</button>`:""}${l.email?`<button class="copiar" onclick="copiar('${esc(l.email)}',event)" title="Copiar">${esc(l.email)}</button>`:""}</div>
-        <div class="f-badges">${badgeEtapa(f.etapa)}${etiquetas(l)}</div>
+        <div class="f-badges">${badgeEtapa(f.etapa)}${f.post_estado?badgePost(f.post_estado):""}${etiquetas(l)}</div>
       </div>
       <div class="f-acc">
         <button class="btn pri sm" onclick="accion('${id}','intento',{},'Intento anotado')">${ic("i-mas")}1 intento</button>
@@ -2306,6 +2473,7 @@ function cuerpoFicha(l,tab){
         ${d("Por qué ahora",f.por_que_ahora)}${d("Objeción real",f.objecion)}${d("Le faltó de la clase",f.falto_clase)}${d("Le resonó del recurso",f.resono)}</dl></div>`;
   }
   if(tab==="venta") return cuerpoVenta(l);
+  if(tab==="proceso") return cuerpoProceso(l);
   const full=COMPLETO[id];
   let hist=[];try{hist=JSON.parse(((full||{}).fields||{}).historial_json||"[]");}catch(e){}
   if(!full) return `<div class="tarjeta"><div class="esq" style="width:70%"></div><div class="esq" style="width:50%;margin-top:10px"></div><div class="esq" style="width:60%;margin-top:10px"></div></div>`;
@@ -2341,17 +2509,19 @@ const hoyInput=()=>new Date().toLocaleDateString("en-CA");
 function cuerpoVenta(l){
   const vt=venta(l), id=l.id;
   if(!vt){
-    if(VENTA_FO!=="Personalizado"&&!OFERTAS[VENTA_OF][VENTA_FO]) VENTA_FO="PIF";
+    if(VENTA_FO!=="Personalizado"&&!OFERTAS[VENTA_OF][VENTA_FO]) VENTA_FO=Object.keys(OFERTAS[VENTA_OF])[0]||"Personalizado";
     const formas=Object.entries(OFERTAS[VENTA_OF]).concat([["Personalizado","montos a mano"]]);
     return `<div class="tarjeta"><h4>Registrar una venta</h4>
-      <div class="opciones">${Object.keys(OFERTAS).map(o=>`<button class="op ${VENTA_OF===o?"on":""}" onclick="VENTA_OF='${o}';pintarFicha()"><b>${o}</b><small>${o==="Génesis"?"Consultoría 1 a 1 · 4 meses":"3 meses · clases y comunidad"}</small></button>`).join("")}</div>
+      <div class="opciones">${Object.keys(OFERTAS).map(o=>`<button class="op ${VENTA_OF===o?"on":""}" onclick="VENTA_OF='${o}';pintarFicha()"><b>${o}</b><small>${DESC_OFERTA[o]||""}</small></button>`).join("")}</div>
       <div style="margin-top:14px"><label style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Forma de pago</label>
         <div class="seg">${formas.map(([k,p])=>`<button class="${VENTA_FO===k?"on":""}" onclick="VENTA_FO='${k}';pintarFicha()">${k} · ${p}</button>`).join("")}</div></div>
       ${VENTA_FO==="Personalizado"?`<div class="form-g" style="margin-top:14px">
         <div><label for="vTotal">Monto total (USD)</label><input id="vTotal" type="number" min="1" step="0.01" inputmode="decimal" placeholder="5000" onfocus="EDITANDO=true"></div>
         <div><label for="vCuotas">Cuotas</label><input id="vCuotas" type="number" min="1" max="24" step="1" value="1" onfocus="EDITANDO=true"></div></div>
         <p style="color:var(--tx-3);font-size:12.5px;margin-top:6px">Se divide en cuotas iguales. Después podés cambiar el monto de cada una y marcar lo que ya pagó.</p>`:""}
-      <div class="form-g" style="margin-top:14px"><div><label for="vFecha">Fecha de cierre</label><input id="vFecha" type="date" value="${hoyInput()}" onfocus="EDITANDO=true"></div></div>
+      <div class="form-g" style="margin-top:14px"><div><label for="vFecha">Fecha de cierre</label><input id="vFecha" type="date" value="${hoyInput()}" onfocus="EDITANDO=true"></div>
+        <div><label for="vSena">Seña (USD, si señó)</label><input id="vSena" type="number" min="0" step="0.01" inputmode="decimal" placeholder="0" onfocus="EDITANDO=true"></div>
+        <div class="full"><label for="vFathom">Grabación de la llamada (Fathom)</label><input id="vFathom" type="url" placeholder="https://fathom.video/…" onfocus="EDITANDO=true"></div></div>
       <p style="color:var(--tx-3);font-size:12.5px;margin-top:6px">La primera cuota vence el día del cierre y cada una de las siguientes, un mes después. Se pueden cambiar después.</p>
       <div style="margin-top:14px"><label for="vNota" style="display:block;font-size:12px;font-weight:600;color:var(--tx-2);margin-bottom:6px">Nota de la venta (opcional)</label>
         <textarea id="vNota" placeholder="Ej.: paga la 2° cuota cuando cobre a fin de mes" onfocus="EDITANDO=true"></textarea></div>
@@ -2359,7 +2529,7 @@ function cuerpoVenta(l){
   }
   const cob=sumaM(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=sumaM(vt.pagos.map(p=>p.monto));
   const resumen=`<div class="tarjeta">
-      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><h3 style="font-size:20px">${esc(vt.oferta)}</h3><span style="color:var(--tx-2)">${esc(vt.forma)} · vendió ${esc(vt.vendedor)} · cerró el ${new Date(vt.fecha).toLocaleDateString("es-AR")}</span></div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><h3 style="font-size:20px">${esc(vt.oferta)}</h3><span style="color:var(--tx-2)">${esc(vt.forma)} · vendió ${esc(vt.vendedor)} · cerró el ${new Date(vt.fecha).toLocaleDateString("es-AR")}${vt.sena?` · señó ${usd(vt.sena)}`:""}</span>${vt.fathom?`<a class="btn sm" href="${esc(vt.fathom)}" target="_blank" rel="noopener">Ver la llamada (Fathom)</a>`:""}</div>
       <div style="margin:14px 0 6px" class="barra"><i style="width:${tot?cob/tot*100:0}%"></i></div>
       <div class="num" style="font-size:13px;color:var(--tx-2)">Cobrado ${usd(cob)} de ${usd(tot)} · <b style="color:var(--tx)">Falta pagar ${usd(tot-cob)}</b></div>
       ${vt.nota?`<p style="margin-top:12px;font-size:13.5px;white-space:pre-wrap">${esc(vt.nota)}</p>`:""}</div>`+tarjetaCliente(l,vt);
@@ -2442,7 +2612,8 @@ async function guardarEdicionVenta(id){
   await accion(id,"editar_venta",{pagos,nota:$("#eNota").value,fecha:$("#eFecha").value},"Venta actualizada");
 }
 function registrarVenta(id){
-  const data={oferta:VENTA_OF,forma:VENTA_FO,nota:($("#vNota")||{}).value||"",fecha:($("#vFecha")||{}).value||""};
+  const data={oferta:VENTA_OF,forma:VENTA_FO,nota:($("#vNota")||{}).value||"",fecha:($("#vFecha")||{}).value||"",
+    sena:($("#vSena")||{}).value||0,fathom:($("#vFathom")||{}).value||""};
   if(VENTA_FO==="Personalizado"){
     const total=Number($("#vTotal").value), n=parseInt($("#vCuotas").value,10);
     if(!(total>0)){toast("Poné el monto total de la venta",true);return;}

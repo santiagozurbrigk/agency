@@ -4,6 +4,7 @@
 const { requiere } = require("../lib/auth");
 const store = require("../lib/store");
 const R = require("../lib/rules");
+const P = require("../lib/post");
 
 module.exports = async function handler(req, res) {
   if (!requiere(req, res)) return;
@@ -24,7 +25,13 @@ module.exports = async function handler(req, res) {
     }
 
     const etapa = (l) => l.fields.etapa || "Nuevo";
-    const activo = (l) => !["Próximo ciclo", "Venta Génesis", "Venta Mentoría"].includes(etapa(l));
+    const activo = (l) => etapa(l) !== "Próximo ciclo" && !etapa(l).startsWith("Venta");
+
+    // Proceso post webinar: los que aplicaron desde postDesde (hora de Argentina) o ya tienen estado.
+    const postDesde = settings.postDesde ? new Date(settings.postDesde + "T00:00:00-03:00").getTime() : 0;
+    const enPost = (l) => Boolean(l.fields.post_estado) ||
+      ((l.tags || []).includes("aplicacion-19-10") && l.fields.etapa !== "Próximo ciclo" &&
+        new Date(l.fields.aplico_at || 0).getTime() >= postDesde);
 
     const colas = {
       primerContacto: leads.filter(l => activo(l) && etapa(l) === "Nuevo")
@@ -55,7 +62,12 @@ module.exports = async function handler(req, res) {
         .sort((a, b) => String(b.fields.aplico_at || b.creado || "").localeCompare(String(a.fields.aplico_at || a.creado || "")))
         .map(l => l.id),
 
-      proximoCiclo: leads.filter(l => etapa(l) === "Próximo ciclo").map(l => l.id)
+      proximoCiclo: leads.filter(l => etapa(l) === "Próximo ciclo").map(l => l.id),
+
+      post: leads.filter(enPost)
+        .sort((a, b) => (P.ESTADOS.indexOf(a.fields.post_estado || "Nuevo lead") - P.ESTADOS.indexOf(b.fields.post_estado || "Nuevo lead"))
+          || String(b.fields.aplico_at || b.creado || "").localeCompare(String(a.fields.aplico_at || a.creado || "")))
+        .map(l => l.id)
     };
 
     const genesisVendidos = leads.filter(l => etapa(l) === "Venta Génesis").length;

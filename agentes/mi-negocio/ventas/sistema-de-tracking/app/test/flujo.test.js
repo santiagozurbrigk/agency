@@ -420,6 +420,51 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(!r.body.citas.some(x=>x.leadId==="demo-lucia"),"calendario: la cita cancelada desaparece");
   }
 
+  // Proceso post webinar: aplicación → SDR 50/50 → llamadas → agenda → setteo → cierre → onboarding
+  { const lead=h("api/lead.js"), apl=h("api/public/aplicacion.js"), leadsApi=h("api/leads.js"), settingsApi=h("api/settings.js"), P=h("lib/post.js");
+    await call(settingsApi,{method:"POST",cookie,body:{postDesde:"2026-01-01",sdrMatiWa:"https://wa.link/mati",sdrSantiWa:"https://wa.link/santi",closers:"Diego, Jose"}});
+    let r=await call(apl,{method:"POST",body:{nombre:"Lucas Post",email:"lucas@post.com",telefono:"+54 9 11 7777 0001",objetivo:"x",freno:"y",hace_cuanto:"z",ciclo:"Entre 30 y 60 días",facturacion:"Entre 30M y 50M",inversion:"Entre USD 1.000 y USD 3.000"}});
+    const sdr=P.sdrPara("lucas@post.com","+54 9 11 7777 0001");
+    ok(r.body.ok&&r.body.sdr===sdr&&r.body.wa===(sdr==="Mati"?"https://wa.link/mati":"https://wa.link/santi"),"aplicación: devuelve el SDR (50/50) y su walink");
+    let all=await call(leadsApi,{cookie});
+    const lu=all.body.leads.find(l=>l.email==="lucas@post.com");
+    ok(lu&&lu.fields.post_estado==="Nuevo lead"&&lu.fields.sdr===sdr&&all.body.colas.post.includes(lu.id),"aplicación: entra al proceso como Nuevo lead con su SDR");
+    ok(P.nombreAgenda(lu)==="Lucas / 1000 a 3000","se agenda como «Lucas / 1000 a 3000»");
+    const reparto=Array.from({length:200},(_,i)=>P.sdrPara(`x${i}@m.com`)).filter(x=>x==="Mati").length;
+    ok(reparto>70&&reparto<130,"reparto entre Mati y Santi cerca de 50/50 ("+reparto+"/200)");
+    const id=lu.id, post=(data)=>call(lead,{method:"POST",cookie,body:{id,action:"post",data}});
+    for(let i=0;i<2;i++) await post({op:"llamada",atendio:false});
+    r=await post({op:"llamada",atendio:false});
+    ok(r.body.lead.fields.post_estado==="No atendió","3 llamadas sin respuesta → No atendió");
+    r=await post({op:"seguimiento",nota:"audio + mensaje"});
+    ok(JSON.parse(r.body.lead.fields.post_json).seguimientos.length===1,"seguimiento anotado");
+    r=await post({op:"agendar",oferta:"OS Fast",closer:"Diego",call_at:"2026-10-27T19:00"});
+    let pj=JSON.parse(r.body.lead.fields.post_json);
+    ok(r.body.lead.fields.post_estado==="Agendado"&&pj.oferta==="OS Fast"&&pj.call_at==="2026-10-27T22:00:00.000Z","agendado: oferta, closer y hora de Argentina");
+    ok(P.nombreGrupo(r.body.lead,pj.call_at)==="Lucas / 19hs / 27/10","nombre del grupo «Lucas / 19hs / 27/10»");
+    r=await post({op:"agendar",oferta:"Otra",call_at:"2026-10-27T19:00"});
+    ok(r.statusCode===400,"agendar con oferta inválida rechazado");
+    r=await post({op:"tilde",fase:"setteo",clave:"confirmo",valor:true});
+    r=await post({op:"tilde",fase:"recursos",clave:"vsl",valor:true});
+    pj=JSON.parse(r.body.lead.fields.post_json);
+    ok(pj.confirmo===true&&pj.recursos.vsl===true,"setteo y recursos tildados");
+    r=await post({op:"tilde",fase:"recursos",clave:"nada",valor:true});
+    ok(r.statusCode===400,"tilde inválido rechazado");
+    r=await call(lead,{method:"POST",cookie,body:{id,action:"venta",data:{oferta:"OS Fast",forma:"Personalizado",montos:[500,500],sena:200,fathom:"https://fathom.video/x"}}});
+    const v=JSON.parse(r.body.lead.fields.venta_json);
+    ok(r.body.lead.fields.post_estado==="Cliente · falta onboarding"&&r.body.lead.fields.etapa==="Venta OS Fast"&&v.sena===200&&v.fathom==="https://fathom.video/x","venta: Cliente · falta onboarding, etapa de la oferta, seña y Fathom");
+    r=await call(lead,{method:"POST",cookie,body:{id,action:"venta",data:{oferta:"Subscriptions",forma:"PIF"}}});
+    ok(r.statusCode===400,"oferta sin precio fijo: solo con montos a mano");
+    r=await post({op:"estado",estado:"Cliente"});
+    ok(r.body.lead.fields.post_estado==="Cliente","onboarding terminado → Cliente");
+    all=await call(leadsApi,{cookie});
+    ok(all.body.colas.ventas.includes(id),"el cliente aparece en Ventas y Clientes");
+    r=await call(apl,{method:"POST",body:{nombre:"Bajo",email:"bajo@post.com",telefono:"+54 9 11 7777 0002",inversion:"Menos de USD 1.000"}});
+    ok(r.body.ruta==="rechazado"&&!r.body.wa,"inversión < USD 1.000: sin walink");
+    all=await call(leadsApi,{cookie});
+    ok(!all.body.colas.post.includes(all.body.leads.find(l=>l.email==="bajo@post.com").id),"el rechazado no entra al proceso");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});
