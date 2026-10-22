@@ -6,7 +6,7 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 
 - **El único llamado a la acción es agendar la llamada:** `[LINK AGENDA]`. No hay link de pago.
 - **Sin precio en el grupo:** el precio se ve en la llamada. La Mentoría no se nombra.
-- **Urgencia solo real:** los lugares que quedan (`[N]`, el número real) y el cierre de Génesis (`[CIERRE]`).
+- **Urgencia solo real:** los lugares que quedan (`[N]`, el número real) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
 - **Nunca dos formatos iguales seguidos** (texto, video selfie, audio, imagen).
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
@@ -14,7 +14,6 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 - `[LINK REPLAY]` y hasta cuándo está la repetición.
 - `[LINK AGENDA]`.
 - `[N]`: lugares que quedan en Génesis.
-- `[CIERRE]`: día y hora del cierre de Génesis para este grupo (por ejemplo, "el martes 27 a las 23:59"). Si cierra hoy domingo, se usa la variante marcada al final.
 
 ## Resumen
 
@@ -22,10 +21,13 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 |---|---|---|
 | 09:30 | Texto | La repetición |
 | 11:30 | Video selfie | Génesis y la llamada |
-| 13:30 | Imagen + texto | La prueba: 2.200 suscriptores |
+| 13:30 | Imagen + texto | La prueba: +3.500 suscriptores |
 | 16:00 | Audio | "¿Y si rompo lo que hoy vende?" |
 | 18:30 | Texto | "Mi producto no es para suscripción" |
 | 21:00 | Video selfie | Quedan [N] lugares |
+| 22:00 | Texto | Quedan 2 horas |
+| 23:00 | Texto | Última hora |
+| 00:05 | Texto | Se cerró |
 
 ---
 
@@ -43,20 +45,20 @@ Beats:
 1. Gracias por lo de anoche. Lo que más se repitió en el chat. `[Usar mensajes reales del chat]`
 2. Génesis: 1 a 1 conmigo, y la suscripción la instalamos nosotros, al lado de lo que ya vendés.
 3. Son pocos lugares, porque es 1 a 1. Antes de entrar lo vemos con tus números en una llamada.
-4. Agendá acá. Cierra `[CIERRE]`.
+4. Agendá acá. Cierra hoy a las 23:59.
 
 Si no se graba el video:
 > Génesis está abierto: 1 a 1 conmigo, y la suscripción la instalamos nosotros, al lado de lo que ya vendés.
 >
 > Antes de entrar lo vemos con tus números en una llamada: `[LINK AGENDA]`
 >
-> Cierra `[CIERRE]`.
+> Cierra hoy a las 23:59.
 
 ### 13:30 · Imagen + texto · La prueba
 
-Imagen: panel de suscriptores (2.200 activos · 1,28% churn).
+Imagen: panel de suscriptores (+3.500 activos · menos de 5% de churn).
 
-> 2.200 suscriptores activos. 1,28% de churn. En Argentina.
+> Más de 3.500 suscriptores activos. Menos de 5% de churn. En Argentina.
 >
 > Esto es lo que te mostré anoche. Y lo que hacemos en Génesis es instalarlo en tu ecommerce, con tus números.
 >
@@ -79,6 +81,8 @@ Texto debajo:
 > Lo que sí hace falta es que se termine. Si se termina, se puede.
 >
 > Lo vemos con tu producto en la llamada: `[LINK AGENDA]`
+>
+> Cierra hoy a las 23:59.
 
 ### 21:00 · Video selfie (45 s) · Quedan [N] lugares
 
@@ -86,18 +90,12 @@ Beats:
 1. Por qué son pocos lugares: es 1 a 1 y lo hacemos nosotros, así que son pocas marcas a propósito.
 2. "Si Meta te baja la cuenta, los suscriptores se siguen cobrando."
 3. "La landing te la copian en 48 horas. Tu base de suscriptores, no."
-4. Quedan [N] lugares. Cierra `[CIERRE]`.
+4. Quedan [N] lugares. Cierra hoy a las 23:59.
 
 Si no se graba el video:
 > La landing te la copian en 48 horas. Tu base de suscriptores, no.
 >
-> Quedan [N] lugares en Génesis. Cierra `[CIERRE]`: `[LINK AGENDA]`
-
----
-
-## Variante: si Génesis cierra hoy, domingo 25, a las 23:59
-
-Se usa todo lo de arriba con `[CIERRE]` = "hoy a las 23:59", y se suman estos tres:
+> Quedan [N] lugares en Génesis. Cierra hoy a las 23:59: `[LINK AGENDA]`
 
 ### 22:00 · Texto · Quedan 2 horas
 

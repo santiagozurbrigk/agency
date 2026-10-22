@@ -46,7 +46,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > En compra única pagás la pauta en cada venta. En suscripción la pagás una sola vez por cliente: la segunda, la tercera y la cuarta compra entran con el margen entero.
 >
-> Hoy tengo 2.200 suscriptores activos, con 1,28% de churn.
+> Hoy tengo más de 3.500 suscriptores activos, con menos de 5% de churn.
 >
 > En el grupo de WhatsApp te voy dejando el resto de la cuenta hasta el sábado:
 >
@@ -105,7 +105,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 > "En Argentina no están acostumbrados a la suscripción."
 > "Se suscriben para que la primera les salga más barata y se dan de baja."
 >
-> Hoy tengo 2.200 suscriptores activos en Argentina. 1,28% de churn. No se van.
+> Hoy tengo más de 3.500 suscriptores activos en Argentina. Menos de 5% de churn. No se van.
 >
 > No es cultura. Es cómo se arma la suscripción. Eso lo vemos **mañana, sábado 24, a las 18 hs**.
 >

@@ -6,14 +6,13 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
 - **El llamado a la acción es agendar la llamada** (`[LINK AGENDA]`). Sin precio y sin link de pago.
-- **Urgencia solo real:** los lugares que quedan (`[N]`) y el cierre de Génesis (`[CIERRE]`).
+- **Urgencia solo real:** los lugares que quedan (`[N]`) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
 **Datos a completar antes de mandar:**
 - `[LINK REPLAY]` y hasta cuándo está la repetición.
 - `[LINK AGENDA]`.
 - `[N]`: lugares que quedan.
-- `[CIERRE]`: día y hora del cierre de Génesis para este grupo. Si cierra hoy domingo, se suma el mail de la variante del final.
 
 ## Resumen
 
@@ -22,6 +21,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 | P-1 | 09:00 | La repetición de anoche | Repetición (agenda en la PD) |
 | P-2 | 14:00 | "¿Y si rompo lo que hoy vende?" | Agenda |
 | P-3 | 20:00 | Quedan [N] lugares | Agenda |
+| P-4 | 22:30 | Cierra en una hora y media | Agenda |
 
 ---
 
@@ -40,7 +40,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > Si no llegaste, miralo con tus números al lado: margen por pedido, CPA y cada cuánto se le termina el producto a tu cliente. Es la cuenta que vas a querer hacer.
 >
-> Y si al terminar sentís que es para tu ecommerce: Génesis está abierto hasta `[CIERRE]`. Es 1 a 1 conmigo, y la suscripción la instalamos nosotros, al lado de lo que ya vendés. Antes de entrar lo vemos con tus números en una llamada.
+> Y si al terminar sentís que es para tu ecommerce: Génesis está abierto hasta **hoy a las 23:59**. Es 1 a 1 conmigo, y la suscripción la instalamos nosotros, al lado de lo que ya vendés. Antes de entrar lo vemos con tus números en una llamada.
 >
 > Manu
 >
@@ -69,7 +69,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > **[Agendar la llamada →]** `[LINK AGENDA]`
 >
-> Génesis cierra `[CIERRE]`.
+> Génesis cierra hoy a las 23:59.
 >
 > Manu
 
@@ -78,7 +78,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 ## P-3 · Domingo 25 · 20:00
 
 **Asunto:** Quedan [N] lugares
-**Preheader:** Génesis cierra [CIERRE].
+**Preheader:** Génesis cierra hoy a las 23:59.
 
 > Hola,
 >
@@ -92,17 +92,13 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 >
 > **[Agendar la llamada →]** `[LINK AGENDA]`
 >
-> Cierra `[CIERRE]`.
+> Cierra hoy a las 23:59.
 >
 > Manu
 
 ---
 
-## Variante: si Génesis cierra hoy, domingo 25, a las 23:59
-
-Los 3 mails de arriba con `[CIERRE]` = "hoy a las 23:59", y se suma este:
-
-### P-4 · Domingo 25 · 22:30
+## P-4 · Domingo 25 · 22:30
 
 **Asunto:** Cierra en una hora y media
 **Preheader:** A las 23:59 se cierra Génesis.

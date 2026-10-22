@@ -56,7 +56,7 @@ Esta capa es el esqueleto: cada envío con su día, hora, pregunta, botones y re
 | Botón | Por dónde va la primera línea |
 |---|---|
 | Ya vendo suscripción | Tener suscripción no es lo mismo que tener una base que cobra sola: lo que mirás es el churn y cuánto podés pagar por cliente. |
-| Nunca la probé | El que nunca la probó cree que en Argentina nadie se suscribe. Manu también lo creía: hoy 2.200 activos, 1,28% de churn. |
+| Nunca la probé | El que nunca la probó cree que en Argentina nadie se suscribe. Manu también lo creía: hoy +3.500 activos, menos de 5% de churn. |
 | La probé, no anduvo | Casi siempre no anda por cómo se armó (precio, ciclo, la base), no porque la gente no se suscriba. |
 
 > **Prioridad para el equipo (Jose / Manu):** `cl24-perfil-ya` o `cl24-urg-mes`. Manu o Jose les escriben desde su número en el post-clase aunque no toquen nada (en el tracker van como responsable).
@@ -116,13 +116,13 @@ Esta capa es el esqueleto: cada envío con su día, hora, pregunta, botones y re
 - **Pregunta:** qué te frena más de la suscripción.
 - **Botones:** [Nadie se suscribe] [Se dan de baja] [Romper lo que anda]
 - **Tags:** `cl24-obj-cultura` · `cl24-obj-bajas` · `cl24-obj-romper` · `env-D2B` · `toco-D2B`
-- **Recurso:** sin video. La respuesta es el dato (2.200 activos, 1,28% de churn; la suscripción va al lado de la compra única, sin tocarla).
+- **Recurso:** sin video. La respuesta es el dato (+3.500 activos, menos de 5% de churn; la suscripción va al lado de la compra única, sin tocarla).
 - **Primera línea por botón:**
 
 | Botón | Por dónde va |
 |---|---|
-| Nadie se suscribe | 2.200 suscriptores activos en Argentina. No es cultura, es cómo se arma. |
-| Se dan de baja | 1,28% de churn. No se suscriben por el descuento y se van: se quedan. |
+| Nadie se suscribe | Más de 3.500 suscriptores activos en Argentina. No es cultura, es cómo se arma. |
+| Se dan de baja | Menos de 5% de churn. No se suscriben por el descuento y se van: se quedan. |
 | Romper lo que anda | Va al lado de la compra única, sin tocarla. Seguís vendiendo igual. |
 
 - **Cierre del D2-B:** "mañana a las 18. te mando el link por acá así no lo andás buscando?" → **[Sí, mandámelo]** (`cl24-quiere-link`). Ese botón deja gratis los recordatorios del sábado.
@@ -171,7 +171,7 @@ El llamado a la acción es **agendar la llamada** (como en el carrito del 19), n
 | Si no pudo | "no íbamos a dar la grabación, pero contame para qué la aplicarías y si te suma te la mando" → **responde con texto libre** → la repetición con su link y cuánto dura. | (texto libre) | `cl24-pidio-replay` |
 | Dom 25 · 12:00 | Estuvo: dos caminos, "quiero arrancar" (agenda) y "tengo dudas" (le escribe Jose o Manu). No pudo: "pudiste ver la repetición?" | [Quiero arrancar] [Tengo dudas] / [Sí, la vi] [Todavía no] | `cl24-quiere` · `cl24-dudas` · `cl24-vio-replay` |
 | Dom 25 · 19:30 | "quedó algo de la clase que quieras hablar conmigo?" | [Sí, escribime] [Por ahora no] | `cl24-hablar` → aviso a Jose/Manu |
-| Día del cierre | "hoy a la noche cierro los lugares de Génesis. si querés entrar o ver si sirve para tu ecommerce, es AHORA" + agenda. | — | — |
+| Dom 25 · 21:00 (cierre 23:59) | "hoy a la noche cierro los lugares de Génesis. si querés entrar o ver si sirve para tu ecommerce, es AHORA" + agenda. | — | — |
 
 ---
 
@@ -216,7 +216,7 @@ El llamado a la acción es **agendar la llamada** (como en el carrito del 19), n
 | L3 | Link de la agenda (calendario de GHL) | Post-clase | Está en Configuración del tracker; confirmar cuál va |
 | L4 | Link de la repetición y cuánto dura | Post-clase, "no pude" | **Falta** (la página `/replay` existe) |
 | D1 | Lo que se ve en vivo (lista con ✅) | Sábado 10:00 | Sale de la clase v2: los 3 errores, el Método B.A.S.E. paso a paso, la cuenta con números reales, los casos |
-| D2 | Fecha y hora del cierre de Génesis para este grupo | Post-clase | **Falta** |
+| D2 | Fecha y hora del cierre de Génesis para este grupo | Post-clase | Domingo 25 a las 23:59 (confirmado) |
 
 ---
 
@@ -246,7 +246,7 @@ El llamado a la acción es **agendar la llamada** (como en el carrito del 19), n
 
 1. Link del grupo de WhatsApp de la clase del 23 y link de Zoom.
 2. Links de los 4 videos (R1 a R4): dónde están subidos.
-3. Cierre de Génesis para este grupo: día y hora.
+3. ~~Cierre de Génesis para este grupo~~: domingo 25 a las 23:59 (confirmado).
 4. Cuánto dura la repetición de la clase del 23.
 5. 5 a 10 mensajes reales de Manu por WhatsApp para calcar la voz (sigue pendiente desde el 30/09).
 6. Quién carga el flujo en GHL y con qué número sale.
