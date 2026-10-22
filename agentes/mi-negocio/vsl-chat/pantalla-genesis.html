@@ -1,0 +1,375 @@
+<title>Génesis por dentro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: una columna ancha que Manu scrollea en pantalla compartida, en el orden del guion: caso → 3 pasos → la cuenta → el modelo → casos → qué incluye → 10 marcas. */
+  :root {
+    --negro: #0B0B0C;
+    --negro-2: #141415;
+    --negro-3: #1D1D1F;
+    --linea: rgba(255,255,255,.09);
+    --hueso: #F2EDE4;
+    --gris: #8E8E93;
+    --gris-2: #B9B9BE;
+    --naranja: #F26A1B;
+    --naranja-suave: rgba(242,106,27,.14);
+    --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mano: "Caveat", "Comic Sans MS", cursive;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--negro); color: var(--hueso); font-family: var(--cuerpo); font-size: 17px; line-height: 1.55; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding-block: 40px 96px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 88px; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.08; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+  p { margin: 0; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--naranja); }
+  .sec { display: grid; gap: 28px; }
+  .sec-head { display: grid; gap: 10px; max-width: 720px; }
+  .sec-head h2 { font-size: clamp(30px, 4.2vw, 46px); font-weight: 700; }
+  .sec-head p { color: var(--gris-2); font-size: 18px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .nota { font-family: var(--mano); font-size: 26px; color: var(--naranja); line-height: 1.1; }
+
+  /* Hero */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--titulos); font-weight: 700; letter-spacing: .18em; font-size: 14px; }
+  .logo svg { width: 34px; height: 34px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid var(--linea); border-radius: 999px; color: var(--gris-2); }
+  .hero { display: grid; gap: 22px; padding-top: 24px; }
+  .hero h1 { font-size: clamp(38px, 6.4vw, 76px); font-weight: 800; max-width: 15ch; }
+  .hero h1 em { font-style: normal; color: var(--naranja); }
+  .hero p.lead { font-size: 20px; color: var(--gris-2); max-width: 60ch; }
+
+  /* Caso */
+  .caso { display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px; }
+  .tramo { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 18px; padding: 28px; display: grid; gap: 18px; min-width: 0; }
+  .tramo .fila { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+  .tramo .antes, .tramo .ahora { display: grid; gap: 4px; }
+  .tramo small { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); font-weight: 700; }
+  .tramo .antes b { font-family: var(--titulos); font-weight: 300; font-size: clamp(40px, 6vw, 64px); color: var(--gris-2); letter-spacing: -0.04em; line-height: 1; }
+  .tramo .ahora b { font-family: var(--titulos); font-weight: 700; font-size: clamp(56px, 9vw, 104px); color: var(--naranja); letter-spacing: -0.05em; line-height: .9; }
+  .tramo .flecha { font-family: var(--titulos); font-size: 40px; color: var(--gris); padding-bottom: 8px; }
+  .barras { display: grid; gap: 8px; }
+  .barra { height: 12px; border-radius: 6px; background: var(--negro-3); position: relative; overflow: hidden; }
+  .barra i { position: absolute; inset: 0 auto 0 0; border-radius: 6px; }
+  .stats { display: grid; gap: 12px; }
+  .stat { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 18px; padding: 20px 24px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .stat span { color: var(--gris-2); font-size: 15px; }
+  .stat b { font-family: var(--titulos); font-size: 34px; font-weight: 700; letter-spacing: -0.02em; }
+
+  /* Pasos */
+  .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: paso; }
+  .paso { border-top: 2px solid var(--naranja); padding-top: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .paso .n { font-family: var(--titulos); font-weight: 300; font-size: 56px; line-height: .9; color: var(--naranja); letter-spacing: -0.04em; }
+  .paso h3 { font-size: 24px; font-weight: 700; }
+  .paso p { color: var(--gris-2); font-size: 16px; }
+  .pie-pasos { color: var(--gris-2); font-size: 17px; }
+  .pie-pasos b { color: var(--hueso); }
+
+  /* Cuenta */
+  .cuenta { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 22px; padding: clamp(20px, 4vw, 36px); display: grid; gap: 28px; }
+  .inputs { display: flex; gap: 16px; flex-wrap: wrap; align-items: end; }
+  .campo { display: grid; gap: 6px; }
+  .campo label { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+  .campo input { font: 700 26px/1 var(--titulos); color: var(--hueso); background: var(--negro); border: 1px solid var(--linea); border-radius: 12px; padding: 12px 14px; width: 190px; max-width: 100%; font-variant-numeric: tabular-nums; }
+  .campo input:focus-visible, .seg button:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+  .seg { display: flex; border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; }
+  .seg button { font: 700 18px/1 var(--titulos); color: var(--gris-2); background: var(--negro); border: 0; padding: 15px 18px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--naranja); color: var(--negro); }
+  .techos { display: grid; gap: 18px; }
+  .techo { display: grid; grid-template-columns: 220px 1fr 140px; gap: 16px; align-items: center; }
+  .techo .lab { font-size: 15px; color: var(--gris-2); }
+  .techo .lab b { display: block; font-family: var(--titulos); color: var(--hueso); font-size: 18px; }
+  .techo .pista { height: 44px; background: var(--negro-3); border-radius: 10px; position: relative; overflow: hidden; min-width: 0; }
+  .techo .pista i { position: absolute; inset: 0 auto 0 0; border-radius: 10px; transition: width .4s ease; }
+  .techo .val { font-family: var(--titulos); font-weight: 700; font-size: 26px; text-align: right; font-variant-numeric: tabular-nums; }
+  .t-unica i { background: var(--gris); }
+  .t-susc i { background: var(--naranja); }
+  .t-op i { background: repeating-linear-gradient(135deg, var(--naranja) 0 10px, #d45813 10px 20px); }
+  .vivos { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; border-top: 1px dashed var(--linea); padding-top: 20px; }
+  .vivos b { font-family: var(--titulos); font-size: 30px; color: var(--naranja); }
+  .cpa-cac { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .modo { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 18px; padding: 24px; display: grid; gap: 16px; min-width: 0; }
+  .modo h3 { font-size: 22px; }
+  .modo h3 small { display: block; font-family: var(--cuerpo); font-size: 13px; font-weight: 600; color: var(--gris); letter-spacing: 0; margin-top: 4px; }
+  .pedidos { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pedido { flex: 1 1 64px; border-radius: 10px; padding: 10px; display: grid; gap: 2px; font-size: 12px; }
+  .pedido b { font-family: var(--titulos); font-size: 15px; }
+  .p-paga { background: var(--negro-3); color: var(--gris-2); border: 1px solid var(--linea); }
+  .p-entero { background: var(--naranja-suave); color: var(--hueso); border: 1px solid var(--naranja); }
+  .modo p { color: var(--gris-2); font-size: 15px; }
+
+  /* Modelo */
+  .modelo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rival { border-radius: 18px; padding: 28px; display: grid; gap: 8px; min-width: 0; }
+  .rival small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .rival b { font-family: var(--titulos); font-size: clamp(56px, 8vw, 88px); font-weight: 800; letter-spacing: -0.05em; line-height: .95; }
+  .rival p { font-size: 16px; }
+  .r-ellos { background: var(--negro-2); border: 1px solid var(--linea); color: var(--gris-2); }
+  .r-vos { background: var(--naranja); color: var(--negro); }
+  .remate { font-family: var(--titulos); font-size: clamp(22px, 3vw, 30px); font-weight: 600; max-width: 30ch; }
+  .remate em { font-style: normal; color: var(--naranja); }
+
+  /* Casos */
+  .casos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .caso-slot { border: 1.5px dashed var(--linea); border-radius: 18px; padding: 24px; display: grid; gap: 10px; min-height: 180px; align-content: start; min-width: 0; }
+  .caso-slot small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); }
+  .caso-slot p { color: var(--gris-2); font-size: 15px; }
+  .caso-slot .nota { font-size: 22px; }
+
+  /* Incluye */
+  .grupos { display: grid; gap: 28px; }
+  .grupo { display: grid; grid-template-columns: 220px 1fr; gap: 20px; border-top: 1px solid var(--linea); padding-top: 22px; }
+  .grupo h3 { font-size: 20px; }
+  .grupo h3 small { display: block; font-family: var(--cuerpo); font-size: 14px; font-weight: 500; color: var(--gris); margin-top: 6px; letter-spacing: 0; }
+  .items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; min-width: 0; }
+  .items li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+  .items .k { font-family: var(--titulos); font-weight: 700; font-size: 15px; color: var(--naranja); border: 1.5px solid var(--naranja); border-radius: 8px; text-align: center; padding: 2px 0; font-variant-numeric: tabular-nums; }
+  .items b { display: block; font-family: var(--titulos); font-size: 17px; }
+  .items span { color: var(--gris-2); font-size: 15px; }
+  .dfy { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--naranja); background: var(--naranja-suave); border-radius: 6px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .cierre-incluye { font-family: var(--titulos); font-size: 22px; font-weight: 600; color: var(--gris-2); max-width: 44ch; }
+  .cierre-incluye b { color: var(--hueso); }
+
+  /* Diez marcas */
+  .diez { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 22px; padding: clamp(24px, 4vw, 44px); display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; }
+  .puntos { display: grid; grid-template-columns: repeat(5, 40px); gap: 12px; }
+  .puntos i { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--naranja); }
+  .diez h2 { font-size: clamp(30px, 4vw, 44px); }
+  .diez p { color: var(--gris-2); margin-top: 12px; max-width: 52ch; }
+
+  @media (max-width: 760px) {
+    .caso, .cpa-cac, .modelo, .pasos, .casos, .diez { grid-template-columns: 1fr; }
+    .techo { grid-template-columns: 1fr 100px; }
+    .techo .pista { grid-column: 1 / -1; grid-row: 2; }
+    .grupo { grid-template-columns: 1fr; }
+    .items { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .techo .pista i { transition: none; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="3"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="3"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
+      GÉNESIS
+    </div>
+    <div class="chips"><span class="chip">Método B.A.S.E.</span><span class="chip">Consultoría 1 a 1</span><span class="chip">4 meses</span><span class="chip">Hecho por nosotros</span></div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Manu Dominguez · José</p>
+    <h1>Escalá tu ecomm de consumibles con <em>modelo de suscripción</em></h1>
+    <p class="lead">Sin depender del CPA ni dejar de vender. La suscripción va al lado de la compra única, sin tocarla.</p>
+  </section>
+
+  <section class="sec" id="caso">
+    <div class="sec-head">
+      <p class="eyebrow">Mi marca</p>
+      <h2>Lo hice primero en mi marca</h2>
+    </div>
+    <div class="caso">
+      <div class="tramo">
+        <div class="fila">
+          <div class="antes"><small>Compra única</small><b class="num">60M</b></div>
+          <div class="flecha">→</div>
+          <div class="ahora"><small>Con suscripción</small><b class="num">220M</b></div>
+        </div>
+        <div class="barras" aria-hidden="true">
+          <div class="barra"><i style="width:27.3%;background:var(--gris)"></i></div>
+          <div class="barra"><i style="width:100%;background:var(--naranja)"></i></div>
+        </div>
+        <p style="color:var(--gris-2);font-size:15px">Facturación mensual en pesos.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Suscriptores activos</span><b class="num">+3.200</b></div>
+        <div class="stat"><span>Churn</span><b class="num">1,28%</b></div>
+        <div class="stat"><span>LTV mínimo</span><b class="num">3 pedidos</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pasos">
+    <div class="sec-head">
+      <p class="eyebrow">El método en 3 pasos</p>
+      <h2>Que el mismo cliente te compre tres veces</h2>
+    </div>
+    <div class="pasos">
+      <div class="paso"><div class="n">1</div><h3>De pedido a suscriptor</h3><p>Tu suscripción definida según cada cuánto se le termina el producto al cliente. Instalada al lado de la compra única, y tu base actual pasada a suscripción.</p></div>
+      <div class="paso"><div class="n">2</div><h3>Migración sin frenar</h3><p>No se apaga nada. Producto, stock y caja ajustados para que la suscripción no te deje sin mercadería.</p></div>
+      <div class="paso"><div class="n">3</div><h3>Piso de facturación</h3><p>Retención para que el suscriptor se quede, y anuncios recalculados con el CPA que ahora te podés permitir.</p></div>
+    </div>
+    <p class="pie-pasos">El primer cobro recurrente cae con tu primer ciclo de reposición. <b>Si tu producto se termina en 30 días, a los 30.</b></p>
+  </section>
+
+  <section class="sec" id="cuenta">
+    <div class="sec-head">
+      <p class="eyebrow">La cuenta</p>
+      <h2>Cuánto podés pagar por cada cliente</h2>
+      <p>Cambiá el margen y el LTV para hacer la cuenta con tus números.</p>
+    </div>
+    <div class="cuenta">
+      <div class="inputs">
+        <div class="campo">
+          <label for="margen">Margen por pedido (ARS)</label>
+          <input id="margen" type="text" inputmode="numeric" value="30.000" autocomplete="off">
+        </div>
+        <div class="campo">
+          <label id="ltv-lab">LTV (pedidos por cliente)</label>
+          <div class="seg" role="group" aria-labelledby="ltv-lab">
+            <button type="button" data-ltv="2" aria-pressed="false">2</button>
+            <button type="button" data-ltv="3" aria-pressed="true">3</button>
+            <button type="button" data-ltv="4" aria-pressed="false">4</button>
+            <button type="button" data-ltv="5" aria-pressed="false">5</button>
+          </div>
+        </div>
+      </div>
+      <div class="techos">
+        <div class="techo t-unica"><div class="lab"><b>Techo compra única</b>Breakeven en la 1ª venta</div><div class="pista"><i id="b-unica"></i></div><div class="val" id="v-unica"></div></div>
+        <div class="techo t-susc"><div class="lab"><b>Techo con suscripción</b><span id="l-susc"></span></div><div class="pista"><i id="b-susc"></i></div><div class="val" id="v-susc"></div></div>
+        <div class="techo t-op"><div class="lab"><b>Punto operativo</b>Donde te recomiendo operar</div><div class="pista"><i id="b-op"></i></div><div class="val" id="v-op"></div></div>
+      </div>
+      <div class="vivos"><span style="color:var(--gris-2)">Te quedan vivos por cliente</span><b class="num" id="v-vivos"></b><span class="nota">y estás tranquilo</span></div>
+    </div>
+
+    <div class="cpa-cac">
+      <div class="modo">
+        <h3>Compra única: CPA<small>Lo pagás en cada venta</small></h3>
+        <div class="pedidos">
+          <div class="pedido p-paga"><b>1ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>2ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>3ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>4ª</b>pagás pauta</div>
+        </div>
+        <p>Cada cliente lo volvés a comprar todos los meses. El 1 del mes arrancás en cero.</p>
+      </div>
+      <div class="modo">
+        <h3>Suscripción: CAC<small>Se paga una vez</small></h3>
+        <div class="pedidos">
+          <div class="pedido p-paga"><b>1ª</b>pagás pauta</div>
+          <div class="pedido p-entero"><b>2ª</b>margen entero</div>
+          <div class="pedido p-entero"><b>3ª</b>margen entero</div>
+          <div class="pedido p-entero"><b>4ª</b>margen entero</div>
+        </div>
+        <p>La segunda, la tercera y la cuarta compra entran con el margen de contribución entero.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="modelo">
+    <div class="sec-head">
+      <p class="eyebrow">Competir por el modelo</p>
+      <h2>Lo que cada uno puede pagar por un cliente</h2>
+    </div>
+    <div class="modelo">
+      <div class="rival r-ellos"><small>Tu competencia</small><b class="num">USD 50</b><p>Compra única. Si paga más, pierde plata.</p></div>
+      <div class="rival r-vos"><small>Vos, con suscripción</small><b class="num">USD 75</b><p>Te sigue cerrando la cuenta. Y listo: ya no tenés competencia.</p></div>
+    </div>
+    <p class="remate">Si Meta te baja la cuenta, <em>los suscriptores se siguen cobrando.</em> La landing te la copian en 48 horas. Tu base de suscriptores, no.</p>
+  </section>
+
+  <section class="sec" id="casos">
+    <div class="sec-head">
+      <p class="eyebrow">Marcas que ya lo hicieron</p>
+      <h2>Casos</h2>
+    </div>
+    <div class="casos">
+      <div class="caso-slot"><small>Caso 1</small><p>Marca de 30 a 50M en breakeven. Punto A y resultado, con captura.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 2</small><p>Marca que tenía miedo de romper la compra única.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 3</small><p>Marca que creía que en Argentina nadie se suscribe.</p><span class="nota">por cargar</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="incluye">
+    <div class="sec-head">
+      <p class="eyebrow">Qué incluye Génesis</p>
+      <h2>4 meses, 1 a 1, hecho por nosotros</h2>
+    </div>
+    <div class="grupos">
+      <div class="grupo">
+        <h3>Diagnóstico<small>Arrancamos por tus números</small></h3>
+        <ul class="items">
+          <li><span class="k">1</span><div><b>Roadmap de conversión</b><span>Auditoría de tus números: margen real por pedido, CPA actual y techo de pauta con LTV.</span></div></li>
+        </ul>
+      </div>
+      <div class="grupo">
+        <h3>Lo hacemos nosotros<small>Vos seguís operando tu marca</small></h3>
+        <ul class="items">
+          <li><span class="k">2</span><div><b>Variante de suscripción <span class="dfy">DFY</span></b><span>Definida, precificada y validada contra tu ciclo de reposición real.</span></div></li>
+          <li><span class="k">3</span><div><b>Tienda con suscripción <span class="dfy">DFY</span></b><span>Cobro recurrente, checkout y landing al lado de la compra única. Tiendanube, Shopify o la que uses.</span></div></li>
+          <li><span class="k">4</span><div><b>Conversión de tu base <span class="dfy">DFY</span></b><span>Secuencia de mail y WhatsApp a los que ya te compraron.</span></div></li>
+          <li><span class="k">5</span><div><b>Anuncios al CPA nuevo <span class="dfy">DFY</span></b><span>Ángulos, creativos y campañas recalculadas con tu LTV.</span></div></li>
+          <li><span class="k">6</span><div><b>Backend de retención <span class="dfy">DFY</span></b><span>Postventa, cadencia de contacto y recuperación de bajas.</span></div></li>
+          <li><span class="k">7</span><div><b>Stock y reposición <span class="dfy">DFY</span></b><span>Proyecciones sobre tu base de suscriptores.</span></div></li>
+          <li><span class="k">8</span><div><b>Tablero de suscriptores <span class="dfy">DFY</span></b><span>Activos, churn y recompra, con reporte semanal.</span></div></li>
+          <li><span class="k">9</span><div><b>Cuenta de formalización <span class="dfy">DFY</span></b><span>En qué punto de tu base te cierra pasar a blanco.</span></div></li>
+        </ul>
+      </div>
+      <div class="grupo">
+        <h3>Acompañamiento<small>Manu y José, con vos</small></h3>
+        <ul class="items">
+          <li><span class="k">10</span><div><b>Sesiones con Manu</b><span>Hasta instalar la suscripción. Después, chequeo semanal 1 a 1.</span></div></li>
+          <li><span class="k">11</span><div><b>Chat 1 a 1 directo</b><span>Con Manu y José. Cuando algo no anda, nos escribís.</span></div></li>
+          <li><span class="k">12</span><div><b>SOPs de cada pieza</b><span>Para que quede en tu marca y lo opere tu equipo.</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <p class="cierre-incluye">La inversión la vemos en la llamada, <b>con tus números adelante.</b></p>
+  </section>
+
+  <section class="diez" id="lugares">
+    <div class="puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div>
+      <p class="eyebrow">Cupo</p>
+      <h2>Tomamos 10 marcas</h2>
+      <p>Es 1 a 1 y la instalación la hacemos José y Manu. Queremos que las 10 marcas que entren terminen siendo casos de éxito.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const fmt = n => n.toLocaleString("es-AR", { maximumFractionDigits: 0 });
+  const margenEl = document.getElementById("margen");
+  let ltv = 3;
+
+  function leerMargen() {
+    const n = parseInt(margenEl.value.replace(/\D/g, ""), 10);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+  }
+
+  function pintar() {
+    const m = leerMargen();
+    const susc = m * ltv;
+    const op = Math.round(susc * 75 / 90);
+    const max = susc || 1;
+    document.getElementById("v-unica").textContent = "$" + fmt(m);
+    document.getElementById("v-susc").textContent = "$" + fmt(susc);
+    document.getElementById("v-op").textContent = "$" + fmt(op);
+    document.getElementById("v-vivos").textContent = "$" + fmt(susc - op);
+    document.getElementById("l-susc").textContent = "Margen × LTV " + ltv;
+    document.getElementById("b-unica").style.width = (m / max * 100) + "%";
+    document.getElementById("b-susc").style.width = "100%";
+    document.getElementById("b-op").style.width = (op / max * 100) + "%";
+  }
+
+  margenEl.addEventListener("input", () => {
+    const m = leerMargen();
+    margenEl.value = m ? fmt(m) : "";
+    pintar();
+  });
+
+  document.querySelectorAll(".seg button").forEach(b => {
+    b.addEventListener("click", () => {
+      ltv = Number(b.dataset.ltv);
+      document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      pintar();
+    });
+  });
+
+  pintar();
+</script>

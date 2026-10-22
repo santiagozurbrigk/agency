@@ -1,0 +1,279 @@
+<title>Fast Subscriptions por dentro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;600;700;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: una columna sobre papel hueso (la versión clara de la marca, para el que arranca), en el orden del guion: la idea → los 3 pasos → la pregunta → qué incluye → casos → puertas. */
+  :root {
+    --papel: #F2EDE4;
+    --papel-2: #E9E2D6;
+    --tinta: #17181C;
+    --tinta-2: #4A4B50;
+    --tinta-3: #7A7A80;
+    --linea: rgba(23,24,28,.12);
+    --naranja: #E05F14;
+    --naranja-suave: rgba(224,95,20,.12);
+    --blanco: #FBF9F5;
+    --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --mano: "Caveat", "Comic Sans MS", cursive;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--papel); color: var(--tinta); font-family: var(--cuerpo); font-size: 17px; line-height: 1.55; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 96px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 84px; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.08; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+  p { margin: 0; }
+  .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--naranja); }
+  .sec { display: grid; gap: 28px; }
+  .sec-head { display: grid; gap: 10px; max-width: 700px; }
+  .sec-head h2 { font-size: clamp(30px, 4.2vw, 46px); font-weight: 700; }
+  .sec-head p { color: var(--tinta-2); font-size: 18px; }
+  .nota { font-family: var(--mano); font-size: 26px; color: var(--naranja); line-height: 1.1; }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; font-family: var(--titulos); font-weight: 700; letter-spacing: .16em; font-size: 14px; }
+  .logo svg { width: 34px; height: 34px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border: 1px solid var(--linea); border-radius: 999px; color: var(--tinta-2); }
+  .hero { display: grid; gap: 22px; padding-top: 24px; }
+  .hero h1 { font-size: clamp(38px, 6.4vw, 74px); font-weight: 800; max-width: 16ch; }
+  .hero h1 em { font-style: normal; color: var(--naranja); }
+  .hero .lead { font-size: 20px; color: var(--tinta-2); max-width: 58ch; }
+
+  /* La idea */
+  .ventas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .venta { border-radius: 16px; padding: 22px; display: grid; gap: 6px; min-width: 0; }
+  .venta b { font-family: var(--titulos); font-weight: 300; font-size: 56px; line-height: .9; letter-spacing: -0.04em; }
+  .venta span { font-size: 15px; }
+  .v-1 { background: var(--papel-2); color: var(--tinta-2); }
+  .v-n { background: var(--naranja); color: var(--blanco); }
+  .contraste { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .lado { border-radius: 18px; padding: 26px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .lado h3 { font-size: 24px; }
+  .lado ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .lado li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 16px; }
+  .l-ganador { background: var(--blanco); border: 1px solid var(--linea); color: var(--tinta-2); }
+  .l-ganador li::before { content: "×"; color: var(--tinta-3); font-weight: 700; }
+  .l-consumible { background: var(--tinta); color: var(--papel); }
+  .l-consumible h3 { color: var(--blanco); }
+  .l-consumible li::before { content: "→"; color: var(--naranja); font-weight: 700; }
+
+  /* Pasos */
+  .camino { display: grid; grid-template-columns: repeat(3, 1fr) 0.8fr; gap: 14px; align-items: stretch; }
+  .paso { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 24px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .paso .n { font-family: var(--titulos); font-weight: 300; font-size: 52px; line-height: .9; color: var(--naranja); letter-spacing: -0.04em; }
+  .paso h3 { font-size: 22px; }
+  .paso p { color: var(--tinta-2); font-size: 15px; }
+  .despues { border: 1.5px dashed var(--naranja); border-radius: 18px; padding: 24px; display: grid; gap: 8px; align-content: center; min-width: 0; }
+  .despues small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--naranja); }
+  .despues b { font-family: var(--titulos); font-size: 22px; }
+  .despues p { color: var(--tinta-2); font-size: 14px; }
+
+  /* La pregunta */
+  .pregunta { background: var(--tinta); color: var(--papel); border-radius: 22px; padding: clamp(22px, 4vw, 40px); display: grid; gap: 22px; }
+  .pregunta h2 { color: var(--blanco); font-size: clamp(26px, 3.6vw, 40px); }
+  .tachado { color: var(--tinta-3); text-decoration: line-through; font-family: var(--titulos); font-size: 20px; }
+  .opciones { display: flex; gap: 10px; flex-wrap: wrap; }
+  .opciones button { font: 600 16px/1 var(--cuerpo); color: var(--papel); background: transparent; border: 1px solid rgba(242,237,228,.25); border-radius: 999px; padding: 12px 16px; cursor: pointer; }
+  .opciones button[aria-pressed="true"] { background: var(--naranja); border-color: var(--naranja); color: var(--blanco); }
+  .opciones button:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+  .respuesta { font-family: var(--titulos); font-size: 22px; font-weight: 600; min-height: 2.4em; color: var(--blanco); max-width: 40ch; }
+  .respuesta em { font-style: normal; color: var(--naranja); }
+
+  /* Incluye */
+  .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pilar { background: var(--blanco); border: 1px solid var(--linea); border-radius: 18px; padding: 26px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .pilar small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--naranja); }
+  .pilar h3 { font-size: 26px; }
+  .pilar ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .pilar li { font-size: 16px; color: var(--tinta-2); border-top: 1px solid var(--linea); padding-top: 10px; }
+  .pilar li b { color: var(--tinta); }
+  .semana { display: grid; gap: 12px; }
+  .semana-fila { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .clase { border-radius: 12px; padding: 12px 16px; font-size: 15px; font-weight: 600; }
+  .c-manu { background: var(--naranja); color: var(--blanco); }
+  .c-jose { background: var(--tinta); color: var(--papel); }
+  .c-chat { border: 1.5px dashed var(--tinta-3); color: var(--tinta-2); }
+  .semana p { color: var(--tinta-2); font-size: 16px; }
+  .semana p b { color: var(--tinta); font-family: var(--titulos); font-size: 20px; }
+  .aclaracion { font-family: var(--titulos); font-size: 22px; font-weight: 600; color: var(--tinta-2); max-width: 46ch; }
+  .aclaracion b { color: var(--tinta); }
+
+  /* Casos */
+  .casos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .caso-slot { border: 1.5px dashed var(--linea); border-radius: 18px; padding: 24px; display: grid; gap: 10px; min-height: 170px; align-content: start; min-width: 0; }
+  .caso-slot small { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3); }
+  .caso-slot p { color: var(--tinta-2); font-size: 15px; }
+  .caso-slot .nota { font-size: 22px; }
+
+  /* Puertas */
+  .puertas { border-top: 2px solid var(--tinta); padding-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: end; }
+  .puertas h2 { font-size: clamp(30px, 4vw, 46px); }
+  .puertas p { color: var(--tinta-2); font-size: 18px; }
+
+  @media (max-width: 760px) {
+    .ventas { grid-template-columns: 1fr 1fr; }
+    .contraste, .camino, .pilares, .casos, .puertas { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--tinta)" stroke-width="3"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--tinta)" stroke-width="3"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
+      FAST SUBSCRIPTIONS
+    </div>
+    <div class="chips"><span class="chip">Mentoría</span><span class="chip">3 meses</span><span class="chip">Grupal</span><span class="chip">Lo implementás vos, con nosotros al lado</span></div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Manu Dominguez · José</p>
+    <h1>Arrancá en ecommerce <em>por el lado correcto</em></h1>
+    <p class="lead">Un consumible, un proceso paso a paso y alguien al lado que ya lo hizo. Para que tu marca venda todos los meses.</p>
+  </section>
+
+  <section class="sec" id="idea">
+    <div class="sec-head">
+      <p class="eyebrow">La idea</p>
+      <h2>La plata de un consumible no está en la primera venta</h2>
+      <p>Un consumible es un producto que se termina. Si se termina, el cliente lo vuelve a comprar. A vos, si lo hiciste bien.</p>
+    </div>
+    <div class="ventas">
+      <div class="venta v-1"><b>1ª</b><span>La que te cuesta conseguir</span></div>
+      <div class="venta v-n"><b>2ª</b><span>El mismo cliente vuelve</span></div>
+      <div class="venta v-n"><b>3ª</b><span>Vuelve otra vez</span></div>
+      <div class="venta v-n"><b>4ª</b><span>Ahí está la plata</span></div>
+    </div>
+    <div class="contraste">
+      <div class="lado l-ganador">
+        <h3>Producto ganador</h3>
+        <ul>
+          <li>Pensado para la primera venta, para el pico</li>
+          <li>Se compra una vez y listo</li>
+          <li>Cada venta te cuesta lo mismo que la anterior</li>
+          <li>Se quema y salís a buscar otro</li>
+        </ul>
+      </div>
+      <div class="lado l-consumible">
+        <h3>Consumible</h3>
+        <ul>
+          <li>Tu cliente lo necesita de nuevo en 30 o 60 días</li>
+          <li>Cada cliente es el arranque de una base</li>
+          <li>Armás la marca para que te vuelvan a comprar</li>
+          <li>Cuando vende constante, el paso siguiente es la suscripción</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pasos">
+    <div class="sec-head">
+      <p class="eyebrow">El camino en 3 pasos</p>
+      <h2>Primero, la base</h2>
+    </div>
+    <div class="camino">
+      <div class="paso"><div class="n">1</div><h3>Elegís un consumible</h3><p>Un producto que se termina y se vuelve a comprar.</p></div>
+      <div class="paso"><div class="n">2</div><h3>Lo lanzás</h3><p>Tu tienda, tu oferta y tus primeras ventas con Meta Ads, paso a paso.</p></div>
+      <div class="paso"><div class="n">3</div><h3>Que venda todos los meses</h3><p>De forma constante. Y recién ahí escalás.</p></div>
+      <div class="despues"><small>Después</small><b>Suscripción</b><p>Cuando tu marca vende constante, ese es el paso siguiente.</p></div>
+    </div>
+  </section>
+
+  <section class="pregunta" id="pregunta">
+    <p class="eyebrow">La primera pregunta</p>
+    <p class="tachado">¿Esto se vende?</p>
+    <h2>¿Cada cuánto se le termina al cliente?</h2>
+    <div class="opciones" role="group" aria-label="Cada cuánto se le termina al cliente">
+      <button type="button" data-r="30" aria-pressed="false">Menos de 30 días</button>
+      <button type="button" data-r="60" aria-pressed="true">30 a 60 días</button>
+      <button type="button" data-r="90" aria-pressed="false">60 a 90 días</button>
+      <button type="button" data-r="mas" aria-pressed="false">Más de 90 días</button>
+      <button type="button" data-r="una" aria-pressed="false">Se compra una vez y listo</button>
+    </div>
+    <p class="respuesta" id="respuesta" aria-live="polite"></p>
+  </section>
+
+  <section class="sec" id="incluye">
+    <div class="sec-head">
+      <p class="eyebrow">Qué incluye</p>
+      <h2>3 meses, con nosotros al lado</h2>
+    </div>
+    <div class="pilares">
+      <div class="pilar">
+        <small>Uno</small><h3>Acompañamiento</h3>
+        <ul>
+          <li><b>Chat 1 a 1 directo con José.</b> Cuando te trabás, le escribís.</li>
+          <li><b>1 clase grupal por semana</b> con Manu.</li>
+          <li><b>2 clases grupales por semana</b> con José.</li>
+        </ul>
+      </div>
+      <div class="pilar">
+        <small>Dos</small><h3>El sistema</h3>
+        <ul>
+          <li><b>Curso grabado en Whop.</b></li>
+          <li>SOPs y roadmaps: qué hacer hoy, mañana y en qué orden.</li>
+          <li>Sistemas y contactos.</li>
+        </ul>
+      </div>
+      <div class="pilar">
+        <small>Tres</small><h3>La comunidad</h3>
+        <ul>
+          <li>Otros que están en tu mismo punto.</li>
+          <li>Para preguntar y compartir lo que te funciona.</li>
+          <li>Para tener con quién hablarlo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="semana">
+      <div class="semana-fila">
+        <span class="clase c-manu">Clase con Manu</span>
+        <span class="clase c-jose">Clase con José</span>
+        <span class="clase c-jose">Clase con José</span>
+        <span class="clase c-chat">+ chat con José todos los días</span>
+      </div>
+      <p><b>3 clases por semana, durante 3 meses.</b> No estás solo con esto.</p>
+    </div>
+    <p class="aclaracion">No es "lo hacemos por vos". Es <b>lo hacés vos, con alguien que ya lo hizo mirando lo que hacés.</b> La inversión la vemos en la llamada.</p>
+  </section>
+
+  <section class="sec" id="casos">
+    <div class="sec-head">
+      <p class="eyebrow">Los que ya arrancaron</p>
+      <h2>Casos</h2>
+    </div>
+    <div class="casos">
+      <div class="caso-slot"><small>Caso 1</small><p>Arrancó sin producto. De dónde partió y resultado, con captura.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 2</small><p>Tenía producto y vendía poco o nada.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 3</small><p>Venía de otro curso y hoy vende todos los meses.</p><span class="nota">por cargar</span></div>
+    </div>
+  </section>
+
+  <section class="puertas" id="puertas">
+    <div>
+      <p class="eyebrow">Esta apertura</p>
+      <h2>Cuando termina, cerramos las puertas</h2>
+    </div>
+    <p>No es un tema de cupos. Después de esta apertura dejamos de tomar gente, y hoy no sabemos cuándo vamos a volver a abrir.</p>
+  </section>
+
+</div>
+
+<script>
+  const respuestas = {
+    "30": "Se termina rápido: <em>te puede comprar todos los meses.</em> Es un consumible.",
+    "60": "Cada uno o dos meses vuelve a necesitarlo: <em>es un consumible.</em>",
+    "90": "Vuelve a comprar, pero más espaciado. <em>Sirve, con un ciclo más largo.</em>",
+    "mas": "El ciclo es largo. <em>Lo vemos en la llamada</em> con tu producto puntual.",
+    "una": "No es un consumible: <em>cada venta te va a costar lo mismo que la anterior.</em>"
+  };
+  const out = document.getElementById("respuesta");
+  const botones = document.querySelectorAll(".opciones button");
+  function elegir(b) {
+    botones.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    out.innerHTML = respuestas[b.dataset.r];
+  }
+  botones.forEach(b => b.addEventListener("click", () => elegir(b)));
+  elegir(document.querySelector('.opciones button[aria-pressed="true"]'));
+</script>
