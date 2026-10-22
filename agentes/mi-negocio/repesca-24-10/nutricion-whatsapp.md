@@ -113,7 +113,7 @@ Si no se graba el video:
 >
 > Yo lo creía.
 >
-> Hoy tengo 2.200 suscriptores activos en Argentina. 1,28% de churn. No se van.
+> Hoy tengo más de 3.500 suscriptores activos en Argentina. Menos de 5% de churn. No se van.
 >
 > No es cultura. Es cómo se arma la suscripción. Eso lo vemos mañana, sábado 24, a las 18.
 

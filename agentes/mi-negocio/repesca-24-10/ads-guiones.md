@@ -19,7 +19,7 @@ Bloques: **HOOK → PRUEBA → FILTRO → LA CLASE DEL 19 → ANUNCIO DE LA REPE
 
 ---
 
-## RP-1 · El número · "Con 2.200 suscriptores, sin pelear el CPA"
+## RP-1 · El número · "Con +3.500 suscriptores, sin pelear el CPA"
 
 **PRIMER FRAME:** reporte de facturación del mes en pantalla. Texto: **"+$250M · SÁBADO 24/10 · 18 HS"**.
 
@@ -29,7 +29,7 @@ Más de 250 millones es lo que factura mi ecom de químicos. Sin un creativo nue
 
 **PRUEBA** (6–14 s)
 
-Lo único que cambié fue el modelo. Hoy tengo 2.200 suscriptores activos, con 1,28% de churn, que me compran todos los meses sin que los tenga que volver a pautar.
+Lo único que cambié fue el modelo. Hoy tengo más de 3.500 suscriptores activos, con menos de 5% de churn, que me compran todos los meses sin que los tenga que volver a pautar.
 
 **FILTRO** (14–21 s)
 
@@ -53,7 +53,7 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 
 **CAPTION**
 
-> Más de 250 millones factura mi ecom de químicos, con 2.200 suscriptores activos y 1,28% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este sábado 24 de octubre, a las 18, la vuelvo a dar por última vez en vivo** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
+> Más de 250 millones factura mi ecom de químicos, con más de 3.500 suscriptores activos y menos de 5% de churn. El lunes 19 di una clase privada con 200 personas y mucha gente se quedó afuera, así que **este sábado 24 de octubre, a las 18, la vuelvo a dar por última vez en vivo** para los que se la perdieron: cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones. Regalo por asistir: el roadmap, el Simulador de Suscripción y la IA que te escribe los flujos de email para Klaviyo. Solo ecommerce en Tiendanube o Shopify. 100% gratis. Anotate 👇
 
 ---
 
@@ -67,11 +67,11 @@ Es lo único que necesitás para poder pagar 2,5 veces más por cada cliente que
 | ¿Sabés qué tienen en común? | (cara) |
 | Productos distintos. Clientes distintos. Países distintos. Pero los tres venden exactamente igual. | (cara) |
 | Y spoiler: ninguno es con un creativo mejor ni con un CPA más bajo que el tuyo. | (cara) |
-| **PRUEBA** (17–28 s) — Es con esto *(levanta el pote)*: con suscripción. El cliente compra una vez y te paga todos los meses. Y es lo mismo que me permitió escalar mi ecom de químicos a más de 250 millones, con 2.200 suscriptores activos. | (pote del producto) → panel de suscriptores: 2.200 activos · 1,28% churn. |
+| **PRUEBA** (17–28 s) — Es con esto *(levanta el pote)*: con suscripción. El cliente compra una vez y te paga todos los meses. Y es lo mismo que me permitió escalar mi ecom de químicos a más de 250 millones, con más de 3.500 suscriptores activos. | (pote del producto) → panel de suscriptores: +3.500 activos · menos de 5% de churn. |
 | **FILTRO** (28–34 s) — Ojo: esto es para ecommerce de consumibles en Tiendanube o Shopify que ya facturan más de 30 millones por mes. Locales y Mercado Libre, no. | Lista con tachado rojo: ~~Local a la calle~~ · ~~Solo Mercado Libre~~ → ✅ **Ecommerce + Meta Ads**. |
 | **LA CLASE DEL 19 + REPESCA** (34–45 s) — El lunes 19 di una clase privada con 200 personas, y como mucha gente no pudo entrar, este sábado 24 de octubre la vuelvo a dar por última vez en vivo, para todos los que se la perdieron. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. | Banda: **SÁBADO 24/10 · 18 HS**. |
 | **QUÉ TE LLEVÁS** (45–62 s) — Cómo migrar tu base de compradores a suscripción el primer mes, sin frenar lo que hoy vendés. Cuánto podés pagar por cada cliente cuando te compra tres veces y no una. Cómo armar los flujos de email que le cobran a tu base todos los meses. Y todo lo que tenés que hacer para que el suscriptor se quede. | (empezar a mostrar las slides de la clase) |
-| **CTA** (62–70 s) — Es el mismo método con el que tengo 1,28% de churn. Este sábado 24 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
+| **CTA** (62–70 s) — Es el mismo método con el que tengo menos de 5% de churn. Este sábado 24 de octubre lo muestro todo. Hacé clic en este anuncio y reservá tu lugar. Te espero ahí. | (empezar con la cara y terminar con el tablero) |
 
 **CAPTION**
 
@@ -107,7 +107,7 @@ Tres: "Ayer íbamos 600 lucas abajo. Apagamos todo." Y el 1 del mes, otra vez en
 
 **LO QUE TIENEN EN COMÚN** (50–62 s)
 
-Y hay una cosa que quiero que te lleves: ninguna de las tres se arregla con un creativo mejor. Se arregla cambiando el modelo. Hoy tengo 2.200 suscriptores activos, con 1,28% de churn, y una marca que con la pauta apagada sigue cobrando recurrencias con un 50% de margen.
+Y hay una cosa que quiero que te lleves: ninguna de las tres se arregla con un creativo mejor. Se arregla cambiando el modelo. Hoy tengo más de 3.500 suscriptores activos, con menos de 5% de churn, y una marca que con la pauta apagada sigue cobrando recurrencias con un 50% de margen.
 
 Entre estar estancado y eso no hay más esfuerzo ni más pauta. Hay un sistema replicable en el medio: el Método B.A.S.E.
 
