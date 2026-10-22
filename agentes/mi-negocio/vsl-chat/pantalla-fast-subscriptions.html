@@ -158,6 +158,19 @@
   .descuento small { white-space: normal; display: block; font-size: 15px; font-weight: 300; letter-spacing: 0; color: inherit; opacity: .85; margin-top: 10px; }
   .of-cierre { font-size: 20px; font-weight: 300; opacity: .75; max-width: 46ch; }
   @media (max-width: 860px) { .of-fila, .of-fila.dos, .bloque.info { grid-template-columns: 1fr; } }
+
+  /* Ruta: del producto a la suscripción */
+  .ruta { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; position: relative; }
+  .etapa { display: grid; grid-template-columns: 56px 1fr 1fr; gap: 24px; align-items: start; padding: 26px 28px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .e-n { font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); padding-top: 6px; }
+  .e-txt { display: grid; gap: 8px; min-width: 0; }
+  .e-txt h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .e-txt p { color: var(--tinta-2); font-size: 15px; font-weight: 300; max-width: 46ch; }
+  .e-con { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; padding-top: 4px; min-width: 0; }
+  .e-con span { font-size: 12.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); color: var(--tinta-2); }
+  .etapa.final { border-color: var(--naranja-borde); background: linear-gradient(180deg, rgba(232,130,58,.12), rgba(232,130,58,.03)); box-shadow: 0 0 60px rgba(201,92,24,.16); }
+  .etapa.final .e-con span { border-color: var(--naranja-borde); color: var(--naranja); }
+  @media (max-width: 760px) { .etapa { grid-template-columns: 40px 1fr; } .e-con { grid-column: 2; } }
 </style>
 
 <div class="wrap">
@@ -212,15 +225,37 @@
 
   <section class="sec" id="pasos">
     <div class="sec-head">
-      <p class="eyebrow">El camino en 3 pasos</p>
-      <h2>Primero, la base</h2>
+      <p class="eyebrow">El camino completo</p>
+      <h2>Te acompañamos desde el producto hasta la suscripción</h2>
+      <p>No arrancás solo ni a ciegas. En cada etapa sabés qué hacer y tenés con qué hacerlo.</p>
     </div>
-    <div class="camino">
-      <div class="paso"><div class="n">1</div><h3>Elegís un consumible</h3><p>Un producto que se termina y se vuelve a comprar.</p></div>
-      <div class="paso"><div class="n">2</div><h3>Lo lanzás</h3><p>Tu tienda, tu oferta y tus primeras ventas con Meta Ads, paso a paso.</p></div>
-      <div class="paso"><div class="n">3</div><h3>Que venda todos los meses</h3><p>De forma constante. Y recién ahí escalás.</p></div>
-      <div class="despues"><small>Después</small><b>Suscripción</b><p>Cuando tu marca vende constante, ese es el paso siguiente.</p></div>
-    </div>
+    <ol class="ruta">
+      <li class="etapa">
+        <span class="e-n">01</span>
+        <div class="e-txt"><h3>Buscar el producto</h3><p>Te ayudamos a elegir un consumible: un producto que se termina y tu cliente vuelve a comprar. La primera pregunta es cada cuánto se le termina.</p></div>
+        <div class="e-con"><span>SOPs de Investigación</span><span>Contactos de proveedores</span><span>Laboratorios</span><span>Registro INPI, ANMAT y SENASA</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">02</span>
+        <div class="e-txt"><h3>Validarlo</h3><p>Antes de poner plata fuerte, probamos que se venda: la oferta, la landing y los primeros anuncios.</p></div>
+        <div class="e-con"><span>SOPs de Oferta</span><span>SOPs de Landings</span><span>SOPs de Ads</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">03</span>
+        <div class="e-txt"><h3>Lanzarlo</h3><p>Tu tienda funcionando, con la operación atrás: atención al cliente, logística y creativos.</p></div>
+        <div class="e-con"><span>SOPs de Operaciones</span><span>SOPs de Logística</span><span>SOPs de Atención al cliente</span><span>SOPs de Edición y creativos</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">04</span>
+        <div class="e-txt"><h3>Escalarlo</h3><p>Que venda todos los meses de forma constante. Ahí subimos la pauta y armamos la retención para que el cliente vuelva.</p></div>
+        <div class="e-con"><span>SOPs de Media buying</span><span>SOPs de Copywriting y guiones</span><span>SOPs de Retención</span></div>
+      </li>
+      <li class="etapa final">
+        <span class="e-n">05</span>
+        <div class="e-txt"><h3>Pasarlo a suscripción</h3><p>Con la marca vendiendo constante, instalamos la suscripción con vos. Ese es el modelo con el que Manu escaló sus marcas.</p></div>
+        <div class="e-con"><span>Suscripción instalada</span><span>Tablero de suscriptores y bajas</span><span>Software propio</span></div>
+      </li>
+    </ol>
   </section>
 
   <section class="pregunta" id="pregunta">
