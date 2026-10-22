@@ -1,17 +1,17 @@
-# Nutrición · Mails · Clase del viernes 23/10
+# Nutrición · Mails · Clase del sábado 24/10
 
 Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../lanzamiento-19-10/contenido/06-nutricion-mails.md`) y los del día del vivo (`07-dia-del-vivo.md`). Siguen la misma cadena que el grupo de WhatsApp (`nutricion-whatsapp.md`), pero cada mail se sostiene solo: mucha gente lee el mail y no el grupo.
 
-**Clase:** viernes 23 de octubre, **18 hs** (Argentina), en vivo. **Es la última vez que la doy en vivo.**
+**Clase:** sábado 24 de octubre, **18 hs** (Argentina), en vivo. **Es la última vez que la doy en vivo.**
 **Promesa:** cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones.
 
 ## Reglas
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
-- **Un solo link por mail:** el grupo de WhatsApp el jueves, la clase el viernes, la agenda el sábado. Única excepción: M-6 (la repetición, y la agenda en la PD).
+- **Un solo link por mail:** el grupo de WhatsApp el jueves y el viernes; el calendario o la clase el sábado.
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "la del lunes" · "sin grabación".
-- **Sin precio.** El precio se ve en la llamada.
-- **Urgencia solo real:** "última vez en vivo" (confirmado) y los lugares reales de Génesis (`[N]`).
+- **Sin precio y sin vender:** el cómo y la oferta viven en la clase.
+- **Urgencia solo real:** "última vez en vivo" (confirmado).
 
 ## Resumen
 
@@ -19,26 +19,24 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 |---|---|---|---|
 | M-1 | Jue 22 · 08:30 | Por qué cada venta te cuesta lo mismo que la anterior | Grupo |
 | M-2 | Jue 22 · 18:00 | Tu competencia paga 50. ¿Y vos? | Grupo |
-| M-3 | Vie 23 · 08:30 | Hoy a las 18 hs | Calendario |
-| M-4 | Vie 23 · 17:00 | En 1 hora (link adentro) | Clase |
-| M-5 | Vie 23 · 17:55 | Estamos entrando | Clase |
-| M-6 | Sáb 24 · 08:30 | La repetición de anoche | Repetición + agenda |
-| M-7 | Sáb 24 · 13:00 | "¿Y si rompo lo que hoy vende?" | Agenda |
-| M-8 | Sáb 24 · 19:00 | Quedan [N] lugares | Agenda |
-| M-9 | Sáb 24 · 22:30 | Cierra en una hora y media | Agenda |
+| M-3 | Vie 23 · 08:30 | "7 lucas de ganancia. Sobreviviendo." | Grupo |
+| M-4 | Vie 23 · 18:00 | Si mañana Meta te baja la cuenta | Grupo |
+| M-5 | Sáb 24 · 08:30 | Hoy a las 18 hs | Calendario |
+| M-6 | Sáb 24 · 17:00 | En 1 hora (link adentro) | Clase |
+| M-7 | Sáb 24 · 17:55 | Estamos entrando | Clase |
 
-**Datos a completar antes de mandar:** `[LINK GRUPO]` · `[LINK CALENDARIO]` · `[LINK CLASE]` · `[LINK REPLAY]` · `[LINK AGENDA]` · `[N]` lugares que quedan · **hora de cierre de Génesis para este grupo** (acá se usa sábado 24 a las 23:59, confirmar).
+**Datos a completar antes de mandar:** `[LINK GRUPO]` · `[LINK CALENDARIO]` · `[LINK CLASE]`.
 
 ---
 
 ## M-1 · Jueves 22 · 08:30
 
 **Asunto:** Por qué cada venta te cuesta lo mismo que la anterior
-**Preheader:** No es tu creativo. Mañana, 18 hs.
+**Preheader:** No es tu creativo. Sábado 24, 18 hs.
 
 > Hola,
 >
-> Te anotaste a la clase en vivo privada de **mañana, viernes 23, a las 18 hs**. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. Es la última vez que la doy en vivo.
+> Te anotaste a la clase en vivo privada del **sábado 24 a las 18 hs**. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. Es la última vez que la doy en vivo.
 >
 > Antes quiero dejarte una idea, porque es la base de todo lo que vamos a ver.
 >
@@ -50,7 +48,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Hoy tengo 2.200 suscriptores activos, con 1,28% de churn.
 >
-> En el grupo de WhatsApp te voy dejando el resto de la cuenta hasta mañana:
+> En el grupo de WhatsApp te voy dejando el resto de la cuenta hasta el sábado:
 >
 > **[Entrar al grupo →]** `[LINK GRUPO]`
 >
@@ -79,9 +77,70 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Si tu competencia puede gastar 50 dólares para adquirir un cliente, y vos podés gastar 75, y listo: ya no tenés competencia.
 >
-> ¿Cómo podés pagar 75? Porque ese cliente te compra tres veces, no una. Y si pensás que en Argentina nadie se suscribe: 2.200 suscriptores activos, 1,28% de churn. No se van.
+> ¿Cómo podés pagar 75? Porque ese cliente te compra tres veces, no una. Eso es lo que te muestro el **sábado 24 a las 18 hs**, en vivo.
 >
-> Eso es lo que te muestro **mañana, viernes 23, a las 18 hs**, en vivo. Y a los que se queden hasta el final les regalo:
+> Mañana: qué pasa con tu margen cuando el mismo cliente te compra tres veces.
+>
+> Manu
+>
+> PD: si todavía no entraste al grupo de WhatsApp, ahí te llega el link de la clase: `[LINK GRUPO]`
+
+---
+
+## M-3 · Viernes 23 · 08:30
+
+**Asunto:** "7 lucas de ganancia. Sobreviviendo."
+**Preheader:** Y el miedo que yo tenía antes de hacerlo.
+
+> Hola,
+>
+> "7 lucas de ganancia. Sobreviviendo."
+>
+> Eso le deja la venta a mucha gente que factura bien. Y no es por vender poco: es porque pagás la pauta en cada venta.
+>
+> En compra única tenés un CPA: lo pagás cada vez. En suscripción tenés un CAC: se paga una vez. La segunda, la tercera y la cuarta compra entran con el margen de contribución entero. En mi ecommerce, cada cliente compra tres veces como mínimo.
+>
+> Pero yo tenía un miedo, y seguro vos también:
+>
+> "En Argentina no están acostumbrados a la suscripción."
+> "Se suscriben para que la primera les salga más barata y se dan de baja."
+>
+> Hoy tengo 2.200 suscriptores activos en Argentina. 1,28% de churn. No se van.
+>
+> No es cultura. Es cómo se arma la suscripción. Eso lo vemos **mañana, sábado 24, a las 18 hs**.
+>
+> A la tarde: el tercer problema, el que más asusta. Qué pasa si Meta te baja la cuenta.
+>
+> Manu
+>
+> PD: en el grupo de WhatsApp está el resto de la cuenta: `[LINK GRUPO]`
+
+---
+
+## M-4 · Viernes 23 · 18:00
+
+**Asunto:** Si mañana Meta te baja la cuenta
+**Preheader:** Los 3 problemas de tu ecommerce son uno solo.
+
+> Hola,
+>
+> "Ayer íbamos 600 lucas abajo… apagamos. Manotazo ahogado."
+>
+> Si vendés con Meta, sabés de qué hablo. Y sabés lo otro: el 1 del mes arrancás en cero.
+>
+> Tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen. Pauta apagada. Y cobra igual.
+>
+> Ahora mirá los tres juntos:
+>
+> - Te sube el CPA.
+> - Te queda poco margen.
+> - Dependés de Meta.
+>
+> Parecen tres problemas. Es uno: tu unidad de venta es la compra, no el cliente.
+>
+> Cuando la unidad es el cliente, la base cobra sola todos los meses y Meta solo suma suscriptores nuevos. A eso le digo **Método B.A.S.E.**: crecer con los clientes que ya entraron, no saliendo a comprar más.
+>
+> **Mañana, sábado 24, a las 18 hs** te muestro el paso a paso en vivo. Es la última vez que la doy en vivo. Y a los que se queden hasta el final les regalo:
 >
 > - El roadmap para migrar tu ecommerce a suscripción con tu base de compradores.
 > - El Simulador de Suscripción, para cargar tus números.
@@ -91,11 +150,11 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Manu
 >
-> PD: si todavía no entraste al grupo de WhatsApp, ahí te llega el link de la clase: `[LINK GRUPO]`
+> PD: el link de la clase llega por el grupo de WhatsApp: `[LINK GRUPO]`
 
 ---
 
-## M-3 · Viernes 23 · 08:30
+## M-5 · Sábado 24 · 08:30
 
 **Asunto:** Hoy a las 18 hs
 **Preheader:** Clase en vivo privada. La última vez en vivo.
@@ -111,9 +170,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 > - La cuenta con mis números reales: cuánto podés pagar por cliente con suscripción.
 > - Cómo se pone al lado de la compra única, sin tocar lo que hoy vende.
 >
-> Es la última vez que la doy en vivo.
->
-> Agendalo ahora para no perderlo:
+> Es sábado, ya sé. Por eso: bloqueá de 18 a 19:30. Es la última vez que la doy en vivo.
 >
 > **[Agregar al calendario →]** `[LINK CALENDARIO]`
 >
@@ -123,7 +180,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 ---
 
-## M-4 · Viernes 23 · 17:00
+## M-6 · Sábado 24 · 17:00
 
 **Asunto:** En 1 hora (link adentro)
 **Preheader:** A las 18 arrancamos.
@@ -146,7 +203,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 ---
 
-## M-5 · Viernes 23 · 17:55
+## M-7 · Sábado 24 · 17:55
 
 **Asunto:** Estamos entrando
 **Preheader:** Arrancamos en 5 minutos.
@@ -159,90 +216,4 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 ---
 
-## M-6 · Sábado 24 · 08:30
-
-**Asunto:** La repetición de anoche
-**Preheader:** Miralo con tus números al lado.
-
-> Hola,
->
-> Acá está la repetición de la clase de anoche:
->
-> **[Ver la repetición →]** `[LINK REPLAY]`
->
-> `[CONFIRMAR: hasta cuándo está. Si se baja, decirlo acá con la hora real.]`
->
-> Si no llegaste, miralo con tus números al lado: margen por pedido, CPA y cada cuánto se le termina el producto a tu cliente. Es la cuenta que vas a querer hacer.
->
-> Y si al terminar sentís que es para tu ecommerce: Génesis está abierto hasta **hoy a las 23:59**. Es 1 a 1 conmigo, y la suscripción la instalamos nosotros, al lado de lo que ya vendés. Antes de entrar lo vemos con tus números en una llamada.
->
-> Manu
->
-> PD: para agendar la llamada: `[LINK AGENDA]`
-
----
-
-## M-7 · Sábado 24 · 13:00
-
-**Asunto:** "¿Y si rompo lo que hoy vende?"
-**Preheader:** La pregunta que más me hicieron después de la clase.
-
-> Hola,
->
-> La pregunta que más me hicieron después de la clase fue esta:
->
-> "¿Y si toco el modelo y rompo lo que hoy vende?"
->
-> No se toca. La suscripción va al lado de la compra única. Vos seguís vendiendo exactamente igual, y nosotros instalamos la suscripción al costado.
->
-> Lo que cambia es que el cliente que ya te compró te vuelve a pagar sin que lo pautes de nuevo. Y por ende podés pagar más por cada cliente nuevo que tu competencia.
->
-> La segunda que más me hicieron: "¿y si mi producto no se termina todos los meses?". No hace falta. Se arma con tu ciclo de reposición real: si dura 60 días, se cobra cada 60. Lo que sí hace falta es que se termine.
->
-> Si querés verlo con tu ecommerce, agendá la llamada:
->
-> **[Agendar la llamada →]** `[LINK AGENDA]`
->
-> Génesis cierra hoy a las 23:59.
->
-> Manu
-
----
-
-## M-8 · Sábado 24 · 19:00
-
-**Asunto:** Quedan [N] lugares
-**Preheader:** Génesis cierra hoy a las 23:59.
-
-> Hola,
->
-> Quedan **[N] lugares** en Génesis.
->
-> Son pocos a propósito: es 1 a 1 y lo hacemos nosotros.
->
-> Si Meta te baja la cuenta, los suscriptores se siguen cobrando. Y la landing te la copian en 48 horas. Tu base de suscriptores, no.
->
-> Si lo estás pensando, la llamada es para eso: ves tu cuenta con tus números y decidís.
->
-> **[Agendar la llamada →]** `[LINK AGENDA]`
->
-> Cierra hoy a las 23:59.
->
-> Manu
-
----
-
-## M-9 · Sábado 24 · 22:30
-
-**Asunto:** Cierra en una hora y media
-**Preheader:** A las 23:59 se cierra Génesis.
-
-> Hola,
->
-> A las 23:59 se cierra Génesis.
->
-> Si todavía estás pensando si es para tu ecommerce, agendá ahora y lo vemos con tus números:
->
-> **[Agendar la llamada →]** `[LINK AGENDA]`
->
-> Manu
+> **Después de la clase (domingo en adelante):** la repetición, Génesis y el cierre no entran en este rango. Los mails del sábado del documento anterior (repetición, objeciones, "quedan [N] lugares", cierre) se pueden mover al domingo 25 cuando esté definido el cierre.
