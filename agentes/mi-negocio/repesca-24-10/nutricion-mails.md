@@ -3,12 +3,12 @@
 Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../lanzamiento-19-10/contenido/06-nutricion-mails.md`) y los del día del vivo (`07-dia-del-vivo.md`). Siguen la misma cadena que el grupo de WhatsApp (`nutricion-whatsapp.md`), pero cada mail se sostiene solo: mucha gente lee el mail y no el grupo.
 
 **Clase:** sábado 24 de octubre, **18 hs** (Argentina), en vivo. **Es la última vez que la doy en vivo.**
-**Promesa:** cómo escalé mi ecom de químicos a +$250.000.000 con el modelo de suscripciones.
+**Promesa:** cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 
 ## Reglas
 
 - **Remitente:** Manu Dominguez. **Firma:** "Manu".
-- **Un solo link por mail:** el grupo de WhatsApp el jueves y el viernes; el calendario o la clase el sábado.
+- **Un solo link por mail, siempre el mismo:** el grupo de WhatsApp. Es la única forma de recibir el link de la clase.
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "la del lunes" · "sin grabación".
 - **Sin precio y sin vender:** el cómo y la oferta viven en la clase.
 - **Urgencia solo real:** "última vez en vivo" (confirmado).
@@ -21,11 +21,11 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 | M-2 | Jue 22 · 18:00 | Tu competencia paga 50. ¿Y vos? | Grupo |
 | M-3 | Vie 23 · 08:30 | "7 lucas de ganancia. Sobreviviendo." | Grupo |
 | M-4 | Vie 23 · 18:00 | Si mañana Meta te baja la cuenta | Grupo |
-| M-5 | Sáb 24 · 08:30 | Hoy a las 18 hs | Calendario |
-| M-6 | Sáb 24 · 17:00 | En 1 hora (link adentro) | Clase |
-| M-7 | Sáb 24 · 17:55 | Estamos entrando | Clase |
+| M-5 | Sáb 24 · 08:30 | Hoy a las 18 hs | Grupo |
+| M-6 | Sáb 24 · 17:00 | En 1 hora: el link está en el grupo | Grupo |
+| M-7 | Sáb 24 · 17:55 | Estamos entrando | Grupo |
 
-**Datos a completar antes de mandar:** `[LINK GRUPO]` · `[LINK CALENDARIO]` · `[LINK CLASE]`.
+**El link de Zoom no va por mail:** se pasa solo por el grupo de WhatsApp, 15 minutos antes. Por eso todos los mails empujan a entrar al grupo.
 
 ---
 
@@ -36,7 +36,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 > Hola,
 >
-> Te anotaste a la clase en vivo privada del **sábado 24 a las 18 hs**. Te voy a mostrar cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones. Es la última vez que la doy en vivo.
+> Te anotaste a la clase en vivo privada del **sábado 24 a las 18 hs**. Te voy a mostrar cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción. Es la última vez que la doy en vivo.
 >
 > Antes quiero dejarte una idea, porque es la base de todo lo que vamos a ver.
 >
@@ -48,9 +48,9 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Hoy tengo más de 3.500 suscriptores activos, con menos de 5% de churn.
 >
-> En el grupo de WhatsApp te voy dejando el resto de la cuenta hasta el sábado:
+> En el grupo de WhatsApp te voy dejando el resto de la cuenta hasta el sábado. Y ojo con esto: **el link para entrar a la clase lo paso solo por el grupo, 15 minutos antes.** No llega por mail. Si no estás adentro, no podés entrar.
 >
-> **[Entrar al grupo →]** `[LINK GRUPO]`
+> **[Entrar al grupo →]** https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 >
 > A la tarde te mando por qué bajar el CPA es la pelea equivocada.
 >
@@ -83,7 +83,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Manu
 >
-> PD: si todavía no entraste al grupo de WhatsApp, ahí te llega el link de la clase: `[LINK GRUPO]`
+> PD: el link de la clase llega solo por el grupo de WhatsApp, 15 minutos antes. Si todavía no entraste: https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 
 ---
 
@@ -113,7 +113,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Manu
 >
-> PD: en el grupo de WhatsApp está el resto de la cuenta: `[LINK GRUPO]`
+> PD: el link de la clase llega solo por el grupo de WhatsApp. Si todavía no entraste: https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 
 ---
 
@@ -150,7 +150,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Manu
 >
-> PD: el link de la clase llega por el grupo de WhatsApp: `[LINK GRUPO]`
+> PD: el link de la clase llega solo por el grupo de WhatsApp, 15 minutos antes. Si todavía no entraste: https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 
 ---
 
@@ -161,7 +161,7 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 > Hola,
 >
-> Hoy es el día. A las **18 hs** doy la clase en vivo privada donde te muestro cómo escalé mi ecom de químicos a más de 250 millones con el modelo de suscripciones.
+> Hoy es el día. A las **18 hs** doy la clase en vivo privada donde te muestro cómo podés escalar tu ecom a más de 100 millones de pesos por mes con el modelo de suscripción.
 >
 > Esto es lo que vas a ver:
 >
@@ -172,9 +172,9 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Es sábado, ya sé. Por eso: bloqueá de 18 a 19:30. Es la última vez que la doy en vivo.
 >
-> **[Agregar al calendario →]** `[LINK CALENDARIO]`
+> A las 17:45 dejo el link para entrar en el grupo de WhatsApp. Es el único lugar donde lo paso. Si todavía no estás adentro, entrá ahora:
 >
-> A las 17 te llega el link de acceso.
+> **[Entrar al grupo →]** https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 >
 > Manu
 
@@ -182,8 +182,8 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 ## M-6 · Sábado 24 · 17:00
 
-**Asunto:** En 1 hora (link adentro)
-**Preheader:** A las 18 arrancamos.
+**Asunto:** En 1 hora: el link está en el grupo
+**Preheader:** A las 17:45 lo dejo en el grupo de WhatsApp.
 
 > Hola,
 >
@@ -191,9 +191,9 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 >
 > Buscá un lugar sin ruido, algo para anotar y tené a mano tus números: CPA, margen por pedido, ticket promedio y cada cuánto se termina tu producto.
 >
-> Este es tu link de acceso:
+> A las 17:45 dejo el link para entrar en el grupo de WhatsApp. No llega por mail. Si no estás en el grupo, entrá ahora:
 >
-> **[Entrar a la clase →]** `[LINK CLASE]`
+> **[Entrar al grupo →]** https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 >
 > Los regalos son para los que se quedan hasta el final.
 >
@@ -210,10 +210,12 @@ Jueves 22 al sábado 24. Base: los mails de nutrición de la clase del 19 (`../l
 
 > Estamos entrando. 🔴
 >
-> **[Entrar ahora →]** `[LINK CLASE]`
+> El link para entrar está en el grupo de WhatsApp:
+>
+> **[Ir al grupo →]** https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 >
 > Manu
 
 ---
 
-> **Después de la clase (domingo en adelante):** la repetición, Génesis y el cierre no entran en este rango. Los mails del sábado del documento anterior (repetición, objeciones, "quedan [N] lugares", cierre) se pueden mover al domingo 25 cuando esté definido el cierre.
+> **Después de la clase:** el domingo 25 sigue en `post-clase-mails.md` (repetición, Génesis y cierre a las 23:59).

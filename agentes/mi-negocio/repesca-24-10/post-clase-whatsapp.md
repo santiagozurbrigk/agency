@@ -6,14 +6,13 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 
 - **El único llamado a la acción es agendar la llamada:** `[LINK AGENDA]`. No hay link de pago.
 - **Sin precio en el grupo:** el precio se ve en la llamada. La Mentoría no se nombra.
-- **Urgencia solo real:** los lugares que quedan (`[N]`, el número real) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
+- **Urgencia solo real:** los lugares que quedan (4; si se cierra una venta durante el día, bajarlo en los mensajes que siguen) y el cierre de Génesis: **hoy, domingo 25, a las 23:59**.
 - **Nunca dos formatos iguales seguidos** (texto, video selfie, audio, imagen).
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
 **Datos a completar antes de mandar:**
-- `[LINK REPLAY]` y hasta cuándo está la repetición.
+- https://applygenesis.com/replay y hasta cuándo está la repetición.
 - `[LINK AGENDA]`.
-- `[N]`: lugares que quedan en Génesis.
 
 ## Resumen
 
@@ -24,7 +23,7 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 | 13:30 | Imagen + texto | La prueba: +3.500 suscriptores |
 | 16:00 | Audio | "¿Y si rompo lo que hoy vende?" |
 | 18:30 | Texto | "Mi producto no es para suscripción" |
-| 21:00 | Video selfie | Quedan [N] lugares |
+| 21:00 | Video selfie | Quedan 4 lugares |
 | 22:00 | Texto | Quedan 2 horas |
 | 23:00 | Texto | Última hora |
 | 00:05 | Texto | Se cerró |
@@ -33,11 +32,9 @@ El día después de la clase del sábado 24. Base: el post-vivo de la clase del 
 
 ### 09:30 · Texto · La repetición
 
-> Buen día. Acá está la repetición de la clase de anoche: `[LINK REPLAY]`
+> Buen día. Acá está la repetición de la clase de anoche: https://applygenesis.com/replay
 >
 > Si no llegaste, miralo con tus números al lado: margen por pedido, CPA y cada cuánto se le termina el producto a tu cliente. Es la cuenta que vas a querer hacer.
->
-> `[CONFIRMAR: hasta cuándo está la repetición. Si se baja, decirlo acá con la hora real.]`
 
 ### 11:30 · Video selfie (1 min) · Génesis
 
@@ -84,18 +81,18 @@ Texto debajo:
 >
 > Cierra hoy a las 23:59.
 
-### 21:00 · Video selfie (45 s) · Quedan [N] lugares
+### 21:00 · Video selfie (45 s) · Quedan 4 lugares
 
 Beats:
 1. Por qué son pocos lugares: es 1 a 1 y lo hacemos nosotros, así que son pocas marcas a propósito.
 2. "Si Meta te baja la cuenta, los suscriptores se siguen cobrando."
 3. "La landing te la copian en 48 horas. Tu base de suscriptores, no."
-4. Quedan [N] lugares. Cierra hoy a las 23:59.
+4. Quedan 4 lugares. Cierra hoy a las 23:59.
 
 Si no se graba el video:
 > La landing te la copian en 48 horas. Tu base de suscriptores, no.
 >
-> Quedan [N] lugares en Génesis. Cierra hoy a las 23:59: `[LINK AGENDA]`
+> Quedan 4 lugares en Génesis. Cierra hoy a las 23:59: `[LINK AGENDA]`
 
 ### 22:00 · Texto · Quedan 2 horas
 
