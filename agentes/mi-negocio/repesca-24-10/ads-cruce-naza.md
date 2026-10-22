@@ -5,8 +5,8 @@ Los 3 ads de Naza para su clase de repesca del 12/10, comparados beat por beat c
 ## Lo que sale del cruce
 
 1. **Los de Naza son más cortos y van más rápido al anuncio.** RP-1 de Naza anuncia la clase a los ~15 s; el nuestro, a los ~29 s, porque antes mete PRUEBA y FILTRO.
-2. **Naza segmenta en el hook, no en un bloque aparte.** "Si sos growth" + "cliente estancado en -$30k". Nosotros sumamos un bloque FILTRO en voz (locales, Mercado Libre). En la v2 el filtro pasa al hook ("si tenés un ecommerce de consumibles estancado en 30 millones") y al texto en pantalla y el caption.
-3. **Naza promete una transformación de A a B en una frase:** "agarrar un cliente estancado en -$30k y escalarlo a +$100k haciendo una sola cosa". Al nuestro le faltaba esa frase. En la v2: "agarrar un ecom estancado en 30 millones y escalarlo a más de 100 millones por mes haciendo una sola cosa".
+2. **Naza segmenta en el hook, no en un bloque aparte.** "Si sos growth" + "cliente estancado en menos de 30k dólares". Nosotros sumamos un bloque FILTRO en voz (locales, Mercado Libre). En la v2 el filtro pasa al hook ("si tenés un ecommerce de consumibles estancado en 30 millones") y al texto en pantalla y el caption.
+3. **Naza promete una transformación de A a B en una frase:** "agarrar un cliente estancado en menos de 30k dólares y escalarlo a más de 100k haciendo una sola cosa". Al nuestro le faltaba esa frase. En la v2: "agarrar un ecom estancado en 30 millones y escalarlo a más de 100 millones por mes haciendo una sola cosa".
 4. **"Ahí te voy a mostrar" con 3 cosas concretas** (el script, los sistemas y la IA, los anuncios) y después "esto es lo único que necesitás para…". Nosotros listábamos los regalos. En la v2 son las 3 cosas que se ven en la clase; los regalos van al caption.
 5. **El remate de urgencia se repite al final:** "este lunes 12 es la última vez que muestro todo esto". En la v2 de RP-2 se suma igual.
 6. **El RP-3 de Naza se apoya en 3 casos de alumnos con números.** Manu no tiene casos de clientes autorizados (brief: "caso de éxito, solo Manu"), así que la v2 mantiene las 3 situaciones y deja armado el bloque para reemplazarlo si hay casos con permiso.
@@ -25,7 +25,7 @@ Los 3 ads de Naza para su clase de repesca del 12/10, comparados beat por beat c
 | Beat de Naza | Nuestro v1 | Qué cambia en la v2 |
 |---|---|---|
 | "Más de 115.000 dólares es lo que hice el mes pasado, con solo 1700 seguidores casi sin subir contenido" (número + la paradoja) | "Más de 250 millones es lo que factura mi ecom de químicos. Sin un creativo nuevo que pegue, sin bajar el precio y sin pelear el CPA." | Igual. Se agrega "el mes pasado" y se acorta la paradoja. |
-| "Así que si sos growth te voy a explicar cómo podés agarrar un cliente estancado en -$30k y escalarlo a +$100k por mes haciendo una sola cosa" | No está. En su lugar: PRUEBA (suscriptores y churn) y FILTRO (locales, Mercado Libre) | **Se agrega** la frase A → B. PRUEBA y FILTRO salen de la voz. |
+| "Así que si sos growth te voy a explicar cómo podés agarrar un cliente estancado en menos de 30k dólares y escalarlo a más de 100k por mes haciendo una sola cosa" | No está. En su lugar: PRUEBA (suscriptores y churn) y FILTRO (locales, Mercado Libre) | **Se agrega** la frase A → B. PRUEBA y FILTRO salen de la voz. |
 | "El 7 de octubre di una clase privada con más de 600 personas y como muchos no pudieron acceder" | "El lunes 19 di una clase en vivo privada y entraron 200 personas. Pero un montón de gente no pudo entrar." | Igual. |
 | "Este 12 de octubre voy a rehacer esta masterclass… para acceder simplemente registrate con el link" | Igual, con "última vez en vivo". | Igual. |
 | "Ahí te voy a mostrar el sistema con el que agarro clientes en menos de $30k como Migue y los escalo a $200k" | "Ahí te voy a mostrar cómo podés escalar tu ecom…: el Método B.A.S.E." | El sistema con el caso de Manu (60 → +250 millones). |
@@ -150,9 +150,13 @@ El link está acá abajo. Nos vemos ahí.
 **Bloque alternativo (solo con casos de clientes de Génesis, con permiso y captura).** Reemplaza "tres situaciones" hasta "cambiando el modelo", con el formato de Naza:
 
 > Te voy a contar tres casos rápido, que estaban en tu misma situación.
+>
 > [NOMBRE], [rubro]. [Situación antes, en una línea]. [Resultado con número].
+>
 > Después, [NOMBRE], [rubro]. [Situación]. [Resultado].
+>
 > Y por último, [NOMBRE], [rubro]. [Situación]. [Resultado].
+>
 > Y hay una cosa que tienen en común: los tres empezaron desde una clase privada igual a la que te estoy por invitar.
 
 ### Captions (los 3)
