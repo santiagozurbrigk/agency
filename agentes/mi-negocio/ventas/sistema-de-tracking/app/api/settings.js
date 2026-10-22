@@ -21,8 +21,14 @@ module.exports = async function handler(req, res) {
         if (d && !/^\d{4}-\d{2}-\d{2}$/.test(d)) return res.status(400).json({ ok: false, error: "El inicio del lanzamiento tiene que ser una fecha" });
         patch.inicioLanzamiento = d;
       }
+      if (body.postDesde != null) {
+        const d = String(body.postDesde).trim();
+        if (d && !/^\d{4}-\d{2}-\d{2}$/.test(d)) return res.status(400).json({ ok: false, error: "El inicio del proceso post webinar tiene que ser una fecha" });
+        patch.postDesde = d;
+      }
       for (const k of ["cierre", "clase", "calManuPreventaId", "calManuPreventaLink",
-                        "calManuPostId", "calManuPostLink", "calDiegoId", "calDiegoLink"]) {
+                        "calManuPostId", "calManuPostLink", "calDiegoId", "calDiegoLink",
+                        "sdrMatiWa", "sdrSantiWa", "closers"]) {
         if (body[k] != null) patch[k] = String(body[k]).trim();
       }
       const settings = await store.saveSettings(patch);

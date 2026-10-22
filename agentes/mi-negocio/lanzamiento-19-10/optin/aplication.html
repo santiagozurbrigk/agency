@@ -365,11 +365,16 @@ textarea.campo-txt{resize:none;min-height:110px;line-height:1.45;font-size:clamp
     try {
       fbq("track", "SubmitApplication", {}, { eventID: "apl-" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) });
     } catch (e) {}
+    /* Con el WhatsApp del SDR (reparto 50/50 en el tracking), termina ahí: se abre solo y queda el botón. */
+    var wa = /^https?:\/\//.test(d.wa || "") ? d.wa : "";
     main.innerHTML = '<div class="pantalla panel">'
       + '<div class="circ">' + icCheck + '</div>'
       + '<h2>Listo, recibimos tu aplicación</h2>'
-      + '<p>La revisamos y te escribimos por WhatsApp al <b style="color:var(--hueso)">' + esc(datos.telefono) + '</b> para coordinar la llamada.</p>'
+      + (wa
+        ? '<p>Último paso: escribinos por WhatsApp así coordinamos la llamada.</p><div class="acciones"><a class="btn" id="irWa" href="' + esc(wa) + '" target="_top" rel="noopener">Escribir por WhatsApp</a></div>'
+        : '<p>La revisamos y te escribimos por WhatsApp al <b style="color:var(--hueso)">' + esc(datos.telefono) + '</b> para coordinar la llamada.</p>')
       + '</div>';
+    if (wa) setTimeout(function () { try { window.top.location.href = wa; } catch (e) { location.href = wa; } }, 2500);
   }
 
   /* Enter en la pantalla de inicio; teclas A, B, C… para elegir opciones. */

@@ -68,6 +68,8 @@ const OPCIONES = {
     "No cerró · seguimiento",
     "Venta Génesis",
     "Venta Mentoría",
+    "Venta OS Fast",
+    "Venta Subscriptions",
     "Próximo ciclo"
   ],
   dueno: ["Braian", "Diego"],          // ya no se usa (sin dueños); queda por los datos viejos
@@ -124,6 +126,9 @@ const FIELDS = [
   { key: "estado_llamada",   name: "Estado de la llamada (visual)",  type: "TEXT" },
   { key: "llamado_apl",      name: "Ya lo llamé (aplicación)",       type: "SINGLE_OPTIONS", options: OPCIONES.si_no },
   { key: "zoom_json",        name: "Asistencia Zoom (interno, no tocar)", type: "LARGE_TEXT" },
+  { key: "sdr",              name: "SDR post webinar",               type: "TEXT" },
+  { key: "post_estado",      name: "Estado post webinar",            type: "TEXT" },
+  { key: "post_json",        name: "Proceso post webinar (interno, no tocar)", type: "LARGE_TEXT" },
   { key: "venta_json",       name: "Venta (interno, no tocar)",      type: "LARGE_TEXT" },
   { key: "historial_json",   name: "Historial (interno, no tocar)",  type: "LARGE_TEXT" }
 ];

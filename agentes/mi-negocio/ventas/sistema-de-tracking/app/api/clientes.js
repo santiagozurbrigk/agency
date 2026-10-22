@@ -31,10 +31,11 @@ module.exports = async function handler(req, res) {
       return res.status(409).json({ ok: false, error: `${existente.nombre || "Ese contacto"} ya tiene una venta registrada. Abrí su ficha para editarla.`, id: existente.id });
     }
 
+    await store.asegurarOpciones();
     const que = `Cliente cargado a mano · ${venta.oferta} · ${venta.forma} · vendió ${venta.vendedor}`;
     const fields = {
       venta_json: JSON.stringify(venta),
-      etapa: venta.oferta === "Génesis" ? "Venta Génesis" : "Venta Mentoría"
+      etapa: V.ETAPA_VENTA[venta.oferta]
     };
     let lead;
     if (existente) {

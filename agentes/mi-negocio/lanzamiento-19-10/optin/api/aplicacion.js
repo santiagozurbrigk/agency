@@ -16,7 +16,7 @@ module.exports = async function handler(req, res) {
     });
     const d = await r.json().catch(() => ({ ok: false }));
     if (!r.ok || !d.ok) return res.status(502).json({ ok: false, error: "No se pudo enviar. Probá de nuevo." });
-    return res.status(200).json({ ok: true, ruta: d.ruta });
+    return res.status(200).json({ ok: true, ruta: d.ruta, wa: d.wa || "" });
   } catch (e) {
     return res.status(502).json({ ok: false, error: "No se pudo enviar. Probá de nuevo." });
   }

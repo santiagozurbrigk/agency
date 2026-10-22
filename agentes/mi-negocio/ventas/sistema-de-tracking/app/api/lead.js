@@ -6,6 +6,7 @@ const { requiere, esAdmin } = require("../lib/auth");
 const store = require("../lib/store");
 
 const V = require("../lib/ventas");
+const P = require("../lib/post");
 
 module.exports = async function handler(req, res) {
   const user = requiere(req, res);
@@ -119,10 +120,11 @@ module.exports = async function handler(req, res) {
       case "venta": {
         const { venta, error } = V.armarVenta(data, quien);
         if (error) return res.status(400).json({ ok: false, error });
-        updated = await store.registrar(id, quien, `Venta ${venta.oferta} · ${venta.forma} · vendió ${venta.vendedor}`, {
-          venta_json: JSON.stringify(venta),
-          etapa: venta.oferta === "Génesis" ? "Venta Génesis" : "Venta Mentoría"
-        }, lead);
+        await store.asegurarOpciones();
+        const fields = { venta_json: JSON.stringify(venta), etapa: V.ETAPA_VENTA[venta.oferta] };
+        // En el proceso post webinar, la venta lo pasa a «Cliente · falta onboarding».
+        if (lead.fields.post_estado && lead.fields.post_estado !== "Cliente") fields.post_estado = "Cliente · falta onboarding";
+        updated = await store.registrar(id, quien, `Venta ${venta.oferta} · ${venta.forma} · vendió ${venta.vendedor}`, fields, lead);
         break;
       }
 
@@ -175,6 +177,79 @@ module.exports = async function handler(req, res) {
           nombre: data.nombre, email: data.email, telefono: data.telefono,
           fields: { venta_json: JSON.stringify(venta), historial_json: store.historialCon(lead, quien, "Editó los datos del cliente") }
         }, lead);
+        break;
+      }
+
+      // Proceso post webinar: cada paso del mapa de ventas (fases 1 a 7).
+      case "post": {
+        await store.asegurarCampos(["sdr", "post_estado", "post_json"]);
+        const p = P.leer(lead);
+        const ahora = new Date().toISOString();
+        const fields = {};
+        let que;
+        switch (data.op) {
+          case "sdr": {
+            if (!P.SDRS.includes(data.sdr)) return res.status(400).json({ ok: false, error: "SDR inválido" });
+            fields.sdr = data.sdr; que = `SDR → ${data.sdr}`;
+            break;
+          }
+          case "llamada": {
+            const atendio = Boolean(data.atendio);
+            p.llamadas.push({ t: ahora, atendio, q: quien });
+            const sinRespuesta = p.llamadas.filter(x => !x.atendio).length;
+            que = atendio ? "Llamada: atendió" : `Llamada sin respuesta (${sinRespuesta})`;
+            // A la tercera sin respuesta pasa solo a «No atendió».
+            const estado = lead.fields.post_estado || "Nuevo lead";
+            if (!atendio && sinRespuesta >= P.LLAMADAS_MAX && estado === "Nuevo lead") { fields.post_estado = "No atendió"; que += " → No atendió"; }
+            break;
+          }
+          case "audio": {
+            p.audio = Boolean(data.valor); que = p.audio ? "Audio enviado" : "Audio desmarcado";
+            break;
+          }
+          case "seguimiento": {
+            const nota = String(data.nota || "").trim().slice(0, 500);
+            p.seguimientos.push({ t: ahora, q: quien, nota });
+            que = `Seguimiento #${p.seguimientos.length}${nota ? ": " + nota : ""}`;
+            break;
+          }
+          case "agendar": {
+            if (!P.OFERTAS.includes(data.oferta)) return res.status(400).json({ ok: false, error: "Elegí la oferta a la que califica" });
+            const callAt = V.fechaHora(data.call_at);
+            if (!callAt) return res.status(400).json({ ok: false, error: "Poné el día y la hora de la llamada con el closer" });
+            p.oferta = data.oferta; p.closer = String(data.closer || "").trim().slice(0, 60); p.call_at = callAt;
+            fields.post_estado = "Agendado";
+            que = `Agendado con ${p.closer || "el closer"} · ${data.oferta} · ${P.nombreGrupo(lead, callAt).split(" / ").slice(1).join(" ")}`;
+            break;
+          }
+          case "tilde": {
+            const fase = data.fase, clave = data.clave;
+            const textos = fase === "setteo" ? { confirmo: "Confirmó fecha y hora", grupo: "Grupo creado" } : P.TILDES[fase];
+            if (!textos || !textos[clave]) return res.status(400).json({ ok: false, error: "Paso inválido" });
+            if (fase === "setteo") p[clave] = Boolean(data.valor); else p[fase][clave] = Boolean(data.valor);
+            que = `${textos[clave]}${data.valor ? "" : " (desmarcado)"}`;
+            break;
+          }
+          case "no_cerro": {
+            const razon = String(data.razon || "").trim().slice(0, 500);
+            if (!razon) return res.status(400).json({ ok: false, error: "Escribí la razón" });
+            p.cierre = { razon, fathom: String(data.fathom || "").trim().slice(0, 500), t: ahora };
+            fields.post_estado = "No se cerró";
+            que = `No se cerró: ${razon}`;
+            break;
+          }
+          case "estado": {
+            if (!P.ESTADOS.includes(data.estado)) return res.status(400).json({ ok: false, error: "Estado inválido" });
+            fields.post_estado = data.estado; que = `Estado post webinar → ${data.estado}`;
+            break;
+          }
+          default:
+            return res.status(400).json({ ok: false, error: "Paso desconocido: " + data.op });
+        }
+        if (!lead.fields.post_estado && !fields.post_estado) fields.post_estado = "Nuevo lead";
+        if (!lead.fields.sdr && !fields.sdr) fields.sdr = P.sdrPara(lead.email, lead.telefono);
+        fields.post_json = JSON.stringify(p);
+        updated = await store.registrar(id, quien, que, fields, lead);
         break;
       }
 
