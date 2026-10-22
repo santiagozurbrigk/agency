@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Clase en vivo · Lunes 19/10 · Manu Dominguez</title>
+<title>Clase en vivo · Sábado 24/10 · Manu Dominguez</title>
 <meta name="description" content="Clase en vivo privada y gratis. El roadmap con el que pasé mi marca de consumibles de 60 a 220 millones por mes con el modelo de suscripción.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -566,8 +566,8 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div>
   </div>
   <div class="timebar fechabar">
-    <span class="fb-dia"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><b>Lunes 19 de octubre</b></span>
-    <span class="fb-horas" aria-label="Hora de la clase en Argentina"><span class="fb-h" title="Argentina"><svg class="bandera" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#74ACDF"/><rect y="4" width="18" height="4" fill="#fff"/><circle cx="9" cy="6" r="1.4" fill="#F6B40E"/></svg><b data-hora="America/Argentina/Buenos_Aires">19:00h</b></span></span>
+    <span class="fb-dia"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><b>Sábado 24 de octubre</b></span>
+    <span class="fb-horas" aria-label="Hora de la clase en Argentina"><span class="fb-h" title="Argentina"><svg class="bandera" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#74ACDF"/><rect y="4" width="18" height="4" fill="#fff"/><circle cx="9" cy="6" r="1.4" fill="#F6B40E"/></svg><b data-hora="America/Argentina/Buenos_Aires">18:00h</b></span></span>
   </div>
 </div>
 
@@ -939,13 +939,13 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <h3>Soy Manu Dominguez</h3>
       <div class="bio">
         <p data-txt="bio-1">Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
-        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>220 millones por mes</b>, con <b>+3.100 suscriptores activos</b> y <b>1,28% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
+        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>220 millones por mes</b>, con <b>+3.500 suscriptores activos</b> y <b>menos de 5% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
         <p>En esta clase te muestro el roadmap que seguí, con mis números reales.</p>
       </div>
       <div class="stats">
         <div class="stat naranja"><div class="l">Por mes</div><div class="v">220M</div></div>
-        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">+3.100</div></div>
-        <div class="stat"><div class="l">Churn</div><div class="v">1,28%</div></div>
+        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">+3.500</div></div>
+        <div class="stat"><div class="l">Churn</div><div class="v">&lt;5%</div></div>
       </div>
     </div>
   </div>
@@ -1021,7 +1021,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* Fondo: la línea de suscriptores se dibuja a medida que bajás.
-     El número final (+3.100) es el real; la forma de la curva es ilustrativa. */
+     El número final (+3.500) es el real; la forma de la curva es ilustrativa. */
   var linea = document.getElementById("linea-subs");
   var clip = document.getElementById("clip-rect");
   var punto = document.getElementById("bg-punto");
@@ -1040,8 +1040,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var x = pt.x / 1000 * innerWidth, y = pt.y / 1000 * innerHeight;
     punto.style.left = x + "px"; punto.style.top = y + "px";
     tip.style.left = (x - 14) + "px"; tip.style.top = y + "px";
-    var n = p >= 0.995 ? 3100 : Math.round(3100 * (p - 0.12) / 0.88); /* al llegar abajo, el número completo */
-    num.textContent = (n >= 3100 ? "+" : "") + n.toLocaleString("es-AR");
+    var n = p >= 0.995 ? 3500 : Math.round(3500 * (p - 0.12) / 0.88); /* al llegar abajo, el número completo */
+    num.textContent = (n >= 3500 ? "+" : "") + n.toLocaleString("es-AR");
   }
   function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(dibujar); } }
   addEventListener("scroll", pedir, { passive: true });
@@ -1180,8 +1180,8 @@ document.addEventListener("DOMContentLoaded", function () {
    - El test A/B de headline (AB_TEST, HEADLINE_A, HEADLINE_B) está arriba, junto al titular.
    - Las landings por dolor (/cpa, /margen, /meta) se configuran en LANDINGS, justo abajo del titular.
    ========================================== */
-var EVENT_DATE       = "2026-10-19T19:00:00-03:00";
-var EVENT_TZ_LABEL   = "19:00 hs (Argentina)";
+var EVENT_DATE       = "2026-10-24T18:00:00-03:00";
+var EVENT_TZ_LABEL   = "18:00 hs (Argentina)";
 var THANK_YOU_URL    = "/thank-you";
 var INVERSION_LEAD   = ["De 100 a 200 dólares", "De 200 a 500 dólares", "De 500 a 1.000 dólares", "Más de 1.000 dólares"];
 var HYROS_SCRIPT_URL = "";

@@ -10,7 +10,7 @@ El día después de la clase del sábado 24. Siguen la misma línea que el grupo
 - **Palabras que no van:** masterclass · webinar · lanzamiento · repesca · "sin grabación".
 
 **Datos a completar antes de mandar:**
-- https://applygenesis.com/replay y hasta cuándo está la repetición.
+- **Antes del domingo a las 9:** cargar en https://applygenesis.com/replay el video de la clase del sábado (hoy tiene el del lunes 19).
 - `[LINK AGENDA]`.
 
 ## Resumen
