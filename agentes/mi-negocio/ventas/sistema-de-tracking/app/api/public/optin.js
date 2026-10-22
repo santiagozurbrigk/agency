@@ -8,7 +8,11 @@ const { calificaOptin } = require("../../lib/rules");
 // Etiquetas en GHL (se usan para los públicos de Meta):
 //   optin-19-10            → TODOS los registrados: público de los anuncios de nutrición.
 //   optin-calificado-19-10 → solo los que califican (invierten 100 dólares por día o más en Meta).
+//   optin-24-10            → los que se registran para la clase del sábado 24/10. Dispara el workflow de
+//                            mails de esa clase: el que ya tenía optin-19-10 (se anotó a la del lunes) igual
+//                            recibe este tag nuevo al volver a registrarse, y el workflow arranca.
 const TAG_OPTIN = "optin-19-10";
+const TAG_CLASE = "optin-24-10";
 const TAG_CALIFICADO = "optin-calificado-19-10";
 
 module.exports = async function handler(req, res) {
@@ -31,7 +35,7 @@ module.exports = async function handler(req, res) {
       ...(tracking ? { origen: JSON.stringify(tracking) } : {})
     };
 
-    const tags = calificaOptin(datos) ? [TAG_OPTIN, TAG_CALIFICADO] : [TAG_OPTIN];
+    const tags = calificaOptin(datos) ? [TAG_OPTIN, TAG_CLASE, TAG_CALIFICADO] : [TAG_OPTIN, TAG_CLASE];
 
     const existente = await store.findLead(telefono, email);
     if (existente) {

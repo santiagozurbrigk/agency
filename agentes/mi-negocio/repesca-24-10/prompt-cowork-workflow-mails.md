@@ -17,7 +17,7 @@ Necesito que armes un workflow de mails en GoHighLevel (GHL), en la subcuenta de
 ## El workflow
 1. Andá a **Automation → Workflows → Create Workflow → Start from scratch**.
 2. Nombre del workflow: **Clase sábado 24/10 · mails**.
-3. **Trigger:** «Contact Tag» → condición: tag añadido (**Tag Added**) = **optin-19-10**. Nombre del trigger: «Registro a la clase».
+3. **Trigger:** «Contact Tag» → condición: tag añadido (**Tag Added**) = **optin-24-10**. Nombre del trigger: «Registro a la clase».
 4. Después del trigger, 11 pares de acciones en este orden: **Wait** (tipo «Wait until a specific date/time» / «Event/Date») → **Send Email**. Los datos de cada par están abajo.
 5. En CADA Wait, en la opción «If this date has already passed», elegí **«Skip all outbound communication actions till next wait or event start date action»**. Esto es lo más importante: así el que se registra el viernes no recibe de golpe los mails del jueves.
 6. Antes del paso 8 (el primer mail del domingo), agregá una acción **If/Else**: rama «Ya compró» si el campo personalizado **«Etapa del proceso»** es igual a **«Venta Génesis»** → acción **Remove from workflow / Exit**. La otra rama sigue con el paso 8.

@@ -470,6 +470,16 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(!all.body.colas.post.includes(all.body.leads.find(l=>l.email==="bajo@post.com").id),"el rechazado no entra al proceso");
   }
 
+  // Registro a la clase del sábado: tag propio, también para el que ya estaba registrado a la del lunes
+  { const optinApi=h("api/public/optin.js"), lead=h("api/lead.js");
+    let r=await call(optinApi,{method:"POST",body:{nombre:"Martín",email:"martin@demo.com",telefono:"+5491155550001"}});
+    const m=(await call(lead,{cookie,query:{id:r.body.id}})).body.lead;
+    ok(r.body.repetido&&(m.tags||[]).includes("optin-24-10"),"re-registro: el que ya estaba suma optin-24-10 (dispara el workflow de mails)");
+    r=await call(optinApi,{method:"POST",body:{nombre:"Nueva",email:"nueva24@x.com",telefono:"+5491170009999"}});
+    const n=(await call(lead,{cookie,query:{id:r.body.id}})).body.lead;
+    ok((n.tags||[]).includes("optin-19-10")&&(n.tags||[]).includes("optin-24-10"),"registro nuevo: optin-19-10 y optin-24-10");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});
