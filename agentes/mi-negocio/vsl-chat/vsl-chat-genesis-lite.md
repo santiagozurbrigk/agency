@@ -1,4 +1,4 @@
-# VSL de chat — Mentoría Fast Subscriptions (lead que arranca)
+# VSL de chat — Genesis Lite (lead que arranca)
 
 Versión 1, 22-oct-2026. Hecho con el agente **VSL de chat** (`agentes/M4-webinar-organico/agente-vsl-chat.md`).
 Insumos: `CONTEXTO.md`, `brief-genesis.md`, `marca-personal.md`, `ventas/mapa-de-ventas.html` (pitch de la Mentoría y sus 3 pilares) y `ventas/manual-llamada-de-venta-genesis.md`.
@@ -8,7 +8,7 @@ Insumos: `CONTEXTO.md`, `brief-genesis.md`, `marca-personal.md`, `ventas/mapa-de
 **Datos que usa:**
 - **Para quién:** el que recién empieza en ecommerce o quiere empezar. Todavía no tiene una marca que venda todos los meses.
 - **Qué enseña la Mentoría:** a empezar a vender un producto consumible y escalarlo **sin** modelo de suscripción. La suscripción viene después, con Génesis, cuando la marca ya vende constante.
-- **Oferta:** Mentoría Fast Subscriptions. 3 meses, grupal, la implementa el alumno con el equipo al lado. Incluye chat 1 a 1 directo con José, 1 clase grupal por semana con Manu, 2 clases grupales por semana con José, el curso grabado en Whop (SOPs, roadmaps, sistemas y contactos) y la comunidad. Sin precio en el video.
+- **Oferta:** Genesis Lite. 3 meses, grupal, la implementa el alumno con el equipo al lado. Incluye chat 1 a 1 directo con José, 1 clase grupal por semana con Manu, 2 clases grupales por semana con José, el curso grabado en Whop (SOPs, roadmaps, sistemas y contactos) y la comunidad. Sin precio en el video.
 - **Escasez real:** no hay límite de cupos, pero **se cierran las puertas cuando termina esta apertura** y no hay fecha para volver a abrir.
 - **Dolores:** los de los pilares del pitch de la Mentoría en el mapa de ventas ("no sé por dónde arrancar", "estoy solo con esto", "no tengo un proceso", "pruebo cosas sueltas", "no tengo con quién hablarlo"). El resto del avatar principiante no está en el CONTEXTO: ver checklist.
 - **Casos:** van en los espacios `[CASO]`: **faltan cargarlos**. El caso de Manu se usa solo como origen del método, no como promesa para el que arranca.
@@ -165,11 +165,11 @@ Se puede. Hay mucha información gratis. Pero vas a tardar más, vas a probar co
 
 El segundo: lo hacés con nosotros al lado.
 
-Para eso armamos la Mentoría Fast Subscriptions.
+Para eso armamos Genesis Lite.
 
 **[8:20 – 10:05] PRODUCTO COMPLETO**
 
-Fast Subscriptions es un programa de tres meses. Es grupal y lo implementás vos, con nosotros al lado todo el tiempo.
+Genesis Lite es un programa de tres meses. Es grupal y lo implementás vos, con nosotros al lado todo el tiempo.
 
 No es "lo hacemos por vos". Es "lo hacés vos, con alguien que ya lo hizo mirando lo que hacés".
 
@@ -203,9 +203,6 @@ Otros que están en el mismo punto que vos. Para preguntar, para compartir lo qu
 
 [PAUSA]
 
-¿Y por qué se llama Fast Subscriptions si no instala la suscripción?
-
-Porque todo lo que armás acá está pensado para que, cuando tu marca venda todos los meses, el paso siguiente sea la suscripción. Arrancás con un consumible, y no con un producto que se compra una vez y se quema.
 
 La inversión la vemos en la llamada. Primero quiero saber en qué punto estás.
 
@@ -316,7 +313,6 @@ Los manda alguien del equipo (el setter o el SDR), por WhatsApp, desde que el le
 - **"Consumible".** El que arranca puede no conocer la palabra. Está explicado ("un producto que se termina y se vuelve a comprar"), pero al grabar conviene dar un ejemplo concreto: un suplemento, un producto de limpieza, un cosmético.
 - **CPM y CPA.** Aparecen una vez, en la escalera de problemas. Si el lead nunca pautó, no los va a entender: se pueden reemplazar por "lo que te cuesta cada venta en publicidad".
 - **"Breakeven".** Lo mismo: decir "vender y que no te quede nada" si al grabar suena técnico.
-- **El nombre "Fast Subscriptions".** La Mentoría no instala suscripción y el nombre la menciona. El video lo explica en una frase, pero **conviene confirmar con Manu que esa explicación es la correcta**. Si no lo es, se corta esa parte.
 
 **Dolores del avatar que no se tocaron o quedaron flojos:**
 - El avatar del que arranca **no está definido en el CONTEXTO** (el avatar secundario está como hipótesis y marcado "no se usa"). El video usa los dolores de los pilares de la Mentoría del mapa de ventas. Faltaría saber de boca de leads reales:
