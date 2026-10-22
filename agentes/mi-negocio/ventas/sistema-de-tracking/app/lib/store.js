@@ -65,7 +65,7 @@ async function saveSettings(patch) {
 // subcuenta (sin estos tags) no aparecen en ninguna lista.
 // Quien agenda directo en un calendario del proceso sin haber pasado por un
 // formulario recibe "pre-venta-manu" o "calendario-ghl" desde el webhook.
-const TAGS_LANZAMIENTO = ["optin-19-10", "agenda-directa", "quiero-contacto", "aplicacion-19-10", "pre-venta-manu", "calendario-ghl", "cliente-genesis"];
+const TAGS_LANZAMIENTO = ["optin-19-10", "optin-24-10", "agenda-directa", "quiero-contacto", "aplicacion-19-10", "pre-venta-manu", "calendario-ghl", "cliente-genesis"];
 const esDelLanzamiento = (l) => (l.tags || []).some(t => TAGS_LANZAMIENTO.includes(String(t).toLowerCase()));
 
 // La foto no lleva el historial (pesa y solo se usa al abrir una ficha).
