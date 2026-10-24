@@ -9,9 +9,30 @@ const { fuenteDe } = require("../lib/fuente");
 module.exports = async function handler(req, res) {
   if (!requiere(req, res)) return;
   try {
-    const [leads, settings, manu, visitas] = await Promise.all([
+    const [todos, settings, manu, visitasTodas] = await Promise.all([
       store.listLeads(), store.getSettings(), store.cargaManu(), store.getVisitas().catch(() => ({}))
     ]);
+
+    // Rango opcional ?desde=AAAA-MM-DD&hasta=AAAA-MM-DD (hora de Argentina): los leads cuentan por el
+    // día en que se registraron y las ventas, por el día del cierre. Sin rango = todo.
+    const DIA_RE = /^\d{4}-\d{2}-\d{2}$/;
+    const diaAR = (iso) => new Date(new Date(iso).getTime() - 3 * 3600e3).toISOString().slice(0, 10);
+    let desde = DIA_RE.test(req.query.desde || "") ? req.query.desde : null;
+    let hasta = DIA_RE.test(req.query.hasta || "") ? req.query.hasta : null;
+    if (desde && hasta && desde > hasta) [desde, hasta] = [hasta, desde];
+    const enRango = (iso) => {
+      if (!desde && !hasta) return true;
+      if (!iso || isNaN(new Date(iso))) return false;
+      const d = diaAR(iso);
+      return (!desde || d >= desde) && (!hasta || d <= hasta);
+    };
+    const leads = todos.filter(l => enRango(l.creado));
+    const visitas = {};
+    for (const [k, v] of Object.entries(visitasTodas || {})) {
+      const p = k.split("|");
+      // Las claves viejas (solo la fuente) no tienen día: cuentan únicamente sin rango.
+      if (p.length >= 2 ? enRango(p[0] + "T12:00:00-03:00") : !desde && !hasta) visitas[k] = v;
+    }
 
     const etapa = (l) => l.fields.etapa || "Nuevo";
     const total = leads.length;
@@ -25,10 +46,13 @@ module.exports = async function handler(req, res) {
     const presentados = leads.filter(l => l.fields.se_presento === "Sí").length;
 
     const ventas = [];
-    for (const l of leads) {
+    let vendidosGenesis = 0;  // los lugares son del total, sin importar el rango
+    for (const l of todos) {
       try {
         const v = JSON.parse(l.fields.venta_json || "null");
-        if (v) ventas.push({ lead: l.nombre, ...v });
+        if (!v) continue;
+        if (v.oferta === "Génesis") vendidosGenesis++;
+        if (enRango(v.fecha)) ventas.push({ lead: l.nombre, ...v });
       } catch (e) {}
     }
     const suma = (arr) => arr.reduce((a, b) => a + b, 0);
@@ -105,16 +129,26 @@ module.exports = async function handler(req, res) {
     const porAnuncio = Object.values(anuncios).sort((x, y) => y.califican - x.califican || y.leads - x.leads);
 
     // Opt-ins por día (hora de Argentina), desde el primero hasta hoy, máximo 30 días.
-    const diaAR = (iso) => new Date(new Date(iso).getTime() - 3 * 3600e3).toISOString().slice(0, 10);
+    // Con rango: del primer al último día del rango, máximo 62 días.
     const porDiaMapa = {};
     for (const l of leads) if (l.creado) { const d = diaAR(l.creado); porDiaMapa[d] = (porDiaMapa[d] || 0) + 1; }
     const hoy = diaAR(new Date().toISOString());
-    const primero = Object.keys(porDiaMapa).sort()[0] || hoy;
     const porDia = [];
-    for (let t = Date.parse(hoy + "T12:00:00Z"); porDia.length < 30; t -= 864e5) {
-      const d = new Date(t).toISOString().slice(0, 10);
-      porDia.unshift({ dia: d, n: porDiaMapa[d] || 0 });
-      if (d <= primero && porDia.length >= 7) break;
+    if (desde || hasta) {
+      const fin = hasta && hasta < hoy ? hasta : hoy;
+      const ini = desde || Object.keys(porDiaMapa).sort()[0] || fin;
+      for (let t = Date.parse(fin + "T12:00:00Z"); porDia.length < 62; t -= 864e5) {
+        const d = new Date(t).toISOString().slice(0, 10);
+        if (d < ini) break;
+        porDia.unshift({ dia: d, n: porDiaMapa[d] || 0 });
+      }
+    } else {
+      const primero = Object.keys(porDiaMapa).sort()[0] || hoy;
+      for (let t = Date.parse(hoy + "T12:00:00Z"); porDia.length < 30; t -= 864e5) {
+        const d = new Date(t).toISOString().slice(0, 10);
+        porDia.unshift({ dia: d, n: porDiaMapa[d] || 0 });
+        if (d <= primero && porDia.length >= 7) break;
+      }
     }
 
     return res.status(200).json({
@@ -132,7 +166,8 @@ module.exports = async function handler(req, res) {
       embudo: { total, contactados, enConversacion, calificados, agendadosPre, agendadosPost, confirmados, asistieron, presentados, ventas: ventas.length },
       porOferta, grupos,
       manu,
-      genesis: { vendidos: (porOferta["Génesis"] || {}).cantidad || 0, lugares: settings.genesisLugares },
+      genesis: { vendidos: vendidosGenesis, lugares: settings.genesisLugares },
+      rango: { desde, hasta },
       cierre: settings.cierre
     });
   } catch (e) {

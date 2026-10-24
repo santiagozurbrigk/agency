@@ -204,6 +204,11 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   ok(r.body.ok&&r.body.porOferta["Génesis"].cantidad===1,"métricas: 1 Génesis");
   ok(r.body.porOferta["Génesis"].cobrado===1500&&r.body.porOferta["Génesis"].total===6000,"métricas: cobrado 1500 de 6000 (venta editada a mano)");
   ok(r.body.porPersona===undefined,"métricas: sin «por persona» (ya no hay dueños)");
+  { const hoy=new Date(Date.now()-3*3600e3).toISOString().slice(0,10);
+    const mh=(await call(metrics,{cookie,query:{desde:hoy,hasta:hoy}})).body;
+    ok(mh.ok&&mh.rango.desde===hoy&&mh.porOferta["Génesis"].cantidad===1&&mh.embudo.total>0,"métricas con rango de hoy: cuentan los leads y la venta de hoy");
+    const mv=(await call(metrics,{cookie,query:{desde:"2020-01-01",hasta:"2020-01-31"}})).body;
+    ok(mv.ok&&mv.embudo.total===0&&mv.embudo.ventas===0&&!mv.porOferta["Génesis"]&&mv.genesis.vendidos===1&&mv.porDia.length===31,"métricas con rango viejo: vacías, pero los lugares de Génesis cuentan el total"); }
   { const visita=h("api/public/visita.js"), bio={utm_source:"instagram",utm_medium:"bio",utm_campaign:"genesis-19-10"};
     let v=await call(visita,{method:"POST",body:JSON.stringify({tracking:bio})});
     ok(v.body.fuente==="Instagram · bio","visita desde la bio → fuente Instagram · bio");
