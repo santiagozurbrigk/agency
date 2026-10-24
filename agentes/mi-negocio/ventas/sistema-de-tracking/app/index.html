@@ -371,6 +371,8 @@ select.sel.rsp,select.sel.estado{vertical-align:middle}
 .rango{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .rango input[type=date]{width:auto;height:30px;padding:0 8px;font-size:12.5px}
 .rango .sep{color:var(--tx-3);font-size:12.5px}
+.rango>.cuenta{color:var(--tx-3);font-size:12.5px}
+.ph+.rango{margin-bottom:16px}
 .nota-a{font-size:12px;color:var(--tx-3);margin:6px 0 28px;max-width:760px;line-height:1.55}
 .ln{width:100%;height:auto;display:block;overflow:visible}
 .ln text{fill:var(--tx-3);font-size:10px;font-family:var(--txt)}
@@ -998,7 +1000,65 @@ function toggleSide(){$("#side").classList.toggle("on");}
    Render de vistas
    ============================================================ */
 function encabezado(s,acciones){
-  return `<div class="ph"><div><h2>${esc(s.nombre)}</h2><p>${esc(s.sub||"")}</p></div>${acciones?`<div class="acc">${acciones}</div>`:""}</div>`;
+  return `<div class="ph"><div><h2>${esc(s.nombre)}</h2><p>${esc(s.sub||"")}</p></div>${acciones?`<div class="acc">${acciones}</div>`:""}</div>`+(conFecha(s.id)?barraFecha():"");
+}
+
+/* ---------- Filtro de fechas (todos los paneles) ---------- */
+// Un solo rango para todo el tracker; se recuerda en el navegador. Cada panel filtra por la fecha
+// que le corresponde: el registro del lead, el día en que aplicó, el de la llamada o el del cierre.
+let FECHA={rango:"todo",desde:"",hasta:""};
+try{FECHA={...FECHA,...JSON.parse(localStorage.getItem("trk_fecha")||"{}")};}catch(e){}
+const diaF=d=>new Date((d?new Date(d):new Date()).getTime()-3*3600e3).toISOString().slice(0,10);
+function rangoFecha(){
+  const hoy=diaF(), r=FECHA.rango, atras=n=>diaF(Date.now()-n*864e5);
+  if(r==="hoy") return {desde:hoy,hasta:hoy};
+  if(r==="ayer") return {desde:atras(1),hasta:atras(1)};
+  if(r==="7d") return {desde:atras(6),hasta:hoy};
+  if(r==="30d") return {desde:atras(29),hasta:hoy};
+  if(r==="rango"&&FECHA.desde&&FECHA.hasta) return FECHA.desde<=FECHA.hasta?{desde:FECHA.desde,hasta:FECHA.hasta}:{desde:FECHA.hasta,hasta:FECHA.desde};
+  return {};
+}
+function enRangoF(iso,r){
+  r=r||rangoFecha();
+  if(!r.desde) return true;
+  if(!iso||isNaN(new Date(iso))) return false;
+  const d=diaF(iso); return d>=r.desde&&d<=r.hasta;
+}
+// La fecha con la que se filtra cada lead en cada panel.
+function fechaDe(l,vista){
+  const f=l.fields||{};
+  if(vista==="ventas"||vista==="clientes"){const vt=venta(l);return (vt&&vt.fecha)||l.creado;}
+  if(vista==="apl"||vista==="post") return f.aplico_at||l.creado;
+  if(vista==="llam") return f.cita_at||l.creado;
+  return l.creado;
+}
+const CRITERIO_F={ventas:"la fecha de cierre",clientes:"la fecha de cierre",apl:"el día en que aplicó",post:"el día en que aplicó",
+  llam:"el día de la llamada",met:"el día de registro (leads) y el de cierre (ventas)",anun:"el día en que se registró cada lead"};
+const conFecha=id=>id!=="conf"&&id!=="anun"&&!(id==="llam"&&LLVISTA==="cal");
+function setFecha(r){FECHA.rango=r;guardarFecha();render();}
+function fechasA(){
+  const d=$("#fDesde").value, h=$("#fHasta").value;
+  FECHA.desde=d; FECHA.hasta=h;
+  if(d&&h){FECHA.rango="rango";EDITANDO=false;guardarFecha();render();}
+}
+function guardarFecha(){try{localStorage.setItem("trk_fecha",JSON.stringify(FECHA));}catch(e){}}
+function barraFecha(der){
+  const op=[["todo","Todo"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"],["30d","Últimos 30 días"]];
+  const r=rangoFecha(), fd=d=>{const p=d.split("-");return `${+p[2]}/${+p[1]}`;};
+  const nota=r.desde?`<span class="cuenta">${r.desde===r.hasta?"El "+fd(r.desde):`Del ${fd(r.desde)} al ${fd(r.hasta)}`} · según ${CRITERIO_F[VISTA]||"el día en que se registró"}</span>`:"";
+  return `<div class="rango"><div class="seg">${op.map(([k,t])=>`<button class="${FECHA.rango===k?"on":""}" onclick="setFecha('${k}')">${t}</button>`).join("")}</div>
+    <input type="date" id="fDesde" value="${FECHA.rango==="rango"?FECHA.desde:r.desde||""}" onchange="fechasA()" onfocus="EDITANDO=true" aria-label="Desde"><span class="sep">a</span><input type="date" id="fHasta" value="${FECHA.rango==="rango"?FECHA.hasta:r.hasta||""}" onchange="fechasA()" onfocus="EDITANDO=true" aria-label="Hasta">
+    ${FECHA.rango!=="todo"?`<button class="btn sm fantasma" onclick="setFecha('todo')">${ic("i-x")}Sacar fecha</button>`:""}${nota}
+    <span class="rango-der">${der||""}</span></div>`;
+}
+// Copia de DATA con solo los leads del rango para el panel (las colas quedan filtradas igual).
+function datosEnRango(D,vista){
+  const r=rangoFecha();
+  if(!D||!r.desde) return D;
+  const leads=D.leads.filter(l=>enRangoF(fechaDe(l,vista),r)), ids=new Set(leads.map(l=>l.id));
+  const colas={};
+  for(const [k,a] of Object.entries(D.colas||{})) colas[k]=Array.isArray(a)?a.filter(id=>ids.has(id)):a;
+  return {...D,leads,colas};
 }
 function filtroDueno(total,visibles){
   return `<div class="filtros"><span class="cuenta">${visibles} lead${visibles===1?"":"s"}</span></div>`;
@@ -1099,7 +1159,10 @@ function lista(ids,opts){
   const leads=ids.map(lead).filter(Boolean);
   const vis=leads.filter(pasaDueno);
   let h=filtroDueno(leads.length,vis.length);
-  if(!vis.length) return h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${esc(opts.vacio||"Nada pendiente acá")}</b>${esc(opts.vacioSub||"Cuando entren leads a esta etapa van a aparecer acá.")}</div></div>`;
+  if(!vis.length){
+    if(rangoFecha().desde&&!opts.busqueda){opts={...opts,vacio:"Nadie en estas fechas",vacioSub:"Probá con otro rango o tocá «Sacar fecha»."};}
+    return h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${esc(opts.vacio||"Nada pendiente acá")}</b>${esc(opts.vacioSub||"Cuando entren leads a esta etapa van a aparecer acá.")}</div></div>`;
+  }
   if(opts.bloques){
     let pos=0;
     for(const b of opts.bloques){
@@ -1119,11 +1182,14 @@ function render(op){
   if(q&&DATA){
     const digitos=q.replace(/\D/g,"");
     const ids=DATA.leads.filter(l=>(l.nombre||"").toLowerCase().includes(q)||(l.email||"").toLowerCase().includes(q)||(digitos.length>=3&&(l.telefono||"").replace(/\D/g,"").includes(digitos))).map(l=>l.id);
-    v.innerHTML=`<div class="ph"><div><h2>Resultados</h2><p>Buscando «${esc(q)}» en todos los leads del lanzamiento.</p></div></div>`+lista(ids,{vacio:"No encontramos a nadie",vacioSub:"Probá con otra parte del nombre, el email o el WhatsApp."});
+    v.innerHTML=`<div class="ph"><div><h2>Resultados</h2><p>Buscando «${esc(q)}» en todos los leads del lanzamiento.</p></div></div>`+lista(ids,{busqueda:true,vacio:"No encontramos a nadie",vacioSub:"Probá con otra parte del nombre, el email o el WhatsApp."});
     return;
   }
   const s=SEC(VISTA);
   if(VISTA!=="met"&&VISTA!=="anun") delete v.dataset.vista;
+  const D0=DATA;
+  if(conFecha(VISTA)) DATA=datosEnRango(D0,VISTA);
+  try{
   switch(VISTA){
     case "ahora": v.innerHTML=encabezado(s)+lista(DATA?DATA.colas.primerContacto:[],{numerar:true,registro:true,wa:true,vacio:"No hay opt-ins sin contactar",vacioSub:"Cuando alguien se registre en la landing aparece acá."}); break;
     case "seg": { const ids=DATA?DATA.colas.seguimiento:[];
@@ -1148,6 +1214,7 @@ function render(op){
     case "anun": renderAnuncios(v,s,silencioso); break;
     case "conf": renderConfig(v,s); break;
   }
+  }finally{DATA=D0;}
 }
 $("#busca").addEventListener("input",()=>render());
 
@@ -1392,7 +1459,7 @@ function renderVentas(v,s){
     <div class="tile"><div class="t">Por cobrar</div><div class="v num">${usd(total-cobrado)}</div></div></div>`;
   if(sinRegistrar.length) h+=`<div class="tarjeta"><h4>Cerrados sin la venta registrada</h4><p style="color:var(--tx-3);font-size:13.5px;margin-bottom:10px">Están en etapa de venta pero falta cargar la oferta y la forma de pago, así que no suman a lo vendido ni a lo cobrado. Abrilos y registrala en la pestaña Venta.</p>
     ${sinRegistrar.map(l=>`<button class="btn sm" style="margin:0 6px 6px 0" onclick="abrirFicha('${l.id}','venta')">${esc(l.nombre||"(sin nombre)")} · ${esc(l.fields.etapa)}</button>`).join("")}</div>`;
-  if(!filas.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-venta")}</div><b>Todavía no hay ventas</b>Se registran desde la ficha de cada lead, en la pestaña Venta.</div></div>`;return;}
+  if(!filas.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-venta")}</div><b>${rangoFecha().desde?"Ninguna venta en estas fechas":"Todavía no hay ventas"}</b>${rangoFecha().desde?"Probá con otro rango o tocá «Sacar fecha».":"Se registran desde la ficha de cada lead, en la pestaña Venta."}</div></div>`;return;}
   h+=`<div class="lista"><div class="fila cab"><div>Lead</div><div class="col-fact">Oferta</div><div class="col-etapa">Cobro</div><div class="col-etq">Vendió</div><div></div></div>`;
   for(const {l,v:vt} of filas){
     const pag=vt.pagos.filter(p=>p.pagado).length, cob=suma(vt.pagos.filter(p=>p.pagado).map(p=>p.monto)), tot=suma(vt.pagos.map(p=>p.monto));
@@ -1680,7 +1747,7 @@ function renderClientes(v,s){
   const FILTROS=[["todos","Todos",todos.length],["vencido","Con cuota vencida"],["pronto","Vence en 7 días"],["al-dia","Al día"],["pago","Pagaron todo"]];
   h+=`<div class="filtros"><div class="seg">${FILTROS.map(([k,t])=>{const n=k==="todos"?todos.length:todos.filter(x=>estadoCliente(x.v)===k).length;return `<button class="${FCLI===k?"on":""}" onclick="setFcli('${k}')">${t} <span class="num" style="color:var(--tx-3)">${n}</span></button>`;}).join("")}</div></div>`;
   const vis=FCLI==="todos"?todos:todos.filter(x=>estadoCliente(x.v)===FCLI);
-  if(!vis.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${todos.length?"Ningún cliente con este filtro":"Todavía no hay clientes"}</b>${todos.length?"Probá con otro filtro.":"Registrá la venta desde la ficha del lead (pestaña Venta) o cargalo con «Agregar cliente»."}</div></div>`;return;}
+  if(!vis.length){v.innerHTML=h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${todos.length?"Ningún cliente con este filtro":rangoFecha().desde?"Ningún cliente que haya cerrado en estas fechas":"Todavía no hay clientes"}</b>${todos.length?"Probá con otro filtro.":"Registrá la venta desde la ficha del lead (pestaña Venta) o cargalo con «Agregar cliente»."}</div></div>`;return;}
   h+=`<div class="lista"><div class="fila cab cli"><div>Cliente</div><div class="col-cto">Contacto</div><div>Oferta · cierre</div><div>Próximo pago</div><div>Cobro</div></div>`;
   for(const {l,v:vt} of vis){
     const c=vt.cliente||{}, prox=proximoPago(vt);
@@ -1700,7 +1767,8 @@ function renderClientes(v,s){
 function exportarClientes(){
   const filas=[["Cliente","Marca","WhatsApp","Email","Instagram","Web","Documento","País","Oferta","Forma","Vendió","Cierre","Cuota","Monto USD","Vence","Pagado","Día de pago","Comprobante"]];
   const dia=f=>f?diaInput(f):"";
-  for(const {l,v:vt} of clientes()){
+  const r=rangoFecha();
+  for(const {l,v:vt} of clientes().filter(x=>enRangoF(x.v.fecha,r))){
     const c=vt.cliente||{};
     for(const p of vt.pagos) filas.push([l.nombre,c.marca,l.telefono,l.email,c.instagram,c.web,c.documento,c.pais,vt.oferta,vt.forma,vt.vendedor,dia(vt.fecha),`${p.n} de ${vt.pagos.length}`,p.monto,dia(p.vence),p.pagado?"Sí":"No",dia(p.fecha),p.comprobante?"Sí":"No"]);
   }
@@ -1773,7 +1841,8 @@ function pintarEnLugar(v,html){
 async function renderMetricas(v,s,silencioso){
   const yaPintado=silencioso&&v.dataset.vista==="met";
   if(!yaPintado) v.innerHTML=encabezado(s)+`<div class="tiles">${[1,2,3,4].map(()=>`<div class="tile"><div class="esq" style="width:50%"></div><div class="esq" style="height:26px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
-  let m; try{m=await api("/api/metrics");}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+`<div class="lista"><div class="vacio"><b>No se pudieron cargar las métricas</b>${esc(e.message)}</div></div>`;return;}
+  const rf=rangoFecha();
+  let m; try{m=await api("/api/metrics"+(rf.desde?`?desde=${rf.desde}&hasta=${rf.hasta}`:""));}catch(e){if(yaPintado)return;v.innerHTML=encabezado(s)+`<div class="lista"><div class="vacio"><b>No se pudieron cargar las métricas</b>${esc(e.message)}</div></div>`;return;}
   if(VISTA!=="met") return;
   const e=m.embudo, pct=(a,b)=>b?Math.round(a/b*100):0;
   const cobrado=Object.values(m.porOferta).reduce((x,o)=>x+o.cobrado,0);
@@ -1915,16 +1984,8 @@ function activarTips(v){
   });
 }
 
-function rangoAnun(){
-  const hoy=diaAR(), r=ANUN.rango;
-  if(r==="hoy") return {desde:hoy,hasta:hoy};
-  if(r==="ayer"){const a=diaAR(Date.now()-864e5);return {desde:a,hasta:a};}
-  if(r==="7d") return {desde:diaAR(Date.now()-6*864e5),hasta:hoy};
-  if(r==="rango"&&ANUN.desde&&ANUN.hasta) return {desde:ANUN.desde,hasta:ANUN.hasta};
-  return {};
-}
-function anunRango(r){ANUN.rango=r;render();}
-function anunFechas(){ANUN.desde=$("#aDesde").value;ANUN.hasta=$("#aHasta").value;if(ANUN.desde&&ANUN.hasta){ANUN.rango="rango";render();}}
+// El rango es el mismo filtro de fechas de todo el tracker.
+const rangoAnun=()=>rangoFecha();
 // Cambios de vista que no necesitan volver a pedir los datos.
 function anunPintar(){renderAnuncios(ANUN.v,ANUN.s,true,true);}
 function anunModo(m){ANUN.modo=m;anunPintar();}
@@ -2010,9 +2071,7 @@ async function renderAnuncios(v,s,silencioso,deCache){
   ANUN.v=v; ANUN.s=s;
   const seg=(op,actual,fn)=>`<div class="seg">${op.map(([k,t])=>`<button class="${actual===k?"on":""}" onclick="${fn}('${k}')">${t}</button>`).join("")}</div>`;
   const tabs=`<div class="subtabs">${[["funnel","Funnel y ads"],["landings","Landings"],["ads","Anuncios"]].map(([k,t])=>`<button class="${ANUN.tab===k?"on":""}" onclick="anunTab('${k}')">${t}</button>`).join("")}</div>`;
-  const filtros=`<div class="rango">${seg([["todo","Todo el lanzamiento"],["hoy","Hoy"],["ayer","Ayer"],["7d","Últimos 7 días"]],ANUN.rango,"anunRango")}
-    <input type="date" id="aDesde" value="${ANUN.desde}" onchange="anunFechas()" aria-label="Desde"><span class="sep">a</span><input type="date" id="aHasta" value="${ANUN.hasta}" onchange="anunFechas()" aria-label="Hasta">
-    <span class="rango-der">${ANUN.at?`<span class="vivo"><i></i>Actualizado ${ANUN.at}</span>`:""}${seg([["real","Opt-ins reales"],["calif","Solo calificados"]],ANUN.modo,"anunModo")}</span></div>`;
+  const filtros=barraFecha(`${ANUN.at?`<span class="vivo"><i></i>Actualizado ${ANUN.at}</span>`:""}${seg([["real","Opt-ins reales"],["calif","Solo calificados"]],ANUN.modo,"anunModo")}`);
   if(!yaPintado) v.innerHTML=encabezado(s)+tabs+filtros+`<div class="akpis">${[1,2,3,4,5].map(()=>`<div class="akpi"><div class="esq" style="width:50%"></div><div class="esq" style="height:24px;margin-top:10px;width:40%"></div></div>`).join("")}</div>`;
   const r=rangoAnun();
   let a;try{
@@ -2022,7 +2081,7 @@ async function renderAnuncios(v,s,silencioso,deCache){
   if(VISTA!=="anun") return;
   const filtros2=filtros.replace(/<span class="rango-der">[\s\S]*<\/span><\/div>$/,`<span class="rango-der"><span class="vivo"><i></i>Actualizado ${ANUN.at||""}</span>${seg([["real","Opt-ins reales"],["calif","Solo calificados"]],ANUN.modo,"anunModo")}</span></div>`);
   const enCurso=a.hasta===a.hoy;
-  let h=encabezado(s)+tabs+filtros2+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)}, en hora de Argentina, según el día en que se registró cada lead.${enCurso?" Hoy todavía está en curso.":""}${!a.inicio&&ANUN.rango==="todo"?` <b>«Todo el lanzamiento» arranca en el primer lead: poné el inicio del lanzamiento en Configuración para no mezclar lanzamientos anteriores.</b>`:""}</p>`;
+  let h=encabezado(s)+tabs+filtros2+`<p class="nota-a">${fDia(a.desde)} al ${fDia(a.hasta)}, en hora de Argentina, según el día en que se registró cada lead.${enCurso?" Hoy todavía está en curso.":""}${!a.inicio&&FECHA.rango==="todo"?` <b>«Todo el lanzamiento» arranca en el primer lead: poné el inicio del lanzamiento en Configuración para no mezclar lanzamientos anteriores.</b>`:""}</p>`;
   const M=a.meta&&!a.meta.error&&a.meta.resumen?a.meta:null;
   if(a.meta&&a.meta.error) h+=`<div class="aviso-err"><b>No se pudieron traer los datos de Meta.</b> ${esc(a.meta.error)}</div>`;
   else if(!a.meta) h+=`<div class="aviso-err">Falta conectar Meta Ads: cargá META_ACCESS_TOKEN y META_AD_ACCOUNT_ID en Vercel.</div>`;
