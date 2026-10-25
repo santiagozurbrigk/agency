@@ -156,6 +156,16 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.statusCode===400,"responsable inválido → 400");
     r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"responsable",data:{responsable:""}}});
     ok(r.body.ok&&(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.responsable==="","sacar responsable");
+    { const pab=()=>call(leads,{cookie}).then(x=>x.body.leads.find(l=>l.id==="demo-pablo"));
+      const antes=(await pab()).fields.sdr||"";
+      r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"seteo",data:{seteo:"Mati"}}});
+      const ps=await pab();
+      ok(r.body.ok&&ps.fields.sdr==="Mati"&&ps.fields.ultimo_contacto===t2.body.leads.find(l=>l.id==="demo-pablo").fields.ultimo_contacto,"seteo: asignar Mati (no toca el último contacto)");
+      r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"seteo",data:{seteo:"Jose"}}});
+      ok(r.statusCode===400,"seteo inválido → 400");
+      r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"seteo",data:{seteo:""}}});
+      ok(r.body.ok&&(await pab()).fields.sdr==="","seteo: sacar");
+      if(antes) await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"seteo",data:{seteo:antes}}}); }
     r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"estado_llamada",data:{estado_llamada:"No contestó"}}});
     ok(r.body.ok&&(await call(leads,{cookie})).body.leads.find(l=>l.id==="demo-pablo").fields.estado_llamada==="No contestó","estado de la llamada");
     r=await call(lead1,{method:"POST",cookie,body:{id:"demo-pablo",action:"estado_llamada",data:{estado_llamada:"  Quiere que lo llamen el jueves a la tarde porque está de viaje hasta el miércoles  "}}});

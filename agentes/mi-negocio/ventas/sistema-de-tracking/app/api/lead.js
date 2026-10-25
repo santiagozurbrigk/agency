@@ -59,6 +59,16 @@ module.exports = async function handler(req, res) {
         break;
       }
 
+      // Responsable del seteo: quién contactó al lead (Mati o Santi). Es el mismo campo que el SDR
+      // del proceso post webinar. Solo visual: no cambia reglas ni colas. Vacío = sin asignar.
+      case "seteo": {
+        const valor = String(data.seteo || "");
+        if (valor && !P.SDRS.includes(valor)) return res.status(400).json({ ok: false, error: "Responsable de seteo inválido" });
+        await store.asegurarCampos(["sdr"]);
+        updated = await store.registrar(id, quien, valor ? `Seteo → ${valor}` : "Seteo sin asignar", { sdr: valor }, lead);
+        break;
+      }
+
       // Estado de la llamada («No contestó», «Llamar de nuevo», o un texto libre). Solo visual,
       // como el responsable: no cambia reglas, colas ni el último contacto. Vacío = sin estado.
       case "estado_llamada": {
