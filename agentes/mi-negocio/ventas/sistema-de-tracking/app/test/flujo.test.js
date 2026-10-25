@@ -208,6 +208,19 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
   r=await call(lead,{method:"POST",cookie,body:{id:"demo-martin",action:"editar_venta",data:{pagos:[{monto:0}]}}});
   ok(r.statusCode===400,"editar venta con monto 0 rechazada");
 
+  // Informe de anuncios: con sesión o con la clave INFORME_KEY.
+  { const informe=h("api/informe.js");
+    let x=await call(informe,{});
+    ok(x.statusCode===401,"informe sin sesión ni clave → 401");
+    process.env.INFORME_KEY="clave-de-prueba-de-mas-de-24";
+    x=await call(informe,{query:{}}); x=await (async()=>{const req={method:"GET",query:{},headers:{"x-informe-key":"otra"}};const res=mkRes();await informe(req,res);return res;})();
+    ok(x.statusCode===401,"informe con clave mala → 401");
+    x=await (async()=>{const req={method:"GET",query:{},headers:{"x-informe-key":"clave-de-prueba-de-mas-de-24"}};const res=mkRes();await informe(req,res);return res;})();
+    ok(x.statusCode===200&&x.body.ok&&x.body.panel&&x.body.panel.ok&&Array.isArray(x.body.leads),"informe con clave: panel de anuncios y leads");
+    x=await call(informe,{cookie});
+    ok(x.statusCode===200&&x.body.ok,"informe con sesión");
+    delete process.env.INFORME_KEY; }
+
   // Métricas
   const metrics=h("api/metrics.js");
   r=await call(metrics,{cookie});

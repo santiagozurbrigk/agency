@@ -70,6 +70,20 @@ function requiere(req, res) {
   return s;
 }
 
+// Cookie de una sesión corta, para que un endpoint llame a otro por dentro (informes).
+function sesionInterna(nombre) {
+  const payload = Buffer.from(JSON.stringify({ e: "informe@interno", n: nombre || "Informe", x: Date.now() + 5 * 60 * 1000 })).toString("base64url");
+  return `trk=${payload}.${firmar(payload)}`;
+}
+
+// Clave de informes (INFORME_KEY, 24 caracteres o más): permite bajar los datos sin usuario,
+// por ejemplo para armar un informe desde afuera. Sin la variable, no hay acceso por clave.
+function claveInforme(req) {
+  const k = String(process.env.INFORME_KEY || "");
+  const dada = String((req.headers && req.headers["x-informe-key"]) || "");
+  return k.length >= 24 && dada.length > 0 && timingSafeEq(k, dada);
+}
+
 const COOKIE_LOGOUT = "trk=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0";
 
-module.exports = { login, sesion, requiere, esAdmin, COOKIE_LOGOUT };
+module.exports = { login, sesion, requiere, esAdmin, sesionInterna, claveInforme, COOKIE_LOGOUT };
