@@ -201,7 +201,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .etiquetas{display:flex;gap:4px 12px;flex-wrap:wrap}
 .btn.wa{color:#1e9e57;border-color:rgba(30,158,87,.35);text-decoration:none} @media (max-width:520px){.btn.wa .wa-t{display:none}} .btn.wa:hover{background:rgba(30,158,87,.08)} .btn.wa svg{width:14px;height:14px}
 .acciones-f{display:flex;gap:4px;justify-content:flex-end}
-@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa):not(.rsp):not(.estado){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
+@media (hover:hover) and (min-width:901px){.fila .acciones-f .btn:not(.wa):not(.rsp):not(.estado):not(.set){opacity:0;transition:opacity .12s}.fila:hover .acciones-f .btn,.fila:focus-within .acciones-f .btn{opacity:1}}
 /* Estado: punto de color + texto, sin relleno */
 .badge{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;white-space:nowrap;color:var(--tx)}
 .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--tx-3)}
@@ -234,7 +234,9 @@ select.sel.estado.e-azul{color:var(--azul);border-color:var(--azul)} select.sel.
 /* Filas con responsable y estado: los controles van en una segunda línea, a lo ancho */
 .fila.con-resp .acciones-f{grid-column:1/-1;justify-content:flex-start;flex-wrap:wrap;padding-left:74px;margin-top:-4px}
 @media (max-width:900px){.fila.con-resp,.lista.con-reg .fila.con-resp{grid-template-columns:1fr}.fila.con-resp .acciones-f{padding-left:44px;margin-top:0}}
-select.sel.rsp,select.sel.estado{vertical-align:middle}
+select.sel.rsp,select.sel.estado,select.sel.set{vertical-align:middle}
+.chip.set{font-weight:600} .chip.set.s-mati{color:var(--vio)} .chip.set.s-santi{color:var(--ok)}
+select.sel.set{max-width:132px} select.sel.set.s-mati{color:var(--vio);border-color:var(--vio)} select.sel.set.s-santi{color:var(--ok);border-color:var(--ok)}
 .toggle-pill.llam.on{background:var(--ok);border-color:var(--ok);color:#fff}
 .toggle-pill.llam svg{width:14px;height:14px}
 @media (max-width:520px){.toggle-pill.llam span{display:none}}
@@ -691,7 +693,7 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 let ME=null, DEMO=false, DATA=null, VISTA="ahora", FICHA_ID=null, FICHA_TAB="resumen", CARGANDO=false, EDITANDO=false;
 const COMPLETO={};               // fichas completas (con historial), por id
 let FILTRO_DUENO="todos";
-try{ FILTRO_DUENO=localStorage.getItem("trk_dueno")||"todos"; VISTA=localStorage.getItem("trk_vista")||"ahora"; }catch(e){}
+try{ FILTRO_DUENO=localStorage.getItem("trk_dueno")||"todos"; if(!["todos","Mati","Santi","sin"].includes(FILTRO_DUENO))FILTRO_DUENO="todos"; VISTA=localStorage.getItem("trk_vista")||"ahora"; }catch(e){}
 // /clientes abre directo la vista de clientes (el link se puede compartir).
 if(location.pathname.replace(/\/+$/,"")==="/clientes") VISTA="clientes";
 
@@ -1060,8 +1062,11 @@ function datosEnRango(D,vista){
   for(const [k,a] of Object.entries(D.colas||{})) colas[k]=Array.isArray(a)?a.filter(id=>ids.has(id)):a;
   return {...D,leads,colas};
 }
-function filtroDueno(total,visibles){
-  return `<div class="filtros"><span class="cuenta">${visibles} lead${visibles===1?"":"s"}</span></div>`;
+// Filtro por responsable del seteo (quién lo contactó): Todos, Mati, Santi o sin asignar.
+function filtroDueno(total,visibles,leads){
+  const op=[["todos","Todos"],["Mati","Mati"],["Santi","Santi"],["sin","Sin asignar"]];
+  const n=k=>(leads||[]).filter(l=>pasaDueno(l,k)).length;
+  return `<div class="filtros"><span class="fseg-t">Seteo</span><div class="seg">${op.map(([k,t])=>`<button class="${FILTRO_DUENO===k?"on":""}" onclick="setDueno('${k}')">${t}${leads?` <span class="num" style="color:var(--tx-3)">${n(k)}</span>`:""}</button>`).join("")}</div><span class="cuenta">${visibles} lead${visibles===1?"":"s"}</span></div>`;
 }
 /* Filtros de Seguimiento: etapa, califica o no, intentos y último contacto. Se recuerdan en el navegador. */
 const ETAPAS_SEG=["Contactado","En conversación","Sin respuesta","Califica · pre-venta","Ruta a la clase","Confirmado para la clase"];
@@ -1097,7 +1102,7 @@ function filtrosSeg(ids){
 }
 function limpiarSeg(){FSEG={etapa:"todas",califica:"todos",intentos:"todos",frio:false};try{localStorage.removeItem("trk_fseg");}catch(e){}render();}
 function setDueno(v){FILTRO_DUENO=v;try{localStorage.setItem("trk_dueno",v);}catch(e){}render();}
-const pasaDueno=()=>true;
+const pasaDueno=(l,k)=>{k=k||FILTRO_DUENO;const s=(l&&l.fields&&l.fields.sdr)||"";return k==="todos"||(k==="sin"?!s:s===k);};
 
 function etiquetas(l){
   const f=l.fields,c=[];
@@ -1110,6 +1115,7 @@ function etiquetas(l){
   if(f.posible_duplicado==="Sí")c.push(`<span class="chip mal">${ic("i-dup")}Posible duplicado</span>`);
   if(f.llamada_con)c.push(`<span class="chip">Llamada: ${esc(llamadaCon(f.llamada_con))}</span>`);
   if(f.zoom_json){try{const z=JSON.parse(f.zoom_json);c.push(`<span class="chip ${z.m>=60?"ok":""}">${ic("i-vivo")}Vio ${z.m} min</span>`);}catch(e){}}
+  if(f.sdr)c.push(`<span class="chip set s-${esc(f.sdr.toLowerCase())}">Seteo: ${esc(f.sdr)}</span>`);
   if(f.responsable)c.push(`<span class="chip rsp r-${esc(f.responsable.toLowerCase())}">Resp.: ${esc(f.responsable)}</span>`);
   if(f.estado_llamada)c.push(`<span class="chip ${TONO_ESTADO[f.estado_llamada]||""}">${ic("i-tel")}${esc(f.estado_llamada)}</span>`);
   return c.join("");
@@ -1129,7 +1135,7 @@ function filaLead(l,pos,reg,wa,resp){
     <div class="col-fact fact">${esc(tamano(f)||"—")}<small>${esc(f.inversion_meta?"Meta por día":f.ciclo?(l.calc&&l.calc.consumible?"Consumible":"Compra única"):"")}</small></div>
     <div class="col-etapa">${badgeEtapa(f.etapa)}<div style="color:var(--tx-3);font-size:12px;margin-top:4px">${detalle}</div></div>
     <div class="col-etq etiquetas">${etiquetas(l)}</div>
-    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${resp?selResp(l)+selEstado(l):""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
+    <div class="acciones-f">${wa&&waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selSeteo(l)}${resp?selResp(l)+selEstado(l):""}<button class="btn sm" onclick="event.stopPropagation();accion('${l.id}','intento',{},'Intento anotado')" title="Anotar un intento de contacto sin respuesta">+1 intento</button></div>
   </div>`;
 }
 // Link directo al chat de WhatsApp (wa.me usa el número con código de país, sin + ni espacios).
@@ -1157,8 +1163,8 @@ function lista(ids,opts){
   opts=opts||{};
   if(!DATA) return esqueleto();
   const leads=ids.map(lead).filter(Boolean);
-  const vis=leads.filter(pasaDueno);
-  let h=filtroDueno(leads.length,vis.length);
+  const vis=leads.filter(l=>pasaDueno(l));
+  let h=filtroDueno(leads.length,vis.length,leads);
   if(!vis.length){
     if(rangoFecha().desde&&!opts.busqueda){opts={...opts,vacio:"Nadie en estas fechas",vacioSub:"Probá con otro rango o tocá «Sacar fecha»."};}
     return h+`<div class="lista"><div class="vacio"><div class="circ">${ic("i-check")}</div><b>${esc(opts.vacio||"Nada pendiente acá")}</b>${esc(opts.vacioSub||"Cuando entren leads a esta etapa van a aparecer acá.")}</div></div>`;
@@ -1259,7 +1265,7 @@ function filaZoom(l,pos){
     <div class="col-fact fact"><b class="num">${z.m} min</b><div class="zbar"><i style="width:${Math.min(100,z.m/dur*100)}%"></i></div></div>
     <div class="col-etapa fact"><span class="chip ${sal.k}">${esc(sal.t)}</span>${tardeZ(z)?`<small>Llegó tarde (min ${z.i})</small>`:""}</div>
     <div class="col-etq fact">${z.v>1?`Entró ${z.v} veces`:"Entró 1 vez"}<small>${esc(z.p||"")}</small></div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}</div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selSeteo(l)}${selResp(l)}${selEstado(l)}</div>
   </div>`;
 }
 function filaNoVino(l,pos){
@@ -1272,7 +1278,7 @@ function filaNoVino(l,pos){
       <div class="movil"><span class="chip ${l.calc&&l.calc.califica?"ok":""}">${esc(tramoDe(f))}</span></div></div></div>
     <div class="col-reg fact${l.calc&&l.calc.califica?" apl-on":""}">${esc(tramoDe(f))}<small>${f.inversion_meta?"Meta por día":f.facturacion?"Facturación":""}</small></div>
     <div class="col-fact fact">—</div><div class="col-etapa">${badgeEtapa(f.etapa)}</div><div class="col-etq fact">No vino</div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}</div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selSeteo(l)}${selResp(l)}${selEstado(l)}</div>
   </div>`;
 }
 async function importarZoom(input){
@@ -1386,7 +1392,7 @@ function filaApl(l,pos){
     <div class="col-fact fact${FACT_ALTA.has(f.facturacion)?" apl-on":""}">${esc(f.facturacion||"—")}<small>${esc(f.ciclo||"")}</small></div>
     <div class="col-etapa fact${n>=2?" apl-on":""}">${esc(f.inversion||"—")}<div style="margin-top:4px">${badgeEtapa(f.etapa)}</div></div>
     <div class="col-etq fact apl-resp"><span title="${esc(f.objetivo||"")}">${esc(corto(f.objetivo)||"—")}</span><small title="${esc(f.freno||"")}">${esc(corto(f.freno))}</small></div>
-    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selResp(l)}${selEstado(l)}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
+    <div class="acciones-f">${waLink(l.telefono)?`<a class="btn sm wa" href="${waLink(l.telefono)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" title="Abrir el chat de WhatsApp con ${esc(l.nombre||"este lead")}">${ic("i-wa")}<span class="wa-t">WhatsApp</span></a>`:""}${selSeteo(l)}${selResp(l)}${selEstado(l)}<button class="toggle-pill llam ${llamado(l)?"on":""}" aria-pressed="${llamado(l)}" onclick="event.stopPropagation();marcar('${l.id}','llamado_apl','${llamado(l)?"No":"Sí"}')" title="${llamado(l)?"Volver a «por llamar»":"Marcar que ya lo llamaste"}">${ic(llamado(l)?"i-check":"i-tel")}<span>${llamado(l)?"Llamado":"Ya lo llamé"}</span></button></div>
   </div>`;
 }
 function renderAplicaciones(v,s){
@@ -1419,12 +1425,12 @@ function renderAplicaciones(v,s){
 function renderClase(v,s){
   if(!DATA){v.innerHTML=encabezado(s)+esqueleto();return;}
   const todos=DATA.leads.filter(l=>!["Próximo ciclo","Venta Génesis","Venta Mentoría"].includes(l.fields.etapa||""));
-  const activos=todos.filter(pasaDueno).sort((a,b)=>(a.nombre||"").localeCompare(b.nombre||""));
+  const activos=todos.filter(l=>pasaDueno(l)).sort((a,b)=>(a.nombre||"").localeCompare(b.nombre||""));
   const asis=activos.filter(l=>l.fields.asistio==="Sí").length, sen=activos.filter(l=>l.fields.senal_compra==="Sí").length;
   let h=encabezado(s,`<button class="btn pri" onclick="armarGrupos()">${ic("i-g1")}Armar los 3 grupos</button>`);
   h+=`<div class="tiles"><div class="tile"><div class="t">Asistieron</div><div class="v num">${asis}<span> / ${activos.length}</span></div><div class="meter"><i style="width:${activos.length?asis/activos.length*100:0}%;background:var(--ok)"></i></div></div>
      <div class="tile"><div class="t">Señales de compra</div><div class="v num">${sen}</div><div class="s">Se llaman primero al día siguiente</div></div></div>`;
-  h+=filtroDueno(todos.length,activos.length);
+  h+=filtroDueno(todos.length,activos.length,todos);
   h+=`<div class="lista">${activos.map(l=>`<div class="fila clase">
       <div class="quien-l" onclick="abrirFicha('${l.id}')" style="cursor:pointer"><div class="avatar ${claseAvatar(l.fields.dueno)}">${esc(iniciales(l.nombre))}</div><div style="min-width:0"><div class="nom">${esc(l.nombre||"(sin nombre)")}</div><div class="sub">${esc(l.telefono||"")}</div></div></div>
       <div class="col-fact fact">${esc(tamano(l.fields)||"—")}</div>
@@ -2409,6 +2415,7 @@ function cambiosOptimistas(l,action,data){
   if(action==="etapa") return {etapa:data.etapa};
   if(action==="grupo") return {grupo:data.grupo};
   if(action==="responsable") return {responsable:data.responsable||""};
+  if(action==="seteo") return {sdr:data.seteo||""};
   if(action==="estado_llamada") return {estado_llamada:String(data.estado_llamada||"").trim().slice(0,60)};
   if(action==="reasignar") return {...(data.dueno?{dueno:data.dueno}:{}),...(data.llamada_con?{llamada_con:data.llamada_con,excede_tope:"No"}:{})};
   if(action==="intento") return {intentos:String((parseInt(f.intentos||"0",10)||0)+1),ultimo_contacto:new Date().toISOString()};
@@ -2467,6 +2474,12 @@ function elegirEstado(id,el){
 }
 
 // Responsable de la llamada (Jose o Manu): solo para guiarse visualmente.
+const SETEO=["Mati","Santi"];
+function selSeteo(l){
+  const r=l.fields.sdr||"";
+  return `<select class="btn sm sel set ${r?"s-"+r.toLowerCase():""}" aria-label="Responsable del seteo" title="Quién lo contactó (seteo)" onclick="event.stopPropagation()" onchange="event.stopPropagation();accion('${l.id}','seteo',{seteo:this.value},this.value?'Seteo: '+this.value:'Seteo sin asignar')">
+    <option value="" ${r?"":"selected"}>${r?"Sin seteo":"Seteo…"}</option>${SETEO.map(o=>`<option ${o===r?"selected":""}>${o}</option>`).join("")}</select>`;
+}
 const RESPONSABLES=["Jose","Manu"];
 function selResp(l){
   const r=l.fields.responsable||"";
@@ -2499,7 +2512,7 @@ function pintarFicha(){
         ${sel("etapa","etapa","Mover a…",ETAPAS.filter(e=>e!==f.etapa&&!e.startsWith("Venta")),"Etapa actualizada")}
         ${sel("reasignar","llamada_con","Llamada con…",["Manu","Equipo"],"Llamada reasignada")}
         ${sel("grupo","grupo","Grupo…",["1","2","3"],"Grupo actualizado")}
-        ${selResp(l)}${selEstado(l)}
+        ${selSeteo(l)}${selResp(l)}${selEstado(l)}
         ${ME&&ME.admin?`<button class="btn sm peligro" onclick="eliminarLead('${id}')" title="Borrar este lead de GHL y del sistema">${ic("i-x")}Eliminar</button>`:""}
       </div>
       <button class="icon-btn" onclick="cerrarFicha()" aria-label="Cerrar" style="position:absolute;top:14px;right:14px">${ic("i-x")}</button>
