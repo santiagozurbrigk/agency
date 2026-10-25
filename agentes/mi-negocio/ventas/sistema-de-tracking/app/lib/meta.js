@@ -37,7 +37,7 @@ async function get(ruta, params) {
   const qs = new URLSearchParams({ ...params, access_token: token });
   let url = `https://graph.facebook.com/${VERSION}/${ruta}?${qs}`;
   const filas = [];
-  for (let paginas = 0; url && paginas < 20; paginas++) {
+  for (let paginas = 0; url && paginas < 40; paginas++) {
     let d;
     try {
       const r = await fetch(url);
@@ -119,8 +119,9 @@ async function datos(desde, hasta) {
 // Las URLs de Meta vencen a los pocos días: sirven para verlas o bajarlas en el momento.
 async function creativos() {
   const { cuenta } = config();
-  const ads = await get(`act_${cuenta}/ads`, { limit: "500",
-    fields: "id,name,campaign{name},adset{name},creative{id,thumbnail_url,image_url,video_id,object_type}", thumbnail_width: "640", thumbnail_height: "640" });
+  // De a 25: con más, Meta corta con «reduce the amount of data».
+  const ads = await get(`act_${cuenta}/ads`, { limit: "25",
+    fields: "id,name,campaign{name},adset{name},creative.thumbnail_width(640).thumbnail_height(640){id,thumbnail_url,image_url,video_id,object_type}" });
   return ads.map(a => {
     const c = a.creative || {};
     return { adId: a.id, anuncio: a.name || "", campana: (a.campaign || {}).name || "", conjunto: (a.adset || {}).name || "",
