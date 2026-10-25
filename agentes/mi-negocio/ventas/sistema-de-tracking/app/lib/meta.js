@@ -115,4 +115,18 @@ async function datos(desde, hasta) {
   return v;
 }
 
-module.exports = { enabled, problema, datos };
+// Creativo de cada anuncio: miniatura (primer frame en los videos) e imagen original si es una foto.
+// Las URLs de Meta vencen a los pocos días: sirven para verlas o bajarlas en el momento.
+async function creativos() {
+  const { cuenta } = config();
+  const ads = await get(`act_${cuenta}/ads`, { limit: "500",
+    fields: "id,name,campaign{name},adset{name},creative{id,thumbnail_url,image_url,video_id,object_type}", thumbnail_width: "640", thumbnail_height: "640" });
+  return ads.map(a => {
+    const c = a.creative || {};
+    return { adId: a.id, anuncio: a.name || "", campana: (a.campaign || {}).name || "", conjunto: (a.adset || {}).name || "",
+      tipo: c.video_id ? "video" : (c.object_type || "imagen").toLowerCase(), videoId: c.video_id || null,
+      miniatura: c.thumbnail_url || null, imagen: c.image_url || null };
+  });
+}
+
+module.exports = { enabled, problema, datos, creativos };
