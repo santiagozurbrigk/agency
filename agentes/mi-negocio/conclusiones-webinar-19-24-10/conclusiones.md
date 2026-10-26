@@ -61,7 +61,7 @@ Del sábado 10/10 al viernes 16/10 los anuncios de adquisición se cortaban (err
 5. **Lo que costaron los cortes:** si la inversión de los días con cortes (USD 2.369) hubiera rendido al costo por calificado de los días efectivos, habría traído unos 63 calificados en vez de 31.
 6. **Matiz:** no todo el período con cortes rindió mal. El 15/10 y el 16/10, cuando arrancó GOAT, ya trajeron 7 y 16 calificados (USD 30,94 cada uno el 16/10). Lo flojo fue sobre todo del 10/10 al 14/10, cuando se cortaba y además se estaban testeando creativos.
 7. Los creativos que más calificados trajeron en los días efectivos: D3_V6 (14 a USD 31,14), D4_V3 (11 a USD 26,03), D1_V7 (4 a USD 47,06).
-8. El lunes 19/10 se cuenta entero porque Meta no da los números por hora. Después de las 19 hs se registraron 1 leads de anuncios, así que casi no cambia nada.
+8. El lunes 19/10 se cuenta entero porque Meta no da los números por hora. Después de las 19 hs se registró un solo lead de anuncios, así que casi no cambia nada.
 9. **Para el próximo lanzamiento:** saldo cargado de sobra antes de arrancar (o pago automático con tarjeta de respaldo), revisar todas las mañanas los anuncios rechazados o con error, y dejar el testeo de creativos terminado antes de los días fuertes.
 
 ### Día por día (adquisición)
