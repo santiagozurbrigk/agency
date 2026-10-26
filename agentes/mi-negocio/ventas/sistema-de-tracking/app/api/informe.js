@@ -19,9 +19,32 @@ function llamar(handler, query) {
   });
 }
 
+// ?buscar=email,+54911…,…: la ficha de cada uno (hasta 20), esté o no en el lanzamiento.
+// Para cruzar compradores con el día y el anuncio por el que entraron.
+async function buscar(lista) {
+  const out = [];
+  for (const q of lista.slice(0, 20)) {
+    const esMail = q.includes("@");
+    const l = await store.findLead(esMail ? "" : q, esMail ? q : "").catch(() => null);
+    if (!l) { out.push({ buscado: q, encontrado: false }); continue; }
+    let o = {};
+    try { o = JSON.parse(l.fields.origen || "{}") || {}; } catch (e) {}
+    const f = l.fields;
+    out.push({ buscado: q, encontrado: true, id: l.id, nombre: l.nombre || "", email: l.email || "", telefono: l.telefono || "", creado: l.creado || null,
+      dia: l.creado ? store.diaAR(l.creado) : null, tags: l.tags || [], fuente: fuenteDe(o), utm: o, califica: calificaOptin(f),
+      campos: Object.fromEntries(["etapa", "inversion_meta", "facturacion", "inversion", "aplico_at", "asistio", "zoom_json", "cita_at", "llamada_con", "responsable",
+        "estado_llamada", "post_estado", "sdr", "venta_json"].filter(k => f[k]).map(k => [k, f[k]])) });
+  }
+  return out;
+}
+
 module.exports = async function handler(req, res) {
   if (!sesion(req) && !claveInforme(req)) return res.status(401).json({ ok: false, error: "Sin acceso" });
   try {
+    if (req.query.buscar) {
+      const lista = String(req.query.buscar).split(",").map(x => x.trim()).filter(Boolean);
+      return res.status(200).json({ ok: true, buscados: await buscar(lista) });
+    }
     const query = {};
     for (const k of ["desde", "hasta"]) if (/^\d{4}-\d{2}-\d{2}$/.test(req.query[k] || "")) query[k] = req.query[k];
     const [panel, todos, creativos] = await Promise.all([
