@@ -10,6 +10,8 @@ Le pasás a Claude el link de un tablero de Miro y lo entiende como lo ves vos:
 
 Funciona con **Claude Code** (terminal, app de escritorio o la extensión de VS Code).
 
+> ¿Nunca usaste Claude Code ni la terminal? Seguí [`PRIMEROS-PASOS.md`](PRIMEROS-PASOS.md): es el paso a paso desde cero.
+
 ## Instalación (una sola vez, ~5 minutos)
 
 ### 1. Copiar la skill
