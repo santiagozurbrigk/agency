@@ -219,6 +219,8 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(x.statusCode===200&&x.body.ok&&x.body.panel&&x.body.panel.ok&&Array.isArray(x.body.leads),"informe con clave: panel de anuncios y leads");
     x=await call(informe,{cookie});
     ok(x.statusCode===200&&x.body.ok,"informe con sesión");
+    x=await call(informe,{cookie,query:{buscar:"no-existe@x.com"}});
+    ok(x.statusCode===200&&x.body.buscados.length===1&&x.body.buscados[0].encontrado===false,"informe: buscar un email que no está");
     delete process.env.INFORME_KEY; }
 
   // Métricas
