@@ -150,6 +150,13 @@ aside.side:hover::-webkit-scrollbar-thumb{background:var(--borde-2);background-c
 main.cont{min-width:0;display:flex;flex-direction:column}
 header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--borde);padding:10px 32px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .hamb{display:none}
+/* Escritorio: el menú lateral se esconde con el botón ☰ (se recuerda en el navegador) */
+@media (min-width:901px){
+  .hamb{display:inline-grid}
+  .lay{transition:grid-template-columns .2s ease}
+  .lay.side-off{grid-template-columns:0 1fr}
+  .lay.side-off aside.side{visibility:hidden;padding:0;border:0;overflow:hidden}
+}
 .buscador{position:relative;flex:1;min-width:200px;max-width:380px}
 .buscador input{padding-left:32px;height:34px;border-color:transparent;background:var(--panel-2)}
 .buscador input:focus{border-color:var(--borde-2);background:transparent}
@@ -170,6 +177,7 @@ header.top{position:sticky;top:0;z-index:15;background:color-mix(in srgb, var(--
 .kpi.alerta .meter i{background:var(--mal)}
 
 .pagina{padding:32px 32px 72px;max-width:1200px;width:100%}
+.pagina.ancha{max-width:none}
 .demo{display:flex;gap:8px;align-items:center;color:var(--tx-3);font-size:12.5px;margin-bottom:24px}
 .demo svg.ic{width:15px;height:15px;color:var(--warn)}
 .ph{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
@@ -498,16 +506,43 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 .modal-caja .acc{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
 .modal-caja.ancha{width:min(620px,100%)}
 /* ===================== Tareas ===================== */
-.tb{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px;align-items:start}
-.tb-col{background:var(--panel-2);border-radius:var(--radio);padding:8px;min-height:140px;display:flex;flex-direction:column;gap:8px;transition:outline-color .12s}
+/* Resumen arriba del tablero */
+.t-res{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.t-stat{display:flex;flex-direction:column;justify-content:flex-start;border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;text-align:left;transition:border-color .12s,background .12s}
+button.t-stat:hover{border-color:var(--borde-2);background:var(--panel-2)}
+.t-stat.on{border-color:var(--tx-3);background:var(--panel-2)}
+.t-stat .t{display:block;font-size:12px;color:var(--tx-3);font-weight:500}
+.t-stat b{display:block;font:600 22px/1.2 var(--tit);margin-top:4px;font-variant-numeric:tabular-nums}
+.t-stat b small{font:500 13px var(--txt);color:var(--tx-3);margin-left:4px}
+.t-stat .meter{width:100%;height:4px;margin-top:8px} .t-stat .meter i{background:var(--ok)}
+.t-stat.mal b{color:var(--mal)} .t-stat.warn b{color:var(--warn)}
+.t-barra{display:flex;align-items:center;gap:10px 16px;flex-wrap:wrap;margin-bottom:14px}
+.t-barra .filtros{margin:0}
+/* Tablero: columnas con scroll propio, encabezado fijo */
+.tb{display:grid;grid-template-columns:repeat(5,minmax(250px,1fr));gap:14px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.tb-col{background:var(--panel-2);border-radius:var(--radio);display:flex;flex-direction:column;max-height:calc(100vh - 330px);min-height:180px;overflow-y:auto;transition:outline-color .12s}
 .tb-col.sobre{outline:2px dashed var(--naranja);outline-offset:-2px}
-.tb-cab{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:500;color:var(--tx-2);padding:4px 4px 2px}
-.tb-cab .n{color:var(--tx-3);font-variant-numeric:tabular-nums}
-.tcard{background:var(--bg);border:1px solid var(--borde);border-radius:var(--radio-s);padding:10px;cursor:pointer;font-size:13px;text-align:left;width:100%}
-.tcard:hover{border-color:var(--borde-2)}
+.tb-cab{position:sticky;top:0;z-index:1;background:var(--panel-2);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--tx);padding:12px 12px 8px}
+.tb-cab .n{color:var(--tx-3);font-weight:500;font-variant-numeric:tabular-nums}
+.tb-cuerpo{display:flex;flex-direction:column;gap:8px;padding:0 8px 10px}
+.tb-vacio{font-size:12.5px;color:var(--tx-3);padding:18px 8px;text-align:center;border:1px dashed var(--borde-2);border-radius:var(--radio-s)}
+.tb-fase{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--tx-3);text-transform:uppercase;letter-spacing:.04em;padding:8px 4px 0}
+.tb-fase .n{font-weight:500}
+.tcard{position:relative;background:var(--bg);border:1px solid var(--borde);border-left:3px solid var(--fase,var(--borde-2));border-radius:var(--radio-s);padding:10px 12px;cursor:pointer;text-align:left;width:100%;transition:border-color .12s,transform .12s}
+.tcard:hover{border-color:var(--borde-2);border-left-color:var(--fase,var(--borde-2))}
+.tcard:active{transform:scale(.99)}
 .tcard.arrastrando{opacity:.4}
-.tcard .tt{font-weight:500;line-height:1.35;margin-top:2px}
-.tcard .tm{display:flex;gap:4px 10px;flex-wrap:wrap;margin-top:8px}
+.tcard.hecha{opacity:.62} .tcard.hecha:hover{opacity:1}
+.tcard .tt{font-size:13.5px;font-weight:550;line-height:1.38}
+.tcard .tm{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;margin-top:9px;font-size:12px;color:var(--tx-3)}
+.tcard .tm .t-id{margin-left:auto}
+.t-quien{display:inline-flex;align-items:center;gap:6px;font-weight:550;color:var(--tx-2)}
+.t-av{width:20px;height:20px;border-radius:50%;display:inline-grid;place-items:center;font-size:10.5px;font-weight:700;background:var(--panel-3);color:var(--tx-3)}
+.t-av.p-mati{background:var(--vio-suave);color:var(--vio)} .t-av.p-santi{background:var(--ok-suave);color:var(--ok)} .t-av.p-manu{background:var(--naranja-suave);color:var(--naranja)}
+.t-vence.pronto{color:var(--warn);font-weight:550}
+.t-dot{width:8px;height:8px;border-radius:50%;background:var(--fase,var(--tx-3));flex:none}
+.f-adq{--fase:var(--naranja)} .f-nut{--fase:var(--azul)} .f-web{--fase:var(--vio)} .f-post{--fase:var(--ok)} .f-b52{--fase:var(--warn)} .f-bon{--fase:var(--mal)} .f-otro{--fase:var(--tx-3)}
+@media (max-width:900px){.t-res{grid-template-columns:1fr 1fr}.tb-col{max-height:none}}
 .t-id{font-size:11.5px;color:var(--tx-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 .chip.p-mati{color:var(--vio);font-weight:600} .chip.p-santi{color:var(--ok);font-weight:600} .chip.p-manu{color:var(--naranja);font-weight:600}
 select.sel.p-mati{color:var(--vio);border-color:var(--vio)} select.sel.p-santi{color:var(--ok);border-color:var(--ok)} select.sel.p-manu{color:var(--naranja);border-color:var(--naranja)}
@@ -520,7 +555,7 @@ table.tabla td .sel{height:28px;font-size:12.5px}
 .t-sec{margin-top:18px} .t-sec h4{font-size:12px;font-weight:500;color:var(--tx-3);margin-bottom:6px;font-family:var(--txt);letter-spacing:0}
 .t-coment{border-top:1px solid var(--borde);padding:9px 0;font-size:13.5px;white-space:pre-wrap;word-break:break-word} .t-coment small{color:var(--tx-3);display:block;font-size:12px}
 .t-hist{font-size:12.5px;color:var(--tx-2);margin:6px 0 0 16px;padding:0;line-height:1.7}
-@media (max-width:900px){.tb{grid-template-columns:repeat(5,minmax(240px,82vw))}}
+@media (max-width:900px){.tb{grid-template-columns:repeat(5,minmax(250px,82vw))}}
 .fila.cli{grid-template-columns:minmax(200px,1.8fr) minmax(170px,1.3fr) minmax(110px,.9fr) minmax(150px,1.2fr) minmax(150px,1.3fr)}
 .cal{border:1px solid var(--borde);border-radius:10px;overflow:auto;background:var(--bg)}
 .cal-g{display:grid;grid-template-columns:52px repeat(7,minmax(118px,1fr));min-width:880px;position:relative}
@@ -683,7 +718,7 @@ table.tabla td .sel{height:28px;font-size:12.5px}
     </aside>
     <main class="cont">
       <header class="top">
-        <button class="icon-btn hamb" onclick="toggleSide()" aria-label="Menú"><svg class="ic"><use href="#i-menu"/></svg></button>
+        <button class="icon-btn hamb" onclick="toggleSide()" aria-label="Mostrar u ocultar el menú" title="Mostrar u ocultar el menú"><svg class="ic"><use href="#i-menu"/></svg></button>
         <div class="buscador">
           <svg class="ic"><use href="#i-buscar"/></svg>
           <input id="busca" placeholder="Buscar por nombre, email o WhatsApp" autocomplete="off" aria-label="Buscar leads">
@@ -1026,7 +1061,13 @@ function ir(id){
   pintarNav(); render(); $("#side").classList.remove("on");
   window.scrollTo({top:0});
 }
-function toggleSide(){$("#side").classList.toggle("on");}
+// En el celular el menú se abre encima; en escritorio se esconde y el contenido ocupa todo el ancho.
+function toggleSide(){
+  if(matchMedia("(max-width:900px)").matches){$("#side").classList.toggle("on");return;}
+  const off=$(".lay").classList.toggle("side-off");
+  try{localStorage.setItem("trk_side_off",off?"1":"0");}catch(e){}
+}
+try{if(localStorage.getItem("trk_side_off")==="1")$(".lay").classList.add("side-off");}catch(e){}
 
 /* ============================================================
    Render de vistas
@@ -1222,6 +1263,7 @@ function render(op){
     return;
   }
   const s=SEC(VISTA);
+  $(".pagina").classList.toggle("ancha",VISTA==="tareas");
   if(VISTA!=="met"&&VISTA!=="anun") delete v.dataset.vista;
   const D0=DATA;
   if(conFecha(VISTA)) DATA=datosEnRango(D0,VISTA);
@@ -2466,19 +2508,57 @@ function tSoltar(e,estado){
   const id=e.dataTransfer.getData("text/plain"), t=tarea(id);
   if(t&&t.estado!==estado) cambiarTarea(id,{estado},`${id} → ${estado}`); else render();
 }
+// Color de cada fase (franja de la tarjeta y punto del grupo).
+const CLASE_FASE={"Adquisición":"f-adq","Nutrición":"f-nut","Webinar":"f-web","Post-webinar":"f-post","B:52":"f-b52","Bonus":"f-bon"};
+const claseFase=f=>CLASE_FASE[f]||"f-otro";
+const diasHastaT=d=>Math.round((Date.parse(d+"T12:00:00Z")-Date.parse(diaF()+"T12:00:00Z"))/864e5);
+// «Venció 20/10», «Vence hoy», «7/11 · en 3 d» (la última semana en amarillo) o la fecha sola.
+function venceT(t){
+  if(!t.vence) return "";
+  if(t.estado==="Hecha") return `<span class="t-vence">${fechaT(t.vence)}</span>`;
+  const n=diasHastaT(t.vence);
+  if(n<0) return `<span class="t-vence t-vencida">Venció ${fechaT(t.vence)}</span>`;
+  if(n===0) return `<span class="t-vence pronto">Vence hoy</span>`;
+  if(n<=7) return `<span class="t-vence pronto">${fechaT(t.vence)} · en ${n} d</span>`;
+  return `<span class="t-vence">${fechaT(t.vence)}</span>`;
+}
+const quienT=p=>p?`<span class="t-quien"><span class="t-av p-${p.toLowerCase()}">${esc(p[0])}</span>${esc(p)}</span>`:`<span class="t-quien" style="font-weight:450;color:var(--tx-3)"><span class="t-av">?</span>Sin asignar</span>`;
 function tarjetaT(t){
-  const venc=vencidaT(t);
-  return `<div class="tcard" role="button" tabindex="0" draggable="true" ondragstart="tDrag(event,'${escA(t.id)}')" ondragend="tFin(event)" onclick="abrirTarea('${escA(t.id)}')" onkeydown="if(event.key==='Enter')abrirTarea('${escA(t.id)}')">
-    <span class="t-id">${esc(t.id)} · ${esc(t.fase)}</span>
-    <div class="tt">${esc(t.titulo)}</div>
-    <div class="tm">${chipPersona(t.responsable)}${t.cantidad>1?`<span class="chip">× ${t.cantidad}</span>`:""}${t.vence?`<span class="chip ${venc?"t-vencida":""}">${venc?"Venció ":""}${fechaT(t.vence)}</span>`:""}${(t.comentarios||[]).length?`<span class="chip">${t.comentarios.length} coment.</span>`:""}</div>
+  const nc=(t.comentarios||[]).length;
+  return `<div class="tcard ${claseFase(t.fase)} ${t.estado==="Hecha"?"hecha":""}" role="button" tabindex="0" draggable="true" ondragstart="tDrag(event,'${escA(t.id)}')" ondragend="tFin(event)" onclick="abrirTarea('${escA(t.id)}')" onkeydown="if(event.key==='Enter')abrirTarea('${escA(t.id)}')" title="${escA(t.fase)}">
+    <div class="tt">${esc(t.titulo)}${t.cantidad>1?` <span style="color:var(--tx-3);font-weight:450">× ${t.cantidad}</span>`:""}</div>
+    <div class="tm">${quienT(t.responsable)}${venceT(t)}${nc?`<span>${nc} coment.</span>`:""}<span class="t-id">${esc(t.id)}</span></div>
   </div>`;
 }
 function tablero(ts){
+  const porFase=TFILTRO.fase==="todos";
   return `<div class="tb">${TMETA.estados.map(es=>{const col=ts.filter(t=>t.estado===es).sort(ordenT);
-    return `<div class="tb-col" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
+    // Con muchas tarjetas se agrupan por fase, en el orden del lanzamiento.
+    let cuerpo;
+    if(!col.length) cuerpo=`<div class="tb-vacio">Soltá una tarjeta acá</div>`;
+    else if(porFase&&col.length>6) cuerpo=TMETA.fases.map(fa=>{const g=col.filter(t=>t.fase===fa);
+      return g.length?`<div class="tb-fase ${claseFase(fa)}"><span class="t-dot"></span>${esc(fa)} <span class="n">${g.length}</span></div>${g.map(tarjetaT).join("")}`:"";}).join("");
+    else cuerpo=col.map(tarjetaT).join("");
+    return `<div class="tb-col" data-es="${escA(es)}" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
       <div class="tb-cab"><span class="badge ${TONO_T[es]||""}">${esc(es)}</span><span class="n">${col.length}</span></div>
-      ${col.map(tarjetaT).join("")}</div>`;}).join("")}</div>`;
+      <div class="tb-cuerpo">${cuerpo}</div></div>`;}).join("")}</div>`;
+}
+// Avance, vencidas, las de esta semana y sin asignar. Las tres últimas filtran al tocarlas.
+function resumenT(){
+  const ts=TAREAS, hechas=ts.filter(t=>t.estado==="Hecha").length, venc=ts.filter(vencidaT).length;
+  const semana=ts.filter(t=>t.vence&&t.estado!=="Hecha"&&diasHastaT(t.vence)>=0&&diasHastaT(t.vence)<=7).length;
+  const sin=ts.filter(t=>!t.responsable&&t.estado!=="Hecha").length, pct=ts.length?Math.round(hechas/ts.length*100):0;
+  return `<div class="t-res">
+    <div class="t-stat"><span class="t">Avance del lanzamiento</span><b>${pct}%<small>${hechas} de ${ts.length} hechas</small></b><div class="meter"><i style="width:${pct}%"></i></div></div>
+    <button class="t-stat ${venc?"mal":""} ${TFILTRO.vencidas?"on":""}" onclick="filtroResumenT('vencidas')" title="Mostrar solo las vencidas"><span class="t">Vencidas</span><b>${venc}</b></button>
+    <div class="t-stat ${semana?"warn":""}"><span class="t">Vencen en los próximos 7 días</span><b>${semana}</b></div>
+    <button class="t-stat ${TFILTRO.resp==="sin"?"on":""}" onclick="filtroResumenT('sin')" title="Mostrar solo las sin asignar"><span class="t">Sin asignar (pendientes)</span><b>${sin}</b></button>
+  </div>`;
+}
+function filtroResumenT(k){
+  if(k==="vencidas") TFILTRO.vencidas=!TFILTRO.vencidas; else TFILTRO.resp=TFILTRO.resp==="sin"?"todos":"sin";
+  if(TVISTA!=="tablero"&&TVISTA!=="lista") TVISTA="tablero";
+  guardarFiltroT(); render();
 }
 function tablaT(ts,conFase){
   return `<div class="tabla-scroll"><table class="tabla"><thead><tr><th>ID</th><th>Tarea</th>${conFase?"<th>Fase</th>":""}<th class="n">Cant.</th><th>Responsable</th><th>Estado</th><th>Vence</th></tr></thead><tbody>
@@ -2493,11 +2573,13 @@ function filtrosT(conEstado){
   return `<div class="filtros"><div class="seg">${b("resp","todos","Todos")}${TMETA.personas.map(p=>b("resp",p,p)).join("")}${b("resp","sin","Sin asignar")}</div>
     <select class="sel" aria-label="Fase" onchange="setTFiltro('fase',this.value)"><option value="todos">Todas las fases</option>${TMETA.fases.map(x=>`<option ${f.fase===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
     ${conEstado?`<select class="sel" aria-label="Estado" onchange="setTFiltro('estado',this.value)"><option value="todos">Todos los estados</option>${TMETA.estados.map(x=>`<option ${f.estado===x?"selected":""}>${esc(x)}</option>`).join("")}</select>`:""}
-    <button class="toggle-pill ${f.vencidas?"on":""}" style="${f.vencidas?"border-color:var(--mal);color:var(--mal)":""}" onclick="TFILTRO.vencidas=!TFILTRO.vencidas;guardarFiltroT();render()">Solo vencidas</button></div>`;
+    ${f.vencidas?`<button class="toggle-pill" style="border-color:var(--mal);color:var(--mal)" onclick="filtroResumenT('vencidas')">Solo vencidas ${ic("i-x")}</button>`:""}</div>`;
 }
 function renderTareas(v,s){
   if(TAREAS===null){cargarTareas();v.innerHTML=encabezado(s)+esqueleto();return;}
+  // Se guarda dónde estaba cada columna, así el refresco cada 15 s no te sube al principio.
   const y=scrollY, xTb=(v.querySelector(".tb")||{}).scrollLeft||0;
+  const yCol=Object.fromEntries([...v.querySelectorAll(".tb-col[data-es]")].map(c=>[c.dataset.es,c.scrollTop]));
   const acc=`<button class="btn pri" onclick="abrirTarea(null)">${ic("i-mas")}Nueva tarea</button>`;
   let h=encabezado(s,acc);
   if(TMETA.faltan.length) h+=`<div class="demo" style="color:var(--warn)">${ic("i-alerta")}Falta${TMETA.faltan.length>1?"n":""} ${esc(TMETA.faltan.join(" y "))} en USERS_JSON: sin usuario no pueden entrar ni ver «Mis tareas». Sumalo${TMETA.faltan.length>1?"s":""} en Vercel con su email, name («${esc(TMETA.faltan[0])}») y una clave fuerte, y hacé un deploy.</div>`;
@@ -2506,13 +2588,15 @@ function renderTareas(v,s){
     return;
   }
   const vistas=[["tablero","Tablero"],["lista","Lista"],["mias","Mis tareas"],["personas","Por persona"]];
-  h+=`<div class="seg" style="margin-bottom:16px">${vistas.map(([k,l])=>`<button class="${TVISTA===k?"on":""}" onclick="setTVista('${k}')">${l}</button>`).join("")}</div>`;
+  h+=resumenT();
+  const tabs=`<div class="seg">${vistas.map(([k,l])=>`<button class="${TVISTA===k?"on":""}" onclick="setTVista('${k}')">${l}</button>`).join("")}</div>`;
+  const conFiltros=TVISTA==="tablero"||TVISTA==="lista";
+  h+=`<div class="t-barra">${tabs}${conFiltros?`<span style="width:1px;height:20px;background:var(--borde-2)"></span>${filtrosT(TVISTA==="lista")}`:""}</div>`;
   if(TVISTA==="lista"){
     const ts=TAREAS.filter(t=>pasaT(t,true));
-    h+=filtrosT(true);
     h+=ts.length?TMETA.fases.map(fa=>{const g=ts.filter(t=>t.fase===fa).sort(ordenT);if(!g.length)return "";
       const hechas=g.filter(t=>t.estado==="Hecha").length;
-      return `<div class="bloque-tit">${esc(fa)} <span class="n">${hechas}/${g.length} hechas</span></div>${tablaT(g)}`;}).join("")
+      return `<div class="bloque-tit ${claseFase(fa)}"><span class="t-dot"></span><span style="color:var(--tx);font-weight:600">${esc(fa)}</span> <span class="n">${hechas}/${g.length} hechas</span></div>${tablaT(g)}`;}).join("")
       :`<div class="vacio"><b>Ninguna tarea con estos filtros</b>Probá sacando alguno.</div>`;
   }else if(TVISTA==="mias"){
     if(!TMETA.yo) h+=`<div class="vacio"><b>Tu usuario no es Mati, Santi ni Manu</b>«Mis tareas» sale del nombre en USERS_JSON. Mirá el tablero o la lista.</div>`;
@@ -2532,12 +2616,13 @@ function renderTareas(v,s){
         <td class="n ${r.venc?"t-vencida":""}">${r.venc}</td><td><div class="meter" style="width:120px"><i style="width:${r.total?r.hechas/r.total*100:0}%;background:var(--ok)"></i></div></td></tr>`).join("")}
     </tbody></table></div><p style="color:var(--tx-3);font-size:12.5px;margin-top:10px">Tocá una persona para ver sus tareas en la lista.</p>`;
   }else{
-    h+=filtrosT(false)+tablero(TAREAS.filter(t=>pasaT(t,false)));
+    h+=tablero(TAREAS.filter(t=>pasaT(t,false)));
   }
   const abiertos=[...v.querySelectorAll("details[open][data-k]")].map(d=>d.dataset.k);
   v.innerHTML=h;
   abiertos.forEach(k=>{const d=v.querySelector(`details[data-k="${k}"]`);if(d)d.open=true;});
   const tb=v.querySelector(".tb"); if(tb) tb.scrollLeft=xTb;
+  v.querySelectorAll(".tb-col[data-es]").forEach(c=>{if(yCol[c.dataset.es])c.scrollTop=yCol[c.dataset.es];});
   scrollTo(0,y);
 }
 
