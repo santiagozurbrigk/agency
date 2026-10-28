@@ -1,5 +1,21 @@
 ﻿# Webinar 17/11
 
-Material del webinar del 17 de noviembre.
+Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026.
 
-- [`agentes-ia-campus.md`](agentes-ia-campus.md): inventario de los agentes de IA posibles del campus Génesis, para elegir los bonus y comunicarlos en los scripts.
+| Archivo | Qué es |
+| --- | --- |
+| [`contexto.md`](contexto.md) | Narrativa (promesa, qué se llevan, enemigo en común, por qué), biblioteca de agentes y bonus, links a los análisis del primer webinar. |
+| [`tareas.md`](tareas.md) | Todos los entregables por fase, con cantidad, agente del repo para hacerlo, referencia del 19/10 y responsable. Es la carga inicial del tracker de tareas. |
+| [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt para Claude Code que arma el tracker de tareas (crear, asignar y seguir tareas entre Mati, Santi y Manu). |
+
+## Calendario (propuesta, a confirmar)
+
+| Fase | Días | Fechas |
+| --- | --- | --- |
+| Adquisición | 10 | 08/11 → 17/11 |
+| Nutrición | 5 (arranca el día 5 de adquisición) | 12/11 → 16/11 |
+| Webinar | 1 | 17/11 |
+| Post-webinar | 3 | 18/11 → 20/11 |
+| B:52 emails pre-call | 3 (3 mails por día) | 18/11 → 20/11 |
+
+Todo lo de adquisición tiene que estar grabado, armado y aprobado antes del 08/11.
