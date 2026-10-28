@@ -1,6 +1,9 @@
 # Agentes de IA del campus Génesis: inventario para el webinar del 17/11
 
-Lista de todos los agentes posibles para el campus, para elegir cuáles se comunican como bonus en los scripts. Manu está armando el campus en paralelo: este archivo **no** dice qué existe. Dice qué podría existir y de qué entregable sale.
+Lista de los 50 agentes posibles para el campus, para elegir cuáles se comunican como bonus en los scripts. Manu está armando el campus en paralelo: este archivo **no** dice qué existe. Dice qué podría existir y de dónde sale.
+
+- **1 a 25:** salen de la oferta de Génesis (los 12 entregables del Método B.A.S.E.).
+- **26 a 50:** ecommerce en general (producto, validación, tienda, contenido y números). Suman al campus, pero no son el núcleo de la oferta.
 
 **Estados**
 - `CONFIRMADO`: el equipo ya sabe que va a estar.
@@ -66,9 +69,60 @@ Lista de todos los agentes posibles para el campus, para elegir cuáles se comun
 
 ---
 
+# Ecommerce en general (26 a 50)
+
+> **Ojo con cómo se nombra esta parte.** Génesis "no es para el que busca producto ganador", y a Gonza lo frena justamente que sea "otro curso de producto ganador" (ya pagó dos). En los scripts, los agentes de producto **nunca** se presentan como "encontrar tu producto ganador". Se presentan como **elegir y validar qué sumar a tu línea de suscripción**: productos con reposición, que el cliente que ya tenés vuelva a comprar.
+
+## 6. Producto: búsqueda y validación
+
+| # | Agente | Cargás → te devuelve | Para qué | Estado |
+|---|---|---|---|---|
+| 26 | **Buscador de producto complementario** | Tu catálogo y tu cliente → productos con reposición para sumar a la línea, ordenados por ciclo y margen | Subir el ticket de la suscripción | CANDIDATO |
+| 27 | **Validador de demanda** | Idea de producto → volumen de búsqueda, competencia, anuncios activos y un veredicto: avanzar, ajustar o descartar | No invertir en un producto sin demanda | CANDIDATO |
+| 28 | **Analista de competencia** | Marcas competidoras → sus precios, ofertas, landings, si venden suscripción y en qué podés diferenciarte | Ventaja Invisible | CANDIDATO |
+| 29 | **Lector de la Biblioteca de Anuncios** | Competidores o categoría → qué ángulos y formatos llevan más tiempo activos (los que les funcionan) | Arrancar los ads sin testear de cero | CANDIDATO |
+| 30 | **Calculadora de costeo y precio** | Costo, envío, comisiones, pauta e impuestos → precio mínimo, precio recomendado y margen de contribución real | Márgenes | CANDIDATO |
+| 31 | **Minero de reseñas** | Reseñas de tus productos y de la competencia → dolores, deseos, objeciones y frases textuales del cliente | Copy y ángulos con palabras reales | CANDIDATO |
+| 32 | **Test de preventa** | Producto nuevo → landing de prueba, oferta de preventa y criterio de corte antes de fabricar stock | Validar sin inmovilizar plata | CANDIDATO |
+| 33 | **Investigación de avatar** | Encuestas, DMs o entrevistas a clientes → avatar, nivel de consciencia y mapa de dolores | Base de todo el copy | CANDIDATO (hay base: `agentes/M3-bases/analisis-investigacion.md`) |
+| 34 | **Naming y brief de packaging** | Producto + avatar → opciones de nombre, claims y brief para el diseñador | Lanzar un producto nuevo | CANDIDATO |
+| 35 | **Buscador de proveedores** | Producto → tipos de proveedor y preguntas para pedir cotización | — | DESCARTADO por ahora: proveedores y fabricación están fuera del alcance de Génesis a propósito |
+
+## 7. Tienda y conversión
+
+| # | Agente | Cargás → te devuelve | Para qué | Estado |
+|---|---|---|---|---|
+| 36 | **Auditor de tienda** | URL de tu tienda → lo que frena la conversión (home, ficha, carrito, checkout, velocidad, confianza), ordenado por impacto | Convertir más con la misma pauta | CANDIDATO |
+| 37 | **Fichas de producto** | Producto → título, descripción, beneficios, FAQs y bloques de confianza para la compra única | Conversión | CANDIDATO |
+| 38 | **Armado de bundles y kits** | Catálogo y márgenes → combos que suben el ticket sin romper el margen | Subir el ticket promedio | CANDIDATO |
+| 39 | **Upsell y cross-sell** | Catálogo → ofertas para el carrito y para después de la compra, con su copy | Más margen por pedido | CANDIDATO |
+| 40 | **Carrito abandonado** | Tienda + oferta → la secuencia de email y WhatsApp para recuperar carritos | Recuperar ventas ya pagadas en pauta | CANDIDATO |
+| 41 | **Pedido de reseñas y UGC** | Producto y ciclo → mensajes para pedir reseñas, fotos y videos al momento justo | Prueba social para la tienda y los ads | CANDIDATO |
+| 42 | **Estrategia de envíos** | Tarifas, zonas y ticket → envío gratis o no, desde qué monto y cómo cambia con la suscripción | Márgenes | CANDIDATO |
+
+## 8. Contenido y adquisición
+
+| # | Agente | Cargás → te devuelve | Para qué | Estado |
+|---|---|---|---|---|
+| 43 | **Generador de hooks** | Ángulo o dolor → 20 hooks para probar en ads y orgánico | Sube el CPA | CANDIDATO |
+| 44 | **Brief para creadores UGC** | Producto + ángulo → el brief que se le manda al creador: tomas, frases, qué evitar | Producir creativos sin grabarlos vos | CANDIDATO |
+| 45 | **Guiones de contenido orgánico** | Producto y avatar → guiones para TikTok y Reels de la marca | Metadependencia (tráfico que no depende de la pauta) | CANDIDATO (hay base: `agentes/M4-webinar-organico/agente-guiones-reels.md`) |
+| 46 | **Analista de creativos** | Métricas de tus anuncios → qué escalar, qué cortar y qué ángulo probar después | Sube el CPA | CANDIDATO |
+| 47 | **Programa de influencers y afiliados** | Producto y margen → a quién contactar, el mensaje, la comisión y el código | Adquirir sin depender solo de Meta | CANDIDATO |
+
+## 9. Números del negocio
+
+| # | Agente | Cargás → te devuelve | Para qué | Estado |
+|---|---|---|---|---|
+| 48 | **Rentabilidad por SKU** | Ventas y costos por producto → cuáles dejan plata, cuáles la pierden y cuáles cortar | Márgenes | CANDIDATO |
+| 49 | **Análisis de cohortes** | Pedidos históricos → recompra y LTV real por mes de entrada, por producto y por canal | La cuenta del LTV con datos propios | CANDIDATO |
+| 50 | **Cierre del mes** | Números del mes → el reporte para tu socio o tu contador: facturación, margen, pauta, suscriptores y caja | "No sé con cuánto voy a cerrar" | CANDIDATO |
+
+---
+
 ## Cómo se comunican en los scripts
 
-Nombrar 25 agentes en un guion no le dice nada a Gonza. Se comunican **por paquete y por dolor**, y se muestran 1 o 2 como demo.
+Nombrar 50 agentes en un guion no le dice nada a Gonza. Se comunican **por paquete y por dolor**, y se muestran 1 o 2 como demo.
 
 | Paquete | Frase base para el guion (borrador, en la voz de Manu) | Agentes |
 |---|---|---|
@@ -76,7 +130,12 @@ Nombrar 25 agentes en un guion no le dice nada a Gonza. Se comunican **por paque
 | **La suscripción armada** | "Te arma la oferta y la landing de suscripción de tu producto. La ponés al lado de la compra única, sin tocar lo que ya vende." | 5 a 10 |
 | **La base que cobra** | "Te arma los flujos para pasar a los que ya te compraron a suscriptores, y los que los mantienen adentro." | 11 a 16 |
 | **Los anuncios al CPA nuevo** | "Ángulos, guiones y campañas recalculadas con tu LTV. Dejás de buscar la compra y buscás al cliente." | 17 a 20 |
-| **Los números de todos los meses** | "Stock, caja y tablero semanal. El 1 del mes sabés con cuánto arrancás." | 21 a 25 |
+| **Los números de todos los meses** | "Stock, caja y tablero semanal. El 1 del mes sabés con cuánto arrancás." | 21 a 25, 48 a 50 |
+| **Qué sumar a tu línea** | "Antes de sumar un producto, lo validás: demanda, competencia, costeo y una preventa. Y elegís el que el cliente que ya tenés vuelve a comprar." | 26 a 34 |
+| **La tienda que convierte** | "Te audita la tienda y te arma fichas, combos, upsells y la recuperación de carritos. Más margen por cada pedido que ya pagaste en pauta." | 36 a 42 |
+| **Los creativos sin grabarlos vos** | "Hooks, briefs para creadores, guiones orgánicos y el análisis de qué anuncio escalar." | 43 a 47 (se suma al paquete de anuncios) |
+
+Si hace falta un número para el pitch ("50 agentes"), conviene usarlo una sola vez y bajarlo enseguida a los paquetes. El número solo suena a acumulación; lo que vende es qué te resuelve cada paquete.
 
 Reglas de voz para estas frases (salen de `CONTEXTO.md`):
 - Nada de "secreto", "hack", "revolucionario" ni "te garantizo".
@@ -91,4 +150,5 @@ Reglas de voz para estas frases (salen de `CONTEXTO.md`):
 2. De los confirmados, cerrar un **nombre definitivo** y una **fecha para la primera captura**. La fecha tiene que caer antes de grabar los ads y el VSL del 17/11.
 3. Elegir **1 o 2 agentes para la demo en vivo**. Los más fuertes para mostrar en pantalla son los que hacen una cuenta (2, 22, 24) o los que arman algo visible (5, 7).
 4. Definir si los agentes van como **regalo por asistir** (se nombran en ads y registro) o como **bonus por entrar a Génesis** (solo en el pitch). En los webinars del 19 y del 24/10 eran cosas separadas.
-5. Confirmar que "campus con agentes" no contradice la oferta: Génesis es 1:1 y Done For You. Los agentes se presentan como lo que el alumno usa entre sesiones, no como un reemplazo de Manu.
+5. Decidir si los agentes de producto (26 a 34) entran al campus. Si entran, confirmar el encuadre "qué sumar a tu línea de suscripción" y no "producto ganador".
+6. Confirmar que "campus con agentes" no contradice la oferta: Génesis es 1:1 y Done For You. Los agentes se presentan como lo que el alumno usa entre sesiones, no como un reemplazo de Manu.
