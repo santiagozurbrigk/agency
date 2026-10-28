@@ -57,21 +57,28 @@ class Conflicto extends Error {}
 // Error de validación: el endpoint lo devuelve con este status.
 class ErrorTarea extends Error { constructor(msg, status) { super(msg); this.status = status || 400; } }
 
-const usaBlob = () => Boolean(blob) && !store.DEMO;
+const BLOB_REAL = blob;
+let BLOB_FORZADO = false; // tests: un Blob falso aunque esté en modo demo
+const usaBlob = () => Boolean(blob) && (BLOB_FORZADO || !store.DEMO);
 let MEM = { doc: { tareas: [] }, etag: "0" };
 let ANTES_DE_ESCRIBIR = null; // tests: simula otra instancia que guarda entre la lectura y la escritura
 
 async function leer() {
   if (!usaBlob()) return { doc: JSON.parse(JSON.stringify(MEM.doc)), etag: MEM.etag };
-  const r = await blob.get(ARCHIVO, { access: "private", useCache: false }).catch(e => {
+  // El ETag sale de head() (el del API, el mismo que compara ifMatch). El de get() es el de la
+  // descarga HTTP y no coincide nunca. Va ANTES de leer: si alguien guarda entre las dos cosas,
+  // la escritura choca y se reintenta, en vez de pisar su cambio con datos viejos.
+  const h = await blob.head(ARCHIVO).catch(e => {
     if (e instanceof blob.BlobNotFoundError) return null;
     throw e;
   });
-  if (!r || r.statusCode !== 200 || !r.stream) return { doc: { tareas: [] }, etag: null };
+  if (!h) return { doc: { tareas: [] }, etag: null };
+  const r = await blob.get(ARCHIVO, { access: "private", useCache: false });
+  if (!r || r.statusCode !== 200 || !r.stream) return { doc: { tareas: [] }, etag: h.etag };
   const txt = await new Response(r.stream).text();
   let doc;
   try { doc = JSON.parse(txt); } catch (e) { doc = null; }
-  return { doc: doc && Array.isArray(doc.tareas) ? doc : { tareas: [] }, etag: r.blob.etag };
+  return { doc: doc && Array.isArray(doc.tareas) ? doc : { tareas: [] }, etag: h.etag };
 }
 
 async function escribir(doc, etag) {
@@ -297,7 +304,8 @@ async function importar(md, quien, base) {
 }
 
 // Para los tests.
-function _reset() { MEM = { doc: { tareas: [] }, etag: "0" }; cola = Promise.resolve(); ANTES_DE_ESCRIBIR = null; }
+function _reset() { MEM = { doc: { tareas: [] }, etag: "0" }; cola = Promise.resolve(); ANTES_DE_ESCRIBIR = null; blob = BLOB_REAL; BLOB_FORZADO = false; }
+function _usarBlob(falso) { blob = falso; BLOB_FORZADO = true; }
 // Otra instancia guarda `t` justo antes de la próxima escritura de esta (solo en memoria).
 function _otraInstanciaGuarda(t) {
   ANTES_DE_ESCRIBIR = () => { MEM = { doc: { tareas: [...MEM.doc.tareas, t] }, etag: String(Number(MEM.etag) + 1) }; };
@@ -306,5 +314,5 @@ function _otraInstanciaGuarda(t) {
 module.exports = {
   PERSONAS, ESTADOS, FASES, ErrorTarea,
   personaDe, venceDefault, parsearMd,
-  listar, crear, editar, comentar, borrar, importar, _reset, _otraInstanciaGuarda
+  listar, crear, editar, comentar, borrar, importar, _reset, _otraInstanciaGuarda, _usarBlob
 };
