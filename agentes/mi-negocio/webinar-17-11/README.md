@@ -6,7 +6,7 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026.
 | --- | --- |
 | [`contexto.md`](contexto.md) | Narrativa (promesa, qué se llevan, enemigo en común, por qué), biblioteca de agentes y bonus, links a los análisis del primer webinar. |
 | [`tareas.md`](tareas.md) | Todos los entregables por fase, con cantidad, agente del repo para hacerlo, referencia del 19/10 y responsable. Es la carga inicial del tracker de tareas. |
-| [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt para Claude Code que arma el tracker de tareas (crear, asignar y seguir tareas entre Mati, Santi y Manu). |
+| [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |
 
 ## Calendario (propuesta, a confirmar)
 

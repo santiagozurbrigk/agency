@@ -497,6 +497,30 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
 .modal-caja p{color:var(--tx-2);font-size:14px}
 .modal-caja .acc{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}
 .modal-caja.ancha{width:min(620px,100%)}
+/* ===================== Tareas ===================== */
+.tb{display:grid;grid-template-columns:repeat(5,minmax(200px,1fr));gap:12px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.tb-col{background:var(--panel-2);border-radius:var(--radio);padding:8px;min-height:140px;display:flex;flex-direction:column;gap:8px;transition:outline-color .12s}
+.tb-col.sobre{outline:2px dashed var(--naranja);outline-offset:-2px}
+.tb-cab{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:500;color:var(--tx-2);padding:4px 4px 2px}
+.tb-cab .n{color:var(--tx-3);font-variant-numeric:tabular-nums}
+.tcard{background:var(--bg);border:1px solid var(--borde);border-radius:var(--radio-s);padding:10px;cursor:pointer;font-size:13px;text-align:left;width:100%}
+.tcard:hover{border-color:var(--borde-2)}
+.tcard.arrastrando{opacity:.4}
+.tcard .tt{font-weight:500;line-height:1.35;margin-top:2px}
+.tcard .tm{display:flex;gap:4px 10px;flex-wrap:wrap;margin-top:8px}
+.t-id{font-size:11.5px;color:var(--tx-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip.p-mati{color:var(--vio);font-weight:600} .chip.p-santi{color:var(--ok);font-weight:600} .chip.p-manu{color:var(--naranja);font-weight:600}
+select.sel.p-mati{color:var(--vio);border-color:var(--vio)} select.sel.p-santi{color:var(--ok);border-color:var(--ok)} select.sel.p-manu{color:var(--naranja);border-color:var(--naranja)}
+.filtros select.sel{max-width:190px}
+.t-vencida{color:var(--mal)!important}
+table.tabla tr.t-fila{cursor:pointer} table.tabla tr.t-fila:hover td{background:var(--panel-2)}
+table.tabla td .sel{height:28px;font-size:12.5px}
+.t-frase{display:flex;align-items:center;gap:8px;background:var(--panel-2);border-radius:var(--radio-s);padding:8px 10px;margin-top:6px}
+.t-frase code{flex:1;font:12.5px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:normal;word-break:break-word}
+.t-sec{margin-top:18px} .t-sec h4{font-size:12px;font-weight:500;color:var(--tx-3);margin-bottom:6px;font-family:var(--txt);letter-spacing:0}
+.t-coment{border-top:1px solid var(--borde);padding:9px 0;font-size:13.5px;white-space:pre-wrap;word-break:break-word} .t-coment small{color:var(--tx-3);display:block;font-size:12px}
+.t-hist{font-size:12.5px;color:var(--tx-2);margin:6px 0 0 16px;padding:0;line-height:1.7}
+@media (max-width:900px){.tb{grid-template-columns:repeat(5,minmax(240px,82vw))}}
 .fila.cli{grid-template-columns:minmax(200px,1.8fr) minmax(170px,1.3fr) minmax(110px,.9fr) minmax(150px,1.2fr) minmax(150px,1.3fr)}
 .cal{border:1px solid var(--borde);border-radius:10px;overflow:auto;background:var(--bg)}
 .cal-g{display:grid;grid-template-columns:52px repeat(7,minmax(118px,1fr));min-width:880px;position:relative}
@@ -617,6 +641,7 @@ table.tabla-ads td.sem-mal{color:var(--mal)}
   <symbol id="i-mas" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-tareas" viewBox="0 0 24 24"><path d="M11 6h9M11 12h9M11 18h9"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></symbol>
   <symbol id="i-rayo" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
   <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
@@ -704,6 +729,9 @@ const tamano=f=>f.inversion_meta?f.inversion_meta+" por día":(f.facturacion||""
 const ic=(n,cls)=>`<svg class="ic ${cls||""}"><use href="#${n}"/></svg>`;
 
 const SECCIONES=[
+  {grupo:"Webinar 17/11"},
+  {id:"tareas", nombre:"Tareas", icono:"i-tareas",
+    sub:"Todo lo del lanzamiento, repartido entre Mati, Santi y Manu. Arrastrá una tarjeta para cambiarle el estado; tocala para editarla, asignarla o comentarla."},
   {grupo:"Antes de la clase"},
   {id:"ahora", nombre:"Primer contacto", cola:"primerContacto", icono:"i-tel",
     sub:"Opt-ins sin contactar. Arriba los que califican para Génesis, después por facturación."},
@@ -938,6 +966,8 @@ function arrancar(){
 // antes de un cambio, su respuesta trae datos viejos: se descarta y se vuelve a pedir.
 let VERSION_LOCAL=0, OTRO_REFRESCO=false;
 async function refrescar(){
+  // Las tareas se releen seguido solo con la vista abierta; si no, cada 2 minutos (para el número del menú).
+  if(VISTA==="tareas"||Date.now()-T_ULT>120000) cargarTareas();
   if(CARGANDO){ OTRO_REFRESCO=true; return; }
   CARGANDO=true;
   const v=VERSION_LOCAL;
@@ -983,7 +1013,7 @@ function pintarNav(){
   let h="";
   for(const s of SECCIONES){
     if(s.grupo){h+=`<div class="grupo">${esc(s.grupo)}</div>`;continue;}
-    const n=s.cola&&DATA?DATA.colas[s.cola].length:null;
+    const n=s.id==="tareas"?cuentaTareas():s.cola&&DATA?DATA.colas[s.cola].length:null;
     h+=`<button class="item ${VISTA===s.id?"on":""}" onclick="ir('${s.id}')">${ic(s.icono)}<span>${esc(s.corto||s.nombre)}</span>${n!=null?`<span class="n num">${n}</span>`:""}</button>`;
   }
   $("#nav").innerHTML=h;
@@ -1036,7 +1066,7 @@ function fechaDe(l,vista){
 }
 const CRITERIO_F={ventas:"la fecha de cierre",clientes:"la fecha de cierre",apl:"el día en que aplicó",post:"el día en que aplicó",
   llam:"el día de la llamada",met:"el día de registro (leads) y el de cierre (ventas)",anun:"el día en que se registró cada lead"};
-const conFecha=id=>id!=="conf"&&id!=="anun"&&!(id==="llam"&&LLVISTA==="cal");
+const conFecha=id=>id!=="conf"&&id!=="anun"&&id!=="tareas"&&!(id==="llam"&&LLVISTA==="cal");
 function setFecha(r){FECHA.rango=r;guardarFecha();render();}
 function fechasA(){
   const d=$("#fDesde").value, h=$("#fHasta").value;
@@ -1219,6 +1249,7 @@ function render(op){
     case "met": renderMetricas(v,s,silencioso); break;
     case "anun": renderAnuncios(v,s,silencioso); break;
     case "conf": renderConfig(v,s); break;
+    case "tareas": renderTareas(v,s); break;
   }
   }finally{DATA=D0;}
 }
@@ -2356,6 +2387,232 @@ function barrasH(items,{color=()=>"",total=false}={}){
     <span class="pista-b"><i class="${color(x)}" style="width:${x.n/max*100}%"></i></span></div>`).join("")}</div>`;
 }
 
+/* ---------- Tareas ---------- */
+// Las tareas viven en /api/tareas (Blob privado), aparte de los leads. Cada cambio se ve al
+// instante y se guarda en segundo plano; si falla, vuelve a como estaba.
+let TAREAS=null, TMETA={personas:["Mati","Santi","Manu"],fases:[],estados:[],yo:null,faltan:[]};
+let T_CARGANDO=false, T_ULT=0, T_VER=0, TVISTA="tablero", TFILTRO={resp:"todos",fase:"todos",estado:"todos",vencidas:false};
+try{TVISTA=localStorage.getItem("trk_tvista")||"tablero";TFILTRO={...TFILTRO,...JSON.parse(localStorage.getItem("trk_tfiltro")||"{}")};}catch(e){}
+const escA=s=>esc(s).replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+const tarea=id=>(TAREAS||[]).find(t=>t.id===id);
+const vencidaT=t=>Boolean(t.vence)&&t.vence<diaF()&&t.estado!=="Hecha";
+const ordenT=(a,b)=>(a.vence||"9999").localeCompare(b.vence||"9999")||a.id.localeCompare(b.id,"es",{numeric:true});
+const fechaT=d=>d?new Date(d+"T12:00:00Z").toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",timeZone:"UTC"}):"";
+const TONO_T={"Por hacer":"","En curso":"azul","En revisión":"vio","Hecha":"ok","Bloqueada":"mal"};
+function chipPersona(p){return p?`<span class="chip p-${p.toLowerCase()}">${esc(p)}</span>`:`<span class="chip">Sin asignar</span>`;}
+function cuentaTareas(){
+  if(!TAREAS) return null;
+  return TAREAS.filter(t=>t.estado!=="Hecha"&&(!TMETA.yo||t.responsable===TMETA.yo)).length;
+}
+async function cargarTareas(){
+  if(T_CARGANDO) return;
+  T_CARGANDO=true; T_ULT=Date.now();
+  const v=T_VER;
+  try{
+    const d=await api("/api/tareas");
+    if(v!==T_VER) return; // hubo un cambio mientras tanto: esta foto es vieja
+    TAREAS=d.tareas; TMETA={personas:d.personas,fases:d.fases,estados:d.estados,yo:d.yo,faltan:d.faltan||[]};
+    pintarNav();
+    if(VISTA==="tareas"&&!EDITANDO&&!$("#busca").value.trim()) render({silencioso:true});
+  }catch(e){ if(e.message!=="Sesión vencida"&&VISTA==="tareas") toast(e.message,true); }
+  finally{ T_CARGANDO=false; }
+}
+function guardarFiltroT(){try{localStorage.setItem("trk_tfiltro",JSON.stringify(TFILTRO));localStorage.setItem("trk_tvista",TVISTA);}catch(e){}}
+function setTVista(x){TVISTA=x;guardarFiltroT();render();}
+function setTFiltro(k,val){TFILTRO[k]=val;guardarFiltroT();render();}
+function pasaT(t,conEstado){
+  const f=TFILTRO;
+  if(f.resp!=="todos"&&(f.resp==="sin"?t.responsable:t.responsable!==f.resp)) return false;
+  if(f.fase!=="todos"&&t.fase!==f.fase) return false;
+  if(conEstado&&f.estado!=="todos"&&t.estado!==f.estado) return false;
+  if(f.vencidas&&!vencidaT(t)) return false;
+  return true;
+}
+function botonImportarTareas(pri){
+  return `<label class="btn ${pri?"pri":""}" style="cursor:pointer">${ic("i-mas")}Importar tareas.md<input type="file" accept=".md,text/markdown,text/plain" hidden onchange="importarTareas(this)"></label>`;
+}
+async function importarTareas(input){
+  const file=input.files&&input.files[0]; input.value="";
+  if(!file) return;
+  try{
+    const d=await api("/api/tareas",{method:"POST",body:JSON.stringify({op:"importar",md:await file.text()})});
+    toast(`${d.creadas} tarea${d.creadas===1?"":"s"} nueva${d.creadas===1?"":"s"}${d.existentes?` · ${d.existentes} ya estaban`:""}`);
+    T_VER++; T_CARGANDO=false; await cargarTareas(); if(VISTA==="tareas") render();
+  }catch(e){toast(e.message,true);}
+}
+// Cambio rápido (estado, responsable, fecha) desde el tablero o la lista.
+async function cambiarTarea(id,cambios,msg){
+  const t=tarea(id); if(!t) return;
+  const antes={...t};
+  T_VER++; Object.assign(t,cambios); render(); pintarNav();
+  try{
+    const d=await api("/api/tareas",{method:"POST",body:JSON.stringify({op:"editar",id,cambios})});
+    T_VER++; const i=TAREAS.findIndex(x=>x.id===id); if(i>=0) TAREAS[i]=d.tarea;
+    if(msg) toast(msg);
+    if(!EDITANDO) render(); pintarNav();
+  }catch(e){ const i=TAREAS.findIndex(x=>x.id===id); if(i>=0) TAREAS[i]=antes; render(); pintarNav(); toast(e.message,true); }
+}
+const selT=(id,campo,val,ops,cls)=>`<select class="sel ${cls||""}" aria-label="${campo}" onclick="event.stopPropagation()" onchange="cambiarTarea('${escA(id)}',{${campo}:this.value})">${ops.map(([v,l])=>`<option value="${escA(v)}" ${v===val?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
+const selRespT=t=>selT(t.id,"responsable",t.responsable||"",[["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],t.responsable?"p-"+t.responsable.toLowerCase():"");
+const selEstadoT=t=>selT(t.id,"estado",t.estado,TMETA.estados.map(e=>[e,e]));
+
+/* Tablero: una columna por estado; se arrastra la tarjeta para cambiarla de estado. */
+function tDrag(e,id){EDITANDO=true;e.dataTransfer.setData("text/plain",id);e.dataTransfer.effectAllowed="move";e.currentTarget.classList.add("arrastrando");}
+function tFin(e){EDITANDO=false;e.currentTarget.classList.remove("arrastrando");document.querySelectorAll(".tb-col.sobre").forEach(c=>c.classList.remove("sobre"));}
+function tOver(e){e.preventDefault();e.dataTransfer.dropEffect="move";e.currentTarget.classList.add("sobre");}
+function tSale(e){if(!e.currentTarget.contains(e.relatedTarget))e.currentTarget.classList.remove("sobre");}
+function tSoltar(e,estado){
+  e.preventDefault(); EDITANDO=false;
+  const id=e.dataTransfer.getData("text/plain"), t=tarea(id);
+  if(t&&t.estado!==estado) cambiarTarea(id,{estado},`${id} → ${estado}`); else render();
+}
+function tarjetaT(t){
+  const venc=vencidaT(t);
+  return `<div class="tcard" role="button" tabindex="0" draggable="true" ondragstart="tDrag(event,'${escA(t.id)}')" ondragend="tFin(event)" onclick="abrirTarea('${escA(t.id)}')" onkeydown="if(event.key==='Enter')abrirTarea('${escA(t.id)}')">
+    <span class="t-id">${esc(t.id)} · ${esc(t.fase)}</span>
+    <div class="tt">${esc(t.titulo)}</div>
+    <div class="tm">${chipPersona(t.responsable)}${t.cantidad>1?`<span class="chip">× ${t.cantidad}</span>`:""}${t.vence?`<span class="chip ${venc?"t-vencida":""}">${venc?"Venció ":""}${fechaT(t.vence)}</span>`:""}${(t.comentarios||[]).length?`<span class="chip">${t.comentarios.length} coment.</span>`:""}</div>
+  </div>`;
+}
+function tablero(ts){
+  return `<div class="tb">${TMETA.estados.map(es=>{const col=ts.filter(t=>t.estado===es).sort(ordenT);
+    return `<div class="tb-col" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
+      <div class="tb-cab"><span class="badge ${TONO_T[es]||""}">${esc(es)}</span><span class="n">${col.length}</span></div>
+      ${col.map(tarjetaT).join("")}</div>`;}).join("")}</div>`;
+}
+function tablaT(ts,conFase){
+  return `<div class="tabla-scroll"><table class="tabla"><thead><tr><th>ID</th><th>Tarea</th>${conFase?"<th>Fase</th>":""}<th class="n">Cant.</th><th>Responsable</th><th>Estado</th><th>Vence</th></tr></thead><tbody>
+    ${ts.map(t=>`<tr class="t-fila" onclick="abrirTarea('${escA(t.id)}')"><td class="t-id">${esc(t.id)}</td>
+      <td style="min-width:220px">${esc(t.titulo)}${t.agente?`<small>${esc(t.agente.replace(/\s*\(.*\)$/,""))}</small>`:""}</td>${conFase?`<td>${esc(t.fase)}</td>`:""}
+      <td class="n">${t.cantidad||1}</td><td>${selRespT(t)}</td><td>${selEstadoT(t)}</td>
+      <td class="${vencidaT(t)?"t-vencida":""}" style="white-space:nowrap">${t.vence?fechaT(t.vence):"—"}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function filtrosT(conEstado){
+  const f=TFILTRO, b=(k,val,lab)=>`<button class="${f[k]===val?"on":""}" onclick="setTFiltro('${k}','${escA(val)}')">${esc(lab)}</button>`;
+  return `<div class="filtros"><div class="seg">${b("resp","todos","Todos")}${TMETA.personas.map(p=>b("resp",p,p)).join("")}${b("resp","sin","Sin asignar")}</div>
+    <select class="sel" aria-label="Fase" onchange="setTFiltro('fase',this.value)"><option value="todos">Todas las fases</option>${TMETA.fases.map(x=>`<option ${f.fase===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
+    ${conEstado?`<select class="sel" aria-label="Estado" onchange="setTFiltro('estado',this.value)"><option value="todos">Todos los estados</option>${TMETA.estados.map(x=>`<option ${f.estado===x?"selected":""}>${esc(x)}</option>`).join("")}</select>`:""}
+    <button class="toggle-pill ${f.vencidas?"on":""}" style="${f.vencidas?"border-color:var(--mal);color:var(--mal)":""}" onclick="TFILTRO.vencidas=!TFILTRO.vencidas;guardarFiltroT();render()">Solo vencidas</button></div>`;
+}
+function renderTareas(v,s){
+  if(TAREAS===null){cargarTareas();v.innerHTML=encabezado(s)+esqueleto();return;}
+  const y=scrollY, xTb=(v.querySelector(".tb")||{}).scrollLeft||0;
+  const acc=`<button class="btn pri" onclick="abrirTarea(null)">${ic("i-mas")}Nueva tarea</button>`;
+  let h=encabezado(s,acc);
+  if(TMETA.faltan.length) h+=`<div class="demo" style="color:var(--warn)">${ic("i-alerta")}Falta${TMETA.faltan.length>1?"n":""} ${esc(TMETA.faltan.join(" y "))} en USERS_JSON: sin usuario no pueden entrar ni ver «Mis tareas». Sumalo${TMETA.faltan.length>1?"s":""} en Vercel con su email, name («${esc(TMETA.faltan[0])}») y una clave fuerte, y hacé un deploy.</div>`;
+  if(!TAREAS.length){
+    v.innerHTML=h+`<div class="vacio"><div class="circ">${ic("i-tareas")}</div><b>Todavía no hay tareas</b>Importá mi-negocio/webinar-17-11/tareas.md para cargar las del webinar, o creá una a mano.<div style="margin-top:16px">${botonImportarTareas(true)}</div></div>`;
+    return;
+  }
+  const vistas=[["tablero","Tablero"],["lista","Lista"],["mias","Mis tareas"],["personas","Por persona"]];
+  h+=`<div class="seg" style="margin-bottom:16px">${vistas.map(([k,l])=>`<button class="${TVISTA===k?"on":""}" onclick="setTVista('${k}')">${l}</button>`).join("")}</div>`;
+  if(TVISTA==="lista"){
+    const ts=TAREAS.filter(t=>pasaT(t,true));
+    h+=filtrosT(true);
+    h+=ts.length?TMETA.fases.map(fa=>{const g=ts.filter(t=>t.fase===fa).sort(ordenT);if(!g.length)return "";
+      const hechas=g.filter(t=>t.estado==="Hecha").length;
+      return `<div class="bloque-tit">${esc(fa)} <span class="n">${hechas}/${g.length} hechas</span></div>${tablaT(g)}`;}).join("")
+      :`<div class="vacio"><b>Ninguna tarea con estos filtros</b>Probá sacando alguno.</div>`;
+  }else if(TVISTA==="mias"){
+    if(!TMETA.yo) h+=`<div class="vacio"><b>Tu usuario no es Mati, Santi ni Manu</b>«Mis tareas» sale del nombre en USERS_JSON. Mirá el tablero o la lista.</div>`;
+    else{
+      const mias=TAREAS.filter(t=>t.responsable===TMETA.yo), pend=mias.filter(t=>t.estado!=="Hecha").sort(ordenT), hechas=mias.filter(t=>t.estado==="Hecha").sort(ordenT);
+      const venc=pend.filter(vencidaT).length;
+      h+=`<div class="filtros"><span class="cuenta" style="margin-left:0">${pend.length} pendiente${pend.length===1?"":"s"}${venc?` · <span class="t-vencida">${venc} vencida${venc===1?"":"s"}</span>`:""} · ${hechas.length} hecha${hechas.length===1?"":"s"}</span></div>`;
+      h+=pend.length?tablaT(pend,true):`<div class="vacio"><div class="circ">${ic("i-check")}</div><b>No tenés nada pendiente</b>Cuando te asignen una tarea aparece acá.</div>`;
+      if(hechas.length) h+=`<details data-k="t-hechas" style="margin-top:24px"><summary class="bloque-tit" style="cursor:pointer;margin:0 0 8px">Hechas (${hechas.length})</summary>${tablaT(hechas,true)}</details>`;
+    }
+  }else if(TVISTA==="personas"){
+    const filas=[...TMETA.personas,""].map(p=>{const ts=TAREAS.filter(t=>(t.responsable||"")===p);
+      return {p,total:ts.length,hechas:ts.filter(t=>t.estado==="Hecha").length,curso:ts.filter(t=>t.estado==="En curso"||t.estado==="En revisión").length,
+        bloq:ts.filter(t=>t.estado==="Bloqueada").length,venc:ts.filter(vencidaT).length};});
+    h+=`<div class="tabla-scroll"><table class="tabla"><thead><tr><th>Persona</th><th class="n">Tareas</th><th class="n">Hechas</th><th class="n">En curso / revisión</th><th class="n">Bloqueadas</th><th class="n">Vencidas</th><th>Avance</th></tr></thead><tbody>
+      ${filas.map(r=>`<tr class="t-fila" onclick="TFILTRO.resp='${r.p||"sin"}';TFILTRO.vencidas=false;setTVista('lista')"><td>${chipPersona(r.p)}</td><td class="n">${r.total}</td><td class="n">${r.hechas}</td><td class="n">${r.curso}</td><td class="n">${r.bloq}</td>
+        <td class="n ${r.venc?"t-vencida":""}">${r.venc}</td><td><div class="meter" style="width:120px"><i style="width:${r.total?r.hechas/r.total*100:0}%;background:var(--ok)"></i></div></td></tr>`).join("")}
+    </tbody></table></div><p style="color:var(--tx-3);font-size:12.5px;margin-top:10px">Tocá una persona para ver sus tareas en la lista.</p>`;
+  }else{
+    h+=filtrosT(false)+tablero(TAREAS.filter(t=>pasaT(t,false)));
+  }
+  const abiertos=[...v.querySelectorAll("details[open][data-k]")].map(d=>d.dataset.k);
+  v.innerHTML=h;
+  abiertos.forEach(k=>{const d=v.querySelector(`details[data-k="${k}"]`);if(d)d.open=true;});
+  const tb=v.querySelector(".tb"); if(tb) tb.scrollLeft=xTb;
+  scrollTo(0,y);
+}
+
+/* Ficha de la tarea (modal): editar, asignar, comentar, borrar. */
+// «usá el agente de …» para pedirlo en Claude Code. Si el agente es un archivo propio, va la ruta.
+function fraseAgente(a){
+  a=String(a||"").trim(); if(!a) return "";
+  const dentro=(/\(([^)]*)\)/.exec(a)||[])[1]||"", nombre=a.replace(/\s*\(.*\)\s*$/,"").trim();
+  if(/\.md\b/.test(dentro)) return `usá el agente de ${dentro.trim()}`;
+  return "usá el agente de "+(nombre||a).split(/\s*\+\s*/).join(" y el de ");
+}
+let TAREA_ABIERTA=null;
+function abrirTarea(id){
+  const t=id?tarea(id):null; if(id&&!t) return;
+  TAREA_ABIERTA=id;
+  const x=t||{titulo:"",fase:TFILTRO.fase!=="todos"?TFILTRO.fase:(TMETA.fases[0]||"Adquisición"),cantidad:1,responsable:TMETA.yo||"",estado:"Por hacer",vence:"",agente:"",referencia:"",link:"",notas:""};
+  const opt=(arr,val)=>arr.map(([v,l])=>`<option value="${escA(v)}" ${v===val?"selected":""}>${esc(l)}</option>`).join("");
+  const frase=fraseAgente(x.agente), refs=String(x.referencia||"").split(/\s*,\s*/).filter(Boolean);
+  const copiable=txt=>`<div class="t-frase"><code>${esc(txt)}</code><button class="btn sm" data-t="${escA(txt)}" onclick="copiar(this.dataset.t,event)">${ic("i-copiar")}Copiar</button></div>`;
+  $("#modalCaja").classList.add("ancha");
+  $("#modalCaja").innerHTML=`<h3>${t?`<span class="t-id" style="font-size:13px">${esc(t.id)}</span> ${esc(t.titulo)}`:"Nueva tarea"}</h3>
+    ${t?`<p style="font-size:12.5px;color:var(--tx-3)">Creada por ${esc(t.creadoPor||"—")} ${hace(t.creado)} · último cambio de ${esc(t.actualizadoPor||"—")} ${hace(t.actualizado)}</p>`:""}
+    <div class="form-g" style="margin-top:14px">
+      <div class="full"><label for="tTit">Título</label><input id="tTit" value="${escA(x.titulo)}"></div>
+      <div><label for="tFase">Fase</label><select id="tFase">${opt(TMETA.fases.map(f=>[f,f]),x.fase)}</select></div>
+      <div><label for="tCant">Cantidad</label><input id="tCant" type="number" min="1" max="999" value="${escA(x.cantidad||1)}"></div>
+      <div><label for="tResp">Responsable</label><select id="tResp">${opt([["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],x.responsable||"")}</select></div>
+      <div><label for="tEst">Estado</label><select id="tEst">${opt(TMETA.estados.map(e=>[e,e]),x.estado)}</select></div>
+      <div><label for="tVence">Fecha límite${t?"":" (vacía = la de la fase)"}</label><input id="tVence" type="date" value="${escA(x.vence||"")}"></div>
+      <div><label for="tLink">Link al entregable</label><input id="tLink" type="url" placeholder="https://…" value="${escA(x.link||"")}"></div>
+      <div class="full"><label for="tAg">Agente del repo</label><input id="tAg" placeholder="Ej.: Reels (limitless-agente-guiones-reels)" value="${escA(x.agente||"")}"></div>
+      <div class="full"><label for="tRef">Referencia (rutas del repo, separadas por coma)</label><input id="tRef" value="${escA(x.referencia||"")}"></div>
+      <div class="full"><label for="tNotas">Notas</label><textarea id="tNotas">${esc(x.notas||"")}</textarea></div>
+    </div>
+    ${t&&(frase||refs.length)?`<div class="t-sec"><h4>Para hacerla en Claude Code</h4>${frase?copiable(frase):""}${refs.map(copiable).join("")}</div>`:""}
+    ${t?`<div class="t-sec"><h4>Comentarios</h4>${(t.comentarios||[]).map(c=>`<div class="t-coment"><small>${esc(c.quien)} · ${hace(c.cuando)}</small>${esc(c.texto)}</div>`).join("")||`<div class="sin-datos">Sin comentarios todavía.</div>`}
+      <div style="display:flex;gap:8px;margin-top:8px;align-items:flex-end"><textarea id="tCom" placeholder="Escribí un comentario" style="min-height:42px"></textarea><button class="btn" onclick="comentarTarea('${escA(t.id)}')">Comentar</button></div></div>
+      <details class="t-sec"><summary style="cursor:pointer;font-size:12px;font-weight:500;color:var(--tx-3)">Historial (${(t.historial||[]).length})</summary>
+        <ul class="t-hist">${(t.historial||[]).slice().reverse().map(e=>`<li>${esc(e.que)} · <span style="color:var(--tx-3)">${esc(e.quien)}, ${new Date(e.cuando).toLocaleString("es-AR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit",timeZone:"America/Argentina/Buenos_Aires"})}</span></li>`).join("")}</ul></details>`:""}
+    <div class="acc">${t?`<button class="btn peligro" style="margin-right:auto" onclick="borrarTarea('${escA(t.id)}')">Borrar</button>`:""}<button class="btn" onclick="cerrarTarea()">Cancelar</button><button class="btn pri" id="tOk" onclick="guardarTarea()">${t?"Guardar":"Crear tarea"}</button></div>`;
+  $("#modal").classList.add("on");
+  if(!t) setTimeout(()=>$("#tTit").focus(),30);
+}
+function cerrarTarea(){TAREA_ABIERTA=null;$("#modal").classList.remove("on");$("#modalCaja").classList.remove("ancha");}
+async function guardarTarea(){
+  const datos={titulo:$("#tTit").value.trim(),fase:$("#tFase").value,cantidad:$("#tCant").value,responsable:$("#tResp").value,estado:$("#tEst").value,
+    vence:$("#tVence").value,agente:$("#tAg").value,referencia:$("#tRef").value,link:$("#tLink").value.trim(),notas:$("#tNotas").value};
+  if(!datos.titulo){toast("Falta el título",true);return;}
+  const id=TAREA_ABIERTA; $("#tOk").disabled=true;
+  try{
+    const d=await api("/api/tareas",{method:"POST",body:JSON.stringify(id?{op:"editar",id,cambios:datos}:{op:"crear",tarea:datos})});
+    T_VER++;
+    const i=TAREAS.findIndex(x=>x.id===d.tarea.id); if(i>=0) TAREAS[i]=d.tarea; else TAREAS.push(d.tarea);
+    cerrarTarea(); toast(id?"Tarea guardada":`Tarea ${d.tarea.id} creada`); render(); pintarNav();
+  }catch(e){ $("#tOk").disabled=false; toast(e.message,true); }
+}
+async function comentarTarea(id){
+  const texto=$("#tCom").value.trim(); if(!texto) return;
+  try{
+    const d=await api("/api/tareas",{method:"POST",body:JSON.stringify({op:"comentar",id,texto})});
+    T_VER++; const i=TAREAS.findIndex(x=>x.id===id); if(i>=0) TAREAS[i]=d.tarea;
+    abrirTarea(id); render();
+  }catch(e){toast(e.message,true);}
+}
+async function borrarTarea(id){
+  const t=tarea(id); if(!t) return;
+  const ok=await confirmar(`¿Borrar ${t.id}?`,`«${t.titulo}» se borra para todo el equipo, con sus comentarios. No se puede deshacer.`,"Borrar",true);
+  TAREA_ABIERTA=null; $("#modalCaja").classList.remove("ancha");
+  if(!ok) return;
+  try{
+    await api("/api/tareas",{method:"POST",body:JSON.stringify({op:"borrar",id})});
+    T_VER++; TAREAS=TAREAS.filter(x=>x.id!==id); toast("Tarea borrada"); render(); pintarNav();
+  }catch(e){toast(e.message,true);}
+}
+
 /* ---------- Configuración ---------- */
 function renderConfig(v,s){
   if(!DATA){v.innerHTML=encabezado(s);return;}
@@ -2372,7 +2629,11 @@ function renderConfig(v,s){
   <div class="tarjeta"><h4>Proceso post webinar</h4><div class="form-g">
     ${inp("cPostDesde","Entran al proceso los que aplicaron desde",st.postDesde||"","date")}${inp("cClosers","Closers (separados por coma)",st.closers||"")}
     ${inp("cSdrMati","WhatsApp de Mati (walink)",st.sdrMatiWa||"")}${inp("cSdrSanti","WhatsApp de Santi (walink)",st.sdrSantiWa||"")}</div>
-    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">El formulario de aplicación reparte 50/50 entre Mati y Santi y, al terminar, abre el WhatsApp del SDR que le tocó. Sin walink, muestra «te escribimos por WhatsApp».</p></div>`;
+    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">El formulario de aplicación reparte 50/50 entre Mati y Santi y, al terminar, abre el WhatsApp del SDR que le tocó. Sin walink, muestra «te escribimos por WhatsApp».</p></div>
+  <div class="tarjeta"><h4>Tareas del webinar</h4><div class="form-g">
+    ${inp("cTareasWeb","Fecha del webinar (de acá salen las fechas límite por defecto)",st.tareasWebinar||"","date")}
+    <div><label>Carga inicial</label>${botonImportarTareas()}</div></div>
+    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">Elegí <b>mi-negocio/webinar-17-11/tareas.md</b> del repo. Las tareas que ya están (mismo ID) no se pisan, así que se puede volver a importar cuando se suman filas.</p></div>`;
 }
 async function guardarConfig(){
   try{
@@ -2381,7 +2642,8 @@ async function guardarConfig(){
       calManuPreventaId:$("#cPreId").value, calManuPreventaLink:$("#cPreLink").value,
       calManuPostId:$("#cPostId").value, calManuPostLink:$("#cPostLink").value,
       calDiegoId:$("#cDiegoId").value, calDiegoLink:$("#cDiegoLink").value,
-      postDesde:$("#cPostDesde").value, closers:$("#cClosers").value, sdrMatiWa:$("#cSdrMati").value, sdrSantiWa:$("#cSdrSanti").value })});
+      postDesde:$("#cPostDesde").value, closers:$("#cClosers").value, sdrMatiWa:$("#cSdrMati").value, sdrSantiWa:$("#cSdrSanti").value,
+      tareasWebinar:$("#cTareasWeb").value })});
     EDITANDO=false; toast("Configuración guardada"); refrescar();
   }catch(e){toast(e.message,true);}
 }
