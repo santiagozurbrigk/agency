@@ -86,4 +86,4 @@ function claveInforme(req) {
 
 const COOKIE_LOGOUT = "trk=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0";
 
-module.exports = { login, sesion, requiere, esAdmin, sesionInterna, claveInforme, COOKIE_LOGOUT };
+module.exports = { login, sesion, requiere, esAdmin, sesionInterna, claveInforme, usuarios, COOKIE_LOGOUT };

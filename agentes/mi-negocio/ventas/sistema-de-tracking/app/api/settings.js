@@ -26,6 +26,11 @@ module.exports = async function handler(req, res) {
         if (d && !/^\d{4}-\d{2}-\d{2}$/.test(d)) return res.status(400).json({ ok: false, error: "El inicio del proceso post webinar tiene que ser una fecha" });
         patch.postDesde = d;
       }
+      if (body.tareasWebinar != null) {
+        const d = String(body.tareasWebinar).trim();
+        if (d && !/^\d{4}-\d{2}-\d{2}$/.test(d)) return res.status(400).json({ ok: false, error: "La fecha del webinar (tareas) tiene que ser una fecha" });
+        patch.tareasWebinar = d;
+      }
       for (const k of ["cierre", "clase", "calManuPreventaId", "calManuPreventaLink",
                         "calManuPostId", "calManuPostLink", "calDiegoId", "calDiegoLink",
                         "sdrMatiWa", "sdrSantiWa", "closers"]) {

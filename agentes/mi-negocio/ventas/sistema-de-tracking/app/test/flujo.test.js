@@ -510,6 +510,65 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok((n.tags||[]).includes("optin-19-10")&&(n.tags||[]).includes("optin-24-10"),"registro nuevo: optin-19-10 y optin-24-10");
   }
 
+  // Tareas del webinar: importar tareas.md, crear, asignar, cambiar estado, comentar, borrar y escrituras a la vez
+  { const fs=require("fs"), api=h("api/tareas.js"), T=h("lib/tareas.js");
+    T._reset();
+    const post=(body)=>call(api,{method:"POST",cookie,body});
+    let r=await call(api,{});
+    ok(r.statusCode===401,"tareas: sin sesión → 401");
+    r=await call(api,{cookie});
+    ok(r.body.ok&&r.body.tareas.length===0&&r.body.yo==="Santi"&&r.body.estados.includes("Bloqueada"),"tareas: vacío al arrancar; el usuario «santi» es Santi");
+    ok(T.personaDe("Matías")==="Mati"&&T.personaDe("Santiago Z")==="Santi"&&T.personaDe("Manuel")==="Manu"&&T.personaDe("Jose")===null,"tareas: el nombre de USERS_JSON decide la persona");
+
+    const md=fs.readFileSync(path.join(APP,"..","..","..","webinar-17-11","tareas.md"),"utf8");
+    const filas=T.parsearMd(md);
+    r=await post({op:"importar",md});
+    ok(r.body.ok&&r.body.creadas===filas.length&&filas.length>50&&r.body.existentes===0,"importar: crea todas las tareas de tareas.md ("+filas.length+")");
+    r=await post({op:"importar",md});
+    ok(r.body.creadas===0&&r.body.existentes===filas.length,"importar de nuevo: no duplica ni pisa");
+    r=await post({op:"importar",md:"# nada"});
+    ok(r.statusCode===400,"importar un archivo sin tablas: rechazado");
+    let ts=(await call(api,{cookie})).body.tareas;
+    const t=id=>ts.find(x=>x.id===id);
+    ok(t("ADQ-03").responsable==="Manu"&&t("ADQ-01").responsable==="","importar: lo que graba Manu queda asignado a Manu; el resto sin asignar");
+    ok(t("ADQ-01").vence==="2026-11-07"&&t("NUT-01").vence==="2026-11-11"&&t("WEB-01").vence==="2026-11-16"&&t("POST-01").vence==="2026-11-17"&&t("EQ-01").vence==="","importar: fecha límite por fase según el webinar del 17/11");
+    ok(t("ADQ-01").referencia.includes("mi-negocio/lanzamiento-19-10/contenido/03-adquisicion-historias.md")&&t("NUT-06").agente.includes("mi-negocio/agentes/creador-flujos-wsp.md"),"importar: las rutas quedan como rutas del repo");
+    ok(t("ADQ-02").cantidad===18&&t("ADQ-02").fase==="Adquisición"&&t("B52-01").fase==="B:52","importar: cantidad y fase");
+
+    r=await post({op:"crear",tarea:{titulo:"Video de la biblioteca de agentes",fase:"Bonus"}});
+    ok(r.body.ok&&r.body.tarea.id==="BON-06"&&r.body.tarea.vence==="2026-11-14"&&r.body.tarea.estado==="Por hacer"&&r.body.tarea.creadoPor==="santi","crear: id siguiente de la fase, fecha por defecto y quién la creó");
+    r=await post({op:"crear",tarea:{titulo:"",fase:"Bonus"}});
+    ok(r.statusCode===400,"crear sin título: rechazado");
+    r=await post({op:"crear",tarea:{titulo:"x",fase:"Bonus",responsable:"Jose"}});
+    ok(r.statusCode===400,"responsable que no es Mati, Santi ni Manu: rechazado");
+
+    r=await post({op:"editar",id:"ADQ-01",cambios:{responsable:"Mati"}});
+    ok(r.body.tarea.responsable==="Mati"&&r.body.tarea.historial.some(e=>e.que==="Asignó a Mati"),"asignar: queda en el historial");
+    r=await post({op:"editar",id:"ADQ-01",cambios:{estado:"En curso"}});
+    ok(r.body.tarea.estado==="En curso"&&r.body.tarea.historial.some(e=>e.que==="Estado: Por hacer → En curso"&&e.quien==="santi"),"cambiar estado: queda quién y qué");
+    r=await post({op:"editar",id:"ADQ-01",cambios:{estado:"Terminada"}});
+    ok(r.statusCode===400,"estado inválido: rechazado");
+    r=await post({op:"editar",id:"NO-99",cambios:{estado:"Hecha"}});
+    ok(r.statusCode===404,"editar una tarea que no existe → 404");
+    r=await post({op:"comentar",id:"ADQ-01",texto:"Arranco con los guiones de test"});
+    ok(r.body.tarea.comentarios.length===1&&r.body.tarea.comentarios[0].quien==="santi","comentar");
+
+    // Otra instancia guarda entre la lectura y la escritura: se reintenta sobre la versión nueva.
+    T._otraInstanciaGuarda({id:"EXT-99",titulo:"De otra instancia",fase:"Extras",estado:"Por hacer",historial:[],comentarios:[]});
+    r=await post({op:"crear",tarea:{titulo:"Testimonios en video",fase:"Extras"}});
+    ts=(await call(api,{cookie})).body.tareas;
+    ok(r.body.ok&&ts.some(x=>x.id==="EXT-99")&&ts.some(x=>x.titulo==="Testimonios en video"),"escritura en conflicto: no se pierde ninguno de los dos cambios");
+    const [a,b]=await Promise.all([post({op:"editar",id:"NUT-01",cambios:{responsable:"Santi"}}),post({op:"editar",id:"NUT-02",cambios:{estado:"Hecha"}})]);
+    ts=(await call(api,{cookie})).body.tareas;
+    ok(a.body.ok&&b.body.ok&&t("NUT-01").responsable==="Santi"&&t("NUT-02").estado==="Hecha","dos escrituras a la vez: quedan las dos");
+
+    r=await post({op:"borrar",id:"BON-06"});
+    ts=(await call(api,{cookie})).body.tareas;
+    ok(r.body.ok&&!t("BON-06"),"borrar");
+    r=await post({op:"borrar",id:"BON-06"});
+    ok(r.statusCode===404,"borrar dos veces → 404");
+  }
+
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
   process.exit(fallas?1:0);
 })().catch(e=>{console.error("ERROR:",e);process.exit(1);});

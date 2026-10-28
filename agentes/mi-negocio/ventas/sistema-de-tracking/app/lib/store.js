@@ -27,7 +27,8 @@ const DEFAULTS = {
   // Proceso post webinar (clase del 24/10)
   postDesde: "2026-10-24",  // AAAA-MM-DD: las aplicaciones desde este día entran al proceso
   sdrMatiWa: "https://wa.link/9xcaz0", sdrSantiWa: "https://wa.link/xqbxzd", // walink de cada SDR (lib/post.js WA_SDR)
-  closers: ""               // nombres separados por coma
+  closers: "",              // nombres separados por coma
+  tareasWebinar: "2026-11-17" // AAAA-MM-DD: de acá salen las fechas límite por defecto de las tareas (lib/tareas.js)
 };
 
 // Frescura de cada cosa en caché.
