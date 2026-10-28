@@ -567,6 +567,27 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.body.ok&&!t("BON-06"),"borrar");
     r=await post({op:"borrar",id:"BON-06"});
     ok(r.statusCode===404,"borrar dos veces → 404");
+
+    // Blob como en producción: get() trae el ETag de la descarga HTTP (W/"…"), que no es el que
+    // compara ifMatch; el bueno es el de head(). Antes de usar head(), toda edición daba 409.
+    { class BlobNotFoundError extends Error {} class BlobPreconditionFailedError extends Error {}
+      const B={data:null,etag:null,n:0};
+      T._usarBlob({ BlobNotFoundError, BlobPreconditionFailedError,
+        async head(){ if(!B.data) throw new BlobNotFoundError("no"); return {etag:B.etag}; },
+        async get(){ return B.data?{statusCode:200,stream:new Response(B.data).body,blob:{etag:`W/${B.etag}`}}:null; },
+        async put(p,body,o){
+          if(o.ifMatch?o.ifMatch!==B.etag:(B.data&&!o.allowOverwrite)) throw new BlobPreconditionFailedError("Precondition failed: ETag mismatch.");
+          B.data=body; B.etag=`"e${++B.n}"`; return {etag:B.etag};
+        } });
+      r=await post({op:"importar",md});
+      ok(r.body.ok&&r.body.creadas===filas.length,"blob: importar crea el archivo");
+      r=await post({op:"editar",id:"ADQ-01",cambios:{responsable:"Manu"}});
+      ok(r.body.ok&&r.body.tarea.responsable==="Manu","blob: asignar un responsable guarda (sin 409)");
+      r=await post({op:"editar",id:"ADQ-01",cambios:{estado:"Hecha"}});
+      ts=(await call(api,{cookie})).body.tareas;
+      ok(r.body.ok&&t("ADQ-01").estado==="Hecha"&&t("ADQ-01").responsable==="Manu","blob: los cambios seguidos quedan los dos");
+      T._reset();
+    }
   }
 
   console.log(fallas?`\n${fallas} FALLAS`:"\nTodo verde ✓");
