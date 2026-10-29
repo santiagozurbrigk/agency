@@ -135,10 +135,12 @@ Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles 
 El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento.
 
 Buscamos:
-CLOSERS — cierran ventas de tickets entre US$2.000 y US$6.000, con dueños de marca que ya facturan y ya pautan en Meta.
+CLOSER — que cierre ventas de tickets entre US$2.000 y US$5.000 (mentoría grupal o programa 1:1).
 
-Trabajo por el 7% de comisión, del 8 al 20 de noviembre (captación + webinar en vivo + cierre de carrito).
+No buscamos a alguien para un solo lanzamiento. Vamos a hacer como mínimo un webinar por mes y queremos un closer fijo en el equipo, con ganas y a largo plazo. Arrancamos con el lanzamiento del 8 al 20 de noviembre (captación + webinar en vivo + cierre de carrito), por el 7% de comisión.
 
-Si ya cerraste tickets de US$1.500 o más y estás disponible en esas fechas, postulate acá:
+Valoramos: experiencia trabajando con creadores del nicho ecommerce.
+
+Si ya cerraste tickets de US$1.500 o más, estás disponible en esas fechas y buscás quedarte en un equipo, postulate acá:
 [link del formulario]
 ```
