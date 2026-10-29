@@ -521,6 +521,14 @@ button.t-stat:hover{border-color:var(--borde-2);background:var(--panel-2)}
 /* Tablero: columnas con scroll propio, encabezado fijo */
 .tb{display:grid;grid-template-columns:repeat(5,minmax(250px,1fr));gap:14px;overflow-x:auto;padding-bottom:8px;align-items:start}
 .tb-col{background:var(--panel-2);border-radius:var(--radio);display:flex;flex-direction:column;max-height:calc(100vh - 330px);min-height:180px;overflow-y:auto;transition:outline-color .12s}
+/* Estado de la tarea: cada columna lleva arriba el color de su estado */
+.tb-col[data-tono]{border-top:3px solid var(--tono)} .tb-col[data-tono="gris"]{--tono:var(--tx-3)} .tb-col[data-tono="azul"]{--tono:var(--azul)}
+.tb-col[data-tono="vio"]{--tono:var(--vio)} .tb-col[data-tono="ok"]{--tono:var(--ok)} .tb-col[data-tono="mal"]{--tono:var(--mal)}
+select.t-est.t-est{font-weight:600;color:var(--tono);border-color:var(--tono);background-color:var(--tono-suave)}
+select.t-est.e-gris{--tono:var(--tx-2);--tono-suave:transparent} select.t-est.e-azul{--tono:var(--azul);--tono-suave:var(--azul-suave)}
+select.t-est.e-vio{--tono:var(--vio);--tono-suave:var(--vio-suave)} select.t-est.e-ok{--tono:var(--ok);--tono-suave:var(--ok-suave)}
+select.t-est.e-mal{--tono:var(--mal);--tono-suave:var(--mal-suave)}
+select.t-est option{color:var(--tx);background:var(--bg);font-weight:450}
 .tb-col.sobre{outline:2px dashed var(--naranja);outline-offset:-2px}
 .tb-cab{position:sticky;top:0;z-index:1;background:var(--panel-2);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--tx);padding:12px 12px 8px}
 .tb-cab .n{color:var(--tx-3);font-weight:500;font-variant-numeric:tabular-nums}
@@ -2440,7 +2448,7 @@ const tarea=id=>(TAREAS||[]).find(t=>t.id===id);
 const vencidaT=t=>Boolean(t.vence)&&t.vence<diaF()&&t.estado!=="Hecha";
 const ordenT=(a,b)=>(a.vence||"9999").localeCompare(b.vence||"9999")||a.id.localeCompare(b.id,"es",{numeric:true});
 const fechaT=d=>d?new Date(d+"T12:00:00Z").toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",timeZone:"UTC"}):"";
-const TONO_T={"Por hacer":"","En curso":"azul","En revisión":"vio","Hecha":"ok","Bloqueada":"mal"};
+const TONO_T={"Por hacer":"gris","En curso":"azul","En revisión":"vio","Hecha":"ok","Bloqueada":"mal"};
 function chipPersona(p){return p?`<span class="chip p-${p.toLowerCase()}">${esc(p)}</span>`:`<span class="chip">Sin asignar</span>`;}
 function cuentaTareas(){
   if(!TAREAS) return null;
@@ -2496,7 +2504,8 @@ async function cambiarTarea(id,cambios,msg){
 }
 const selT=(id,campo,val,ops,cls)=>`<select class="sel ${cls||""}" aria-label="${campo}" onclick="event.stopPropagation()" onchange="cambiarTarea('${escA(id)}',{${campo}:this.value})">${ops.map(([v,l])=>`<option value="${escA(v)}" ${v===val?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
 const selRespT=t=>selT(t.id,"responsable",t.responsable||"",[["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],t.responsable?"p-"+t.responsable.toLowerCase():"");
-const selEstadoT=t=>selT(t.id,"estado",t.estado,TMETA.estados.map(e=>[e,e]));
+const claseEstT=e=>"t-est e-"+(TONO_T[e]||"gris");
+const selEstadoT=t=>selT(t.id,"estado",t.estado,TMETA.estados.map(e=>[e,e]),claseEstT(t.estado));
 
 /* Tablero: una columna por estado; se arrastra la tarjeta para cambiarla de estado. */
 function tDrag(e,id){EDITANDO=true;e.dataTransfer.setData("text/plain",id);e.dataTransfer.effectAllowed="move";e.currentTarget.classList.add("arrastrando");}
@@ -2539,7 +2548,7 @@ function tablero(ts){
     else if(porFase&&col.length>6) cuerpo=TMETA.fases.map(fa=>{const g=col.filter(t=>t.fase===fa);
       return g.length?`<div class="tb-fase ${claseFase(fa)}"><span class="t-dot"></span>${esc(fa)} <span class="n">${g.length}</span></div>${g.map(tarjetaT).join("")}`:"";}).join("");
     else cuerpo=col.map(tarjetaT).join("");
-    return `<div class="tb-col" data-es="${escA(es)}" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
+    return `<div class="tb-col" data-es="${escA(es)}" data-tono="${TONO_T[es]||"gris"}" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
       <div class="tb-cab"><span class="badge ${TONO_T[es]||""}">${esc(es)}</span><span class="n">${col.length}</span></div>
       <div class="tb-cuerpo">${cuerpo}</div></div>`;}).join("")}</div>`;
 }
@@ -2650,7 +2659,7 @@ function abrirTarea(id){
       <div><label for="tFase">Fase</label><select id="tFase">${opt(TMETA.fases.map(f=>[f,f]),x.fase)}</select></div>
       <div><label for="tCant">Cantidad</label><input id="tCant" type="number" min="1" max="999" value="${escA(x.cantidad||1)}"></div>
       <div><label for="tResp">Responsable</label><select id="tResp">${opt([["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],x.responsable||"")}</select></div>
-      <div><label for="tEst">Estado</label><select id="tEst">${opt(TMETA.estados.map(e=>[e,e]),x.estado)}</select></div>
+      <div><label for="tEst">Estado</label><select id="tEst" class="${claseEstT(x.estado)}" onchange="this.className=claseEstT(this.value)">${opt(TMETA.estados.map(e=>[e,e]),x.estado)}</select></div>
       <div><label for="tVence">Fecha límite${t?"":" (vacía = la de la fase)"}</label><input id="tVence" type="date" value="${escA(x.vence||"")}"></div>
       <div><label for="tLink">Link al entregable</label><input id="tLink" type="url" placeholder="https://…" value="${escA(x.link||"")}"></div>
       <div class="full"><label for="tAg">Agente del repo</label><input id="tAg" placeholder="Ej.: Reels (limitless-agente-guiones-reels)" value="${escA(x.agente||"")}"></div>
