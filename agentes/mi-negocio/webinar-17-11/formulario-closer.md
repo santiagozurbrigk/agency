@@ -119,3 +119,26 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 | Capacidad: 4 llamadas por día o más en la semana del webinar | 7, 8 | 0 a 1 |
 
 7 o más → entrevista con role play usando el guion (`../ventas/guion-de-llamada-genesis.md`). El elegido pasa a la tarea EXT-04 (nutrir closer) de `tareas.md`.
+
+---
+
+## Mensaje para difundir la búsqueda
+
+Para grupos de closers, historias y DMs. Modelo: el mensaje de La Rubia Marketera. Va con el link del formulario al final.
+
+```
+🚨 Buscamos CLOSERS para el lanzamiento de Génesis (Manu Dominguez)
+💰 Comisión del 7%: entre US$140 y US$420 por cada venta cerrada
+
+Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Con Génesis ayuda a dueños de ecommerce que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+
+El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento.
+
+Buscamos:
+CLOSERS — cierran ventas de tickets entre US$2.000 y US$6.000, con dueños de marca que ya facturan y ya pautan en Meta.
+
+Trabajo por el 7% de comisión, del 8 al 20 de noviembre (captación + webinar en vivo + cierre de carrito).
+
+Si ya cerraste tickets de US$1.500 o más y estás disponible en esas fechas, postulate acá:
+[link del formulario]
+```
