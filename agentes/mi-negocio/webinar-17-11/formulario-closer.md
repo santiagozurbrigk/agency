@@ -127,8 +127,8 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 Para grupos de closers, historias y DMs. Modelo: el mensaje de La Rubia Marketera. Va con el link del formulario al final.
 
 ```
-🚨 Buscamos CLOSERS para el lanzamiento de Génesis (Manu Dominguez)
-💰 Comisión del 7%: entre US$140 y US$420 por cada venta cerrada
+🚨 Buscamos CLOSER fijo para el equipo de Génesis (Manu Dominguez)
+💰 Comisión del 7%: entre US$140 y US$350 por cada venta cerrada
 
 Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Con Génesis ayuda a dueños de ecommerce que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
 
