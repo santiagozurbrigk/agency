@@ -139,6 +139,8 @@ CLOSER — que cierre ventas de tickets entre US$2.000 y US$5.000 (mentoría gru
 
 No buscamos a alguien para un solo lanzamiento. Vamos a hacer como mínimo un webinar por mes y queremos un closer fijo en el equipo, con ganas y a largo plazo. Arrancamos con el lanzamiento del 8 al 20 de noviembre (captación + webinar en vivo + cierre de carrito), por el 7% de comisión.
 
+No buscamos gente sin experiencia ni que esté arrancando en ventas: necesitamos a alguien que ya haya cerrado llamadas de high ticket y que pueda mostrarlo.
+
 Valoramos: experiencia trabajando con creadores del nicho ecommerce.
 
 Si ya cerraste tickets de US$1.500 o más, estás disponible en esas fechas y buscás quedarte en un equipo, postulate acá:
