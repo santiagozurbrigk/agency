@@ -1,6 +1,6 @@
 # Formulario de postulación — Closer · Génesis · Webinar 17/11
 
-Formulario público para buscar el closer del lanzamiento del 17/11. Modelo: el formulario de closer de La Rubia Marketera.
+Formulario público para buscar el closer del lanzamiento del 17/11. Lo firma Matías Chao (growth), que busca el closer para Manu. Modelo: el formulario de closer de La Rubia Marketera.
 Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE]` = falta confirmar antes de publicarlo.
 
 **Antes de publicar:**
@@ -17,9 +17,9 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 
 **Texto de presentación:**
 
-> Soy Manu Dominguez. Tengo marcas de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Pasé mi marca de 60 millones a 156 millones por mes con 2.200 suscriptores activos y 1,28% de churn. Con Génesis ayudo a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+> Soy Matías Chao, growth de Manu Dominguez. Manu tiene marcas de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Pasó su marca de 60 millones a 156 millones por mes con 2.200 suscriptores activos y 1,28% de churn. Con Génesis ayuda a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
 >
-> El martes 17 de noviembre hacemos el webinar en vivo y estamos armando el equipo comercial que va a acompañar el lanzamiento. Buscamos un/a **Closer**: la persona que toma las llamadas con dueños de marca que ya están calificados y cierra la venta de **Génesis, consultoría 1 a 1 de 3 meses, con tickets de hasta USD 6.000**.
+> El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo comercial que va a acompañar el lanzamiento. Buscamos un/a **Closer**: la persona que toma las llamadas con dueños de marca que ya están calificados y cierra la venta de **Génesis, consultoría 1 a 1 de 3 meses, con tickets de hasta USD 6.000**.
 >
 > No es una venta de curso. Del otro lado hay un dueño de marca que factura entre 30 y 80 millones por mes, pauta en Meta y ya pagó mentorías que no le sirvieron. Necesitamos a alguien que entienda su negocio, que haga la cuenta con sus números y que no le venda humo.
 >
@@ -28,7 +28,7 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 >
 > El puesto es **por comisión del [PENDIENTE] %** sobre lo cobrado.
 >
-> Completalo en 5 a 10 minutos. Si tu perfil encaja, te escribimos por WhatsApp para una entrevista con role play.
+> Completalo en 5 a 10 minutos. Si tu perfil encaja, te escribo por WhatsApp para una entrevista con role play.
 
 ---
 
@@ -98,7 +98,7 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 
 **Mensaje final (después de enviar):**
 
-> ¡Listo! Recibimos tu postulación. Si tu perfil encaja con lo que buscamos, te escribimos por WhatsApp en los próximos días para coordinar una entrevista con role play. Gracias por tu tiempo.
+> ¡Listo! Recibimos tu postulación. Si tu perfil encaja con lo que buscamos, te escribo por WhatsApp en los próximos días para coordinar una entrevista con role play. Gracias por tu tiempo.
 
 ---
 
