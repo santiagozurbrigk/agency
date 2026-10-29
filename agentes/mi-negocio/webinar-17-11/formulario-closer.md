@@ -4,10 +4,8 @@ Formulario público para buscar el closer del lanzamiento del 17/11. Lo firma Ma
 Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE]` = falta confirmar antes de publicarlo.
 
 **Antes de publicar:**
-- [ ] Comisión (%). En el modelo era 7%.
 - [ ] Fechas de disponibilidad (abajo va la propuesta del calendario: 08/11 al 20/11).
 - [ ] Si el closer también toma llamadas de la ruta pre-venta durante la adquisición o solo las del post-webinar.
-- [ ] La Mentoría **no se nombra**: el formulario es público y la Mentoría solo se ofrece en la llamada. Por eso dice "tickets de hasta USD 6.000" y no un rango.
 
 ---
 
@@ -17,16 +15,16 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 
 **Texto de presentación:**
 
-> Soy Matías Chao, growth de Manu Dominguez. Manu tiene marcas de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Pasó su marca de 60 millones a 156 millones por mes con 2.200 suscriptores activos y 1,28% de churn. Con Génesis ayuda a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+> Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Con Génesis ayuda a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
 >
-> El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo comercial que va a acompañar el lanzamiento. Buscamos un/a **Closer**: la persona que toma las llamadas con dueños de marca que ya están calificados y cierra la venta de **Génesis, consultoría 1 a 1 de 3 meses, con tickets de hasta USD 6.000**.
+> El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento. Buscamos un Closer para cerrar tickets desde USD 2.000 hasta USD 6.000.
 >
-> No es una venta de curso. Del otro lado hay un dueño de marca que factura entre 30 y 80 millones por mes, pauta en Meta y ya pagó mentorías que no le sirvieron. Necesitamos a alguien que entienda su negocio, que haga la cuenta con sus números y que no le venda humo.
+> **Buscamos a alguien con experiencia comprobable cerrando tickets de USD 1.500 o más.** Si nunca cerraste ventas de ese valor, este puesto no es para vos.
 >
-> **El lanzamiento arranca con la captación el 8 de noviembre y termina el 20 de noviembre.** [PENDIENTE: confirmar fechas]
+> El lanzamiento empieza con la captación el 8 de noviembre y termina el 20 de noviembre. [PENDIENTE: confirmar fechas]
 > **(NO TE POSTULES SI NO ESTÁS DISPONIBLE ENTRE ESAS FECHAS)**
 >
-> El puesto es **por comisión del [PENDIENTE] %** sobre lo cobrado.
+> El puesto es por comisión del 7%.
 >
 > Completalo en 5 a 10 minutos. Si tu perfil encaja, te escribo por WhatsApp para una entrevista con role play.
 
@@ -59,7 +57,8 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 | # | Pregunta | Tipo | Opciones | Obligatoria |
 |---|---|---|---|---|
 | 11 | ¿Cuánto tiempo llevás trabajando como closer? | Opción única | Menos de 6 meses · 6 meses a 1 año · 1 a 2 años · Más de 2 años | Sí |
-| 12 | ¿Cuál fue el ticket más alto que cerraste? | Opción única | Menos de USD 1.000 · USD 1.000 a 3.000 · USD 3.000 a 5.000 · Más de USD 5.000 | Sí |
+| 12 | ¿Cuál fue el ticket más alto que cerraste? | Opción única | Menos de USD 1.500 · USD 1.500 a 3.000 · USD 3.000 a 5.000 · Más de USD 5.000 | Sí |
+| 12b | ¿Qué vendías a ese precio, para quién y cuántas ventas de USD 1.500 o más cerraste en total? | Texto largo | — | Sí |
 | 13 | ¿Cuánto facturaste en ventas cerradas por vos en tu mejor mes? (USD) | Texto corto | — | Sí |
 | 14 | ¿Cuál es tu tasa de cierre sobre llamadas presentadas? | Opción única | Menos de 15% · 15 a 25% · 25 a 35% · Más de 35% · No la mido | Sí |
 | 15 | ¿Con qué infoproductores, agencias o empresas trabajaste? Poné nombres y qué vendías. | Texto largo | — | Sí |
@@ -106,6 +105,7 @@ Datos de `../../CONTEXTO.md`, `../brief-genesis.md` y `contexto.md`. `[PENDIENTE
 
 **Descarta directo:**
 - No está disponible del 8 al 20/11 (pregunta 6).
+- Nunca cerró tickets de USD 1.500 o más (pregunta 12: "Menos de USD 1.500").
 - No manda grabación ni audio (pregunta 25).
 
 **Puntaje sugerido (de 0 a 10):**
