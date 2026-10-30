@@ -26,7 +26,7 @@ No se inventó ningún número. Estos son los que se usan y de dónde salen. Si 
 | Mes sin Meta | «220 millones sin poner un dólar en Meta» | D3_V6 («el mes pasado», grabado en octubre) | Que haya sido septiembre (N8 lo dice así). |
 | Tiempo de armado | 18 meses | D4_V3 | — |
 | Copias A1 y A2 | «el mes pasado» con 220M / 250M | Guiones originales | Grabadas en noviembre, «el mes pasado» pasa a ser octubre. Si esos números no son de octubre, decir el mes («en septiembre») o actualizar el número. |
-| Referentes de afuera | AG1 y Grüns | `CONTEXTO.md` (arquetipo Explorador) | Que Manu esté cómodo nombrándolas (solo N2). |
+| Caso de los 400 clientes | «Una que entró a trabajar conmigo tenía 400 clientes que ya le habían recomprado solos» | Llamada de venta de Herbora (Lucas, 21/09) | Que Lucas esté de acuerdo con que se cuente sin nombrar la marca (solo N9). |
 | 250M vs. +280M | Las copias e iteraciones de D4_V3 abren con «250 millones el mes pasado» y después prometen «cómo hago más de 280 millones por mes» | Guion original + entregable 1 | Si los 280M ya son el número del último mes con captura, se puede abrir con 280 en toda la familia C (no en A2, que es la copia). |
 
 ### Los 3 entregables de toda la campaña
@@ -95,16 +95,16 @@ Análisis de la sección «ads thiago» del doc del 22/10 (los winners) y de los
 | 8 | C3 · D4_V3 filtro | Margen | Recompra y margen | Variable: filtro de quien ya pauta +100 USD/día | ~1:05 |
 | 9 | C4 · D4_V3 cierre | Margen | Recompra y margen | Variable: cierre (consecuencia + exclusividad) | ~1:05 |
 | 10 | N1 · CPA enemigo | CPA | Los mentores que te dicen «bajá el CPA» | Thiago «Okey, este video le va a molestar…» | ~1:20 |
-| 11 | N2 · CPA referentes | CPA | AG1 y Grüns compiten por pagar más | Thiago «Hormozi, Iman Gadzhi, Shelby Sapp…» | ~1:15 |
+| 11 | N2 · Margen impuestos | Margen | Al pasar a responsable inscripto, los impuestos se comen el margen | Thiago «Hormozi, Iman Gadzhi, Shelby Sapp…» | ~1:15 |
 | 12 | N3 · CPA ahorro | CPA | Dejar de quemar plata en creativos | Thiago «Rápido, te voy a ahorrar…» | ~1:15 |
 | 13 | N4 · Margen muerte | Margen | Compra única sola vs. suscripción | Thiago «El contenido orgánico está muerto…» | ~1:30 |
 | 14 | N5 · Margen miedo | Margen | «Por pedido te quedan 7 lucas» | Thiago «Si estás por hacer un webinar y tenés miedo…» | ~0:55 |
 | 15 | N6 · Margen honesto | Margen | La 2.ª, 3.ª y 4.ª compra con margen entero | Thiago «growth estancado… te soy honesto» | ~0:50 |
 | 16 | N7 · Meta número | Metadependencia | 3.600 cobros aunque caiga la cuenta | Thiago «Más de 300.000 dólares en septiembre…» | ~1:05 |
-| 17 | N8 · Meta diferencia | Metadependencia | Las marcas que facturan el día del ban | Thiago «Hay una sola diferencia entre…» | ~1:10 |
-| 18 | N9 · Meta piso | Metadependencia | «El 1 del mes arranco en cero» | Thiago «Me tomó un año aprender esto y te lo regalo» | ~1:05 |
+| 17 | N8 · Meta inestabilidad | Metadependencia | «Hace meses que no tenés un día bueno»: nada dura más de 48 horas | Thiago «Hay una sola diferencia entre…» | ~1:15 |
+| 18 | N9 · Meta piso + base | Metadependencia | El 1 del mes ya tengo 3.600 para cobrar + los clientes que te recompran solos | Thiago «Me tomó un año aprender esto y te lo regalo» | ~1:15 |
 
-Reparto por dolor: CPA 3 · Margen 7 · Metadependencia 8. Los dos winners fueron de margen y de metadependencia, por eso sus familias pesan más; el CPA entra con 3 piezas nuevas para testearlo de cero.
+Reparto por dolor: CPA 2 · Margen 9 · Metadependencia 7. Los dos winners fueron de margen y de metadependencia, por eso sus familias pesan más. N2, N8 y N9 se reescribieron el 30/10 con ángulos sacados de las llamadas de venta de los clientes que más pagaron (`analisis-ventas-calificadas.md`).
 
 ---
 
@@ -372,35 +372,36 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 **Producción:** selfie improvisado (Thiago dice que el talking head lo hace parecer copia de otros; acá aplica igual), caminando o en el auto. Energía picante pero sin insultar a nadie. Cuando dice «2,5 veces más», corte a la pizarra con «x2,5» en rojo.
 **Qué mide:** CTR y comentarios (el enemigo genera discusión, que abarata el CPM). Que el % que califica no caiga: el filtro está para eso.
 
-#### N2 · «¿Sabés qué tienen en común AG1 y Grüns?»
+#### N2 · «¿Sabés qué les pasa a casi todas las marcas cuando pasan a responsable inscripto?»
 
-**Ángulo:** referentes de afuera (Manu trajo el modelo de afuera: arquetipo Explorador).
-**Estructura modelada:** Thiago 2537048036767610 (Hormozi, Iman Gadzhi, Shelby Sapp): referentes → «venden distinto pero con la misma estrategia» → «spoiler: no es X» → «es con esto que tengo acá» → prueba propia → fecha → entregables → CTA.
+**Dolor:** margen (reemplaza al N2 de CPA de AG1 y Grüns; queda en este lugar para no cambiar la numeración).
+**Ángulo:** los impuestos se comen el margen cuando la marca pasa de monotributo a responsable inscripto. Sale de la llamada de venta de Thiago Lopo («ahí es cuando los márgenes te cogen, literal»); ángulo I de `analisis-ventas-calificadas.md`.
+**Estructura modelada:** Thiago 2537048036767610 (Hormozi, Iman Gadzhi, Shelby Sapp): lo que tienen en común → «venden distinto pero les pasa lo mismo» → «spoiler: no es X» → «es con esto que tengo acá» → filtro → el qué, sin el cómo → prueba propia → fecha → entregables → CTA.
 
-> *[referentes]* ¿Conocés AG1? ¿Grüns? ¿Sabés qué tienen en común?
+> *[lo que tienen en común]* ¿Sabés qué les pasa a casi todas las marcas cuando pasan de monotributo a responsable inscripto?
 >
-> *[mismo modelo]* Venden productos distintos, a gente distinta, en países distintos. Pero escalan con el mismo modelo.
+> *[les pasa lo mismo]* Venden lo mismo. Facturan más. Y les queda menos.
 >
-> *[spoiler]* Y spoiler: no es bajando el CPA.
+> *[spoiler]* Y spoiler: no se arregla bajando el CPA.
 >
-> *[el objeto]* Es con esto que tengo acá. [señala la pizarra con los dos círculos] El modelo de suscripción.
+> *[el objeto]* Se arregla con esto que tengo acá. [señala la pizarra con los dos círculos] El modelo de suscripción.
 >
-> *[filtro]* Así que si tu marca ya vende y te reventaron los CPA, prestá atención.
+> *[filtro]* Así que si tu marca ya factura y estás por pasar a responsable inscripto, o ya pasaste y el margen se te fue, prestá atención.
 >
-> *[el qué, sin el cómo]* Esas marcas no compiten por quién paga menos por un cliente. Compiten por quién puede pagar más. Porque cuando el cliente te compra todos los meses, el CPA lo pagás una sola vez.
+> *[el qué, sin el cómo]* Cuando cada venta te cuesta un CPA nuevo, los impuestos te comen lo poco que queda. Pero cuando el cliente te compra todos los meses, el CPA lo pagás una sola vez. La segunda, la tercera y la cuarta compra te entran con el margen entero. Y ese margen es el que banca los impuestos.
 >
-> *[prueba propia]* Es lo mismo que hice yo con mi marca acá en Argentina. Hoy hago más de 280 millones por mes con más de 3.600 suscriptores activos. [PANTALLA: tablero de suscriptores]
+> *[prueba propia]* Hoy hago más de 280 millones por mes con mi marca. Con más de un 40% de margen. [PANTALLA: tablero de la marca]
 >
 > *[fecha]* Y es lo que te voy a mostrar el **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis.
 >
 > *[entregables]* Te voy a mostrar cómo hago esos más de 280 millones por mes con el modelo de suscripción, número por número.
-> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, con el mismo modelo que usan ellas.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin que crecer te deje con menos margen.
 > Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA]* Los cupos son limitados. Hacé clic abajo, registrate y nos vemos el **17**.
 
-**Producción:** abre con los logos de AG1 y Grüns en pantalla (o sus productos/landings en edición, como Thiago muestra las landings). Después, Manu a cámara frente a la pizarra. Ropa distinta a N1 (camisa hueso).
-**Qué mide:** CTR y conversión de la landing. Si funciona, abre una línea de «modelo de afuera» para la nutrición.
+**Producción:** abre con Manu a cámara y texto grande en pantalla: «MONOTRIBUTO → RESPONSABLE INSCRIPTO». En «facturan más y les queda menos», gráfico simple de dos barras (facturación sube, margen baja). Después, Manu frente a la pizarra. Camisa hueso.
+**Qué mide:** CTR y % que califica: el que está por pasar a responsable inscripto ya factura, así que debería calificar alto. Si rinde, el ángulo pasa a la nutrición para el avatar que ya escaló.
 
 #### N3 · «Rápido: te voy a ahorrar seguir quemando plata en creativos»
 
@@ -529,20 +530,22 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 **Producción:** abre con la cámara trasera mostrando el tablero de suscriptores en la compu y Manu señalándolo; recién después, cara. Remera negra lisa.
 **Qué mide:** CTR (el número es el hook más fuerte del set) y % que califica.
 
-#### N8 · «Hay una sola diferencia entre las marcas que facturan el día del ban y las que facturan cero»
+#### N8 · «Hay una sola diferencia entre las marcas que hace meses no tienen un día bueno y las que saben cuánto van a facturar»
 
-**Ángulo:** la diferencia oculta (y la prueba de 220M sin pautar, contada como respuesta).
-**Estructura modelada:** Thiago 4389433274629368 / 1467597578766930 («Hay una sola cosa que separa…»): la diferencia que nadie enseña → «es un juego totalmente distinto» → filtro → prueba → «¿Y qué lo hizo posible?» (el qué, sin el cómo) → fecha → entregables → CTA.
+**Ángulo:** la inestabilidad: nada dura más de 48 horas, un día arriba y al otro abajo. Sale de las llamadas de venta de Herbora y Alan («hace mucho que no tenemos un día bueno», «nunca lo podía mantener»); ángulo A de `analisis-ventas-calificadas.md`. La metadependencia contada como la viven ellos: depender de que la campaña de hoy no se caiga.
+**Estructura modelada:** Thiago 4389433274629368 / 1467597578766930 («Hay una sola cosa que separa…»): la diferencia que nadie enseña → «es un juego totalmente distinto» → filtro → dolor → prueba → «¿Y qué lo hizo posible?» (el qué, sin el cómo) → fecha → entregables → CTA con consecuencia.
 
-> *[la diferencia]* Hay una sola diferencia entre las marcas que siguen facturando el día que les tiran el ban y las que ese día facturan cero. Y nadie te la enseña.
+> *[la diferencia]* Hay una sola diferencia entre las marcas que hace meses no tienen un día bueno y las que el 1 del mes ya saben cuánto van a facturar. Y nadie te la enseña.
 >
-> *[otro juego]* Porque tener una marca no es lo mismo que tener una cuenta publicitaria que vende. Es un juego totalmente distinto.
+> *[otro juego]* Porque vender todos los días no es lo mismo que tener una marca estable. Es un juego totalmente distinto.
 >
-> *[filtro]* Así que si ya vendés con tu marca y pautás todos los días en Meta, prestá atención.
+> *[filtro]* Así que si tu marca vende, pero un día cerrás arriba y al otro cerrás 600 lucas abajo, prestá atención.
 >
-> *[prueba]* Sin ir más lejos, en septiembre facturé 220 millones sin poner un solo dólar en Meta. [PANTALLA: comprobante]
+> *[dolor]* Prendés una campaña, dura 48 horas y se cae. Renovás creativos. Otra vez. Y el día que va mal, apagás todo de manotazo ahogado y esperás que el lunes sea mejor.
 >
-> *[¿qué lo hizo posible?]* ¿Y qué fue lo que lo hizo posible? Tener una base de clientes que me compra todos los meses sola, en débito automático. Con o sin cuenta publicitaria.
+> *[prueba]* Yo no vivo más así. En septiembre facturé 220 millones sin poner un solo dólar en Meta. [PANTALLA: comprobante]
+>
+> *[¿qué lo hizo posible?]* ¿Y qué fue lo que lo hizo posible? Tener una base de clientes que me compra todos los meses sola, en débito automático. Con o sin campaña prendida.
 >
 > *[fecha]* Y el **martes 17 de noviembre a las 18** te la voy a mostrar gratis en una clase privada en vivo.
 >
@@ -550,33 +553,35 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 > Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy ya vende tu marca.
 > Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
-> *[CTA]* Hacé clic acá abajo, reservá tu lugar y nos vemos en la clase el **17**.
+> *[CTA con consecuencia]* Hacé clic acá abajo y reservá tu lugar para el **17**. Así dejás de vivir pendiente de qué campaña se cayó hoy.
 
-**Producción:** talking head en el estudio, con el afiche de la clase pegado atrás durante toda la grabación (como pide Thiago en 1024851290613253). Energía seria, de quien cuenta algo que vio pasar.
-**Qué mide:** CTR y conversión de la landing contra B3 (los dos atacan el miedo al ban desde lugares distintos).
+**Producción:** talking head en el estudio, con el afiche de la clase pegado atrás durante toda la grabación (como pide Thiago en 1024851290613253). En el dolor, cortes rápidos al administrador de anuncios: una campaña en verde, al día siguiente en rojo. Energía seria, de quien cuenta algo que vivió.
+**Qué mide:** CTR y % que califica contra N7 (los dos son metadependencia: N7 desde el número, N8 desde la inestabilidad). Si gana N8, confirma que el avatar siente la inestabilidad más que el miedo al ban.
 
-#### N9 · «El 1 de cada mes, antes de prender un anuncio…»
+#### N9 · «El 1 de cada mes ya tengo 3.600 suscriptores para cobrar. Y vos tenés clientes que te recompran solos»
 
-**Ángulo:** el piso de facturación («el 1 del mes arranco en cero»).
-**Estructura modelada:** Thiago 1677172664040329 («Más de 2 millones… Me tomó un año entero aprender todo esto, y te lo voy a regalar»): resultado → «me tomó X armarlo y te lo regalo» → filtro → fecha → «te explico cómo sin depender de X» → entregables → CTA.
+**Ángulo:** mezcla del piso de facturación (el N9 anterior) con la plata sentada en tu base: clientes que ya te recompraron sin que les mandes un mail. Sale de la llamada de venta de Herbora (Lucas: «tengo 400 clientes que recompraron ya», sin mails ni WhatsApp); ángulo C de `analisis-ventas-calificadas.md`.
+**Estructura modelada:** Thiago 1677172664040329 («Más de 2 millones… Me tomó un año entero aprender todo esto, y te lo voy a regalar»): resultado → la plata que ya tenés y no ves → «me tomó X armarlo y te lo regalo» → filtro → fecha + el qué → entregables → remate del dolor → CTA.
 
 > *[resultado]* El 1 de cada mes, antes de prender un solo anuncio, mi marca ya tiene más de 3.600 suscriptores para cobrar.
 >
-> *[me tomó + te lo regalo]* Me tomó 18 meses armar ese sistema. Y te lo voy a regalar.
+> *[la plata sentada]* Y casi todas las marcas que veo tienen el comienzo de eso y no lo saben. Una que entró a trabajar conmigo tenía 400 clientes que ya le habían recomprado solos. Sin un mail. Sin un WhatsApp. Nada. Plata sentada.
 >
-> *[filtro]* Así que si cada 1 del mes arrancás en cero y no sabés con cuánto vas a cerrar, prestá atención.
+> *[me tomó + te lo regalo]* Me tomó 18 meses armar el sistema que convierte esos clientes en suscriptores. Y te lo voy a regalar.
+>
+> *[filtro]* Así que si ya tenés clientes que te recompran y cada 1 del mes igual arrancás en cero, prestá atención.
 >
 > *[fecha + el qué]* El **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis, te voy a explicar cómo hago más de 280 millones por mes sin que el mes dependa de cuánto me deje vender Meta.
 >
-> *[entregables]* Te voy a mostrar cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, para que cada mes arranque con plata ya cobrada.
-> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
+> *[entregables]* Te voy a mostrar cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, empezando por los clientes que ya te compraron.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, entre ellos el que te arma los flujos de mails para reactivar tu base.
 >
-> *[el remate del dolor]* Para que el día que se te caiga la cuenta, los cobros sigan entrando.
+> *[el remate del dolor]* Para que el cliente que ya te compró dos veces te compre todos los meses. Y cada mes arranque con plata ya cobrada.
 >
 > *[CTA]* Hacé clic en este anuncio, reservá tu lugar y nos vemos el **17**.
 
-**Producción:** abre con un calendario (o el celu) en «1» y Manu tachándolo con fibrón rojo. Después, cara a cámara. Camisa lisa, escenario de mañana (luz natural), para que se sienta «principio de mes».
-**Qué mide:** % que califica. Es el dolor «que hay que enseñar» según `CONTEXTO.md`: si no rinde en ad, queda para la nutrición y el video largo.
+**Producción:** abre con un calendario (o el celu) en «1» y Manu tachándolo con fibrón rojo. En «400 clientes», captura de una lista de clientes de Shopify ordenada por pedidos, con los nombres tapados. Después, cara a cámara. Camisa lisa, escenario de mañana (luz natural), para que se sienta «principio de mes».
+**Qué mide:** % que califica (el filtro pide clientes que ya recompran, o sea marca con historia) y CPL calificado. Si rinde, la plata sentada en la base pasa a ser un ángulo fijo de la nutrición.
 
 ---
 
@@ -585,5 +590,5 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 - **Métrica que manda: CPL calificado** (califica = invierte USD 100 por día o más). Varas del 19/10: D4_V3 USD 27,01 y D3_V6 USD 31,10. Todo lo que dé menos de USD 30 se escala.
 - **Corte:** un creativo que gasta USD 100 sin traer un calificado se apaga (los cinco que lo hicieron el 19/10 no volvieron a rendir).
 - **Las familias B y C se comparan contra su copia (A1 y A2)**, que corre al mismo tiempo. Como cada iteración cambia una sola cosa, la diferencia se explica por esa cosa.
-- **Los nuevos se comparan por dolor**: entre los 3 de CPA, entre los 3 de margen, entre los 3 de metadependencia. Gana un ángulo, no un ad suelto, y ese ángulo es el que se itera en el próximo lanzamiento.
+- **Los nuevos se comparan por dolor**: entre los 2 de CPA (N1, N3), entre los 4 de margen (N2, N4, N5, N6), entre los 3 de metadependencia (N7, N8, N9). Gana un ángulo, no un ad suelto, y ese ángulo es el que se itera en el próximo lanzamiento.
 - Se lee el **conjunto**, no un día suelto: el 19/10 los días con cortes mostraban creativos «malos» que en los días efectivos rindieron bien. Saldo cargado de sobra y revisión de rechazos todas las mañanas.
