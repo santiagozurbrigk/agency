@@ -16,9 +16,10 @@ Hecho con el prompt «Emails de nutrición» de Limitless. Sigue el calendario d
 | Tipo de nicho | Dinero / B2B seco. El pedido de respuesta del mail 1 es un número de su negocio, no una emoción. | — |
 | Clase | **Martes 17 de noviembre, 18 hs (Argentina)**, en vivo. | Confirmado (30/10). |
 | Números de Manu | `$X` (facturación hoy), `X suscriptores`, `X%` (margen hoy), `$Y` (facturación con compra única). | **A definir**, igual que en el contenido de WhatsApp. Se reemplazan todos juntos con buscar y reemplazar. |
-| Caso de tercero | Herbora: 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
-| 400 clientes que recompraron | Lucas (socio de Herbora), de su marca propia de crema. | **A confirmar** el permiso: es su marca, no Herbora. Sin permiso va sin nombre. |
+| Caso de tercero | **Lucas** (Herbora; en los mails solo va su nombre): 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
+| 400 clientes que recompraron | Lucas, de su otra marca (no de Herbora). En el mail se cuenta como «otro dato que me dio Lucas», sin decir de qué marca. | **A confirmar** el permiso. Sin permiso va sin nombre. |
 | Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un dueño de marca me dijo»): no hay permiso para nombrarlos. | — |
+| Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se puede nombrar al cliente y contar su caso: números, frases y situación. | Pedido de Santi (30/10). |
 | La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). | Confirmada como regalo del día 5. Falta el link. |
 
 ### Creencias y ángulos de Fathom, mail por mail
@@ -33,7 +34,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 | 4 | Sáb 14 · margen | 1 · Argentina · 4 · «la primera unidad barata» · 2 · «mi producto es un tratamiento» | C · 400 clientes que recompraron sin un mail |
 | 5 | Dom 15 · todo junto | 3 · cerrada con la Cuenta del CPA | A · el mes que no arranca en cero |
 | 6 | Lun 16 · show-up | 11 · «está lleno de pirañas» · 10 · «necesito ser experto en Meta» | D y E · no es otra mentoría de testeo |
-| 8 | Mar 17 · 14:00 | 6 y 11 | A · B · el caso Herbora completo |
+| 8 | Mar 17 · 14:00 | 6 y 11 | A · B · el caso de Lucas completo |
 | 11 | Mar 17 · 17:30 | — | A · «un mes malo, pero ya sabés lo que entra» |
 
 **Lo que se dejó afuera a propósito:**
@@ -55,7 +56,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 
 - **«Masterclass» → «clase».** El prompt usa «MASTERCLASS» en el bloque fijo; en este repo esa palabra no va (tampoco webinar, programa, funnel ni lead). El bloque queda: «📅 Faltan [X] días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.»
 - **Sin «sin replay».** No está confirmado si hay grabación (en el 19/10 hubo replay). Por eso ningún mail promete que no queda grabada, y el mail 3 del día 7 (Objection Kill) mata el «lo veo grabado» con lo que solo pasa en vivo, sin decir que no hay grabación. Si se confirma que no hay replay, en ese mail se suma una línea marcada y en el bloque fijo se agrega «sin replay».
-- **El testimonio del día 7 no se cuenta como «me escribió esta mañana»:** sería inventar un hecho. Se cuenta Herbora como caso real, en presente.
+- **El testimonio del día 7 no se cuenta como «me escribió esta mañana»:** sería inventar un hecho. Se cuenta el caso de Lucas como caso real, en presente.
 - **El mail 9 del día 7 no dice «el chat está en shock»** ni ningún dato del vivo que no sepamos. Lleva `[N]` (personas adentro, número real) y la pieza que se está mostrando, a confirmar con el orden real de la clase.
 
 ---
@@ -65,13 +66,13 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 | # | Día | Hora | Subject | Trabajo |
 | --- | --- | --- | --- | --- |
 | 1 | Mié 11/11 | 08:30 | Renovar creativos te deja en breakeven | Marco: el problema es el modelo |
-| 2 | Jue 12/11 | 08:30 | Herbora tenía buen producto. Igual se hundía | Identificación: estaban igual que vos |
+| 2 | Jue 12/11 | 08:30 | Lucas tenía buen producto. Igual se hundía | Identificación: estaban igual que vos |
 | 3 | Vie 13/11 | 08:30 | Bajar el CPA es la pelea que vas a perder | Dolor 1 · CPA |
 | 4 | Sáb 14/11 | 08:30 | Tu margen ya existe. Se lo lleva otro | Dolor 2 · Margen |
 | 5 | Dom 15/11 | 09:00 | Puedo pagar 2,5 veces más que mi competencia | Todo junto + el regalo |
 | 6 | Lun 16/11 | 08:30 | Mañana no vas a ver nada de producto ganador | Show-up |
 | 7 | Mar 17/11 | 08:00 | Hoy a las 18 | Morning Anchor |
-| 8 | Mar 17/11 | 14:00 | Faltan 4 horas: lo de Herbora | Trust Asset |
+| 8 | Mar 17/11 | 14:00 | Faltan 4 horas: el caso de Lucas | Trust Asset |
 | 9 | Mar 17/11 | 17:00 | Falta 1 hora. ¿Lo dejás para después? | Objection Kill |
 | 10 | Mar 17/11 | 17:15 | 45 minutos: prepará estas 3 cosas | Motion Command |
 | 11 | Mar 17/11 | 17:30 | 30 minutos: imaginate mañana | Visualization |
@@ -119,7 +120,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > Una cosa antes de irte. Respondé este mail con un número: **¿cuántos de los clientes que te compraron el mes pasado te volvieron a comprar este mes?** Si no lo sabés, respondé «no sé». Las dos respuestas me sirven, y las leo yo.
 >
-> Mañana te cuento cómo estaba yo, y cómo estaba una marca que entró a trabajar conmigo, antes de cambiar el modelo.
+> Mañana te cuento cómo estaba yo, y cómo estaba Lucas, un cliente, antes de cambiar el modelo.
 >
 > Manu
 
@@ -127,20 +128,20 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 
 ### Mail 2 · Día 2 · Jueves 12/11 · 08:30
 
-**Subject:** Herbora tenía buen producto. Igual se hundía
+**Subject:** Lucas tenía buen producto. Igual se hundía
 **Preheader:** Lo mismo que me pasaba a mí. Te cuento qué era.
 
 **Usa:** ángulo A (inestabilidad: «hace mucho que no tenemos un día bueno») · creencia 6 y ángulo H (si no arranca, el producto es malo) · creencia 1 (esto es para Estados Unidos).
 
 > Hola,
 >
-> Ayer te dije que nada te dura porque buscás la compra y no el cliente. Hoy te muestro a dos marcas que estaban exactamente donde estás vos.
+> Ayer te dije que nada te dura porque buscás la compra y no el cliente. Hoy te muestro dos casos que estaban exactamente donde estás vos.
 >
-> La primera es la mía: **$Y por mes con compra única.** Cada venta me dejaba casi lo mismo que me costaba, y tenía días buenos y días malos sin saber por qué.
+> El primero es el mío: **$Y por mes con compra única.** Cada venta me dejaba casi lo mismo que me costaba, y tenía días buenos y días malos sin saber por qué.
 >
-> La segunda es **Herbora**, shampoo para dermatitis. La primera quincena de agosto hicieron **7 palos en 15 días.** La tercera semana salieron 7 marcas a pautar un producto muy parecido y se fueron a pérdida.
+> El segundo es el de **Lucas**, un cliente. La primera quincena de agosto hizo **7 palos en 15 días.** La tercera semana salieron 7 marcas a pautar un producto muy parecido y se fue a pérdida.
 >
-> Cuando hablé con ellos me dijeron, textual:
+> Cuando hablamos me dijo, textual:
 >
 > **«Hace mucho que no tenemos un día bueno.»**
 >
@@ -148,17 +149,17 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 > - Una noche con **600 lucas abajo:** apagaron todo, «de manotazo ahogado».
 > - Renovando creativos de los ángulos que ya les habían funcionado.
 >
-> Y acá aparece la trampa en la que cae casi todo el mundo: **pensar que si no arranca, el producto es malo.** Otro dueño de marca me lo contó así: «varios me dijeron que capaz el producto no es bueno». Y era bueno. El de Herbora también. El mío también.
+> Y acá aparece la trampa en la que cae casi todo el mundo: **pensar que si no arranca, el producto es malo.** Otro dueño de marca me lo contó así: «varios me dijeron que capaz el producto no es bueno». Y era bueno. El de Lucas también. El mío también.
 >
 > Ninguno tenía un mal producto ni malos creativos. **Estábamos comprando cada venta de nuevo.** Igual que vos.
 >
-> Y fijate: las dos son **marcas argentinas de consumibles.** No es Estados Unidos ni una marca gigante. Es acá, con el mismo Meta que usás vos.
+> Y fijate: los dos casos son **de acá, de Argentina.** No es Estados Unidos ni una marca gigante. Es acá, con el mismo Meta que usás vos.
 >
-> Cómo era mi mes con compra única, con el Excel abierto, te lo muestro en el video que mando hoy a las 13 por el grupo. Y a las 17 te cuento cómo terminó la noche de Herbora. Si no estás, sumate acá 👉 [LINK GRUPO]
+> Cómo era mi mes con compra única, con el Excel abierto, te lo muestro en el video que mando hoy a las 13 por el grupo. Y a las 17 te cuento cómo terminó la noche de Lucas. Si no estás, sumate acá 👉 [LINK GRUPO]
 >
 > 📅 **Faltan 5 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
 >
-> Mañana vamos al CPA: por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo Herbora cuando salieron 7 marcas a pautar su mismo producto.
+> Mañana vamos al CPA: por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo Lucas cuando salieron 7 marcas a pautar su mismo producto.
 >
 > Manu
 
@@ -173,11 +174,11 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 
 > Hola,
 >
-> Ayer viste que Herbora y yo teníamos buen producto y aun así comprábamos cada venta de nuevo. Hoy vamos a lo que pasa cuando sale la competencia.
+> Ayer viste que Lucas y yo teníamos buen producto y aun así comprábamos cada venta de nuevo. Hoy vamos a lo que pasa cuando sale la competencia.
 >
 > **«La tercera semana de agosto salieron 7 personas a pautar un producto muy parecido al nuestro.»**
 >
-> Y no solo eso. Herbora me contó: **«nos copiaron literalmente toda la landing… los mismos anuncios».** A otro le bajaban los videos y los subían: él tenía 10 anuncios y el que lo copió tenía 30.
+> Y no solo eso. Lucas me contó: **«nos copiaron literalmente toda la landing… los mismos anuncios».** A otro le bajaban los videos y los subían: él tenía 10 anuncios y el que lo copió tenía 30.
 >
 > La cadena es siempre la misma. Largás, escalás, te salen competidores, te suben los CPM, por ende te sube el CPA. **Saliste con 10 dólares y ahora tenés 20.** Y ya está: dejás de ser rentable.
 >
@@ -191,7 +192,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > **No ganás bajando el CPA. Ganás pudiendo pagar más por el mismo cliente.** Y hay algo que no te pueden copiar: el que ya se suscribió es cliente tuyo. No le compra al que te copió la landing.
 >
-> Herbora no salió con un anuncio nuevo. Cambiaron el modelo, y **el día que relanzaron pasaron a tener 40% de margen:** casi dos palos de ganancia.
+> Lucas no salió con un anuncio nuevo. Cambió el modelo, y **el día que relanzó pasó a tener 40% de margen:** casi dos palos de ganancia.
 >
 > Lo que seguro te hace ruido: **«el suscriptor me va a salir mucho más caro».** Puede costarte hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, es porque estás haciendo la cuenta de una sola compra.
 >
@@ -203,7 +204,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > Manu
 
-> `[CONFIRMAR con Manu: si los «casi dos palos de ganancia» de Herbora fueron en un día o en otro período. Si no fue el día del relanzamiento, cambiar «el día que relanzaron» por el período real.]`
+> `[CONFIRMAR con Manu: si los «casi dos palos de ganancia» de Lucas fueron en un día o en otro período. Si no fue el día del relanzamiento, cambiar «el día que relanzó» por el período real.]`
 
 ---
 
@@ -218,13 +219,13 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > Ayer te dije que gana el que puede pagar más por cliente. Hoy te muestro de dónde sale esa plata.
 >
-> **«7 lucas de ganancia. Sobreviviendo.»** Eso me dijo Herbora mirando su mes. Facturaban, y por cada pedido les quedaban 7 lucas.
+> **«7 lucas de ganancia. Sobreviviendo.»** Eso me dijo Lucas mirando su mes. Facturaba, y por cada pedido le quedaban 7 lucas.
 >
 > Lo que se suele hacer: subir el ticket, armar un pack por 3, sacar cuotas. Sirve, te sube algo el margen. Pero **cada venta sigue pagando su propio CPA.**
 >
 > Lo que casi nadie ve: **la primera venta de cada cliente la pagás. La segunda, la tercera y la cuarta entran con el margen entero.**
 >
-> Ese margen ya existe en tu base. Lucas, uno de los dueños de Herbora, tiene además su propia marca, y en la llamada me dijo: **«así tengo 400 clientes que recompraron ya».** Sin un mail. Sin un WhatsApp. Plata sentada que nadie estaba cobrando.
+> Ese margen ya existe en tu base. En la misma llamada, Lucas me dio otro dato: **«así tengo 400 clientes que recompraron ya».** Sin un mail. Sin un WhatsApp. Plata sentada que nadie estaba cobrando.
 >
 > En mi marca, con compra única, cada venta dejaba casi lo mismo que costaba. **Hoy tengo X% de margen con X suscriptores.**
 >
@@ -244,7 +245,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > Manu
 
-> `[CONFIRMAR: permiso de Lucas para el dato de los 400 clientes (es de su marca propia, no de Herbora). Si no hay permiso, queda sin nombre: «un dueño de marca me dijo en una llamada: "así tengo 400 clientes que recompraron ya"».]`
+> `[CONFIRMAR: permiso de Lucas para el dato de los 400 clientes (es de otra marca suya). Si no hay permiso, queda sin nombre: «un dueño de marca me dijo en una llamada: "así tengo 400 clientes que recompraron ya"».]`
 
 ---
 
@@ -257,7 +258,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 
 > Hola,
 >
-> Esta semana viste las piezas sueltas: nada te dura, Herbora, el CPA y el margen. Hoy se juntan, y si te sumaste recién, con este mail quedás al día.
+> Esta semana viste las piezas sueltas: nada te dura, el caso de Lucas, el CPA y el margen. Hoy se juntan, y si te sumaste recién, con este mail quedás al día.
 >
 > Si tu margen de contribución por pedido es de **30.000 pesos**, con compra única tu techo es 30.000. Pagás 30.000 por un cliente y quedás en breakeven en la primera venta. Pero si ese cliente te compra tres veces, el techo cambia:
 >
@@ -306,7 +307,7 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 >
 > Y no hace falta que seas experto en Meta: lo que mueve la aguja es el modelo, no el truco de campaña.
 >
-> Sé que hay desconfianza. Herbora me lo dijo en la primera llamada: **«me cuesta mucho confiar… está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis números en pantalla, y la cuenta la hacés con los tuyos.**
+> Sé que hay desconfianza. Lucas me lo dijo en la primera llamada: **«me cuesta mucho confiar… está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis números en pantalla, y la cuenta la hacés con los tuyos.**
 >
 > Lo que vas a ver es cómo una marca argentina de consumibles cobra todos los meses sin depender del anuncio de esta semana. Y te llevás tres cosas:
 >
@@ -340,7 +341,7 @@ Clase a las 18 hs. Cuanto más cerca, más corto. Los subjects llevan el tiempo 
 >
 > **Hoy es el día.** A las 18 hs (Argentina) doy la clase en vivo.
 >
-> Toda la semana viste las piezas sueltas: el modelo, Herbora, el CPA, el margen y tu techo de pauta. Hoy ves cómo se unen.
+> Toda la semana viste las piezas sueltas: el modelo, el caso de Lucas, el CPA, el margen y tu techo de pauta. Hoy ves cómo se unen.
 >
 > Si estás, te llevás tres cosas:
 >
@@ -360,18 +361,18 @@ Clase a las 18 hs. Cuanto más cerca, más corto. Los subjects llevan el tiempo 
 
 ### Mail 8 · 14:00 · Trust Asset
 
-**Subject:** Faltan 4 horas: lo de Herbora
+**Subject:** Faltan 4 horas: el caso de Lucas
 **Preheader:** De 600 lucas abajo a 40% de margen.
 
 > Hola,
 >
-> Antes de la clase te quiero recordar a Herbora, porque es lo más parecido a lo que vas a ver esta noche.
+> Antes de la clase te quiero recordar el caso de Lucas, porque es lo más parecido a lo que vas a ver esta noche.
 >
-> En agosto hicieron 7 palos en 15 días. Después salieron 7 marcas a pautar un producto casi igual y les copiaron la landing entera. **«Hace mucho que no tenemos un día bueno»**, me dijeron. Una noche iban 600 lucas abajo y apagaron todo.
+> En agosto hizo 7 palos en 15 días. Después salieron 7 marcas a pautar un producto casi igual y le copiaron la landing entera. **«Hace mucho que no tenemos un día bueno»**, me dijo. Una noche iba 600 lucas abajo y apagó todo.
 >
-> Y desconfiaban: **«está lleno de pirañas».** No tenían un mal producto. Estaban comprando cada venta de nuevo.
+> Y desconfiaba: **«está lleno de pirañas».** No tenía un mal producto. Estaba comprando cada venta de nuevo.
 >
-> No salieron con un creativo nuevo. Cambiaron el modelo. **El día que relanzaron pasaron a tener 40% de margen.** Casi dos palos de ganancia.
+> No salió con un creativo nuevo. Cambió el modelo. **El día que relanzó pasó a tener 40% de margen.** Casi dos palos de ganancia.
 >
 > Lo que querés vos no es facturar más. Es que el mes no dependa del anuncio de esta semana. Eso es lo que te muestro hoy a las 18.
 >
@@ -517,13 +518,13 @@ Clase a las 18 hs. Cuanto más cerca, más corto. Los subjects llevan el tiempo 
 | # | Día | Fecha | Hora (ARG) | Subject | Links |
 | --- | --- | --- | --- | --- | --- |
 | 1 | Día 1 | Mié 11/11 | 08:30 | Renovar creativos te deja en breakeven | Grupo · Agendar |
-| 2 | Día 2 | Jue 12/11 | 08:30 | Herbora tenía buen producto. Igual se hundía | Grupo · Agendar |
+| 2 | Día 2 | Jue 12/11 | 08:30 | Lucas tenía buen producto. Igual se hundía | Grupo · Agendar |
 | 3 | Día 3 | Vie 13/11 | 08:30 | Bajar el CPA es la pelea que vas a perder | Grupo · Agendar |
 | 4 | Día 4 | Sáb 14/11 | 08:30 | Tu margen ya existe. Se lo lleva otro | Grupo · Agendar |
 | 5 | Día 5 | Dom 15/11 | 09:00 | Puedo pagar 2,5 veces más que mi competencia | Cuenta del CPA · Grupo · Agendar |
 | 6 | Día 6 | Lun 16/11 | 08:30 | Mañana no vas a ver nada de producto ganador | Grupo · Agendar |
 | 7 | Día 7 | Mar 17/11 | 08:00 | Hoy a las 18 | Agendar |
-| 8 | Día 7 | Mar 17/11 | 14:00 | Faltan 4 horas: lo de Herbora | Agendar |
+| 8 | Día 7 | Mar 17/11 | 14:00 | Faltan 4 horas: el caso de Lucas | Agendar |
 | 9 | Día 7 | Mar 17/11 | 17:00 | Falta 1 hora. ¿Lo dejás para después? | — |
 | 10 | Día 7 | Mar 17/11 | 17:15 | 45 minutos: prepará estas 3 cosas | — |
 | 11 | Día 7 | Mar 17/11 | 17:30 | 30 minutos: imaginate mañana | — |
@@ -541,7 +542,7 @@ Clase a las 18 hs. Cuanto más cerca, más corto. Los subjects llevan el tiempo 
 - [ ] Reemplazar `$X`, `X suscriptores`, `X%` y `$Y` (mismos números que el contenido de WhatsApp).
 - [ ] Cargar `[LINK GRUPO]`, `[LINK AGENDAR]`, `[LINK CLASE]` y `[LINK DE LA CUENTA DEL CPA]`.
 - [ ] Confirmar si hay replay (mail 9 y bloques fijos).
-- [ ] Confirmar el período de los «casi dos palos» de Herbora (mails 3 y 8).
+- [ ] Confirmar el período de los «casi dos palos» de Lucas (mails 3 y 8).
 - [ ] Confirmar el permiso de Lucas para los 400 clientes (mail 4); si no hay, va sin nombre.
 - [ ] Confirmar qué se muestra a las 18:30 (mail 15).
 - [ ] Revisar que ningún mail diga «masterclass», «webinar», «programa» ni el precio.
