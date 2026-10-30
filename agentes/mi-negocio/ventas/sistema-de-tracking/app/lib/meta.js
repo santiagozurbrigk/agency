@@ -130,4 +130,19 @@ async function creativos() {
   });
 }
 
-module.exports = { enabled, problema, datos, creativos };
+// Video de cada creativo: link de descarga (vence en horas), duración y título.
+// Solo los videos que se piden (ids de video), de a uno, para no pasarse del límite de Meta.
+async function videos(ids) {
+  const { token } = config();
+  const out = [];
+  for (const id of [...new Set(ids)].slice(0, 120)) {
+    try {
+      const r = await fetch(`https://graph.facebook.com/${VERSION}/${id}?${new URLSearchParams({ fields: "source,length,title", access_token: token })}`);
+      const d = await r.json();
+      out.push(d.error ? { videoId: id, error: String(d.error.message || "error").split(token).join("…") } : { videoId: id, source: d.source || null, segundos: d.length || null, titulo: d.title || "" });
+    } catch (e) { out.push({ videoId: id, error: "No se pudo conectar con Meta" }); }
+  }
+  return out;
+}
+
+module.exports = { enabled, problema, datos, creativos, videos };
