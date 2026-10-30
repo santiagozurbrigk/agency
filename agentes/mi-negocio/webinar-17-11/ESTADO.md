@@ -49,7 +49,7 @@ Herbora, Alan, Santi Núñez y Thiago Lopo (falta la de Andy Kette: el link que 
 | Calendario de nutrición por WhatsApp (estrategia) | `calendario-nutricion-whatsapp.md` | Hecho. 7 días, del mié 11/11 al mar 17/11. |
 | Contenido de WhatsApp días 1 a 6 | `contenido-nutricion-dias-1-6.md` | Hecho, con los números de Manu como `$X` (ver abajo). |
 | WhatsApp día 7 (el día de la clase) | — | **Pendiente.** Agente: `limitless-mensajes-dia-webinar`. |
-| Funnel de YouTube | `../youtube/funnel-youtube.md` | Hecho el plan: mapa TOF/MOF/BOF de 10 videos, configuración del canal y los 2 videos pre-webinar (YT-1 y YT-9) guionados. Packaging modelado sobre los outliers que pasó Santi el 30/10. |
+| Funnel de YouTube | `../youtube/funnel-youtube.md` | Hecho el plan: mapa TOF/MOF/BOF de 10 videos, configuración del canal y los 2 videos pre-webinar (YT-1 y YT-9) guionados. Packaging modelado sobre los outliers que pasó Santi el 30/10. Mapa en Google Docs: [Funnel de YouTube · Mapa de 10 videos (packaging)](https://docs.google.com/document/d/1dHq5AJy5OnWu7hFFOD3wYpQDZZ6SECbMnCH-UqDObXw/edit) (el Doc anterior, sin packaging, quedó viejo). |
 | Ads de nutrición (10) | — | **Pendiente.** Tienen que salir de las creencias y los 9 ángulos de `analisis-ventas-calificadas.md`. |
 | Resto (historias, mails, landing, VSL, thank you, reminders, post-webinar, B:52) | `tareas.md` | Ver el tracker. |
 | Tracker de ventas y tareas | `../ventas/sistema-de-tracking/app/` | Funcionando en Vercel. Tests: `node test/flujo.test.js` (tiene que dar «Todo verde ✓»). |
