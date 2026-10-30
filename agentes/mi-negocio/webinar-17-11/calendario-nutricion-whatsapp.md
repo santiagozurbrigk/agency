@@ -4,15 +4,15 @@ La estrategia de los 7 días del grupo de WhatsApp, del miércoles 11/11 al mart
 
 **Datos usados:** `CONTEXTO.md`, `contexto.md` de esta carpeta, `ads-adquisicion.md` (números de la campaña) y `analisis-ventas-calificadas.md` (las creencias limitantes y los 9 ángulos de las ventas mejor pagadas).
 
-## Antes de producir: datos a confirmar
+## Datos (estado al 30/10)
 
-| Dato | Qué se usa | Qué confirmar |
+| Dato | Qué se usa | Estado |
 | --- | --- | --- |
-| Caso Herbora | Antes: CPA que reventó cuando salieron 7 marcas a pautar lo mismo, «7 lucas de ganancia», «600 lucas abajo». Después: el relanzamiento (Manu se lo contó a Alan: «pasaron a tener 40% de margen y se hicieron tipo casi dos palos de profit»). | Que Lucas y Santiago acepten que se cuente, con o sin el nombre de la marca, y que haya captura del antes y del después. **Es el único caso de tercero: sin esto, los días 2 y 3 quedan solo con el caso de Manu.** |
-| Números de Manu | Los de la campaña: +280M por mes, +3.600 suscriptores, +40% de margen, 220M en septiembre sin Meta, 18 meses. Punto A: 60M por mes con compra única, en breakeven. | `CONTEXTO.md` todavía dice 156.798.062 ARS y 2.200 suscriptores. Usar el número que tenga captura. |
-| Regalo del día 5 | Propuesta: **la Cuenta del CPA** (la calculadora del techo de pauta con LTV que ya se usa en cámara y pizarra: margen 30.000 → techo 30.000 con compra única → 90.000 con LTV 3 → operar en 75.000). | Que exista en un formato que se pueda mandar (planilla o PDF) y que Manu quiera regalarla antes de la clase. Los 3 sistemas de la biblioteca **no** se regalan acá: son el bonus de la clase. |
-| Link al privado de Manu | Interacciones que van al privado (días 2, 4 y 6). | El wa.link. |
-| Link de la clase | Solo el día 7, desde 15 minutos antes. | El link. |
+| Caso Herbora | Antes: CPA que reventó cuando salieron 7 marcas a pautar lo mismo, «7 lucas de ganancia», «600 lucas abajo». Después: el relanzamiento (Manu se lo contó a Alan: «pasaron a tener 40% de margen y se hicieron tipo casi dos palos de profit»). | **Permiso confirmado** por Santi. |
+| Números de Manu | Facturación hoy, suscriptores, margen y facturación con compra única. | **A definir.** En el contenido van como `$X`, `X suscriptores`, `X%` y `$Y`; se reemplazan todos juntos (ver `contenido-nutricion-dias-1-6.md`). |
+| Regalo del día 5 | **La Cuenta del CPA** (la calculadora del techo de pauta con LTV: margen 30.000 → techo 30.000 con compra única → 90.000 con LTV 3 → operar en 75.000). Los 3 sistemas de la biblioteca **no** se regalan acá: son el bonus de la clase. | **Confirmado.** |
+| Privado de Manu | Interacciones que van al privado. | https://wa.link/ouqu06 |
+| Link de la clase | Solo el día 7, desde 15 minutos antes. | Pendiente. |
 
 ---
 
@@ -89,7 +89,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 
 **Casos (desde el dolor, no desde la facturación):**
 - **Manu antes:** 60 millones por mes con compra única, cada venta dejaba casi lo mismo que costaba, renovaba creativos para sostener.
-- **Herbora antes** [CONFIRMAR]: «hace mucho que no tenemos un día bueno», salieron 7 marcas a pautar lo mismo, una noche con 600 lucas abajo, apagaron todo «de manotazo ahogado».
+- **Herbora antes**: «hace mucho que no tenemos un día bueno», salieron 7 marcas a pautar lo mismo, una noche con 600 lucas abajo, apagaron todo «de manotazo ahogado».
 
 **Función estratégica:** identificación. El lead se reconoce en el antes de los dos casos. Rompe la Creencia B: los dos son marcas argentinas de consumibles, no Estados Unidos.
 
@@ -113,7 +113,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 
 **Solución común que se rompe:** renovar creativos todos los días, testear más, bajar el CPA, pagarle a alguien para que te diga «hacé más creativos».
 
-**Caso que lo cruzó:** Herbora [CONFIRMAR]: el CPA se les fue con la competencia, renovaban creativos de los ángulos que funcionaban y seguían cayendo. Se cuenta hasta el resultado del relanzamiento, sin el cómo.
+**Caso que lo cruzó:** Herbora: el CPA se les fue con la competencia, renovaban creativos de los ángulos que funcionaban y seguían cayendo. Se cuenta hasta el resultado del relanzamiento, sin el cómo.
 
 **Freno aislado (Creencia C, parte 1):** «el suscriptor me va a salir más caro». Se muestra que puede salir hasta un 20% más caro y aun así conviene, sin hacer la cuenta completa: la cuenta es el regalo del día 5.
 
@@ -166,7 +166,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 4. El factor diferencial: poder pagar 2,5 veces más por cliente, contado como resultado.
 5. Se nombra el **Método B.A.S.E.** como lo que se ve el martes, sin las letras ni las fases.
 
-**El regalo:** la Cuenta del CPA [CONFIRMAR formato]: margen de contribución → techo con compra única → techo con LTV 3 → punto operativo. Muestra el techo nuevo de tu marca, no cómo llegar a él.
+**El regalo:** la Cuenta del CPA: margen de contribución → techo con compra única → techo con LTV 3 → punto operativo. Muestra el techo nuevo de tu marca, no cómo llegar a él.
 
 **Función estratégica:** integración. El que entró hoy queda al día. Desde acá no hay información nueva.
 
