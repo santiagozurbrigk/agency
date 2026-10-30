@@ -14,7 +14,7 @@ Agentes de Limitless: `../../agentes/`. Agentes propios: `../agentes/`.
 | ID | Tarea | Cant. | Agente | Referencia | Responsable |
 | --- | --- | --- | --- | --- | --- |
 | ADQ-01 | Secuencias de historias de adquisición | 5 | Narrativa y calendario + Historias (`limitless-calendario-historias`, `limitless-agente-secuencias-historias`) | `../lanzamiento-19-10/contenido/03-adquisicion-historias.md`, `../lanzamiento-19-10/calendario-historias.md` | |
-| ADQ-02 | Guiones de AD Reels de adquisición (9 test + 9 ya testeados) | 18 | Reels + Mastering Copy (`limitless-agente-guiones-reels`, `limitless-agente-copy`) | `../lanzamiento-19-10/ads-adquisicion-guiones.md`, `../lanzamiento-19-10/ads-nuevos/guiones-v8-por-dolor.md`, `../lanzamiento-19-10/referencia-ads-nazareno.md` | |
+| ADQ-02 | Guiones de AD Reels de adquisición (9 test + 9 ya testeados) | 18 | Reels + Mastering Copy (`limitless-agente-guiones-reels`, `limitless-agente-copy`) | `ads-adquisicion.md` (hechos), `../lanzamiento-19-10/ads-adquisicion-guiones.md`, `../lanzamiento-19-10/ads-nuevos/guiones-v8-por-dolor.md`, `../lanzamiento-19-10/referencia-ads-nazareno.md` | |
 | ADQ-03 | Grabar AD Reels de adquisición | 18 | — | | Manu |
 | ADQ-04 | Editar AD Reels de adquisición | 18 | — | | |
 | ADQ-05 | Configurar campañas de adquisición en Meta | 1 | Ads de adquisición — Configuración (`limitless-configurador-ads`) | `../lanzamiento-19-10/ads-adquisicion-notas.md` | |
