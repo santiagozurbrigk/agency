@@ -31,7 +31,7 @@ Resumen para retomar el trabajo sin haber estado en las conversaciones anteriore
 
 ### De las llamadas de los clientes que más pagaron · `analisis-ventas-calificadas.md`
 Herbora, Alan, Santi Núñez y Thiago Lopo (falta la de Andy Kette: el link que se pasó era el de Herbora).
-- **El que paga no es solo el que ya tiene marca y pauta fuerte.** Núñez importa y Lopo vende en Mercado Libre; Lopo pagó el ticket más alto. Ojo: `CONTEXTO.md` todavía dice que el que vende solo en Mercado Libre no es avatar; esa definición está en revisión.
+- **El que paga no es solo el que ya tiene marca y pauta fuerte.** Núñez importa y Lopo vende en Mercado Libre; Lopo pagó el ticket más alto. `CONTEXTO.md` ya los incluye como «avatar ampliado» (30/10).
 - Tres de los cuatro vienen quemados por otra mentoría. El enemigo está validado.
 - El dolor que cierra es la **inestabilidad** («hace mucho que no tenemos un día bueno»), más que el CPA aislado. Nadie habló de miedo al ban.
 - **La lista de creencias limitantes y los 9 ángulos nuevos (A a I) son la base de toda la nutrición** (ads de nutrición, mails, WhatsApp). Decisión de Santi del 30/10. A, C e I ya se usan en los ads de adquisición (N8, N9 y N2).
@@ -57,7 +57,7 @@ Herbora, Alan, Santi Núñez y Thiago Lopo (falta la de Andy Kette: el link que 
 
 | Dato | Dónde impacta | Estado |
 | --- | --- | --- |
-| **Números de Manu** (facturación hoy, suscriptores, margen, facturación con compra única) | Contenido de WhatsApp (marcados `$X`, `X suscriptores`, `X%`, `$Y`) y ads (+280M, +3.600, +40%, 60M). `CONTEXTO.md` todavía dice 156,8M y 2.200 suscriptores. | A definir por Santi. Va el que tenga captura. Cuando se defina, reemplazar en todos los archivos a la vez. |
+| **Números de Manu** (facturación hoy, suscriptores, margen, facturación con compra única) | Contenido de WhatsApp (marcados `$X`, `X suscriptores`, `X%`, `$Y`) y ads (+280M, +3.600, +40%, 60M). `CONTEXTO.md` guarda el dato viejo de septiembre (156,8M, 2.200 suscriptores) y marca los vigentes como a definir. | A definir por Santi. Va el que tenga captura. Cuando se defina, reemplazar en todos los archivos a la vez. |
 | Link de la Cuenta del CPA (regalo del día 5 de WhatsApp) | `contenido-nutricion-dias-1-6.md`, donde dice `[LINK DE LA CUENTA DEL CPA]` | El regalo está confirmado; falta el link. |
 | Período de los «casi dos palos de ganancia» de Herbora | Día 3 de WhatsApp | Confirmar con Manu si fue en un día o en otro período. |
 | Link de la clase | WhatsApp día 7, reminders | Pendiente. |
@@ -69,8 +69,6 @@ Herbora, Alan, Santi Núñez y Thiago Lopo (falta la de Andy Kette: el link que 
 ## Inconsistencias conocidas
 
 - `README.md` dice que la nutrición dura 5 días (12/11 al 16/11). El calendario de WhatsApp que se armó usa la estructura del agente: **7 días, del 11/11 al 17/11**. Si se quiere arrancar el 12, hay que comprimir los días 1 y 2.
-- `CONTEXTO.md` tiene los números viejos de Manu y excluye a los vendedores de Mercado Libre del avatar. No se tocó porque solo se edita si lo pide Santi.
-
 ## Reglas de copy que valen para todo
 
 - Una pieza = un dolor + un ángulo + un CTA.

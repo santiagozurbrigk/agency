@@ -1,12 +1,14 @@
 # Contexto de mi negocio — Génesis (Manu Dominguez)
 
-Estado al 26-sep-2026. `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
+Estado al 26-sep-2026, actualizado el 30-oct-2026 con las llamadas de venta de los clientes que más pagaron (`mi-negocio/webinar-17-11/analisis-ventas-calificadas.md`). `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
+Lanzamiento en curso (clase del martes 17-nov, 18 hs): estado y decisiones en `mi-negocio/webinar-17-11/ESTADO.md`.
 Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido producido y pendientes): `mi-negocio/brief-genesis.md`.
 
 ## Negocio
 
 - **Nicho:** consultoría 1a1 para dueños de ecommerce de consumibles (químicos de limpieza y cuidado personal, suplementos, cosmética) en Argentina que ya facturan 30 a 80 millones ARS/mes con Meta Ads y están en breakeven. Los pasa de compra única a modelo de suscripción.
-  - No es para: el que arranca de cero, el que busca producto ganador, ni el que vende solo en retail/mayorista/Mercado Libre sin tienda propia.
+  - No es para: el que arranca de cero (sin ventas) ni el que busca producto ganador.
+  - **Sí entra (cambio del 30-oct):** el que ya tiene un e-commerce que vende en otro nicho (importación, Mercado Libre) y quiere armar su marca de consumibles. Dos de los cuatro clientes que más pagaron venían de ahí, y uno pagó el ticket más alto en un pago. Antes se lo excluía.
 
 - **Qué vendo (oferta principal y precio):** **Génesis — Método B.A.S.E.** Consultoría 1:1 · 3 meses · Done For You. No hay versión grupal.
   - Frase de la oferta (cerrada 6-sep): *"Escalo tu ecomm de consumibles a +$100M al mes convirtiéndolo a modelo de suscripción, sin depender del CPA ni dejar de vender."*
@@ -71,7 +73,10 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 
   **Símbolo:** dos círculos que se cruzan con una lente al medio. Círculo 1 = compra única, círculo 2 = suscripción, lente = el cliente que vuelve. El Método B.A.S.E. = agrandar la lente.
 
-- **Caso de éxito (solo Manu):** su propia marca pasó de 60.000.000 a 156.798.062 ARS/mes, 2.200 suscriptores activos, 1,28% de churn, LTV 3 pedidos mínimo. Período entre 60M y 156.798.062: [PENDIENTE].
+- **Casos de éxito:**
+  - **Manu:** su propia marca pasó de 60.000.000 ARS/mes con compra única a 156.798.062 ARS/mes, 2.200 suscriptores activos, 1,28% de churn, LTV 3 pedidos mínimo (dato de septiembre). Período: [PENDIENTE].
+    - **Números vigentes a definir (30-oct):** la campaña del 17/11 usa +280M/mes, +3.600 suscriptores, +40% de margen y 220M en septiembre sin Meta; el contenido de WhatsApp los deja como `$X`, `X suscriptores`, `X%`, `$Y`. Va el número que tenga captura, y cuando se defina se reemplaza en todos los archivos a la vez.
+  - **Herbora** (Lucas Ceria y Santiago Blachman, shampoo para dermatitis): **autorizaron contar el caso (30-oct).** Antes: «hace mucho que no tenemos un día bueno», 7 marcas salieron a pautar lo mismo, «7 lucas de ganancia», una noche 600 lucas abajo. Después del relanzamiento con Manu: 40% de margen y «casi dos palos de profit» (período a confirmar con Manu). Lucas además tenía 400 clientes que le recompraron sin mails ni WhatsApp.
   - Reglas: retención adelante, facturación atrás · se muestra, no se dice (sin captura no hay número) · un ángulo distinto por pieza · el punto A se dice con el número.
 
 ## Avatar
@@ -88,6 +93,8 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - Síntesis: Gonza tiene 27, vive en Córdoba, arrancó con dropshipping, pasó a un químico propio y factura 60M/mes con Meta Ads. Abre el Excel: el CPM le subió todo el año, cada venta le deja casi lo mismo que le cuesta, y el contador le dijo que si pasa a RI no cierra. Ya pagó dos mentorías de producto ganador que no le sirvieron porque él ya tiene producto. Lo que quiere no es facturar más: es que el 1 del mes ya haya facturación.
   - Cliente real que es el ideal: Manu mismo antes de la suscripción (60M/mes en compra única). En el piloto: el cliente de la mentoría con marca de químicos y buenos márgenes, "el avatar calcado". Referencia de dolores reales: Lucas Ceria y Santi Blachman (Herbora), call del 21-sep.
   - Avatar secundario (Nivel 2): ecommerce sin marca propia estable, hasta 30M/mes, saltando de mentoría en mentoría. Borrador 100% [HIP], sin oferta propia. **No se usa en oferta ni contenido.**
+  - **Avatar ampliado (30-oct, de las ventas reales):** el que ya vende en otro nicho (importa de China con Shopify + Meta, o vende en Mercado Libre) y quiere su marca de consumibles. Dolor: «estoy al pedo y no me quería estancar», «renegué tanto con los testeos que me cansé», cada stock que se termina es volver a cero. Tiene capital y paga rápido. Entra a la oferta principal (no al Nivel 2). Ángulo para hablarle: «tu e-commerce vende, pero no construye nada».
+  - **Lo que más pesó en la compra (llamadas de ventas):** que Manu se meta en la tienda y en los números (contra el mentor que dice «venís bien»), la financiación flexible, el baúl de agentes de IA. Tres de los cuatro que más pagaron venían quemados por otra mentoría.
 
 - **Nivel de consciencia:**
   - Del problema: siente el síntoma (CPA, breakeven, miedo a Meta). Cree que su problema es de creativos, pauta o producto — no sabe que es del modelo (la unidad de venta es la compra, no el cliente).
@@ -139,6 +146,20 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - "Se suscriben para que la primera unidad les salga más barata y se dan de baja."
   - "Me cuesta mucho confiar. Está lleno de pirañas."
   - "Iba alumno tras alumno y pensaba 0,1 segundos." (sobre otra mentoría)
+
+  **Creencias limitantes de los que más pagaron (30-oct)** — base obligatoria de toda la nutrición (ads, mails, WhatsApp). Lista completa, con cómo las rompió Manu y los 9 ángulos nuevos, en `mi-negocio/webinar-17-11/analisis-ventas-calificadas.md`:
+  - "En Argentina no se suscribe nadie / el débito automático da desconfianza."
+  - "Mi producto no es para suscripción" (tratamientos, afecciones). Alan casi no se anota por esto.
+  - "El suscriptor cuesta mucho más que una venta."
+  - "Para vender hay que prometer más fuerte que la competencia."
+  - "Si no arranca en el test, el producto es malo."
+  - "Primero me capitalizo con un producto y después armo la marca."
+  - "Mercado competido = no entrar."
+  - "La solución es más creativos / más campañas."
+  - "Necesito ser experto en Meta."
+  - "Los consultores se aprovechan o te copian."
+
+  **Lo que dicen los que más pagaron:** el dolor que cierra es la **inestabilidad** ("hace mucho que no tenemos un día bueno", "nunca lo podía mantener"), más que el CPA aislado. La metadependencia la viven como depender de renovar creativos todos los días; nadie habló de miedo al ban.
 
 ## Voz y marca
 
