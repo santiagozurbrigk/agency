@@ -56,7 +56,7 @@ El packaging de cada video está modelado sobre los outliers que pasó Santi el 
 | YT-4 | MOF | Producto | «Mi producto no es para suscripción» | G (escepticismo) | Tu producto sí sirve para suscripción (llamada de coaching en vivo) | Pantalla del Miro con la oferta de tratamiento y el techo nuevo en número grande, «LIVE» arriba | «La única configuración de flujos de abandono que necesitarás (Llamada de coaching en vivo)» | 30-40 min |
 | YT-5 | TOF | Margen | «Cuando paso a RI, no cierra» | I (impuestos) | Esta marca de 60M/mes me preguntó si le conviene pasar a responsable inscripto | «MONOTRIBUTO → RI?» con anotaciones numeradas en la pizarra y Manu con la tablet | «Este negocio de $400.000 al mes me preguntó cómo escalar a $1M al mes» | 40-60 min |
 | YT-6 | TOF | Competencia | «Mercado competido = no entrar» / me copian | B (7 marcas) | A esta marca le salieron 7 copias en un mes. Así siguió vendiendo (case study) | Fondo oscuro, «7 COPIAS» enorme, Manu serio mirando a cámara | «How i made $500,000 in 7 DAYS branded dropshipping (case study)» | 20-25 min |
-| YT-7 | MOF | Estancamiento | «Primero me capitalizo con un producto y después armo la marca» | F y E (avatar ampliado) | Vendí mi marca de importación para quedarme solo con consumibles (esta es la razón) | Manu en el depósito entre cajas, texto «IMPORTACIÓN → SUSCRIPCIÓN» | «Inside My $2.5M/Month Supplement Supply Chain (China 2.0)» y «He Built a $100k/Day Supplement Brand…» | 20-25 min, vlog |
+| YT-7 | MOF | Estancamiento | «Primero me capitalizo con un producto y después armo la marca» | F y E (avatar ampliado) | Tu ecommerce vende, pero no construye nada (por qué los que importan se pasan a consumibles) | Cajas de importación a la izquierda, tablero de suscriptores a la derecha, texto «IMPORTACIÓN → SUSCRIPCIÓN» | Miniatura de «Inside My $2.5M/Month Supplement Supply Chain (China 2.0)» (depósito y cajas) | 20-25 min |
 | YT-8 | Mentalidad | CPA | «Necesito ser experto en Meta» / «más campañas» | D (mentoría que dice «venís bien») | tardé 18 meses en dejar de pelear por el CPA. aprendé todo en 15 minutos | Manu a cámara, texto «1 cliente = 3 compras» | «tardé 2 años en hacer $2.4M con mi contenido, aprendé todo en 33 minutos» («1 Reel = $35K») | 15 min, a cámara |
 | YT-9 | BOF | Inestabilidad | «Si no arranca, el producto es malo» | A + B (caso Herbora) | Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) \| EPISODIO 1 | «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop | «We Audited His $200K/Month E-com Brand Live (Here's What We Found) \| EPISODE 1» | 45-60 min |
 | YT-10 | BOF | Todos | «Los consultores se aprovechan» | H (fe en el producto) | Esta marca de $30M/mes me pidió un plan a $100M/mes (roadmap en vivo) \| EPISODIO 2 | «$30M → $100M» con los pasos numerados en la pizarra (nombres de las piezas, sin el cómo) | «Esta Agencia $10k/Mes Me Pidió Un Plan a $100k/Mes (Roadmap en Vivo)» y «He's Stuck at $17K/Day… (Live Audit) \| EPISODE 2» | 45-60 min |
@@ -65,7 +65,7 @@ El packaging de cada video está modelado sobre los outliers que pasó Santi el 
 
 **Lo que hay que conseguir para grabar:**
 - YT-4, YT-5 y YT-10: una llamada real con un dueño de marca que acepte salir (y, en YT-5, que sea una consulta real sobre pasar a responsable inscripto). No se inventan marcas ni números.
-- YT-7: que Manu quiera contar la venta de su parte en la marca de importación.
+- YT-7: Manu lo cuenta desde afuera, no como historia propia: le habla al que importa o vende en Mercado Libre (cada stock que se termina es volver a cero). Si Santi Núñez o Thiago Lopo aceptan salir, se puede convertir en un caso con ellos, modelado sobre «He Built a $100k/Day Supplement Brand From Pakistan».
 - YT-6: es Herbora (las copias de la landing y los anuncios, y las 7 marcas que salieron a pautar). Si se graba YT-9 primero, YT-6 se arma con clips de ese episodio.
 
 De septiembre se mantienen: V1 CPA (YT-1), V2 Metadependencia (YT-3), V3 «competí por el modelo» (YT-8), V4 blanqueo (YT-5), V5 «el 1 arranco en cero» (dentro de YT-3), V6 llamadas resubidas (YT-10), V7 el caso de Manu de A a B (va como proof stack de todos).
@@ -294,7 +294,7 @@ Sin precio en la descripción (regla de septiembre).
 | Qué | Para qué |
 | --- | --- |
 | Números de Manu (`$X`, `X suscriptores`, `X%`, `$Y`) | Todos los guiones |
-| Dueños de marca reales para YT-4, YT-5 y YT-10 (y el OK de Manu para YT-7) | Grabar las auditorías y llamadas en vivo |
+| Dueños de marca reales para YT-4, YT-5 y YT-10 | Grabar las auditorías y llamadas en vivo |
 | URL de la VSL de 30 min | Video destacado del canal |
 | Link de registro a la clase | CTA temprano y final de YT-1 y YT-9, descripción |
 | Recurso BASE (cómo sacar los clientes que recompraron) | Mini CTA de YT-9 |
