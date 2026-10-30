@@ -1,5 +1,7 @@
 Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca toca esta carpeta.
 
+**Lanzamiento en curso: clase del martes 17/11, 18 hs.** Para retomar el trabajo, leé [`webinar-17-11/ESTADO.md`](webinar-17-11/ESTADO.md).
+
 ## Agentes propios
 
 | Agente | Qué hace | Prompt |

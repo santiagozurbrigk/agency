@@ -34,9 +34,9 @@ Agentes de Limitless: `../../agentes/`. Agentes propios: `../agentes/`.
 | --- | --- | --- | --- | --- | --- |
 | NUT-01 | Secuencias de historias de nutrición | 5 | Cómo hacer un día de nutrición + Historias (`limitless-contenido-dia-nutricion`, `limitless-agente-secuencias-historias`) | `../lanzamiento-19-10/contenido/04-nutricion-historias.md` | |
 | NUT-02 | Emails de nutrición | 6 | Mastering Copy (`limitless-agente-copy`) | `../lanzamiento-19-10/contenido/06-nutricion-mails.md`, `../repesca-24-10/nutricion-mails.md` | |
-| NUT-03 | Guiones de ads de nutrición | 10 | Reels + Mastering Copy (`limitless-agente-guiones-reels`, `limitless-agente-copy`) | `../lanzamiento-19-10/ads-nutricion-guiones.md` | |
+| NUT-03 | Guiones de ads de nutrición | 10 | Reels + Mastering Copy (`limitless-agente-guiones-reels`, `limitless-agente-copy`) | `analisis-ventas-calificadas.md` (creencias y 9 ángulos: base obligatoria), `../lanzamiento-19-10/ads-nutricion-guiones.md` | |
 | NUT-04 | Grabar ads de nutrición | 10 | — | | Manu |
-| NUT-05 | Calendario de nutrición de WhatsApp: secuencias de mensajes | 5 | Calendario nutrición WhatsApp (`limitless-calendario-nutricion`) | `../lanzamiento-19-10/contenido/05-nutricion-whatsapp.md`, `../repesca-24-10/nutricion-whatsapp.md` | |
+| NUT-05 | Calendario de nutrición de WhatsApp: secuencias de mensajes | 5 | Calendario nutrición WhatsApp (`limitless-calendario-nutricion`) | `calendario-nutricion-whatsapp.md` y `contenido-nutricion-dias-1-6.md` (hechos, días 1 a 6), `../lanzamiento-19-10/contenido/05-nutricion-whatsapp.md` | |
 | NUT-06 | Flujo de punta a punta de WhatsApp API | 1 | Creador de flujos de WhatsApp (`../agentes/creador-flujos-wsp.md`) | `../repesca-24-10/flujo-wsp-api/` | |
 
 ## Webinar (día del webinar)
