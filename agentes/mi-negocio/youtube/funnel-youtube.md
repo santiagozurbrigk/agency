@@ -39,20 +39,34 @@ Tiene dos usos:
 
 ## 3. La biblioteca de videos
 
-Los títulos son **hipótesis**. El SOP pide que todo título salga de un outlier validado (sección 6): antes de grabar cada video, se busca el outlier que le corresponde y se ajusta el título y la miniatura a ese molde. Dolor y creencia sí están fijos.
+El packaging de cada video está modelado sobre los outliers que pasó Santi el 30/10 (canales de ecommerce y suscripción en inglés y en español). De cada referencia se toma la estructura del título y de la miniatura, no el tema. El dolor y la creencia de cada video siguen fijos.
 
-| # | Etapa | Dolor principal | Creencia que rompe | Ángulo (análisis) | Título hipótesis | Duración |
-| --- | --- | --- | --- | --- | --- | --- |
-| YT-1 | TOF | CPA | «Si renuevo creativos y bajo el CPA, se arregla» | A (inestabilidad) | Por qué puedo pagar 2,5x más por cliente que mi competencia (y seguir ganando) | 20-25 min |
-| YT-2 | MOF | Margen | «El suscriptor me sale más caro que una venta» | C (plata sentada) | Tenés clientes que ya te recompraron y no les mandaste ni un mail | 20-25 min |
-| YT-3 | MOF | Metadependencia | «Si Meta me baja la cuenta, se termina» | A | El 1 del mes ya tengo $X cobrados antes de prender un anuncio | 20-25 min |
-| YT-4 | MOF | Producto | «Mi producto no es para suscripción» | G (escepticismo) | Tu producto sí sirve para suscripción (aunque sea un tratamiento) | 15-20 min |
-| YT-5 | TOF | Margen | «Cuando paso a RI, no cierra» | I (impuestos) | Por qué tu ecommerce no aguanta pasar a responsable inscripto | < 20 min |
-| YT-6 | TOF | Competencia | «Mercado competido = no entrar» / me copian | B (7 marcas) | Salieron 7 marcas a vender lo mismo que yo: esto hicimos | < 20 min |
-| YT-7 | MOF | Estancamiento | «Primero me capitalizo con un producto y después armo la marca» | F y E (avatar ampliado) | Tu ecommerce vende, pero no construye nada | 15-20 min |
-| YT-8 | Mentalidad | CPA | «Necesito ser experto en Meta» / «más campañas» | D (mentoría que dice «venís bien») | Dejé de competir por el CPA y empecé a competir por el modelo | < 15 min, a cámara |
-| YT-9 | BOF | Inestabilidad | «Si no arranca, el producto es malo» | A + B (caso Herbora) | Auditamos una marca que iba 600 lucas abajo: esto cambiamos | 25-30 min |
-| YT-10 | BOF | Todos | «Los consultores se aprovechan» | H (fe en el producto) | Hago la cuenta del CPA en vivo con un dueño de marca | 25-30 min |
+**Patrones de las referencias que se usan:**
+- Número grande y concreto en la miniatura, a veces tachado o con flecha de A a B («$400k/MO → $1M/MO?», «$10k → $100k»).
+- Auditorías y llamadas en vivo con un dueño de marca real, como serie con número de episodio. Duran más de una hora y rinden igual.
+- Títulos en minúscula, en primera persona y con promesa o confesión: «hago $200k/mes. te explico…», «(copiame)», «aprendé todo en 33 minutos».
+- La aclaración del formato entre paréntesis: «(en vivo)», «(case study)», «(roadmap en vivo)».
+- Miniatura con máximo 3 elementos: cara, número y una palabra o una pantalla.
+
+| # | Etapa | Dolor principal | Creencia que rompe | Ángulo (análisis) | Título | Miniatura | Referencia modelada | Duración |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| YT-1 | TOF | CPA | «Si renuevo creativos y bajo el CPA, se arregla» | A (inestabilidad) | hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes | Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «+$X/mes» | «hago $200k/mes. te explico porque te estas alejando de los $100k/mes» («deja de usar IA.») | 20-25 min |
+| YT-2 | MOF | Margen | «El suscriptor me sale más caro que una venta» | C (plata sentada) | Los sistemas de retención detrás de las marcas que cobran todos los meses | Manu y el tablero de suscriptores en pantalla, cartel «RECOMPRA» | «The Retention Systems Behind Multi Million Dollar MRR Brands» («LOOP SUBSCRIPTIONS») | 30-40 min |
+| YT-3 | MOF | Metadependencia | «Si Meta me baja la cuenta, se termina» | A (el piso del mes) | así arranco cada mes con $X ya cobrados (copiame) | Calendario en el 1, texto «1 del mes = $X» | «así hago $200k/mes con solo 2 meet a la semana (copiame)» («2 llamadas = $200k») | 20-25 min |
+| YT-4 | MOF | Producto | «Mi producto no es para suscripción» | G (escepticismo) | Tu producto sí sirve para suscripción (llamada de coaching en vivo) | Pantalla del Miro con la oferta de tratamiento y el techo nuevo en número grande, «LIVE» arriba | «La única configuración de flujos de abandono que necesitarás (Llamada de coaching en vivo)» | 30-40 min |
+| YT-5 | TOF | Margen | «Cuando paso a RI, no cierra» | I (impuestos) | Esta marca de 60M/mes me preguntó si le conviene pasar a responsable inscripto | «MONOTRIBUTO → RI?» con anotaciones numeradas en la pizarra y Manu con la tablet | «Este negocio de $400.000 al mes me preguntó cómo escalar a $1M al mes» | 40-60 min |
+| YT-6 | TOF | Competencia | «Mercado competido = no entrar» / me copian | B (7 marcas) | A esta marca le salieron 7 copias en un mes. Así siguió vendiendo (case study) | Fondo oscuro, «7 COPIAS» enorme, Manu serio mirando a cámara | «How i made $500,000 in 7 DAYS branded dropshipping (case study)» | 20-25 min |
+| YT-7 | MOF | Estancamiento | «Primero me capitalizo con un producto y después armo la marca» | F y E (avatar ampliado) | Vendí mi marca de importación para quedarme solo con consumibles (esta es la razón) | Manu en el depósito entre cajas, texto «IMPORTACIÓN → SUSCRIPCIÓN» | «Inside My $2.5M/Month Supplement Supply Chain (China 2.0)» y «He Built a $100k/Day Supplement Brand…» | 20-25 min, vlog |
+| YT-8 | Mentalidad | CPA | «Necesito ser experto en Meta» / «más campañas» | D (mentoría que dice «venís bien») | tardé 18 meses en dejar de pelear por el CPA. aprendé todo en 15 minutos | Manu a cámara, texto «1 cliente = 3 compras» | «tardé 2 años en hacer $2.4M con mi contenido, aprendé todo en 33 minutos» («1 Reel = $35K») | 15 min, a cámara |
+| YT-9 | BOF | Inestabilidad | «Si no arranca, el producto es malo» | A + B (caso Herbora) | Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) \| EPISODIO 1 | «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop | «We Audited His $200K/Month E-com Brand Live (Here's What We Found) \| EPISODE 1» | 45-60 min |
+| YT-10 | BOF | Todos | «Los consultores se aprovechan» | H (fe en el producto) | Esta marca de $30M/mes me pidió un plan a $100M/mes (roadmap en vivo) \| EPISODIO 2 | «$30M → $100M» con los pasos numerados en la pizarra (nombres de las piezas, sin el cómo) | «Esta Agencia $10k/Mes Me Pidió Un Plan a $100k/Mes (Roadmap en Vivo)» y «He's Stuck at $17K/Day… (Live Audit) \| EPISODE 2» | 45-60 min |
+
+**La serie de auditorías en vivo** (YT-9, YT-10 y después YT-4) es la jugada más fuerte de las referencias: son los videos más largos y rinden igual, y numerados por episodio hacen el efecto maratón. Cada episodio necesita un dueño de marca real que acepte que se muestren sus números.
+
+**Lo que hay que conseguir para grabar:**
+- YT-4, YT-5 y YT-10: una llamada real con un dueño de marca que acepte salir (y, en YT-5, que sea una consulta real sobre pasar a responsable inscripto). No se inventan marcas ni números.
+- YT-7: que Manu quiera contar la venta de su parte en la marca de importación.
+- YT-6: es Herbora (las copias de la landing y los anuncios, y las 7 marcas que salieron a pautar). Si se graba YT-9 primero, YT-6 se arma con clips de ese episodio.
 
 De septiembre se mantienen: V1 CPA (YT-1), V2 Metadependencia (YT-3), V3 «competí por el modelo» (YT-8), V4 blanqueo (YT-5), V5 «el 1 arranco en cero» (dentro de YT-3), V6 llamadas resubidas (YT-10), V7 el caso de Manu de A a B (va como proof stack de todos).
 
@@ -60,13 +74,13 @@ De septiembre se mantienen: V1 CPA (YT-1), V2 Metadependencia (YT-3), V3 «compe
 
 Marcas: 🟢 palabra por palabra · 🟡 puntos a tocar, Manu improvisa. El SOP pide la apertura guionada aunque el resto se improvise.
 
-### YT-1 · «Por qué puedo pagar 2,5x más por cliente que mi competencia (y seguir ganando)»
+### YT-1 · «hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes»
 
 **Etapa:** TOF · **Duración:** 20-25 min · **Estilo:** Miro y calculadora con cámara en la esquina.
 
-**Packaging (a validar con outlier)**
-- Título: Por qué puedo pagar 2,5x más por cliente que mi competencia (y seguir ganando)
-- Miniatura: Manu señalando una pizarra con dos números grandes, «$30.000» tachado en rojo y «$75.000» en verde. Máximo 3 elementos. El texto de la miniatura no repite el título.
+**Packaging** (modelado sobre «hago $200k/mes. te explico porque te estas alejando de los $100k/mes»)
+- Título: hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes
+- Miniatura: Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «+$X/mes». Máximo 3 elementos.
 
 **Los 4 problemas, con la solución de Manu**
 
@@ -81,6 +95,8 @@ Marcas: 🟢 palabra por palabra · 🟡 puntos a tocar, Manu improvisa. El SOP 
 
 **🟢 Apertura · marco (primeros 15 segundos)**
 
+> Hago $X por mes con mi marca. Y te voy a explicar por qué bajar el CPA te está alejando de los 100 millones.
+>
 > Hoy puedo pagar 2,5 veces más por cada cliente que mi competencia. Y me sigue quedando plata.
 >
 > Mientras ellos pelean por bajar el CPA de 20 a 18 dólares, yo puedo pagar 50 por el mismo cliente. Y listo: ya no tengo competencia.
@@ -149,11 +165,11 @@ Punto 4 · Argentina:
 
 ### YT-9 · «Auditamos una marca que iba 600 lucas abajo: esto cambiamos»
 
-**Etapa:** BOF · **Duración:** 25-30 min · **Estilo:** pantalla compartida con los números de Herbora (permiso confirmado el 30/10), cámara de Manu en la esquina. Si Lucas o Santiago pueden sumarse 5 minutos en cámara, mejor.
+**Etapa:** BOF · **Duración:** 45-60 min · **Estilo:** auditoría en vivo, como las referencias: Manu con Lucas y Santiago (permiso confirmado el 30/10) en una mesa, la laptop con los números de Herbora en pantalla. Si no pueden estar en persona, llamada grabada con pantalla compartida.
 
-**Packaging (a validar con outlier)**
-- Título: Auditamos una marca que iba 600 lucas abajo: esto cambiamos
-- Miniatura: captura del día en rojo (−600 lucas) al lado del día del relanzamiento (40% de margen), flecha entre los dos. Cara de Manu chica en una esquina.
+**Packaging** (modelado sobre «We Audited His $200K/Month E-com Brand Live (Here's What We Found) | EPISODE 1»)
+- Título: Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) | EPISODIO 1
+- Miniatura: «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop. Máximo 3 elementos.
 
 **Los 4 problemas de Herbora, con lo que se hizo**
 
@@ -278,7 +294,7 @@ Sin precio en la descripción (regla de septiembre).
 | Qué | Para qué |
 | --- | --- |
 | Números de Manu (`$X`, `X suscriptores`, `X%`, `$Y`) | Todos los guiones |
-| Research de outliers para YT-1 y YT-9 | Cerrar títulos y miniaturas antes de grabar |
+| Dueños de marca reales para YT-4, YT-5 y YT-10 (y el OK de Manu para YT-7) | Grabar las auditorías y llamadas en vivo |
 | URL de la VSL de 30 min | Video destacado del canal |
 | Link de registro a la clase | CTA temprano y final de YT-1 y YT-9, descripción |
 | Recurso BASE (cómo sacar los clientes que recompraron) | Mini CTA de YT-9 |
