@@ -7,6 +7,7 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026.
 | [`contexto.md`](contexto.md) | Narrativa (promesa, qué se llevan, enemigo en común, por qué), biblioteca de agentes y bonus, links a los análisis del primer webinar. |
 | [`tareas.md`](tareas.md) | Todos los entregables por fase, con cantidad, agente del repo para hacerlo, referencia del 19/10 y responsable. Es la carga inicial del tracker de tareas. |
 | [`ads-adquisicion.md`](ads-adquisicion.md) | Los 18 guiones de AD reels de adquisición: 2 copias de los winners del 19/10, 7 iteraciones y 9 nuevos con estructuras de Thiago. Con los datos a confirmar antes de grabar. |
+| [`calendario-nutricion-whatsapp.md`](calendario-nutricion-whatsapp.md) | La estrategia de los 7 días del grupo de WhatsApp (11/11 al 17/11): tema, creencia que rompe, interacción y loop de cada día. Base para escribir el contenido de los días 1 a 6 y los reminders del día 7. |
 | [`analisis-ventas-calificadas.md`](analisis-ventas-calificadas.md) | Dolores, creencias limitantes y ángulos sacados de las llamadas de los clientes que más pagaron (Herbora, Alan, Santi Núñez, Thiago Lopo). |
 | [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |
 
