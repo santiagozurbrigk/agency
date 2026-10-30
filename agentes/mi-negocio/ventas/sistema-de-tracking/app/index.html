@@ -522,6 +522,14 @@ button.t-stat:hover{border-color:var(--borde-2);background:var(--panel-2)}
 .tb{display:grid;grid-template-columns:repeat(5,minmax(250px,1fr));gap:14px;overflow-x:auto;padding-bottom:8px;align-items:start}
 .tb-col{background:var(--panel-2);border-radius:var(--radio);display:flex;flex-direction:column;max-height:calc(100vh - 330px);min-height:180px;overflow-y:auto;transition:outline-color .12s}
 .tb-col.sobre{outline:2px dashed var(--naranja);outline-offset:-2px}
+/* Color de cada estado */
+.es-hacer{--es:var(--warn);--es-s:var(--warn-suave)} .es-curso{--es:var(--azul);--es-s:var(--azul-suave)} .es-rev{--es:var(--vio);--es-s:var(--vio-suave)}
+.es-hecha{--es:var(--ok);--es-s:var(--ok-suave)} .es-bloq{--es:var(--mal);--es-s:var(--mal-suave)}
+.tb-col[class*="es-"]{border-top:3px solid var(--es)}
+.tb-col[class*="es-"] .tb-cab{background:linear-gradient(var(--es-s),var(--es-s)),var(--panel-2);margin-bottom:8px}
+.tb-col[class*="es-"] .tb-cab .badge{color:var(--es);font-weight:650}
+.tb-col[class*="es-"] .tb-cab .badge::before{background:var(--es);width:8px;height:8px}
+select.est[class*="es-"]{color:var(--es);border-color:var(--es);background-color:var(--es-s);font-weight:550}
 .tb-cab{position:sticky;top:0;z-index:1;background:var(--panel-2);display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:600;color:var(--tx);padding:12px 12px 8px}
 .tb-cab .n{color:var(--tx-3);font-weight:500;font-variant-numeric:tabular-nums}
 .tb-cuerpo{display:flex;flex-direction:column;gap:8px;padding:0 8px 10px}
@@ -2440,7 +2448,8 @@ const tarea=id=>(TAREAS||[]).find(t=>t.id===id);
 const vencidaT=t=>Boolean(t.vence)&&t.vence<diaF()&&t.estado!=="Hecha";
 const ordenT=(a,b)=>(a.vence||"9999").localeCompare(b.vence||"9999")||a.id.localeCompare(b.id,"es",{numeric:true});
 const fechaT=d=>d?new Date(d+"T12:00:00Z").toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",timeZone:"UTC"}):"";
-const TONO_T={"Por hacer":"","En curso":"azul","En revisión":"vio","Hecha":"ok","Bloqueada":"mal"};
+// Cada estado tiene su color: columna del tablero, selector de la lista y del formulario.
+const TONO_T={"Por hacer":"es-hacer","En curso":"es-curso","En revisión":"es-rev","Hecha":"es-hecha","Bloqueada":"es-bloq"};
 function chipPersona(p){return p?`<span class="chip p-${p.toLowerCase()}">${esc(p)}</span>`:`<span class="chip">Sin asignar</span>`;}
 function cuentaTareas(){
   if(!TAREAS) return null;
@@ -2496,7 +2505,7 @@ async function cambiarTarea(id,cambios,msg){
 }
 const selT=(id,campo,val,ops,cls)=>`<select class="sel ${cls||""}" aria-label="${campo}" onclick="event.stopPropagation()" onchange="cambiarTarea('${escA(id)}',{${campo}:this.value})">${ops.map(([v,l])=>`<option value="${escA(v)}" ${v===val?"selected":""}>${esc(l)}</option>`).join("")}</select>`;
 const selRespT=t=>selT(t.id,"responsable",t.responsable||"",[["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],t.responsable?"p-"+t.responsable.toLowerCase():"");
-const selEstadoT=t=>selT(t.id,"estado",t.estado,TMETA.estados.map(e=>[e,e]));
+const selEstadoT=t=>selT(t.id,"estado",t.estado,TMETA.estados.map(e=>[e,e]),"est "+(TONO_T[t.estado]||""));
 
 /* Tablero: una columna por estado; se arrastra la tarjeta para cambiarla de estado. */
 function tDrag(e,id){EDITANDO=true;e.dataTransfer.setData("text/plain",id);e.dataTransfer.effectAllowed="move";e.currentTarget.classList.add("arrastrando");}
@@ -2539,7 +2548,7 @@ function tablero(ts){
     else if(porFase&&col.length>6) cuerpo=TMETA.fases.map(fa=>{const g=col.filter(t=>t.fase===fa);
       return g.length?`<div class="tb-fase ${claseFase(fa)}"><span class="t-dot"></span>${esc(fa)} <span class="n">${g.length}</span></div>${g.map(tarjetaT).join("")}`:"";}).join("");
     else cuerpo=col.map(tarjetaT).join("");
-    return `<div class="tb-col" data-es="${escA(es)}" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
+    return `<div class="tb-col ${TONO_T[es]||""}" data-es="${escA(es)}" ondragover="tOver(event)" ondragleave="tSale(event)" ondrop="tSoltar(event,'${escA(es)}')">
       <div class="tb-cab"><span class="badge ${TONO_T[es]||""}">${esc(es)}</span><span class="n">${col.length}</span></div>
       <div class="tb-cuerpo">${cuerpo}</div></div>`;}).join("")}</div>`;
 }
@@ -2650,7 +2659,7 @@ function abrirTarea(id){
       <div><label for="tFase">Fase</label><select id="tFase">${opt(TMETA.fases.map(f=>[f,f]),x.fase)}</select></div>
       <div><label for="tCant">Cantidad</label><input id="tCant" type="number" min="1" max="999" value="${escA(x.cantidad||1)}"></div>
       <div><label for="tResp">Responsable</label><select id="tResp">${opt([["","Sin asignar"],...TMETA.personas.map(p=>[p,p])],x.responsable||"")}</select></div>
-      <div><label for="tEst">Estado</label><select id="tEst">${opt(TMETA.estados.map(e=>[e,e]),x.estado)}</select></div>
+      <div><label for="tEst">Estado</label><select id="tEst" class="est ${TONO_T[x.estado]||""}" onchange="this.className='est '+(TONO_T[this.value]||'')">${opt(TMETA.estados.map(e=>[e,e]),x.estado)}</select></div>
       <div><label for="tVence">Fecha límite${t?"":" (vacía = la de la fase)"}</label><input id="tVence" type="date" value="${escA(x.vence||"")}"></div>
       <div><label for="tLink">Link al entregable</label><input id="tLink" type="url" placeholder="https://…" value="${escA(x.link||"")}"></div>
       <div class="full"><label for="tAg">Agente del repo</label><input id="tAg" placeholder="Ej.: Reels (limitless-agente-guiones-reels)" value="${escA(x.agente||"")}"></div>
