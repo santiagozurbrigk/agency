@@ -41,6 +41,13 @@ async function buscar(lista) {
 module.exports = async function handler(req, res) {
   if (!sesion(req) && !claveInforme(req)) return res.status(401).json({ ok: false, error: "Sin acceso" });
   try {
+    // ?videos=1: el link de descarga del video de cada creativo (para transcribir los anuncios).
+    if (req.query.videos) {
+      if (!meta.enabled()) return res.status(200).json({ ok: false, error: meta.problema() || "Meta Ads no está conectado" });
+      const cr = await meta.creativos();
+      const vs = await meta.videos(cr.map(c => c.videoId).filter(Boolean));
+      return res.status(200).json({ ok: true, creativos: cr, videos: vs });
+    }
     if (req.query.buscar) {
       const lista = String(req.query.buscar).split(",").map(x => x.trim()).filter(Boolean);
       return res.status(200).json({ ok: true, buscados: await buscar(lista) });
