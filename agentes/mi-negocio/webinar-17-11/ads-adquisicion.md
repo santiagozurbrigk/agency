@@ -19,7 +19,7 @@ No se inventó ningún número. Estos son los que se usan y de dónde salen. Si 
 
 | Dato | Valor usado | De dónde sale | Qué confirmar |
 | --- | --- | --- | --- |
-| Hora de la clase | 19 hs | Misma hora que el 19/10 | Que el 17/11 también sea a las 19. |
+| Hora de la clase | 18 hs | Confirmado por Santi (30/10) | — |
 | Facturación actual | «más de 280 millones por mes» | Promesa del 17/11 (`contexto.md`) | Que haya captura para mostrar. |
 | Suscriptores activos | «más de 3.600» | Guion de D4_V3 | Si hay número más nuevo, actualizarlo. |
 | Margen | «más de un 40%» | D4_V3 dice «más de un 40%», D3_V6 dice 45% | Cuál se usa con captura. |
@@ -27,23 +27,24 @@ No se inventó ningún número. Estos son los que se usan y de dónde salen. Si 
 | Tiempo de armado | 18 meses | D4_V3 | — |
 | Copias A1 y A2 | «el mes pasado» con 220M / 250M | Guiones originales | Grabadas en noviembre, «el mes pasado» pasa a ser octubre. Si esos números no son de octubre, decir el mes («en septiembre») o actualizar el número. |
 | Referentes de afuera | AG1 y Grüns | `CONTEXTO.md` (arquetipo Explorador) | Que Manu esté cómodo nombrándolas (solo N2). |
+| 250M vs. +280M | Las copias e iteraciones de D4_V3 abren con «250 millones el mes pasado» y después prometen «cómo hago más de 280 millones por mes» | Guion original + entregable 1 | Si los 280M ya son el número del último mes con captura, se puede abrir con 280 en toda la familia C (no en A2, que es la copia). |
 
 ### Los 3 entregables de toda la campaña
 
-La clase dice que los entregables son **los mismos en todos los ads**; lo que cambia es cómo se redactan según el dolor del hook. Este set junta lo que se prometió el 19/10 con lo que se regala el 17/11:
+La clase dice que los entregables son **los mismos en todos los ads**; lo que cambia es cómo se redactan según el dolor del hook. Los del 17/11 (definidos por Santi el 30/10, reemplazan al roadmap, el simulador y el sistema de mails del 19/10, también en las copias):
 
-1. **El roadmap** para pasar tu marca de compra única a suscripción sin frenar lo que hoy ya vende.
-2. **El simulador de suscripciones**: cargás tus costos (envío, pasarelas, impuestos) y ves cómo quedaría tu marca con distintos escenarios de recompra.
-3. **3 agentes de IA a elección** de los más de 30 que Manu usa en sus marcas (creativos, Meta, operaciones y flujos de email).
+1. **Cómo hago +280M/mes** con el modelo de suscripciones.
+2. **Cómo escalar tu ecommerce a +100M/mes** migrando tu modelo de compra única al modelo de suscripción.
+3. **Te regalo 3 de mis +30 sistemas** de backend, operaciones e IA, a elección, para que copies y pegues en tu marca.
 
-> Confirmar que el simulador se sigue entregando el 17/11. Si no, el entregable 2 pasa a ser «cómo hago +280M/mes con suscripción, con los números de mi marca abiertos» y se cambia en todos.
+Los dos primeros son «te voy a mostrar»; el tercero es el «te regalo», como en los winners de Thiago.
 
 ### Reglas que cumplen los 18
 
 - **Un ad = un dolor + un ángulo.** Ninguno toca dos dolores.
 - **La clase no se spoilea.** Se dice QUÉ se lleva, nunca CÓMO se hace. El Método B.A.S.E. se nombra, no se explica.
 - **Nunca se dice «webinar», «programa», «funnel» ni «lead».** Se dice clase privada, en vivo y gratis.
-- **Fecha 24/7:** Manu la dice al menos dos veces y en edición va un cartel fijo durante todo el video: **MARTES 17/11 · 19 HS · CLASE PRIVADA GRATIS**.
+- **Fecha 24/7:** Manu la dice al menos dos veces y en edición va un cartel fijo durante todo el video: **MARTES 17/11 · 18 HS · CLASE PRIVADA GRATIS**.
 - **Filtro de quien ya vende y ya pauta**, justo después del hook. Es lo que más falta: el 19/10 solo calificó el 20% y 151 leads de anuncios dijeron «todavía no tengo marca».
 - **Mostrar > decir.** Todo número va con su comprobante en pantalla (`[PANTALLA: …]`). Sin captura no hay número.
 - Voseo, frases cortas, la voz de Manu («por ende», «y listo», «al pedo», «literalmente»).
@@ -51,7 +52,7 @@ La clase dice que los entregables son **los mismos en todos los ads**; lo que ca
 ### Props para la grabación (lo que usa Thiago y conviene tener)
 
 - **Afiche impreso de la clase** (fecha, hora, título) para tener en mano o pegado atrás.
-- **Los entregables impresos** sobre la mesa: el roadmap, una captura del simulador y las fichas de los agentes.
+- **Los entregables impresos** sobre la mesa: las fichas de los +30 sistemas de backend, operaciones e IA (que se vea que son muchos y que se eligen 3).
 - **Pizarra con fibrón rojo** con los dos círculos que se cruzan (compra única / suscripción / la lente al medio).
 - **Tablero de suscriptores** abierto en la compu para dar vuelta la cámara.
 
@@ -111,7 +112,7 @@ Reparto por dolor: CPA 3 · Margen 7 · Metadependencia 8. Los dos winners fuero
 
 ### A1 · D3_V6 copia · «Facturé 220 millones sin poner un dólar en Meta»
 
-**Dolor:** metadependencia · **Ángulo:** facturar sin pautar · **Qué cambia:** solo la fecha. Las palabras que el audio no dejaba claras quedaron resueltas (oferta, vaya, roadmap, Método B.A.S.E.).
+**Dolor:** metadependencia · **Ángulo:** facturar sin pautar · **Qué cambia:** la fecha, la hora y los 3 entregables (los del 17/11). Las palabras que el audio no dejaba claras quedaron resueltas (oferta, vaya, roadmap, Método B.A.S.E.).
 
 > El mes pasado facturé 220 millones de pesos con mi ecommerce de mi producto químico sin haber puesto ni un solo dólar en Meta. Es decir, facturé 220 millones de pesos sin haber puesto un solo dólar en anuncios.
 >
@@ -121,38 +122,38 @@ Reparto por dolor: CPA 3 · Margen 7 · Metadependencia 8. Los dos winners fuero
 >
 > Y ahora pensá al revés. Si mañana vos, por ejemplo, te restringen lo que es la cuenta publicitaria, ¿cuánto seguirías facturando? Probablemente cero.
 >
-> Así que por eso el **martes 17 de noviembre a las 19 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo es que pasé con todo lo que es mi marca de productos consumibles a lo que es el modelo de suscripción, sobre todo con el Método B.A.S.E. Esto lo hago para que dejes de depender de Meta y que si se te cae la cuenta puedas seguir facturando y con márgenes altísimos. Hoy en día mi marca tiene un margen del 45%.
+> Así que por eso el **martes 17 de noviembre a las 18 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo es que pasé con todo lo que es mi marca de productos consumibles a lo que es el modelo de suscripción, sobre todo con el Método B.A.S.E. Esto lo hago para que dejes de depender de Meta y que si se te cae la cuenta puedas seguir facturando y con márgenes altísimos. Hoy en día mi marca tiene un margen del 45%.
 >
 > Pero bueno, solamente pueden entrar los que entren con el link de acá abajo del video, y para todos los que entren voy a dar 3 recursos que son clave para que te vaya bien.
 >
-> Primero, el roadmap para migrar tu marca al modelo de suscripción sin frenar lo que hoy en día ya tenés corriendo; sobre todo que puedas utilizar lo que es tu base de clientes para transicionarlos al modelo de suscripción, y que uses las campañas y la oferta que mejor te esté funcionando para justamente adaptar eso y largarlo en el modelo de suscripción.
+> Primero, te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción.
 >
-> Segundo, te voy a dar el simulador de suscripciones para que puedas cargar todos los costos de tu producto: envío, pasarelas, impuestos, etc. Y en base a eso que te dé todo un output entero de cómo se vería tu marca utilizando el modelo de suscripción, con diferentes escenarios de lifetime value. Y eso lo que te va a dar es que puedas ver proyecciones de tu marca y, sobre todo, para que en un futuro puedas tener esa estabilidad que buscás.
+> Segundo, cómo escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción, sin frenar lo que hoy en día ya tenés corriendo.
 >
-> Y tercero, te voy a dar todo un sistema de inteligencia artificial para que puedas crear lo que son los flujos de email de manera automática y que los puedas aplicar para tu marca de un momento para otro.
+> Y tercero, te voy a regalar 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca de un momento para otro.
 >
-> Como te digo, esto es lo único que necesitás para que, si se te llega a caer la cuenta, puedas seguir facturando y con muchísimo margen. Así que, como te digo, reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 19 horas**. Registrate acá abajo y te veo ahí. Adiós.
+> Como te digo, esto es lo único que necesitás para que, si se te llega a caer la cuenta, puedas seguir facturando y con muchísimo margen. Así que, como te digo, reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 18 horas**. Registrate acá abajo y te veo ahí. Adiós.
 
-**Producción:** igual que el original (mismo encuadre, misma energía). Cartel fijo de la fecha nuevo.
+**Producción:** igual que el original (mismo encuadre, misma energía). Cartel fijo de la fecha y la hora nuevo.
 **Qué mide:** si el winner sigue rindiendo con audiencia nueva. Vara del 19/10: CPL calificado USD 31,10, 16% califica, CTR 2,2%, landing 13,2%.
 
 ### A2 · D4_V3 copia · «250 millones el mes pasado con más de 3.600 suscriptores»
 
-**Dolor:** margen · **Ángulo:** recompra y margen · **Qué cambia:** solo la fecha. Palabras resueltas: regalar, tercero te doy, ya sea.
+**Dolor:** margen · **Ángulo:** recompra y margen · **Qué cambia:** la fecha, la hora y los 3 entregables (los del 17/11). Palabras resueltas: regalar, tercero te doy, ya sea.
 
 > 250 millones de pesos hice el mes pasado con más de 3.600 suscriptores. Y todo lo que me tardó más de 18 meses en armar para poder tener estos sistemas y facturar esto, te los voy a regalar absolutamente todos.
 >
 > Son los sistemas para dejar de constantemente perseguir nuevos clientes y hacer que cada cliente que te compre te vuelva a comprar una y otra vez, y otra vez, y otra vez. Y por eso es que tengo más de un 40% de margen en mi propia marca.
 >
-> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar específicamente cómo vos podés implementar todo lo que es el modelo de suscripción, con un roadmap de la A a la Z.
+> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción. Y cómo vos podés escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción.
 >
-> Te voy a dar un simulador de suscripción para que veas cómo se vería tu marca con este tipo de modelo, y que proyectes y armes buenas ofertas para poder adquirirlo. Y tercero, te doy un sistema de inteligencia artificial que te hace todos los flujos de email por vos. Son más de 10 flujos para lo que es marcas de suscripciones: ya sea pre-onboarding, lo que es el winback, pre-cobro… o sea, absolutamente todo te lo voy a hacer todo por vos.
+> Y además te regalo 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca. Ya sea creativos, Meta, operaciones o flujos de email: elegís los que más te sirvan.
 >
-> Así que nada, si no te lo querés perder, hacé clic acá abajo, registrate. Es el **martes 17 de noviembre a las 19 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
+> Así que nada, si no te lo querés perder, hacé clic acá abajo, registrate. Es el **martes 17 de noviembre a las 18 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
 >
 > Así que, yo que vos, aprovecho, que estoy mandando un montón de data por el grupo de WhatsApp. Así que nada, te veo ahí.
 
-**Producción:** igual que el original. Cartel fijo de la fecha nuevo.
+**Producción:** igual que el original. Cartel fijo de la fecha y la hora nuevo.
 **Qué mide:** si el winner sigue rindiendo. Vara del 19/10: CPL calificado USD 27,01, 30% califica, CTR 1,2%, landing 12,8%.
 
 ---
@@ -176,17 +177,17 @@ Cada una cambia **una sola cosa** respecto de A1. Así, si rinde mejor o peor, s
 >
 > **[CAMBIO] Ojo: esto es para vos si ya vendés con tu marca y pautás todos los días en Meta. Si todavía estás buscando producto o no tenés marca, esta clase no es para vos. Es para el que ya factura y tiene miedo de perderlo de un día para el otro.**
 >
-> Así que por eso el **martes 17 de noviembre a las 19 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo es que pasé con todo lo que es mi marca de productos consumibles a lo que es el modelo de suscripción, sobre todo con el Método B.A.S.E. Esto lo hago para que dejes de depender de Meta y que si se te cae la cuenta puedas seguir facturando y con márgenes altísimos. Hoy en día mi marca tiene un margen del 45%.
+> Así que por eso el **martes 17 de noviembre a las 18 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo es que pasé con todo lo que es mi marca de productos consumibles a lo que es el modelo de suscripción, sobre todo con el Método B.A.S.E. Esto lo hago para que dejes de depender de Meta y que si se te cae la cuenta puedas seguir facturando y con márgenes altísimos. Hoy en día mi marca tiene un margen del 45%.
 >
 > Pero bueno, solamente pueden entrar los que entren con el link de acá abajo del video, y para todos los que entren voy a dar 3 recursos que son clave para que te vaya bien.
 >
-> Primero, el roadmap para migrar tu marca al modelo de suscripción sin frenar lo que hoy en día ya tenés corriendo; sobre todo que puedas utilizar lo que es tu base de clientes para transicionarlos al modelo de suscripción, y que uses las campañas y la oferta que mejor te esté funcionando para justamente adaptar eso y largarlo en el modelo de suscripción.
+> Primero, te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción.
 >
-> Segundo, te voy a dar el simulador de suscripciones para que puedas cargar todos los costos de tu producto: envío, pasarelas, impuestos, etc. Y en base a eso que te dé todo un output entero de cómo se vería tu marca utilizando el modelo de suscripción, con diferentes escenarios de lifetime value.
+> Segundo, cómo escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción, sin frenar lo que hoy en día ya tenés corriendo.
 >
-> Y tercero, te voy a dar todo un sistema de inteligencia artificial para que puedas crear lo que son los flujos de email de manera automática y que los puedas aplicar para tu marca de un momento para otro.
+> Y tercero, te voy a regalar 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca de un momento para otro.
 >
-> Como te digo, esto es lo único que necesitás para que, si se te llega a caer la cuenta, puedas seguir facturando y con muchísimo margen. Así que reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 19 horas**. Registrate acá abajo y te veo ahí.
+> Como te digo, esto es lo único que necesitás para que, si se te llega a caer la cuenta, puedas seguir facturando y con muchísimo margen. Así que reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 18 horas**. Registrate acá abajo y te veo ahí.
 
 **Producción:** igual que A1. En el párrafo del filtro, Manu baja el tono y mira directo a cámara, más lento: es una advertencia, no una venta. Texto en pantalla: «SOLO SI YA VENDÉS Y PAUTÁS».
 **Qué mide:** % que califica (vara: >16%) y CPL calificado (vara: < USD 31,10).
@@ -202,11 +203,11 @@ Cada una cambia **una sola cosa** respecto de A1. Así, si rinde mejor o peor, s
 >
 > Ahora pensá al revés. Si mañana te restringen la cuenta publicitaria, ¿cuánto seguís facturando? Probablemente cero.
 >
-> Por eso el **martes 17 de noviembre a las 19 horas** doy una clase privada, en vivo y gratis, donde te muestro cómo pasé mi marca a suscripción con el Método B.A.S.E.
+> Por eso el **martes 17 de noviembre a las 18 horas** doy una clase privada, en vivo y gratis, donde te muestro cómo pasé mi marca a suscripción con el Método B.A.S.E.
 >
-> Y a los que entren les doy 3 recursos: el roadmap para migrar tu marca sin frenar lo que hoy vende, el simulador de suscripciones con tus costos reales, y el sistema de IA que te arma los flujos de email.
+> Y a los que entren les muestro cómo hago más de 280 millones por mes con suscripción, cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, y les regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección.
 >
-> Los cupos son limitados. Es el **martes 17 de noviembre a las 19**. Registrate acá abajo y te veo ahí.
+> Los cupos son limitados. Es el **martes 17 de noviembre a las 18**. Registrate acá abajo y te veo ahí.
 
 **Producción:** igual que A1, cortes más rápidos. Cuando nombra los 3 recursos, los tres aparecen en pantalla uno por uno.
 **Qué mide:** CTR y conversión de la landing contra A1, y el % que califica (que no caiga por debajo de 16%).
@@ -224,17 +225,17 @@ Cada una cambia **una sola cosa** respecto de A1. Así, si rinde mejor o peor, s
 >
 > Hoy en día tenemos 3.200 suscriptores activos que se cobran todos los meses, con una tasa de cancelaciones de menos del 5%. Si mañana se me cae la cuenta, esos 3.200 se siguen cobrando igual.
 >
-> Así que por eso el **martes 17 de noviembre a las 19 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo pasé mi marca de productos consumibles al modelo de suscripción con el Método B.A.S.E. Para que dejes de depender de Meta y, si se te cae la cuenta, puedas seguir facturando y con márgenes altísimos. Hoy mi marca tiene un margen del 45%.
+> Así que por eso el **martes 17 de noviembre a las 18 horas** voy a dar una clase privada, 100% en vivo y gratis, donde te voy a mostrar cómo pasé mi marca de productos consumibles al modelo de suscripción con el Método B.A.S.E. Para que dejes de depender de Meta y, si se te cae la cuenta, puedas seguir facturando y con márgenes altísimos. Hoy mi marca tiene un margen del 45%.
 >
 > Solamente pueden entrar los que entren con el link de acá abajo del video, y para todos los que entren voy a dar 3 recursos.
 >
-> Primero, el roadmap para migrar tu marca al modelo de suscripción sin frenar lo que hoy ya tenés corriendo: cómo usar tu base de clientes para pasarlos a suscripción, y cómo adaptar las campañas y la oferta que mejor te funcionan.
+> Primero, te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción.
 >
-> Segundo, el simulador de suscripciones para que cargues todos los costos de tu producto: envío, pasarelas, impuestos. Y te devuelve cómo se vería tu marca con suscripción, con distintos escenarios de lifetime value.
+> Segundo, cómo escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción, sin frenar lo que hoy en día ya tenés corriendo.
 >
-> Y tercero, todo un sistema de inteligencia artificial para crear los flujos de email de manera automática y aplicarlos en tu marca de un momento para el otro.
+> Y tercero, te voy a regalar 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca de un momento para otro.
 >
-> Esto es lo único que necesitás para que, si se te llega a caer la cuenta, sigas facturando y con muchísimo margen. Reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 19 horas**. Registrate acá abajo y te veo ahí.
+> Esto es lo único que necesitás para que, si se te llega a caer la cuenta, sigas facturando y con muchísimo margen. Reservá tu lugar: los cupos son limitados, la clase es en vivo, es privada, es el **martes 17 de noviembre a las 18 horas**. Registrate acá abajo y te veo ahí.
 
 **Producción:** el primer segundo es la pregunta dicha seca, sin sonrisa, con texto grande: «¿Y SI MAÑANA TE CIERRAN LA CUENTA?». Después, el número de 220M con la captura.
 **Qué mide:** tasa de enganche de los 3 primeros segundos y CTR contra A1, y % que califica.
@@ -256,11 +257,11 @@ Cada una cambia **una sola cosa** respecto de A2. D4_V3 fue el que mejor calific
 >
 > Son los sistemas para dejar de constantemente perseguir nuevos clientes y hacer que cada cliente que te compre te vuelva a comprar una y otra vez, y otra vez, y otra vez. Y por eso es que tengo más de un 40% de margen en mi propia marca.
 >
-> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar específicamente cómo vos podés implementar todo lo que es el modelo de suscripción, con un roadmap de la A a la Z.
+> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción. Y cómo vos podés escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción.
 >
-> Te voy a dar un simulador de suscripción para que veas cómo se vería tu marca con este tipo de modelo, y que proyectes y armes buenas ofertas para adquirirlo. Y tercero, te doy un sistema de inteligencia artificial que te hace todos los flujos de email por vos. Son más de 10 flujos para marcas de suscripciones: pre-onboarding, winback, pre-cobro… absolutamente todo te lo hace por vos.
+> Y además te regalo 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca. Ya sea creativos, Meta, operaciones o flujos de email: elegís los que más te sirvan.
 >
-> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 19 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
+> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 18 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
 >
 > Yo que vos aprovecho, que estoy mandando un montón de data por el grupo de WhatsApp. Te veo ahí.
 
@@ -278,11 +279,11 @@ Cada una cambia **una sola cosa** respecto de A2. D4_V3 fue el que mejor calific
 >
 > Son los sistemas para dejar de constantemente perseguir nuevos clientes y hacer que cada cliente que te compre te vuelva a comprar una y otra vez, y otra vez, y otra vez. Y por eso es que tengo más de un 40% de margen en mi propia marca.
 >
-> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar específicamente cómo vos podés implementar todo lo que es el modelo de suscripción, con un roadmap de la A a la Z.
+> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción. Y cómo vos podés escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción.
 >
-> Te voy a dar un simulador de suscripción para que veas cómo se vería tu marca con este tipo de modelo, y que proyectes y armes buenas ofertas para adquirirlo. Y tercero, te doy un sistema de inteligencia artificial que te hace todos los flujos de email por vos. Son más de 10 flujos para marcas de suscripciones: pre-onboarding, winback, pre-cobro… absolutamente todo te lo hace por vos.
+> Y además te regalo 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca. Ya sea creativos, Meta, operaciones o flujos de email: elegís los que más te sirvan.
 >
-> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 19 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
+> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 18 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
 >
 > Yo que vos aprovecho, que estoy mandando un montón de data por el grupo de WhatsApp. Te veo ahí.
 
@@ -302,11 +303,11 @@ Cada una cambia **una sola cosa** respecto de A2. D4_V3 fue el que mejor calific
 >
 > Son los sistemas para dejar de constantemente perseguir nuevos clientes y hacer que cada cliente que te compre te vuelva a comprar una y otra vez, y otra vez, y otra vez. Y por eso es que tengo más de un 40% de margen en mi propia marca.
 >
-> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar específicamente cómo vos podés implementar todo lo que es el modelo de suscripción, con un roadmap de la A a la Z.
+> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción. Y cómo vos podés escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción.
 >
-> Te voy a dar un simulador de suscripción para que veas cómo se vería tu marca con este tipo de modelo, y que proyectes y armes buenas ofertas para adquirirlo. Y tercero, te doy un sistema de inteligencia artificial que te hace todos los flujos de email por vos. Son más de 10 flujos para marcas de suscripciones: pre-onboarding, winback, pre-cobro… absolutamente todo te lo hace por vos.
+> Y además te regalo 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca. Ya sea creativos, Meta, operaciones o flujos de email: elegís los que más te sirvan.
 >
-> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 19 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
+> Así que si no te lo querés perder, hacé clic acá abajo y registrate. Es el **martes 17 de noviembre a las 18 horas**. Si no te registrás, te perdés el cupo y no podés entrar. La clase es privada y es gratis.
 >
 > Yo que vos aprovecho, que estoy mandando un montón de data por el grupo de WhatsApp. Te veo ahí.
 
@@ -322,11 +323,11 @@ Cada una cambia **una sola cosa** respecto de A2. D4_V3 fue el que mejor calific
 >
 > Son los sistemas para dejar de constantemente perseguir nuevos clientes y hacer que cada cliente que te compre te vuelva a comprar una y otra vez, y otra vez, y otra vez. Y por eso es que tengo más de un 40% de margen en mi propia marca.
 >
-> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar específicamente cómo vos podés implementar todo lo que es el modelo de suscripción, con un roadmap de la A a la Z.
+> Y este **martes 17 de noviembre** te voy a dar una clase en vivo privada, 100% gratis, donde te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción. Y cómo vos podés escalar tu ecommerce a más de 100 millones por mes migrando tu modelo de compra única al modelo de suscripción.
 >
-> Te voy a dar un simulador de suscripción para que veas cómo se vería tu marca con este tipo de modelo, y que proyectes y armes buenas ofertas para adquirirlo. Y tercero, te doy un sistema de inteligencia artificial que te hace todos los flujos de email por vos. Son más de 10 flujos para marcas de suscripciones: pre-onboarding, winback, pre-cobro… absolutamente todo te lo hace por vos.
+> Y además te regalo 3 de mis más de 30 sistemas de backend, operaciones e inteligencia artificial, a elección, para que los copies y los pegues en tu marca. Ya sea creativos, Meta, operaciones o flujos de email: elegís los que más te sirvan.
 >
-> **[CAMBIO] Y esto es solo para los que se registren con el link de acá abajo: la clase es privada y no queda grabada para el que no se anotó. Es el martes 17 de noviembre a las 19.**
+> **[CAMBIO] Y esto es solo para los que se registren con el link de acá abajo: la clase es privada y no queda grabada para el que no se anotó. Es el martes 17 de noviembre a las 18.**
 >
 > **Si querés dejar de pagar el CPA cada vez que el mismo cliente te vuelve a comprar, hacé clic abajo y reservá tu lugar.**
 
@@ -358,13 +359,13 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[prueba]* Yo dejé de jugar ese juego. Hoy puedo pagar 2,5 veces más por cada cliente que mi competencia. Y me sigue quedando plata. Con eso hago más de 280 millones por mes. [PANTALLA: tablero de la marca]
 >
-> *[fecha + exclusividad]* El **martes 17 de noviembre a las 19** lo muestro todo en una clase privada, en vivo y gratis. Solo para los que se registren con el link de acá abajo.
+> *[fecha + exclusividad]* El **martes 17 de noviembre a las 18** lo muestro todo en una clase privada, en vivo y gratis. Solo para los que se registren con el link de acá abajo.
 >
 > *[remate contra el enemigo]* Porque a esta altura no entiendo a la gente que paga miles de dólares para que le digan «hacé más creativos».
 >
-> *[entregables]* Te voy a mostrar cómo pasar tu marca al modelo de suscripción con el Método B.A.S.E., con el roadmap para hacerlo sin frenar lo que hoy ya vende.
-> Te doy el simulador para que veas cuánto podrías pagar vos por cada cliente con tus costos reales.
-> Y te regalo 3 agentes de IA a elección, de los más de 30 que uso en mis marcas, para que los copies y los pegues en la tuya.
+> *[entregables]* Te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción, sin pelearme por el CPA más bajo.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, para poder pagar más por cada cliente que tu competencia.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA con consecuencia]* Hacé clic abajo y reservá tu lugar para el **17**. Así dejás de pelear por el CPA más bajo, que es literalmente al pedo.
 
@@ -390,11 +391,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[prueba propia]* Es lo mismo que hice yo con mi marca acá en Argentina. Hoy hago más de 280 millones por mes con más de 3.600 suscriptores activos. [PANTALLA: tablero de suscriptores]
 >
-> *[fecha]* Y es lo que te voy a mostrar el **martes 17 de noviembre a las 19**, en una clase privada en vivo y gratis.
+> *[fecha]* Y es lo que te voy a mostrar el **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis.
 >
-> *[entregables]* Te voy a dar el roadmap para pasar tu marca de compra única a suscripción sin frenar lo que hoy vende.
-> El simulador para que veas cuánto te podés permitir pagar por cada cliente.
-> Y 3 agentes de IA a elección de los más de 30 que uso, para que los copies y pegues en tu marca.
+> *[entregables]* Te voy a mostrar cómo hago esos más de 280 millones por mes con el modelo de suscripción, número por número.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, con el mismo modelo que usan ellas.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA]* Los cupos son limitados. Hacé clic abajo, registrate y nos vemos el **17**.
 
@@ -416,11 +417,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[prueba]* Hoy mi marca hace más de 280 millones por mes. Y cada suscriptor que entra me paga todos los meses sin que yo vuelva a pagar su CPA. [PANTALLA: tablero de suscriptores]
 >
-> *[fecha]* El **martes 17 de noviembre a las 19**, en una clase privada en vivo y gratis, te muestro el sistema completo.
+> *[fecha]* El **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis, te muestro el sistema completo.
 >
-> *[entregables]* Te voy a mostrar cómo pasé de pelear el CPA a poder pagar 2,5 veces más por cada cliente que mi competencia.
-> Te doy el roadmap para migrar tu marca a suscripción sin frenar lo que hoy ya vende, y el simulador con tus números.
-> Y solo para los que se registren con el link de acá abajo, 3 agentes de IA a elección de los más de 30 que uso, entre ellos el que te arma los creativos y el que te configura las campañas.
+> *[entregables]* Te voy a mostrar cómo hago más de 280 millones por mes pudiendo pagar 2,5 veces más por cada cliente que mi competencia.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin depender de bajar el CPA.
+> Y solo para los que se registren con el link de acá abajo, 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, entre ellos el que te arma los creativos y el que te configura las campañas.
 >
 > *[CTA con consecuencia]* Hacé clic abajo y reservá tu lugar. Así no te seguís comiendo un CPA que te va a terminar matando el negocio.
 
@@ -449,11 +450,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[esto que tengo acá]* Esto que tengo acá [pizarra: los dos círculos que se cruzan] arregla exactamente eso. Y no te pide apagar la compra única: va al lado.
 >
-> *[fecha + exclusividad]* Te lo muestro el **martes 17 de noviembre a las 19**, en una clase privada en vivo y gratis, solo para los que se registren con el link de acá abajo.
+> *[fecha + exclusividad]* Te lo muestro el **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis, solo para los que se registren con el link de acá abajo.
 >
-> *[entregables]* Te voy a mostrar el modelo con el que la segunda, la tercera y la cuarta compra de cada cliente te entran con el margen entero.
-> Te doy el roadmap para pasarte sin frenar lo que hoy vende, y el simulador para que veas cuánto te quedaría a vos por cliente.
-> Y te regalo 3 agentes de IA a elección de los más de 30 que uso en mis marcas.
+> *[entregables]* Te voy a mostrar cómo hago más de 280 millones por mes con el modelo en el que la segunda, la tercera y la cuarta compra te entran con el margen entero.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin apagar lo que hoy vende.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA]* Hacé clic abajo, reservá tu lugar y nos vemos el **17**.
 
@@ -471,11 +472,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[prueba]* Yo hago más de 280 millones por mes con más de un 40% de margen, con el modelo de suscripción. [PANTALLA: tablero]
 >
-> *[regalo + fecha]* Y el **martes 17 de noviembre a las 19** te voy a regalar el sistema completo en una clase privada, 100% gratis.
+> *[regalo + fecha]* Y el **martes 17 de noviembre a las 18** te voy a regalar el sistema completo en una clase privada, 100% gratis.
 >
-> *[entregables]* El roadmap para pasar tu marca a suscripción sin frenar lo que hoy vende.
-> El simulador para que cargues tus costos — envío, pasarela, impuestos — y veas cuánto te queda por cliente.
-> Y 3 agentes de IA a elección de los más de 30 que uso, para que los copies y los pegues en tu marca.
+> *[entregables]* Cómo hago esos más de 280 millones por mes con el modelo de suscripción.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, para que cada pedido te deje más que 7 lucas.
+> Y 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA con consecuencia]* Hacé clic en el link de abajo y reservá tu lugar para el **17**. Así dejás de laburar todo el mes para sobrevivir.
 
@@ -491,11 +492,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[prueba]* Es el mismo modelo con el que hoy hago más de 280 millones por mes con mi marca. [PANTALLA: tablero]
 >
-> *[fecha]* Así que hacé clic en este anuncio, registrate gratis, y el **martes 17 de noviembre a las 19** te veo en vivo en la clase privada donde muestro todo esto.
+> *[fecha]* Así que hacé clic en este anuncio, registrate gratis, y el **martes 17 de noviembre a las 18** te veo en vivo en la clase privada donde muestro todo esto.
 >
 > *[te soy honesto]* Y te soy honesto: lo muestro gratis porque sé que cuando lo veas y lo apliques, algunos van a querer que lo armemos juntos.
 >
-> *[el peor de los casos]* No pagás nada. Y en el peor de los casos te llevás el roadmap para pasar tu marca a suscripción, el simulador con tus números y 3 de mis agentes de IA.
+> *[el peor de los casos]* No pagás nada. Y en el peor de los casos te llevás cómo escalar tu ecommerce a más de 100 millones por mes migrando a suscripción, y 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección.
 >
 > *[CTA]* Hacé clic abajo y reservá tu lugar para el **17**.
 
@@ -513,13 +514,13 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[filtro]* Así que si pautás todos los días y toda tu facturación depende de que la cuenta siga viva, prestá atención.
 >
-> *[fecha]* El **martes 17 de noviembre a las 19** doy una clase privada, en vivo y 100% gratis, para todos los que se registren con el link de acá abajo.
+> *[fecha]* El **martes 17 de noviembre a las 18** doy una clase privada, en vivo y 100% gratis, para todos los que se registren con el link de acá abajo.
 >
 > *[el sistema]* Ahí te muestro el modelo con el que facturo sin depender de lo que pase cada mañana en el administrador de anuncios.
 >
-> *[entregables]* Te doy el roadmap para pasar tu marca a suscripción sin frenar lo que hoy ya vende.
-> El simulador para que proyectes cuánto te entraría todos los meses con tu propia base de suscriptores.
-> Y solo para los que se registren, 3 agentes de IA a elección de los más de 30 que uso, entre ellos el que te analiza las métricas de Meta por vos.
+> *[entregables]* Te voy a mostrar cómo hago más de 280 millones por mes con el modelo de suscripción.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, con una base que se cobra sola todos los meses.
+> Y solo para los que se registren, 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, entre ellos el que te analiza las métricas de Meta por vos.
 >
 > *[lo único que necesitás]* Esto es lo único que necesitás para que una cuenta caída no sea el fin de tu marca.
 >
@@ -543,11 +544,11 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[¿qué lo hizo posible?]* ¿Y qué fue lo que lo hizo posible? Tener una base de clientes que me compra todos los meses sola, en débito automático. Con o sin cuenta publicitaria.
 >
-> *[fecha]* Y el **martes 17 de noviembre a las 19** te la voy a mostrar gratis en una clase privada en vivo.
+> *[fecha]* Y el **martes 17 de noviembre a las 18** te la voy a mostrar gratis en una clase privada en vivo.
 >
-> *[entregables]* Te voy a dar el roadmap para armar esa base sin frenar lo que hoy ya vende tu marca.
-> El simulador para que veas cuánto te entraría todos los meses con tus números.
-> Y 3 agentes de IA a elección de los más de 30 que uso, para que los copies y pegues en tu marca.
+> *[entregables]* Te voy a mostrar cómo hago más de 280 millones por mes con esa base.
+> Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy ya vende tu marca.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[CTA]* Hacé clic acá abajo, reservá tu lugar y nos vemos en la clase el **17**.
 
@@ -565,11 +566,10 @@ Cada uno modela la **estructura** de un winner de Thiago (función de cada párr
 >
 > *[filtro]* Así que si cada 1 del mes arrancás en cero y no sabés con cuánto vas a cerrar, prestá atención.
 >
-> *[fecha + el qué]* El **martes 17 de noviembre a las 19**, en una clase privada en vivo y gratis, te voy a explicar cómo hago más de 280 millones por mes sin que el mes dependa de cuánto me deje vender Meta.
+> *[fecha + el qué]* El **martes 17 de noviembre a las 18**, en una clase privada en vivo y gratis, te voy a explicar cómo hago más de 280 millones por mes sin que el mes dependa de cuánto me deje vender Meta.
 >
-> *[entregables]* Te voy a dar el roadmap para pasar tu marca a suscripción sin frenar lo que hoy vende.
-> El simulador para que proyectes con cuánto arrancaría cada mes tu marca.
-> Y 3 agentes de IA a elección de los más de 30 que uso en mis marcas, para que los copies y los pegues.
+> *[entregables]* Te voy a mostrar cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, para que cada mes arranque con plata ya cobrada.
+> Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
 > *[el remate del dolor]* Para que el día que se te caiga la cuenta, los cobros sigan entrando.
 >
