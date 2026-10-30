@@ -2,7 +2,7 @@
 
 Los mails para los registrados: confirmación, 1 mail por día del miércoles 11/11 al lunes 16/11 (días 1 a 6) y la escalera de 9 mails del martes 17/11, el día de la clase.
 
-**Forma:** calcada de los mails de ejemplo que pasó Santi (`EMAILS_NUTRICION_MAKE_MONEY`): header y sub header que se leen como una sola frase, mails cortos, párrafos de una o dos líneas, listas con ❌ y ✅, un dato o regalo por día que empuja al grupo de WhatsApp, imágenes de prueba en el cuerpo y la firma corta. Reemplaza la estructura del prompt de Limitless (subject contraintuitivo de 50 caracteres, countdown fijo, 250-350 palabras).
+**Forma:** calcada de los mails de ejemplo que pasó Santi (`EMAILS_NUTRICION_MAKE_MONEY`): header y sub header que se leen como una sola frase, mails cortos, párrafos de una o dos líneas, listas cortas, un dato o regalo por día que empuja al grupo de WhatsApp, imágenes de prueba en el cuerpo y la firma corta. Reemplaza la estructura del prompt de Limitless (subject contraintuitivo de 50 caracteres, countdown fijo, 250-350 palabras).
 
 **Contenido:** el de siempre. Cada día sigue su objetivo de `calendario-nutricion-whatsapp.md`, engancha con lo que sale ese día en el grupo (`contenido-nutricion-dias-1-6.md`) y usa las creencias y ángulos de las llamadas de Fathom (`analisis-ventas-calificadas.md`).
 
@@ -19,7 +19,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | Números de Manu | **+280M** por mes hoy y **$30M** por mes con compra única (los fijó Santi en el mail 1). Siguen a definir `X suscriptores` y `X%` (margen hoy). En la confirmación y el día 7 todavía dice `$X`: es +280M. | Suscriptores y margen **a definir**. |
 | Caso de tercero | **Lucas**: 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
 | 400 clientes que recompraron | Lucas, de otra marca suya. Se cuenta como «otro dato que me dio Lucas». | **A confirmar** el permiso. Sin permiso va sin nombre. |
-| Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un dueño de marca me dijo»). | — |
+| Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un cliente me dijo»). | — |
 | Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se nombra al cliente y se cuenta su caso. Tampoco se nombran marcas de afuera: se dice «las marcas de consumibles más grandes de Estados Unidos». | Pedido de Santi (30/10). |
 | La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). Regalo del día 5. | Falta el link. |
 | Una pieza exclusiva por día | Lo pidió Santi en el mail 1: «cada uno te deja una pieza exclusiva que NO vamos a ver en vivo». Día 1, el roadmap de suscripciones; días 2 a 4, un agente de la biblioteca (propuesta: Finanzas, Investigación de mercado, Retención, que no son de los 4 que se eligen en la clase); día 5, la Cuenta del CPA; día 6, el video de cómo se prepara la clase. | Roadmap y Cuenta del CPA confirmados. **Los agentes de los días 2 a 4, a confirmar.** |
@@ -31,7 +31,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 - **«Sin grabación» queda condicional.** Los ejemplos lo repiten en el día 6 y en toda la escalera. Acá no está confirmado si hay replay (en el 19/10 hubo), así que cada mail que lo usaría trae la frase entre corchetes `[SI NO HAY REPLAY: …]`. Si se confirma que no hay grabación, se dejan; si hay, se borran.
 - **El bonus solo para los que están en vivo queda a definir**, igual que en el ejemplo (`[BONUS EN VIVO — a definir]`). Si no hay bonus, cada mail que lo menciona trae la versión alternativa.
 - **Los referentes de afuera no se nombran.** El ejemplo nombra a Hormozi, Iman Gadzhi y otros; acá, por la regla de marcas, va «las marcas de consumibles más grandes de Estados Unidos».
-- **El regalo del día 1 no se adelanta.** El ejemplo regala sistemas desde el día 1. Acá los 3 sistemas son el bonus de la clase y el regalo del grupo es la Cuenta del CPA del día 5 (calendario). El día 1 la anuncia.
+- **Una pieza exclusiva por día.** Como en los ejemplos, cada mail de los días 1 a 6 regala algo que va en el grupo. Los 3 sistemas que se eligen en la clase no se regalan antes.
 - **El miedo al ban no se usa.** Ninguno de los que pagaron habló de eso; la dependencia de Meta se cuenta como «renovar creativos todos los días».
 
 ### Links e imágenes
