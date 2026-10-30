@@ -18,7 +18,7 @@ Agentes de Limitless: `../../agentes/`. Agentes propios: `../agentes/`.
 | ADQ-03 | Grabar AD Reels de adquisición | 18 | — | | Manu |
 | ADQ-04 | Editar AD Reels de adquisición | 18 | — | | |
 | ADQ-05 | Configurar campañas de adquisición en Meta | 1 | Ads de adquisición — Configuración (`limitless-configurador-ads`) | `../lanzamiento-19-10/ads-adquisicion-notas.md` | |
-| ADQ-06 | Reels orgánicos (salen de los videos de YouTube) | 3 | Reels (`limitless-agente-guiones-reels`) | `../lanzamiento-19-10/contenido/02-adquisicion-reels.md` | |
+| ADQ-06 | Reels orgánicos (salen de los videos de YouTube) | 3 | Reels (`limitless-agente-guiones-reels`) | `../youtube/funnel-youtube.md`, `../lanzamiento-19-10/contenido/02-adquisicion-reels.md` | |
 | ADQ-07 | Landing con test A/B/C | 3 | Crear una página de registro (`limitless-constructor-optin`) | `../lanzamiento-19-10/optin/`, `../lanzamiento-19-10/optin/headlines-por-dolor.md` | |
 | ADQ-08 | Guiones de VSL de la landing (5 min) | 2 | VSL Lanzamiento (`limitless-agente-vsl-registro`) | `../lanzamiento-19-10/vsl-registro.md` | |
 | ADQ-09 | Grabar VSL de la landing | 2 | — | | Manu |
@@ -26,7 +26,7 @@ Agentes de Limitless: `../../agentes/`. Agentes propios: `../agentes/`.
 | ADQ-11 | Grabar video de thank you page | 1 | — | | Manu |
 | ADQ-12 | Armar thank you page | 1 | Crear una thank you page (`limitless-constructor-thank-you`) | `../lanzamiento-19-10/optin/thank-you.html` | |
 | ADQ-13 | Optimización de perfil | 1 | Optimización de perfil (`limitless-agente-optimizacion-perfil`) | `../perfil-ig/optimizacion-perfil.md` | |
-| ADQ-14 | Funnel de YouTube: videos pre-webinar | 2 | — | | Manu |
+| ADQ-14 | Funnel de YouTube: videos pre-webinar | 2 | — | `../youtube/funnel-youtube.md` (YT-1 y YT-9 guionados) | Manu |
 
 ## Nutrición (5 días, arranca el día 5 de adquisición hasta el webinar)
 
