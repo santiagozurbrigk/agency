@@ -145,4 +145,19 @@ async function videos(ids) {
   return out;
 }
 
-module.exports = { enabled, problema, datos, creativos, videos };
+// Vista previa de cada anuncio (el iframe que arma Meta), para ver el video cuando el token
+// no tiene permiso para bajar el archivo. Hasta 40 anuncios por pedido.
+async function previews(adIds) {
+  const { token } = config();
+  const out = [];
+  for (const id of [...new Set(adIds)].slice(0, 40)) {
+    try {
+      const r = await fetch(`https://graph.facebook.com/${VERSION}/${id}/previews?${new URLSearchParams({ ad_format: "MOBILE_FEED_STANDARD", access_token: token })}`);
+      const d = await r.json();
+      out.push(d.error ? { adId: id, error: String(d.error.message || "error").split(token).join("…") } : { adId: id, body: ((d.data || [])[0] || {}).body || "" });
+    } catch (e) { out.push({ adId: id, error: "No se pudo conectar con Meta" }); }
+  }
+  return out;
+}
+
+module.exports = { enabled, problema, datos, creativos, videos, previews };

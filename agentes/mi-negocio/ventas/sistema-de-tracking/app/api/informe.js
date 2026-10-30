@@ -48,6 +48,11 @@ module.exports = async function handler(req, res) {
       const vs = await meta.videos(cr.map(c => c.videoId).filter(Boolean));
       return res.status(200).json({ ok: true, creativos: cr, videos: vs });
     }
+    // ?previews=adId,adId,…: la vista previa de cada anuncio (hasta 40).
+    if (req.query.previews) {
+      if (!meta.enabled()) return res.status(200).json({ ok: false, error: meta.problema() || "Meta Ads no está conectado" });
+      return res.status(200).json({ ok: true, previews: await meta.previews(String(req.query.previews).split(",").map(x => x.trim()).filter(x => /^\d+$/.test(x))) });
+    }
     if (req.query.buscar) {
       const lista = String(req.query.buscar).split(",").map(x => x.trim()).filter(Boolean);
       return res.status(200).json({ ok: true, buscados: await buscar(lista) });
