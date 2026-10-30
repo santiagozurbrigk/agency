@@ -1,8 +1,10 @@
-# Emails de nutrición · clase del 17/11 · 15 mails
+# Emails de nutrición · clase del 17/11 · 16 mails
 
-La secuencia de mails para los registrados: 1 mail por día del miércoles 11/11 al lunes 16/11 (días 1 a 6) y la escalera de 9 mails del martes 17/11, el día de la clase (tarea NUT-02 del tracker).
+Los mails para los registrados: confirmación, 1 mail por día del miércoles 11/11 al lunes 16/11 (días 1 a 6) y la escalera de 9 mails del martes 17/11, el día de la clase.
 
-Hecho con el prompt «Emails de nutrición» de Limitless. Sigue el calendario de `calendario-nutricion-whatsapp.md` día por día (objetivo, insight y planta para mañana) y engancha con lo que sale ese día en el grupo (`contenido-nutricion-dias-1-6.md`). Las frases, creencias y ángulos salen de las llamadas de Fathom de los clientes que más pagaron (`analisis-ventas-calificadas.md`). Cada mail se sostiene solo: mucha gente lee el mail y no abre el grupo.
+**Forma:** calcada de los mails de ejemplo que pasó Santi (`EMAILS_NUTRICION_MAKE_MONEY`): header y sub header que se leen como una sola frase, mails cortos, párrafos de una o dos líneas, listas con ❌ y ✅, un dato o regalo por día que empuja al grupo de WhatsApp, imágenes de prueba en el cuerpo y la firma corta. Reemplaza la estructura del prompt de Limitless (subject contraintuitivo de 50 caracteres, countdown fijo, 250-350 palabras).
+
+**Contenido:** el de siempre. Cada día sigue su objetivo de `calendario-nutricion-whatsapp.md`, engancha con lo que sale ese día en el grupo (`contenido-nutricion-dias-1-6.md`) y usa las creencias y ángulos de las llamadas de Fathom (`analisis-ventas-calificadas.md`).
 
 ---
 
@@ -12,195 +14,211 @@ Hecho con el prompt «Emails de nutrición» de Limitless. Sigue el calendario d
 
 | Dato | Qué se usa | Estado |
 | --- | --- | --- |
-| Firma | **Manu**. Remitente: Manu Dominguez. Voseo, cadena causal, «por ende», «literalmente», «tal cual», «y ya está», «al pedo». 1 emoji por bloque como mucho. | De `CONTEXTO.md`. No hay mails reales de Manu para calcar la voz. |
-| Tipo de nicho | Dinero / B2B seco. El pedido de respuesta del mail 1 es un número de su negocio, no una emoción. | — |
+| Firma | **Manu**. Voseo, cadena causal, «por ende», «literalmente», «tal cual», «y ya está», «al pedo». | De `CONTEXTO.md`. |
 | Clase | **Martes 17 de noviembre, 18 hs (Argentina)**, en vivo. | Confirmado (30/10). |
-| Números de Manu | `$X` (facturación hoy), `X suscriptores`, `X%` (margen hoy), `$Y` (facturación con compra única). | **A definir**, igual que en el contenido de WhatsApp. Se reemplazan todos juntos con buscar y reemplazar. |
-| Caso de tercero | **Lucas** (Herbora; en los mails solo va su nombre): 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
-| 400 clientes que recompraron | Lucas, de su otra marca (no de Herbora). En el mail se cuenta como «otro dato que me dio Lucas», sin decir de qué marca. | **A confirmar** el permiso. Sin permiso va sin nombre. |
-| Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un dueño de marca me dijo»): no hay permiso para nombrarlos. | — |
-| Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se puede nombrar al cliente y contar su caso: números, frases y situación. | Pedido de Santi (30/10). |
-| La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). | Confirmada como regalo del día 5. Falta el link. |
+| Números de Manu | `$X` (facturación hoy), `X suscriptores`, `X%` (margen hoy), `$Y` (facturación con compra única). | **A definir.** Se reemplazan todos juntos. |
+| Caso de tercero | **Lucas**: 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
+| 400 clientes que recompraron | Lucas, de otra marca suya. Se cuenta como «otro dato que me dio Lucas». | **A confirmar** el permiso. Sin permiso va sin nombre. |
+| Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un dueño de marca me dijo»). | — |
+| Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se nombra al cliente y se cuenta su caso. Tampoco se nombran marcas de afuera: se dice «las marcas de consumibles más grandes de Estados Unidos». | Pedido de Santi (30/10). |
+| La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). Regalo del día 5. | Falta el link. |
 
-### Creencias y ángulos de Fathom, mail por mail
+### Lo que cambia contra los ejemplos
 
-Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creencias limitantes y los ángulos de las llamadas de los que más pagaron. Numeración de `analisis-ventas-calificadas.md`.
+- **«Masterclass» → «clase».** El ejemplo la usa en la confirmación; acá no va (tampoco webinar, programa, funnel ni lead).
+- **«Sin grabación» queda condicional.** Los ejemplos lo repiten en el día 6 y en toda la escalera. Acá no está confirmado si hay replay (en el 19/10 hubo), así que cada mail que lo usaría trae la frase entre corchetes `[SI NO HAY REPLAY: …]`. Si se confirma que no hay grabación, se dejan; si hay, se borran.
+- **El bonus solo para los que están en vivo queda a definir**, igual que en el ejemplo (`[BONUS EN VIVO — a definir]`). Si no hay bonus, cada mail que lo menciona trae la versión alternativa.
+- **Los referentes de afuera no se nombran.** El ejemplo nombra a Hormozi, Iman Gadzhi y otros; acá, por la regla de marcas, va «las marcas de consumibles más grandes de Estados Unidos».
+- **El regalo del día 1 no se adelanta.** El ejemplo regala sistemas desde el día 1. Acá los 3 sistemas son el bonus de la clase y el regalo del grupo es la Cuenta del CPA del día 5 (calendario). El día 1 la anuncia.
+- **El miedo al ban no se usa.** Ninguno de los que pagaron habló de eso; la dependencia de Meta se cuenta como «renovar creativos todos los días».
 
-| Mail | Día | Creencias que rompe | Ángulos |
-| --- | --- | --- | --- |
-| 1 | Mié 11 · el modelo | 9 · «la solución es más creativos» | A · nada te dura · D · «venís bien» · E · testeo infinito |
-| 2 | Jue 12 · estaban igual | 6 · «si no arranca, el producto es malo» · 1 · «esto es para Estados Unidos» | A · «hace mucho que no tenemos un día bueno» · H · fe en el producto |
-| 3 | Vie 13 · CPA | 9 · «más creativos, más agresivo» · 3 · «el suscriptor sale más caro» | B · 7 marcas y las copias |
-| 4 | Sáb 14 · margen | 1 · Argentina · 4 · «la primera unidad barata» · 2 · «mi producto es un tratamiento» | C · 400 clientes que recompraron sin un mail |
-| 5 | Dom 15 · todo junto | 3 · cerrada con la Cuenta del CPA | A · el mes que no arranca en cero |
-| 6 | Lun 16 · show-up | 11 · «está lleno de pirañas» · 10 · «necesito ser experto en Meta» | D y E · no es otra mentoría de testeo |
-| 8 | Mar 17 · 14:00 | 6 y 11 | A · B · el caso de Lucas completo |
-| 11 | Mar 17 · 17:30 | — | A · «un mes malo, pero ya sabés lo que entra» |
-
-**Lo que se dejó afuera a propósito:**
-
-- **El miedo al ban.** Ninguno de los que pagaron habló de que le bajen la cuenta: la dependencia de Meta la viven como tener que renovar creativos todos los días. Ningún mail usa «si te bajan la cuenta».
-- **Ángulos F («tu e-commerce vende pero no construye nada») e I (los impuestos al pasar a responsable inscripto).** F le habla al que importa o vende en Mercado Libre, y esa definición del avatar está en revisión (`ESTADO.md`). I no entra en ningún día del calendario. Si se quieren sumar, el lugar es el mail 5 (F) y el mail 4 (I).
-- **Creencias 5, 7 y 8** («prometer más fuerte», «primero me capitalizo», «mercado competido = no entrar»): son de uno solo de los clientes y no encajan en el objetivo de ningún día.
-
-### Links (marcados en el texto)
+### Links e imágenes
 
 | Marca | Qué es | Estado |
 | --- | --- | --- |
-| `[LINK GRUPO]` | Grupo de WhatsApp de registrados. | Pendiente. |
-| `[LINK AGENDAR]` | Link para agendar la clase en el calendario. | Pendiente. |
-| `[LINK CLASE]` | Link directo a la clase. Solo en los mails del día 7, desde las 17:45. | Pendiente. |
+| `[LINK GRUPO]` | Grupo de WhatsApp de registrados. Es el único link de los días 1 a 6, como en los ejemplos. | Pendiente. |
 | `[LINK DE LA CUENTA DEL CPA]` | El regalo del día 5. | Pendiente. |
+| `[LINK CLASE]` | Link directo a la clase. Desde el mail de las 17:00 del día 7. | Pendiente. |
+| `[IMAGEN: …]` | Captura o foto que va en el cuerpo, como en los ejemplos. Las de Lucas, **sin que se vea el nombre, el logo ni el producto de su marca**. | Pendiente. |
 
-### Lo que el prompt pide y acá cambia
+### Creencias y ángulos de Fathom, mail por mail
 
-- **«Masterclass» → «clase».** El prompt usa «MASTERCLASS» en el bloque fijo; en este repo esa palabra no va (tampoco webinar, programa, funnel ni lead). El bloque queda: «📅 Faltan [X] días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.»
-- **Sin «sin replay».** No está confirmado si hay grabación (en el 19/10 hubo replay). Por eso ningún mail promete que no queda grabada, y el mail 3 del día 7 (Objection Kill) mata el «lo veo grabado» con lo que solo pasa en vivo, sin decir que no hay grabación. Si se confirma que no hay replay, en ese mail se suma una línea marcada y en el bloque fijo se agrega «sin replay».
-- **El testimonio del día 7 no se cuenta como «me escribió esta mañana»:** sería inventar un hecho. Se cuenta el caso de Lucas como caso real, en presente.
-- **El mail 9 del día 7 no dice «el chat está en shock»** ni ningún dato del vivo que no sepamos. Lleva `[N]` (personas adentro, número real) y la pieza que se está mostrando, a confirmar con el orden real de la clase.
+| Mail | Creencias que rompe | Ángulos |
+| --- | --- | --- |
+| Día 1 | 9 · «la solución es más creativos» | A · nada te dura · D · «venís bien» · E · testeo infinito |
+| Día 2 | 6 · «si no arranca, el producto es malo» · 1 · «esto es para Estados Unidos» | A · «hace mucho que no tenemos un día bueno» · H · fe en el producto |
+| Día 3 | 9 · «bajar el CPA» · 3 · «el suscriptor sale más caro» | B · 7 marcas y las copias |
+| Día 4 | 1 · Argentina · 4 · «la primera unidad barata» · 2 · «mi producto es un tratamiento» | C · 400 clientes que recompraron sin un mail |
+| Día 5 | 3 · cerrada con la Cuenta del CPA · 1 · «esto es para Estados Unidos» | A · el mes que no arranca en cero |
+| Día 6 | 11 · «está lleno de pirañas» · 10 · «necesito ser experto en Meta» | D y E · no es otra mentoría de testeo |
 
 ---
 
 ## Resumen
 
-| # | Día | Hora | Subject | Trabajo |
-| --- | --- | --- | --- | --- |
-| 1 | Mié 11/11 | 08:30 | Renovar creativos te deja en breakeven | Marco: el problema es el modelo |
-| 2 | Jue 12/11 | 08:30 | Lucas tenía buen producto. Igual se hundía | Identificación: estaban igual que vos |
-| 3 | Vie 13/11 | 08:30 | Bajar el CPA es la pelea que vas a perder | Dolor 1 · CPA |
-| 4 | Sáb 14/11 | 08:30 | Tu margen ya existe. Se lo lleva otro | Dolor 2 · Margen |
-| 5 | Dom 15/11 | 09:00 | Puedo pagar 2,5 veces más que mi competencia | Todo junto + el regalo |
-| 6 | Lun 16/11 | 08:30 | Mañana no vas a ver nada de producto ganador | Show-up |
-| 7 | Mar 17/11 | 08:00 | Hoy a las 18 | Morning Anchor |
-| 8 | Mar 17/11 | 14:00 | Faltan 4 horas: el caso de Lucas | Trust Asset |
-| 9 | Mar 17/11 | 17:00 | Falta 1 hora. ¿Lo dejás para después? | Objection Kill |
-| 10 | Mar 17/11 | 17:15 | 45 minutos: prepará estas 3 cosas | Motion Command |
-| 11 | Mar 17/11 | 17:30 | 30 minutos: imaginate mañana | Visualization |
-| 12 | Mar 17/11 | 17:45 | 15 minutos: abrí el link ya | Friction Reduction |
-| 13 | Mar 17/11 | 18:00 | Estamos en vivo | Pure Urgency |
-| 14 | Mar 17/11 | 18:10 | Llegaste tarde. Entrá igual | Rescate Tardíos |
-| 15 | Mar 17/11 | 18:30 | Ahora mismo estoy mostrando la cuenta | Edging / Retention |
+| # | Cuándo | Header | Sub header |
+| --- | --- | --- | --- |
+| 0 | Al registrarse | Listo, ya estás adentro 🎁 | Hay algo esperándote en el grupo 👀 |
+| 1 | Mié 11 · 08:30 | Renovar creativos NO te va a sacar del breakeven 👀 | te muestro qué sí, en los próximos días… |
+| 2 | Jue 12 · 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | te cuento TODO lo que le pasó a Lucas (y por qué te puede pasar a vos) |
+| 3 | Vie 13 · 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | te explico por qué esa pelea ya la perdiste |
+| 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail, así que tiene arreglo 📈 |
+| 5 | Dom 15 · 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | y en 48 horas te muestro cómo llegar a ese número… |
+| 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
+| 7 | Mar 17 · 12:00 | 🚨 HOY es el día 🚨 | hoy te muestro TODO el modelo por dentro |
+| 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | traé tu cuenta (y el 🎁 es SOLO en vivo) |
+| 9 | Mar 17 · 16:00 | En 2 horas te muestro cómo hago $X por mes | el modelo, la cuenta, los sistemas… TODO |
+| 10 | Mar 17 · 17:00 | Falta 1 HORA ⏰ | agarrá tu Cuenta del CPA y algo para anotar |
+| 11 | Mar 17 · 17:45 | En 15 min abro la sala 🚨 | entrá temprano así no te quedás afuera |
+| 12 | Mar 17 · 17:55 | 🔴 EMPEZAMOS | entrá ahora 👇 |
+| 13 | Mar 17 · 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | recién empieza lo bueno |
+| 14 | Mar 17 · 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | ya arrancó la cuenta de cuánto podés pagar por cliente |
+| 15 | Mar 17 · 18:20 | Última llamada 🚪 | lo más importante viene ahora |
 
 ---
 
-## DÍAS 1 AL 6
+## Mail 0 · Confirmación · al registrarse
 
-### Mail 1 · Día 1 · Miércoles 11/11 · 08:30
+**Header:** Listo, ya estás adentro 🎁
+**Sub header:** Hay algo esperándote en el grupo 👀
 
-**Subject:** Renovar creativos te deja en breakeven
-**Preheader:** Y no es culpa del creativo. Te lo demuestro acá.
-
-**Usa:** creencia 9 (más creativos) · ángulo A (nada te dura) · ángulos D y E (el enemigo: el que te dice «venís bien» y el testeo infinito, sin nombrar a nadie).
-
-> Hola,
+> Listo, ya estás registrado a la clase del **martes 17 de noviembre a las 18 hs (Argentina)**.
 >
-> Te anotaste a la clase del martes, así que arranco por lo más importante. Hasta el martes te mando un mail por día, y cada uno te deja una pieza de lo que vas a ver en vivo.
+> Ahí te voy a mostrar cómo hago $X por mes con el modelo de suscripción, sin depender del CPA ni de renovar creativos todos los días.
+>
+> Hasta el martes, la data la voy soltando en el grupo de WhatsApp. Y el link para entrar a la clase también pasa por ahí:
+>
+> 👉 [LINK GRUPO]
+>
+> Y una cosa: **respondé este mail con la palabra «ADENTRO»**. Así me aseguro de que mis mails no te caigan en spam y te llegue todo.
+>
+> Nos vemos adentro.
+>
+> Manu
+
+---
+
+## Mail 1 · Día 1 · Miércoles 11/11 · 08:30
+
+**Header:** Renovar creativos NO te va a sacar del breakeven 👀
+**Sub header:** te muestro qué sí, en los próximos días…
+
+> Bienvenido.
+>
+> Hasta el martes te voy a mostrar, gratis, cómo hago $X por mes con mi marca:
+>
+> - Sin depender de bajar el CPA.
+> - Ni de renovar creativos todos los días.
+>
+> Y no es «otro curso más». Cada día te dejo algo concreto, para que llegues al martes sabiendo exactamente dónde está tu marca.
+>
+> Hoy arrancamos por lo que más te duele.
 >
 > Un dueño de marca me dijo en una llamada: **«Tiraba una campaña, la dejaba 48 horas… y nunca la podía mantener.»**
 >
-> Seguro te pasa algo parecido. Tenés una marca que vende, pautás todos los días, tenés pedidos. Y aun así **nada te dura más de unos días**, y cuando abrís el Excel, cada venta te deja casi lo mismo que te costó.
+> Y lo que hacía para salir era lo que te dicen todos:
 >
-> Yo estuve ahí: $Y por mes con compra única, en breakeven. Y hacía lo que te dicen todos:
+> ❌ Renovar creativos todos los días, vaya como vaya.
+> ❌ Testear más ángulos y más productos.
+> ❌ Pagar una mentoría donde le decían «venís bien».
 >
-> - Renovar creativos todos los días, vaya como vaya.
-> - Testear más ángulos y más productos.
-> - Pelear para bajar el CPA.
+> Nada le duraba. Porque el problema no estaba en el anuncio: **le vendía a cada cliente una sola vez.** Y el mes siguiente tenía que salir a comprarlo de nuevo.
 >
-> Y si pagaste una mentoría, seguro alguien te dijo **«venís bien»** mientras la cuenta no cerraba.
+> **Buscás la compra, no el cliente.** Por eso cada venta te cuesta lo mismo que la anterior.
 >
-> El problema no está en el anuncio. **No tenés un problema de creativos: tenés un problema de modelo.**
+> Hoy a las 13 mando por el grupo un video de 10 minutos donde te muestro esto con mi propia marca, no con teoría:
 >
-> Hoy le vendés a cada cliente una sola vez. Lo adquirís, te compra y se va. El mes que viene tenés que salir a comprarlo de nuevo, con el mismo costo o mayor. Por ende, cada venta te cuesta lo mismo que la anterior y cada mes arrancás de cero.
+> 👉 [LINK GRUPO]
 >
-> **Buscás la compra, no el cliente.** Y por eso nada te dura: lo único que te sostiene es el anuncio de esta semana.
+> Y el domingo, ahí mismo, te regalo la cuenta que uso yo para saber cuánto puedo pagar por cada cliente.
 >
-> Por qué te pasa esto, con mi propia marca y no con teoría, te lo explico en el video de 10 minutos que mando hoy a las 13 por el grupo de WhatsApp. Si no estás, sumate acá 👉 [LINK GRUPO]
+> Mañana te cuento el caso de Lucas: 7 palos en 15 días… y una noche con 600 lucas abajo.
 >
-> 📅 **Faltan 6 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Una cosa antes de irte. Respondé este mail con un número: **¿cuántos de los clientes que te compraron el mes pasado te volvieron a comprar este mes?** Si no lo sabés, respondé «no sé». Las dos respuestas me sirven, y las leo yo.
->
-> Mañana te cuento cómo estaba yo, y cómo estaba Lucas, un cliente, antes de cambiar el modelo.
+> Nos vemos adentro.
 >
 > Manu
 
 ---
 
-### Mail 2 · Día 2 · Jueves 12/11 · 08:30
+## Mail 2 · Día 2 · Jueves 12/11 · 08:30
 
-**Subject:** Lucas tenía buen producto. Igual se hundía
-**Preheader:** Lo mismo que me pasaba a mí. Te cuento qué era.
+**Header:** 7 palos en 15 días… y 600 lucas abajo en una noche 📉
+**Sub header:** te cuento TODO lo que le pasó a Lucas (y por qué te puede pasar a vos)
 
-**Usa:** ángulo A (inestabilidad: «hace mucho que no tenemos un día bueno») · creencia 6 y ángulo H (si no arranca, el producto es malo) · creencia 1 (esto es para Estados Unidos).
-
-> Hola,
+> Ayer te prometí el caso de Lucas. Hoy te lo desarmo entero, porque es probable que estés en alguna de estas tres partes.
 >
-> Ayer te dije que nada te dura porque buscás la compra y no el cliente. Hoy te muestro dos casos que estaban exactamente donde estás vos.
+> **1) Agosto venía bárbaro.**
 >
-> El primero es el mío: **$Y por mes con compra única.** Cada venta me dejaba casi lo mismo que me costaba, y tenía días buenos y días malos sin saber por qué.
+> La primera quincena hizo **7 palos en 15 días.**
 >
-> El segundo es el de **Lucas**, un cliente. La primera quincena de agosto hizo **7 palos en 15 días.** La tercera semana salieron 7 marcas a pautar un producto muy parecido y se fue a pérdida.
+> `[IMAGEN: captura de la facturación de esos 15 días, sin que se vea la marca]`
 >
-> Cuando hablamos me dijo, textual:
+> **2) La tercera semana, se dio vuelta todo.**
+>
+> Salieron 7 marcas a pautar un producto casi igual al suyo. Le subió el CPA y se fue a pérdida. Cuando hablamos me dijo, textual:
 >
 > **«Hace mucho que no tenemos un día bueno.»**
 >
-> - Semanas en breakeven o en pérdida.
-> - Una noche con **600 lucas abajo:** apagaron todo, «de manotazo ahogado».
-> - Renovando creativos de los ángulos que ya les habían funcionado.
+> Una noche iba **600 lucas abajo.** Apagó todo. «Manotazo ahogado».
 >
-> Y acá aparece la trampa en la que cae casi todo el mundo: **pensar que si no arranca, el producto es malo.** Otro dueño de marca me lo contó así: «varios me dijeron que capaz el producto no es bueno». Y era bueno. El de Lucas también. El mío también.
+> **3) Lo que hacía para salir: lo mismo que vos.**
 >
-> Ninguno tenía un mal producto ni malos creativos. **Estábamos comprando cada venta de nuevo.** Igual que vos.
+> Renovar creativos de los ángulos que ya le habían funcionado. Y esperar que el próximo pegue.
 >
-> Y fijate: los dos casos son **de acá, de Argentina.** No es Estados Unidos ni una marca gigante. Es acá, con el mismo Meta que usás vos.
+> Data para vos: **no tenía un mal producto.** Otro dueño de marca me contó que «varios me dijeron que capaz el producto no es bueno». Y era bueno. El de Lucas también. El mío también: yo estaba en $Y por mes con compra única, en breakeven.
 >
-> Cómo era mi mes con compra única, con el Excel abierto, te lo muestro en el video que mando hoy a las 13 por el grupo. Y a las 17 te cuento cómo terminó la noche de Lucas. Si no estás, sumate acá 👉 [LINK GRUPO]
+> Ninguno tenía un problema de producto. **Estábamos comprando cada venta de nuevo.**
 >
-> 📅 **Faltan 5 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
+> Y no es Estados Unidos ni una marca gigante. Es acá, con el mismo Meta que usás vos.
 >
-> Mañana vamos al CPA: por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo Lucas cuando salieron 7 marcas a pautar su mismo producto.
+> Hoy a las 13 te muestro por el grupo cómo era mi mes con compra única, con el Excel abierto. Y a las 17 te cuento cómo terminó la noche de Lucas:
+>
+> 👉 [LINK GRUPO]
+>
+> Mañana te muestro por qué bajar el CPA es justo lo que te mantiene en el mismo lugar.
+>
+> Nos vemos adentro.
 >
 > Manu
 
 ---
 
-### Mail 3 · Día 3 · Viernes 13/11 · 08:30
+## Mail 3 · Día 3 · Viernes 13/11 · 08:30
 
-**Subject:** Bajar el CPA es la pelea que vas a perder
-**Preheader:** Gana el que puede pagar más. Te muestro por qué.
+**Header:** 🤡💭 «Si bajo el CPA, vuelvo a ser rentable»
+**Sub header:** te explico por qué esa pelea ya la perdiste
 
-**Usa:** ángulo B (7 marcas y las copias) · creencia 9 (más creativos, más agresivo contra la competencia) · creencia 3 (el suscriptor sale más caro).
-
-> Hola,
->
-> Ayer viste que Lucas y yo teníamos buen producto y aun así comprábamos cada venta de nuevo. Hoy vamos a lo que pasa cuando sale la competencia.
->
-> **«La tercera semana de agosto salieron 7 personas a pautar un producto muy parecido al nuestro.»**
->
-> Y no solo eso. Lucas me contó: **«nos copiaron literalmente toda la landing… los mismos anuncios».** A otro le bajaban los videos y los subían: él tenía 10 anuncios y el que lo copió tenía 30.
+> Si te reíste… o te dolió un poco, te entiendo. Yo pensaba exactamente igual.
 >
 > La cadena es siempre la misma. Largás, escalás, te salen competidores, te suben los CPM, por ende te sube el CPA. **Saliste con 10 dólares y ahora tenés 20.** Y ya está: dejás de ser rentable.
 >
-> ¿Qué hace todo el mundo?
+> Y encima te copian. Lucas me contó: **«nos copiaron literalmente toda la landing… los mismos anuncios».** A otro le bajaban los videos y los subían: él tenía 10 anuncios y el que lo copió tenía 30.
 >
-> - Renovar creativos todos los días.
-> - Ir más agresivo contra la competencia.
-> - Pelear para bajar el CPA.
+> Mirá la diferencia.
 >
-> Es una pelea por quién paga menos por un cliente. Y la gana el que viene atrás dispuesto a perder más que vos.
+> **Pelear por el CPA más bajo:**
 >
-> **No ganás bajando el CPA. Ganás pudiendo pagar más por el mismo cliente.** Y hay algo que no te pueden copiar: el que ya se suscribió es cliente tuyo. No le compra al que te copió la landing.
+> ❌ Dependés de que no salga otro competidor. Siempre sale.
+> ❌ Te copian la landing y el anuncio en dos días.
+> ❌ Escalar = más creativos, más testeo, más plata quemada.
 >
-> Lucas no salió con un anuncio nuevo. Cambió el modelo, y **el día que relanzó pasó a tener 40% de margen:** casi dos palos de ganancia.
+> **Poder pagar más por cada cliente:**
 >
-> Lo que seguro te hace ruido: **«el suscriptor me va a salir mucho más caro».** Puede costarte hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, es porque estás haciendo la cuenta de una sola compra.
+> ✅ El CPA lo pagás una sola vez por cliente, no en cada venta.
+> ✅ El que ya se suscribió es cliente tuyo: no le compra al que te copió.
+> ✅ Escalar = pagar más que tu competencia y que te siga quedando plata.
 >
-> La cadena completa, dibujada en la pizarra, te la muestro en el video que mando hoy a las 13 por el grupo. Si no estás, sumate acá 👉 [LINK GRUPO]
+> Lucas no salió con un anuncio nuevo. Cambió el modelo, y **el día que relanzó pasó a tener 40% de margen.** Casi dos palos de ganancia.
 >
-> 📅 **Faltan 4 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
+> «Sí, pero el suscriptor me va a salir mucho más caro.» Te puede costar hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, estás haciendo la cuenta de una sola compra.
 >
-> Si podés pagar más por cliente, la pregunta es de dónde sale esa plata. Mañana te muestro dónde está tu margen, y por qué casi nadie lo ve.
+> Hoy a las 13 te dibujo la cadena completa en la pizarra, por el grupo:
+>
+> 👉 [LINK GRUPO]
+>
+> Mañana te muestro de dónde sale la plata para pagar más por cliente. Spoiler: ya la tenés.
+>
+> Nos vemos mañana.
 >
 > Manu
 
@@ -208,341 +226,294 @@ Cada mail sigue el objetivo de su día del calendario y lo cuenta con las creenc
 
 ---
 
-### Mail 4 · Día 4 · Sábado 14/11 · 08:30
+## Mail 4 · Día 4 · Sábado 14/11 · 08:30
 
-**Subject:** Tu margen ya existe. Se lo lleva otro
-**Preheader:** Está en la segunda compra. Te muestro dónde.
+**Header:** POV: facturaste bien y te quedaron 7 lucas por pedido 💀
+**Sub header:** POV: pero abriste este mail, así que tiene arreglo 📈
 
-**Usa:** ángulo C (los 400 clientes que recompraron sin un mail) · creencias 1, 4 y 2 (Argentina, la primera unidad barata, «mi producto es un tratamiento»).
-
-> Hola,
+> Da bronca, ¿no? Laburar todo el mes, facturar, y abrir el Excel:
 >
-> Ayer te dije que gana el que puede pagar más por cliente. Hoy te muestro de dónde sale esa plata.
+> **«7 lucas de ganancia. Sobreviviendo.»**
 >
-> **«7 lucas de ganancia. Sobreviviendo.»** Eso me dijo Lucas mirando su mes. Facturaba, y por cada pedido le quedaban 7 lucas.
+> Eso me dijo Lucas mirando su mes.
 >
-> Lo que se suele hacer: subir el ticket, armar un pack por 3, sacar cuotas. Sirve, te sube algo el margen. Pero **cada venta sigue pagando su propio CPA.**
+> Lo que hace todo el mundo: subir el ticket, armar un pack por 3, sacar cuotas. Sirve un poco. Pero **cada venta sigue pagando su propio CPA.**
 >
-> Lo que casi nadie ve: **la primera venta de cada cliente la pagás. La segunda, la tercera y la cuarta entran con el margen entero.**
+> Y acá está lo que casi nadie ve:
 >
-> Ese margen ya existe en tu base. En la misma llamada, Lucas me dio otro dato: **«así tengo 400 clientes que recompraron ya».** Sin un mail. Sin un WhatsApp. Plata sentada que nadie estaba cobrando.
+> ✅ La primera venta de cada cliente la pagás.
+> ✅ La segunda, la tercera y la cuarta entran con el margen entero.
+> ✅ Ese margen ya existe en tu base. Solo que hoy, cuando tu cliente vuelve a necesitar el producto, se lo compra a otro.
 >
-> En mi marca, con compra única, cada venta dejaba casi lo mismo que costaba. **Hoy tengo X% de margen con X suscriptores.**
+> En la misma llamada, Lucas me dio otro dato: **«así tengo 400 clientes que recompraron ya».** Sin un mail. Sin un WhatsApp. Plata sentada que nadie estaba cobrando.
 >
-> Las tres dudas que aparecen siempre acá:
+> Yo, con compra única, dejaba casi lo mismo que me costaba cada venta. **Hoy tengo X% de margen con X suscriptores.**
 >
-> - **«En Argentina no se suscribe nadie.»** Yo tengo X suscriptores. Acá, cobrando en pesos.
-> - **«Se suscriben por la primera unidad más barata y se van.»** Por eso la suscripción no se arma regalando la primera unidad. El cómo, el martes.
-> - **«Mi producto es un tratamiento, no es para suscripción.»** Al que tu producto le resuelve el problema no se queda tres meses: se queda un año, dos años.
+> `[IMAGEN: captura del tablero de suscriptores y el margen]`
 >
-> Mi margen de hoy, con el tablero de suscriptores abierto, te lo muestro en el video que mando hoy a las 13 por el grupo. Si no estás, sumate acá 👉 [LINK GRUPO]
+> ¿Y las dudas de siempre?
 >
-> ¿Querés saber si tu producto entra en suscripción? Respondé este mail con qué vendés y cada cuánto se le termina al cliente. Te contesto yo.
+> «En Argentina no se suscribe nadie.» → Tengo X suscriptores. Acá, en pesos.
+> «Se suscriben por la primera unidad barata y se van.» → Por eso no se arma regalando la primera unidad.
+> «Mi producto es un tratamiento.» → Al que le resuelve el problema no se queda tres meses: se queda un año.
 >
-> 📅 **Faltan 3 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
+> Hoy a las 13 te muestro mi tablero por dentro, en el grupo:
 >
-> Mañana te dejo todo junto, y te regalo la cuenta con la que vas a ver tu propio techo de pauta antes del martes.
+> 👉 [LINK GRUPO]
+>
+> ¿Querés saber si tu producto entra? Respondé este mail con qué vendés y cada cuánto se termina. Te contesto yo.
+>
+> Mañana te regalo la cuenta con la que vas a ver tu propio techo de pauta.
+>
+> Nos vemos adentro.
 >
 > Manu
 
-> `[CONFIRMAR: permiso de Lucas para el dato de los 400 clientes (es de otra marca suya). Si no hay permiso, queda sin nombre: «un dueño de marca me dijo en una llamada: "así tengo 400 clientes que recompraron ya"».]`
+> `[CONFIRMAR: permiso de Lucas para el dato de los 400 clientes (es de otra marca suya). Si no hay permiso: «un dueño de marca me dijo en una llamada: "así tengo 400 clientes que recompraron ya"».]`
 
 ---
 
-### Mail 5 · Día 5 · Domingo 15/11 · 09:00
+## Mail 5 · Día 5 · Domingo 15/11 · 09:00
 
-**Subject:** Puedo pagar 2,5 veces más que mi competencia
-**Preheader:** Y me sigue quedando plata. La cuenta, acá adentro.
+**Header:** Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁
+**Sub header:** y en 48 horas te muestro cómo llegar a ese número…
 
-**Usa:** el factor diferencial y el Método B.A.S.E. por nombre (calendario) · creencia 3 cerrada con la cuenta · ángulo A (el mes que no arranca en cero).
-
-> Hola,
+> Falta muy poco para la clase.
 >
-> Esta semana viste las piezas sueltas: nada te dura, el caso de Lucas, el CPA y el margen. Hoy se juntan, y si te sumaste recién, con este mail quedás al día.
+> Y hoy te regalo lo que te prometí el miércoles: **la Cuenta del CPA.** La misma que uso yo.
 >
-> Si tu margen de contribución por pedido es de **30.000 pesos**, con compra única tu techo es 30.000. Pagás 30.000 por un cliente y quedás en breakeven en la primera venta. Pero si ese cliente te compra tres veces, el techo cambia:
+> `[IMAGEN: captura de la Cuenta del CPA con los números de ejemplo]`
 >
-> - Compra única: techo de 30.000 por cliente.
-> - Suscripción con 3 compras: techo de 90.000.
-> - Operando en 75.000: te quedan 15.000 vivos.
+> Así funciona, con un margen de 30.000 por pedido:
 >
-> Tu competencia sigue peleando dentro de los 30.000. Por eso **yo puedo pagar 2,5 veces más por cada cliente que mi competencia.** Y listo: ya no tenés competencia.
+> ✅ Compra única: tu techo es 30.000 por cliente. Breakeven en la primera venta.
+> ✅ Si el cliente te compra 3 veces: tu techo es 90.000.
+> ✅ Operando en 75.000: te quedan 15.000 vivos por cliente.
 >
-> Y hay algo que la cuenta no muestra: con una base que te vuelve a comprar, **el mes no arranca en cero.** Un mes malo de anuncios deja de ser un mes malo de facturación.
+> Tu competencia sigue peleando dentro de los 30.000. Por eso **yo puedo pagar 2,5 veces más por cada cliente.** Y listo: ya no tenés competencia.
 >
-> A eso le digo **Método B.A.S.E.**: crecer con los clientes que ya entraron, no saliendo a comprar más. Cómo se arma y cómo se pone al lado de la compra única sin frenar lo que vende, eso es el martes.
+> Es lo que hacen las marcas de consumibles más grandes de Estados Unidos. Acá casi nadie lo está haciendo. A eso le digo **Método B.A.S.E.**
 >
-> Para que llegues con tu número, te dejo un regalo: **la Cuenta del CPA,** la misma que uso yo. Ponés tu margen por pedido y te da tus dos techos y el punto en el que conviene operar.
+> Ponés tu margen y te da tu techo nuevo:
 >
 > 👉 [LINK DE LA CUENTA DEL CPA]
 >
-> Hacela antes del martes y, cuando tengas tu techo nuevo, respondé este mail con el número.
+> Y este martes 17 a las 18 te muestro TODO:
 >
-> Toda la semana en 10 minutos, con la cuenta en la pizarra, te la explico en el video que mando hoy a las 12 por el grupo. Si no estás, sumate acá 👉 [LINK GRUPO]
+> ✅ Cómo hago $X por mes con el modelo de suscripción.
+> ✅ Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
+> ✅ Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
 >
-> 📅 **Faltan 2 días: el martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
+> Hoy a las 12 te explico la cuenta en la pizarra, en el grupo:
 >
-> Mañana te paso lo que tenés que tener listo para la clase.
+> 👉 [LINK GRUPO]
 >
-> Manu
-
-> El regalo va en el mail además de en el grupo: el que no entró al grupo también tiene que llegar con su número. Si se prefiere que el regalo empuje a entrar al grupo, se saca el link y queda «te lo mando hoy a las 19 por el grupo».
-
----
-
-### Mail 6 · Día 6 · Lunes 16/11 · 08:30
-
-**Subject:** Mañana no vas a ver nada de producto ganador
-**Preheader:** Lo que sí vas a ver, y qué tener listo.
-
-**Usa:** creencia 11 (los consultores se aprovechan: «está lleno de pirañas») · creencia 10 (necesito ser experto en Meta) · ángulos D y E (no es otra mentoría de testeo ni de «venís bien»).
-
-> Hola,
->
-> Ayer te mandé la Cuenta del CPA. Si ya tenés tu techo nuevo, mañana vas a ver cómo llegar a él. Si no la hiciste, hoy es el día.
->
-> Antes, te digo qué no vas a ver mañana, porque sé que ya te pasó.
->
-> **No es otro curso de testear productos.** Nada de «réplica, audio por arriba, y si no arranca, no arranca». Tampoco es alguien que te mira de lejos y te dice «venís bien».
->
-> Y no hace falta que seas experto en Meta: lo que mueve la aguja es el modelo, no el truco de campaña.
->
-> Sé que hay desconfianza. Lucas me lo dijo en la primera llamada: **«me cuesta mucho confiar… está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis números en pantalla, y la cuenta la hacés con los tuyos.**
->
-> Lo que vas a ver es cómo una marca argentina de consumibles cobra todos los meses sin depender del anuncio de esta semana. Y te llevás tres cosas:
->
-> - **Cómo hago $X por mes** con el modelo de suscripción.
-> - **Cómo escalar tu ecommerce a más de 100 millones por mes** migrando de compra única a suscripción.
-> - **3 de mis más de 30 sistemas** de backend, operaciones e IA, a elección, para copiar y pegar en tu marca.
->
-> Tené listos tu Cuenta del CPA, tu número de recompra y una hora sin interrupciones, en la compu.
->
-> Cómo estoy preparando la clase te lo muestro en el video que mando hoy a las 13 por el grupo. El link para entrar mañana también pasa por ahí. Si no estás, sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Falta 1 día: mañana, martes 17 de noviembre, a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Si vas a estar, respondé este mail con **ADENTRO.** Así sé con quién cuento.
+> Nos vemos adentro.
 >
 > Manu
 
 ---
 
+## Mail 6 · Día 6 · Lunes 16/11 · 08:30
 
-## DÍA 7 · Martes 17/11 · La escalera de 9 mails
+**Header:** Mañana te muestro TODO 👀
+**Sub header:** y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo
 
-Clase a las 18 hs. Cuanto más cerca, más corto. Los subjects llevan el tiempo que falta.
-
-### Mail 7 · 08:00 · Morning Anchor
-
-**Subject:** Hoy a las 18
-**Preheader:** Las 3 cosas que te llevás si estás.
-
-> Hola,
+> Mañana es la clase.
 >
-> **Hoy es el día.** A las 18 hs (Argentina) doy la clase en vivo.
+> Te voy a mostrar, en vivo, cómo hago $X por mes con el modelo de suscripción. Con mis números en pantalla.
 >
-> Toda la semana viste las piezas sueltas: el modelo, el caso de Lucas, el CPA, el margen y tu techo de pauta. Hoy ves cómo se unen.
+> `[IMAGEN: foto de Manu preparando la clase: la pizarra con los dos círculos y el tablero abierto]`
 >
-> Si estás, te llevás tres cosas:
+> Y te digo qué NO vas a ver:
 >
-> 1. **Cómo hago $X por mes** con el modelo de suscripción, sin depender del CPA ni de Meta.
-> 2. **Cómo escalar tu ecommerce a más de 100 millones por mes** migrando de compra única a suscripción, sin frenar lo que hoy vende.
-> 3. **3 de mis más de 30 sistemas** de backend, operaciones e IA, a elección, para copiar y pegar en tu marca.
+> ❌ Otro curso de testear productos («réplica, audio por arriba, y si no arranca, no arranca»).
+> ❌ Alguien que te mira de lejos y te dice «venís bien».
+> ❌ Trucos de Meta. No hace falta que seas experto: lo que mueve la aguja es el modelo.
 >
-> Tené a mano tu Cuenta del CPA y tu número de recompra. Te mando el link antes de arrancar.
+> Sé que hay desconfianza. Lucas me lo dijo en la primera llamada: **«está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis números, y la cuenta la hacés con los tuyos.**
 >
-> 👉 Agendalo si todavía no lo hiciste: [LINK AGENDAR]
+> Pero hay algo más.
 >
-> Hoy a las 18.
+> A los que estén EN VIVO les tengo algo que no voy a dar en ningún otro lado:
+>
+> 🎁 `[BONUS EN VIVO — a definir]`
+>
+> Por eso quiero que estés sí o sí. `[SI NO HAY REPLAY: Es en vivo y no va a haber grabación.]`
+>
+> Bloqueate la agenda: **martes 17, 18 hs (Argentina).** Traé tu Cuenta del CPA y tu número de recompra.
+>
+> Si vas a estar, respondé este mail con **ADENTRO.**
+>
+> Nos vemos mañana.
 >
 > Manu
+
+> `[SI NO HAY BONUS EN VIVO: sub header «y lo que tenés que tener listo» y, en lugar del bloque «Pero hay algo más… sí o sí», queda: «Y te llevás 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para copiar y pegar en tu marca.»]`
 
 ---
 
-### Mail 8 · 14:00 · Trust Asset
+## Día 7 · Martes 17/11 · La escalera de 9 mails
 
-**Subject:** Faltan 4 horas: el caso de Lucas
-**Preheader:** De 600 lucas abajo a 40% de margen.
+Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la clase aparece desde las 17:00.
 
-> Hola,
+### Mail 7 · 12:00
+
+**Header:** 🚨 HOY es el día 🚨
+**Sub header:** hoy te muestro TODO el modelo por dentro
+
+> Hoy es la clase.
 >
-> Antes de la clase te quiero recordar el caso de Lucas, porque es lo más parecido a lo que vas a ver esta noche.
+> Hoy te muestro cómo hago $X por mes con el modelo de suscripción, y cómo podés pagar 2,5 veces más por cada cliente que tu competencia.
 >
-> En agosto hizo 7 palos en 15 días. Después salieron 7 marcas a pautar un producto casi igual y le copiaron la landing entera. **«Hace mucho que no tenemos un día bueno»**, me dijo. Una noche iba 600 lucas abajo y apagó todo.
+> Es a las 18 hs (Argentina). En vivo. `[SI NO HAY REPLAY: Sin grabación.]`
 >
-> Y desconfiaba: **«está lleno de pirañas».** No tenía un mal producto. Estaba comprando cada venta de nuevo.
+> Dejate esa hora libre. Puede ser el día que te cambia la marca.
 >
-> No salió con un creativo nuevo. Cambió el modelo. **El día que relanzó pasó a tener 40% de margen.** Casi dos palos de ganancia.
+> Nos vemos. Manu
+
+### Mail 8 · 15:00
+
+**Header:** Faltan 3 horas ⏳
+**Sub header:** traé tu cuenta (y el 🎁 es SOLO en vivo)
+
+> Faltan pocas horas.
 >
-> Lo que querés vos no es facturar más. Es que el mes no dependa del anuncio de esta semana. Eso es lo que te muestro hoy a las 18.
+> Acordate: el que está en vivo se lleva el bonus. El que no… no.
 >
-> 👉 [LINK AGENDAR]
+> Tené a mano tu Cuenta del CPA y tu número de recompra. Y avisá que a las 18 estás ocupado.
+>
+> Nos vemos hoy. Manu
+
+> `[SI NO HAY BONUS EN VIVO: sub header «traé tu cuenta» y se borra la segunda línea.]`
+
+### Mail 9 · 16:00
+
+**Header:** En 2 horas te muestro cómo hago $X por mes
+**Sub header:** el modelo, la cuenta, los sistemas… TODO
+
+> En 2 horas arrancamos.
+>
+> Te muestro el modelo, la cuenta con mis números y cómo ponerlo al lado de la compra única sin frenar lo que vende.
+>
+> Y te llevás 3 de mis más de 30 sistemas, a elección. `[SI NO HAY REPLAY: No hay grabación. O estás, o te lo perdés.]`
+>
+> Dejá todo listo. Manu
+
+### Mail 10 · 17:00
+
+**Header:** Falta 1 HORA ⏰
+**Sub header:** agarrá tu Cuenta del CPA y algo para anotar
+
+> En 1 hora empezamos.
+>
+> Buscá un lugar tranquilo, la compu (no el celu) y algo para anotar: va a haber MUCHA cuenta.
+>
+> Este es el link para entrar 👉 [LINK CLASE]
+>
+> Te espero. Manu
+
+### Mail 11 · 17:45
+
+**Header:** En 15 min abro la sala 🚨
+**Sub header:** entrá temprano así no te quedás afuera
+
+> Ya casi.
+>
+> En 15 minutos abro.
+>
+> Entrá temprano 👉 [LINK CLASE]
 >
 > Manu
 
-> `[CONFIRMAR: período de los «casi dos palos», igual que en el mail 3.]`
+### Mail 12 · 17:55
 
----
+**Header:** 🔴 EMPEZAMOS
+**Sub header:** entrá ahora 👇
 
-### Mail 9 · 17:00 · Objection Kill
-
-**Subject:** Falta 1 hora. ¿Lo dejás para después?
-**Preheader:** Lo que pasa en vivo no pasa en ningún otro lado.
-
-> Hola,
+> Estamos por arrancar.
 >
-> Falta una hora. Y sé lo que estás pensando: «lo veo después, cuando tenga un rato».
+> Entrá ahora 👉 [LINK CLASE]
 >
-> Esta clase no es para mirarla de fondo. **En vivo hago la cuenta y vos la hacés al mismo tiempo con tus números.** Si te trabás, preguntás en el chat y te respondo ahí, con tu margen y tu CPA.
->
-> Eso no pasa mirándolo después. Y «después», con una marca que pautás todos los días, casi siempre es nunca.
->
-> Una hora. Hoy a las 18.
->
-> Manu
+> Nos vemos adentro. Manu
 
-> `[SI SE CONFIRMA QUE NO HAY REPLAY: sumar después del primer párrafo «Y no queda grabada: es en vivo y es una sola vez.», y agregar «sin replay» en los bloques fijos de los mails 1 a 6.]`
+### Mail 13 · 18:00
 
----
+**Header:** 🔴 Estamos EN VIVO (todavía llegás)
+**Sub header:** recién empieza lo bueno
 
-### Mail 10 · 17:15 · Motion Command
-
-**Subject:** 45 minutos: prepará estas 3 cosas
-**Preheader:** Para que a las 18 no te falte nada.
-
-> Hola,
+> Ya arrancamos.
 >
-> 45 minutos. Hacé esto ahora:
+> Pero tranquilo, todavía llegás.
 >
-> 1. **Sentate en la compu,** no en el celular: vas a ver mis números en pantalla.
-> 2. **Abrí tu Cuenta del CPA** y anotá tu número de recompra al lado.
-> 3. **Silenciá el celular** y avisá que por una hora no estás.
->
-> A las 18 arrancamos.
+> Entrá ahora 👉 [LINK CLASE]
 >
 > Manu
 
----
+### Mail 14 · 18:10
 
-### Mail 11 · 17:30 · Visualization
+**Header:** ⚠️ Te lo estás perdiendo ⚠️
+**Sub header:** ya arrancó la cuenta de cuánto podés pagar por cliente
 
-**Subject:** 30 minutos: imaginate mañana
-**Preheader:** Un mes malo que no se siente.
-
-> Hola,
+> Estamos en vivo y ya arranqué con `[QUÉ SE ESTÁ MOSTRANDO: por ejemplo, la cuenta de cuánto podés pagar por cliente]`.
 >
-> Un dueño de marca me dijo lo que quería: **«que un día tengas un mes malo, pero ya sabés que te va a ingresar tanta plata, entonces no lo sentís».**
+> En un rato doy el bonus, y es SOLO para los que están adentro.
 >
-> Imaginate mañana a la mañana abriendo el Excel y **sabiendo exactamente qué hacer** con el cliente que ya te compró.
->
-> Para llegar ahí en media hora:
->
-> - ✅ Compu lista.
-> - ✅ Tu Cuenta del CPA y tu número de recompra.
-> - ✅ Una hora sin interrupciones.
->
-> En 30 minutos, en vivo.
+> Entrá 👉 [LINK CLASE]
 >
 > Manu
 
----
+> `[CONFIRMAR qué se muestra a las 18:10 según el guion real de la clase, y ajustar también el sub header. SI NO HAY BONUS EN VIVO: se borra la segunda línea.]`
 
-### Mail 12 · 17:45 · Friction Reduction
+### Mail 15 · 18:20
 
-**Subject:** 15 minutos: abrí el link ya
-**Preheader:** No esperes a las 18.
+**Header:** Última llamada 🚪
+**Sub header:** lo más importante viene ahora
 
-> Hola,
+> Es tu última chance de ver esto en vivo.
 >
-> 15 minutos. **Abrí el link ahora,** no esperes a la hora: así si te pide instalar algo o iniciar sesión, lo resolvés antes de que arranque.
+> Lo más importante de la clase viene ahora. `[SI NO HAY REPLAY: No hay grabación, no se repite.]`
 >
-> 👉 [LINK CLASE]
+> Si entrás ahora, llegás a la parte fuerte (y al bonus) 👉 [LINK CLASE]
 >
-> Te espero adentro.
->
-> Manu
+> Nos vemos. Manu
 
----
-
-### Mail 13 · 18:00 · Pure Urgency
-
-**Subject:** Estamos en vivo
-**Preheader:** Entrá ahora.
-
-> **YA ESTAMOS EN VIVO.**
->
-> Entrá ahora:
->
-> 👉 [LINK CLASE]
->
-> Manu
-
----
-
-### Mail 14 · 18:10 · Rescate Tardíos
-
-**Subject:** Llegaste tarde. Entrá igual
-**Preheader:** Lo fuerte viene ahora.
-
-> Hola,
->
-> Si no llegaste a las 18, **entrá igual:** la parte fuerte viene ahora.
->
-> 👉 [LINK CLASE]
->
-> Manu
-
----
-
-### Mail 15 · 18:30 · Edging / Retention
-
-**Subject:** Ahora mismo estoy mostrando la cuenta
-**Preheader:** La de tu techo de pauta. Entrá.
-
-> Hola,
->
-> Ahora mismo estoy mostrando **[PIEZA DEL MÉTODO: por ejemplo, la cuenta de cuánto podés pagar por cliente con suscripción].** Ya somos [N] adentro.
->
-> Es la parte que vas a querer ver con tu Cuenta del CPA al lado.
->
-> 👉 [LINK CLASE]
->
-> Manu
-
-> `[CONFIRMAR antes de programar: qué se muestra en la clase a las 18:30, según el orden real del guion, y reemplazar la pieza. [N] = número real de personas adentro; si no se puede actualizar en vivo, sacar esa frase.]`
+> El ejemplo dice «Estamos cerrando» a los 20 minutos porque su clase es corta. La nuestra dura más (el 19/10 fueron ~80 min), así que a las 18:20 recién arranca lo fuerte. `[SI NO HAY BONUS: sacar «(y al bonus)».]`
 
 ---
 
 ## Tabla de carga
 
-| # | Día | Fecha | Hora (ARG) | Subject | Links |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Día 1 | Mié 11/11 | 08:30 | Renovar creativos te deja en breakeven | Grupo · Agendar |
-| 2 | Día 2 | Jue 12/11 | 08:30 | Lucas tenía buen producto. Igual se hundía | Grupo · Agendar |
-| 3 | Día 3 | Vie 13/11 | 08:30 | Bajar el CPA es la pelea que vas a perder | Grupo · Agendar |
-| 4 | Día 4 | Sáb 14/11 | 08:30 | Tu margen ya existe. Se lo lleva otro | Grupo · Agendar |
-| 5 | Día 5 | Dom 15/11 | 09:00 | Puedo pagar 2,5 veces más que mi competencia | Cuenta del CPA · Grupo · Agendar |
-| 6 | Día 6 | Lun 16/11 | 08:30 | Mañana no vas a ver nada de producto ganador | Grupo · Agendar |
-| 7 | Día 7 | Mar 17/11 | 08:00 | Hoy a las 18 | Agendar |
-| 8 | Día 7 | Mar 17/11 | 14:00 | Faltan 4 horas: el caso de Lucas | Agendar |
-| 9 | Día 7 | Mar 17/11 | 17:00 | Falta 1 hora. ¿Lo dejás para después? | — |
-| 10 | Día 7 | Mar 17/11 | 17:15 | 45 minutos: prepará estas 3 cosas | — |
-| 11 | Día 7 | Mar 17/11 | 17:30 | 30 minutos: imaginate mañana | — |
-| 12 | Día 7 | Mar 17/11 | 17:45 | 15 minutos: abrí el link ya | Clase |
-| 13 | Día 7 | Mar 17/11 | 18:00 | Estamos en vivo | Clase |
-| 14 | Día 7 | Mar 17/11 | 18:10 | Llegaste tarde. Entrá igual | Clase |
-| 15 | Día 7 | Mar 17/11 | 18:30 | Ahora mismo estoy mostrando la cuenta | Clase |
+| # | Fecha | Hora (ARG) | Header | Links |
+| --- | --- | --- | --- | --- |
+| 0 | Al registrarse | Automático | Listo, ya estás adentro 🎁 | Grupo |
+| 1 | Mié 11/11 | 08:30 | Renovar creativos NO te va a sacar del breakeven 👀 | Grupo |
+| 2 | Jue 12/11 | 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | Grupo |
+| 3 | Vie 13/11 | 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | Grupo |
+| 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo |
+| 5 | Dom 15/11 | 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | Cuenta del CPA · Grupo |
+| 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | — |
+| 7 | Mar 17/11 | 12:00 | 🚨 HOY es el día 🚨 | — |
+| 8 | Mar 17/11 | 15:00 | Faltan 3 horas ⏳ | — |
+| 9 | Mar 17/11 | 16:00 | En 2 horas te muestro cómo hago $X por mes | — |
+| 10 | Mar 17/11 | 17:00 | Falta 1 HORA ⏰ | Clase |
+| 11 | Mar 17/11 | 17:45 | En 15 min abro la sala 🚨 | Clase |
+| 12 | Mar 17/11 | 17:55 | 🔴 EMPEZAMOS | Clase |
+| 13 | Mar 17/11 | 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | Clase |
+| 14 | Mar 17/11 | 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | Clase |
+| 15 | Mar 17/11 | 18:20 | Última llamada 🚪 | Clase |
 
 **Los mails de los días 1 a 6 salen antes que el contenido del grupo** (08:30, y 09:00 el domingo), para que el hook al video de las 13 (12 el domingo) llegue a tiempo.
 
-**Para el equipo de setting:** las respuestas a los mails son leads calientes, igual que las del privado de WhatsApp. Anotar en el tracker: mail 1, número de recompra (o «no sé»); mail 4, qué vende y su ciclo de reposición; mail 5, su techo nuevo; mail 6, «ADENTRO» = confirmó asistencia.
+**Para el equipo de setting:** las respuestas son leads calientes. Anotar en el tracker: mail 0 y mail 6, «ADENTRO»; mail 4, qué vende y su ciclo de reposición.
 
 ## Antes de programar
 
-- [ ] Reemplazar `$X`, `X suscriptores`, `X%` y `$Y` (mismos números que el contenido de WhatsApp).
-- [ ] Cargar `[LINK GRUPO]`, `[LINK AGENDAR]`, `[LINK CLASE]` y `[LINK DE LA CUENTA DEL CPA]`.
-- [ ] Confirmar si hay replay (mail 9 y bloques fijos).
-- [ ] Confirmar el período de los «casi dos palos» de Lucas (mails 3 y 8).
-- [ ] Confirmar el permiso de Lucas para los 400 clientes (mail 4); si no hay, va sin nombre.
-- [ ] Confirmar qué se muestra a las 18:30 (mail 15).
-- [ ] Revisar que ningún mail diga «masterclass», «webinar», «programa» ni el precio.
+- [ ] Reemplazar `$X`, `X suscriptores`, `X%` y `$Y`.
+- [ ] Cargar `[LINK GRUPO]`, `[LINK DE LA CUENTA DEL CPA]` y `[LINK CLASE]`.
+- [ ] Sacar las capturas de los `[IMAGEN: …]`. Las de Lucas, sin nombre, logo ni producto de su marca.
+- [ ] Confirmar si hay replay: dejar o borrar cada `[SI NO HAY REPLAY: …]`.
+- [ ] Definir el bonus en vivo: completarlo o usar las versiones sin bonus (mails 6, 8, 14 y 15).
+- [ ] Confirmar el período de los «casi dos palos» de Lucas (mail 3) y el permiso para los 400 clientes (mail 4).
+- [ ] Confirmar qué se muestra a las 18:10 (mail 14).
+- [ ] Revisar que ningún mail diga «masterclass», «webinar», «programa», el precio ni el nombre de otra marca.
