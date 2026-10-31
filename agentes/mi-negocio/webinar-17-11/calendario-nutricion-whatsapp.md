@@ -4,6 +4,9 @@ La estrategia de los 7 días del grupo de WhatsApp, del miércoles 11/11 al mart
 
 **Datos usados:** `CONTEXTO.md`, `contexto.md` de esta carpeta, `ads-adquisicion.md` (números de la campaña) y `analisis-ventas-calificadas.md` (las creencias limitantes y los 9 ángulos de las ventas mejor pagadas).
 
+
+> **31/10 · La versión vigente de los mensajes está en `contenido-nutricion-dias-1-6.md`**, alineada con los mails finales: el grupo entrega la pieza exclusiva de cada día (roadmap, simulador, video de la pizarra, flujos de retención, calculadora, video de preparación), el caso se cuenta como «Lucas» sin nombre ni detalles de su marca y los números quedaron en +280M, $30M con compra única y +3.500 suscriptores. Este archivo queda como la estrategia original; donde dice el nombre de la marca o «Cuenta del CPA», vale lo del contenido.
+
 ## Datos (estado al 30/10)
 
 | Dato | Qué se usa | Estado |
