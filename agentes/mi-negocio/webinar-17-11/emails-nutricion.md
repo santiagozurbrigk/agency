@@ -66,7 +66,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | 2 | Jue 12 · 08:30 | Te regalo mi Simulador de Suscripción 🎁 | + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo) |
 | 3 | Vie 13 · 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | te explico por qué bajar el CPA no es la solución |
 | 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail (y te regalo mi agente de retención) 📈 |
-| 5 | Dom 15 · 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | y en 48 horas te muestro cómo llegar a ese número… |
+| 5 | Dom 15 · 09:00 | Cómo ganarle a toda tu competencia 🥊 | te regalo la cuenta que uso yo (y ellos no hacen) |
 | 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
 | 7 | Mar 17 · 12:00 | 🚨 HOY es el día 🚨 | hoy te muestro TODO el modelo por dentro |
 | 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | traé tu cuenta (y el 🎁 es SOLO en vivo) |
@@ -291,8 +291,8 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 ## Mail 5 · Día 5 · Domingo 15/11 · 09:00
 
-**Header:** Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁
-**Sub header:** y en 48 horas te muestro cómo llegar a ese número…
+**Header:** Cómo ganarle a toda tu competencia 🥊
+**Sub header:** te regalo la cuenta que uso yo (y ellos no hacen)
 
 > Holaa. Falta muy poco para la clase.
 >
@@ -517,7 +517,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 | 2 | Jue 12/11 | 08:30 | Te regalo mi Simulador de Suscripción 🎁 | Grupo · Agendar |
 | 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agendar |
 | 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo · Agendar |
-| 5 | Dom 15/11 | 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | Cuenta del CPA · Grupo · Agendar |
+| 5 | Dom 15/11 | 09:00 | Cómo ganarle a toda tu competencia 🥊 | Cuenta del CPA · Grupo · Agendar |
 | 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | Grupo · Agendar |
 | 7 | Mar 17/11 | 12:00 | 🚨 HOY es el día 🚨 | — |
 | 8 | Mar 17/11 | 15:00 | Faltan 3 horas ⏳ | — |
