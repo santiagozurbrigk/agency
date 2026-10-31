@@ -63,7 +63,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | --- | --- | --- | --- |
 | 0 | Al registrarse | Todavía NO estás adentro ⚠️ | te falta un paso para la clase del martes 👇 |
 | 1 | Mié 11 · 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Agentes IA, SOPs y mucho más |
-| 2 | Jue 12 · 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | te cuento lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción) |
+| 2 | Jue 12 · 08:30 | Te regalo mi Simulador de Suscripción 🎁 | + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo) |
 | 3 | Vie 13 · 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | te explico por qué esa pelea ya la perdiste (+ te regalo mi agente de investigación de mercado) |
 | 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail (y te regalo mi agente de retención) 📈 |
 | 5 | Dom 15 · 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | y en 48 horas te muestro cómo llegar a ese número… |
@@ -154,10 +154,12 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 ## Mail 2 · Día 2 · Jueves 12/11 · 08:30
 
-**Header:** 7 palos en 15 días… y 600 lucas abajo en una noche 📉
-**Sub header:** te cuento lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción)
+**Header:** Te regalo mi Simulador de Suscripción 🎁
+**Sub header:** + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo)
 
-> Holaa, ayer te prometí contarte cómo estaba yo y cómo estaba Lucas antes de cambiar el modelo. Hoy te lo desarmo entero, porque seguro estás en alguna de estas partes.
+> Holaa, ayer te prometí contarte cómo estaba yo y cómo estaba Lucas antes de cambiar el modelo. Y hoy, además, te dejo la pieza exclusiva del día: **mi Simulador de Suscripción.**
+>
+> Primero, lo que pasó.
 >
 > Yo: **$30M por mes con compra única.** Cada venta me dejaba casi lo mismo que me costaba, y tenía días buenos y días malos sin saber por qué.
 >
@@ -165,17 +167,21 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 >
 > **1) Agosto venía bárbaro.** La primera quincena hizo **7 palos en 15 días.**
 >
-> **2) La tercera semana se dio vuelta todo.** Salieron 7 marcas a pautar un producto casi igual al suyo, le subió el CPA y se fue a pérdida. Cuando hablamos me dijo, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iba 600 lucas abajo y apagó todo. «Manotazo ahogado».
+> **2) La tercera semana se dio vuelta todo.** Salieron 7 marcas a pautar un producto casi igual al suyo, le subió el CPA y se fue a pérdida. Me dijo, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iba 600 lucas abajo y apagó todo.
 >
 > **3) Lo que hacía para salir: lo mismo que vos.** Renovar creativos de los ángulos que ya le habían funcionado y esperar que el próximo pegue.
 >
-> Y acá está la trampa en la que cae casi todo el mundo: **pensar que si no arranca, el producto es malo.** Otro cliente me dijo: «varios me dijeron que capaz el producto no es bueno». Y era bueno. El de Lucas también. El mío también.
+> Ninguno de los dos tenía un mal producto. **Estábamos comprando cada venta de nuevo.** Igual que vos.
 >
-> Ninguno tenía un problema de producto. **Estábamos comprando cada venta de nuevo.** Igual que vos.
+> Y la pregunta que me hacen todos es: «¿y cuánto cambiaría mi marca si pasara a suscripción?».
 >
-> Y esto no es Estados Unidos ni una marca gigante: es acá, con el mismo Meta que usás vos.
+> Para eso es el simulador. **Cargás los números de tu marca y ves cuánto ganarías con suscripción en el mes 12**, contra lo que ganás hoy con compra única:
 >
-> La pieza exclusiva de hoy: **mi Simulador de Suscripción.** Cargás los números de tu marca y ves cuánto ganarías con suscripción en el mes 12, contra lo que ganás hoy con compra única. Con tres escenarios y los impuestos adentro. Lo primero que vas a ver es si estás donde estaba Lucas.
+> - Tres escenarios, según cuántas veces te vuelve a comprar cada cliente.
+> - Los impuestos adentro, para que el número sea real.
+> - La caja mes a mes, para ver cuándo empieza a entrar la recurrencia.
+>
+> Es el mismo que uso yo. Y lo primero que vas a ver es si hoy estás donde estaba Lucas.
 >
 > Te lo dejo en el grupo, junto con el video de las 13:00 donde te muestro mi Excel de la época de compra única. Si no estás,
 >
@@ -187,7 +193,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 >
 > Manu
 
-*[Regalo del día: el Simulador de Suscripción, el bonus 2 del lanzamiento del 19/10 (pedido de Santi, 31/10). Ojo: el simulador también calcula cuánto podés pagar por cliente, igual que la Cuenta del CPA del día 5. Por eso acá se lo presenta por la ganancia del mes 12; si se quiere evitar la repetición, el día 5 puede regalar otra cosa.]*
+*[Regalo del día: el Simulador de Suscripción, el bonus 2 del lanzamiento del 19/10 (pedido de Santi, 31/10). Los tres puntos salen de cómo se describió en la landing del 19/10: escenarios de LTV, régimen fiscal con IVA y caja por venta con proyección. El simulador también calcula cuánto podés pagar por cliente, que es lo que hace la Cuenta del CPA del día 5: si se quiere evitar la repetición, el día 5 puede regalar otra cosa.]*
 
 ---
 
@@ -508,7 +514,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 | --- | --- | --- | --- | --- |
 | 0 | Al registrarse | Automático | Todavía NO estás adentro ⚠️ | Grupo |
 | 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agendar |
-| 2 | Jue 12/11 | 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | Grupo · Agendar |
+| 2 | Jue 12/11 | 08:30 | Te regalo mi Simulador de Suscripción 🎁 | Grupo · Agendar |
 | 3 | Vie 13/11 | 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | Grupo · Agendar |
 | 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo · Agendar |
 | 5 | Dom 15/11 | 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | Cuenta del CPA · Grupo · Agendar |
