@@ -22,7 +22,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un cliente me dijo»). | — |
 | Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se nombra al cliente y se cuenta su caso. Tampoco se nombran marcas de afuera: se dice «las marcas de consumibles más grandes de Estados Unidos». | Pedido de Santi (30/10). |
 | La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). Regalo del día 5. | Falta el link. |
-| Una pieza exclusiva por día | Lo pidió Santi en el mail 1: «cada uno te deja una pieza exclusiva que NO vamos a ver en vivo». Día 1, el roadmap de suscripciones; día 2, el Simulador de Suscripción (bonus del 19/10); días 3 y 4, un agente de la biblioteca (propuesta: Investigación de mercado y Retención, que no son de los 4 que se eligen en la clase); día 5, la Cuenta del CPA; día 6, el video de cómo se prepara la clase. | Roadmap, Simulador y Cuenta del CPA confirmados. **Los agentes de los días 3 y 4, a confirmar.** |
+| Una pieza exclusiva por día | Lo pidió Santi en el mail 1: «cada uno te deja una pieza exclusiva que NO vamos a ver en vivo». Día 1, el roadmap de suscripciones; día 2, el Simulador de Suscripción (bonus del 19/10); día 3, el video de Manu en el grupo sobre por qué bajar el CPA no es la solución; día 4, un agente de la biblioteca (propuesta: Retención, que no es de los 4 que se eligen en la clase); día 5, la Cuenta del CPA; día 6, el video de cómo se prepara la clase. | Roadmap, Simulador y Cuenta del CPA confirmados. Video del día 3 confirmado. **El agente del día 4, a confirmar.** |
 | Estilo de los días 1 a 6 | El de la versión de Santi del mail 1: «Holaa», párrafos conversados, «un cliente» para las frases sin nombre, listas simples y el bloque 📅 de cuenta regresiva con `[LINK AGENDAR]`. | — |
 
 ### Lo que cambia contra los ejemplos
@@ -64,7 +64,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | 0 | Al registrarse | Todavía NO estás adentro ⚠️ | te falta un paso para la clase del martes 👇 |
 | 1 | Mié 11 · 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Agentes IA, SOPs y mucho más |
 | 2 | Jue 12 · 08:30 | Te regalo mi Simulador de Suscripción 🎁 | + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo) |
-| 3 | Vie 13 · 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | te explico por qué esa pelea ya la perdiste (+ te regalo mi agente de investigación de mercado) |
+| 3 | Vie 13 · 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | te explico por qué bajar el CPA no es la solución |
 | 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail (y te regalo mi agente de retención) 📈 |
 | 5 | Dom 15 · 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | y en 48 horas te muestro cómo llegar a ese número… |
 | 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
@@ -199,8 +199,8 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 ## Mail 3 · Día 3 · Viernes 13/11 · 08:30
 
-**Header:** 🤡💭 «Si bajo el CPA, vuelvo a ser rentable»
-**Sub header:** te explico por qué esa pelea ya la perdiste (+ te regalo mi agente de investigación de mercado)
+**Header:** 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡
+**Sub header:** te explico por qué bajar el CPA no es la solución
 
 > Holaa. Si te reíste… o te dolió un poco, te entiendo. Yo pensaba exactamente igual.
 >
@@ -226,9 +226,9 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 >
 > «Sí, pero el suscriptor me va a salir mucho más caro.» Te puede costar hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, estás haciendo la cuenta de una sola compra.
 >
-> La pieza exclusiva de hoy: **mi agente de investigación de mercado.** Le pasás tu producto y te muestra quién más lo está pautando y con qué ángulos. Para que la próxima vez que salgan 7 marcas a vender lo mismo, no te enteres por el CPA.
+> La pieza exclusiva de hoy es un video: **hoy a las 13:00 te mando por el grupo por qué bajar el CPA no es la solución**, con la cadena completa dibujada en la pizarra. Ese video no lo vamos a ver en la clase.
 >
-> Te lo dejo en el grupo, junto con el video de las 13:00 donde te dibujo la cadena completa en la pizarra. Si no estás,
+> Si no estás,
 >
 > sumate acá 👉 [LINK GRUPO]
 >
@@ -238,7 +238,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 >
 > Manu
 
-*[CONFIRMAR el regalo del día: propuesta, agente de Investigación de mercado de la biblioteca, y que haga lo que dice el mail. CONFIRMAR con Manu el período de los «casi dos palos» de Lucas: si no fue el día del relanzamiento, cambiar «el día que relanzó».]*
+*[Header y sub header de Santi (31/10). La pieza del día es solo el video de Manu del grupo (13:00). CONFIRMAR con Manu el período de los «casi dos palos» de Lucas: si no fue el día del relanzamiento, cambiar «el día que relanzó».]*
 
 ---
 
@@ -515,7 +515,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 | 0 | Al registrarse | Automático | Todavía NO estás adentro ⚠️ | Grupo |
 | 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agendar |
 | 2 | Jue 12/11 | 08:30 | Te regalo mi Simulador de Suscripción 🎁 | Grupo · Agendar |
-| 3 | Vie 13/11 | 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | Grupo · Agendar |
+| 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agendar |
 | 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo · Agendar |
 | 5 | Dom 15/11 | 09:00 | Te regalo la cuenta con la que pago 2,5x más que mi competencia 🎁 | Cuenta del CPA · Grupo · Agendar |
 | 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | Grupo · Agendar |
@@ -536,7 +536,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 ## Antes de programar
 
 - [ ] Completar `X suscriptores` y `X%`, y pasar a +280M los `$X` que quedan (confirmación y día 7).
-- [ ] Confirmar los regalos de los días 2 a 4 (día 2, Simulador: confirmado; días 3 y 4, agentes de Investigación de mercado y Retención) y que el roadmap del día 1 esté en el grupo.
+- [ ] Confirmar los regalos de los días 2 a 4 (día 2, Simulador: confirmado; día 3, video: confirmado; día 4, agente de Retención) y que el roadmap del día 1 esté en el grupo.
 - [ ] Cargar `[LINK GRUPO]`, `[LINK AGENDAR]`, `[LINK DE LA CUENTA DEL CPA]` y `[LINK CLASE]`.
 - [ ] Sacar las capturas de los `[IMAGEN: …]`. Las de Lucas, sin nombre, logo ni producto de su marca.
 - [ ] Confirmar si hay replay: dejar o borrar cada `[SI NO HAY REPLAY: …]`.
