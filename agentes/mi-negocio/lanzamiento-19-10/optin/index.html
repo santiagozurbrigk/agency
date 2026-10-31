@@ -405,8 +405,21 @@ fbq('track', 'PageView');
   .form-card form { gap: 9px; }
   .form-card input, .form-card select { padding: 12px 13px; }
   .form-card select:invalid { color: #8a857c; }
-  .cd-form { display: flex; justify-content: center; gap: 14px; margin-top: 2px; color: var(--tinta); font-size: 12px; font-weight: 800; }
-  .cd-form b { font-family: var(--titulos); font-size: 26px; font-weight: 800; margin-right: 2px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  /* Contador arriba del form: cajas naranjas con destello */
+  .cd-titulo { text-align: center; font-size: 11.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--naranja-oscuro); margin-bottom: 8px; }
+  .cd-form { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+  .cd-form span { position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; align-items: center; padding: 10px 4px 8px; border-radius: 12px;
+    background: linear-gradient(180deg, #FF9147, var(--naranja) 55%, #C2410C); color: rgba(255,255,255,.9); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 8px 20px rgba(var(--naranja-rgb), .35); }
+  .cd-form span::after { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; z-index: -1;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.6), transparent); transform: skewX(-20deg); animation: destello 3.4s ease-in-out infinite; }
+  .cd-form span:nth-child(2)::after { animation-delay: .15s; }
+  .cd-form span:nth-child(3)::after { animation-delay: .3s; }
+  .cd-form span:nth-child(4)::after { animation-delay: .45s; }
+  .cd-form b { font-family: var(--titulos); font-size: 30px; font-weight: 800; line-height: 1; color: #fff; margin-bottom: 4px; font-variant-numeric: tabular-nums; letter-spacing: -.02em; text-shadow: 0 2px 8px rgba(124,45,18,.35); }
+  .cd-form .seg { animation: latido-seg 1s ease-in-out infinite; }
+  @keyframes latido-seg { 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 10px 26px rgba(var(--naranja-rgb), .6), 0 0 0 4px rgba(var(--naranja-rgb), .15); } }
+  @media (prefers-reduced-motion: reduce) { .cd-form span::after, .cd-form .seg { animation: none; } }
   .form-card .nota { font-size: 12px; margin-top: 0; }
   @media (max-width: 767px) {
     .head { display: none; }                 /* en el celular arriba queda solo la fecha y las horas */
@@ -429,7 +442,9 @@ fbq('track', 'PageView');
     .form-card form { gap: 7px; }
     .form-card input, .form-card select { padding: 10px 12px; font-size: 16px; }
     .form-card .btn { padding: 14px 18px; font-size: 15px; }
-    .cd-form b { font-size: 22px; }
+    .cd-form { gap: 6px; margin-bottom: 12px; }
+    .cd-form span { padding: 8px 2px 6px; font-size: 9px; }
+    .cd-form b { font-size: 25px; }
     .form-card .nota { font-size: 11.5px; }
   }
 </style>
@@ -659,6 +674,8 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <section class="form-sec" id="registro">
   <div class="wrap">
     <div class="form-card">
+      <p class="cd-titulo">La clase empieza en</p>
+      <div class="cd-form" aria-label="Falta para la clase"><span><b data-cd="d">00</b>Días</span><span><b data-cd="h">00</b>Horas</span><span><b data-cd="m">00</b>Min</span><span class="seg"><b data-cd="s">00</b>Seg</span></div>
       <h2>Registrate gratis</h2>
       <form id="form" novalidate>
         <div>
@@ -714,7 +731,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-naranja" id="submit">Reservá tu lugar gratis</button>
-        <div class="cd-form" aria-label="Falta para la clase"><span><b data-cd="d">00</b>D</span><span><b data-cd="h">00</b>H</span><span><b data-cd="m">00</b>M</span><span><b data-cd="s">00</b>S</span></div>
         <p class="nota">Sin costo y en vivo. El acceso te llega por el grupo de WhatsApp.</p>
         <p class="error" id="error">No pudimos registrarte. Probá de nuevo en unos segundos.</p>
       </form>
