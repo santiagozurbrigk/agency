@@ -1,59 +1,52 @@
-# Emails de nutrición · clase del 17/11 · 16 mails
+# Emails de nutrición · clase del 17/11 · versión final
 
-Los mails para los registrados: confirmación, 1 mail por día del miércoles 11/11 al lunes 16/11 (días 1 a 6) y la escalera de 9 mails del martes 17/11, el día de la clase.
+Los 16 mails para los registrados: confirmación, 1 mail por día del miércoles 11/11 al lunes 16/11 y la escalera de 9 mails del martes 17/11, el día de la clase (18 hs, Argentina).
 
-**Forma:** calcada de los mails de ejemplo que pasó Santi (`EMAILS_NUTRICION_MAKE_MONEY`): header y sub header que se leen como una sola frase, mails cortos, párrafos de una o dos líneas, listas cortas, un dato o regalo por día que empuja al grupo de WhatsApp, imágenes de prueba en el cuerpo y la firma corta. Reemplaza la estructura del prompt de Limitless (subject contraintuitivo de 50 caracteres, countdown fijo, 250-350 palabras).
-
-**Contenido:** el de siempre. Cada día sigue su objetivo de `calendario-nutricion-whatsapp.md`, engancha con lo que sale ese día en el grupo (`contenido-nutricion-dias-1-6.md`) y usa las creencias y ángulos de las llamadas de Fathom (`analisis-ventas-calificadas.md`).
+**Versión final de Santi (31/10).** Los textos de los mails están copiados tal cual del documento «Emails de nutrición · Clase 17/11 · v3» que cerró Santi. Solo se limpió el formato al pasarlo a Markdown (barras de escape, títulos vacíos, viñetas separadas y un punto suelto en el mail 6). Las notas de arriba y las tablas están al día con esa versión.
 
 ---
 
-## Antes de cargar
+## Datos de la versión final
 
-### Datos usados
+| Dato | Qué quedó |
+| --- | --- |
+| Números de Manu | +280M por mes hoy · $30M por mes con compra única (antes) · +3.500 suscriptores (mail 4) · la promesa para el que asiste: +$100M por mes (mail 0). |
+| Caso de Lucas | Agosto: 17M en 15 días con 22% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600 lucas abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Sin nombre ni detalles de su marca. |
+| Grupo de WhatsApp | https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ (es el mismo link del grupo de la clase del 24/10). |
+| Link para agendar | El de Google Calendar con el evento cargado (martes 17/11, 18 a 19:30 hs ARG). Va detrás del texto «AGENDA» en los mails 1 a 6. |
+| Link de la clase | Los mails 10 y 11 mandan al grupo; los mails 12 a 15 todavía tienen `[LINK CLASE]`. |
 
-| Dato | Qué se usa | Estado |
+### La pieza exclusiva de cada mail
+
+| Mail | Pieza | Dónde se entrega |
 | --- | --- | --- |
-| Firma | **Manu**. Voseo, cadena causal, «por ende», «literalmente», «tal cual», «y ya está», «al pedo». | De `CONTEXTO.md`. |
-| Clase | **Martes 17 de noviembre, 18 hs (Argentina)**, en vivo. | Confirmado (30/10). |
-| Números de Manu | **+280M** por mes hoy y **$30M** por mes con compra única (los fijó Santi en el mail 1). Siguen a definir `X suscriptores` y `X%` (margen hoy). En la confirmación y el día 7 todavía dice `$X`: es +280M. | Suscriptores y margen **a definir**. |
-| Caso de tercero | **Lucas**: 7 palos en 15 días, 7 marcas a pautar lo mismo, la landing copiada, «hace mucho que no tenemos un día bueno», 600 lucas abajo, «7 lucas de ganancia», «está lleno de pirañas», relanzamiento con 40% de margen y casi dos palos de ganancia. | **Permiso confirmado.** Falta confirmar el período de los «casi dos palos». |
-| 400 clientes que recompraron | Lucas, de otra marca suya. Se cuenta como «otro dato que me dio Lucas». | **A confirmar** el permiso. Sin permiso va sin nombre. |
-| Frases de otros clientes | Alan, Thiago Lopo y Santi Núñez van **sin nombre** («un cliente me dijo»). | — |
-| Regla de marcas | **Ningún mail nombra otra marca ni da detalles de ella** (producto, rubro, nombre). Se nombra al cliente y se cuenta su caso. Tampoco se nombran marcas de afuera: se dice «las marcas de consumibles más grandes de Estados Unidos». | Pedido de Santi (30/10). |
-| La Cuenta del CPA | 30.000 → 90.000 → 75.000 (ejemplo, no resultado). Regalo del día 5. | Falta el link. |
-| Una pieza exclusiva por día | Lo pidió Santi en el mail 1: «cada uno te deja una pieza exclusiva que NO vamos a ver en vivo». Día 1, el roadmap de suscripciones; día 2, el Simulador de Suscripción (bonus del 19/10); día 3, el video de Manu en el grupo sobre por qué bajar el CPA no es la solución; día 4, un agente de la biblioteca (propuesta: Retención, que no es de los 4 que se eligen en la clase); día 5, la Cuenta del CPA; día 6, el video de cómo se prepara la clase. | Roadmap, Simulador y Cuenta del CPA confirmados. Video del día 3 confirmado. **El agente del día 4, a confirmar.** |
-| Estilo de los días 1 a 6 | El de la versión de Santi del mail 1: «Holaa», párrafos conversados, «un cliente» para las frases sin nombre, listas simples y el bloque 📅 de cuenta regresiva con `[LINK AGENDAR]`. | — |
+| 0 · Confirmación | El flujo de retención completo de la marca de Manu | Respondiendo «SUSCRIPCIÓN» al mail |
+| 1 · Mié 11 | El roadmap de suscripciones + video de 10 minutos | Grupo, 13:00 |
+| 2 · Jue 12 | El simulador de suscripciones + video de cómo usarlo | Grupo, 13:00 |
+| 3 · Vie 13 | Video: por qué bajar el CPA no es la solución (y cómo yendo a pérdida en la primera venta podés tener +50% de margen) | Grupo, 13:00 |
+| 4 · Sáb 14 | Los flujos de retención de email y WhatsApp + video de cómo implementarlos y armar ofertas de suscripción | Grupo |
+| 5 · Dom 15 | La Calculadora de suscripciones | Link directo en el mail (artifact «Genesis OS · Simulador de suscripción») |
+| 6 · Lun 16 | Video de cómo se prepara la clase | Grupo, 13:00 |
 
-### Lo que cambia contra los ejemplos
+---
 
-- **«Masterclass» → «clase».** El ejemplo la usa en la confirmación; acá no va (tampoco webinar, programa, funnel ni lead).
-- **«Sin grabación» queda condicional.** Los ejemplos lo repiten en el día 6 y en toda la escalera. Acá no está confirmado si hay replay (en el 19/10 hubo), así que cada mail que lo usaría trae la frase entre corchetes `[SI NO HAY REPLAY: …]`. Si se confirma que no hay grabación, se dejan; si hay, se borran.
-- **El bonus solo para los que están en vivo queda a definir**, igual que en el ejemplo (`[BONUS EN VIVO — a definir]`). Si no hay bonus, cada mail que lo menciona trae la versión alternativa.
-- **Los referentes de afuera no se nombran.** El ejemplo nombra a Hormozi, Iman Gadzhi y otros; acá, por la regla de marcas, va «las marcas de consumibles más grandes de Estados Unidos».
-- **Una pieza exclusiva por día.** Como en los ejemplos, cada mail de los días 1 a 6 regala algo que va en el grupo. Los 3 sistemas que se eligen en la clase no se regalan antes.
-- **El miedo al ban no se usa.** Ninguno de los que pagaron habló de eso; la dependencia de Meta se cuenta como «renovar creativos todos los días».
+## Antes de programar
 
-### Links e imágenes
+Cosas que se ven en la versión final y conviene resolver antes de cargarla:
 
-| Marca | Qué es | Estado |
-| --- | --- | --- |
-| `[LINK GRUPO]` | Grupo de WhatsApp de registrados. Ahí van las piezas exclusivas de cada día. | Pendiente. |
-| `[LINK AGENDAR]` | Link para agendar la clase, en el bloque 📅 de los días 1 a 6. | Pendiente. |
-| `[LINK DE LA CUENTA DEL CPA]` | El regalo del día 5. | Pendiente. |
-| `[LINK CLASE]` | Link directo a la clase. Desde el mail de las 17:00 del día 7. | Pendiente. |
-| `[IMAGEN: …]` | Captura o foto que va en el cuerpo, como en los ejemplos. Las de Lucas, **sin que se vea el nombre, el logo ni el producto de su marca**. | Pendiente. |
-
-### Creencias y ángulos de Fathom, mail por mail
-
-| Mail | Creencias que rompe | Ángulos |
-| --- | --- | --- |
-| Día 1 | 9 · «la solución es más creativos» | A · nada te dura · D · «venís bien» |
-| Día 2 | 6 · «si no arranca, el producto es malo» · 1 · «esto es para Estados Unidos» | A · «hace mucho que no tenemos un día bueno» · H · fe en el producto |
-| Día 3 | 9 · «bajar el CPA» · 3 · «el suscriptor sale más caro» | B · 7 marcas y las copias |
-| Día 4 | 1 · Argentina · 4 · «la primera unidad barata» · 2 · «mi producto es un tratamiento» | C · 400 clientes que recompraron sin un mail |
-| Día 5 | 3 · cerrada con la Cuenta del CPA · 1 · «esto es para Estados Unidos» | A · el mes que no arranca en cero |
-| Día 6 | 11 · «está lleno de pirañas» · 10 · «necesito ser experto en Meta» | D y E · no es otra mentoría de testeo |
+1. **El mismo regalo dos veces:**
+   - El **flujo de retención** se regala en la confirmación (mail 0) y otra vez en el mail 4.
+   - El **simulador** se regala en el mail 2, y el link de la «Calculadora de suscripciones» del mail 5 lleva al mismo artifact («Genesis OS · Simulador de suscripción»).
+2. **Frase textual cambiada en el mail 4:** «-5% de ganancia. Sobreviviendo» va entre comillas como dicho por Lucas, pero en la llamada dijo «7 lucas de ganancia. Sobreviviendo.». Si el -5% es el dato real, conviene sacarle las comillas o contarlo sin atribuírselo textual.
+3. **El link del mail 5 es un link de Claude con clave para compartir** (`claude.ai/artifact/...?sk=...`). Confirmar que lo pueda abrir cualquier persona sin cuenta.
+4. **Mails 12 a 15 sin link:** tienen `[LINK CLASE]`. Los mails 10 y 11 mandan al grupo; si el link de la clase va solo por el grupo, cambiar estos cuatro igual.
+5. **Mail 14 sin terminar:** el sub header queda cortado («ya arrancó la explicacion de como podes») y el cuerpo tiene el corchete `[QUÉ SE ESTÁ MOSTRANDO…]`.
+6. **Mail 15:** sigue el corchete `[SI NO HAY REPLAY: …]`.
+7. **Mail 11:** el link del grupo tiene un `]` suelto al final.
+8. **Mail 6:** la primera viñeta quedó cortada («Otro curso de testear productos:»).
+9. **Errores de tipeo** (no se corrigieron, para dejar el texto como lo cerró Santi): «implentarlo», «retencion», «mas», «podes» (mail 0) · «numeros» (mail 1) · «Estába», «proyeccion», «como utilizarlo» (mail 2) · «válidas un producto», «dejáste», «como», «perdida», «podes» (mail 3) · «tenes», «retencion», «volves», «como podes» (mail 4) · «estas», «porque», «facil», «Completas», «ELECCION» (mail 5) · «replicas» (mail 6) · «envio» (mail 10).
+10. **El período de los «casi dos palos»** ya no aparece en ningún mail (el mail 3 quedó solo con el 40% de margen): no hace falta confirmarlo.
+11. **Mail 8** pide traer «tu Cuenta del CPA», pero el regalo del mail 5 ahora se llama «Calculadora de suscripciones». Igual en el mail 6.
 
 ---
 
@@ -61,457 +54,418 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 | # | Cuándo | Header | Sub header |
 | --- | --- | --- | --- |
-| 0 | Al registrarse | Todavía NO estás adentro ⚠️ | te falta un paso para la clase del martes 👇 |
+| 0 | Al registrarse | Todavía NO estás adentro ⚠️ | Te falta un paso para la clase del martes 👇 |
 | 1 | Mié 11 · 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Agentes IA, SOPs y mucho más |
-| 2 | Jue 12 · 08:30 | Te regalo mi Simulador de Suscripción 🎁 | + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo) |
+| 2 | Jue 12 · 08:30 | 600 lucas abajo en una noche 💀 | lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción) |
 | 3 | Vie 13 · 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | te explico por qué bajar el CPA no es la solución |
-| 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail (y te regalo mi agente de retención) 📈 |
-| 5 | Dom 15 · 09:00 | Cómo ganarle a toda tu competencia ✅ | sin bajar el CPA (y te regalo la cuenta para hacerlo) |
+| 4 | Sáb 14 · 08:30 | POV: facturaste 60M pero tenes -5% de margen 💀 | Pero abriste este mail (y te regalo los flujos de retencion que uso en mi marca) 📈 |
+| 5 | Dom 15 · 09:00 | Como ganarle a toda tu competencia ✅ | sin bajar el CPA |
 | 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
 | 7 | Mar 17 · 12:00 | 🚨 HOY es el día 🚨 | hoy te muestro TODO el modelo por dentro |
 | 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | traé tu cuenta (y el 🎁 es SOLO en vivo) |
-| 9 | Mar 17 · 16:00 | En 2 horas te muestro cómo hago $X por mes | el modelo, la cuenta, los sistemas… TODO |
-| 10 | Mar 17 · 17:00 | Falta 1 HORA ⏰ | agarrá tu Cuenta del CPA y algo para anotar |
+| 9 | Mar 17 · 16:00 | En 2 horas te muestro cómo hago +$280M por mes | el modelo, la cuenta, los sistemas… TODO |
+| 10 | Mar 17 · 17:00 | Falta 1 HORA ⏰ | agarrá algo para anotar |
 | 11 | Mar 17 · 17:45 | En 15 min abro la sala 🚨 | entrá temprano así no te quedás afuera |
 | 12 | Mar 17 · 17:55 | 🔴 EMPEZAMOS | entrá ahora 👇 |
 | 13 | Mar 17 · 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | recién empieza lo bueno |
-| 14 | Mar 17 · 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | ya arrancó la cuenta de cuánto podés pagar por cliente |
+| 14 | Mar 17 · 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | ya arrancó la explicacion de como podes |
 | 15 | Mar 17 · 18:20 | Última llamada 🚪 | lo más importante viene ahora |
 
 ---
 
-## Mail 0 · Confirmación · al registrarse
-
-*Base: la versión de Santi (31/10), con el hook nuevo: «todavía no estás adentro», para que entrar al grupo se sienta obligatorio.*
+## **Mail 0 · Confirmación · al registrarse**
 
 **Header:** Todavía NO estás adentro ⚠️
-**Sub header:** te falta un paso para la clase del martes 👇
 
-> Te registraste a la clase del **martes 17 de noviembre a las 18 hs (Argentina)**. Pero todavía no estás adentro.
->
+**Sub header:** Te falta un paso para la clase del martes 👇
+
 > Te falta un paso: **entrar al grupo de WhatsApp.**
->
-> 👉 https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
->
-> Ahí pasa todo: la data que voy soltando hasta el martes, las piezas exclusivas de cada día y el link para entrar a la clase.
->
-> En la clase te voy a mostrar cómo hago +$280M por mes con el modelo de suscripción, sin depender del CPA ni de renovar creativos todos los días.
->
-> Y una cosa: respondé este mail con la palabra **«SUSCRIPCION»**. Así te envío un documento explicando cómo mejorar tu retención de clientes.
->
-> Nos vemos adentro.
->
-> Manu
 
-*[CONFIRMAR: ese link es el mismo del grupo de la clase del 24/10 (`../repesca-24-10/nutricion-mails.md`). Si para el 17/11 hay un grupo nuevo, cambiarlo. Si el link de la clase va a pasar SOLO por el grupo, el hook puede ser más fuerte: «El link para entrar a la clase no llega por mail: lo paso solo por el grupo. Si no estás, no podés entrar». En ese caso hay que sacar [LINK CLASE] de los mails del día 7.]*
+> 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+> Ahí pasa todo: la data que voy soltando hasta el martes, las piezas exclusivas de cada día y el link para entrar a la clase.
+
+> En la clase te voy a mostrar cómo vos podes hacer +$100M por mes con el modelo de suscripción, sin depender del CPA ni de renovar creativos todos los días.
+
+> Y una cosa: respondé este mail con la palabra **“SUSCRIPCIÓN"**. Así te envío el flujo de retencion completo que utilizo en mi marca de mas de +280M/MES para que puedas implentarlo en tu propia marca. (Responde y te llega al instante)
+
+> Nos vemos adentro.
+
+> Manu
 
 ---
 
-## Mail 1 · Día 1 · Miércoles 11/11 · 08:30
-
-*Versión de Santi (30/10). Solo se corrigió «Te explic porque» → «Te explico por qué».*
+## **Mail 1 · Día 1 · Miércoles 11/11 · 08:30**
 
 **Header:** Te regalo mi roadmap de suscripciones +280M 👀
+
 **Sub header:** Agentes IA, SOPs y mucho más
 
-> Holaa, vi que te anotaste a la clase del martes, así que arranco por lo más importante.
->
-> Hasta el martes te voy a mandar un mail por día, y cada uno te deja una pieza exclusiva que NO vamos a ver en vivo.
->
-> Hoy quiero hablarte sobre lo que me dijo un cliente en una llamada:
->
-> **«Largaba una campaña, la dejaba 48 horas… y nunca la podía mantener.»**
->
-> Seguro te pasa algo parecido. Tenés un ecom que vende, pautás todos los días, tenés pedidos. Y aun así nada te dura más de unos días, y cuando te das cuenta tu margen es muy bajo.
->
-> Yo estuve ahí: $30M por mes con compra única, en breakeven. Y hacía lo que te dicen todos:
->
-> - Renovar creativos todos los días.
-> - Testear más ángulos y más productos.
-> - Pelear para bajar el CPA.
->
-> Y si pagaste una mentoría, seguro alguien te dijo «venís bien» mientras la cuenta no cerraba.
->
-> Pero el problema no está en el anuncio. **No tenés un problema de creativos: tenés un problema de modelo.**
->
-> Hoy le vendés a cada cliente una sola vez. Lo adquirís, te compra y se va. El mes que viene tenés que salir a pagar el CPA de nuevo, con el mismo costo o mayor. Por ende, cada venta te cuesta lo mismo que la anterior y cada mes arrancás de cero.
->
-> **Buscás la compra, no el cliente.** Y por eso nada te dura: lo único que te sostiene es el anuncio de esta semana.
->
-> Te explico por qué te pasa esto en el video de 10 minutos que voy a mandar hoy a las 13:00 por el grupo de WhatsApp. Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Faltan 6 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Mañana te cuento cómo estaba yo, y cómo estaba Lucas, un cliente, antes de cambiar el modelo.
->
-> Manu
+Holaa, vi que te anotaste a la clase del martes, así que arranco por lo más importante.
 
-*[PARA REVISAR: el header regala el roadmap, pero el cuerpo no lo nombra. Si el roadmap va en el grupo, sumar antes del link: «Y como te prometí, el roadmap de suscripciones te lo dejo en el grupo, junto con el video».]*
+Hasta el martes te voy a mandar un mail por día, y cada uno te deja una pieza exclusiva que NO vamos a ver en vivo.
+
+Hoy quiero hablarte sobre lo que me dijo un cliente en una llamada:
+
+**«Largaba una campaña, la dejaba 48 horas… y nunca la podía mantener.»**
+
+Seguro te pasa algo parecido. Tenés un ecom que vende, pautás todos los días, tenés pedidos. Y aun así nada te dura más de unos días, y cuando te das cuenta tu margen es muy bajo.
+
+Yo estuve ahí: $30M por mes con compra única, en breakeven. Y hacía lo que te dicen todos:
+
+* Renovar creativos todos los días.
+* Testear más ángulos y más productos.
+* Pelear para bajar el CPA.
+
+Y si pagaste una mentoría, seguro alguien te dijo «venís bien» mientras los numeros no cerraban.
+
+Pero el problema no está en el anuncio. **No tenés un problema de creativos: tenés un problema de modelo.**
+
+Hoy le vendés a cada cliente una sola vez. Lo adquirís, te compra y se va. El mes que viene tenés que salir a pagar el CPA de nuevo, con el mismo costo o mayor. Por ende, cada venta te cuesta lo mismo que la anterior y cada mes arrancás de cero.
+
+**Buscás la compra, no el cliente.** Y por eso nada te dura: lo único que te sostiene es el anuncio de esta semana.
+
+Te explico por qué te pasa esto en el video de 10 minutos que voy a mandar hoy a las 13:00 por el grupo de WhatsApp (Tambien voy a enviar el roadmap por ahi)
+
+Si no estás, sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+📅 **Faltan 6 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
+
+Mañana te cuento cómo estaba Lucas, un cliente, antes de cambiar el modelo.
+
+Manu
 
 ---
 
-## Mail 2 · Día 2 · Jueves 12/11 · 08:30
+## **Mail 2 · Día 2 · Jueves 12/11 · 08:30**
 
-**Header:** Te regalo mi Simulador de Suscripción 🎁
-**Sub header:** + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo)
+**Header:** 600 lucas abajo en una noche 💀
 
-> Holaa, ayer te prometí contarte cómo estaba yo y cómo estaba Lucas antes de cambiar el modelo. Y hoy, además, te dejo la pieza exclusiva del día: **mi Simulador de Suscripción.**
->
-> Primero, lo que pasó.
->
-> Yo: **$30M por mes con compra única.** Cada venta me dejaba casi lo mismo que me costaba, y tenía días buenos y días malos sin saber por qué.
->
-> Lucas, en tres momentos:
->
-> **1) Agosto venía bárbaro.** La primera quincena hizo **7 palos en 15 días.**
->
-> **2) La tercera semana se dio vuelta todo.** Salieron 7 marcas a pautar un producto casi igual al suyo, le subió el CPA y se fue a pérdida. Me dijo, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iba 600 lucas abajo y apagó todo.
->
-> **3) Lo que hacía para salir: lo mismo que vos.** Renovar creativos de los ángulos que ya le habían funcionado y esperar que el próximo pegue.
->
-> Ninguno de los dos tenía un mal producto. **Estábamos comprando cada venta de nuevo.** Igual que vos.
->
-> Y la pregunta que me hacen todos es: «¿y cuánto cambiaría mi marca si pasara a suscripción?».
->
-> Para eso es el simulador. **Cargás los números de tu marca y ves cuánto ganarías con suscripción en el mes 12**, contra lo que ganás hoy con compra única:
->
-> - Tres escenarios, según cuántas veces te vuelve a comprar cada cliente.
-> - Los impuestos adentro, para que el número sea real.
-> - La caja mes a mes, para ver cuándo empieza a entrar la recurrencia.
->
-> Es el mismo que uso yo. Y lo primero que vas a ver es si hoy estás donde estaba Lucas.
->
-> Te lo dejo en el grupo, junto con el video de las 13:00 donde te muestro mi Excel de la época de compra única. Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Faltan 5 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Mañana te muestro por qué bajar el CPA es justo lo que te mantiene en el mismo lugar.
->
-> Manu
+**Sub header:** lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción)
 
-*[Regalo del día: el Simulador de Suscripción, el bonus 2 del lanzamiento del 19/10 (pedido de Santi, 31/10). Los tres puntos salen de cómo se describió en la landing del 19/10: escenarios de LTV, régimen fiscal con IVA y caja por venta con proyección. El simulador también calcula cuánto podés pagar por cliente, que es lo que hace la Cuenta del CPA del día 5: si se quiere evitar la repetición, el día 5 puede regalar otra cosa.]*
+Holaa, ayer te prometí contarte cómo estaba Lucas antes de cambiar el modelo. Hoy te lo desarmo entero, porque seguro estás en alguna de estas partes.
 
----
+Lucas, en tres momentos:
 
-## Mail 3 · Día 3 · Viernes 13/11 · 08:30
+**1) Agosto venía bien.** La primera quincena hizo **17M en 15 días con 22% de margen.**
+
+**2) La tercera semana se dio vuelta todo.** Salieron 4 marcas a competir un producto casi igual al suyo, le subió el CPA y se fue a pérdida. Cuando hablamos me dijo, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iba 600 lucas abajo y apagó todo.
+
+**3) Lo que hacía para salir: lo mismo que vos.** Renovar creativos de los ángulos que ya le habían funcionado y esperar que el próximo pegue.
+
+Y acá está la trampa en la que cae casi todo el mundo: **pensar que si no arranca, el producto es malo.**
+
+No tenía un problema de producto. **Estába comprando cada venta de nuevo.** Igual que vos.
+
+La pieza exclusiva de hoy es **mi simulador de suscripciones**, el que uso para ver la proyeccion de mi marca si aplico el modelo de suscripciones
+
+Te lo dejo en el grupo, junto con el video de las 13:00 donde te muestro como utilizarlo.
+
+Si no estás, sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+📅 **Faltan 5 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
+
+Mañana te muestro por qué bajar el CPA es justo lo que te mantiene en el mismo lugar.
+
+Manu
+
+## **Mail 3 · Día 3 · Viernes 13/11 · 08:30**
 
 **Header:** 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡
+
 **Sub header:** te explico por qué bajar el CPA no es la solución
 
-> Holaa. Si te reíste… o te dolió un poco, te entiendo. Yo pensaba exactamente igual.
->
-> La cadena es siempre la misma. Largás, escalás, te salen competidores, te suben los CPM, por ende te sube el CPA. **Saliste con 10 dólares y ahora tenés 20.** Y ya está: dejás de ser rentable.
->
-> Y encima te copian. Lucas me contó: **«nos copiaron literalmente toda la landing… los mismos anuncios».** A otro cliente le bajaban los videos y los subían: él tenía 10 anuncios y el que lo copió tenía 30.
->
-> Mirá la diferencia:
->
-> **Peleando por el CPA más bajo:**
->
-> - Dependés de que no salga otro competidor. Siempre sale.
-> - Te copian la landing y el anuncio en dos días.
-> - Para escalar necesitás más creativos, más testeo y más plata quemada.
->
-> **Pudiendo pagar más por cada cliente:**
->
-> - El CPA lo pagás una sola vez por cliente, no en cada venta.
-> - El que ya se suscribió es cliente tuyo: no le compra al que te copió.
-> - Escalás pagando más que tu competencia, y te sigue quedando plata.
->
-> Lucas no salió con un anuncio nuevo. Cambió el modelo, y **el día que relanzó pasó a tener 40% de margen.** Casi dos palos de ganancia.
->
-> «Sí, pero el suscriptor me va a salir mucho más caro.» Te puede costar hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, estás haciendo la cuenta de una sola compra.
->
-> La pieza exclusiva de hoy es un video: **hoy a las 13:00 te mando por el grupo por qué bajar el CPA no es la solución**, con la cadena completa dibujada en la pizarra. Ese video no lo vamos a ver en la clase.
->
-> Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Faltan 4 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Mañana te muestro de dónde sale la plata para pagar más por cliente. Spoiler: ya la tenés.
->
-> Manu
+La cadena es siempre la misma. válidas un producto, escalás, te salen competidores, te suben los CPM, por ende te sube el CPA. **Saliste con 10 dólares de CPA y ahora tenés 20.** Y ya está: dejáste de ser rentable.
 
-*[Header y sub header de Santi (31/10). La pieza del día es solo el video de Manu del grupo (13:00). CONFIRMAR con Manu el período de los «casi dos palos» de Lucas: si no fue el día del relanzamiento, cambiar «el día que relanzó».]*
+Mirá la diferencia:
 
----
+**Peleando por el CPA más bajo:**
 
-## Mail 4 · Día 4 · Sábado 14/11 · 08:30
+* Dependés de que no salga otro competidor. Siempre **APARECEN**.
+* Te copian la landing y el anuncio en dos días.
+* Para escalar necesitás más creativos, más testeo y más plata quemada.
 
-**Header:** POV: facturaste bien y te quedaron 7 lucas por pedido 💀
-**Sub header:** POV: pero abriste este mail (y te regalo mi agente de retención) 📈
+**Pudiendo pagar más por cada cliente:**
 
-> Holaa. Da bronca, ¿no? Laburar todo el mes, facturar, y abrir el Excel:
->
-> **«7 lucas de ganancia. Sobreviviendo.»**
->
-> Eso me dijo Lucas mirando su mes.
->
-> Lo que hace todo el mundo: subir el ticket, armar un pack por 3, sacar cuotas. Sirve un poco. Pero **cada venta sigue pagando su propio CPA.**
->
-> Y acá está lo que casi nadie ve:
->
-> - La primera venta de cada cliente la pagás.
-> - La segunda, la tercera y la cuarta entran con el margen entero.
-> - Ese margen ya existe en tu base. Solo que hoy, cuando tu cliente vuelve a necesitar el producto, se lo compra a otro.
->
-> En la misma llamada, Lucas me dio otro dato: **«así tengo 400 clientes que recompraron ya».** Sin un mail. Sin un WhatsApp. Plata sentada que nadie estaba cobrando.
->
-> Yo, con compra única, a $30M por mes, dejaba casi lo mismo que me costaba cada venta. **Hoy facturo +280M por mes, con X% de margen y X suscriptores.**
->
-> ¿Y las dudas de siempre?
->
-> - «En Argentina no se suscribe nadie.» Tengo X suscriptores. Acá, en pesos.
-> - «Se suscriben por la primera unidad barata y se van.» Por eso la suscripción no se arma regalando la primera unidad.
-> - «Mi producto es un tratamiento.» Al que le resuelve el problema no se queda tres meses: se queda un año.
->
-> La pieza exclusiva de hoy: **mi agente de retención**, el que uso para que el cliente que ya me compró no se vaya a la competencia. Es para empezar a cobrar esa plata sentada en tu base.
->
-> Te lo dejo en el grupo, junto con el video de las 13:00 donde te muestro mi tablero de suscriptores por dentro. Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> ¿Querés saber si tu producto entra en suscripción? Respondé este mail con qué vendés y cada cuánto se termina. Te contesto yo.
->
-> 📅 **Faltan 3 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Mañana te regalo la cuenta con la que vas a ver tu propio techo de pauta.
->
-> Manu
+* El CPA lo pagás una sola vez por cliente, no en cada venta.
+* El que ya se suscribió es cliente tuyo: no le compra al que te copió.
+* Escalás pagando más que tu competencia, y te sigue quedando plata.
 
-*[CONFIRMAR el regalo del día: propuesta, agente de Retención de la biblioteca. CONFIRMAR el permiso de Lucas para los 400 clientes (es de otra marca suya); sin permiso: «otro cliente me dijo: "así tengo 400 clientes que recompraron ya"».]*
+Uno de mis clientes (lucas)  no salió con un anuncio nuevo. Cambió el modelo, y **el día que relanzó pasó a tener 40% de margen.**
 
----
+«Sí, pero el suscriptor me va a salir mucho más caro.» Te puede costar hasta un 20% más que una venta normal. Y aun así conviene, por mucho. Si no te cierra, estás haciendo la cuenta de una sola compra.
 
-## Mail 5 · Día 5 · Domingo 15/11 · 09:00
+La pieza exclusiva de hoy es un video: **hoy a las 13:00 te mando por el grupo por qué bajar el CPA no es la solución** y como incluso yendo a perdida en la primer venta podes tener +50% de margen.
 
-**Header:** Cómo ganarle a toda tu competencia ✅
-**Sub header:** sin bajar el CPA (y te regalo la cuenta para hacerlo)
+Si no estás, sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
-> Holaa. Falta muy poco para la clase.
->
-> Y hoy te quiero mostrar cómo ganarle a toda tu competencia. Spoiler: no es con mejores creativos ni bajando el CPA.
->
-> Toda la semana viste por qué: nada te dura, Lucas con 7 marcas pautando lo mismo que él, el CPA que sube y el margen que no queda. Si te sumaste recién, con este mail quedás al día.
->
-> Tu competencia juega a pagar lo menos posible por cada cliente. Y en ese juego gana el que está dispuesto a perder más.
->
-> Yo juego a otra cosa: **a poder pagar más que ellos.** Mirá la cuenta, con un margen de 30.000 por pedido:
->
-> - Tu competencia, con compra única, puede pagar hasta **30.000** por cliente. Breakeven en la primera venta.
-> - Vos, si ese cliente te compra 3 veces, podés pagar hasta **90.000.**
-> - Operando en 75.000, pagás **2,5 veces más** por el mismo cliente y te siguen quedando 15.000 vivos.
->
-> ¿Quién se queda con el cliente en la subasta? El que puede pagar 75 contra el que puede pagar 30. **Y listo: ya no tenés competencia.**
->
-> Y hay dos cosas que tu competencia no te puede copiar:
->
-> - La landing te la copian en dos días. **Tu base de suscriptores, no.**
-> - Con una base que te vuelve a comprar, **el mes no arranca en cero.** Un mes malo de anuncios deja de ser un mes malo de facturación.
->
-> Es lo que hacen las marcas de consumibles más grandes de Estados Unidos. Acá casi nadie. A eso le digo **Método B.A.S.E.**
->
-> La pieza exclusiva de hoy es **la Cuenta del CPA**, la misma que uso yo. Ponés tu margen y te dice cuánto podés pagar hoy por cliente, y cuánto podrías pagar con suscripción:
->
-> 👉 [LINK DE LA CUENTA DEL CPA]
->
-> Hacela antes del martes y, cuando tengas tu número, respondé este mail con él.
->
-> Y el martes te muestro cómo llegar a ese número:
->
-> - Cómo hago +280M por mes con el modelo de suscripción.
-> - Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
-> - Y te regalo 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para que los copies y los pegues en tu marca.
->
-> La cuenta en la pizarra, paso a paso, te la explico en el video de las 12:00 por el grupo. Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Faltan 2 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Mañana te paso lo que tenés que tener listo para la clase.
->
-> Manu
+📅 **Faltan 4 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
 
-*[Header de Santi (31/10). El sub header que venía («y en 48 horas te muestro cómo llegar a ese número…») se cambió porque «ese número» no tenía a qué referirse con el header nuevo; la idea quedó en el cuerpo: «Y el martes te muestro cómo llegar a ese número».]*
+Mañana te muestro de dónde sale la plata para pagar más por cliente. Spoiler: ya la tenés.
+
+Manu
+
+## **Mail 4 · Día 4 · Sábado 14/11 · 08:30**
+
+**Header:** POV: facturaste 60M pero tenes -5% de margen 💀
+
+**Sub header:** Pero abriste este mail (y te regalo los flujos de retencion que uso en mi marca) 📈
+
+**“-5% de ganancia. Sobreviviendo”**
+
+Eso me dijo Lucas (mi cliente)
+
+Lo que hace todo el mundo: subir el ticket, armar un pack por 3, sacar cuotas. Sirve un poco. Pero **cada venta sigue pagando su propio CPA.**
+
+Y acá está lo que casi nadie ve sobre el modelo de suscripciones:
+
+* La primera venta de cada cliente la pagás.
+* La segunda, la tercera y la cuarta entran con el margen entero (Sin pagar CPA)
+* Ese margen ya existe en tu base. Solo que hoy, cuando tu cliente vuelve a necesitar el producto, volves a pagar ese CPA.
+
+¿Y las dudas de siempre?
+
+* “En Argentina no se suscribe nadie”  Tengo +3500 suscriptores.
+* “Se suscriben por la primera unidad barata y se van” Por eso la suscripción no se arma regalando la primera unidad.
+
+La pieza exclusiva de hoy: **Los flujos de retencion de email y whatsapp**, que utilizo en mis propias marcas para que el cliente que ya me compró no se vaya a la competencia. Es para empezar a cobrar esa plata sentada en tu base.
+
+Te lo dejo en el grupo, junto con el video explicando como podes implementarlos y como armar buenas ofertas para suscripciones
+
+sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+¿Querés saber si tu producto entra en suscripción? Respondé este mail con: qué vendés y cada cuánto se termina. Te contesto yo.
+
+📅 **Faltan 3 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
+
+Mañana te regalo la cuenta con la que vas a ver cuanto podes pagar para adquirir cada cliente.
+
+Manu
+
+## **Mail 5 · Día 5 · Domingo 15/11 · 09:00**
+
+**Header:** Como ganarle a toda tu competencia ✅
+
+**Sub header:** sin bajar el CPA
+
+Holaa. Falta muy poco para la clase.
+
+Y hoy te quiero mostrar cómo ganarle a toda tu competencia. Spoiler: no es con mejores creativos ni bajando el CPA.
+
+Toda la semana viste por qué estas renovando anuncios cada 1 semana, porque estas peleando el CPA de la manera incorrecta, y porque cada vez te queda menos margen de ganancia. Si te sumaste recién, con este mail quedás al día.
+
+Tu competencia juega a pagar lo menos posible por cada cliente. Y en ese juego gana el que está dispuesto a perder más.
+
+Yo juego a otra cosa: **a poder pagar más que ellos.** Mirá la cuenta, con un margen de 30.000 por pedido:
+
+* Tu competencia, con compra única, puede pagar hasta **30.000** por cliente. Breakeven en la primera venta.
+* Vos, si ese cliente te compra 3 veces, podés pagar hasta **90.000.**
+* Operando en 75.000, pagás **2,5 veces más** por el mismo cliente y te siguen quedando 15.000 de margen.
+
+¿Quién se queda con el cliente? El que puede pagar 75 o el que puede pagar 30. **La respuesta es facil.**
+
+Y hay dos cosas que tu competencia no te puede copiar:
+
+* La landing te la copian en dos días. **Tu base de suscriptores, no.**
+* Con una base que te vuelve a comprar, **el mes no arranca en cero.** Un mes malo de anuncios deja de ser un mes malo de facturación.
+
+Es lo que hacen las marcas de consumibles más grandes de Estados Unidos. Acá casi nadie. A eso le digo **Método B.A.S.E.**
+
+La pieza exclusiva de hoy es **la Calculadora de suscripciones**, la misma que uso yo. Completas tus datos y te dice cuánto podés pagar hoy por cliente, y cuánto podrías pagar con suscripción:
+
+👉 [Genesis OS \| Simulador de suscripción](https://claude.ai/artifact/Da322JsJroGQQVhEQMDPHm?sk=M53fse_xVzsmn2nVJZzDCQ)
+
+Hacela antes del martes y, cuando tengas tu número, respondé este mail con él.
+
+Y el martes te muestro cómo llegar a ese número:
+
+* Cómo hago +280M por mes con el modelo de suscripción.
+* Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
+* Y te regalo 3 agentes de IA a ELECCION (podes elegir entre mas de +30) para que los copies y los pegues en tu marca.
+
+sumate acá 👉[GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+📅 **Faltan 2 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
+
+Mañana te paso lo que tenés que tener listo para la clase.
+
+Manu
 
 ---
 
-## Mail 6 · Día 6 · Lunes 16/11 · 08:30
+## **Mail 6 · Día 6 · Lunes 16/11 · 08:30**
 
 **Header:** Mañana te muestro TODO 👀
+
 **Sub header:** y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo
 
-> Holaa. Mañana es la clase.
->
-> Te voy a mostrar, en vivo, cómo hago +280M por mes con el modelo de suscripción. Con mis números en pantalla.
->
-> Y te digo qué NO vas a ver, porque sé que ya te pasó:
->
-> - Otro curso de testear productos: «réplica, audio por arriba, y si no arranca, no arranca».
-> - Alguien que te mira de lejos y te dice «venís bien».
-> - Trucos de Meta. No hace falta que seas experto: lo que mueve la aguja es el modelo.
->
-> Sé que hay desconfianza. Lucas me lo dijo en la primera llamada: **«está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis números, y la cuenta la hacés con los tuyos.**
->
-> Lo que te llevás:
->
-> - Cómo hago +280M por mes con el modelo de suscripción.
-> - Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
-> - 3 de mis más de 30 sistemas de backend, operaciones e IA, a elección, para copiar y pegar en tu marca.
->
-> Y a los que estén EN VIVO les tengo algo que no voy a dar en ningún otro lado:
->
-> 🎁 [BONUS EN VIVO — a definir]
->
-> Para aprovecharla, tené listos tu Cuenta del CPA, tu número de recompra y una hora sin interrupciones, en la compu.
->
-> La pieza exclusiva de hoy es el video de las 13:00 por el grupo, donde te muestro cómo estoy preparando la clase. El link para entrar mañana también pasa por ahí. Si no estás,
->
-> sumate acá 👉 [LINK GRUPO]
->
-> 📅 **Falta 1 día: mañana, Martes 17 de noviembre, a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [LINK AGENDAR]
->
-> Si vas a estar, respondé este mail con **ADENTRO.** Así sé con quién cuento.
->
-> Manu
+Holaa. Mañana es la clase.
 
-*[SI NO HAY BONUS EN VIVO: sub header «y lo que tenés que tener listo» y se borran las dos líneas del bonus. SI NO HAY REPLAY: sumar «Es en vivo y no va a haber grabación.» después del bonus.]*
+Te voy a mostrar, en vivo, cómo hago +280M por mes con el modelo de suscripción.
 
----
+Y te digo qué NO vas a ver, porque sé que ya te pasó:
 
-## Día 7 · Martes 17/11 · La escalera de 9 mails
+* Otro curso de testear productos:
+* Alguien que te mira de lejos y te dice “venís bien”
+* Trucos de Meta. No hace falta que seas experto: lo que mueve la aguja es el modelo.
 
-Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la clase aparece desde las 17:00.
+Sé que hay desconfianza. Lucas me lo dijo en la primera llamada: **«está lleno de pirañas».** Por eso mañana no te pido que me creas: **te muestro mis sistemas, y los replicas en tu marca**
 
-### Mail 7 · 12:00
+Lo que te llevás:
+
+* Cómo hago +280M por mes con el modelo de suscripción.
+* Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
+* 3 de mis más de 30 agentes de IA, a elección, para copiar y pegar en tu marca
+
+Y a los que estén EN VIVO les tengo algo que no voy a dar en ningún otro lado 🎁
+
+Para aprovecharla, tené listos tu Cuenta del CPA, tu número de recompra y una hora sin interrupciones, en la compu.
+
+La pieza exclusiva de hoy es el video de las 13:00 por el grupo, donde te muestro cómo estoy preparando la clase. El link para entrar mañana también pasa por ahí.
+
+Si no estás sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+📅 **Falta 1 día: mañana, Martes 17 de noviembre, a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
+
+Manu
+
+## **Día 7 · Martes 17/11 · La escalera de 9 mails**
+
+### **Mail 7 · 12:00**
 
 **Header:** 🚨 HOY es el día 🚨
+
 **Sub header:** hoy te muestro TODO el modelo por dentro
 
-> Hoy es la clase.
->
-> Hoy te muestro cómo hago $X por mes con el modelo de suscripción, y cómo podés pagar 2,5 veces más por cada cliente que tu competencia.
->
-> Es a las 18 hs (Argentina). En vivo. `[SI NO HAY REPLAY: Sin grabación.]`
->
-> Dejate esa hora libre. Puede ser el día que te cambia la marca.
->
-> Nos vemos. Manu
+Hoy es la clase.
 
-### Mail 8 · 15:00
+Hoy te muestro cómo hago +$280M por mes con el modelo de suscripción, y cómo podés pagar 2,5 veces más por cada cliente que tu competencia.
+
+Es a las 18 hs (Argentina). En vivo.
+
+Dejate esa hora libre. Puede ser el día que te cambia la marca.
+
+Nos vemos.
+
+Manu
+
+### **Mail 8 · 15:00**
 
 **Header:** Faltan 3 horas ⏳
+
 **Sub header:** traé tu cuenta (y el 🎁 es SOLO en vivo)
 
-> Faltan pocas horas.
->
-> Acordate: el que está en vivo se lleva el bonus. El que no… no.
->
-> Tené a mano tu Cuenta del CPA y tu número de recompra. Y avisá que a las 18 estás ocupado.
->
-> Nos vemos hoy. Manu
+Faltan pocas horas.
 
-> `[SI NO HAY BONUS EN VIVO: sub header «traé tu cuenta» y se borra la segunda línea.]`
+Acordate: el que está en vivo se lleva el bonus. El que no… no.
 
-### Mail 9 · 16:00
+Tené a mano tu Cuenta del CPA y tu número de recompra. Y avisá que a las 18 estás ocupado.
 
-**Header:** En 2 horas te muestro cómo hago $X por mes
+Nos vemos hoy.
+
+Manu
+
+### **Mail 9 · 16:00**
+
+**Header:** En 2 horas te muestro cómo hago +$280M por mes
+
 **Sub header:** el modelo, la cuenta, los sistemas… TODO
 
-> En 2 horas arrancamos.
->
-> Te muestro el modelo, la cuenta con mis números y cómo ponerlo al lado de la compra única sin frenar lo que vende.
->
-> Y te llevás 3 de mis más de 30 sistemas, a elección. `[SI NO HAY REPLAY: No hay grabación. O estás, o te lo perdés.]`
->
-> Dejá todo listo. Manu
+En 2 horas arrancamos.
 
-### Mail 10 · 17:00
+Te muestro el modelo, la cuenta con mis números y cómo ponerlo al lado de la compra única sin frenar lo que vende.
+
+Y te llevás 3 de mis más de 30 sistemas, a elección.
+
+Dejá todo listo.
+
+Manu
+
+### **Mail 10 · 17:00**
 
 **Header:** Falta 1 HORA ⏰
-**Sub header:** agarrá tu Cuenta del CPA y algo para anotar
 
-> En 1 hora empezamos.
->
-> Buscá un lugar tranquilo, la compu (no el celu) y algo para anotar: va a haber MUCHA cuenta.
->
-> Este es el link para entrar 👉 [LINK CLASE]
->
-> Te espero. Manu
+**Sub header:** agarrá algo para anotar
 
-### Mail 11 · 17:45
+En 1 hora empezamos.
+
+Buscá un lugar tranquilo, la compu (no el celu) y algo para anotar: va a haber MUCHA DATA.
+
+El link lo envio por el grupo 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
+
+Te espero. Manu
+
+### **Mail 11 · 17:45**
 
 **Header:** En 15 min abro la sala 🚨
+
 **Sub header:** entrá temprano así no te quedás afuera
 
-> Ya casi.
->
-> En 15 minutos abro.
->
-> Entrá temprano 👉 [LINK CLASE]
->
-> Manu
+Ya casi.
 
-### Mail 12 · 17:55
+En 15 minutos abro.
+
+Entrá temprano 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)]
+
+Manu
+
+### **Mail 12 · 17:55**
 
 **Header:** 🔴 EMPEZAMOS
+
 **Sub header:** entrá ahora 👇
 
-> Estamos por arrancar.
->
-> Entrá ahora 👉 [LINK CLASE]
->
-> Nos vemos adentro. Manu
+Estamos por arrancar.
 
-### Mail 13 · 18:00
+Entrá ahora 👉 [LINK CLASE]
+
+Nos vemos adentro.
+
+Manu
+
+### **Mail 13 · 18:00**
 
 **Header:** 🔴 Estamos EN VIVO (todavía llegás)
+
 **Sub header:** recién empieza lo bueno
 
-> Ya arrancamos.
->
-> Pero tranquilo, todavía llegás.
->
-> Entrá ahora 👉 [LINK CLASE]
->
-> Manu
+Ya arrancamos.
 
-### Mail 14 · 18:10
+Pero tranquilo, todavía llegás.
+
+Entrá ahora 👉 [LINK CLASE]
+
+Manu
+
+### **Mail 14 · 18:10**
 
 **Header:** ⚠️ Te lo estás perdiendo ⚠️
-**Sub header:** ya arrancó la cuenta de cuánto podés pagar por cliente
 
-> Estamos en vivo y ya arranqué con `[QUÉ SE ESTÁ MOSTRANDO: por ejemplo, la cuenta de cuánto podés pagar por cliente]`.
->
-> En un rato doy el bonus, y es SOLO para los que están adentro.
->
-> Entrá 👉 [LINK CLASE]
->
-> Manu
+**Sub header:** ya arrancó la explicacion de como podes
 
-> `[CONFIRMAR qué se muestra a las 18:10 según el guion real de la clase, y ajustar también el sub header. SI NO HAY BONUS EN VIVO: se borra la segunda línea.]`
+Estamos en vivo y ya arranqué con [QUÉ SE ESTÁ MOSTRANDO: por ejemplo, la cuenta de cuánto podés pagar por cliente].
 
-### Mail 15 · 18:20
+En un rato doy el bonus, y es SOLO para los que están adentro.
+
+Entrá 👉 [LINK CLASE]
+
+Manu
+
+*[CONFIRMAR qué se muestra a las 18:10 según el guion real de la clase, y ajustar también el sub header. SI NO HAY BONUS EN VIVO: se borra la segunda línea.]*
+
+### **Mail 15 · 18:20**
 
 **Header:** Última llamada 🚪
+
 **Sub header:** lo más importante viene ahora
 
-> Es tu última chance de ver esto en vivo.
->
-> Lo más importante de la clase viene ahora. `[SI NO HAY REPLAY: No hay grabación, no se repite.]`
->
-> Si entrás ahora, llegás a la parte fuerte (y al bonus) 👉 [LINK CLASE]
->
-> Nos vemos. Manu
+Es tu última chance de ver esto en vivo.
 
-> El ejemplo dice «Estamos cerrando» a los 20 minutos porque su clase es corta. La nuestra dura más (el 19/10 fueron ~80 min), así que a las 18:20 recién arranca lo fuerte. `[SI NO HAY BONUS: sacar «(y al bonus)».]`
+Lo más importante de la clase viene ahora. [SI NO HAY REPLAY: No hay grabación, no se repite.]
+
+Si entrás ahora, llegás a la parte fuerte (y al bonus) 👉 [LINK CLASE]
+
+Nos vemos. Manu
 
 ---
 
@@ -520,34 +474,22 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 | # | Fecha | Hora (ARG) | Header | Links |
 | --- | --- | --- | --- | --- |
 | 0 | Al registrarse | Automático | Todavía NO estás adentro ⚠️ | Grupo |
-| 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agendar |
-| 2 | Jue 12/11 | 08:30 | Te regalo mi Simulador de Suscripción 🎁 | Grupo · Agendar |
-| 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agendar |
-| 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo · Agendar |
-| 5 | Dom 15/11 | 09:00 | Cómo ganarle a toda tu competencia ✅ | Cuenta del CPA · Grupo · Agendar |
-| 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | Grupo · Agendar |
+| 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agenda |
+| 2 | Jue 12/11 | 08:30 | 600 lucas abajo en una noche 💀 | Grupo · Agenda |
+| 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agenda |
+| 4 | Sáb 14/11 | 08:30 | POV: facturaste 60M pero tenes -5% de margen 💀 | Grupo · Agenda |
+| 5 | Dom 15/11 | 09:00 | Como ganarle a toda tu competencia ✅ | Calculadora · Grupo · Agenda |
+| 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | Grupo · Agenda |
 | 7 | Mar 17/11 | 12:00 | 🚨 HOY es el día 🚨 | — |
 | 8 | Mar 17/11 | 15:00 | Faltan 3 horas ⏳ | — |
-| 9 | Mar 17/11 | 16:00 | En 2 horas te muestro cómo hago $X por mes | — |
-| 10 | Mar 17/11 | 17:00 | Falta 1 HORA ⏰ | Clase |
-| 11 | Mar 17/11 | 17:45 | En 15 min abro la sala 🚨 | Clase |
-| 12 | Mar 17/11 | 17:55 | 🔴 EMPEZAMOS | Clase |
-| 13 | Mar 17/11 | 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | Clase |
-| 14 | Mar 17/11 | 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | Clase |
-| 15 | Mar 17/11 | 18:20 | Última llamada 🚪 | Clase |
+| 9 | Mar 17/11 | 16:00 | En 2 horas te muestro cómo hago +$280M por mes | — |
+| 10 | Mar 17/11 | 17:00 | Falta 1 HORA ⏰ | Grupo |
+| 11 | Mar 17/11 | 17:45 | En 15 min abro la sala 🚨 | Grupo |
+| 12 | Mar 17/11 | 17:55 | 🔴 EMPEZAMOS | `[LINK CLASE]` |
+| 13 | Mar 17/11 | 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | `[LINK CLASE]` |
+| 14 | Mar 17/11 | 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | `[LINK CLASE]` |
+| 15 | Mar 17/11 | 18:20 | Última llamada 🚪 | `[LINK CLASE]` |
 
-**Los mails de los días 1 a 6 salen antes que el contenido del grupo** (08:30, y 09:00 el domingo), para que el hook al video de las 13 (12 el domingo) llegue a tiempo.
+**Los mails de los días 1 a 6 salen antes que el contenido del grupo** (08:30, y 09:00 el domingo), para que el hook al video de las 13 llegue a tiempo.
 
-**Para el equipo de setting:** las respuestas son leads calientes. Anotar en el tracker: mail 0, «SUSCRIPCION» (se le manda el documento de retención); mail 6, «ADENTRO»; mail 4, qué vende y su ciclo de reposición.
-
-## Antes de programar
-
-- [ ] Completar `X suscriptores` y `X%`, y pasar a +280M los `$X` que quedan (confirmación y día 7).
-- [ ] Confirmar los regalos de los días 2 a 4 (día 2, Simulador: confirmado; día 3, video: confirmado; día 4, agente de Retención) y que el roadmap del día 1 esté en el grupo.
-- [ ] Cargar `[LINK GRUPO]`, `[LINK AGENDAR]`, `[LINK DE LA CUENTA DEL CPA]` y `[LINK CLASE]`.
-- [ ] Sacar las capturas de los `[IMAGEN: …]`. Las de Lucas, sin nombre, logo ni producto de su marca.
-- [ ] Confirmar si hay replay: dejar o borrar cada `[SI NO HAY REPLAY: …]`.
-- [ ] Definir el bonus en vivo: completarlo o usar las versiones sin bonus (mails 6, 8, 14 y 15).
-- [ ] Confirmar el período de los «casi dos palos» de Lucas (mail 3) y el permiso para los 400 clientes (mail 4).
-- [ ] Confirmar qué se muestra a las 18:10 (mail 14).
-- [ ] Revisar que ningún mail diga «masterclass», «webinar», «programa», el precio ni el nombre de otra marca.
+**Para el equipo de setting:** las respuestas son leads calientes. Anotar en el tracker: mail 0, «SUSCRIPCIÓN» (se le manda el flujo de retención); mail 4, qué vende y cada cuánto se termina; mail 5, su número de la calculadora.
