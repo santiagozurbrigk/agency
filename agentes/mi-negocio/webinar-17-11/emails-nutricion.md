@@ -66,7 +66,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 | 2 | Jue 12 · 08:30 | Te regalo mi Simulador de Suscripción 🎁 | + lo que le pasó a Lucas (7 palos en 15 días… y 600 lucas abajo) |
 | 3 | Vie 13 · 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | te explico por qué bajar el CPA no es la solución |
 | 4 | Sáb 14 · 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | POV: pero abriste este mail (y te regalo mi agente de retención) 📈 |
-| 5 | Dom 15 · 09:00 | Cómo ganarle a toda tu competencia 🥊 | te regalo la cuenta que uso yo (y ellos no hacen) |
+| 5 | Dom 15 · 09:00 | Cómo ganarle a toda tu competencia ✅ | sin bajar el CPA (y te regalo la cuenta para hacerlo) |
 | 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
 | 7 | Mar 17 · 12:00 | 🚨 HOY es el día 🚨 | hoy te muestro TODO el modelo por dentro |
 | 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | traé tu cuenta (y el 🎁 es SOLO en vivo) |
@@ -291,34 +291,39 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 ## Mail 5 · Día 5 · Domingo 15/11 · 09:00
 
-**Header:** Cómo ganarle a toda tu competencia 🥊
-**Sub header:** te regalo la cuenta que uso yo (y ellos no hacen)
+**Header:** Cómo ganarle a toda tu competencia ✅
+**Sub header:** sin bajar el CPA (y te regalo la cuenta para hacerlo)
 
 > Holaa. Falta muy poco para la clase.
 >
-> Esta semana viste las piezas sueltas: nada te dura, el caso de Lucas, el CPA y el margen. Hoy se juntan, y si te sumaste recién, con este mail quedás al día.
+> Y hoy te quiero mostrar cómo ganarle a toda tu competencia. Spoiler: no es con mejores creativos ni bajando el CPA.
 >
-> La pieza exclusiva de hoy es **la Cuenta del CPA**, la misma que uso yo para saber cuánto puedo pagar por cada cliente.
+> Toda la semana viste por qué: nada te dura, Lucas con 7 marcas pautando lo mismo que él, el CPA que sube y el margen que no queda. Si te sumaste recién, con este mail quedás al día.
 >
-> Así funciona, con un margen de 30.000 por pedido:
+> Tu competencia juega a pagar lo menos posible por cada cliente. Y en ese juego gana el que está dispuesto a perder más.
 >
-> - Compra única: tu techo es 30.000 por cliente. Breakeven en la primera venta.
-> - Si el cliente te compra 3 veces: tu techo es 90.000.
-> - Operando en 75.000: te quedan 15.000 vivos por cliente.
+> Yo juego a otra cosa: **a poder pagar más que ellos.** Mirá la cuenta, con un margen de 30.000 por pedido:
 >
-> Tu competencia sigue peleando dentro de los 30.000. Por eso **yo puedo pagar 2,5 veces más por cada cliente.** Y listo: ya no tenés competencia.
+> - Tu competencia, con compra única, puede pagar hasta **30.000** por cliente. Breakeven en la primera venta.
+> - Vos, si ese cliente te compra 3 veces, podés pagar hasta **90.000.**
+> - Operando en 75.000, pagás **2,5 veces más** por el mismo cliente y te siguen quedando 15.000 vivos.
 >
-> Y hay algo que la cuenta no muestra: con una base que te vuelve a comprar, **el mes no arranca en cero.** Un mes malo de anuncios deja de ser un mes malo de facturación.
+> ¿Quién se queda con el cliente en la subasta? El que puede pagar 75 contra el que puede pagar 30. **Y listo: ya no tenés competencia.**
+>
+> Y hay dos cosas que tu competencia no te puede copiar:
+>
+> - La landing te la copian en dos días. **Tu base de suscriptores, no.**
+> - Con una base que te vuelve a comprar, **el mes no arranca en cero.** Un mes malo de anuncios deja de ser un mes malo de facturación.
 >
 > Es lo que hacen las marcas de consumibles más grandes de Estados Unidos. Acá casi nadie. A eso le digo **Método B.A.S.E.**
 >
-> Ponés tu margen y te da tu techo nuevo:
+> La pieza exclusiva de hoy es **la Cuenta del CPA**, la misma que uso yo. Ponés tu margen y te dice cuánto podés pagar hoy por cliente, y cuánto podrías pagar con suscripción:
 >
 > 👉 [LINK DE LA CUENTA DEL CPA]
 >
-> Hacela antes del martes y, cuando tengas tu techo nuevo, respondé este mail con el número.
+> Hacela antes del martes y, cuando tengas tu número, respondé este mail con él.
 >
-> Y el martes te muestro TODO:
+> Y el martes te muestro cómo llegar a ese número:
 >
 > - Cómo hago +280M por mes con el modelo de suscripción.
 > - Cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción.
@@ -333,6 +338,8 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 > Mañana te paso lo que tenés que tener listo para la clase.
 >
 > Manu
+
+*[Header de Santi (31/10). El sub header que venía («y en 48 horas te muestro cómo llegar a ese número…») se cambió porque «ese número» no tenía a qué referirse con el header nuevo; la idea quedó en el cuerpo: «Y el martes te muestro cómo llegar a ese número».]*
 
 ---
 
@@ -517,7 +524,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 | 2 | Jue 12/11 | 08:30 | Te regalo mi Simulador de Suscripción 🎁 | Grupo · Agendar |
 | 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agendar |
 | 4 | Sáb 14/11 | 08:30 | POV: facturaste bien y te quedaron 7 lucas por pedido 💀 | Grupo · Agendar |
-| 5 | Dom 15/11 | 09:00 | Cómo ganarle a toda tu competencia 🥊 | Cuenta del CPA · Grupo · Agendar |
+| 5 | Dom 15/11 | 09:00 | Cómo ganarle a toda tu competencia ✅ | Cuenta del CPA · Grupo · Agendar |
 | 6 | Lun 16/11 | 08:30 | Mañana te muestro TODO 👀 | Grupo · Agendar |
 | 7 | Mar 17/11 | 12:00 | 🚨 HOY es el día 🚨 | — |
 | 8 | Mar 17/11 | 15:00 | Faltan 3 horas ⏳ | — |
