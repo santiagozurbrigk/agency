@@ -5,7 +5,8 @@
 // cambiando el final por /visita, /grupo o /aplicacion):
 //   TRACKING_OPTIN_URL    tracker viejo: https://tracking-genesis.vercel.app/api/public/optin
 //   CAMPUS_INGEST_URL     campus:        https://zanwrwysbmvgytfzymaz.supabase.co/functions/v1/ingest/optin
-//   GENESIS_INGEST_SECRET secreto del campus (va en el header X-Genesis-Secret, solo al campus)
+//   GENESIS_INGEST_SECRET secreto del campus (va en el header X-Genesis-Secret, solo al campus,
+//                         junto con x-region: sa-east-1)
 // Mientras estén las dos URLs, cada evento va a los dos lados. Para cortar el tracker viejo,
 // se borra TRACKING_OPTIN_URL.
 
@@ -15,7 +16,10 @@ function destinos(evento) {
   const campus = process.env.CAMPUS_INGEST_URL;
   if (viejo) lista.push({ nombre: "tracker", url: viejo.replace(/\/optin\/?$/, "/" + evento), headers: {} });
   if (campus) {
-    const headers = process.env.GENESIS_INGEST_SECRET ? { "X-Genesis-Secret": process.env.GENESIS_INGEST_SECRET } : {};
+    // La base del campus está en São Paulo: forzar la región de la Edge Function baja
+    // la respuesta de ~450 ms a ~100 ms (importa en /aplicacion, el lead espera el WhatsApp).
+    const headers = { "x-region": "sa-east-1" };
+    if (process.env.GENESIS_INGEST_SECRET) headers["X-Genesis-Secret"] = process.env.GENESIS_INGEST_SECRET;
     lista.push({ nombre: "campus", url: campus.replace(/\/optin\/?$/, "/" + evento), headers });
   }
   return lista;
