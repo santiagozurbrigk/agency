@@ -42,7 +42,7 @@ Sigue a `contenido-nutricion-dias-1-6.md`. El día de la clase está hecho con e
 >
 > **Martes 17, 18 hs.**
 
-### 15:00 · Imagen + texto
+### 14:30 · Imagen + texto
 
 **🖼️ Imagen:** una hoja escrita a mano con «calculadora · recompra · margen» al lado de una compu abierta.
 
@@ -288,7 +288,7 @@ El único llamado es agendar la llamada. No se habla de precio en el grupo: eso 
 ## Checklist (dejar listo el lunes 16/11)
 
 - **Grabar:** video selfie de las 08:30, de las 17:00 y de las 17:30. El audio de las 12:30.
-- **Foto:** la hoja con «calculadora · recompra · margen» al lado de la compu (15:00).
+- **Foto:** la hoja con «calculadora · recompra · margen» al lado de la compu (14:30).
 - **Programar:** los textos de las 17:45, 17:50 y 17:55 (con el link de la clase ya cargado).
 - **Durante la clase, sacar capturas:** la sala con gente (18:00), la portada, el chat con energía y los slides de los regalos, el caso de Lucas, Génesis y la oferta.
 - **Definir:** quién maneja el grupo, el bonus en vivo, si se vende en vivo o por llamada, el link para agendar, la fecha de cierre y si hay repetición.

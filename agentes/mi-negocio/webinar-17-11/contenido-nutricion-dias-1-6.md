@@ -13,6 +13,7 @@ Todo lo que se graba y se manda en el grupo de registrados del miércoles 11/11 
 3. **Números definidos:** +280M por mes hoy, $30M por mes con compra única, +3.500 suscriptores. El margen de hoy sigue sin definir (`X%`).
 4. **El caso de Lucas con los datos de los mails:** 17M en 15 días con 22% de margen, 4 marcas a competir un producto casi igual, 600 lucas abajo en una noche, 60M facturados con -5% de margen y 40% de margen después de relanzar.
 5. **Los mensajes de las 17 y las 21 ya no repiten el mail.** Suman lo que el mail no tiene: el caso contado más corto, la pregunta del día para el privado y el loop de mañana.
+6. **Cada recordatorio de la mañana engancha con el mail del día** («en el mail de esta mañana te conté…»), así los dos canales cuentan la misma historia el mismo día. La sincronización completa está en `sincronizacion-mails-whatsapp.md`.
 
 ---
 
@@ -56,6 +57,8 @@ Todo lo que se graba y se manda en el grupo de registrados del miércoles 11/11 
 > · Todos los días te llega algo mío. Hoy, un video de 10 minutos y mi roadmap de suscripciones.
 > · Acá no se escribe. Si me querés contar algo, me escribís al privado: https://wa.link/ouqu06
 > · El martes, la clase.
+>
+> Esta mañana también te llegó un mail mío: ahí te cuento por qué nada te dura. Si no lo ves, buscalo en promociones o en spam.
 >
 > A las 13 te mando el primer video. Miralo entero, porque todo lo de la semana arranca ahí.
 
@@ -154,7 +157,7 @@ Puntos, en orden:
 
 > **Martes 17, 18 hs.** Clase en vivo: cómo hago +280M por mes con el modelo de suscripción, sin depender del CPA.
 >
-> Hoy a las 13 te dejo acá el simulador de suscripciones. 👀
+> En el mail de esta mañana te conté lo de Lucas. Y hoy a las 13 te dejo acá el simulador de suscripciones. 👀
 
 ### 13:00 · La pieza exclusiva: el simulador + video de cómo usarlo (3-5 min)
 
@@ -208,7 +211,7 @@ Puntos, en orden:
 
 > **Martes 17, 18 hs.** Cómo hago +280M por mes sin pelearme por el CPA más bajo. En vivo.
 >
-> A las 13 te mando por acá por qué bajar el CPA no es la solución. 👀
+> En el mail de hoy te expliqué la cadena del CPA. A las 13 te la dibujo en la pizarra, por acá. 👀
 
 ### 13:00 · La pieza exclusiva: video de la pizarra (5-7 min)
 
@@ -270,7 +273,7 @@ Puntos, en orden:
 
 > **Martes 17, 18 hs.** Cómo hago +280M por mes con el modelo de suscripción. En vivo.
 >
-> A las 13 te dejo acá mis flujos de retención de email y WhatsApp. 👀
+> Esta mañana te mandé por mail de dónde sale el margen que hoy no tenés. A las 13 te dejo acá mis flujos de retención de email y WhatsApp. 👀
 
 ### 13:00 · La pieza exclusiva: los flujos de retención + video (5-7 min)
 
@@ -381,7 +384,7 @@ Puntos, en orden:
 >
 > Tu competencia, con compra única, puede pagar hasta 30.000 por cliente. Vos, si el cliente te compra tres veces, hasta 90.000. Operando en 75.000, pagás 2,5 veces más y te sigue quedando plata.
 >
-> 🎁 La calculadora para sacar tu número:
+> 🎁 La calculadora para sacar tu número (también te la mandé por mail a las 9):
 > 👉 https://claude.ai/artifact/Da322JsJroGQQVhEQMDPHm?sk=M53fse_xVzsmn2nVJZzDCQ
 >
 > Cuando lo tengas, mandámelo:
@@ -404,6 +407,8 @@ Puntos, en orden:
 ### 10:00 · Recordatorio
 
 > **Mañana, martes 17, a las 18.** Clase en vivo: cómo hago +280M por mes con el modelo de suscripción, sin depender del CPA.
+>
+> Esta mañana te mandé por mail qué vas a ver mañana (y qué no). A las 13, por acá, te muestro cómo la estoy preparando.
 
 ### 13:00 · La pieza exclusiva: video preparando la clase (1-2 min)
 
