@@ -370,10 +370,10 @@ fbq('track', 'PageView');
   .head-cta { box-shadow: 0 6px 16px rgba(var(--naranja-rgb), .3); }
   @keyframes destello { 0% { left: -70%; } 55%, 100% { left: 135%; } }
   @keyframes latido { 50% { box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 16px 36px rgba(var(--naranja-rgb), .5), 0 0 0 9px rgba(var(--naranja-rgb), .08); } }
-  /* Tarjeta del formulario con aro de color que gira y resplandor suave */
+  /* Tarjeta del formulario con aro naranja de Génesis que gira y resplandor suave */
   .form-card { box-shadow: 0 24px 60px rgba(var(--naranja-rgb), .16), 0 20px 44px rgba(60,40,20,.10); }
   .form-card::before, .form-card::after { content: ""; position: absolute; inset: -3px; border-radius: 25px; z-index: -1;
-    background: conic-gradient(from var(--giro), var(--naranja), #EC4899, #8B5CF6, #3B82F6, #22C55E, var(--naranja)); animation: girar 7s linear infinite; }
+    background: conic-gradient(from var(--giro), var(--naranja), #FFB067, #C2410C, #FF8A3D, #7C2D12, var(--naranja)); animation: girar 7s linear infinite; }
   .form-card::after { inset: -6px; filter: blur(22px); opacity: .3; z-index: -2; }
   @keyframes girar { to { --giro: 360deg; } }
   .form-card h2 { background: linear-gradient(90deg, var(--tinta), #7C2D12); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -410,8 +410,10 @@ fbq('track', 'PageView');
   .form-card .nota { font-size: 12px; margin-top: 0; }
   @media (max-width: 767px) {
     .head { display: none; }                 /* en el celular arriba queda solo la fecha y las horas */
-    .marquesina, .tags { display: none; }
+    .tags { display: none; }
     .hero { padding: 14px 0 12px; }
+    .marquesina { margin: -14px 0 14px; }
+    .mq-pista span { font-size: 10.5px; padding: 7px 6px; }
     .hero h1 { font-size: 23px; margin: 0 auto 8px; }
     .hero .sub { font-size: 14px; margin-bottom: 4px; line-height: 1.45; }
     .vsl { margin-top: 12px; border-radius: 14px; }
