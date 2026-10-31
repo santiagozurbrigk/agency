@@ -61,7 +61,7 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 | # | Cuándo | Header | Sub header |
 | --- | --- | --- | --- |
-| 0 | Al registrarse | Listo, ya estás adentro 🎁 | Hay algo esperándote en el grupo 👀 |
+| 0 | Al registrarse | Todavía NO estás adentro ⚠️ | te falta un paso para la clase del martes 👇 |
 | 1 | Mié 11 · 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Agentes IA, SOPs y mucho más |
 | 2 | Jue 12 · 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | te cuento lo que le pasó a Lucas (+ te regalo mi agente de finanzas) |
 | 3 | Vie 13 · 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | te explico por qué esa pelea ya la perdiste (+ te regalo mi agente de investigación de mercado) |
@@ -82,22 +82,28 @@ Los mails para los registrados: confirmación, 1 mail por día del miércoles 11
 
 ## Mail 0 · Confirmación · al registrarse
 
-**Header:** Listo, ya estás adentro 🎁
-**Sub header:** Hay algo esperándote en el grupo 👀
+*Base: la versión de Santi (31/10), con el hook nuevo: «todavía no estás adentro», para que entrar al grupo se sienta obligatorio.*
 
-> Listo, ya estás registrado a la clase del **martes 17 de noviembre a las 18 hs (Argentina)**.
+**Header:** Todavía NO estás adentro ⚠️
+**Sub header:** te falta un paso para la clase del martes 👇
+
+> Te registraste a la clase del **martes 17 de noviembre a las 18 hs (Argentina)**. Pero todavía no estás adentro.
 >
-> Ahí te voy a mostrar cómo hago $X por mes con el modelo de suscripción, sin depender del CPA ni de renovar creativos todos los días.
+> Te falta un paso: **entrar al grupo de WhatsApp.**
 >
-> Hasta el martes, la data la voy soltando en el grupo de WhatsApp. Y el link para entrar a la clase también pasa por ahí:
+> 👉 https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ
 >
-> 👉 [LINK GRUPO]
+> Ahí pasa todo: la data que voy soltando hasta el martes, las piezas exclusivas de cada día y el link para entrar a la clase.
 >
-> Y una cosa: **respondé este mail con la palabra «ADENTRO»**. Así me aseguro de que mis mails no te caigan en spam y te llegue todo.
+> En la clase te voy a mostrar cómo hago +$280M por mes con el modelo de suscripción, sin depender del CPA ni de renovar creativos todos los días.
+>
+> Y una cosa: respondé este mail con la palabra **«SUSCRIPCION»**. Así te envío un documento explicando cómo mejorar tu retención de clientes.
 >
 > Nos vemos adentro.
 >
 > Manu
+
+*[CONFIRMAR: ese link es el mismo del grupo de la clase del 24/10 (`../repesca-24-10/nutricion-mails.md`). Si para el 17/11 hay un grupo nuevo, cambiarlo. Si el link de la clase va a pasar SOLO por el grupo, el hook puede ser más fuerte: «El link para entrar a la clase no llega por mail: lo paso solo por el grupo. Si no estás, no podés entrar». En ese caso hay que sacar [LINK CLASE] de los mails del día 7.]*
 
 ---
 
@@ -500,7 +506,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 
 | # | Fecha | Hora (ARG) | Header | Links |
 | --- | --- | --- | --- | --- |
-| 0 | Al registrarse | Automático | Listo, ya estás adentro 🎁 | Grupo |
+| 0 | Al registrarse | Automático | Todavía NO estás adentro ⚠️ | Grupo |
 | 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agendar |
 | 2 | Jue 12/11 | 08:30 | 7 palos en 15 días… y 600 lucas abajo en una noche 📉 | Grupo · Agendar |
 | 3 | Vie 13/11 | 08:30 | 🤡💭 «Si bajo el CPA, vuelvo a ser rentable» | Grupo · Agendar |
@@ -519,7 +525,7 @@ Como en los ejemplos: cuanto más cerca de las 18, más corto. El link de la cla
 
 **Los mails de los días 1 a 6 salen antes que el contenido del grupo** (08:30, y 09:00 el domingo), para que el hook al video de las 13 (12 el domingo) llegue a tiempo.
 
-**Para el equipo de setting:** las respuestas son leads calientes. Anotar en el tracker: mail 0 y mail 6, «ADENTRO»; mail 4, qué vende y su ciclo de reposición.
+**Para el equipo de setting:** las respuestas son leads calientes. Anotar en el tracker: mail 0, «SUSCRIPCION» (se le manda el documento de retención); mail 6, «ADENTRO»; mail 4, qué vende y su ciclo de reposición.
 
 ## Antes de programar
 
