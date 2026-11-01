@@ -1,6 +1,7 @@
 // Reenvía a los trackers la aplicación de /aplication (ver _destinos.js).
-// La respuesta (ruta y WhatsApp del SDR) sale del tracker viejo mientras esté configurado;
-// si falla o ya no está, sale del campus.
+// La respuesta (ruta y WhatsApp del SDR) sale del campus cuando decide algo útil: un rechazo
+// o un WhatsApp (de su SDR o el por defecto del admin). Si devuelve el WhatsApp vacío
+// (todavía sin equipo cargado) o falla, sale del tracker viejo.
 const { destinos, enviar, leerBody } = require("./_destinos");
 
 module.exports = async function handler(req, res) {
@@ -16,7 +17,9 @@ module.exports = async function handler(req, res) {
   if (!lista.length) return res.status(500).json({ ok: false, error: "Falta TRACKING_OPTIN_URL o CAMPUS_INGEST_URL" });
 
   const resultados = await Promise.all(lista.map((d) => enviar(d, body)));
-  const bueno = resultados.find((r) => r.ok);
+  const campus = resultados[lista.findIndex((d) => d.nombre === "campus")];
+  const campusDecide = campus && campus.ok && (campus.data.ruta === "rechazado" || campus.data.wa);
+  const bueno = campusDecide ? campus : resultados.find((r) => r.ok && r !== campus) || (campus && campus.ok ? campus : null);
   if (!bueno) return res.status(502).json({ ok: false, error: "No se pudo enviar. Probá de nuevo." });
   return res.status(200).json({ ok: true, ruta: bueno.data.ruta, wa: bueno.data.wa || "" });
 };
