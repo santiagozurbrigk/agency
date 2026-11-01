@@ -1,8 +1,8 @@
-# Ads de reminder · clase del 17/11 · 2 videos
+# Ads de reminder · clase del 17/11 · 4 piezas (2 videos + 2 imágenes)
 
-Los 2 videos de reminder (tarea WEB-02 del tracker). Corren las últimas 72 horas antes de la clase: del **sábado 14/11 a las 18 hs al martes 17/11 a las 18 hs**. Trabajo principal: que los registrados aparezcan en vivo. De paso, empujan registros de último momento.
+Las 4 piezas de reminder (tarea WEB-02 del tracker): 2 videos y 2 imágenes, como pide el SOP «Ads Reminder: estrategia» de Limitless. Corren las últimas 72 horas antes de la clase: del **sábado 14/11 a las 18 hs al martes 17/11 a las 18 hs**. Trabajo principal: que los registrados aparezcan en vivo. De paso, empujan registros de último momento.
 
-Hechos con el agente **Ads Reminder — Copy** (`limitless-ads-reminder-copy`), con la base de los reminders del 19/10 (`../lanzamiento-19-10/ads-reminder-guiones.md`) y los datos de la versión final de los mails y del WhatsApp.
+Hechos con el SOP y el agente **Ads Reminder — Copy** (`limitless-ads-reminder-copy`), con la base de los reminders del 19/10 (`../lanzamiento-19-10/ads-reminder-guiones.md`) y los datos de la versión final de los mails y del WhatsApp.
 
 ## Datos usados
 
@@ -17,6 +17,20 @@ Hechos con el agente **Ads Reminder — Copy** (`limitless-ads-reminder-copy`), 
 | Grabación | **Hay repetición** (el WhatsApp del 18/11 la manda). Por eso no se dice «sin grabación» ni «única vez». |
 | Urgencia real | La clase es **privada**: solo entran los que se anotan. Y el bonus extra es **solo para los que estén en vivo hasta el final**. |
 
+## La campaña (del SOP)
+
+| Qué | Cómo |
+| --- | --- |
+| Creativos | 4: los 2 videos y las 2 imágenes, rotando juntos las 72 horas completas. Sin versiones por día. |
+| Campaña | 1 campaña aparte de la de adquisición, con 1 solo conjunto. |
+| Cuándo | Prende el **sábado 14/11 a las 18:00** y se apaga sola el **martes 17/11 a las 18:00**, la hora exacta de la clase. |
+| Objetivo | Reconocimiento, optimizada por **impresiones**. |
+| Audiencia | **Solo los que entraron al embudo:** los registrados (audiencia de la página de gracias, últimos 30 días) + los visitantes de la landing de registro (30 días). Nada de interacción de Instagram o Facebook. |
+| Métrica | **Frecuencia: cada persona tiene que ver el ad entre 5 y 10 veces** en las 72 horas. |
+| Destino | La misma landing de registro de siempre. |
+
+La configuración paso a paso y el presupuesto salen del agente **Ads Reminder — Configuración** (`limitless-ads-reminder-configuracion`).
+
 ## Reglas que cumplen
 
 - La fecha va con todas las letras: «este MARTES 17, a las 18». Nunca «mañana» ni «faltan X horas»: los ads corren tres días.
@@ -24,6 +38,8 @@ Hechos con el agente **Ads Reminder — Copy** (`limitless-ads-reminder-copy`), 
 - Sin nombres ni detalles de otras marcas. Lucas y Santi van por su nombre, como en los mails.
 - Un solo llamado: anotarse en el link de abajo. Cero presentación.
 - Voseo, frases cortas, la voz de Manu.
+- **El hook arranca sin nombre de avatar.** El SOP pide llamar a la audiencia por su nombre («Growth,»), pero Manu no tiene uno definido (`CONTEXTO.md`: pendiente). Si se define, va al principio de los dos hooks.
+- **Nada de «sin grabación», «única vez» ni «primera y última vez»:** hay repetición. La imagen 2 usa la urgencia real (clase privada y bonus solo en vivo) en lugar del «ÚNICA VEZ / SIN GRABACIÓN» del SOP.
 
 ---
 
@@ -111,7 +127,52 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 
 ---
 
-## Comprobantes para el editor
+## IMAGEN 1 · EL CARTEL DEL EVENTO
+
+| Elemento | Texto |
+| --- | --- |
+| Titular | **CÓMO HAGO +280M POR MES CON SUSCRIPCIONES** |
+| Bajada | y cómo vos podés escalar a +100M migrando de compra única |
+| Fecha y hora (bien grandes) | **MARTES 17 · 18 HS** |
+| Debajo de la fecha | CLASE PRIVADA EN VIVO · ARGENTINA |
+| Botón | **REGISTRATE ACÁ** |
+
+**Para el diseñador:** Manu de medio cuerpo, remera lisa negra o hueso, fondo oscuro. La fecha es lo más grande después del titular. Si entra, de fondo y desenfocada, la captura de la facturación del mes.
+
+**Caption:**
+
+> Este MARTES 17, a las 18, te muestro en vivo cómo hago +280M por mes con el modelo de suscripción.
+>
+> Y te llevás 3 de mis +30 agentes de IA, a elección.
+>
+> Es privada: anotate en el link de abajo 👇
+
+---
+
+## IMAGEN 2 · LA ÚLTIMA OPORTUNIDAD
+
+| Elemento | Texto |
+| --- | --- |
+| Titular | **CLASE PRIVADA: SI NO TE ANOTÁS, NO ENTRÁS** |
+| Fecha y hora | **ESTE MARTES 17 · 18 HS** |
+| Debajo de la fecha | 🎁 Bonus extra solo para los que estén en vivo hasta el final |
+| Botón | **ANOTATE AHORA** |
+
+**Para el diseñador:** placa de texto, sin foto o con Manu chico en una esquina. Fondo de color fuerte, distinto al de la imagen 1, para que no parezca el mismo ad.
+
+**Caption:**
+
+> Falta muy poco.
+>
+> Este MARTES 17, a las 18, doy la clase privada y solo entran los que se anotaron. Y a los que se queden hasta el final les tengo un bonus extra.
+>
+> Anotate en el link de abajo 👇 Te espero EN VIVO.
+
+> El SOP pone «ÚNICA VEZ / SIN GRABACIÓN» como titular de esta imagen, pero solo si es verdad. Hay repetición, así que va la urgencia real: es privada y el bonus es solo en vivo.
+
+---
+
+## Comprobantes para el editor y el diseñador
 
 - Captura de la facturación del mes: +280 millones (videos 1 y 2).
 - La slide con los +30 agentes de IA (video 1). Es la misma imagen del mensaje del lunes 16 en el grupo.
@@ -119,9 +180,10 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 - Tasa de cancelación: menos del 5% (video 2). Es la imagen del sábado 14 en el grupo.
 - Lucas y Santi, antes y después (video 2): las capturas del jueves 12 en el grupo, **sin que se vea el nombre, el logo ni el producto de su marca**.
 - Placa fija durante todo el video: **MARTES 17 · 18 HS · CLASE PRIVADA EN VIVO**.
+- Para las imágenes: foto de Manu de medio cuerpo (imagen 1) y, si entra, la captura de facturación de fondo.
 
 ## Pendientes
 
 1. **Confirmar el margen de Lucas y Santi «antes»:** en los mails dice «2,40%». Si es «24%» o «2,4%», cambiarlo en el video 2 y en el mail 2 a la vez.
 2. **El bonus extra para los que se quedan hasta el final:** el video 1 lo nombra sin decir qué es, igual que el WhatsApp de la clase. Si no va a haber bonus, se borra esa frase.
-3. **Las 2 imágenes de reminder** (el cartel y la última oportunidad) que también pide la tarea WEB-02 no están acá: se pueden sumar.
+3. **El nombre con el que Manu le habla a su audiencia**, si se quiere arrancar los hooks como pide el SOP («Growth,»).
