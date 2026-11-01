@@ -1,5 +1,7 @@
 # WhatsApp · día de la clase (17/11) y post-clase (18 al 20/11)
 
+> **01/11 · La versión final de los mensajes está en `whatsapp-nutricion.md`.** Este archivo queda como historial: los guiones de los videos y las notas de producción siguen sirviendo, pero los textos que se mandan al grupo son los de la versión final.
+
 Sigue a `contenido-nutricion-dias-1-6.md`. El día de la clase está hecho con el agente **Recordatorio WhatsApp** (`limitless-mensajes-dia-webinar`): pre-live, durante la clase y post-live. El post-clase toma la base del 19/10 (`../lanzamiento-19-10/contenido/08-post-vivo-whatsapp.md`).
 
 ## Datos que faltan (van marcados en el texto)

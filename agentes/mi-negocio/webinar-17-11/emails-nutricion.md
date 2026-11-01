@@ -2,7 +2,7 @@
 
 Los 16 mails para los registrados: confirmación, 1 mail por día del miércoles 11/11 al lunes 16/11 y la escalera de 9 mails del martes 17/11, el día de la clase (18 hs, Argentina).
 
-**Versión final de Santi (31/10).** Los textos de los mails están copiados tal cual del documento «Emails de nutrición · Clase 17/11 · v3» que cerró Santi. Solo se limpió el formato al pasarlo a Markdown (barras de escape, títulos vacíos, viñetas separadas y un punto suelto en el mail 6). Las notas de arriba y las tablas están al día con esa versión.
+**Versión final de Santi (01/11).** Los textos de los mails están copiados tal cual del documento «Emails de nutrición · Clase 17/11 · v3» que cerró Santi. Solo se limpió el formato al pasarlo a Markdown (barras de escape, títulos vacíos, viñetas separadas y un punto suelto en el mail 6). Las notas de arriba y las tablas están al día con esa versión.
 
 ---
 
@@ -11,7 +11,7 @@ Los 16 mails para los registrados: confirmación, 1 mail por día del miércoles
 | Dato | Qué quedó |
 | --- | --- |
 | Números de Manu | +280M por mes hoy · $30M por mes con compra única (antes) · +3.500 suscriptores (mail 4) · la promesa para el que asiste: +$100M por mes (mail 0). |
-| Caso de Lucas | Agosto: 17M en 15 días con 22% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600 lucas abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Sin nombre ni detalles de su marca. |
+| Caso de Lucas y Santi | Venían haciendo 1.3 millones por día con 2,40% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600k abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Hoy: 2.8 millones por día con 40% de margen (en el grupo). Sin nombre ni detalles de su marca. |
 | Grupo de WhatsApp | https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ (es el mismo link del grupo de la clase del 24/10). |
 | Link para agendar | El de Google Calendar con el evento cargado (martes 17/11, 18 a 19:30 hs ARG). Va detrás del texto «AGENDA» en los mails 1 a 6. |
 | Link de la clase | Los mails 10 y 11 mandan al grupo; los mails 12 a 15 todavía tienen `[LINK CLASE]`. |
@@ -56,7 +56,7 @@ Cosas que se ven en la versión final y conviene resolver antes de cargarla:
 | --- | --- | --- | --- |
 | 0 | Al registrarse | Todavía NO estás adentro ⚠️ | Te falta un paso para la clase del martes 👇 |
 | 1 | Mié 11 · 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Agentes IA, SOPs y mucho más |
-| 2 | Jue 12 · 08:30 | 600 lucas abajo en una noche 💀 | lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción) |
+| 2 | Jue 12 · 08:30 | 600k abajo en una noche 💀 | lo que le pasó a Lucas y Santi (+ te regalo mi Simulador de Suscripción) |
 | 3 | Vie 13 · 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | te explico por qué bajar el CPA no es la solución |
 | 4 | Sáb 14 · 08:30 | POV: facturaste 60M pero tenes -5% de margen 💀 | Pero abriste este mail (y te regalo los flujos de retencion que uso en mi marca) 📈 |
 | 5 | Dom 15 · 09:00 | Como ganarle a toda tu competencia ✅ | sin bajar el CPA |
@@ -131,7 +131,7 @@ Si no estás, sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBb
 
 📅 **Faltan 6 días: el Martes 17 de noviembre a las 18 hs (Argentina) es la CLASE. En vivo.** 👉 [AGENDA](https://calendar.google.com/calendar/render?action=TEMPLATE&text=Clase%20en%20vivo%20con%20Manu%3A%20modelo%20de%20suscripci%C3%B3n&dates=20261117T210000Z%2F20261117T223000Z&details=Clase%20privada%20en%20vivo.%20El%20link%20para%20entrar%20llega%20por%20el%20grupo%20de%20WhatsApp%3A%20https%3A%2F%2Fchat.whatsapp.com%2FHBbSIYz620WJgSQp0ZuVDJ&location=Online%20%28link%20en%20el%20grupo%20de%20WhatsApp%29)
 
-Mañana te cuento cómo estaba Lucas, un cliente, antes de cambiar el modelo.
+Mañana te cuento cómo estaban Lucas y Santi, mis cliente, antes de cambiar el modelo.
 
 Manu
 
@@ -139,17 +139,17 @@ Manu
 
 ## **Mail 2 · Día 2 · Jueves 12/11 · 08:30**
 
-**Header:** 600 lucas abajo en una noche 💀
+**Header:** 600k abajo en una noche 💀
 
-**Sub header:** lo que le pasó a Lucas (+ te regalo mi Simulador de Suscripción)
+**Sub header:** lo que le pasó a Lucas y Santi (+ te regalo mi Simulador de Suscripción)
 
-Holaa, ayer te prometí contarte cómo estaba Lucas antes de cambiar el modelo. Hoy te lo desarmo entero, porque seguro estás en alguna de estas partes.
+Holaa, ayer te prometí contarte cómo estaban Lucas y Santi antes de cambiar el modelo. Hoy te lo desarmo entero, porque seguro estás en alguna de estas partes.
 
-Lucas, en tres momentos:
+Lucas y Santi, en tres momentos:
 
-**1) Agosto venía bien.** La primera quincena hizo **17M en 15 días con 22% de margen.**
+1) **Ellos venian haciendo 1.3 millones por dia, con 2,40% de margen.**
 
-**2) La tercera semana se dio vuelta todo.** Salieron 4 marcas a competir un producto casi igual al suyo, le subió el CPA y se fue a pérdida. Cuando hablamos me dijo, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iba 600 lucas abajo y apagó todo.
+**2) La siguiente semana se dio vuelta todo.** Salieron 4 marcas a competirles un producto casi igual al suyo, les subió el CPA y se fueron a pérdida. Cuando hablamos me dijieron, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iban 600k abajo y apagaron todo.
 
 **3) Lo que hacía para salir: lo mismo que vos.** Renovar creativos de los ángulos que ya le habían funcionado y esperar que el próximo pegue.
 
@@ -475,7 +475,7 @@ Nos vemos. Manu
 | --- | --- | --- | --- | --- |
 | 0 | Al registrarse | Automático | Todavía NO estás adentro ⚠️ | Grupo |
 | 1 | Mié 11/11 | 08:30 | Te regalo mi roadmap de suscripciones +280M 👀 | Grupo · Agenda |
-| 2 | Jue 12/11 | 08:30 | 600 lucas abajo en una noche 💀 | Grupo · Agenda |
+| 2 | Jue 12/11 | 08:30 | 600k abajo en una noche 💀 | Grupo · Agenda |
 | 3 | Vie 13/11 | 08:30 | 🤡 Si bajo el CPA, vuelvo a ser rentable 🤡 | Grupo · Agenda |
 | 4 | Sáb 14/11 | 08:30 | POV: facturaste 60M pero tenes -5% de margen 💀 | Grupo · Agenda |
 | 5 | Dom 15/11 | 09:00 | Como ganarle a toda tu competencia ✅ | Calculadora · Grupo · Agenda |

@@ -1,5 +1,7 @@
 # Calendario de nutrición por WhatsApp · clase del 17/11 · días 1 a 6
 
+> **01/11 · La versión final de los mensajes está en `whatsapp-nutricion.md`.** Este archivo queda como historial: los guiones de los videos y las notas de producción siguen sirviendo, pero los textos que se mandan al grupo son los de la versión final.
+
 Todo lo que se graba y se manda en el grupo de registrados del miércoles 11/11 al lunes 16/11. Es la versión pulida del 31/10: alineada con los mails finales (`emails-nutricion.md`), sin nombres de otras marcas y con los números definidos. La estrategia de fondo sigue en `calendario-nutricion-whatsapp.md`. El día 7 (martes 17/11, la clase) va aparte, con el agente de Recordatorio WhatsApp.
 
 **Marcas en los videos:** 🟢 GUIONADO = palabra por palabra · 🟡 IMPROVISADO = solo los puntos a tocar, Manu los dice con sus palabras.
