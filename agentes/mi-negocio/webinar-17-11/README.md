@@ -16,7 +16,7 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026, 18 hs.
 | [`emails-nutricion.md`](emails-nutricion.md) | Los 16 mails para los registrados: confirmación, 1 por día del 11/11 al 16/11 y la escalera de 9 mails del día de la clase, con la forma de los mails de ejemplo y la tabla de carga. Números de Manu como `$X`. |
 | [`whatsapp-dia-clase-y-post.md`](whatsapp-dia-clase-y-post.md) | Los mensajes de WhatsApp del día de la clase (pre, durante y después del vivo) y del post-clase del 18 al 20/11. |
 | [`whatsapp-nutricion.md`](whatsapp-nutricion.md) | **Versión final** de todos los mensajes del grupo de WhatsApp (días 1 a 7 y post-clase), tal como la cerró Santi el 01/11. |
-| [`ads-reminder.md`](ads-reminder.md) | Los 2 videos de reminder (el regalo y la prueba), para las últimas 72 horas antes de la clase, con los comprobantes para el editor. |
+| [`ads-reminder.md`](ads-reminder.md) | Las 4 piezas de reminder según el SOP (2 videos y 2 imágenes) y la campaña de las últimas 72 horas, con los comprobantes para el editor y el diseñador. |
 | [`sincronizacion-mails-whatsapp.md`](sincronizacion-mails-whatsapp.md) | Cómo se conectan los mails y el WhatsApp día por día: qué sale en cada canal y a qué hora, y qué se le pide a la gente. |
 | [`analisis-ventas-calificadas.md`](analisis-ventas-calificadas.md) | Dolores, creencias limitantes y ángulos sacados de las llamadas de los clientes que más pagaron (Herbora, Alan, Santi Núñez, Thiago Lopo). |
 | [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |
