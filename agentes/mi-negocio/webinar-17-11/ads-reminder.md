@@ -11,11 +11,11 @@ Hechos con el SOP y el agente **Ads Reminder — Copy** (`limitless-ads-reminder
 | Clase | **MARTES 17, a las 18 hs (Argentina)**. Dura alrededor de una hora y media. |
 | Número gancho | **+280 millones por mes** con el modelo de suscripción. |
 | Prueba mayor | De **30 millones por mes con compra única** a **+280 millones por mes** con suscripción. |
-| Respaldo (video 2) | **+3.500 suscriptores** · **menos del 5% de cancelación** · Lucas y Santi: de **1.3 millones por día con 2,40% de margen** a **2.8 millones por día con 40% de margen**. |
-| Lo que se lleva | Cómo hago +280M por mes con suscripción · cómo escalar tu ecommerce a +100M por mes migrando de compra única a suscripción · 3 de mis +30 agentes de IA, a elección · un bonus extra para los que se queden hasta el final. |
+| Respaldo (video 2) | **+3.500 suscriptores** · **menos del 5% de cancelación** · Lucas y Santi: de **1.3 millones por día con 2,4% de margen** a **2.8 millones por día con 40% de margen**. |
+| Lo que se lleva | Cómo hago +280M por mes con suscripción · cómo escalar tu ecommerce a +100M por mes migrando de compra única a suscripción · el bonus: 3 de mis +30 agentes de IA, a elección, para los que se queden hasta el final. |
 | Método | Método B.A.S.E. Se nombra, no se explica. |
 | Grabación | **Hay repetición** (el WhatsApp del 18/11 la manda). Por eso no se dice «sin grabación» ni «única vez». |
-| Urgencia real | La clase es **privada**: solo entran los que se anotan. Y el bonus extra es **solo para los que estén en vivo hasta el final**. |
+| Urgencia real | La clase es **privada**: solo entran los que se anotan. Y el bonus (los 3 agentes de IA a elección) es **solo para los que estén en vivo hasta el final**. |
 
 ## La campaña (del SOP)
 
@@ -38,7 +38,7 @@ La configuración paso a paso y el presupuesto salen del agente **Ads Reminder �
 - Sin nombres ni detalles de otras marcas. Lucas y Santi van por su nombre, como en los mails.
 - Un solo llamado: anotarse en el link de abajo. Cero presentación.
 - Voseo, frases cortas, la voz de Manu.
-- **El hook arranca sin nombre de avatar.** El SOP pide llamar a la audiencia por su nombre («Growth,»), pero Manu no tiene uno definido (`CONTEXTO.md`: pendiente). Si se define, va al principio de los dos hooks.
+- **El hook arranca sin nombre de avatar:** Manu no le pone nombre a su audiencia (confirmado por Santi, 01/11).
 - **Nada de «sin grabación», «única vez» ni «primera y última vez»:** hay repetición. La imagen 2 usa la urgencia real (clase privada y bonus solo en vivo) en lugar del «ÚNICA VEZ / SIN GRABACIÓN» del SOP.
 
 ---
@@ -63,7 +63,7 @@ Cómo hago más de 280 millones por mes con el modelo de suscripción.
 
 Cómo escalar tu ecommerce a más de 100 millones por mes, migrando de compra única a suscripción, sin frenar lo que hoy vende.
 
-Y te regalo 3 de mis más de 30 agentes de IA, a elección, para que los copies y los pegues en tu marca.
+Y a los que se queden hasta el final les regalo 3 de mis más de 30 agentes de IA, a elección, para que los copies y los pegues en tu marca.
 
 `[EDICIÓN: los 3 entregables aparecen en pantalla uno por uno · al nombrar los agentes, la slide con los +30]`
 
@@ -73,7 +73,7 @@ Es lo mismo que hice en mi marca: de 30 millones por mes con compra única a má
 
 **5. URGENCIA** (41-46 s)
 
-Y es privada: si no te anotás, no podés entrar. Y a los que se queden hasta el final les tengo un bonus extra.
+Y es privada: si no te anotás, no podés entrar. Y los agentes se los llevan solo los que se queden hasta el final.
 
 **6. CIERRE 1 A 1 + CTA** (46-55 s)
 
@@ -107,7 +107,7 @@ Y se cancela menos del 5%.
 
 `[EDICIÓN: captura de la tasa de cancelación]`
 
-Y no es solo mi marca. Lucas y Santi venían haciendo 1,3 millones por día con 2,40% de margen.
+Y no es solo mi marca. Lucas y Santi venían haciendo 1,3 millones por día con 2,4% de margen.
 
 `[EDICIÓN: captura de antes, sin nombre ni logo de su marca]`
 
@@ -143,7 +143,7 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 
 > Este MARTES 17, a las 18, te muestro en vivo cómo hago +280M por mes con el modelo de suscripción.
 >
-> Y te llevás 3 de mis +30 agentes de IA, a elección.
+> Y si te quedás hasta el final, te llevás 3 de mis +30 agentes de IA, a elección.
 >
 > Es privada: anotate en el link de abajo 👇
 
@@ -155,7 +155,7 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 | --- | --- |
 | Titular | **CLASE PRIVADA: SI NO TE ANOTÁS, NO ENTRÁS** |
 | Fecha y hora | **ESTE MARTES 17 · 18 HS** |
-| Debajo de la fecha | 🎁 Bonus extra solo para los que estén en vivo hasta el final |
+| Debajo de la fecha | 🎁 3 agentes de IA a elección (entre +30), solo para los que estén en vivo hasta el final |
 | Botón | **ANOTATE AHORA** |
 
 **Para el diseñador:** placa de texto, sin foto o con Manu chico en una esquina. Fondo de color fuerte, distinto al de la imagen 1, para que no parezca el mismo ad.
@@ -164,7 +164,7 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 
 > Falta muy poco.
 >
-> Este MARTES 17, a las 18, doy la clase privada y solo entran los que se anotaron. Y a los que se queden hasta el final les tengo un bonus extra.
+> Este MARTES 17, a las 18, doy la clase privada y solo entran los que se anotaron. Y a los que se queden hasta el final les regalo 3 de mis +30 agentes de IA, a elección.
 >
 > Anotate en el link de abajo 👇 Te espero EN VIVO.
 
@@ -182,8 +182,8 @@ Este martes 17. Solo vos y yo. Anotate AHORA en el link de abajo. Este martes 17
 - Placa fija durante todo el video: **MARTES 17 · 18 HS · CLASE PRIVADA EN VIVO**.
 - Para las imágenes: foto de Manu de medio cuerpo (imagen 1) y, si entra, la captura de facturación de fondo.
 
-## Pendientes
+## Confirmado (01/11)
 
-1. **Confirmar el margen de Lucas y Santi «antes»:** en los mails dice «2,40%». Si es «24%» o «2,4%», cambiarlo en el video 2 y en el mail 2 a la vez.
-2. **El bonus extra para los que se quedan hasta el final:** el video 1 lo nombra sin decir qué es, igual que el WhatsApp de la clase. Si no va a haber bonus, se borra esa frase.
-3. **El nombre con el que Manu le habla a su audiencia**, si se quiere arrancar los hooks como pide el SOP («Growth,»).
+- Margen «antes» de Lucas y Santi: **2,4%** (corregido también en los mails y en el WhatsApp).
+- El bonus para los que se quedan hasta el final son **los 3 agentes de IA a elección, entre más de 30**.
+- La audiencia de Manu **no tiene nombre**: los hooks arrancan directo.

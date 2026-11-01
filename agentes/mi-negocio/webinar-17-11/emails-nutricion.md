@@ -11,7 +11,7 @@ Los 16 mails para los registrados: confirmación, 1 mail por día del miércoles
 | Dato | Qué quedó |
 | --- | --- |
 | Números de Manu | +280M por mes hoy · $30M por mes con compra única (antes) · +3.500 suscriptores (mail 4) · la promesa para el que asiste: +$100M por mes (mail 0). |
-| Caso de Lucas y Santi | Venían haciendo 1.3 millones por día con 2,40% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600k abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Hoy: 2.8 millones por día con 40% de margen (en el grupo). Sin nombre ni detalles de su marca. |
+| Caso de Lucas y Santi | Venían haciendo 1.3 millones por día con 2,4% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600k abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Hoy: 2.8 millones por día con 40% de margen (en el grupo). Sin nombre ni detalles de su marca. |
 | Grupo de WhatsApp | https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ (es el mismo link del grupo de la clase del 24/10). |
 | Link para agendar | El de Google Calendar con el evento cargado (martes 17/11, 18 a 19:30 hs ARG). Va detrás del texto «AGENDA» en los mails 1 a 6. |
 | Link de la clase | Los mails 10 y 11 mandan al grupo; los mails 12 a 15 todavía tienen `[LINK CLASE]`. |
@@ -147,7 +147,7 @@ Holaa, ayer te prometí contarte cómo estaban Lucas y Santi antes de cambiar el
 
 Lucas y Santi, en tres momentos:
 
-1) **Ellos venian haciendo 1.3 millones por dia, con 2,40% de margen.**
+1) **Ellos venian haciendo 1.3 millones por dia, con 2,4% de margen.**
 
 **2) La siguiente semana se dio vuelta todo.** Salieron 4 marcas a competirles un producto casi igual al suyo, les subió el CPA y se fueron a pérdida. Cuando hablamos me dijieron, textual: **«Hace mucho que no tenemos un día bueno.»** Una noche iban 600k abajo y apagaron todo.
 

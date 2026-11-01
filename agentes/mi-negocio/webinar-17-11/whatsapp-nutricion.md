@@ -40,7 +40,7 @@ Clase: **martes 17, 18 hs**.
 
 Mañana te voy a contar el caso de lucas y santi (mis cliente)
 
-**1.3 millones por dia, con 2,40% de margen**… y a la semana siguiente, 600k abajo en una noche 💀
+**1.3 millones por dia, con 2,4% de margen**… y a la semana siguiente, 600k abajo en una noche 💀
 
 ---
 
@@ -70,7 +70,7 @@ Asi venian lucas y santi
 
 [IMAGEN 1 · está en el Google Doc]
 
-**1.3 millones por dia, con 2,40% de margen.**
+**1.3 millones por dia, con 2,4% de margen.**
 
 · A la semana salieron 4 marcas a competir con un producto casi igual. Le subió el CPA y se fue a pérdida.
 
