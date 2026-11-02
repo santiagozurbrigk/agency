@@ -5,7 +5,8 @@ Cómo maneja Naza (el mentor de Santi) su grupo de WhatsApp de lanzamiento. Sirv
 **Fuentes** (02/11/2026):
 
 - El Google Doc [«Grupo WhatsApp Naza · Historial y proceso»](https://docs.google.com/document/d/1LUHbvehOOfItFqBfkRIhQfzxDYFuzABkf19iclf3izM/edit): el grupo del 12/10 al 2/11, mensaje por mensaje (explicado con otras palabras, no literal).
-- La carpeta [«Grupo WhatsApp Naza»](https://drive.google.com/drive/folders/11WEuyfhNfzghwqQeFiaEZmsS9sabW-H9), con las fotos, burbujitas y videos numerados igual que en el Doc. La carpeta no se puede listar desde la cuenta conectada (es de otra cuenta), pero cada archivo se abre por su link. Se leyeron las láminas 194, 196, 198 y 205 del 26/10.
+- La carpeta [«Grupo WhatsApp Naza»](https://drive.google.com/drive/folders/11WEuyfhNfzghwqQeFiaEZmsS9sabW-H9): 99 archivos (64 fotos, 10 stickers, 1 GIF, 18 burbujitas y 6 videos), numerados igual que en el Doc. Tiene link público: se bajó entera. **Se miraron las 76 imágenes y se transcribieron las 23 burbujitas y videos** (`naza-material/burbujas-transcripciones.md`).
+- Los 3 Google Docs que Naza regala al terminar la clase (aparecen en la foto 050): su nutrición de WhatsApp, sus mails de nutrición y sus guiones de ads, guardados en `naza-material/`.
 
 **Ojo:** las cifras de Naza son declaradas y no están auditadas. Se copia la forma, nunca sus números ni sus promesas.
 
@@ -35,7 +36,7 @@ Medido sobre 147 mensajes de texto suyos.
 | Largo | La mitad tiene **11 palabras o menos**. Una idea se parte en varios mensajes seguidos. |
 | Signos | **Nunca** usa el signo de pregunta de apertura. Solo 15 de 147 terminan en punto. Dos puntos, casi nunca (solo antes de una lista o un dato). |
 | Mayúsculas | Casi la mitad arranca en minúscula. Mayúscula para remarcar **una sola palabra**. |
-| Emojis | En 1 de cada 5 mensajes, casi siempre 🚨 ✅ 👇 👀. |
+| Emojis | En 1 de cada 5 mensajes, casi siempre 🚨 ✅ 👉 🎁. |
 | Tono | Lo dan los **memes y stickers**, no los emojis. Humor del nicho. |
 
 ## 3. Forma de cada tanda
@@ -108,7 +109,54 @@ Clase del 22/10 a las 17:00. Las horas son relativas al inicio.
 
 ---
 
-## 7. Qué tomar para Manu (y qué no)
+## 7. Cómo arma la nutrición (burbujita 202 y su doc de WhatsApp)
+
+Lo explica él mismo en la burbujita 202 («la estrategia de nutrición que uso con mis clientes y conmigo»):
+
+1. **Día 1, el marco de identidad:** por qué te tienen que escuchar, quién sos, cómo empezaste a ayudar, cuál es tu solución y por qué actuar ahora.
+2. **En el medio, los 3 dolores principales:** objeciones, creencias limitantes y lo que te hace distinto.
+3. **Al final, un resumen de todo:** cuanto más cerca de la clase, más gente entra al grupo. El resumen hace que todos lleguen con la misma nutrición.
+
+Su doc de nutrición de WhatsApp (`naza-material/nutricion-whatsapp.txt`) lo baja así:
+
+| Día | Qué manda |
+| --- | --- |
+| 1 | «Voy directo porque los dos sabemos cómo es esto» + qué va a regalar hasta la clase + video. Agentes por privado («hablame y te paso el que quieras»). 3 burbujitas guionadas: el resultado con prueba en pantalla → el qué (lo contrario a lo que hace todo el mundo) → el beneficio → «este grupo es una capa: estás adentro de un lanzamiento por capas ahora mismo» → regalo. |
+| 2 | Prueba social: «van varios que me dicen que no paro de aparecer por todos lados» + video largo + burbujita selfie. |
+| 3 | «Antes de ayer me reventaron el DM pidiendo los agentes» → regalo con escasez: **«reaccioname a este mensaje y te lo regalo (solo los primeros 50)»**. |
+| 4 | **Identidad y propósito:** su historia (dejó un negocio, arrancó de nuevo con sus últimos ahorros), foto suya, un gráfico simple y la lección en 3 burbujitas. |
+| 5 | POV con humor → «ahora hablando en serio» → su comparación (años de orgánico contra meses de webinars) → video → foto de los regalos. |
+| 7 | Mostrar cosas internas de la clase: slides y recursos, para generar ganas. |
+| 8 | La clase: tanda de las 12 con lista de ✅, meme del equipo, 1 h, 30 min, 15 min, 5 min, «empezamos», «recién arrancamos (todavía llegás)», «en un rato doy el bonus, solo para los que están adentro» y la última llamada. |
+
+## 8. Las burbujitas por dentro
+
+Todas son de 40 a 60 segundos, salvo los videos largos de 3 minutos desde el 27/10.
+
+- **Arrancan nombrando a quién le habla:** «si ya hiciste un webinar y no tuviste el resultado que esperabas…», «si estás viendo este video sos de mis personas favoritas, porque hoy estás haciendo 100K y no sabés qué estás haciendo mal».
+- **Encadenan:** «te explico el último en el siguiente video», «te cuento las ventajas en el próximo».
+- **Cuenta las desventajas de lo suyo sin vender** (094): el primer webinar es difícil, necesitás las herramientas, hay poca información. Después vienen las ventajas (095).
+- **Usan su propia comparación con números:** 3 años de orgánico contra un solo webinar que hizo lo mismo (100). Vendió con 1.000 seguidores (082).
+- **Rompen la culpa:** «tu problema no es el contenido, es el funnel», «no es por vos».
+- **Cierran con el loop a la clase:** «esto lo vemos el jueves», y a veces piden la experiencia de la gente.
+- **Los videos largos** son una idea por video, contada como charla: propósito (217), anuncios contra orgánico (228), la objeción con gráficos (243), el caso con poco tiempo (250), el problema no es el creador (257).
+- **Un dato que usa como gancho:** «de los 115 mil, 45 mil entraron antes de que arrancara la clase» (080). La plata no se hace solo en la clase, también antes (preventa) y después.
+
+## 9. Las imágenes, por tipo
+
+| Tipo | Cuántas | Cómo las usa |
+| --- | --- | --- |
+| **Resultados propios** | 11 | Tarjetas de cobros, gráficos de facturación mes a mes y un pago recibido. Siempre la captura limpia, sin explicar mucho. |
+| **Prueba de terceros** | 14 | Mensajes de alumnos y clientes por Discord o WhatsApp con un número concreto («900 en vivo, 110 agendas», «460 agendas», «llegamos a 200k») y agradecimientos. Pesan más que sus propios números. |
+| **Fotos de él** | 10 | Selfies con el pulgar arriba, preparando la clase con la lámina en la compu, en el set con los SOPs impresos, trabajando con el mate. Muestran a la persona detrás. |
+| **Láminas de la clase** | 14 | Adelantos: «Webinars por capas», el calendario del lanzamiento, la estructura de ads, el pitch, la nutrición. Una lámina por cada cosa que promete. |
+| **Durante la clase** | 10 | Capturas de Zoom **con el chat a la vista**: se lee a la gente («NAZAAA MÁQUINA», «LO NECESITOO», «soy alumno, este tipo es un genio»). |
+| **Regalos** | 5 | El mensaje con los links, los SOPs impresos sobre la mesa, la lista del campus. |
+| **Memes y stickers** | 12 | Sr. Increíble que se deforma en 3 mensajes (parodia), el cerebro en el microondas (después de mucha información), Homero «Hoy es día de webinar muchacho» (día de la clase), el gato sacando músculo, el llorón contra el canchero («mi creador es malo, por eso no hago plata» / «bro, no hacés plata porque vendés con un funnel que no es para vos») y «Job's not finished» (cierre de la semana). |
+
+---
+
+## 10. Qué tomar para Manu (y qué no)
 
 **Sí:**
 

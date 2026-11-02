@@ -224,3 +224,38 @@ Naza no cierra el grupo: lo renombra con la fecha de la clase siguiente y lo rea
 | 15 | Una palabra al privado | Días 4 y 6 | Bajo |
 | 16 | El link del calendario | Días 1 y 6 | Bajo |
 | 17 | Reciclar el grupo | Próximo lanzamiento | — |
+
+---
+
+## Segunda pasada (02/11) · con las imágenes, las burbujitas y los docs de Naza
+
+Después de mirar las 76 imágenes, transcribir las 23 burbujitas y videos y leer los docs que Naza regala (`../referencias/naza-material/`). Se suman a las 17 de arriba.
+
+### WhatsApp
+
+18. **Falta el marco de identidad (la historia de Manu).** Naza lo pone el día 1 (burbujita 202) y le dedica un día entero a su historia (día 4 de su doc). La lámina de Limitless ordena todos los canales así: marco de identidad → por qué nada te funcionó → dolor 1 → dolor 2 → marco de identidad. **Propuesta:** una burbujita de Manu el día 1 (de 30M con compra única a +280M con suscripción y qué lo hizo cambiar) y volver a ese marco el día 6.
+19. **Un resumen de toda la semana el día 6.** Cuanto más cerca de la clase, más gente entra al grupo. Naza cierra con un resumen para que todos lleguen con la misma nutrición. El día 5 ya hace «esto es lo que vimos en la semana, en una sola cuenta»; falta un resumen completo (el problema, Lucas y Santi, el CPA, el margen, la competencia) para los que entraron tarde.
+20. **Burbujitas que arrancan nombrando a quién le hablan**, como las de Naza: «si estás viendo esto es porque tu CPA no para de subir…». Y que encadenen: «te cuento la segunda en el próximo video».
+21. **Contar las desventajas de la suscripción, sin vender** (Naza, burbujita 094): «no sirve para cualquier producto, el primer mes vas a pérdida, sin retención no funciona». Después, las ventajas. Da credibilidad.
+22. **Regalo a cambio de una reacción, con escasez real:** «reaccioná con 🔥 a este mensaje y te mando [recurso] (solo los primeros 50)». Naza lo hizo el día 3 de su doc. Es una acción, no un «¿venís?».
+23. **Prueba de terceros.** Naza muestra más mensajes de alumnos y clientes (14 capturas) que números propios (11). **Propuesta:** capturas del chat con Lucas y Santi (sin marca) y, el día 5, mensajes de gente del grupo mandando su número del simulador.
+24. **Capturas de la clase con el chat a la vista.** En las de Naza se lee a la gente escribiendo. Sumarlo a la consigna de quien saque las capturas.
+25. **Memes concretos para Manu**, adaptados de los de Naza:
+    - el llorón contra el canchero: «mi CPA está carísimo, por eso no gano plata» / «bro, no ganás plata porque le vendés una sola vez»;
+    - el Sr. Increíble deformándose en 3 mensajes: margen 40% → 20% → CPA al doble;
+    - el cerebro en el microondas después del video del día 5;
+    - Homero, «Hoy es día de clase, muchacho», el martes 17;
+    - «Job's not finished» el lunes 16.
+26. **Fotos de Manu:** preparando la clase con la lámina en la compu, en el set, trabajando. Naza usa 10.
+27. **El adelanto de la clase, una lámina por promesa:** cada «qué vas a ver» con su slide (Naza lo hace al reabrir y el día de la clase).
+
+### Email
+
+1. **Un mail con la historia de Manu** (el marco de identidad del punto 18), el mismo día que la burbujita.
+2. **Mails a los que no se registraron.** La hoja de Limitless (SOP-086) separa tres listas: registrados, base propia no registrada y lista vieja. Hoy solo les escribimos a los registrados. **Propuesta:** 2 mails a la base de Manu con el link de registro, y a la lista vieja un primer mail que reconecte antes de invitar. A esas listas, como mucho un mail cada 48 horas.
+3. **Prueba de terceros en los mails 4 y 5:** capturas de clientes y de gente que respondió con su número.
+4. **Un solo nombre para la herramienta:** los mails 6 y 8 dicen «Cuenta del CPA» y el grupo dice «calculadora» o «simulador».
+5. **El bonus en vivo con nombre** (los 3 agentes de IA a elección) en los mails 8, 14 y 15, que dicen «el bonus».
+6. **No copiar** de Naza el «sin grabación» ni el «primera y última vez»: nosotros tenemos repetición.
+
+Lo que ya está bien en los mails: siguen la misma estructura que los de Naza (confirmación con palabra para responder, regalo el día 1, el caso desarmado el día 2, headers con 🤡 y POV, el 🎁 solo en vivo el día 6 y la escalera del día 7).
