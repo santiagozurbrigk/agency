@@ -142,7 +142,7 @@ Los dos canales se alternan: casi nunca coinciden en el mismo minuto, y cuando c
 
 | Día | 📧 Mail | 💬 WhatsApp |
 | --- | --- | --- |
-| Mié 18 | Pendiente (mails post-webinar, tarea POST-01) | Repetición · Génesis está abierto · para el que duda |
+| Mié 18 | Pendiente (mails post-webinar, tarea POST-01) | Repetición · Génesis está abierto · aplicación en la página de la repetición |
 | Jue 19 | Pendiente | Lugares que quedan · audio «no quiero romper lo que funciona» · «está lleno de pirañas» |
 | Vie 20 | Pendiente | Cuenta regresiva hasta el cierre · se cerró |
 

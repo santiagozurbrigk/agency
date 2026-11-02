@@ -452,7 +452,7 @@ En los proximos 4 meses voy a estar ayudando a estas personas a escalar su ecomm
 
 #### **13:00 · Burbuja (45-60 seg) · «no quiero romper lo que funciona»**
 
-**🎙️ Guion:** Veo que hay varios con la misma duda : "¿y si toco el modelo y rompo lo que hoy ya me vende?". La suscripción no reemplaza a la compra única: va al lado, sin tocarla. Vos seguís vendiendo como hoy, y instalamos la suscripción al costado.
+**🎙️ Guion:** Veo que hay varios con la misma duda : "¿y si toco el modelo y rompo lo que hoy ya me vende?". La suscripción no reemplaza a la compra única: va al lado, sin tocarla. Vos seguís vendiendo como hoy, y ponés la suscripción al costado, conmigo al lado.
 
 **Texto:**
 
@@ -474,7 +474,7 @@ Por eso no te pido que me creas: Miralo por vos mismo como lo trabajamos y como 
 
 Hoy cierra Génesis, [CIERRE].
 
-Quedan [N LUGARES] lugares. Si todavía no agendaste, hoy es el día:
+Quedan [N LUGARES] lugares. Si todavía no aplicaste, hoy es el día:
 
 👉 [LINK A LA REPLAY]
 
@@ -482,7 +482,7 @@ Quedan [N LUGARES] lugares. Si todavía no agendaste, hoy es el día:
 
 **📹 Puntos:**
 
-> 1. Por qué cierra de verdad: es 1 a 1 y lo hacemos nosotros, así que son pocas marcas a propósito.
+> 1. Por qué cierra de verdad: es 1 a 1 y lo trabajo con cada marca, así que son pocas a propósito.
 
 > 2. «La landing te la copian en dos días. Tu base de suscriptores, no.»
 
