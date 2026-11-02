@@ -9,3 +9,9 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 | Creador de webinars | Arma el deck completo del webinar (~95 slides, 90 min): hook, 3 terceras con 3 pitches, oferta, objeciones, time check y compliance. | [`creador-webinars.md`](agentes/creador-webinars.md) |
 
 Para usarlo en Claude Code: *"usá el agente de `mi-negocio/agentes/creador-webinars.md`"*. Completa la CONFIGURACIÓN con `CONTEXTO.md` y `brief-genesis.md`.
+
+## Referencias
+
+| Archivo | Qué es |
+|---|---|
+| [`referencias/naza-grupo-whatsapp.md`](referencias/naza-grupo-whatsapp.md) | Cómo maneja Naza Gamero su grupo de WhatsApp de lanzamiento: cómo escribe, la forma de cada tanda, la escalera del día de la clase, lo que enseña Limitless (7 toques del día del vivo) y qué tomar para Manu. Leerlo antes de armar cualquier nutrición de WhatsApp. |
