@@ -18,7 +18,7 @@ Los 2 ads que corren durante los días de carrito abierto (tarea POST-03 del tra
 | --- | --- | --- |
 | La prueba | +280 millones por mes en la marca de Manu · +3.500 suscriptores · Lucas y Santi: de 1,3 millones por día con 2,4% de margen a 2,8 millones por día con 40%. Son los resultados más fuertes que se muestran en la clase, como pide el SOP. | Con captura. |
 | Números del propio lanzamiento | Agendas o ventas logradas en la clase. | **Todavía no existen** (la clase es el 17/11). Va un bloque opcional para cargarlos. |
-| Entregables | Lo que incluye Génesis, de `CONTEXTO.md`. | **Confirmar** que coincida con el slide de la oferta del 17/11. |
+| Entregables | Génesis es **DWY (lo hacés con Manu, no lo hace el equipo por vos)**. La lista sale de lo que incluye Génesis, pasado a formato DWY. | **Confirmar** que coincida con el slide de la oferta del 17/11. `CONTEXTO.md` todavía describe la oferta como DFY: está desactualizado. |
 | Ancla de precio | — | **No se usa:** no hay un precio anterior real más alto. Si lo hay, se suma. |
 | Qué pasa al cierre | Cierra Génesis y hay lugares limitados. | **Definir** la fecha de cierre y los lugares. Si además sube el precio o se caen bonus, se suma a la urgencia. |
 | Método | Método B.A.S.E.: crecer con los clientes que ya te compraron, no saliendo a comprar clientes nuevos. | — |
@@ -33,6 +33,7 @@ Los 2 ads que corren durante los días de carrito abierto (tarea POST-03 del tra
 - La fecha del cierre va con el día con nombre. Nunca «mañana» ni «quedan 24 horas».
 - El método se nombra, no se explica. Los entregables van en lista seca con ✅.
 - Nunca «webinar»: se dice «clase». Sin nombres ni detalles de otras marcas.
+- **Génesis es DWY:** nada de «lo instalamos», «lo hacemos por vos» ni «te lo armamos». Manu acompaña y el cliente lo aplica.
 
 ---
 
@@ -50,21 +51,20 @@ Los 2 ads que corren durante los días de carrito abierto (tarea POST-03 del tra
 >
 > `[OPCIONAL, cuando haya números reales: Y esta semana ya agendaron [N] marcas para entrar a Génesis.]`
 >
-> Eso es lo que hace el Método B.A.S.E. Y en Génesis no te lo enseño: lo instalamos con vos, en tu marca.
+> Eso es lo que hace el Método B.A.S.E. Y en Génesis lo aplicás en tu marca conmigo al lado, paso por paso.
 >
 > Agendando ahora te llevás lo mismo que mostré en vivo:
 >
-> ✅ La auditoría de tus números: margen real, CPA y techo de pauta.
-> ✅ La suscripción definida y con precio para tu producto.
-> ✅ La tienda con suscripción instalada, al lado de la compra única.
-> ✅ La conversión de tu base actual por mail y WhatsApp.
-> ✅ Los anuncios recalculados con tu CPA nuevo.
-> ✅ El sistema de retención y el tablero de suscriptores.
-> ✅ Chat 1 a 1 conmigo.
+> ✅ Sesiones 1 a 1 conmigo para auditar tus números: margen real, CPA y techo de pauta.
+> ✅ Tu suscripción definida y con precio, armada junto conmigo.
+> ✅ El paso a paso para poner la suscripción al lado de la compra única, sin tocar lo que hoy vende.
+> ✅ Mis flujos de mail y WhatsApp para convertir tu base y retener a tus suscriptores, listos para adaptar.
+> ✅ Mis más de 30 agentes de IA y los SOPs de cada pieza.
+> ✅ Chequeo semanal 1 a 1 y chat directo conmigo.
 >
 > Son [N LUGARES] lugares y cierra el [CIERRE]. Cuando digo que cierra, es literal. No lo digo para apurarte.
 >
-> Así que si no querés seguir renovando creativos todos los días para pelear un CPA que no baja, hacé clic acá abajo y agendá una llamada con mi equipo para ver cómo aplicamos esto en tu marca.
+> Así que si no querés seguir renovando creativos todos los días para pelear un CPA que no baja, hacé clic acá abajo y agendá una llamada con mi equipo para ver cómo lo aplicás en tu marca.
 >
 > Nos vemos. No te pierdas esta oportunidad.
 
