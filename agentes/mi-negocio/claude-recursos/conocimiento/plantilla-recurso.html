@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Génesis · {{TITULO DEL RECURSO}} · {{MARCA}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<!--
+  PLANTILLA DE RECURSO PERSONALIZADO · GÉNESIS
+  Reglas para Claude:
+  - No se toca el CSS. Solo se reemplazan los {{...}} y se repiten o borran bloques.
+  - Cada <section class="pagina"> es una hoja A4. Si una hoja se llena, se abre otra.
+  - Bloques disponibles: .cita · .cuenta (fila .clave) · .destacado · .pasos · .accion · .llamada · .nota
+-->
+<style>
+  :root {
+    --negro: #0B0B0C;
+    --negro-2: #1D1D1F;
+    --hueso: #F2EDE4;
+    --hueso-2: #E8E1D5;
+    --tinta: #17181C;
+    --gris: #6E6A62;
+    --linea: #DDD6C9;
+    --naranja: #F26A1B;
+    --naranja-oscuro: #B84A0C;
+    --titulos: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  html, body { margin: 0; background: #CFC9BE; }
+  body { font-family: var(--cuerpo); color: var(--tinta); font-size: 10.5pt; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+
+  .pagina {
+    width: 210mm; min-height: 297mm; margin: 10mm auto; padding: 20mm 20mm 24mm;
+    background: #fff; position: relative; page-break-after: always; break-after: page;
+    box-shadow: 0 8px 30px rgba(0,0,0,.18);
+  }
+  .pagina:last-of-type { page-break-after: auto; break-after: auto; }
+  @media print { html, body { background: #fff; } .pagina { margin: 0; box-shadow: none; } }
+  @media screen and (max-width: 820px) { .pagina { width: 100%; min-height: 0; margin: 0 0 12px; padding: 28px 18px 40px; } }
+
+  /* Cabecera y pie de cada hoja interior */
+  .cabecera { display: flex; justify-content: space-between; align-items: center; padding-bottom: 6mm; margin-bottom: 8mm; border-bottom: 1px solid var(--linea); font-size: 8.5pt; color: var(--gris); }
+  .logo { display: flex; align-items: center; gap: 8px; font-family: var(--titulos); font-weight: 700; letter-spacing: .16em; font-size: 9pt; color: var(--negro); }
+  .logo svg { width: 27px; height: 18px; }
+  .pie { position: absolute; left: 20mm; right: 20mm; bottom: 10mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--gris); }
+
+  /* Tipografía */
+  h1, h2, h3 { font-family: var(--titulos); color: var(--negro); letter-spacing: -0.02em; line-height: 1.12; margin: 0; }
+  h2 { font-size: 19pt; font-weight: 800; margin: 0 0 4mm; }
+  h2 .num { color: var(--naranja); margin-right: 6px; }
+  h3 { font-size: 12pt; font-weight: 700; margin: 6mm 0 2mm; }
+  p { margin: 0 0 3.2mm; }
+  strong { font-weight: 700; color: var(--negro); }
+  .marca { color: var(--naranja); font-weight: 700; }
+  section.bloque { margin-bottom: 10mm; }
+
+  /* Portada */
+  .portada { background: var(--negro); color: #fff; display: flex; flex-direction: column; justify-content: space-between; }
+  .portada .logo { color: #fff; font-size: 10pt; }
+  .portada .logo svg { width: 36px; height: 24px; }
+  .portada .para { font-size: 10pt; color: #B9B9BE; text-transform: uppercase; letter-spacing: .14em; margin-bottom: 6mm; }
+  .portada .para b { color: #fff; font-weight: 600; }
+  .portada h1 { color: #fff; font-size: 36pt; font-weight: 800; line-height: 1.04; letter-spacing: -0.03em; max-width: 150mm; }
+  .portada h1 em { font-style: normal; color: var(--naranja); }
+  .portada .bajada { margin-top: 7mm; font-size: 12.5pt; color: #D8D4CC; max-width: 140mm; line-height: 1.5; }
+  .portada .simbolo { width: 120mm; height: 80mm; opacity: .9; align-self: flex-end; }
+  .portada .datos { display: flex; justify-content: space-between; font-size: 8.5pt; color: #8E8E93; border-top: 1px solid rgba(255,255,255,.12); padding-top: 5mm; }
+
+  /* Cita textual del lead */
+  .cita { border-left: 3px solid var(--naranja); background: var(--hueso); padding: 4mm 5mm; margin: 0 0 3mm; border-radius: 0 6px 6px 0; }
+  .cita .etiqueta { display: block; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .12em; color: var(--gris); margin-bottom: 1mm; font-weight: 600; }
+  .cita q { font-family: var(--titulos); font-size: 12pt; font-weight: 600; color: var(--negro); quotes: "“" "”"; }
+
+  /* La cuenta */
+  table.cuenta { width: 100%; border-collapse: collapse; margin: 3mm 0 3mm; font-size: 10.5pt; }
+  table.cuenta th { text-align: left; font-size: 7.5pt; text-transform: uppercase; letter-spacing: .12em; color: var(--gris); font-weight: 600; padding: 0 3mm 2mm; border-bottom: 1.5px solid var(--negro); }
+  table.cuenta th:last-child, table.cuenta td:last-child { text-align: right; }
+  table.cuenta td { padding: 3mm; border-bottom: 1px solid var(--linea); font-variant-numeric: tabular-nums; }
+  table.cuenta td:last-child { font-family: var(--titulos); font-weight: 700; color: var(--negro); }
+  table.cuenta tr.clave td { background: var(--hueso); }
+  table.cuenta tr.clave td:last-child { color: var(--naranja); font-size: 12.5pt; }
+
+  /* Número o frase destacada */
+  .destacado { display: flex; gap: 6mm; align-items: center; background: var(--negro); color: #fff; border-radius: 8px; padding: 6mm 7mm; margin: 5mm 0; }
+  .destacado .cifra { font-family: var(--titulos); font-weight: 800; font-size: 28pt; color: var(--naranja); letter-spacing: -0.03em; white-space: nowrap; line-height: 1; }
+  .destacado p { margin: 0; font-size: 11pt; color: #E6E2DA; }
+  .destacado p strong { color: #fff; }
+
+  /* Pasos */
+  ol.pasos { list-style: none; counter-reset: paso; padding: 0; margin: 3mm 0; }
+  ol.pasos li { counter-increment: paso; position: relative; padding: 0 0 4mm 13mm; margin-bottom: 4mm; border-bottom: 1px solid var(--linea); }
+  ol.pasos li:last-child { border-bottom: 0; }
+  ol.pasos li::before { content: counter(paso, decimal-leading-zero); position: absolute; left: 0; top: -1px; font-family: var(--titulos); font-weight: 800; font-size: 13pt; color: var(--naranja); }
+  ol.pasos li b { display: block; font-family: var(--titulos); font-size: 11.5pt; color: var(--negro); margin-bottom: 1mm; }
+
+  /* Acción de la semana */
+  .accion { border: 1.5px solid var(--naranja); border-radius: 8px; padding: 5mm 6mm; margin: 4mm 0; }
+  .accion .etiqueta { display: inline-block; background: var(--naranja); color: #fff; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; padding: 1mm 2.5mm; border-radius: 4px; margin-bottom: 3mm; }
+  .accion h3 { margin-top: 0; }
+  .accion ul { margin: 2mm 0 0; padding-left: 5mm; }
+  .accion li { margin-bottom: 1.5mm; }
+
+  /* Puente a la llamada */
+  .llamada { background: var(--hueso); border-radius: 8px; padding: 6mm 7mm; margin: 5mm 0; }
+  .llamada h3 { margin-top: 0; }
+  .llamada ul { margin: 2mm 0 3mm; padding-left: 5mm; }
+  .llamada .cuando { font-family: var(--titulos); font-weight: 700; color: var(--negro); }
+
+  .nota { font-size: 8.5pt; color: var(--gris); margin-top: 2mm; }
+
+  /* Firma */
+  .firma { margin-top: 10mm; padding-top: 6mm; border-top: 1px solid var(--linea); display: flex; gap: 5mm; align-items: center; }
+  .firma svg { width: 42px; height: 28px; flex: 0 0 auto; }
+  .firma .nombre { font-family: var(--titulos); font-weight: 800; font-size: 13pt; color: var(--negro); }
+  .firma .autoridad { font-size: 9pt; color: var(--gris); }
+</style>
+</head>
+<body>
+
+<!-- Símbolo de Génesis: compra única · suscripción · la lente es el cliente que vuelve -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-claro" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#F2EDE4" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
+    <symbol id="g-oscuro" viewBox="0 0 36 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#0B0B0C" stroke-width="2.4"/><circle cx="24" cy="12" r="9" fill="none" stroke="#0B0B0C" stroke-width="2.4"/><path fill="#F26A1B" d="M18 4.6a9 9 0 0 1 0 14.8a9 9 0 0 1 0-14.8Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ===================== 1 · PORTADA ===================== -->
+<section class="pagina portada">
+  <div class="logo"><svg><use href="#g-claro"/></svg>GÉNESIS</div>
+  <div>
+    <div class="para">Preparado para <b>{{NOMBRE}}</b> · <b>{{MARCA}}</b></div>
+    <h1>{{TÍTULO: el resultado, con su problema adentro. Una palabra clave en <em>naranja</em>}}</h1>
+    <p class="bajada">{{BAJADA: una o dos líneas que conectan con lo que nos contó. Sin promesas.}}</p>
+  </div>
+  <svg class="simbolo" viewBox="0 0 36 24" aria-hidden="true"><use href="#g-claro"/></svg>
+  <div class="datos"><span>Método B.A.S.E. · Manu Dominguez</span><span>{{FECHA}}</span></div>
+</section>
+
+<!-- ===================== HOJAS INTERIORES ===================== -->
+<section class="pagina">
+  <div class="cabecera"><div class="logo"><svg><use href="#g-oscuro"/></svg>GÉNESIS</div><span>{{MARCA}} · {{TEMA}}</span></div>
+
+  <!-- 2 · LO QUE NOS CONTASTE -->
+  <section class="bloque">
+    <h2><span class="num">01</span>Lo que nos contaste</h2>
+    <div class="cita"><span class="etiqueta">Tu objetivo</span><q>{{RESPUESTA TEXTUAL}}</q></div>
+    <div class="cita"><span class="etiqueta">Lo que te frena</span><q>{{RESPUESTA TEXTUAL}}</q></div>
+    <div class="cita"><span class="etiqueta">Lo que probaste</span><q>{{RESPUESTA TEXTUAL}}</q></div>
+    <p>{{UNA LÍNEA DE LECTURA NUESTRA}}</p>
+  </section>
+
+  <!-- 3 · LO QUE ESTÁ PASANDO DE VERDAD -->
+  <section class="bloque">
+    <h2><span class="num">02</span>Lo que está pasando de verdad</h2>
+    <p>{{CADENA CAUSAL EN PRESENTE, CON EL NÚMERO ADENTRO}}</p>
+    <div class="destacado"><div class="cifra">{{NÚMERO}}</div><p>{{QUÉ SIGNIFICA ESE NÚMERO PARA SU MARCA}}</p></div>
+  </section>
+
+  <div class="pie"><span>Preparado para {{NOMBRE}} · uso personal</span><span>2</span></div>
+</section>
+
+<section class="pagina">
+  <div class="cabecera"><div class="logo"><svg><use href="#g-oscuro"/></svg>GÉNESIS</div><span>{{MARCA}} · {{TEMA}}</span></div>
+
+  <!-- 4 · LA CUENTA -->
+  <section class="bloque">
+    <h2><span class="num">03</span>La cuenta con tus números</h2>
+    <p>{{UNA LÍNEA QUE PRESENTA LA CUENTA}}</p>
+    <table class="cuenta">
+      <thead><tr><th>Concepto</th><th>Hoy</th><th>Con suscripción</th></tr></thead>
+      <tbody>
+        <tr><td>{{FILA}}</td><td>{{VALOR}}</td><td>{{VALOR}}</td></tr>
+        <tr class="clave"><td>{{FILA CLAVE}}</td><td>{{VALOR}}</td><td>{{VALOR}}</td></tr>
+      </tbody>
+    </table>
+    <p class="nota">{{SI ES CUENTA DE EJEMPLO: "Cuenta de ejemplo con un margen de 30.000 por pedido. En la llamada la hacemos con los números de {{MARCA}}."}}</p>
+  </section>
+
+  <!-- 5 · EL ORDEN PARA SALIR -->
+  <section class="bloque">
+    <h2><span class="num">04</span>El orden para salir</h2>
+    <ol class="pasos">
+      <li><b>{{PASO DEL SOP}}</b>{{QUÉ ES Y POR QUÉ VA PRIMERO, APLICADO A SU MARCA}}</li>
+      <li><b>{{PASO DEL SOP}}</b>{{...}}</li>
+      <li><b>{{PASO DEL SOP}}</b>{{...}}</li>
+    </ol>
+  </section>
+
+  <div class="pie"><span>Preparado para {{NOMBRE}} · uso personal</span><span>3</span></div>
+</section>
+
+<section class="pagina">
+  <div class="cabecera"><div class="logo"><svg><use href="#g-oscuro"/></svg>GÉNESIS</div><span>{{MARCA}} · {{TEMA}}</span></div>
+
+  <!-- 6 · ESTA SEMANA -->
+  <div class="accion">
+    <span class="etiqueta">Para hacer esta semana</span>
+    <h3>{{LA ACCIÓN, EN UNA FRASE}}</h3>
+    <p>{{CÓMO HACERLA EN SU MARCA, SALIDO DEL SOP}}</p>
+    <ul>
+      <li>{{PASO CORTO}}</li>
+      <li>{{PASO CORTO}}</li>
+    </ul>
+  </div>
+
+  <!-- 7 · LA LLAMADA -->
+  <div class="llamada">
+    <h3>Lo que vemos en la llamada</h3>
+    <p>{{QUÉ FALTA PARA SU CASO Y QUE SE HACE CON SUS NÚMEROS}}</p>
+    <ul>
+      <li>{{TEMA DE LA LLAMADA}}</li>
+      <li>{{TEMA DE LA LLAMADA}}</li>
+      <li>{{TEMA DE LA LLAMADA}}</li>
+    </ul>
+    <p class="cuando">{{"Lo vemos con {{CLOSER}} el {{DÍA}} a las {{HORA}}. Traé tus números a mano: {{CUÁLES}}."}}</p>
+  </div>
+
+  <!-- 8 · FIRMA -->
+  <div class="firma">
+    <svg><use href="#g-oscuro"/></svg>
+    <div>
+      <div class="nombre">Manu Dominguez</div>
+      <div class="autoridad">Método B.A.S.E. · 2.200 suscriptores activos · 1,28% de churn</div>
+    </div>
+  </div>
+
+  <div class="pie"><span>Preparado para {{NOMBRE}} · uso personal</span><span>4</span></div>
+</section>
+
+</body>
+</html>
