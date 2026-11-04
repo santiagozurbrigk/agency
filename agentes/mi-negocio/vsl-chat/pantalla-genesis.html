@@ -1,0 +1,423 @@
+<title>Génesis por dentro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: el lenguaje del campus. Fondo casi negro con resplandor naranja, tarjetas de vidrio con borde fino, títulos livianos. Una columna en el orden del guion. */
+  :root {
+    --negro: #0A0807;
+    --negro-2: rgba(255,255,255,.028);
+    --negro-3: rgba(255,255,255,.06);
+    --vidrio-borde: rgba(255,255,255,.075);
+    --linea: rgba(255,255,255,.075);
+    --hueso: #F3EEE8;
+    --gris: #7E7873;
+    --gris-2: #B3ACA6;
+    --naranja: #E8823A;
+    --naranja-fuerte: #D9661E;
+    --naranja-suave: rgba(232,130,58,.10);
+    --titulos: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--negro); }
+  body { background: var(--negro); color: var(--hueso); font-family: var(--cuerpo); font-size: 16px; line-height: 1.6; font-weight: 400; min-height: 100vh; position: relative; overflow-x: hidden; }
+  body::after { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(38vw 34vw at 66% 14%, rgba(201,92,24,.42), rgba(201,92,24,0) 70%),
+      radial-gradient(46vw 40vw at -6% 104%, rgba(160,68,18,.24), rgba(160,68,18,0) 70%),
+      radial-gradient(60vw 50vw at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,.35) 100%); }
+  .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding-block: 56px 120px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 112px; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.08; margin: 0; letter-spacing: -0.035em; font-weight: 300; text-wrap: balance; }
+  p { margin: 0; }
+  .num { font-variant-numeric: tabular-nums; }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--gris-2); }
+  .sec { display: grid; gap: 32px; }
+  .sec-head { display: grid; gap: 14px; max-width: 680px; justify-items: start; }
+  .sec-head h2 { font-size: clamp(32px, 4.4vw, 50px); }
+  .sec-head p { color: var(--gris-2); font-size: 17px; font-weight: 300; }
+  .nota { font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--naranja); }
+  .vidrio, .tramo, .stat, .paso, .cuenta, .modo, .rival, .caso-slot, .grupo, .diez {
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    border: 1px solid var(--vidrio-borde); border-radius: 16px;
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  }
+
+  /* Hero */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 500; letter-spacing: .32em; font-size: 12px; }
+  .logo svg { width: 30px; height: 30px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 12px; font-weight: 400; padding: 6px 14px; border: 1px solid var(--vidrio-borde); border-radius: 999px; color: var(--gris-2); background: rgba(255,255,255,.02); }
+  .hero { display: grid; gap: 22px; padding-top: 48px; justify-items: center; text-align: center; }
+  .hero h1 { font-size: clamp(42px, 7vw, 84px); font-weight: 300; letter-spacing: -0.05em; max-width: 14ch; }
+  .hero h1 em { font-style: normal; color: var(--naranja); }
+  .hero p.lead { font-size: 18px; color: var(--gris-2); font-weight: 300; max-width: 52ch; }
+
+  /* Caso */
+  .caso { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; }
+  .tramo { padding: 32px; display: grid; gap: 22px; min-width: 0; }
+  .tramo .fila { display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; }
+  .tramo .antes, .tramo .ahora { display: grid; gap: 6px; }
+  .tramo small, .stat span, .campo label, .rival small, .caso-slot small { font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--gris); font-weight: 500; }
+  .tramo .antes b { font-weight: 200; font-size: clamp(40px, 6vw, 64px); color: var(--gris-2); letter-spacing: -0.05em; line-height: 1; }
+  .tramo .ahora b { font-weight: 200; font-size: clamp(64px, 10vw, 116px); color: var(--hueso); letter-spacing: -0.06em; line-height: .9; }
+  .tramo .flecha { font-size: 28px; font-weight: 200; color: var(--naranja); padding-bottom: 10px; }
+  .barras { display: grid; gap: 8px; }
+  .barra { height: 3px; border-radius: 2px; background: var(--negro-3); position: relative; overflow: hidden; }
+  .barra i { position: absolute; inset: 0 auto 0 0; border-radius: 2px; }
+  .stats { display: grid; gap: 12px; }
+  .stat { padding: 22px 26px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .stat b { font-size: 34px; font-weight: 300; letter-spacing: -0.03em; }
+
+  /* Pasos */
+  .pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .paso { padding: 28px; display: grid; gap: 12px; align-content: start; min-width: 0; min-height: 230px; }
+  .paso .n { font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); margin-bottom: 28px; }
+  .paso .n::before { content: "0"; }
+  .paso h3 { font-size: 22px; font-weight: 400; letter-spacing: -0.02em; }
+  .paso p { color: var(--gris-2); font-size: 15px; font-weight: 300; }
+  .pie-pasos { color: var(--gris-2); font-size: 16px; font-weight: 300; }
+  .pie-pasos b { color: var(--hueso); font-weight: 500; }
+
+  /* Cuenta */
+  .cuenta { padding: clamp(22px, 4vw, 40px); display: grid; gap: 32px; }
+  .inputs { display: flex; gap: 20px; flex-wrap: wrap; align-items: end; }
+  .campo { display: grid; gap: 8px; }
+  .campo input { font: 300 28px/1 var(--titulos); letter-spacing: -0.02em; color: var(--hueso); background: rgba(0,0,0,.35); border: 1px solid var(--vidrio-borde); border-radius: 12px; padding: 12px 16px; width: 200px; max-width: 100%; font-variant-numeric: tabular-nums; }
+  .campo input:focus-visible, .seg button:focus-visible { outline: 1px solid var(--naranja); outline-offset: 2px; }
+  .seg { display: flex; border: 1px solid var(--vidrio-borde); border-radius: 12px; overflow: hidden; background: rgba(0,0,0,.35); }
+  .seg button { font: 400 17px/1 var(--titulos); color: var(--gris-2); background: transparent; border: 0; padding: 16px 20px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--naranja-suave); color: var(--naranja); box-shadow: inset 0 0 0 1px rgba(232,130,58,.5); border-radius: 11px; }
+  .techos { display: grid; gap: 22px; }
+  .techo { display: grid; grid-template-columns: 220px 1fr 140px; gap: 18px; align-items: center; }
+  .techo .lab { font-size: 13px; color: var(--gris); font-weight: 300; }
+  .techo .lab b { display: block; color: var(--hueso); font-size: 16px; font-weight: 400; }
+  .techo .pista { height: 4px; background: var(--negro-3); border-radius: 2px; position: relative; overflow: hidden; min-width: 0; }
+  .techo .pista i { position: absolute; inset: 0 auto 0 0; border-radius: 2px; transition: width .5s ease; }
+  .techo .val { font-weight: 300; font-size: 28px; letter-spacing: -0.03em; text-align: right; font-variant-numeric: tabular-nums; }
+  .t-unica i { background: var(--gris); }
+  .t-susc i { background: var(--naranja); }
+  .t-op i { background: linear-gradient(90deg, var(--naranja-fuerte), var(--naranja)); box-shadow: 0 0 14px rgba(232,130,58,.6); }
+  .t-op .val { color: var(--naranja); }
+  .vivos { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; border-top: 1px solid var(--linea); padding-top: 22px; }
+  .vivos > span:first-child { color: var(--gris-2); font-weight: 300; }
+  .vivos b { font-size: 32px; font-weight: 300; letter-spacing: -0.03em; color: var(--naranja); }
+  .cpa-cac { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .modo { padding: 28px; display: grid; gap: 18px; min-width: 0; }
+  .modo h3 { font-size: 22px; font-weight: 400; letter-spacing: -0.02em; }
+  .modo h3 small { display: block; font-size: 13px; font-weight: 300; color: var(--gris); letter-spacing: 0; margin-top: 6px; }
+  .pedidos { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pedido { flex: 1 1 64px; border-radius: 10px; padding: 12px; display: grid; gap: 2px; font-size: 12px; font-weight: 300; }
+  .pedido b { font-size: 15px; font-weight: 500; }
+  .p-paga { background: rgba(255,255,255,.03); color: var(--gris); border: 1px solid var(--vidrio-borde); }
+  .p-entero { background: var(--naranja-suave); color: var(--hueso); border: 1px solid rgba(232,130,58,.45); }
+  .p-entero b { color: var(--naranja); }
+  .modo p { color: var(--gris-2); font-size: 15px; font-weight: 300; }
+
+  /* Modelo */
+  .modelo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rival { padding: 32px; display: grid; gap: 10px; min-width: 0; }
+  .rival b { font-size: clamp(56px, 8vw, 92px); font-weight: 200; letter-spacing: -0.06em; line-height: .95; }
+  .rival p { font-size: 15px; font-weight: 300; }
+  .r-ellos { color: var(--gris-2); }
+  .r-ellos b { color: var(--gris-2); }
+  .r-vos { border-color: rgba(232,130,58,.45); background: linear-gradient(180deg, rgba(232,130,58,.12), rgba(232,130,58,.03)); box-shadow: 0 0 60px rgba(201,92,24,.18); }
+  .r-vos small, .r-vos b { color: var(--naranja); }
+  .r-vos p { color: var(--hueso); }
+  .remate { font-size: clamp(22px, 3vw, 30px); font-weight: 300; letter-spacing: -0.02em; max-width: 32ch; color: var(--gris-2); }
+  .remate em { font-style: normal; color: var(--hueso); }
+
+  /* Casos */
+  .casos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .caso-slot { padding: 28px; display: grid; gap: 12px; min-height: 190px; align-content: start; min-width: 0; border-style: dashed; }
+  .caso-slot p { color: var(--gris-2); font-size: 15px; font-weight: 300; }
+
+  /* Incluye */
+  .grupos { display: grid; gap: 16px; }
+  .grupo { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 30px; }
+  .grupo h3 { font-size: 22px; font-weight: 400; letter-spacing: -0.02em; }
+  .grupo h3 small { display: block; font-size: 13px; font-weight: 300; color: var(--gris); margin-top: 8px; letter-spacing: 0; }
+  .items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; min-width: 0; }
+  .items li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: start; }
+  .items .k { font-size: 13px; font-weight: 500; color: var(--naranja); padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .items b { display: block; font-size: 16px; font-weight: 500; }
+  .items span { color: var(--gris-2); font-size: 14px; font-weight: 300; }
+  .dfy { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: .16em; color: var(--naranja); border: 1px solid rgba(232,130,58,.4); border-radius: 999px; padding: 1px 8px; margin-left: 8px; vertical-align: 2px; }
+  .cierre-incluye { font-size: 20px; font-weight: 300; color: var(--gris-2); max-width: 44ch; }
+  .cierre-incluye b { color: var(--hueso); font-weight: 400; }
+
+  /* Diez marcas */
+  .diez { padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: auto 1fr; gap: 44px; align-items: center; border-color: rgba(232,130,58,.3); box-shadow: 0 0 80px rgba(201,92,24,.14); }
+  .puntos { display: grid; grid-template-columns: repeat(5, 30px); gap: 14px; }
+  .puntos i { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--naranja); box-shadow: 0 0 12px rgba(232,130,58,.35); }
+  .diez h2 { font-size: clamp(32px, 4.4vw, 48px); margin-top: 12px; }
+  .diez p { color: var(--gris-2); font-weight: 300; margin-top: 14px; max-width: 52ch; }
+
+  @media (max-width: 760px) {
+    .caso, .cpa-cac, .modelo, .pasos, .casos, .diez { grid-template-columns: 1fr; }
+    .techo { grid-template-columns: 1fr 110px; }
+    .techo .pista { grid-column: 1 / -1; grid-row: 2; }
+    .grupo { grid-template-columns: 1fr; }
+    .items { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { .techo .pista i { transition: none; } }
+
+  /* Oferta: qué incluye */
+  .oferta { display: grid; gap: 16px; }
+  .of-fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .of-fila.dos { grid-template-columns: repeat(2, 1fr); }
+  .bloque { background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); border: 1px solid rgba(255,255,255,.075); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .bloque .tag { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); }
+  .bloque .tag em { font-style: normal; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(232,130,58,.4); border-radius: 999px; padding: 2px 9px; }
+  .bloque h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .bloque h3 small { display: block; font-size: 13px; font-weight: 300; letter-spacing: 0; opacity: .6; margin-top: 6px; }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .lista li { font-size: 15px; font-weight: 300; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.07); display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+  .lista li::before { content: "✓"; color: var(--naranja); font-weight: 500; }
+  .lista li b { font-weight: 500; }
+  .cuentas { display: flex; gap: 28px; flex-wrap: wrap; }
+  .cuentas div { display: grid; gap: 2px; }
+  .cuentas b { font-size: 44px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cuentas span { font-size: 12px; font-weight: 400; opacity: .65; }
+  .bloque.info { grid-template-columns: 240px 1fr; gap: 28px; }
+  .sops { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; min-width: 0; }
+  .sops span { font-size: 13px; font-weight: 400; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); }
+  .sops span b { color: var(--naranja); font-weight: 500; margin-right: 4px; font-size: 11px; letter-spacing: .1em; }
+  .sops .herr { border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.10); }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+  .bonus-head h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 300; letter-spacing: -0.03em; }
+  .bloque.bonus { border-color: rgba(232,130,58,.32); }
+  .bloque.destacado { border-color: rgba(232,130,58,.55); background: linear-gradient(180deg, rgba(232,130,58,.14), rgba(232,130,58,.03)); box-shadow: 0 0 70px rgba(201,92,24,.2); }
+  .descuento { white-space: nowrap; font-size: clamp(40px, 4.4vw, 54px); font-weight: 200; letter-spacing: -0.05em; line-height: .95; color: var(--naranja); font-variant-numeric: tabular-nums; }
+  .descuento small { white-space: normal; display: block; font-size: 15px; font-weight: 300; letter-spacing: 0; color: inherit; opacity: .85; margin-top: 10px; }
+  .of-cierre { font-size: 20px; font-weight: 300; opacity: .75; max-width: 46ch; }
+  @media (max-width: 860px) { .of-fila, .of-fila.dos, .bloque.info { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="2"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--gris-2)" stroke-width="2"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
+      GENESIS OS
+    </div>
+    <div class="chips"><span class="chip">Método B.A.S.E.</span><span class="chip">4 meses</span><span class="chip">Done with you</span><span class="chip">Software propio</span></div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Manu Dominguez · José</p>
+    <h1>Escalá tu ecomm de consumibles con <em>modelo de suscripción</em></h1>
+    <p class="lead">Sin depender del CPA ni dejar de vender. La suscripción va al lado de la compra única, sin tocarla.</p>
+  </section>
+
+  <section class="sec" id="caso">
+    <div class="sec-head">
+      <p class="eyebrow">Mi marca</p>
+      <h2>Lo hice primero en mi marca</h2>
+    </div>
+    <div class="caso">
+      <div class="tramo">
+        <div class="fila">
+          <div class="antes"><small>Compra única</small><b class="num">60M</b></div>
+          <div class="flecha">→</div>
+          <div class="ahora"><small>Con suscripción</small><b class="num">220M</b></div>
+        </div>
+        <div class="barras" aria-hidden="true">
+          <div class="barra"><i style="width:27.3%;background:var(--gris)"></i></div>
+          <div class="barra"><i style="width:100%;background:linear-gradient(90deg,var(--naranja-fuerte),var(--naranja))"></i></div>
+        </div>
+        <p style="color:var(--gris);font-size:13px;font-weight:300">Facturación mensual en pesos.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span>Suscriptores activos</span><b class="num">+3.200</b></div>
+        <div class="stat"><span>Churn</span><b class="num">&lt; 5%</b></div>
+        <div class="stat"><span>LTV mínimo</span><b class="num">3 pedidos</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pasos">
+    <div class="sec-head">
+      <p class="eyebrow">El método en 3 pasos</p>
+      <h2>Que el mismo cliente te compre tres veces</h2>
+    </div>
+    <div class="pasos">
+      <div class="paso"><div class="n">1</div><h3>De pedido a suscriptor</h3><p>Tu suscripción definida según cada cuánto se le termina el producto al cliente. Instalada al lado de la compra única, y tu base actual pasada a suscripción.</p></div>
+      <div class="paso"><div class="n">2</div><h3>Migración sin frenar</h3><p>No se apaga nada. Producto, stock y caja ajustados para que la suscripción no te deje sin mercadería.</p></div>
+      <div class="paso"><div class="n">3</div><h3>Piso de facturación</h3><p>Retención para que el suscriptor se quede, y anuncios recalculados con el CPA que ahora te podés permitir.</p></div>
+    </div>
+    <p class="pie-pasos">El primer cobro recurrente cae con tu primer ciclo de reposición. <b>Si tu producto se termina en 30 días, a los 30.</b></p>
+  </section>
+
+  <section class="sec" id="cuenta">
+    <div class="sec-head">
+      <p class="eyebrow">La cuenta</p>
+      <h2>Cuánto podés pagar por cada cliente</h2>
+      <p>Cambiá el margen y el LTV para hacer la cuenta con tus números.</p>
+    </div>
+    <div class="cuenta">
+      <div class="inputs">
+        <div class="campo">
+          <label for="margen">Margen por pedido (ARS)</label>
+          <input id="margen" type="text" inputmode="numeric" value="30.000" autocomplete="off">
+        </div>
+        <div class="campo">
+          <label id="ltv-lab">LTV (pedidos por cliente)</label>
+          <div class="seg" role="group" aria-labelledby="ltv-lab">
+            <button type="button" data-ltv="2" aria-pressed="false">2</button>
+            <button type="button" data-ltv="3" aria-pressed="true">3</button>
+            <button type="button" data-ltv="4" aria-pressed="false">4</button>
+            <button type="button" data-ltv="5" aria-pressed="false">5</button>
+          </div>
+        </div>
+      </div>
+      <div class="techos">
+        <div class="techo t-unica"><div class="lab"><b>Techo compra única</b>Breakeven en la 1ª venta</div><div class="pista"><i id="b-unica"></i></div><div class="val" id="v-unica"></div></div>
+        <div class="techo t-susc"><div class="lab"><b>Techo con suscripción</b><span id="l-susc"></span></div><div class="pista"><i id="b-susc"></i></div><div class="val" id="v-susc"></div></div>
+        <div class="techo t-op"><div class="lab"><b>Punto operativo</b>Donde te recomiendo operar</div><div class="pista"><i id="b-op"></i></div><div class="val" id="v-op"></div></div>
+      </div>
+      <div class="vivos"><span style="color:var(--gris-2)">Te quedan vivos por cliente</span><b class="num" id="v-vivos"></b><span class="nota">y estás tranquilo</span></div>
+    </div>
+
+    <div class="cpa-cac">
+      <div class="modo">
+        <h3>Compra única: CPA<small>Lo pagás en cada venta</small></h3>
+        <div class="pedidos">
+          <div class="pedido p-paga"><b>1ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>2ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>3ª</b>pagás pauta</div>
+          <div class="pedido p-paga"><b>4ª</b>pagás pauta</div>
+        </div>
+        <p>Cada cliente lo volvés a comprar todos los meses. El 1 del mes arrancás en cero.</p>
+      </div>
+      <div class="modo">
+        <h3>Suscripción: CAC<small>Se paga una vez</small></h3>
+        <div class="pedidos">
+          <div class="pedido p-paga"><b>1ª</b>pagás pauta</div>
+          <div class="pedido p-entero"><b>2ª</b>margen entero</div>
+          <div class="pedido p-entero"><b>3ª</b>margen entero</div>
+          <div class="pedido p-entero"><b>4ª</b>margen entero</div>
+        </div>
+        <p>La segunda, la tercera y la cuarta compra entran con el margen de contribución entero.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="modelo">
+    <div class="sec-head">
+      <p class="eyebrow">Competir por el modelo</p>
+      <h2>Lo que cada uno puede pagar por un cliente</h2>
+    </div>
+    <div class="modelo">
+      <div class="rival r-ellos"><small>Tu competencia</small><b class="num">USD 50</b><p>Compra única. Si paga más, pierde plata.</p></div>
+      <div class="rival r-vos"><small>Vos, con suscripción</small><b class="num">USD 75</b><p>Te sigue cerrando la cuenta. Y listo: ya no tenés competencia.</p></div>
+    </div>
+    <p class="remate">Si Meta te baja la cuenta, <em>los suscriptores se siguen cobrando.</em> La landing te la copian en 48 horas. Tu base de suscriptores, no.</p>
+  </section>
+
+  <section class="sec" id="incluye">
+    <div class="sec-head">
+      <p class="eyebrow">Qué incluye Genesis OS</p>
+      <h2>4 meses, con nosotros al lado</h2>
+    </div>
+    <div class="oferta">
+      <div class="of-fila">
+        <div class="bloque">
+          <div class="tag">01 <em>Núcleo</em></div>
+          <h3>Genesis OS</h3>
+          <ul class="lista"><li><span><b>4 meses</b></span></li><li><span><b>Software propio</b></span></li><li><span>Acceso 1 a 1 para <b>2 personas de tu equipo</b></span></li><li><span>Tablero de <b>suscriptores y bajas</b></span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">02 <em>Done with you</em></div>
+          <h3>DWY Roadmap<small>Lo hacemos con vos</small></h3>
+          <ul class="lista"><li><span>Auditoría + roadmap</span></li><li><span>Suscripción instalada</span></li><li><span>Ofertas</span></li><li><span>Creación de anuncios</span></li><li><span>Procesos de retención</span></li><li><span>Proyección de stock</span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">03 <em>3 por semana</em></div>
+          <h3>Acompañamiento<small>Grupos de 6 a 8 personas en promedio</small></h3>
+          <div class="cuentas"><div><b>16</b><span>grupales con Manu</span></div><div><b>32</b><span>grupales con José</span></div></div>
+          <ul class="lista"><li><span><b>Llamadas 1 a 1</b> con Manu o José, a pedido</span></li><li><span><b>16 llamadas grupales</b> con Manu</span></li><li><span><b>32 llamadas grupales</b> con José</span></li><li><span><b>Chat 1 a 1</b> con Manu y José</span></li></ul>
+        </div>
+      </div>
+      <div class="bloque info">
+        <div style="display:grid;gap:12px;align-content:start">
+          <div class="tag">04 <em>Información</em></div>
+          <h3>Todos los SOPs<small>13 áreas del negocio, más las herramientas</small></h3>
+        </div>
+        <div class="sops"><span><b>SOPs</b>Investigación</span><span><b>SOPs</b>Operaciones</span><span><b>SOPs</b>Funnels</span><span><b>SOPs</b>Retención</span><span><b>SOPs</b>Oferta</span><span><b>SOPs</b>Blackhat</span><span><b>SOPs</b>Ads</span><span><b>SOPs</b>Landings</span><span><b>SOPs</b>Atención al cliente</span><span><b>SOPs</b>Logística</span><span><b>SOPs</b>Media buying</span><span><b>SOPs</b>Copywriting y guiones</span><span><b>SOPs</b>Edición y creativos</span><span class="herr"><b>+</b>Herramientas: agentes, flujos, skills y dashboards</span></div>
+      </div>
+      <div class="bonus-head"><p class="eyebrow">Bonus</p><h3>Además, entrando ahora</h3></div>
+      <div class="of-fila">
+        <div class="bloque bonus">
+          <div class="tag">Bonus 1 <em>Contactos</em></div>
+          <h3>Tu agenda de proveedores</h3>
+          <ul class="lista"><li><span>Proveedores</span></li><li><span>Laboratorios</span></li><li><span>Contadores especializados</span></li><li><span>Logística propia</span></li><li><span>Abogados especializados</span></li><li><span>Bolsa de trabajo</span></li><li><span>Contacto de registro: INPI, ANMAT y SENASA</span></li></ul>
+        </div>
+        <div class="bloque bonus">
+          <div class="tag">Bonus 2 <em>Puentify</em></div>
+          <h3>Puentify</h3>
+          <ul class="lista"><li><span>Contacto directo con Puentify</span></li><li><span><b>1 mes gratis</b></span></li><li><span>Onboarding prioritario</span></li><li><span>Instalación con el equipo de Puentify</span></li></ul>
+        </div>
+      <div class="bloque destacado">
+        <div class="tag">Bonus 3 <em>10 cupos</em></div>
+        <div class="descuento">USD 3.000<small>de descuento si entrás en los 10 cupos</small></div>
+      </div>
+      </div>
+    </div>
+    <p class="of-cierre">La inversión la vemos en la llamada, con tus números adelante.</p>
+  </section>
+
+  <section class="diez" id="lugares">
+    <div class="puntos" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div>
+      <p class="eyebrow">Cupos limitados</p>
+      <h2>Tomamos 10 marcas</h2>
+      <p>Queremos que el servicio sea lo más personalizado posible y que las 10 marcas que entren terminen siendo casos de éxito.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const fmt = n => n.toLocaleString("es-AR", { maximumFractionDigits: 0 });
+  const margenEl = document.getElementById("margen");
+  let ltv = 3;
+
+  function leerMargen() {
+    const n = parseInt(margenEl.value.replace(/\D/g, ""), 10);
+    return Number.isFinite(n) && n > 0 ? n : 0;
+  }
+
+  function pintar() {
+    const m = leerMargen();
+    const susc = m * ltv;
+    const op = Math.round(susc * 75 / 90);
+    const max = susc || 1;
+    document.getElementById("v-unica").textContent = "$" + fmt(m);
+    document.getElementById("v-susc").textContent = "$" + fmt(susc);
+    document.getElementById("v-op").textContent = "$" + fmt(op);
+    document.getElementById("v-vivos").textContent = "$" + fmt(susc - op);
+    document.getElementById("l-susc").textContent = "Margen × LTV " + ltv;
+    document.getElementById("b-unica").style.width = (m / max * 100) + "%";
+    document.getElementById("b-susc").style.width = "100%";
+    document.getElementById("b-op").style.width = (op / max * 100) + "%";
+  }
+
+  margenEl.addEventListener("input", () => {
+    const m = leerMargen();
+    margenEl.value = m ? fmt(m) : "";
+    pintar();
+  });
+
+  document.querySelectorAll(".seg button").forEach(b => {
+    b.addEventListener("click", () => {
+      ltv = Number(b.dataset.ltv);
+      document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+      pintar();
+    });
+  });
+
+  pintar();
+</script>

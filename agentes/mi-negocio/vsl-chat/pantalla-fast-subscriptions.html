@@ -1,0 +1,361 @@
+<title>Genesis Lite por dentro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: el lenguaje del campus. Fondo casi negro con resplandor naranja, tarjetas de vidrio con borde fino, títulos livianos. Una columna en el orden del guion. */
+  :root {
+    --fondo: #0A0807;
+    --tinta: #F3EEE8;
+    --tinta-2: #B3ACA6;
+    --tinta-3: #7E7873;
+    --borde: rgba(255,255,255,.075);
+    --naranja: #E8823A;
+    --naranja-suave: rgba(232,130,58,.10);
+    --naranja-borde: rgba(232,130,58,.45);
+    --titulos: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+    --cuerpo: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--fondo); }
+  body { background: var(--fondo); color: var(--tinta); font-family: var(--cuerpo); font-size: 16px; line-height: 1.6; min-height: 100vh; position: relative; overflow-x: hidden; }
+  body::after { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(38vw 34vw at 66% 14%, rgba(201,92,24,.42), rgba(201,92,24,0) 70%),
+      radial-gradient(46vw 40vw at -6% 104%, rgba(160,68,18,.24), rgba(160,68,18,0) 70%),
+      radial-gradient(60vw 50vw at 50% 50%, rgba(0,0,0,0), rgba(0,0,0,.35) 100%); }
+  .wrap { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; padding-block: 56px 120px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 112px; }
+  h1, h2, h3 { font-family: var(--titulos); line-height: 1.08; margin: 0; letter-spacing: -0.035em; font-weight: 300; text-wrap: balance; }
+  p { margin: 0; }
+  .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: var(--tinta-2); }
+  .sec { display: grid; gap: 32px; }
+  .sec-head { display: grid; gap: 14px; max-width: 680px; }
+  .sec-head h2 { font-size: clamp(32px, 4.4vw, 50px); }
+  .sec-head p { color: var(--tinta-2); font-size: 17px; font-weight: 300; }
+  .nota { font-size: 11px; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: var(--naranja); }
+  .venta, .lado, .paso, .despues, .pregunta, .pilar, .caso-slot, .semana {
+    background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012));
+    border: 1px solid var(--borde); border-radius: 16px;
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .logo { display: flex; align-items: center; gap: 12px; font-weight: 500; letter-spacing: .32em; font-size: 12px; }
+  .logo svg { width: 30px; height: 30px; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 12px; padding: 6px 14px; border: 1px solid var(--borde); border-radius: 999px; color: var(--tinta-2); background: rgba(255,255,255,.02); }
+  .hero { display: grid; gap: 22px; padding-top: 48px; justify-items: center; text-align: center; }
+  .hero h1 { font-size: clamp(42px, 7vw, 82px); letter-spacing: -0.05em; max-width: 15ch; }
+  .hero h1 em { font-style: normal; color: var(--naranja); }
+  .hero .lead { font-size: 18px; color: var(--tinta-2); font-weight: 300; max-width: 52ch; }
+
+  /* La idea */
+  .ventas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .venta { padding: 26px; display: grid; gap: 8px; min-width: 0; }
+  .venta b { font-weight: 200; font-size: 60px; line-height: .9; letter-spacing: -0.05em; }
+  .venta span { font-size: 14px; font-weight: 300; }
+  .v-1 { color: var(--tinta-3); }
+  .v-n { border-color: var(--naranja-borde); background: linear-gradient(180deg, rgba(232,130,58,.12), rgba(232,130,58,.03)); }
+  .v-n b { color: var(--naranja); }
+  .v-n span { color: var(--tinta); }
+  .contraste { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .lado { padding: 30px; display: grid; gap: 18px; align-content: start; min-width: 0; }
+  .lado h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .lado ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .lado li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; font-size: 15px; font-weight: 300; }
+  .l-ganador { color: var(--tinta-3); }
+  .l-ganador h3 { color: var(--tinta-2); }
+  .l-ganador li::before { content: "×"; color: var(--tinta-3); }
+  .l-consumible { border-color: var(--naranja-borde); box-shadow: 0 0 60px rgba(201,92,24,.16); color: var(--tinta); }
+  .l-consumible li::before { content: "→"; color: var(--naranja); }
+
+  /* Pasos */
+  .camino { display: grid; grid-template-columns: repeat(3, 1fr) 0.85fr; gap: 14px; align-items: stretch; }
+  .paso { padding: 28px; display: grid; gap: 12px; align-content: start; min-width: 0; min-height: 220px; }
+  .paso .n { font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); margin-bottom: 26px; }
+  .paso .n::before { content: "0"; }
+  .paso h3 { font-size: 21px; font-weight: 400; letter-spacing: -0.02em; }
+  .paso p { color: var(--tinta-2); font-size: 15px; font-weight: 300; }
+  .despues { padding: 28px; display: grid; gap: 10px; align-content: center; min-width: 0; border-style: dashed; border-color: var(--naranja-borde); background: transparent; }
+  .despues small { font-size: 11px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--naranja); }
+  .despues b { font-size: 22px; font-weight: 400; }
+  .despues p { color: var(--tinta-2); font-size: 14px; font-weight: 300; }
+
+  /* La pregunta */
+  .pregunta { padding: clamp(26px, 4vw, 44px); display: grid; gap: 22px; }
+  .pregunta h2 { font-size: clamp(28px, 4vw, 44px); }
+  .tachado { color: var(--tinta-3); text-decoration: line-through; font-size: 20px; font-weight: 300; }
+  .opciones { display: flex; gap: 10px; flex-wrap: wrap; }
+  .opciones button { font: 400 15px/1 var(--cuerpo); color: var(--tinta-2); background: rgba(0,0,0,.3); border: 1px solid var(--borde); border-radius: 999px; padding: 12px 18px; cursor: pointer; }
+  .opciones button[aria-pressed="true"] { background: var(--naranja-suave); border-color: var(--naranja-borde); color: var(--naranja); }
+  .opciones button:focus-visible { outline: 1px solid var(--naranja); outline-offset: 2px; }
+  .respuesta { font-size: 22px; font-weight: 300; letter-spacing: -0.01em; min-height: 2.4em; color: var(--tinta); max-width: 42ch; }
+  .respuesta em { font-style: normal; color: var(--naranja); }
+
+  /* Incluye */
+  .pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .pilar { padding: 30px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .pilar small { font-size: 11px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--naranja); }
+  .pilar h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .pilar ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .pilar li { font-size: 15px; font-weight: 300; color: var(--tinta-2); border-top: 1px solid var(--borde); padding-top: 12px; }
+  .pilar li b { color: var(--tinta); font-weight: 500; }
+  .semana { display: grid; gap: 16px; padding: 26px 30px; }
+  .semana-fila { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .clase { border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 400; }
+  .c-manu { background: var(--naranja-suave); border: 1px solid var(--naranja-borde); color: var(--naranja); }
+  .c-jose { border: 1px solid var(--borde); color: var(--tinta); background: rgba(255,255,255,.03); }
+  .c-chat { border: 1px dashed var(--tinta-3); color: var(--tinta-2); }
+  .semana p { color: var(--tinta-2); font-size: 15px; font-weight: 300; }
+  .semana p b { color: var(--tinta); font-size: 20px; font-weight: 400; letter-spacing: -0.01em; }
+  .aclaracion { font-size: 20px; font-weight: 300; color: var(--tinta-2); max-width: 46ch; }
+  .aclaracion b { color: var(--tinta); font-weight: 400; }
+
+  /* Casos */
+  .casos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .caso-slot { padding: 28px; display: grid; gap: 12px; min-height: 180px; align-content: start; min-width: 0; border-style: dashed; }
+  .caso-slot small { font-size: 11px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--tinta-3); }
+  .caso-slot p { color: var(--tinta-2); font-size: 15px; font-weight: 300; }
+
+  /* Puertas */
+  .puertas { border-top: 1px solid var(--borde); padding-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: end; }
+  .puertas h2 { font-size: clamp(32px, 4.4vw, 50px); margin-top: 12px; }
+  .puertas p { color: var(--tinta-2); font-size: 17px; font-weight: 300; }
+
+  @media (max-width: 760px) {
+    .ventas { grid-template-columns: 1fr 1fr; }
+    .contraste, .camino, .pilares, .casos, .puertas { grid-template-columns: 1fr; }
+  }
+
+  /* Oferta: qué incluye */
+  .oferta { display: grid; gap: 16px; }
+  .of-fila { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .of-fila.dos { grid-template-columns: repeat(2, 1fr); }
+  .bloque { background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); border: 1px solid rgba(255,255,255,.075); border-radius: 16px; -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .bloque .tag { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); }
+  .bloque .tag em { font-style: normal; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; border: 1px solid rgba(232,130,58,.4); border-radius: 999px; padding: 2px 9px; }
+  .bloque h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .bloque h3 small { display: block; font-size: 13px; font-weight: 300; letter-spacing: 0; opacity: .6; margin-top: 6px; }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .lista li { font-size: 15px; font-weight: 300; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.07); display: grid; grid-template-columns: 18px 1fr; gap: 8px; }
+  .lista li::before { content: "✓"; color: var(--naranja); font-weight: 500; }
+  .lista li b { font-weight: 500; }
+  .cuentas { display: flex; gap: 28px; flex-wrap: wrap; }
+  .cuentas div { display: grid; gap: 2px; }
+  .cuentas b { font-size: 44px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cuentas span { font-size: 12px; font-weight: 400; opacity: .65; }
+  .bloque.info { grid-template-columns: 240px 1fr; gap: 28px; }
+  .sops { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; min-width: 0; }
+  .sops span { font-size: 13px; font-weight: 400; padding: 7px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); }
+  .sops span b { color: var(--naranja); font-weight: 500; margin-right: 4px; font-size: 11px; letter-spacing: .1em; }
+  .sops .herr { border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.10); }
+  .bonus-head { display: flex; align-items: baseline; gap: 14px; margin-top: 18px; }
+  .bonus-head h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 300; letter-spacing: -0.03em; }
+  .bloque.bonus { border-color: rgba(232,130,58,.32); }
+  .bloque.destacado { border-color: rgba(232,130,58,.55); background: linear-gradient(180deg, rgba(232,130,58,.14), rgba(232,130,58,.03)); box-shadow: 0 0 70px rgba(201,92,24,.2); }
+  .descuento { white-space: nowrap; font-size: clamp(40px, 4.4vw, 54px); font-weight: 200; letter-spacing: -0.05em; line-height: .95; color: var(--naranja); font-variant-numeric: tabular-nums; }
+  .descuento small { white-space: normal; display: block; font-size: 15px; font-weight: 300; letter-spacing: 0; color: inherit; opacity: .85; margin-top: 10px; }
+  .of-cierre { font-size: 20px; font-weight: 300; opacity: .75; max-width: 46ch; }
+  @media (max-width: 860px) { .of-fila, .of-fila.dos, .bloque.info { grid-template-columns: 1fr; } }
+
+  /* Ruta: del producto a la suscripción */
+  .ruta { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; position: relative; }
+  .etapa { display: grid; grid-template-columns: 56px 1fr 1fr; gap: 24px; align-items: start; padding: 26px 28px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.012)); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+  .e-n { font-size: 13px; font-weight: 500; letter-spacing: .08em; color: var(--naranja); padding-top: 6px; }
+  .e-txt { display: grid; gap: 8px; min-width: 0; }
+  .e-txt h3 { font-size: 24px; font-weight: 400; letter-spacing: -0.02em; }
+  .e-txt p { color: var(--tinta-2); font-size: 15px; font-weight: 300; max-width: 46ch; }
+  .e-con { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; padding-top: 4px; min-width: 0; }
+  .e-con span { font-size: 12.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.09); background: rgba(255,255,255,.025); color: var(--tinta-2); }
+  .etapa.final { border-color: var(--naranja-borde); background: linear-gradient(180deg, rgba(232,130,58,.12), rgba(232,130,58,.03)); box-shadow: 0 0 60px rgba(201,92,24,.16); }
+  .etapa.final .e-con span { border-color: var(--naranja-borde); color: var(--naranja); }
+  @media (max-width: 760px) { .etapa { grid-template-columns: 40px 1fr; } .e-con { grid-column: 2; } }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="logo">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="38" cy="50" r="28" fill="none" stroke="var(--tinta-2)" stroke-width="2"/><circle cx="62" cy="50" r="28" fill="none" stroke="var(--tinta-2)" stroke-width="2"/><path d="M50 27.2A28 28 0 0 1 50 72.8A28 28 0 0 1 50 27.2Z" fill="var(--naranja)"/></svg>
+      GENESIS LITE
+    </div>
+    <div class="chips"><span class="chip">Mentoría</span><span class="chip">3 meses</span><span class="chip">Done with you</span><span class="chip">Software propio</span></div>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">Manu Dominguez · José</p>
+    <h1>Arrancá en ecommerce <em>por el lado correcto</em></h1>
+    <p class="lead">Un consumible, un proceso paso a paso y alguien al lado que ya lo hizo. Para que tu marca venda todos los meses.</p>
+  </section>
+
+  <section class="sec" id="idea">
+    <div class="sec-head">
+      <p class="eyebrow">La idea</p>
+      <h2>La plata de un consumible no está en la primera venta</h2>
+      <p>Un consumible es un producto que se termina. Si se termina, el cliente lo vuelve a comprar. A vos, si lo hiciste bien.</p>
+    </div>
+    <div class="ventas">
+      <div class="venta v-1"><b>1ª</b><span>La que te cuesta conseguir</span></div>
+      <div class="venta v-n"><b>2ª</b><span>El mismo cliente vuelve</span></div>
+      <div class="venta v-n"><b>3ª</b><span>Vuelve otra vez</span></div>
+      <div class="venta v-n"><b>4ª</b><span>Ahí está la plata</span></div>
+    </div>
+    <div class="contraste">
+      <div class="lado l-ganador">
+        <h3>Producto ganador</h3>
+        <ul>
+          <li>Pensado para la primera venta, para el pico</li>
+          <li>Se compra una vez y listo</li>
+          <li>Cada venta te cuesta lo mismo que la anterior</li>
+          <li>Se quema y salís a buscar otro</li>
+        </ul>
+      </div>
+      <div class="lado l-consumible">
+        <h3>Consumible</h3>
+        <ul>
+          <li>Tu cliente lo necesita de nuevo en 30 o 60 días</li>
+          <li>Cada cliente es el arranque de una base</li>
+          <li>Armás la marca para que te vuelvan a comprar</li>
+          <li>Cuando vende constante, el paso siguiente es la suscripción</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pasos">
+    <div class="sec-head">
+      <p class="eyebrow">El camino completo</p>
+      <h2>Te acompañamos desde el producto hasta la suscripción</h2>
+      <p>No arrancás solo ni a ciegas. En cada etapa sabés qué hacer y tenés con qué hacerlo.</p>
+    </div>
+    <ol class="ruta">
+      <li class="etapa">
+        <span class="e-n">01</span>
+        <div class="e-txt"><h3>Buscar el producto</h3><p>Te ayudamos a elegir un consumible: un producto que se termina y tu cliente vuelve a comprar. La primera pregunta es cada cuánto se le termina.</p></div>
+        <div class="e-con"><span>SOPs de Investigación</span><span>Contactos de proveedores</span><span>Laboratorios</span><span>Registro INPI, ANMAT y SENASA</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">02</span>
+        <div class="e-txt"><h3>Validarlo</h3><p>Antes de poner plata fuerte, probamos que se venda: la oferta, la landing y los primeros anuncios.</p></div>
+        <div class="e-con"><span>SOPs de Oferta</span><span>SOPs de Landings</span><span>SOPs de Ads</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">03</span>
+        <div class="e-txt"><h3>Lanzarlo</h3><p>Tu tienda funcionando, con la operación atrás: atención al cliente, logística y creativos.</p></div>
+        <div class="e-con"><span>SOPs de Operaciones</span><span>SOPs de Logística</span><span>SOPs de Atención al cliente</span><span>SOPs de Edición y creativos</span></div>
+      </li>
+      <li class="etapa">
+        <span class="e-n">04</span>
+        <div class="e-txt"><h3>Escalarlo</h3><p>Que venda todos los meses de forma constante. Ahí subimos la pauta y armamos la retención para que el cliente vuelva.</p></div>
+        <div class="e-con"><span>SOPs de Media buying</span><span>SOPs de Copywriting y guiones</span><span>SOPs de Retención</span></div>
+      </li>
+      <li class="etapa final">
+        <span class="e-n">05</span>
+        <div class="e-txt"><h3>Pasarlo a suscripción</h3><p>Con la marca vendiendo constante, instalamos la suscripción con vos. Ese es el modelo con el que Manu escaló sus marcas.</p></div>
+        <div class="e-con"><span>Suscripción instalada</span><span>Tablero de suscriptores y bajas</span><span>Software propio</span></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="pregunta" id="pregunta">
+    <p class="eyebrow">La primera pregunta</p>
+    <p class="tachado">¿Esto se vende?</p>
+    <h2>¿Cada cuánto se le termina al cliente?</h2>
+    <div class="opciones" role="group" aria-label="Cada cuánto se le termina al cliente">
+      <button type="button" data-r="30" aria-pressed="false">Menos de 30 días</button>
+      <button type="button" data-r="60" aria-pressed="true">30 a 60 días</button>
+      <button type="button" data-r="90" aria-pressed="false">60 a 90 días</button>
+      <button type="button" data-r="mas" aria-pressed="false">Más de 90 días</button>
+      <button type="button" data-r="una" aria-pressed="false">Se compra una vez y listo</button>
+    </div>
+    <p class="respuesta" id="respuesta" aria-live="polite"></p>
+  </section>
+
+  <section class="sec" id="incluye">
+    <div class="sec-head">
+      <p class="eyebrow">Qué incluye</p>
+      <h2>3 meses, con nosotros al lado</h2>
+    </div>
+    <div class="oferta">
+      <div class="of-fila">
+        <div class="bloque">
+          <div class="tag">01 <em>Núcleo</em></div>
+          <h3>Genesis Lite</h3>
+          <ul class="lista"><li><span><b>3 meses</b></span></li><li><span><b>Software propio</b></span></li><li><span>Acceso 1 a 1 para <b>2 personas de tu equipo</b></span></li><li><span>Tablero de <b>suscriptores y bajas</b></span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">02 <em>Done with you</em></div>
+          <h3>DWY Roadmap<small>Lo hacemos con vos</small></h3>
+          <ul class="lista"><li><span>Auditoría + roadmap</span></li><li><span>Suscripción instalada</span></li><li><span>Ofertas</span></li><li><span>Creación de anuncios</span></li><li><span>Procesos de retención</span></li><li><span>Proyección de stock</span></li></ul>
+        </div>
+        <div class="bloque">
+          <div class="tag">03 <em>3 por semana</em></div>
+          <h3>Acompañamiento<small>Grupos de 6 a 8 personas en promedio</small></h3>
+          <div class="cuentas"><div><b>12</b><span>grupales con Manu</span></div><div><b>24</b><span>grupales con José</span></div></div>
+          <ul class="lista"><li><span><b>12 llamadas grupales</b> con Manu</span></li><li><span><b>24 llamadas grupales</b> con José</span></li><li><span><b>Chat 1 a 1</b> con Manu y José</span></li></ul>
+        </div>
+      </div>
+      <div class="bloque info">
+        <div style="display:grid;gap:12px;align-content:start">
+          <div class="tag">04 <em>Información</em></div>
+          <h3>Todos los SOPs<small>13 áreas del negocio, más las herramientas</small></h3>
+        </div>
+        <div class="sops"><span><b>SOPs</b>Investigación</span><span><b>SOPs</b>Operaciones</span><span><b>SOPs</b>Funnels</span><span><b>SOPs</b>Retención</span><span><b>SOPs</b>Oferta</span><span><b>SOPs</b>Blackhat</span><span><b>SOPs</b>Ads</span><span><b>SOPs</b>Landings</span><span><b>SOPs</b>Atención al cliente</span><span><b>SOPs</b>Logística</span><span><b>SOPs</b>Media buying</span><span><b>SOPs</b>Copywriting y guiones</span><span><b>SOPs</b>Edición y creativos</span><span class="herr"><b>+</b>Herramientas: agentes, flujos, skills y dashboards</span></div>
+      </div>
+      <div class="bonus-head"><p class="eyebrow">Bonus</p><h3>Además, entrando ahora</h3></div>
+      <div class="of-fila dos">
+        <div class="bloque bonus">
+          <div class="tag">Bonus 1 <em>Contactos</em></div>
+          <h3>Tu agenda de proveedores</h3>
+          <ul class="lista"><li><span>Proveedores</span></li><li><span>Laboratorios</span></li><li><span>Contadores especializados</span></li><li><span>Logística propia</span></li><li><span>Abogados especializados</span></li><li><span>Bolsa de trabajo</span></li><li><span>Contacto de registro: INPI, ANMAT y SENASA</span></li></ul>
+        </div>
+        <div class="bloque bonus">
+          <div class="tag">Bonus 2 <em>Puentify</em></div>
+          <h3>Puentify</h3>
+          <ul class="lista"><li><span>Contacto directo con Puentify</span></li><li><span><b>1 mes gratis</b></span></li><li><span>Onboarding prioritario</span></li><li><span>Instalación con el equipo de Puentify</span></li></ul>
+        </div>
+      </div>
+    </div>
+    <p class="of-cierre">La inversión la vemos en la llamada, con tus números adelante.</p>
+  </section>
+
+  <section class="sec" id="casos">
+    <div class="sec-head">
+      <p class="eyebrow">Los que ya arrancaron</p>
+      <h2>Casos</h2>
+    </div>
+    <div class="casos">
+      <div class="caso-slot"><small>Caso 1</small><p>Arrancó sin producto. De dónde partió y resultado, con captura.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 2</small><p>Tenía producto y vendía poco o nada.</p><span class="nota">por cargar</span></div>
+      <div class="caso-slot"><small>Caso 3</small><p>Venía de otro curso y hoy vende todos los meses.</p><span class="nota">por cargar</span></div>
+    </div>
+  </section>
+
+  <section class="puertas" id="puertas">
+    <div>
+      <p class="eyebrow">Esta apertura</p>
+      <h2>Cuando termina, cerramos las puertas</h2>
+    </div>
+    <p>No es un tema de cupos. Después de esta apertura dejamos de tomar gente, y hoy no sabemos cuándo vamos a volver a abrir.</p>
+  </section>
+
+</div>
+
+<script>
+  const respuestas = {
+    "30": "Se termina rápido: <em>te puede comprar todos los meses.</em> Es un consumible.",
+    "60": "Cada uno o dos meses vuelve a necesitarlo: <em>es un consumible.</em>",
+    "90": "Vuelve a comprar, pero más espaciado. <em>Sirve, con un ciclo más largo.</em>",
+    "mas": "El ciclo es largo. <em>Lo vemos en la llamada</em> con tu producto puntual.",
+    "una": "No es un consumible: <em>cada venta te va a costar lo mismo que la anterior.</em>"
+  };
+  const out = document.getElementById("respuesta");
+  const botones = document.querySelectorAll(".opciones button");
+  function elegir(b) {
+    botones.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    out.innerHTML = respuestas[b.dataset.r];
+  }
+  botones.forEach(b => b.addEventListener("click", () => elegir(b)));
+  elegir(document.querySelector('.opciones button[aria-pressed="true"]'));
+</script>
