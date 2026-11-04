@@ -287,7 +287,7 @@ Puntos, en orden:
 3. Los flujos: qué le llega al cliente por email y por WhatsApp para que no se vaya a la competencia. Mostrar 2 o 3 mensajes, sin datos de clientes.
 4. Cómo implementarlos en tu marca.
 5. Cómo armar una buena oferta de suscripción: qué sí y qué no (no se arma regalando la primera unidad). `[CONFIRMAR con Manu hasta dónde muestra la oferta: el cómo completo es de la clase.]`
-6. El tablero de suscriptores dando vuelta la cámara: +3.500 suscriptores, en Argentina.
+6. El tablero de suscriptores dando vuelta la cámara: 3.943 suscriptores, en Argentina.
 
 **Mensaje con el link:**
 
@@ -307,7 +307,7 @@ Puntos, en orden:
 >
 > Las dos dudas de siempre:
 >
-> · «En Argentina no se suscribe nadie.» Tengo +3.500 suscriptores. Acá.
+> · «En Argentina no se suscribe nadie.» Tengo 3.943 suscriptores. Acá.
 > · «Se suscriben por la primera unidad barata y se van.» Por eso la suscripción no se arma regalando la primera unidad.
 
 ### 21:00 · Mensaje 2 (pregunta + loop)
@@ -350,7 +350,7 @@ Puntos, en orden:
 2. El problema (día 1): buscás la compra, no el cliente. Cada venta te cuesta lo mismo que la anterior.
 3. Lucas (día 2): 17 millones en 15 días con 22% de margen, después 600 lucas abajo en una noche.
 4. El CPA (día 3): la cadena de 10 a 20 dólares. Lucas no salió con un creativo nuevo: relanzó y pasó a 40% de margen.
-5. El margen (día 4): la segunda, la tercera y la cuarta compra entran con el margen entero. +3.500 suscriptores en Argentina.
+5. El margen (día 4): la segunda, la tercera y la cuarta compra entran con el margen entero. 3.943 suscriptores en Argentina.
 
 **🟢 Idea central · GUIONADO · 90 seg**
 
