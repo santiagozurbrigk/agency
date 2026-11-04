@@ -6,7 +6,7 @@ Tiene dos usos:
 - **Ahora:** los 2 videos pre-webinar de la clase del martes 17/11 (tarea ADQ-14 de `../webinar-17-11/tareas.md`).
 - **Siempre:** la biblioteca que lleva al lead de no conocer a Manu a mandarle su situación por WhatsApp.
 
-**Números de Manu:** igual que en el resto del lanzamiento, van como `$X` (facturación hoy), `X suscriptores`, `X%` (margen) y `$Y` (facturación con compra única, antes). Se reemplazan todos juntos cuando se definan.
+**Números de Manu (02/11):** facturación $275.225.343 por mes (se dice «275 millones»), 3.943 suscriptores y 7,2% de cancelaciones. Siguen como `X%` (margen) y `$Y` (facturación con compra única, antes) hasta que se definan.
 
 ---
 
@@ -50,23 +50,23 @@ El packaging de cada video está modelado sobre los outliers que pasó Santi el 
 
 | # | Etapa | Dolor principal | Creencia que rompe | Ángulo (análisis) | Título | Miniatura | Referencia modelada | Duración |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| YT-1 | TOF | CPA | «Si renuevo creativos y bajo el CPA, se arregla» | A (inestabilidad) | hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes | Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «+$X/mes» | «hago $200k/mes. te explico porque te estas alejando de los $100k/mes» («deja de usar IA.») | 20-25 min |
+| YT-1 | TOF | CPA | «Si renuevo creativos y bajo el CPA, se arregla» | A (inestabilidad) | hago 275M/mes. te explico por qué bajar el CPA te aleja de los 100M/mes | Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «275M/mes» | «hago $200k/mes. te explico porque te estas alejando de los $100k/mes» («deja de usar IA.») | 20-25 min |
 | YT-2 | MOF | Margen | «El suscriptor me sale más caro que una venta» | C (plata sentada) | Los sistemas de retención detrás de las marcas que cobran todos los meses | Manu y el tablero de suscriptores en pantalla, cartel «RECOMPRA» | «The Retention Systems Behind Multi Million Dollar MRR Brands» («LOOP SUBSCRIPTIONS») | 30-40 min |
 | YT-3 | MOF | Metadependencia | «Si Meta me baja la cuenta, se termina» | A (el piso del mes) | así arranco cada mes con $X ya cobrados (copiame) | Calendario en el 1, texto «1 del mes = $X» | «así hago $200k/mes con solo 2 meet a la semana (copiame)» («2 llamadas = $200k») | 20-25 min |
 | YT-4 | MOF | Producto | «Mi producto no es para suscripción» | G (escepticismo) | Tu producto sí sirve para suscripción (llamada de coaching en vivo) | Pantalla del Miro con la oferta de tratamiento y el techo nuevo en número grande, «LIVE» arriba | «La única configuración de flujos de abandono que necesitarás (Llamada de coaching en vivo)» | 30-40 min |
-| YT-5 | TOF | Margen | «Cuando paso a RI, no cierra» | I (impuestos) | Esta marca de 60M/mes me preguntó si le conviene pasar a responsable inscripto | «MONOTRIBUTO → RI?» con anotaciones numeradas en la pizarra y Manu con la tablet | «Este negocio de $400.000 al mes me preguntó cómo escalar a $1M al mes» | 40-60 min |
+| YT-5 | TOF | Margen | «Cuando paso a RI, no cierra» | I (impuestos) | Esta marca de 60M/mes me preguntó si le conviene pasar a responsable inscripto | «MONOTRIBUTO → RI?» con anotaciones numeradas en el iPad y Manu con el lápiz | «Este negocio de $400.000 al mes me preguntó cómo escalar a $1M al mes» | 40-60 min |
 | YT-6 | TOF | Competencia | «Mercado competido = no entrar» / me copian | B (7 marcas) | A esta marca le salieron 7 copias en un mes. Así siguió vendiendo (case study) | Fondo oscuro, «7 COPIAS» enorme, Manu serio mirando a cámara | «How i made $500,000 in 7 DAYS branded dropshipping (case study)» | 20-25 min |
 | YT-7 | MOF | Estancamiento | «Primero me capitalizo con un producto y después armo la marca» | F y E (avatar ampliado) | Tu ecommerce vende, pero no construye nada (por qué los que importan se pasan a consumibles) | Cajas de importación a la izquierda, tablero de suscriptores a la derecha, texto «IMPORTACIÓN → SUSCRIPCIÓN» | Miniatura de «Inside My $2.5M/Month Supplement Supply Chain (China 2.0)» (depósito y cajas) | 20-25 min |
 | YT-8 | Mentalidad | CPA | «Necesito ser experto en Meta» / «más campañas» | D (mentoría que dice «venís bien») | tardé 18 meses en dejar de pelear por el CPA. aprendé todo en 15 minutos | Manu a cámara, texto «1 cliente = 3 compras» | «tardé 2 años en hacer $2.4M con mi contenido, aprendé todo en 33 minutos» («1 Reel = $35K») | 15 min, a cámara |
-| YT-9 | BOF | Inestabilidad | «Si no arranca, el producto es malo» | A + B (caso Herbora) | Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) \| EPISODIO 1 | «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop | «We Audited His $200K/Month E-com Brand Live (Here's What We Found) \| EPISODE 1» | 45-60 min |
-| YT-10 | BOF | Todos | «Los consultores se aprovechan» | H (fe en el producto) | Esta marca de $30M/mes me pidió un plan a $100M/mes (roadmap en vivo) \| EPISODIO 2 | «$30M → $100M» con los pasos numerados en la pizarra (nombres de las piezas, sin el cómo) | «Esta Agencia $10k/Mes Me Pidió Un Plan a $100k/Mes (Roadmap en Vivo)» y «He's Stuck at $17K/Day… (Live Audit) \| EPISODE 2» | 45-60 min |
+| YT-9 | BOF | Inestabilidad | «Si no arranca, el producto es malo» | A + B (caso de una marca que trabaja conmigo) | Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) \| EPISODIO 1 | «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop | «We Audited His $200K/Month E-com Brand Live (Here's What We Found) \| EPISODE 1» | 45-60 min |
+| YT-10 | BOF | Todos | «Los consultores se aprovechan» | H (fe en el producto) | Esta marca de $30M/mes me pidió un plan a $100M/mes (roadmap en vivo) \| EPISODIO 2 | «$30M → $100M» con los pasos numerados en el iPad (nombres de las piezas, sin el cómo) | «Esta Agencia $10k/Mes Me Pidió Un Plan a $100k/Mes (Roadmap en Vivo)» y «He's Stuck at $17K/Day… (Live Audit) \| EPISODE 2» | 45-60 min |
 
 **La serie de auditorías en vivo** (YT-9, YT-10 y después YT-4) es la jugada más fuerte de las referencias: son los videos más largos y rinden igual, y numerados por episodio hacen el efecto maratón. Cada episodio necesita un dueño de marca real que acepte que se muestren sus números.
 
 **Lo que hay que conseguir para grabar:**
 - YT-4, YT-5 y YT-10: una llamada real con un dueño de marca que acepte salir (y, en YT-5, que sea una consulta real sobre pasar a responsable inscripto). No se inventan marcas ni números.
 - YT-7: Manu lo cuenta desde afuera, no como historia propia: le habla al que importa o vende en Mercado Libre (cada stock que se termina es volver a cero). Si Santi Núñez o Thiago Lopo aceptan salir, se puede convertir en un caso con ellos, modelado sobre «He Built a $100k/Day Supplement Brand From Pakistan».
-- YT-6: es Herbora (las copias de la landing y los anuncios, y las 7 marcas que salieron a pautar). Si se graba YT-9 primero, YT-6 se arma con clips de ese episodio.
+- YT-6: es la misma marca de YT-9, sin nombrarla (las copias de la landing y los anuncios, y las 7 marcas que salieron a pautar). Si se graba YT-9 primero, YT-6 se arma con clips de ese episodio.
 
 De septiembre se mantienen: V1 CPA (YT-1), V2 Metadependencia (YT-3), V3 «competí por el modelo» (YT-8), V4 blanqueo (YT-5), V5 «el 1 arranco en cero» (dentro de YT-3), V6 llamadas resubidas (YT-10), V7 el caso de Manu de A a B (va como proof stack de todos).
 
@@ -74,13 +74,13 @@ De septiembre se mantienen: V1 CPA (YT-1), V2 Metadependencia (YT-3), V3 «compe
 
 Marcas: 🟢 palabra por palabra · 🟡 puntos a tocar, Manu improvisa. El SOP pide la apertura guionada aunque el resto se improvise.
 
-### YT-1 · «hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes»
+### YT-1 · «hago 275M/mes. te explico por qué bajar el CPA te aleja de los 100M/mes»
 
 **Etapa:** TOF · **Duración:** 20-25 min · **Estilo:** Miro y calculadora con cámara en la esquina.
 
 **Packaging** (modelado sobre «hago $200k/mes. te explico porque te estas alejando de los $100k/mes»)
-- Título: hago $X/mes. te explico por qué bajar el CPA te aleja de los 100M/mes
-- Miniatura: Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «+$X/mes». Máximo 3 elementos.
+- Título: hago 275M/mes. te explico por qué bajar el CPA te aleja de los 100M/mes
+- Miniatura: Manu a cámara, texto grande «dejá de bajar el CPA.», una línea que sube con «275M/mes». Máximo 3 elementos.
 
 **Los 4 problemas, con la solución de Manu**
 
@@ -89,13 +89,13 @@ Marcas: 🟢 palabra por palabra · 🟡 puntos a tocar, Manu improvisa. El SOP 
 | «Los CPAs nos empezaron a reventar» | Bajá el CPA: más creativos, más testeo | No ganás bajando el CPA; ganás pudiendo pagar más. La pelea de quién paga menos la gana siempre el que viene atrás dispuesto a perder más. |
 | «Tiraba una CBO y nunca se estabilizaba» | Renová todos los días, armá más campañas | La inestabilidad no es de la cuenta: es que cada venta tiene que pagar su propio CPA. Si una venta mala te deja en rojo el día, no hay estructura de campañas que lo arregle. |
 | «Cada venta me deja casi lo mismo que me cuesta» | Subí el ticket, armá un pack por 3 | La cuenta: margen de 30.000 → techo de 30.000 con compra única. Con un cliente que compra 3 veces, el techo es 90.000. Operás en 75.000 y te quedan 15.000 vivos. |
-| «En Argentina no se suscribe nadie» | La suscripción es para Estados Unidos o para marcas grandes | X suscriptores en una marca argentina de consumibles, con captura. |
+| «En Argentina no se suscribe nadie» | La suscripción es para Estados Unidos o para marcas grandes | 3.943 suscriptores en una marca argentina de consumibles, con captura. |
 
 **Creencia vieja → nueva:** «tengo un problema de creativos» → «tengo un problema de modelo: le vendo a cada cliente una sola vez».
 
 **🟢 Apertura · marco (primeros 15 segundos)**
 
-> Hago $X por mes con mi marca. Y te voy a explicar por qué bajar el CPA te está alejando de los 100 millones.
+> Hago 275 millones por mes con mi marca. Y te voy a explicar por qué bajar el CPA te está alejando de los 100 millones.
 >
 > Hoy puedo pagar 2,5 veces más por cada cliente que mi competencia. Y me sigue quedando plata.
 >
@@ -117,13 +117,13 @@ Marcas: 🟢 palabra por palabra · 🟡 puntos a tocar, Manu improvisa. El SOP 
 
 **🟢 Autoridad (mostrada, no dicha)**
 
-> ¿Por qué me tenés que escuchar a mí? Porque yo estuve exactamente ahí. Con compra única llegué a $Y por mes, en breakeven. Hoy hago $X por mes con X suscriptores y X% de margen. En Argentina. Con un consumible.
+> ¿Por qué me tenés que escuchar a mí? Porque yo estuve exactamente ahí. Con compra única llegué a $Y por mes, en breakeven. Hoy hago 275 millones por mes con 3.943 suscriptores y X% de margen. En Argentina. Con un consumible.
 
 [PANTALLA: captura de antes y después, tablero de suscriptores]
 
 **🟢 CTA temprano (al 10%, minuto 2)**
 
-> Antes de seguir: el martes 17 de noviembre a las 18 doy una clase privada en vivo y gratis donde muestro cómo hago $X por mes con el modelo de suscripción. El link para registrarte está en la descripción. Para el resto, sigamos.
+> Antes de seguir: el martes 17 de noviembre a las 18 doy una clase privada en vivo y gratis donde muestro cómo hago 275 millones por mes con el modelo de suscripción. El link para registrarte está en la descripción. Para el resto, sigamos.
 
 (Después del 17/11 se reemplaza por: «Si ya sabés que esto es lo que necesitás, mandame tu situación al WhatsApp de la descripción. Para el resto, sigamos.»)
 
@@ -148,14 +148,14 @@ Punto 3 · la cuenta (el corazón del video):
 
 Punto 4 · Argentina:
 - Dolor: «en Argentina no se suscribe nadie», «el débito automático da desconfianza».
-- Prueba: X suscriptores, el churn, el tablero.
+- Prueba: 3.943 suscriptores, 7,2% de cancelaciones, el tablero (y los 275 millones por mes).
 - Puente al cierre: «cómo armé esa base sin frenar lo que ya vendía, eso no entra en un video de YouTube».
 
 **🟢 CTA final**
 
 > Si llegaste hasta acá, ya sabés que tu problema no es de creativos. Es que le vendés a cada cliente una sola vez.
 >
-> El martes 17 de noviembre a las 18 te muestro en vivo cómo hago $X por mes con el modelo de suscripción, y cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy vende. Es gratis, es en vivo, y solo entran los que se registren con el link de la descripción.
+> El martes 17 de noviembre a las 18 te muestro en vivo cómo hago 275 millones por mes con el modelo de suscripción, y cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy vende. Es gratis, es en vivo, y solo entran los que se registren con el link de la descripción.
 >
 > Si no venís, mañana vas a abrir el administrador de anuncios y vas a hacer lo mismo de siempre: renovar creativos para bajar un CPA que no va a bajar más.
 
@@ -165,13 +165,13 @@ Punto 4 · Argentina:
 
 ### YT-9 · «Auditamos una marca que iba 600 lucas abajo: esto cambiamos»
 
-**Etapa:** BOF · **Duración:** 45-60 min · **Estilo:** auditoría en vivo, como las referencias: Manu con Lucas y Santiago (permiso confirmado el 30/10) en una mesa, la laptop con los números de Herbora en pantalla. Si no pueden estar en persona, llamada grabada con pantalla compartida.
+**Etapa:** BOF · **Duración:** 45-60 min · **Estilo:** auditoría en vivo, como las referencias: Manu con Lucas y Santiago (permiso confirmado el 30/10) en una mesa, la laptop con los números de la marca en pantalla (con el nombre y el producto tapados; en el video nunca se dice cómo se llama ni qué vende). Si no pueden estar en persona, llamada grabada con pantalla compartida.
 
 **Packaging** (modelado sobre «We Audited His $200K/Month E-com Brand Live (Here's What We Found) | EPISODE 1»)
 - Título: Auditamos en vivo una marca que iba 600 lucas abajo (esto encontramos) | EPISODIO 1
 - Miniatura: «−$600.000» enorme en rojo; Manu con Lucas y Santiago en la mesa con la laptop. Máximo 3 elementos.
 
-**Los 4 problemas de Herbora, con lo que se hizo**
+**Los 4 problemas de la marca, con lo que se hizo**
 
 | Problema (textual) | Lo que hacían | Lo que se cambió (el qué, sin el paso a paso) |
 | --- | --- | --- |
@@ -216,9 +216,9 @@ Punto 4 · Argentina:
 
 **🟢 CTA final**
 
-> Herbora no tenía un mal producto. Tenía el modelo equivocado.
+> Esta marca no tenía un mal producto. Tenía el modelo equivocado.
 >
-> Si tu marca está donde estaba Herbora, el martes 17 de noviembre a las 18 te muestro el modelo completo, en vivo y gratis. Registrate con el link de la descripción.
+> Si tu marca está como estaba esa marca, el martes 17 de noviembre a las 18 te muestro el modelo completo, en vivo y gratis. Registrate con el link de la descripción.
 >
 > Y si no, la semana que viene vas a seguir renovando creativos esperando un día bueno que no llega.
 
@@ -293,10 +293,11 @@ Sin precio en la descripción (regla de septiembre).
 
 | Qué | Para qué |
 | --- | --- |
-| Números de Manu (`$X`, `X suscriptores`, `X%`, `$Y`) | Todos los guiones |
+| Números de Manu (`X%`, `$Y`; facturación y suscriptores ya están desde el 02/11) | Todos los guiones |
+| Lo que se cobra el 1 de cada mes (`$X` de YT-3) | Título y miniatura de YT-3 |
 | Dueños de marca reales para YT-4, YT-5 y YT-10 | Grabar las auditorías y llamadas en vivo |
 | URL de la VSL de 30 min | Video destacado del canal |
 | Link de registro a la clase | CTA temprano y final de YT-1 y YT-9, descripción |
 | Recurso BASE (cómo sacar los clientes que recompraron) | Mini CTA de YT-9 |
-| Período de los «casi dos palos» de Herbora | YT-9 |
+| Período de los «casi dos palos» de la marca de YT-9 | YT-9 |
 | Si Lucas o Santiago se suman a YT-9 en cámara | YT-9 |

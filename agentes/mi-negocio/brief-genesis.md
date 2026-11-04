@@ -5,10 +5,10 @@ Convención: `[PENDIENTE]` = no hay data o no está confirmado. No se inventó n
 
 ## Caso de éxito — solo Manu
 
-- Su propia marca: de 60.000.000 a 156.798.062 ARS/mes, 2.200 suscriptores activos, 1,28% de churn, LTV 3 pedidos mínimo.
+- Su propia marca: de 60.000.000 a 275.225.343 ARS/mes, 3.943 suscriptores activos, 7,2% de cancelaciones, LTV 3 pedidos mínimo.
 - Reglas: retención adelante, facturación atrás · se muestra, no se dice (sin captura no hay número) · un ángulo distinto por pieza · el punto A se dice con el número.
 - José sale de los casos del lanzamiento (25-sep).
-- [PENDIENTE] El período entre 60M y 156.798.062.
+- [PENDIENTE] El período entre 60M y 275.225.343.
 
 ## Competencia
 
@@ -70,7 +70,7 @@ Por confirmar: lugares que quedan a 4.000, si se muestran las marcas del piloto,
   ```
   Ecomm de consumibles a +$100M/mes
   con modelo de SUSCRIPCIÓN
-  2.200 suscriptores · 1,28% churn
+  3.943 suscriptores · 7,2% de cancelaciones
   DM "ADENTRO"
   con el MÉTODO B.A.S.E. ↓
   ```
@@ -88,7 +88,7 @@ Por confirmar: lugares que quedan a 4.000, si se muestran las marcas del piloto,
 - [ ] Garantía del webinar.
 - [ ] Confirmar que cada bonus existe (fast-action ya confirmado).
 - [ ] La calculadora de tres escenarios (conservador/realista/deseado) con techo y punto operativo, lista para usar en vivo.
-- [ ] Qué hace Manu concretamente para el 1,28% de churn.
+- [ ] Qué hace Manu concretamente para el 7,2% de cancelaciones.
 - [ ] Que Manu diga "Método B.A.S.E." en voz alta y le salga natural (y que valide las letras).
 - [ ] Branding: variante de naranja del símbolo.
 - [x] Qué pasa con las marcas que no están en Tiendanube → no es excluyente.

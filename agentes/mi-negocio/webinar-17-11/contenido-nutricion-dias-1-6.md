@@ -6,16 +6,16 @@ Todo lo que se graba y se manda en el grupo del miércoles 11/11 al lunes 16/11,
 
 ## Números a reemplazar
 
-Los números de Manu todavía no están definidos. Van marcados así y se reemplazan todos juntos con buscar y reemplazar:
+Facturación y suscriptores ya están reemplazados en todo el documento (02/11). Siguen marcados el margen (`X%`) y la facturación con compra única (`$Y`), que se reemplazan cuando se definan:
 
 | Marca | Qué es | Referencia de la campaña |
 | --- | --- | --- |
-| `$X` | Facturación por mes hoy | +280M |
-| `X suscriptores` | Suscriptores activos hoy | +3.600 |
+| `$X` | Facturación por mes hoy | **275 millones** (exacto: $275.225.343). Confirmado el 02/11. |
+| `X suscriptores` | Suscriptores activos hoy | **3.943 suscriptores**. Confirmado el 02/11. Cancelaciones: 7,2%. |
 | `X%` | Margen hoy | +40% |
 | `$Y` | Facturación por mes con compra única, antes | 60M |
 
-Los números de Herbora (confirmados) y la cuenta del CPA (30.000 / 90.000 / 75.000, que es un ejemplo, no un resultado) no se tocan.
+Los números de la marca que trabaja con Manu (Herbora, solo como referencia interna: en los mensajes nunca se nombra) (confirmados) y la cuenta del CPA (30.000 / 90.000 / 75.000, que es un ejemplo, no un resultado) no se tocan.
 
 **Voz:** no hay mensajes reales de Manu al grupo, así que la voz sale de `CONTEXTO.md` (patrones de frase y muletillas) y de cómo habla en las llamadas de venta: «o sea», «literalmente», «tal cual», «por ende», «y ya está», «al pedo». Voseo siempre, nunca «ustedes». Emojis mínimos. Si Manu tiene mensajes suyos de otro grupo, conviene pasarle esto por arriba con su voz real antes de programar.
 
@@ -31,7 +31,7 @@ Los números de Herbora (confirmados) y la cuenta del CPA (30.000 / 90.000 / 75.
 >
 > Acá te voy a ir mandando, hasta el martes, todo lo que necesitás para llegar a la clase con la cabeza en el lugar correcto.
 >
-> La clase es el **martes 17 de noviembre a las 18**, en vivo. Te voy a mostrar cómo hago $X por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
+> La clase es el **martes 17 de noviembre a las 18**, en vivo. Te voy a mostrar cómo hago 275 millones por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
 >
 > Cómo funciona el grupo:
 > · Todos los días te llega algo mío. Hoy, un video de 10 minutos.
@@ -69,7 +69,7 @@ Los números de Herbora (confirmados) y la cuenta del CPA (30.000 / 90.000 / 75.
 Beats, en orden:
 1. Tu marca con compra única: $Y por mes. Pautabas todos los días y cada venta te dejaba casi lo mismo que te costaba. El CPM subía todo el año.
 2. Lo que hacías para sostenerlo: más creativos, más testeo, más campañas. Funcionaba unos días y se caía. Con un número de tu propio Excel si está a mano.
-3. La cadena causal en pizarra: largás un químico, lo escalás, te salen 5 competidores, te suben los CPM, por ende te sube el CPA. Saliste con 10 dólares de CPA y ahora tenés 20. Y ya está: dejás de ser rentable.
+3. La cadena causal en el iPad, con el lápiz: largás un producto, lo escalás, te salen 5 competidores, te suben los CPM, por ende te sube el CPA. Saliste con 10 dólares de CPA y ahora tenés 20. Y ya está: dejás de ser rentable.
 4. Lo que te dicen los que enseñan a escalar compra única: «hacé más creativos, bajá el CPA». Sin nombrar a nadie. Cerrá con: «y eso te lo dicen porque nunca tuvieron que bancar una marca a largo plazo».
 5. El momento en que te diste cuenta: que el problema no estaba en los anuncios.
 
@@ -93,9 +93,9 @@ Beats, en orden:
 
 > Esto es lo que vamos a desarmar en la semana.
 >
-> Mañana te muestro cómo estaba yo antes de cambiar el modelo. Y cómo estaba una marca que entró a trabajar conmigo, Herbora. Vas a ver que estaban igual que vos.
+> Mañana te muestro cómo estaba yo antes de cambiar el modelo. Y cómo estaba una marca que trabaja conmigo. Vas a ver que estaban igual que vos.
 >
-> Y el martes 17 de noviembre a las 18, en vivo, te muestro cómo hago $X por mes con el modelo de suscripción. Y cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy ya vende.
+> Y el martes 17 de noviembre a las 18, en vivo, te muestro cómo hago 275 millones por mes con el modelo de suscripción. Y cómo escalar tu ecommerce a más de 100 millones por mes migrando de compra única a suscripción, sin frenar lo que hoy ya vende.
 >
 > Antes de irte, hacé una cosa. Te la dejo abajo del video. Nos vemos mañana.
 
@@ -120,7 +120,7 @@ Beats, en orden:
 
 ### 10:00 · Recordatorio
 
-> **Martes 17, 18 hs.** Clase en vivo: cómo hago $X por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
+> **Martes 17, 18 hs.** Clase en vivo: cómo hago 275 millones por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
 
 ### 13:00 · Pop up (1-2 min)
 
@@ -140,9 +140,9 @@ Beats:
 
 ### 17:00 · Mensaje 1
 
-> Te cuento de Herbora.
+> Te cuento de una marca que trabaja conmigo.
 >
-> Shampoo para dermatitis. Buen producto, de los que la gente vuelve a comprar.
+> Buen producto, de los que la gente vuelve a comprar.
 >
 > Agosto venía bárbaro. La tercera semana salieron 7 marcas a pautar un producto muy parecido. Les reventó el CPA.
 >
@@ -167,7 +167,7 @@ Beats:
 > Contame en el privado cómo está tu mes, en tus palabras. Una frase alcanza: «estoy en breakeven», «me copiaron», «hace semanas que no tengo un día bueno».
 > 👉 https://wa.link/ouqu06
 >
-> Mañana vamos al CPA. Te muestro por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo Herbora cuando salieron 7 marcas a pautar su mismo producto.
+> Mañana vamos al CPA. Te muestro por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo esa marca cuando salieron 7 marcas a pautar su mismo producto.
 >
 > Clase: **martes 17, 18 hs**.
 
@@ -177,11 +177,11 @@ Beats:
 
 ### 10:00 · Recordatorio
 
-> **Martes 17, 18 hs.** Cómo hago $X por mes sin pelearme por el CPA más bajo. En vivo.
+> **Martes 17, 18 hs.** Cómo hago 275 millones por mes sin pelearme por el CPA más bajo. En vivo.
 
 ### 13:00 · Pop up (1-2 min)
 
-Manu frente a la pizarra con fibrón rojo.
+Manu con el iPad y el lápiz, dibujando la cadena.
 
 Beats:
 1. La cadena causal, dibujada: largás, escalás, te salen 5 competidores, te suben los CPM, por ende te sube el CPA.
@@ -201,7 +201,7 @@ Beats:
 
 > «Los CPAs nos empezaron a reventar.»
 >
-> Eso me dijo Herbora. Y probablemente lo dijiste vos este mes.
+> Eso me dijeron en esa marca. Y probablemente lo dijiste vos este mes.
 >
 > Lo que hace todo el mundo: renovar creativos todos los días, testear más ángulos, bajar el CPA.
 >
@@ -209,11 +209,11 @@ Beats:
 >
 > Porque estás peleando por quién paga menos por un cliente. Y esa pelea la gana siempre el que viene atrás dispuesto a perder más que vos.
 >
-> Herbora no salió de eso con un creativo nuevo. Cambiaron el modelo.
+> Esa marca no salió de eso con un creativo nuevo. Nos metimos en la marca y la relanzamos.
 >
 > El día que relanzaron pasaron a tener 40% de margen. Casi dos palos de ganancia.
 >
-> No te voy a contar el cómo acá. Eso es el martes.
+> Y en mis marcas fui un paso más allá: dejé de pelear esa subasta. No te voy a contar el cómo acá. Eso es el martes.
 >
 > Pero sí una cosa: con suscripción, un cliente te puede costar hasta un 20% más que una venta normal. Y aun así conviene, por mucho.
 >
@@ -237,21 +237,21 @@ Beats:
 
 ### 10:00 · Recordatorio
 
-> **Martes 17, 18 hs.** Cómo hago $X por mes con X% de margen, con el modelo de suscripción. En vivo.
+> **Martes 17, 18 hs.** Cómo hago 275 millones por mes con X% de margen, con el modelo de suscripción. En vivo.
 
 ### 13:00 · Pop up (1-2 min)
 
 Manu con el tablero de suscriptores abierto en la compu, dando vuelta la cámara.
 
 Beats:
-1. «Te muestro mi margen hoy»: X% con X suscriptores. Captura en pantalla.
+1. «Te muestro mi margen hoy»: X% con 3.943 suscriptores. Captura en pantalla.
 2. Con compra única, a $Y por mes, cada venta dejaba casi lo mismo que costaba.
 3. La diferencia: la mayoría de lo que entra hoy son clientes que vuelven a comprar, no clientes nuevos.
 4. «Y esto es en Argentina, con un consumible. A la tarde te explico de dónde sale.»
 
 **Texto debajo:**
 
-> Mi margen hoy: X%, con X suscriptores.
+> Mi margen hoy: X%, con 3.943 suscriptores.
 >
 > Con compra única, cada venta me dejaba casi lo mismo que me costaba.
 >
@@ -261,7 +261,7 @@ Beats:
 
 > «7 lucas de ganancia. Sobreviviendo.»
 >
-> Eso me dijo Herbora mirando su mes. Facturaban bien. Y les quedaban 7 lucas por pedido.
+> Eso me dijeron en una marca que trabaja conmigo, mirando su mes. Facturaban bien. Y les quedaban 7 lucas por pedido.
 >
 > Lo que se suele hacer: subir el ticket, armar un pack por 3, sacar cuotas, cambiar el envase.
 >
@@ -275,7 +275,7 @@ Beats:
 >
 > Las dos dudas que siempre aparecen:
 >
-> «En Argentina no se suscribe nadie.» Yo tengo X suscriptores. Acá.
+> «En Argentina no se suscribe nadie.» Yo tengo 3.943 suscriptores. Acá.
 >
 > «Mi producto es un tratamiento, se curan y se van.» El que tiene un problema que tu producto le resuelve no se queda tres meses. Se queda un año.
 
@@ -321,9 +321,9 @@ Beats:
 Beats, en orden:
 1. Qué es el grupo y cuándo es la clase: martes 17, 18 hs, en vivo.
 2. El problema (día 1): buscás la compra, no el cliente. Cada venta te cuesta lo mismo que la anterior.
-3. Los casos (día 2): tu marca con compra única ($Y por mes en breakeven) y Herbora («hace mucho que no tenemos un día bueno», 600 lucas abajo).
-4. El CPA (día 3): la cadena de 10 a 20 dólares. Herbora no salió con un creativo nuevo: relanzaron y pasaron a 40% de margen.
-5. El margen (día 4): «7 lucas, sobreviviendo». La segunda, la tercera y la cuarta compra entran con el margen entero. Tu X% con X suscriptores.
+3. Los casos (día 2): tu marca con compra única ($Y por mes en breakeven) y la marca que trabaja conmigo («hace mucho que no tenemos un día bueno», 600 lucas abajo). Sin nombrarla ni decir qué vende.
+4. El CPA (día 3): la cadena de 10 a 20 dólares. Esa marca no salió con un creativo nuevo: relanzaron y pasaron a 40% de margen (sin suscripción: no decir ni insinuar que la usan).
+5. El margen (día 4): «7 lucas, sobreviviendo». La segunda, la tercera y la cuarta compra entran con el margen entero. Tu X% con 3.943 suscriptores.
 
 **🟢 Insight central · SCRIPTED · 90 seg**
 
@@ -387,14 +387,14 @@ Beats, en orden:
 
 ### 10:00 · Recordatorio
 
-> **Mañana, martes 17, a las 18.** Clase en vivo: cómo hago $X por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
+> **Mañana, martes 17, a las 18.** Clase en vivo: cómo hago 275 millones por mes con el modelo de suscripción, sin depender del CPA ni de Meta.
 
 ### 13:00 · Pop up (1-2 min)
 
-Manu preparando la clase: la pizarra con los dos círculos, el tablero abierto, el afiche de la clase atrás. Sin mostrar contenido de la clase.
+Manu preparando la clase: el iPad con los dos círculos, el tablero abierto, el afiche de la clase atrás. Sin mostrar contenido de la clase.
 
 Beats:
-1. «Estoy armando lo de mañana.» Mostrar el lugar, la pizarra tapada o de costado.
+1. «Estoy armando lo de mañana.» Mostrar el lugar y el iPad de costado, sin que se vea lo que tiene.
 2. Qué NO es: no es otro curso de producto ganador ni de «hacé más creativos».
 3. Qué es: una marca argentina de consumibles que cobra todos los meses sin depender de que la campaña de hoy no se caiga.
 4. «Mañana a las 18. Traé la cuenta que te mandé ayer.»
@@ -432,24 +432,25 @@ Beats:
 
 ### Se graba antes del miércoles 11/11
 
-- [ ] **Video largo del día 1** (10 min): «Por qué cada venta te cuesta lo mismo que la anterior». Estudio, pizarra con fibrón rojo (para la cadena causal), remera o camisa lisa negra.
-- [ ] **Video largo del día 5** (10 min): «Por qué yo puedo pagar 2,5 veces más por cada cliente que mi competencia». Estudio, pizarra con la cuenta 30.000 → 90.000 → 75.000, camisa lisa hueso (distinta al día 1).
+- [ ] **Video largo del día 1** (10 min): «Por qué cada venta te cuesta lo mismo que la anterior». Estudio, iPad con el lápiz (para la cadena causal), remera o camisa lisa negra.
+- [ ] **Video largo del día 5** (10 min): «Por qué yo puedo pagar 2,5 veces más por cada cliente que mi competencia». Estudio, iPad con la cuenta 30.000 → 90.000 → 75.000, camisa lisa hueso (distinta al día 1).
 - [ ] La Cuenta del CPA lista y con link para mandar.
-- [ ] Reemplazar `$X`, `X suscriptores`, `X%` y `$Y` en todo el documento.
+- [x] `$X` y `X suscriptores` reemplazados el 02/11 (275 millones y 3.943).
+- [ ] Reemplazar `X%` (margen) y `$Y` (facturación con compra única) cuando se definan.
 
 ### Se graba en el día (pop ups, selfie sin producción)
 
 - [ ] Jue 12/11 · Manu con el Excel de la época de compra única.
-- [ ] Vie 13/11 · Manu en la pizarra con la cadena del CPA.
+- [ ] Vie 13/11 · Manu con el iPad y la cadena del CPA.
 - [ ] Sáb 14/11 · Manu con el tablero de suscriptores dando vuelta la cámara.
-- [ ] Lun 16/11 · Manu preparando la clase (pizarra, tablero, afiche).
+- [ ] Lun 16/11 · Manu preparando la clase (iPad, tablero, afiche).
 
 ### Queda programable
 
 | Día | 10:00 | 13:00 | 17:00 | 21:00 |
 | --- | --- | --- | --- | --- |
 | Mié 11/11 | Bienvenida | Video largo 1 + fallback | · | · |
-| Jue 12/11 | Recordatorio | Pop up + fallback | Mensaje 1 (Herbora) | Mensaje 2 |
+| Jue 12/11 | Recordatorio | Pop up + fallback | Mensaje 1 (la marca que trabaja conmigo) | Mensaje 2 |
 | Vie 13/11 | Recordatorio | Pop up + fallback | Mensaje 1 (CPA) | Mensaje 2 (🔥) |
 | Sáb 14/11 | Recordatorio | Pop up + fallback | Mensaje 1 (margen) | Mensaje 2 |
 | Dom 15/11 | · | 12:00 Video largo 2 + fallback | 19:00 Regalo | · |

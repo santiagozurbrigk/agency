@@ -1,6 +1,6 @@
 # Optimización de perfil — @manudomzz
 
-Agente: **Optimización de perfil** (`agentes/M4-webinar-organico/agente-optimizacion-perfil.md`), siguiendo el **SOP Perfil Webinar Limitless**. Versión 2, 30-sep-2026.
+Agente: **Optimización de perfil** (`agentes/M4-webinar-organico/agente-optimizacion-perfil.md`), siguiendo el **SOP Perfil Webinar Limitless**. Versión 2, 30-sep-2026. Números de Manu actualizados el 02/11: 275.225.343 por mes, 3.943 suscriptores y 7,2% de cancelaciones (en las bios va «7,2% churn» para no pasar los 150 caracteres).
 
 > **Por qué va todo junto y no por bloques.** El agente trabaja pieza por pieza con OK, pero el SOP pide dejar escritos los 4 estados **antes del día 1**, y el día 1 (cierre del 1a1) es **mañana, 1/10**. Cada bloque queda marcado con su estado: lo que corregís se toca solo ahí, sin reescribir lo aprobado.
 
@@ -63,28 +63,28 @@ Manu Dominguez | Suscripciones
 
 **Bio**
 
-**Opción 1 — recomendada · 149 caracteres**
+**Opción 1 — recomendada · 148 caracteres**
 ```
 Escalá tu ecomm de consumibles a +$100M/mes con SUSCRIPCIÓN, sin depender del CPA.
-2.200 suscriptores · 1,28% churn
+3.943 suscriptores · 7,2% churn
 DM SUSCRIPCIÓN: te hago la cuenta
 ```
 
-**Opción 2 — autoridad primero · 148 caracteres**
+**Opción 2 — autoridad primero · 147 caracteres**
 ```
-2.200 suscriptores activos y 1,28% de churn en mi marca.
+3.943 suscriptores activos y 7,2% de churn en mi marca.
 Pasá tu ecomm de consumibles a SUSCRIPCIÓN: +$100M/mes sin depender del CPA.
 DM SUSCRIPCIÓN
 ```
 
-**Opción 3 — el deseo de Gonza · 139 caracteres**
+**Opción 3 — el deseo de Gonza · 138 caracteres**
 ```
 Tu marca de consumibles a +$100M/mes: el mes arranca COBRADO y ya no dependés del CPA.
-2.200 suscriptores · 1,28% churn
+3.943 suscriptores · 7,2% churn
 Mandame SUSCRIPCIÓN
 ```
 
-**Recomendación: opción 1.** Es la promesa aprobada palabra por palabra. La prueba es de retención, el número que nadie más muestra, y el CTA dice el posicionamiento ("el que hace la cuenta con tus números"). Queda en 149 de 150: si se toca algo, que sea para acortar.
+**Recomendación: opción 1.** Es la promesa aprobada palabra por palabra. La prueba es de retención, el número que nadie más muestra, y el CTA dice el posicionamiento ("el que hace la cuenta con tus números"). Queda en 148 de 150: si se toca algo, que sea para acortar.
 
 **Link:** el video largo de YouTube sobre suscripciones `[PENDIENTE: URL]`. La bio tiene un solo CTA (SUSCRIPCIÓN por DM); el link es el camino para el que prefiere mirar antes de escribir.
 
@@ -110,7 +110,7 @@ Es un VSL en historias. Se archiva el 1/10 y vuelve el 23/10. Texto corto: cada 
 |---|---|---|---|
 | 1 | **Cada venta te cuesta lo mismo que la anterior.** ¿Por qué? | Manu a cámara, serio | Hook: toca el dolor raíz y abre el loop |
 | 2 | Yo facturaba 60 millones por mes y estaba en breakeven. | [CARGAR: reporte de facturación, punto A] | "Este tuvo mi mismo problema" |
-| 3 | Hoy: **2.200 suscriptores activos. 1,28% de churn.** | [CARGAR: tablero de suscriptores] | Promesa respaldada: se puede en Argentina |
+| 3 | Hoy: **3.943 suscriptores activos. 7,2% de cancelaciones.** | [CARGAR: tablero de suscriptores] | Promesa respaldada: se puede en Argentina |
 | 4 | "Los CPAs nos empezaron a reventar." | Texto sobre fondo negro | Dolor 1, en palabras del avatar |
 | 5 | "7 lucas de ganancia. Sobreviviendo." | Texto sobre fondo negro | Dolor 2 |
 | 6 | "El 1 del mes arranco en cero." | Texto sobre fondo negro | Dolor 3 |
@@ -120,7 +120,7 @@ Es un VSL en historias. Se archiva el 1/10 y vuelve el 23/10. Texto corto: cada 
 | 10 | Márgenes → la 2ª, 3ª y 4ª compra entran con el **margen entero**. | Pedido 1 / 2 / 3 / 4 | Rompe "tengo que vender más" |
 | 11 | Metadependencia → el mes arranca **cobrado**. Si Meta te baja la cuenta, los suscriptores se siguen cobrando. | [CARGAR: marca con la pauta apagada cobrando con 50% de margen] | Rompe "si cae Meta, se termina" |
 | 12 | Y sin tirar lo que hoy te vende: la suscripción va **al lado** de tu compra única. | Tienda con las dos opciones | Rompe "me van a romper lo que funciona" |
-| 13 | Mi marca: de 60M a **156.798.062** por mes. | [CARGAR: reporte de facturación, punto B] | Prueba después del reveal (retención adelante, facturación atrás) |
+| 13 | Mi marca: de 60M a **275.225.343** por mes. | [CARGAR: reporte de facturación, punto B] | Prueba después del reveal (retención adelante, facturación atrás) |
 | 14 | [FALTA CASO REAL: una marca de cliente con su antes y después] | — | Que no funcionó solo en Manu |
 | 15 | **Mandame SUSCRIPCIÓN** y te hago la cuenta con tus números. | Manu a cámara señalando el DM | CTA único, igual al de la bio |
 
@@ -136,11 +136,11 @@ Mientras tanto, se arma con **Manu, un ángulo distinto por slide**:
 | # | Texto en pantalla | Qué se muestra | Objeción que rompe |
 |---|---|---|---|
 | 1 | Mis números, abiertos. | Manu con la notebook | Confianza: "me muestra sus números" |
-| 2 | 2.200 suscriptores activos **en Argentina**. | [CARGAR: tablero] | "En Argentina nadie se suscribe" |
-| 3 | 1,28% de churn. | [CARGAR: tablero de churn] | "Se suscriben por el descuento y se van" |
+| 2 | 3.943 suscriptores activos **en Argentina**. | [CARGAR: tablero] | "En Argentina nadie se suscribe" |
+| 3 | 7,2% de cancelaciones. | [CARGAR: tablero de churn] | "Se suscriben por el descuento y se van" |
 | 4 | LTV: 3 pedidos, mínimo. | [CARGAR: tablero de recompra] | "Si no vuelven, no me sirve" |
 | 5 | Una marca con la pauta apagada, cobrando recurrencias con 50% de margen. | [CARGAR: captura] | "Si cae Meta, se termina" |
-| 6 | De 60.000.000 a 156.798.062 por mes. | [CARGAR: reporte] | "¿Y esto factura?" (va última: retención adelante, facturación atrás) |
+| 6 | De 60.000.000 a 275.225.343 por mes. | [CARGAR: reporte] | "¿Y esto factura?" (va última: retención adelante, facturación atrás) |
 
 ## 7 · Destacada "Quién soy" — ⏳ esperando OK
 
@@ -150,7 +150,7 @@ Es la que se queda en los 4 estados. Es la historia de origen (`../marca-persona
 2. "Fórmula buena y cara: 12.000 el pote, contra marcas que vendían a 4.500."
 3. "Y creía lo mismo que todos: que en Argentina nadie se suscribe."
 4. "Dejé de buscar la compra y empecé a buscar al cliente."
-5. "Hoy: 2.200 suscriptores activos. 1,28% de churn." [CARGAR: tablero]
+5. "Hoy: 3.943 suscriptores activos. 7,2% de cancelaciones." [CARGAR: tablero]
 6. "Cerré la escuela para los que arrancaban de cero. Hoy trabajo solo con marcas que ya facturan."
 
 **Opcionales:** "Programa" no va: la oferta es 1a1 y se explica en la llamada. "Lifestyle" no va: es B2B, y el personaje no se muestra con viajes ni autos.
@@ -163,7 +163,7 @@ Es la que se queda en los 4 estados. Es la historia de origen (`../marca-persona
 
 > ⚠️ Este HTML es SOLO una guía base para trabajar el copy y la estructura. NO uses este diseño ni publiques screenshots de esto tal cual — un carrusel con este diseño genérico se ve feo y va a funcionar mal. Llevá el copy final a tu diseñador o a tu herramienta de diseño, con tu branding real.
 
-**3. Resultados** (carrusel): las mismas 6 placas que la destacada "Resultados", con este caption: "No te cuento cuánto facturo: te muestro cuántos se quedan. 2.200 suscriptores activos, 1,28% de churn. Mandame SUSCRIPCIÓN y te hago la cuenta con tus números." Este fijado se queda en los 4 estados.
+**3. Resultados** (carrusel): las mismas 6 placas que la destacada "Resultados", con este caption: "No te cuento cuánto facturo: te muestro cuántos se quedan. 3.943 suscriptores activos, 7,2% de cancelaciones. Mandame SUSCRIPCIÓN y te hago la cuenta con tus números." Este fijado se queda en los 4 estados.
 
 ---
 
@@ -171,11 +171,11 @@ Es la que se queda en los 4 estados. Es la historia de origen (`../marca-persona
 
 ## 9 · Estado 1 — Cierre (jue 1/10 → vie 9/10) — ⏳ esperando OK
 
-**Bio · 130 caracteres**
+**Bio · 129 caracteres**
 ```
 LUGARES CERRADOS
 Escalo ecomms de consumibles a +$100M/mes con SUSCRIPCIÓN, sin depender del CPA.
-2.200 suscriptores · 1,28% churn
+3.943 suscriptores · 7,2% churn
 ```
 Sin CTA: la promesa queda en general y la prueba se mantiene.
 
@@ -251,11 +251,11 @@ INSCRIBITE ↓
 
 ## 11 · Estado 4 — Carrito (mar 20/10 → jue 22/10 23:59) — ⏳ esperando OK
 
-**Bio · 146 caracteres**
+**Bio · 145 caracteres**
 ```
 GÉNESIS ABIERTO HASTA EL 22/10
 Escalá tu ecomm de consumibles a +$100M/mes con SUSCRIPCIÓN, sin depender del CPA.
-2.200 suscriptores · 1,28% churn
+3.943 suscriptores · 7,2% churn
 ```
 Vuelve la promesa base con la prueba. La primera línea dice qué está pasando ahora.
 
@@ -285,7 +285,7 @@ Vuelve la promesa base con la prueba. La primera línea dice qué está pasando 
   4. "Por eso existe GÉNESIS: el Método B.A.S.E., hecho con vos, 1a1, en 3 meses."
   5. "Qué incluye (1/2): roadmap con auditoría de tus números · suscripción definida y precificada · tienda con suscripción instalada · conversión de tu base actual."
   6. "Qué incluye (2/2): anuncios al CPA nuevo · backend de retención · tablero semanal · chat 1a1 conmigo."
-  7. "2.200 suscriptores · 1,28% churn · de 60M a 156.798.062/mes." [CARGAR: tablero y reporte]
+  7. "3.943 suscriptores · 7,2% de cancelaciones · de 60M a 275.225.343/mes." [CARGAR: tablero y reporte]
   8. "10 lugares. Cierra el jueves 22/10 a las 23:59."
   9. "Link en mi perfil."
 - **Resultados** (se queda).
