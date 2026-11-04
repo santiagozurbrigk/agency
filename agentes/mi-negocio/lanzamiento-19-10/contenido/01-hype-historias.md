@@ -29,14 +29,16 @@ Tipo: valor (sin CTA). Dolor: la raíz de los 3 (cada venta cuesta lo mismo). Cr
 
 | # | Bloque | Texto on-screen | Visual / recurso |
 |---|---|---|---|
-| 1 | Hook | "El error que te hace pagar cada venta dos veces." | Foto de un fibrón rojo sobre una hoja en blanco. |
-| 2 | Problema | "Largás un químico, lo escalás, te salen 5 competidores, te suben los CPM, por ende te suben los CPA." | Selfie hablando, 15 s, cadena causal dicha de corrido. |
-| 3 | Problema | "Saliste con 10 dólares de CPA. Ahora tenés 20. Y ya dejás de ser rentable." | Texto en pantalla: "10 → 20" escrito en rojo. |
-| 4 | La idea | "No es el creativo. Es que buscás la compra, no al cliente." | Selfie, frase sola, pausa al final. |
-| 5 | La idea | "Si tu unidad de venta es la compra, cada venta te cuesta lo mismo que la anterior. Si es el cliente, la segunda te sale gratis." | Texto en pantalla: "COMPRA" tachado, "CLIENTE" subrayado. |
-| 6 | Cierre | "Pensalo con tu marca: ¿cuántos de tus clientes te compraron una sola vez?" | Caja de preguntas: "Tirame tu número". |
+| 1 | Hook | "El error que te hace pagar cada venta dos veces." | Foto cenital: hoja en blanco sobre la mesa del estudio, fibrón rojo tapado encima. |
+| 2 | Problema | "Largás un químico, lo escalás, te salen 5 competidores, te suben los CPM, por ende te suben los CPA." | Foto de la misma hoja con la cadena escrita a mano en rojo, en flechas: "QUÍMICO → ESCALÁS → 5 COMPETIDORES → ↑ CPM → ↑ CPA". |
+| 3 | Problema | "Saliste con 10 dólares de CPA. Ahora tenés 20. Y ya dejás de ser rentable." | Foto de la hoja: "10 → 20" en rojo, el 20 encerrado en un círculo. |
+| 4 | La idea | "No es el creativo. Es que buscás la compra, no al cliente." | Foto de la mano de Manu tachando "CREATIVO" con el fibrón (toma en el momento del trazo, sin cara). |
+| 5 | La idea | "Si tu unidad de venta es la compra, cada venta te cuesta lo mismo que la anterior. Si es el cliente, la segunda te sale gratis." | Foto de la hoja: "COMPRA" tachado, "CLIENTE" subrayado dos veces. |
+| 6 | Cierre | "Pensalo con tu marca: ¿cuántos de tus clientes te compraron una sola vez?" | Foto de la hoja completa con todo lo escrito y el fibrón tapado al costado + caja de preguntas: "Tirame tu número". |
 
 **Dolor:** cada venta cuesta lo mismo. **Creencia:** la unidad de venta es el cliente. **Al terminar tiene que pensar:** "Nunca lo había visto así."
+
+> Toda la secuencia es en fotos, sin selfies ni video hablando: es una sola hoja que se va llenando. Sacar las 6 fotos en una misma sesión, mismo encuadre cenital y misma luz, así se lee como una progresión.
 
 > Es la única secuencia de valor puro de la etapa: se da la idea completa (el QUÉ), nunca el cómo de la suscripción.
 
