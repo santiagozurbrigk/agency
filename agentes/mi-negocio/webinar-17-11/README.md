@@ -16,6 +16,7 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026, 18 hs.
 | [`vsl-thank-you.md`](vsl-thank-you.md) | El guion del video de la thank you page: un solo paso, entrar al grupo de WhatsApp. |
 | [`calendario-nutricion-whatsapp.md`](calendario-nutricion-whatsapp.md) | La estrategia de los 7 días del grupo de WhatsApp (11/11 al 17/11): tema, creencia que rompe, interacción y loop de cada día. Base para escribir el contenido de los días 1 a 6 y los reminders del día 7. |
 | [`contenido-nutricion-dias-1-6.md`](contenido-nutricion-dias-1-6.md) | Todo el contenido del grupo de WhatsApp del 11/11 al 16/11: guiones de los 2 videos largos, beats de los pop ups, recordatorios, mensajes y checklist de producción. Números de Manu como `$X`. |
+| [`agentes-ia-campus.md`](agentes-ia-campus.md) | Inventario de los 130 agentes de IA posibles del campus Génesis, por el camino completo del ecommerce, para elegir los bonus y comunicarlos en los scripts. |
 | [`analisis-ventas-calificadas.md`](analisis-ventas-calificadas.md) | Dolores, creencias limitantes y ángulos sacados de las llamadas de los clientes que más pagaron (Herbora, Alan, Santi Núñez, Thiago Lopo). |
 | [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |
 
