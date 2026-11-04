@@ -42,7 +42,7 @@ Lista de todos los agentes posibles para el campus, para elegir cuáles se comun
 | 12 | **Flujos de migración por email y WhatsApp** | Oferta + segmentos → la secuencia completa para pasar a los que ya te compraron a suscriptores | Metadependencia | 4 | BASE: `mi-negocio/agentes/creador-flujos-wsp.md` y el Bonus 3 del 19/10 |
 | 13 | **Bienvenida y onboarding del suscriptor** | Oferta → mensajes de los primeros 30 días para que el suscriptor no se dé de baja en el primer cobro | Objeción "se dan de baja" | 6 | CANDIDATO |
 | 14 | **Cobros fallidos** | Plataforma de cobro → la secuencia para recuperar tarjetas rechazadas y cobros vencidos | Churn | 6 | CANDIDATO |
-| 15 | **Retención y recuperación de bajas** | Motivos de baja → encuesta de baja, ofertas de pausa o cambio de frecuencia, y la secuencia de recuperación | Churn (el 1,28% de Manu) | 6 | CANDIDATO |
+| 15 | **Retención y recuperación de bajas** | Motivos de baja → encuesta de baja, ofertas de pausa o cambio de frecuencia, y la secuencia de recuperación | Churn (el 7,2% de Manu) | 6 | CANDIDATO |
 | 16 | **Atención al suscriptor** | Preguntas frecuentes de tus clientes → respuestas listas para el equipo de soporte o para cargar en un bot | Operación | 6 + 12 | CANDIDATO |
 
 ## 4. A + E · Adquirís al costo y escalás con el CAC nuevo

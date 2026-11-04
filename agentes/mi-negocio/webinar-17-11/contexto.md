@@ -5,10 +5,10 @@ Fuente: lo que pasó Santi el 28/10. Lo del negocio en general (oferta, precio, 
 ## Narrativa
 
 **Promesa**
-> Te voy a revelar cómo hago +280M/mes con el modelo de suscripciones sin depender del CPA ni de Meta.
+> Te voy a revelar cómo hago +270M/mes con el modelo de suscripciones sin depender del CPA ni de Meta.
 
 **Te vas a llevar**
-1. Cómo hago +280M/mes con el modelo de suscripciones.
+1. Cómo hago +270M/mes con el modelo de suscripciones.
 2. Cómo escalar tu ecommerce a +100M/mes migrando tu modelo de compra única al modelo de suscripción.
 3. Te regalo todos mis sistemas de backend, operaciones e IA para que copies y pegues en tu marca.
 

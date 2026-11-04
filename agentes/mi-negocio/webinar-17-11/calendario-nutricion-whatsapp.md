@@ -9,7 +9,7 @@ La estrategia de los 7 días del grupo de WhatsApp, del miércoles 11/11 al mart
 | Dato | Qué se usa | Estado |
 | --- | --- | --- |
 | Caso Herbora | Antes: CPA que reventó cuando salieron 7 marcas a pautar lo mismo, «7 lucas de ganancia», «600 lucas abajo». Después: el relanzamiento (Manu se lo contó a Alan: «pasaron a tener 40% de margen y se hicieron tipo casi dos palos de profit»). | **Permiso confirmado** por Santi. |
-| Números de Manu | Facturación hoy, suscriptores, margen y facturación con compra única. | **A definir.** En el contenido van como `$X`, `X suscriptores`, `X%` y `$Y`; se reemplazan todos juntos (ver `contenido-nutricion-dias-1-6.md`). |
+| Números de Manu | Facturación hoy, suscriptores, margen y facturación con compra única. | **Confirmados el 02/11:** facturación $275.225.343 por mes, 3.943 suscriptores, 7,2% de cancelaciones. **A definir:** margen (`X%`) y facturación con compra única (`$Y`). |
 | Regalo del día 5 | **La Cuenta del CPA** (la calculadora del techo de pauta con LTV: margen 30.000 → techo 30.000 con compra única → 90.000 con LTV 3 → operar en 75.000). Los 3 sistemas de la biblioteca **no** se regalan acá: son el bonus de la clase. | **Confirmado.** |
 | Privado de Manu | Interacciones que van al privado. | https://wa.link/ouqu06 |
 | Link de la clase | Solo el día 7, desde 15 minutos antes. | Pendiente. |
@@ -20,7 +20,7 @@ La estrategia de los 7 días del grupo de WhatsApp, del miércoles 11/11 al mart
 
 Una semana para que Gonza llegue a la clase del martes 17/11 a las 18 creyendo tres cosas que hoy no cree: que su problema no es de creativos sino del modelo, que la suscripción funciona en Argentina con un consumible como el suyo, y que su producto también entra. El grupo muestra el dolor y la prueba (Manu y el relanzamiento de Herbora); el cómo, el Método B.A.S.E., vive en la clase.
 
-**Promesa de la semana:** el martes 17 a las 18 vas a ver cómo Manu hace +280 millones por mes con el modelo de suscripción sin depender del CPA ni de Meta, y cómo escalar tu ecommerce a +100 millones por mes migrando de compra única a suscripción.
+**Promesa de la semana:** el martes 17 a las 18 vas a ver cómo Manu hace +270 millones por mes con el modelo de suscripción sin depender del CPA ni de Meta, y cómo escalar tu ecommerce a +100 millones por mes migrando de compra única a suscripción.
 
 ## 2. Arquitectura macro
 
@@ -45,7 +45,7 @@ Salen de la lista de creencias limitantes de las llamadas de los que más pagaro
 ```
 DÍAS 1-2  →  Rompe Creencia A («si renuevo creativos y bajo el CPA, se arregla») y
              Creencia B («en Argentina no se suscribe nadie»): el problema es el modelo,
-             y una marca argentina ya tiene +3.600 suscriptores
+             y una marca argentina ya tiene 3.943 suscriptores
 DÍAS 3-4  →  Rompe Creencia C («mi caso es distinto») mostrando los frenos AISLADOS:
              día 3, «el suscriptor sale más caro» desde el CPA;
              día 4, «se dan de baja / mi producto no es para eso» desde el margen.
@@ -67,7 +67,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 2. El Gonza que entra al grupo: factura, pauta todos los días, abre el Excel y cada venta le deja casi lo mismo que le cuesta. Manu estuvo ahí: 60 millones por mes con compra única, en breakeven.
 3. El enemigo: los mentores que te enseñan a escalar compra única, con más creativos y más pauta, sin pensar en la marca a largo plazo. Sin nombrar a nadie.
 4. El problema de raíz, nombrado (no resuelto): la unidad de venta es la compra y no el cliente. Por eso cada mes arrancás de cero.
-5. La promesa de la clase y qué se lleva el que va: cómo Manu hace +280M por mes con suscripción y cómo escalar a +100M por mes migrando de compra única a suscripción.
+5. La promesa de la clase y qué se lleva el que va: cómo Manu hace +270M por mes con suscripción y cómo escalar a +100M por mes migrando de compra única a suscripción.
 
 **Función estratégica:** marco de la semana. Instala el contraste compra contra cliente, que todo lo demás va a usar.
 
@@ -101,13 +101,13 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 
 **Fecha de la clase:** el recordatorio de la mañana: martes 17, 18 hs, más la promesa en una línea.
 
-**Planta para mañana:** «Mañana vamos al CPA. Te voy a mostrar por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo Herbora cuando salieron 7 marcas a pautar su mismo producto.»
+**Planta para mañana:** «Mañana vamos al CPA. Te voy a mostrar por qué bajarlo es la pelea que nunca vas a ganar, y qué hizo una marca que trabaja conmigo cuando salieron 7 marcas a pautar su mismo producto.»
 
 ### Día 3 · Viernes 13/11 · Dolor 1 · CPA
 
 **Cadencia:** recordatorio + pop up + 2 mensajes.
 
-**Pop up:** Manu frente a la pizarra con la cadena causal: largás, escalás, te salen 5 competidores, te suben los CPM, saliste con 10 dólares de CPA y ahora tenés 20. «Y ya está: dejás de ser rentable.»
+**Pop up:** Manu con el iPad y el lápiz, dibujando la cadena causal: largás, escalás, te salen 5 competidores, te suben los CPM, saliste con 10 dólares de CPA y ahora tenés 20. «Y ya está: dejás de ser rentable.»
 
 **Dolor (frase textual):** «Los CPAs nos empezaron a reventar.» · «Salieron 7 personas a pautar un producto muy parecido al nuestro.»
 
@@ -139,7 +139,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 
 **Solución común que se rompe:** subir el ticket, meter un bundle por 3, sacar cuotas, ajustar el envase. Sirven, pero no cambian que cada venta paga su propio CPA.
 
-**Caso que lo cruzó:** Manu: de 60M por mes en breakeven con compra única a +280M por mes con +40% de margen y +3.600 suscriptores, en Argentina, con un consumible.
+**Caso que lo cruzó:** Manu: de 60M por mes en breakeven con compra única a +270M por mes con +40% de margen y 3.943 suscriptores, en Argentina, con un consumible.
 
 **Freno aislado (Creencia C, parte 2):** «se suscriben por el descuento y se dan de baja» y «mi producto es un tratamiento, no es para suscripción». Se muestra que el cliente al que tu producto le resuelve el problema no se queda tres meses, se queda un año, sin explicar cómo se arma la oferta.
 
@@ -184,7 +184,7 @@ DÍAS 6-7  →  Convierten la creencia en asistencia: el martes a las 18 se ve c
 
 **Cadencia:** recordatorio + pop up + 2 mensajes.
 
-**Pop up:** Manu preparando la clase: la pizarra con los dos círculos, el tablero abierto, el afiche de la clase. Sin revelar nada.
+**Pop up:** Manu preparando la clase: el iPad con los dos círculos, el tablero abierto, el afiche de la clase. Sin revelar nada.
 
 **Función estratégica:** show-up. Convertir el interés en compromiso público y en preparación.
 

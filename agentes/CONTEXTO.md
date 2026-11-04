@@ -74,8 +74,8 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   **Símbolo:** dos círculos que se cruzan con una lente al medio. Círculo 1 = compra única, círculo 2 = suscripción, lente = el cliente que vuelve. El Método B.A.S.E. = agrandar la lente.
 
 - **Casos de éxito:**
-  - **Manu:** su propia marca pasó de 60.000.000 ARS/mes con compra única a 156.798.062 ARS/mes, 2.200 suscriptores activos, 1,28% de churn, LTV 3 pedidos mínimo (dato de septiembre). Período: [PENDIENTE].
-    - **Números vigentes a definir (30-oct):** la campaña del 17/11 usa +280M/mes, +3.600 suscriptores, +40% de margen y 220M en septiembre sin Meta; el contenido de WhatsApp los deja como `$X`, `X suscriptores`, `X%`, `$Y`. Va el número que tenga captura, y cuando se defina se reemplaza en todos los archivos a la vez.
+  - **Manu:** su propia marca pasó de 60.000.000 ARS/mes con compra única a **275.225.343 ARS/mes** (en la promesa se dice «más de 270 millones»), **3.943 suscriptores activos** y **7,2% de cancelaciones**, LTV 3 pedidos mínimo. Confirmados por Santi el 02/11; reemplazan los de septiembre (156.798.062, 2.200 suscriptores, 1,28% de churn). Período entre los 60M y hoy: [PENDIENTE].
+    - **Regla (02/11):** en cualquier guion o pieza en la que Manu hable de una de sus marcas se usan estos tres números: facturación $275.225.343, 3.943 suscriptores y 7,2% de cancelaciones. El «facturé 220 millones sin poner un dólar en Meta» de D3_V6 pasó a 275 millones. Sigue a definir el margen (los ads dicen «más de un 40%»; D3_V6 dice 45%).
   - **Herbora** (Lucas Ceria y Santiago Blachman, shampoo para dermatitis): **autorizaron contar el caso (30-oct).** Antes: «hace mucho que no tenemos un día bueno», 7 marcas salieron a pautar lo mismo, «7 lucas de ganancia», una noche 600 lucas abajo. Después del relanzamiento con Manu: 40% de margen y «casi dos palos de profit» (período a confirmar con Manu). Lucas además tenía 400 clientes que le recompraron sin mails ni WhatsApp.
   - Reglas: retención adelante, facturación atrás · se muestra, no se dice (sin captura no hay número) · un ángulo distinto por pieza · el punto A se dice con el número.
 
@@ -177,7 +177,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - Vocabulario técnico que usa sin explicar: CPA · CAC · CPM · LTV · margen de contribución · breakeven (pegado) · churn · suscriptores activos · recurrencia · RI · subasta · ciclo de reposición · pautar ("la volvés a pautar el mes que viene, con el mismo costo o mayor").
   - Patrones de sus guiones de ads (17-sep, **pesan más que todo lo demás**): "buscás la compra, no los clientes" · el hook se reemplaza entero si hay un ángulo más fuerte · frase repetida entre piezas del mismo set · el CTA nunca nombra el botón de la plataforma · cierre con consecuencia concreta ("el CPA te va a terminar matando el negocio") · redundancia conversacional a propósito.
   - Frases de cierre:
-    - Bloque de autoridad en cada caption: "Manu. Método B.A.S.E.: 2.200 suscriptores activos, 1,28% de churn. Enseño el modelo en Génesis."
+    - Bloque de autoridad en cada caption: "Manu. Método B.A.S.E.: 3.943 suscriptores activos, 7,2% de cancelaciones. Enseño el modelo en Génesis."
     - Cierre de reel y video largo: "Esto es el Método B.A.S.E." (en ads, remate específico de la pieza).
   - Frases fuertes, textuales:
     - "Nosotros vamos a competir por el MODELO. Si ellos pueden gastar 50 dólares para adquirir un cliente, nosotros podemos gastar 75, y listo: ya no tenés competencia."

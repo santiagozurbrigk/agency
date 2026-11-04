@@ -60,9 +60,9 @@ Vocabulario y palabras prohibidas: ver `CONTEXTO.md` → Voz y marca.
 
 - **Estaba en:** "Facturaba sesenta millones de pesos por mes con un consumible de compra única. Cada venta me costaba lo mismo que la anterior. Tenía una fórmula buena y cara, 12.000 pesos cada pote, compitiendo contra marcas que vendían a 4.500. Y creía lo mismo que cree todo el mundo: que en Argentina nadie se suscribe."
 - **Descubrí:** "Que lo que me iba a hacer rentable no era el producto, ni el creativo, ni bajar el precio. Era el modelo. Adquirir al cliente al costo y hacer la plata en el segundo, el tercer y el cuarto pedido. Dejé de buscar la compra y empecé a buscar al cliente. Eso es el Método B.A.S.E."
-- **Logré:** "Pasé de 60 millones a 156.798.062 por mes. Hoy tengo 2.200 suscriptores activos con 1,28% de churn. Y tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen."
+- **Logré:** "Pasé de 60 millones a 275.225.343 por mes. Hoy tengo 3.943 suscriptores activos con 7,2% de cancelaciones. Y tengo una marca que, con la pauta apagada, sigue cobrando recurrencias con un 50% de margen."
 - **Ahora ayudo:** "Cerré la escuela para gente que arrancaba de cero. Hoy trabajo solo con marcas de consumibles que ya facturan, y hago con sus números la misma cuenta que hice con los míos."
-- **En una línea:** "Facturaba 60 millones y cada venta me costaba lo mismo que la anterior. Pasé mi marca a suscripción, llegué a 156 millones, y ahora hago la misma cuenta con marcas como la tuya."
+- **En una línea:** "Facturaba 60 millones y cada venta me costaba lo mismo que la anterior. Pasé mi marca a suscripción, llegué a más de 270 millones, y ahora hago la misma cuenta con marcas como la tuya."
 
 ## Cómo se muestra
 
