@@ -1,4 +1,4 @@
-﻿# Webinar 17/11
+# Webinar 17/11
 
 Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026, 18 hs.
 
@@ -15,7 +15,14 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026, 18 hs.
 | [`vsl-registro.md`](vsl-registro.md) | Los 2 guiones del VSL de la landing: A (el del 19/10 actualizado) y B (el mismo con un bloque de filtro de calificación). |
 | [`vsl-thank-you.md`](vsl-thank-you.md) | El guion del video de la thank you page: un solo paso, entrar al grupo de WhatsApp. |
 | [`calendario-nutricion-whatsapp.md`](calendario-nutricion-whatsapp.md) | La estrategia de los 7 días del grupo de WhatsApp (11/11 al 17/11): tema, creencia que rompe, interacción y loop de cada día. Base para escribir el contenido de los días 1 a 6 y los reminders del día 7. |
-| [`contenido-nutricion-dias-1-6.md`](contenido-nutricion-dias-1-6.md) | Todo el contenido del grupo de WhatsApp del 11/11 al 16/11: guiones de los 2 videos largos, beats de los pop ups, recordatorios, mensajes y checklist de producción. Números de Manu como `$X`. |
+| [`contenido-nutricion-dias-1-6.md`](contenido-nutricion-dias-1-6.md) | El calendario de WhatsApp del 11/11 al 16/11, pulido el 31/10 y alineado con los mails finales: la pieza exclusiva de cada día, guiones de los videos, recordatorios, mensajes y checklist de producción. |
+| [`emails-nutricion.md`](emails-nutricion.md) | Los 16 mails para los registrados: confirmación, 1 por día del 11/11 al 16/11 y la escalera de 9 mails del día de la clase, con la forma de los mails de ejemplo y la tabla de carga. Números de Manu como `$X`. |
+| [`whatsapp-dia-clase-y-post.md`](whatsapp-dia-clase-y-post.md) | Los mensajes de WhatsApp del día de la clase (pre, durante y después del vivo) y del post-clase del 18 al 20/11. |
+| [`whatsapp-nutricion.md`](whatsapp-nutricion.md) | **Versión final** de todos los mensajes del grupo de WhatsApp (días 1 a 7 y post-clase), tal como la cerró Santi el 01/11. |
+| [`ads-reminder.md`](ads-reminder.md) | Las 4 piezas de reminder según el SOP (2 videos y 2 imágenes) y la campaña de las últimas 72 horas, con los comprobantes para el editor y el diseñador. |
+| [`ads-post-webinar.md`](ads-post-webinar.md) | Los 2 ads post-clase según el SOP (agenda directa y replay), con a quién va cada uno y los comprobantes. |
+| [`mejoras-whatsapp-cruce-naza.md`](mejoras-whatsapp-cruce-naza.md) | Cruce de la nutrición de WhatsApp con el grupo de Naza y lo que enseña Limitless: 17 mejoras priorizadas, con textos propuestos. La referencia de Naza está en `../referencias/naza-grupo-whatsapp.md`. |
+| [`sincronizacion-mails-whatsapp.md`](sincronizacion-mails-whatsapp.md) | Cómo se conectan los mails y el WhatsApp día por día: qué sale en cada canal y a qué hora, y qué se le pide a la gente. |
 | [`agentes-ia-campus.md`](agentes-ia-campus.md) | Inventario de los 130 agentes de IA posibles del campus Génesis, por el camino completo del ecommerce, para elegir los bonus y comunicarlos en los scripts. |
 | [`analisis-ventas-calificadas.md`](analisis-ventas-calificadas.md) | Dolores, creencias limitantes y ángulos sacados de las llamadas de los clientes que más pagaron (Herbora, Alan, Santi Núñez, Thiago Lopo). |
 | [`prompt-tracker-tareas.md`](prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |

@@ -10,7 +10,14 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - No es para: el que arranca de cero (sin ventas) ni el que busca producto ganador.
   - **Sí entra (cambio del 30-oct):** el que ya tiene un e-commerce que vende en otro nicho (importación, Mercado Libre) y quiere armar su marca de consumibles. Dos de los cuatro clientes que más pagaron venían de ahí, y uno pagó el ticket más alto en un pago. Antes se lo excluía.
 
-- **Qué vendo (oferta principal y precio):** **Génesis — Método B.A.S.E.** Consultoría 1:1 · 3 meses · Done For You. No hay versión grupal.
+- **Qué vendo (oferta principal y precio):** **Génesis — Método B.A.S.E.** Consultoría 1:1 · 3 meses · **Done With You (DWY)**: la marca lo aplica con Manu y el equipo al lado; no se hace por el cliente. Es 1 a 1, con llamadas grupales semanales de apoyo (ver la oferta del 17/11). *(Corregido el 02/11/2026: antes decía Done For You.)*
+  - **La oferta tal como se comunica en el webinar del 17/11** (ad post-webinar final, 02/11/2026). Es la versión vigente para el copy; donde choque con los 12 renglones de abajo, manda esta:
+    - Llamadas 1 a 1 con Manu y con José, su socio.
+    - 4 llamadas grupales semanales y chat 1 a 1 con Manu.
+    - Acceso al campus: toda la información y herramientas propias (automatizaciones, flujos, agentes de IA y CRM).
+    - Bonus que se nombran en la clase: Puentify y acceso a la Red Génesis.
+    - **10 lugares.** El carrito del 17/11 cierra el **sábado 21/11**.
+  - **Cómo se entra:** en el webinar y en el post-webinar no se agenda una llamada: se **aplica** completando un formulario, y después el equipo contacta a los que aplicaron. Todos los CTA de venta dicen «aplicá», nunca «agendá».
   - Frase de la oferta (cerrada 6-sep): *"Escalo tu ecomm de consumibles a +$100M al mes convirtiéndolo a modelo de suscripción, sin depender del CPA ni dejar de vender."*
 
   | | Validación (piloto, ya cerrada) | Webinar (vigente desde el lanzamiento) |
@@ -21,20 +28,20 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   | Cupo | 5 marcas | 20 lugares ("por ahora") |
 
   - Validación 1 cerrada: los 3 del piloto cerraron. El webinar sale.
-  - No se baja de precio en ningún momento. El entregable 3 (tienda instalada) no se instala hasta pagar la cuota 2.
+  - No se baja de precio en ningún momento. El entregable 3 (tienda con suscripción) no arranca hasta pagar la cuota 2.
   - Cuenta que justifica el precio: USD 6.000 ≈ 9.000.000 ARS ÷ 45.000 de capacidad extra de compra por cliente = se paga con ~200 clientes adquiridos al techo nuevo.
 
-  **Qué incluye (12 renglones):**
+  **Qué incluye (12 renglones, todo DWY):**
   1. Roadmap de conversión con auditoría de tus números: margen real por pedido, CPA actual y techo de pauta con LTV.
-  2. Variante de suscripción definida, precificada y validada contra tu ciclo de reposición real (DFY).
-  3. Tienda con suscripción instalada (Tiendanube nativo): cobro recurrente, checkout y landing, al lado de la compra única sin tocarla (DFY).
-  4. Conversión de la base actual: secuencia de mail y WhatsApp a los que ya compraron (DFY).
-  5. Estructura de anuncios al CPA nuevo: ángulos, creativos y campañas recalculadas con tu LTV (DFY).
-  6. Backend de retención: post-compra, cadencia de contacto y recuperación de bajas (DFY).
-  7. Proyecciones de stock y reposición sobre la base de suscriptores (DFY).
-  8. Tablero de suscriptores activos, churn y recompra, con reporte semanal (DFY).
-  9. Cuenta de formalización: en qué punto de la base te cierra pasar a blanco (DFY).
-  10. Sesiones de migración con Manu hasta instalar la suscripción; después, chequeo semanal 1a1.
+  2. Variante de suscripción definida, precificada y validada contra tu ciclo de reposición real.
+  3. Tienda con suscripción (Tiendanube nativo), armada con acompañamiento: cobro recurrente, checkout y landing, al lado de la compra única sin tocarla.
+  4. Conversión de la base actual: secuencia de mail y WhatsApp a los que ya compraron.
+  5. Estructura de anuncios al CPA nuevo: ángulos, creativos y campañas recalculadas con tu LTV.
+  6. Backend de retención: post-compra, cadencia de contacto y recuperación de bajas.
+  7. Proyecciones de stock y reposición sobre la base de suscriptores.
+  8. Tablero de suscriptores activos, churn y recompra, con reporte semanal.
+  9. Cuenta de formalización: en qué punto de la base te cierra pasar a blanco.
+  10. Sesiones de migración con Manu hasta que la suscripción esté funcionando; después, chequeo semanal 1a1.
   11. Chat 1a1 directo con Manu.
   12. SOPs de cada pieza.
 
@@ -54,7 +61,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   | Fase | Qué se hace |
   |---|---|
   | Diagnóstico | Auditoría de números (margen, CPA, techo, ticket, recompra, ciclo de reposición). Es el entregable 1, pago — no se regala en la call |
-  | 1 — De Pedido a Suscriptor | Plan de suscripción, secuencia de conversión de la base, techo nuevo calculado, cobro recurrente instalado como variante paralela |
+  | 1 — De Pedido a Suscriptor | Plan de suscripción, secuencia de conversión de la base, techo nuevo calculado, cobro recurrente funcionando como variante paralela |
   | 2 — Migración sin Frenar | Variación del producto actual (formato, dosis, tamaño, ciclo) + proyecciones de stock y caja |
   | 3 — Piso de Facturación | Backend de retención, tablero semanal, anuncios recalculados al CPA nuevo, cuenta de formalización |
 
