@@ -36,7 +36,7 @@
   .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--hueso); border: 1px solid var(--borde); display: grid; place-items: center; font-weight: 700; font-size: 14px; color: var(--negro); }
 
   /* Layout */
-  main { display: grid; grid-template-columns: 250px 580px 260px; gap: 24px; justify-content: center; padding: 38px 0 80px; }
+  main { display: grid; grid-template-columns: 290px 580px 260px; gap: 24px; justify-content: center; padding: 38px 0 80px; }
 
   /* Sidebar */
   .side-titulo { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: var(--tinta); padding: 8px 12px 14px; }
@@ -110,7 +110,7 @@
   <aside>
     <div class="side-titulo">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
-      ÁREAS
+      CATEGORÍAS
     </div>
     <div id="cats"></div>
   </aside>
@@ -123,10 +123,10 @@
     </div>
     <div class="buscar">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-      Buscar agentes...
+      Buscar herramientas...
     </div>
     <div class="meta">
-      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><b id="total">32</b> agentes</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><b id="total">18</b> herramientas</span>
       <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Última actualización: hoy, 10:42</span>
     </div>
     <div class="lista" id="lista"></div>
@@ -138,11 +138,11 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
         SOBRE LA BIBLIOTECA
       </div>
-      <p>Los agentes de IA que uso todos los días en mis marcas de consumibles. Cada uno viene con sus instrucciones, ejemplos reales y cómo aplicarlo en tu marca: copiás, pegás y lo usás.</p>
+      <p>Las skills de IA, SOPs y plantillas que uso todos los días en mis marcas de consumibles. Cada una viene lista para aplicar en tu marca: la descargás, la cargás y la usás.</p>
       <hr>
-      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><b>32</b> agentes</div>
-      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg><b>14</b> áreas</div>
-      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 15l4-4 4 3 8-8"/></svg><b>4</b> fases del ecommerce</div>
+      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg><b id="n-total">18</b> herramientas</div>
+      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8Z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg><b id="n-areas">8</b> categorías</div>
+      <div class="stat"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M4 15l4-4 4 3 8-8"/></svg><b id="n-skills">11</b> skills de IA</div>
       <hr>
       <a class="link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>Campus Génesis</a>
       <div class="ver"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>v3.1</div>
@@ -156,40 +156,26 @@
 
 <script>
 const AGENTES = [
-  ["Búsqueda de producto", "Buscador de productos con recompra", "Le pasás un nicho y te devuelve los productos consumibles ordenados por ciclo de reposición y margen, para arrancar donde el cliente vuelve a comprar..."],
-  ["Búsqueda de producto", "Lector de la Biblioteca de Anuncios", "Analiza la competencia de tu categoría y te dice qué productos, ángulos y formatos llevan más tiempo activos. Lo que está funcionando, sin adivinar..."],
-  ["Búsqueda de producto", "Minero de reseñas", "Lee reseñas tuyas y de la competencia y saca dolores, deseos, objeciones y las frases textuales del cliente para usar en tus anuncios..."],
-  ["Validación de producto", "Validador de demanda", "Le das una idea de producto y cruza búsquedas, competencia y anuncios activos. Te devuelve un veredicto claro: avanzar, ajustar o descartar..."],
-  ["Validación de producto", "Plan de test de producto", "Arma el test con días, presupuesto y métricas de corte (CTR, CPA máximo) para decidir rápido si el producto sigue o se mata..."],
-  ["Investigación de mercado", "Investigación de avatar", "Procesa encuestas, DMs y entrevistas y te devuelve el avatar, su nivel de consciencia y el mapa de dolores. La base de todo tu copy..."],
-  ["Investigación de mercado", "Analista de competencia", "Revisa precios, ofertas, landings y si tus competidores venden con suscripción. Te marca dónde diferenciarte para no competir por precio..."],
-  ["Finanzas", "Calculadora de costeo y precio", "Mete costo, envío, comisiones, pauta e impuestos y te devuelve precio mínimo, precio recomendado y el margen de contribución real por pedido..."],
-  ["Finanzas", "Rentabilidad por SKU", "Cruza ventas y costos por producto y te dice cuáles dejan plata, cuáles la pierden y cuáles conviene cortar del catálogo..."],
-  ["Finanzas", "Proyección de caja", "Proyecta cobros, ventas y costos mes a mes para que veas la caja con anticipación y sepas tu piso de facturación..."],
-  ["Proveedores", "Buscador de proveedores", "Para cada producto te dice qué tipo de proveedor buscar, dónde encontrarlo y qué preguntarle antes de cerrar el primer pedido..."],
-  ["Proveedores", "Negociador con proveedores", "Toma una cotización y te arma la contrapropuesta de precio, mínimos y plazos de pago para mejorar el margen desde la compra..."],
-  ["Creativos", "Ángulos de anuncios", "A partir de tu producto, avatar y dolores te propone los ángulos para testear, ordenados por fuerza. Dejás de probar a ciegas..."],
-  ["Creativos", "Guiones de creativos", "Convierte el ángulo elegido en guiones de video listos para grabar (UGC, talking head, demo) con hook y variantes para testear..."],
-  ["Creativos", "Iterador de ganadores", "Le pasás un anuncio que funciona y te devuelve 10 variaciones de hook, formato, actor y oferta para estirar el ganador sin fatigarlo..."],
-  ["Landings", "Armado de landings", "Con tu oferta y tu avatar arma la landing completa: estructura, copy y bloques, lista para montar en tu tienda..."],
-  ["Landings", "Landing de suscripción", "Arma la landing o el bloque de suscripción listo para Tiendanube, al lado de la compra única y sin tocar lo que ya vende..."],
-  ["Oferta", "Armado de ofertas", "Producto, margen y avatar adentro; sale la oferta completa: precio, bundle, garantía, bonus y cómo presentarla para que venda sola..."],
-  ["Oferta", "Oferta de suscripción", "Define precio, descuento, frecuencia y beneficios de la suscripción según tu margen y tu ciclo de reposición real..."],
-  ["Funnel", "Estrategia de lanzamiento", "Arma el plan de lanzamiento día por día: preventa, orgánico, pauta e influencers, según tu producto y tu presupuesto..."],
-  ["Funnel", "Upsell y cross-sell", "Lee tu catálogo y te arma ofertas para el carrito y para después de la compra, con su copy, para subir el ticket promedio..."],
-  ["Meta Ads", "Analista de la cuenta publicitaria", "Pegás el export del Ads Manager y te devuelve el diagnóstico de la cuenta: fatiga, saturación, estructura y qué cortar..."],
-  ["Meta Ads", "Escalado de campañas", "Mira las métricas de tus campañas y te dice cuándo y cuánto subir presupuesto, duplicar o abrir públicos sin romper el CPA..."],
-  ["Meta Ads", "Estructura de campañas al CPA nuevo", "Recalcula campañas, conjuntos y presupuestos con tu LTV para pautar al techo nuevo que te da la suscripción..."],
-  ["Flujos de email", "Carrito abandonado", "Escribe la secuencia de email y WhatsApp para recuperar carritos abandonados, con los tiempos y el incentivo justo..."],
-  ["Flujos de email", "Flujos post-compra", "Arma la secuencia después de la compra: uso, resultados y próxima compra, para que el cliente vuelva sin que pagues pauta de nuevo..."],
-  ["Flujo de WhatsApp", "Flujos de migración por WhatsApp", "Con tu oferta y tus segmentos escribe la secuencia para pasar a los que ya te compraron a suscriptores. Cientos desde la base actual..."],
-  ["Flujo de WhatsApp", "Vendedor por WhatsApp", "Toma las consultas típicas de tus clientes y arma el flujo de respuestas que contesta, recomienda y cierra la venta por chat..."],
-  ["Retención", "Retención y recuperación de bajas", "Según los motivos de baja te arma ofertas de pausa o cambio de frecuencia y la secuencia para recuperar al suscriptor..."],
-  ["Retención", "Cobros fallidos", "Escribe la secuencia para recuperar tarjetas rechazadas y cobros vencidos antes de que el suscriptor se pierda..."],
-  ["Operaciones", "Generador de SOPs", "Le contás cómo hacés hoy una tarea y te la devuelve como SOP escrito, para que la haga alguien de tu equipo..."],
-  ["Operaciones", "Qué delegar primero", "Revisa tus tareas de la semana y te dice qué delegar, a quién y en qué orden, para que salgas de la operación..."],
+  ["Creativos y salida al mercado", "Skill de guiones de anuncios", "Hooks y guiones de video desde tu fundacional: B-roll, UGC y UGC con IA.", "Prompt"],
+  ["Validación", "Skill de validación", "Pasá tu producto por los filtros y salí con un GO o un NO-GO antes de testearlo.", "Prompt"],
+  ["Tienda y oferta", "Skill de flows de email", "Arma y carga en Klaviyo los flows de tu suscripción: bienvenida, abandono, onboarding y cobro.", "Prompt"],
+  ["Investigación de mercado", "Skill de documento fundacional", "La voz real de tu cliente, avatares, competencia, mecanismo y ángulos, en un solo documento.", "Prompt"],
+  ["Tienda y oferta", "SOP de flows de email", "Qué flows prender, en qué orden y qué dice cada email de tu suscripción.", "Recurso"],
+  ["Marca", "Skill de Brand Board", "Nombre, identidad, paleta, tipografía y logo de tu marca, armados con IA.", "Prompt"],
+  ["Creativos y salida al mercado", "Skill de videos con IA", "Convierte tu guion aprobado en clips de video con IA, frame por frame, listos para editar.", "Prompt"],
+  ["Creativos", "Skill de copy de anuncios", "Para texto escrito: el texto principal del anuncio, el titular, la descripción y los native largos. Lo que la persona lee debajo o arriba de la imagen o del video.", "Prompt"],
+  ["Creativos y salida al mercado", "Skill de Native Ads", "Anuncios que parecen contenido orgánico: ángulos, imágenes y copy desde tu fundacional.", "Prompt"],
+  ["Creativos y salida al mercado", "SOP de nomenclatura de anuncios", "Cómo nombrar campañas, conjuntos y anuncios para que tu tracker se lea solo.", "Recurso"],
+  ["Creativos", "Skill de Ads Estáticos", "El titular, el producto y el llamado a la acción van adentro de la imagen, diseñados. Va más para público tibio y caliente. Tiene dos rutas: banco de formatos o modo réplica.", "Prompt"],
+  ["Copy", "Documento de principios de copy", "Base de conocimiento para las skills de Génesis.", "Recurso"],
+  ["Tienda y oferta", "Simulador de suscripción", "Cuánto te deja cada venta, cuánto podés pagar por cliente y cuánto ganás con suscripción.", "Software"],
+  ["Creativos y salida al mercado", "SOP de anuncio rechazado en Meta", "Qué hacer cuando Meta te rechaza un anuncio: por qué pasa, cómo apelar y cómo corregirlo.", "Recurso"],
+  ["Creativos", "Plantilla +500 ads estáticos en Figma", "Usá las plantillas de ads para sacar renovaciones rápidas y efectivas para tu marca o producto.", "Plantilla"],
+  ["Creativos", "Plantilla +150 ads estáticos en Canva", "Usá las plantillas de ads para sacar renovaciones rápidas y efectivas para tu marca o producto.", "Plantilla"],
+  ["Métricas y relanzamiento", "Tracker de anuncios", "Tus anuncios con veredicto de ganador o perdedor y tu hit rate, actualizados todos los días.", "Plantilla"],
+  ["Creativos", "Plantilla +90 ads estáticos en Canva", "Usá las plantillas de ads para sacar renovaciones rápidas y efectivas para tu marca o producto.", "Plantilla"],
 ];
-const AREAS = ["Búsqueda de producto","Validación de producto","Investigación de mercado","Finanzas","Proveedores","Creativos","Landings","Oferta","Funnel","Meta Ads","Flujos de email","Flujo de WhatsApp","Retención","Operaciones"];
+const AREAS = [...new Set(AGENTES.map(a => a[0]))];
 const HACE = ["hace 2 días","hace 5 días","hace 1 semana","hace 3 días","ayer","hace 4 días","hace 2 semanas","hace 6 días"];
 
 const icoArch = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/></svg>';
@@ -197,7 +183,8 @@ const icoReloj = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" st
 const icoGrid = '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="1.6"/><circle cx="12" cy="5" r="1.6"/><circle cx="19" cy="5" r="1.6"/><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="5" cy="19" r="1.6"/><circle cx="12" cy="19" r="1.6"/><circle cx="19" cy="19" r="1.6"/></svg>';
 const icoCat = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 8 9h8l-4-6Z"/><circle cx="7" cy="17" r="3.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>';
 
-const orden = [...AGENTES].sort((a, b) => a[1].localeCompare(b[1], 'es'));
+const TIPOS = ["Prompt", "Software", "Recurso", "Plantilla"];
+const orden = [...AGENTES].sort((a, b) => TIPOS.indexOf(a[3]) - TIPOS.indexOf(b[3]) || a[1].localeCompare(b[1], 'es'));
 let filtro = null;
 
 function render() {
@@ -209,15 +196,18 @@ function render() {
       <div>
         <h3>${a[1]}</h3>
         <p>${a[2]}</p>
-        <div class="info"><span>${icoReloj}Actualizado ${HACE[i % HACE.length]}</span><span class="tag">${a[0]}</span></div>
+        <div class="info"><span>${icoReloj}Actualizado ${HACE[i % HACE.length]}</span><span class="tag">${a[3]}</span><span class="tag">${a[0]}</span></div>
       </div>
     </div>`).join('');
-  const cats = [[null, 'Todos los agentes', AGENTES.length, icoGrid], ...AREAS.map(x => [x, x, AGENTES.filter(a => a[0] === x).length, icoCat])];
+  const cats = [[null, 'Todas', AGENTES.length, icoGrid], ...AREAS.map(x => [x, x, AGENTES.filter(a => a[0] === x).length, icoCat])];
   document.getElementById('cats').innerHTML = cats.map(([k, nombre, n, ico]) =>
     `<div class="cat${k === filtro ? ' activo' : ''}" data-k="${k ?? ''}">${ico}${nombre}<span class="n">${n}</span></div>`).join('');
   document.querySelectorAll('.cat').forEach(el => el.onclick = () => { filtro = el.dataset.k || null; render(); });
 }
 render();
+document.getElementById('n-total').textContent = AGENTES.length;
+document.getElementById('n-areas').textContent = AREAS.length;
+document.getElementById('n-skills').textContent = AGENTES.filter(a => a[3] === 'Prompt').length;
 </script>
 </body>
 </html>
