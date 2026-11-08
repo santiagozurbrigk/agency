@@ -83,6 +83,16 @@ Armar W02 en un solo workflow obligaba a unir con «Ir a» cada rama de cada bot
 - **MIE1930 (solo ventana abierta):** «Sí, escribime» → `cl17-hablar` + toco → notificación a Manu + «Escribirle a Manu»; «Por ahora no» → toco → «De una. Si te surge algo me escribís por acá» con el botón a Manu.
 - **Ventana cerrada:** plantillas `cl17_post_pudiste`, `cl17_post_mie_estuvo`, `cl17_post_mie_repeticion`, `cl17_post_vie20`, `cl17_post_sab21`; sus botones saltan con «Ir a» a las mismas ramas.
 
+### Sin links al privado de Manu (08/11, decisión de Santi)
+
+Ningún mensaje manda al WhatsApp privado de Manu (`cl17_link_manu` ya no se usa). La idea es que el flujo siga solo y no pedirle al lead que escriba, porque lo que escribe a mano nadie lo contesta: cae en Conversaciones de GHL.
+
+- **D4B (las 3 respuestas):** «Así está hoy mi panel 👇 El martes a las 18 te muestro cómo se arma» + botón «Agendar la clase».
+- **D5B «Sí, ya lo usé»:** «Buenísimo. Tené ese número a mano el martes, lo vamos a usar en la clase» + «Agendar la clase».
+- **POST «Sí, estuve»:** un solo mensaje: «Gracias por quedarte hasta el final 🙏 Y si querés que lo apliquemos en tu marca con mi equipo, aplicá acá y te contactamos 👇» + «Aplicar a Génesis». Se sacó el pedido de los 3 agentes por privado. **Pendiente:** definir cómo se entregan (un link para elegirlos, o en la clase o el grupo).
+- **MIE12 y VIE20 «Tengo dudas»:** «Dale, aplicá acá y en la llamada te respondo todo 👇» + «Aplicar a Génesis». Sigue el aviso interno a Manu.
+- **MIE1930 «Sí, escribime»:** «Dale, aplicá acá y en la llamada lo hablamos 👇» + «Aplicar a Génesis», con el aviso a Manu. **«Por ahora no»:** pone el tag y termina, sin mensaje.
+
 ### Cómo quedó W05
 
 - «cl17 · W05 · Respondió»: disparador «El cliente ha respondido», canal WhatsApp, con el tag `optin-17-11` → quita `cl17-reactivacion-pendiente`. Reingreso activado.
