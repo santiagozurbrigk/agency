@@ -1,9 +1,19 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/clase", "destination": "/api/clase" },
+    { "source": "/clase", "destination": "/" },
     { "source": "/(1|2|3|a|b)", "destination": "/" },
     { "source": "/(cpa|margen|meta)", "destination": "/" },
     { "source": "/(application|aplicacion|aplicar)", "destination": "/aplication" }
+  ],
+  "headers": [
+    {
+      "source": "/(wins|slides|ventas|bonus|replay-assets)/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    },
+    {
+      "source": "/(manu.jpg|favicon.svg|apple-touch-icon.png)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+    }
   ]
 }
