@@ -1,0 +1,361 @@
+<title>Flujo WSP Clase 17/11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: lienzo tipo pizarra que se arrastra y se acerca; un marco por workflow (columnas), cada fila = tarjeta del mensaje + post-its a la derecha (respuestas, recursos, ramas). El primer marco son los pendientes. */
+:root{
+  --canvas:#f2f0ec; --dot:#cfc9c0; --frame:#fbfaf8; --frame-line:#ddd6cc;
+  --card:#ffffff; --ink:#1d1a17; --muted:#6f675f; --line:#ded8d0;
+  --accent:#e8590c; --accent-soft:#fde8dc;
+  --bubble:#e7f6dc; --bubble-ink:#16210f;
+  --paid:#b42318; --paid-soft:#fbe4e1; --both:#9a5b00; --both-soft:#fdf0d5; --free:#1f7a4d; --free-soft:#e0f2e8;
+  --warn:#7a3ff2; --warn-soft:#efe8fe;
+  --s-res:#ffe08a; --s-res-ink:#3d2e00; --s-rep:#d6f0ff; --s-rep-ink:#0c2a3d; --s-br:#f1e4ff; --s-br-ink:#2b1450;
+  --wire:#8a8178; --on-strip:#ffffff;
+  --display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --body:"Figtree","Helvetica Neue",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --canvas:#141210; --dot:#2f2b27; --frame:#1b1916; --frame-line:#36312b;
+  --card:#23201c; --ink:#f1ece6; --muted:#a69d93; --line:#3a352f;
+  --accent:#ff7a33; --accent-soft:#3a2416; --bubble:#1f3a2b; --bubble-ink:#e8f5ec;
+  --paid:#ff8a7a; --paid-soft:#3d1f1b; --both:#f5c26b; --both-soft:#3a2c12; --free:#5fd39a; --free-soft:#163024;
+  --warn:#b99bff; --warn-soft:#2a2140;
+  --s-res:#4a3b0c; --s-res-ink:#ffe7a3; --s-rep:#13314a; --s-rep-ink:#d6efff; --s-br:#2d1d4a; --s-br-ink:#eadcff;
+  --wire:#8d847a; --on-strip:#141210; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --canvas:#141210; --dot:#2f2b27; --frame:#1b1916; --frame-line:#36312b;
+  --card:#23201c; --ink:#f1ece6; --muted:#a69d93; --line:#3a352f;
+  --accent:#ff7a33; --accent-soft:#3a2416; --bubble:#1f3a2b; --bubble-ink:#e8f5ec;
+  --paid:#ff8a7a; --paid-soft:#3d1f1b; --both:#f5c26b; --both-soft:#3a2c12; --free:#5fd39a; --free-soft:#163024;
+  --warn:#b99bff; --warn-soft:#2a2140;
+  --s-res:#4a3b0c; --s-res-ink:#ffe7a3; --s-rep:#13314a; --s-rep-ink:#d6efff; --s-br:#2d1d4a; --s-br-ink:#eadcff;
+  --wire:#8d847a; --on-strip:#141210; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--canvas);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.42;overflow:hidden}
+.app{height:100%;display:flex;flex-direction:column}
+.topbar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--frame);border-bottom:1px solid var(--frame-line);z-index:3}
+.ttl{display:flex;flex-direction:column;min-width:0}
+.ttl b{font-family:var(--display);font-weight:800;font-size:18px;line-height:1.1}
+.ttl span{font-size:12px;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;font-size:12px;color:var(--muted)}
+.lg{display:inline-flex;gap:5px;align-items:center}
+.sw{width:12px;height:12px;border-radius:2px;display:inline-block}
+.nav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.nav button,.zoom button{font:inherit;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 11px;cursor:pointer}
+.nav button.hot{border-color:var(--accent);color:var(--accent)}
+.nav button:hover,.zoom button:hover,.nav button:focus-visible,.zoom button:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.viewport{position:relative;flex:1;overflow:hidden;cursor:grab;touch-action:none;background-color:var(--canvas);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:22px 22px}
+.viewport.drag{cursor:grabbing}
+.viewport:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.canvas{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.cols{display:flex;gap:90px;align-items:flex-start;padding:60px}
+.col{width:780px;flex:none;background:var(--frame);border:1px solid var(--frame-line);border-radius:6px;padding:0 22px 28px;position:relative}
+.col.todo{width:640px;border:2px solid var(--accent)}
+.col::after{content:"";position:absolute;right:-90px;top:58px;width:90px;border-top:2px dashed var(--wire)}
+.col:last-child::after{display:none}
+.frame-h{padding:18px 0 16px;border-bottom:1px solid var(--frame-line);margin-bottom:26px}
+.frame-h .d{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.frame-h h2{font-family:var(--display);font-weight:800;font-size:30px;margin:2px 0 6px;line-height:1;text-wrap:balance}
+.frame-h p{margin:0;color:var(--muted);font-size:13px;max-width:66ch}
+.frame-h p+p{margin-top:6px}
+.rows{display:flex;flex-direction:column;gap:40px;position:relative}
+.rows::before{content:"";position:absolute;left:170px;top:10px;bottom:10px;border-left:2px solid var(--wire);opacity:.45}
+.row{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:start;position:relative}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 var(--line),0 6px 18px -12px rgba(0,0,0,.35);overflow:hidden;position:relative;z-index:1}
+.strip{display:flex;justify-content:space-between;gap:8px;padding:6px 12px;font-family:var(--mono);font-size:12px;color:var(--on-strip)}
+.k-paid .strip{background:var(--paid)} .k-both .strip{background:var(--both)} .k-free .strip{background:var(--free)} .k-sys .strip{background:var(--wire)}
+.cbody{padding:11px 12px 12px;display:flex;flex-direction:column;gap:8px}
+.cbody h3{margin:0;font-size:15px;font-weight:700;line-height:1.25}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font-size:10.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.c-paid{background:var(--paid-soft);color:var(--paid)} .c-both{background:var(--both-soft);color:var(--both)} .c-free{background:var(--free-soft);color:var(--free)} .c-warn{background:var(--warn-soft);color:var(--warn)} .c-sys{background:var(--line);color:var(--ink)}
+.media{font-family:var(--mono);font-size:11.5px;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:7px 9px}
+.bubble{background:var(--bubble);color:var(--bubble-ink);border-radius:3px 11px 11px 11px;padding:8px 10px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13.3px}
+.bubble.sm{font-size:12.6px;padding:6px 9px}
+.var{font-weight:700}
+.cv{font-family:var(--mono);font-size:11px;background:rgba(0,0,0,.08);border-radius:3px;padding:0 4px;white-space:nowrap}
+.btns{display:flex;flex-wrap:wrap;gap:5px}
+.btn{font-size:12px;font-weight:600;border:1.5px solid var(--free);color:var(--free);background:var(--card);border-radius:999px;padding:2px 10px;white-space:nowrap}
+.btn.cta{border-style:solid;border-color:var(--accent);color:var(--accent)}
+.btn.cta::before{content:"↗ "}
+.foot{font-size:11.5px;color:var(--muted)}
+.note{margin:0;font-size:12px;color:var(--muted)}
+.notes{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+.notes li{font-size:12px;color:var(--muted);padding-left:12px;position:relative}
+.notes li::before{content:"·";position:absolute;left:2px;color:var(--accent);font-weight:700}
+.side{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;padding-top:4px}
+.postit{width:220px;padding:10px 11px 11px;box-shadow:0 8px 16px -12px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:6px;font-size:12.6px;transform:rotate(var(--r,0deg))}
+.p-rep{background:var(--s-rep);color:var(--s-rep-ink)} .p-res{background:var(--s-res);color:var(--s-res-ink)} .p-br{background:var(--s-br);color:var(--s-br-ink)}
+.postit .h{font-weight:700;font-size:12.5px}
+.postit .tg{font-family:var(--mono);font-size:10.5px;opacity:.8;overflow-wrap:anywhere}
+.postit .tx{white-space:pre-wrap;overflow-wrap:anywhere}
+.postit .btn{align-self:flex-start;background:transparent}
+.endrow{font-family:var(--mono);font-size:12px;color:var(--accent);border:1px dashed var(--accent);border-radius:6px;padding:8px 12px;width:340px;background:var(--frame);position:relative;z-index:1}
+/* pendientes */
+.todos{display:flex;flex-direction:column;gap:14px}
+.todo-item{display:grid;grid-template-columns:44px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 14px 14px 12px}
+.todo-n{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;color:var(--accent);text-align:center}
+.todo-item h3{margin:0 0 4px;font-size:16px;font-weight:700;line-height:1.25}
+.todo-item p{margin:0;font-size:13px;color:var(--muted)}
+.todo-item p+p{margin-top:6px}
+.todo-item .chips{margin-top:8px}
+.done{margin-top:22px;border-top:1px solid var(--frame-line);padding-top:16px}
+.done h3{margin:0 0 8px;font-family:var(--display);font-weight:800;font-size:18px}
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl td{border-top:1px solid var(--line);padding:6px 6px;vertical-align:top}
+.tbl td:first-child{font-family:var(--mono);font-size:11.5px;white-space:nowrap;color:var(--muted)}
+.ok{color:var(--free);font-weight:700}
+.zoom{position:absolute;right:max(14px,calc(env(safe-area-inset-right,0px) + 14px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;gap:6px;align-items:center;background:var(--frame);border:1px solid var(--frame-line);border-radius:999px;padding:5px;z-index:4}
+.zoom output{font-family:var(--mono);font-size:12px;min-width:44px;text-align:center;font-variant-numeric:tabular-nums}
+.hint{position:absolute;left:max(14px,calc(env(safe-area-inset-left,0px) + 14px));bottom:calc(14px + env(safe-area-inset-bottom,0px));font-size:12px;color:var(--muted);background:var(--frame);border:1px solid var(--frame-line);border-radius:999px;padding:5px 11px;z-index:4;max-width:calc(100% - 200px)}
+@media (max-width:640px){.hint{display:none}.legend{display:none}}
+@media (prefers-reduced-motion:reduce){.canvas{transition:none!important}}
+.canvas.anim{transition:transform .35s ease}
+</style>
+
+<div class="app">
+  <header class="topbar">
+    <div class="ttl"><b>Flujo WSP · Clase 17/11</b><span>Genesis OS · todo en borrador al 08/11</span></div>
+    <div class="legend" aria-label="Referencias">
+      <span class="lg"><i class="sw" style="background:var(--paid)"></i>Plantilla (paga)</span>
+      <span class="lg"><i class="sw" style="background:var(--both)"></i>Gratis o plantilla</span>
+      <span class="lg"><i class="sw" style="background:var(--free)"></i>Solo con ventana abierta</span>
+      <span class="lg"><i class="sw" style="background:var(--s-rep)"></i>Respuesta</span>
+      <span class="lg"><i class="sw" style="background:var(--s-res)"></i>Recurso</span>
+      <span class="lg"><i class="sw" style="background:var(--s-br)"></i>Rama</span>
+    </div>
+    <nav class="nav" id="nav" aria-label="Ir a"></nav>
+  </header>
+  <div class="viewport" id="vp" tabindex="0" aria-label="Lienzo del flujo. Arrastrá para moverte, usá la rueda con Ctrl o los botones para acercar.">
+    <div class="canvas" id="cv"><div class="cols" id="cols"></div></div>
+    <div class="hint">Arrastrá para moverte · Ctrl + rueda o pellizco para acercar</div>
+    <div class="zoom">
+      <button type="button" id="zout" aria-label="Alejar">−</button>
+      <output id="zlvl">100%</output>
+      <button type="button" id="zin" aria-label="Acercar">+</button>
+      <button type="button" id="zfit">Ver todo</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+const N='[nombre]';
+const PIE='Clase: martes 17, 18hs';
+
+/* ---------- datos ---------- */
+const TODOS=[
+  {t:'Link del Zoom',p:['Cargarlo en el valor <span class="cv">cl17_link_clase</span> (hoy dice PENDIENTE). Lo usan todos los botones «Entrar a la clase» del martes 17.','Tiene que estar antes del 17 a las 10:00, que sale el primer envío del día.'],c:[['c-paid','Bloquea el día de la clase']]},
+  {t:'Fotos y videos reales',p:['Las fotos <span class="cv">cl17_foto_…</span> tienen hoy una foto de muestra (I.2, D1B, D2B, D4B, D6B y las del martes 17). Los videos y Looms que sigan en PENDIENTE (<span class="cv">cl17_video_i1</span>, <span class="cv">r2</span>, <span class="cv">r4</span>, <span class="cv">r5</span>, <span class="cv">r7</span>, <span class="cv">r8</span>, <span class="cv">lucas</span>, <span class="cv">cl17_loom_…</span>) tampoco van a abrir nada.','Alcanza con cambiar cada valor en Configuración › Valores personalizados.'],c:[['c-paid','Antes de publicar']]},
+  {t:'Dos decisiones tuyas',p:['<b>Botones del «No pude» (POST):</b> hoy son Vender más / Mejorar margen / Otra cosa. ¿Van así o los cambiás?','<b>Tags <span class="cv">aplico</span> y <span class="cv">cliente</span>:</b> los creé pero nadie los pone. Hay que definir quién (la aplicación, el SDR o el cierre). Si no, a los que ya aplicaron les siguen llegando los mensajes post-clase.'],c:[['c-warn','Decisión']]},
+  {t:'Revisar el texto del D6B',p:['El mensaje de los 3 agentes del lunes 16 a las 19:30. La respuesta quedó: «Dale, mañana te lo paso por acá. Si querés, dejala agendada así no se te pasa:» con el botón «Agendar la clase».'],c:[['c-warn','Revisión']]},
+  {t:'Prueba con 3 números',p:['Uno de Argentina, uno de otro país y uno que no toque ningún botón. Pasame los teléfonos y la armo.'],c:[['c-both','Antes de publicar']]},
+  {t:'Publicar',p:['Hoy los 5 workflows (W01 a W05) y todos los envíos están en borrador: no sale nada. Se publican después de la prueba y con tu OK.'],c:[['c-both','Último paso']]}
+];
+const LOADED=[
+  ['cl17_link_aplicacion','applygenesis.com/aplication'],
+  ['cl17_link_replay','applygenesis.com/replay'],
+  ['cl17_lugares','6'],
+  ['cl17_link_manu','wa.link/ouqu06'],
+  ['cl17_link_grupo','chat.whatsapp.com/HBbS…'],
+  ['cl17_link_roadmap / simulador / flujos','artifacts de Claude'],
+  ['Zona horaria','America/Buenos_Aires']
+];
+
+const rep=(h,tx,tg,cta,extra)=>({k:'rep',h,tx,tg,cta,extra});
+const res=(h,tx,cta,tg)=>({k:'res',h,tx,cta,tg});
+const br=(h,tx,tg)=>({k:'br',h,tx,tg});
+
+const FRAMES=[
+ {id:'w01',nav:'W01',d:'W01 · al registrarse',h:'Registro',
+  ps:['Arranca cuando el webhook de la landing pone el tag <span class="cv">optin-17-11</span>.','Si se registra el martes 17, salta directo al día de la clase (W03).'],
+  rows:[
+   {k:'paid',when:'Al registrarse',code:'I.1',title:'Bienvenida',chips:[['c-paid','Plantilla cl17_i1_bienvenida']],media:'Video · cl17_video_i1',
+    text:`Buenas ${N}, te grabé este video rápido para que entiendas cómo va a funcionar todo hasta la clase del martes 17 a las 18hs\n\nPor las dudas si todavía NO te sumaste al grupo, te dejo el link acá:\nchat.whatsapp.com/HBbS…\n\nTipo:\nel grupo es para todos, ahí suelto la data de cada día y el link de la clase\neste chat es solo tuyo, acá te mando cosas según TU caso\n\nLo único: cada mensaje te llega con botones. Con que toques uno me alcanza para seguir mandándote cosas por acá, sin eso literalmente se me corta el chat\n\nArrancá con este 👇`,
+    btns:['Dale, entendido'],
+    side:[rep('Dale, entendido','I.2 sale como mensaje gratis.','toco-I1'),br('No toca en 30 min','I.2 sale como plantilla cl17_i2_mail.')]},
+   {k:'both',when:'Seguido',code:'I.2',title:'El mail',chips:[['c-both','Plantilla cl17_i2_mail si no tocó']],media:'Foto · asunto del mail + las 3 bandejas',
+    text:'Otra cosa, te acaba de llegar un mail mío con el asunto "Todavía NO estás adentro ⚠️"\n\nOjo que puede caer en principal, en promociones o en spam, te dejo la foto así lo encontrás\n\nRespondelo con la palabra SUSCRIPCIÓN y te llega al toque el flujo de retención completo que uso en mi marca. Y de paso los mails de la semana te caen en principal y no se te pierden',
+    btns:['Ya lo respondí','No lo encuentro'],
+    side:[rep('Ya lo respondí','Buenisimo, ahí te llega','toco-I2'),rep('No lo encuentro','Nada, te lo paso directo por acá así no lo andás buscando\n\nIgual buscá el mail en promociones o spam y respondelo, así lo que te mando en la semana te cae en principal','toco-I2 · cl17-sin-mail','Ver los flujos'),br('Sin respuesta en 24 h','Pasa directo a la nutrición (W02).')]},
+   {k:'free',when:'Seguido',code:'I.3',title:'Perfil',chips:[['c-free','Interactivo']],
+    text:'Dos preguntas rápidas. Con lo que me respondas elijo qué mandarte a vos, no lo mismo que a todos\n\nDónde estás hoy con la suscripción?',
+    btns:['Ya vendo suscripción','Nunca la probé','La probé, no anduvo'],
+    side:[rep('Cada botón','Guarda el perfil. Se usa en I.5.','toco-I3 · cl17-perfil-ya / -nunca / -probo'),br('Sin respuesta en 24 h','Pasa directo a la nutrición.')]},
+   {k:'free',when:'Seguido',code:'I.4',title:'Urgencia',chips:[['c-free','Interactivo']],
+    text:'Y cuándo te gustaría tenerla andando en tu marca?',btns:['Este mes','En 1 a 3 meses','No sé todavía'],
+    side:[rep('Cada botón','Guarda la urgencia y sigue a I.5.','toco-I4 · cl17-urg-mes / -1a3 / -nose'),br('Sin respuesta en 2 h','Sigue igual a I.5.')]},
+   {k:'free',when:'Seguido',code:'I.5',title:'Roadmap',chips:[['c-free','Botón de link']],
+    text:'[línea según el perfil]\n\nTe dejo el roadmap que seguí para pasar mi marca de compra única a suscripción. Es lo primero que tenés que ver antes del martes',
+    cta:['Ver el roadmap'],
+    side:[br('Ya vende suscripción','Bien. Lo que si, tener suscripción no es lo mismo que tener una base que te cobra sola todos los meses. Ahí está la diferencia'),br('Nunca la probó','Yo también pensaba que en Argentina no se suscribe nadie. Hoy tengo 3.943 suscriptores activos'),br('La probó, no anduvo','Casi siempre no anda por cómo se armó (el precio, el ciclo, a quién se la ofreciste), no porque la gente no se suscriba')]},
+   {k:'free',when:'Si se registra desde el 12/11',code:'I.6',title:'Lo que se perdió',chips:[['c-free','2 mensajes con link']],
+    text:'Y como entraste con la semana arrancada, te dejo lo que ya pasé en el grupo y no vas a ver:\n\n🎁 Mi simulador de suscripciones: cargás tus números y ves cuánto ganarías con suscripción contra lo que ganás hoy',
+    cta:['Ver el simulador'],
+    side:[res('Segundo mensaje','🎁 Los flujos de retención de email y WhatsApp que uso en mi marca','Ver los flujos')]},
+   {k:'free',when:'19:30 del día que se registra',code:'Noche',title:'¿Viste el roadmap?',chips:[['c-free','Solo ventana abierta']],
+    text:'Pudiste pegarle una mirada al roadmap?',btns:['Sí, lo vi','Todavía no'],
+    side:[rep('Sí, lo vi','Buenisimo amigo. El martes a las 18 te muestro cómo se aplica con números reales','toco-noche','Agendar la clase'),rep('Todavía no','Dale dale, cuando tengas 5 min. Te lo dejo de nuevo así no lo buscás','toco-noche','Ver el roadmap')]}
+  ],end:'→ W02 · Nutrición (o W03 si es el 17)'},
+
+ {id:'w02',nav:'W02',d:'W02 · miércoles 11 a lunes 16',h:'Nutrición',
+  ps:['Cada día: <b>A</b> a las 12:00 (el domingo 15 a las 11:00) y <b>B</b> a las 19:30.','A con la ventana cerrada → plantilla del día y tag <span class="cv">cl17-reactivacion-pendiente</span>. Si ya tenía ese tag y no respondió → <span class="cv">cl17-fuera-nutricion</span> y no recibe más hasta el martes.','B solo sale con la ventana abierta. Cada respuesta va junto con el recurso en un solo mensaje con botón, con el pie «'+PIE+'».'],
+  rows:[
+   {k:'both',when:'Mié 11 · 12:00',code:'D1A',title:'Recompra',chips:[['c-both','Plantilla cl17_d1a']],
+    text:`Che ${N}, una pregunta\n\nDe los clientes que te compraron el mes pasado, cuántos te volvieron a comprar este mes?`,btns:['Casi ninguno','Algunos','No lo sé'],
+    side:[rep('Casi ninguno','Por ende cada mes arrancás de cero. Le vendés a cada cliente una sola vez y la próxima venta la volvés a pagar con pauta','cl17-rec-nada'),rep('Algunos','Bien, ya tenés recompra. Lo que si, la estás pagando de nuevo con pauta cada vez que vuelve','cl17-rec-algo'),rep('No lo sé','Tranqui, casi nadie lo mira. Y es el número que más te cambia la cuenta','cl17-rec-nose'),res('+ recurso','Te paso antes que al grupo el video de hoy. Son 3 min y es la base de todo lo que voy a soltar en la semana: por qué cada venta te cuesta lo mismo que la anterior','Ver el video','cl17_video_r2')]},
+   {k:'free',when:'Mié 11 · 19:30',code:'D1B',title:'Sin pauta',chips:[['c-free','Solo ventana abierta']],media:'Foto · cl17_foto_d1b',
+    text:'Otra. Si mañana apagás la pauta, cuánto facturás ese mes?',btns:['Casi nada','La mitad','Casi lo mismo'],
+    side:[rep('Casi nada','Osea dependés de que la campaña de hoy no se caiga. Yo estaba igual','cl17-meta-nada'),rep('La mitad','Esa mitad que te queda es tu base. El tema es que se cobre sola, sin que la tengas que empujar','cl17-meta-mitad'),rep('Casi lo mismo','Ya tenés base. El paso que sigue es usarla para pagar más por cada cliente nuevo que tu competencia','cl17-meta-igual'),res('+ recurso','Yo facturaba 60 millones por mes con compra única… Hoy son más de 270 millones por mes, con 3.943 suscriptores… El martes a las 18 te muestro cómo','Agendar la clase')]},
+   {k:'both',when:'Jue 12 · 12:00',code:'D2A',title:'Margen',chips:[['c-both','Plantilla cl17_d2a']],
+    text:`Che ${N}, cuánto te deja cada venta hoy, después de pagar la pauta?`,btns:['Casi nada','Menos del 15%','Más del 15%'],
+    side:[rep('Casi nada','Ahí está el problema: estás comprando cada venta de nuevo','cl17-mg-nada'),rep('Menos del 15%','Con ese margen te sube un poco el CPA y quedás en breakeven','cl17-mg-bajo'),rep('Más del 15%','Bien. Con ese margen podés pagar por cada cliente más que tu competencia','cl17-mg-alto'),res('+ recurso','Mi simulador de suscripciones. El Loom de cómo usarlo va escrito en el texto (cl17_loom_simulador).','Ver el simulador')]},
+   {k:'free',when:'Jue 12 · 19:30',code:'D2B',title:'Un día bueno',chips:[['c-free','Solo ventana abierta']],media:'Foto · cl17_foto_d2b_hoy (antes y después en una sola imagen)',
+    text:'Hace cuánto no tenés un día bueno?',btns:['Esta semana tuve','Hace semanas','Hace meses'],
+    side:[rep('Esta semana tuve','Buenisimo. La pregunta es si mañana se repite o depende de que la campaña no se caiga','cl17-dia-bueno'),rep('Hace semanas','Es textual lo que me dijo Lucas la primera vez que hablamos: "hace mucho que no tenemos un día bueno"','cl17-dia-semanas'),rep('Hace meses','Lucas, que hoy trabaja conmigo, estaba igual','cl17-dia-meses'),res('+ recurso','Así venían Lucas y Santi: 1,3 millones por día, con 2,4% de margen… Hoy vienen así 👇 2,8 millones por día, con 40% de margen',null,'cl17_video_lucas')]},
+   {k:'both',when:'Vie 13 · 12:00',code:'D3A',title:'CPA',chips:[['c-both','Plantilla cl17_d3a']],
+    text:`Che ${N}, cuánto te cambió el CPA en el último año?`,btns:['Me subió mucho','Más o menos igual','No lo tengo claro'],
+    side:[rep('Me subió mucho','Es la cadena de siempre: escalás, te salen competidores, te suben los CPM, por ende sube el CPA. Y ahí bajarlo es la pelea equivocada','cl17-cpa-subio'),rep('Más o menos igual','Que esté igual no alcanza si cada venta te deja lo mismo que te cuesta','cl17-cpa-igual'),rep('No lo tengo claro','Anotalo antes del martes, es lo primero que vamos a mirar','cl17-cpa-nose'),res('+ recurso','El video del Miro: por qué bajar el CPA no es la solución y cómo pagar más por cada cliente y aun así tener más margen','Ver el video','cl17_video_r4')]},
+   {k:'free',when:'Vie 13 · 19:30',code:'D3B',title:'El doble por cliente',chips:[['c-free','Solo ventana abierta']],
+    text:'Si un cliente nuevo te costara el doble que hoy, lo pagarías?',btns:['Ni en pedo','Depende','Ya lo pago'],
+    side:[rep('Ni en pedo','Con compra única tenés razón, no te da la cuenta. Con un cliente que te compra varias veces, cambia todo','cl17-cac-no'),rep('Depende','Depende de una sola cosa: cuántas veces te vuelve a comprar','cl17-cac-dep'),rep('Ya lo pago','Entonces la pregunta es si a ese cliente lo cobrás una vez o todos los meses','cl17-cac-ya'),res('+ recurso','Es la pregunta que más me hacen: "sí Manu, pero el suscriptor me va a salir mucho más caro". Te lo explico en un minuto 👇','Ver el video','cl17_video_r5')]},
+   {k:'both',when:'Sáb 14 · 12:00',code:'D4A',title:'Qué te frena',chips:[['c-both','Plantilla cl17_d4a']],
+    text:`Che ${N}, qué es lo que más te frena de la suscripción?`,btns:['Nadie se suscribe','Se dan de baja','Romper lo que anda'],
+    side:[rep('Nadie se suscribe','Tengo 3.943 suscriptores activos en Argentina. No es cultura, es cómo se arma','cl17-obj-cultura'),rep('Se dan de baja','Se quedan si tenés buenos procesos de retención. Te paso los míos','cl17-obj-bajas'),rep('Romper lo que anda','Nono, va al lado de la compra única, sin tocarla. Seguís vendiendo igual que hoy','cl17-obj-romper'),res('+ recurso','Los flujos de retención de email y WhatsApp. El Loom va escrito en el texto (cl17_loom_flujos).','Ver los flujos')]},
+   {k:'free',when:'Sáb 14 · 19:30',code:'D4B',title:'Ciclo del producto',chips:[['c-free','Solo ventana abierta']],media:'Foto · cl17_foto_d4b (panel de suscriptores)',
+    text:'Cada cuánto se le termina el producto a tu cliente?',btns:['Menos de 30 días','Entre 30 y 60 días','Más de 60 días'],
+    side:[rep('Menos de 30 días','Es el ciclo ideal, tu cliente vuelve todos los meses','cl17-ciclo-30'),rep('Entre 30 y 60 días','Entra. La frecuencia se arma según tu ciclo, no al revés','cl17-ciclo-60'),rep('Más de 60 días','Entra igual, con otra frecuencia y otra oferta','cl17-ciclo-mas'),res('+ recurso','Así está hoy mi panel 👇 Si querés que lo mire con tu producto, escribime por privado y te contesto yo','Escribirle a Manu')]},
+   {k:'both',when:'Dom 15 · 11:00',code:'D5A',title:'Recompras',chips:[['c-both','Plantilla cl17_d5a']],
+    text:`Che ${N}, cuántas veces te compra el mismo cliente?`,btns:['Una sola vez','2 o 3 veces','No lo sé'],
+    side:[rep('Una sola vez','Entonces tu techo de pauta es lo que te deja esa venta. Si te compra tres veces, es el triple','cl17-ltv-1'),rep('2 o 3 veces','Ya tenés la recompra. Te falta cobrarla sin volver a pautarla','cl17-ltv-2a3'),rep('No lo sé','Es el número que más te cambia la cuenta. Fijate por qué 👇','cl17-ltv-nose'),res('+ recurso','Tu competencia, con compra única, puede pagar hasta 30.000 por cliente. Vos, si el cliente te compra tres veces, hasta 90.000…','Ver el video','cl17_video_r7')]},
+   {k:'free',when:'Dom 15 · 19:30',code:'D5B',title:'Simulador',chips:[['c-free','Solo ventana abierta']],
+    text:'Ya cargaste tus números en el simulador?',btns:['Sí, ya lo usé','Todavía no'],
+    side:[rep('Sí, ya lo usé','Buenisimo. Mandame por privado el número que te dio, una captura alcanza. Así el martes llegás con tu cuenta hecha','cl17-sim-si','Escribirle a Manu'),rep('Todavía no','Dale, son 5 min. Hacelo antes del martes así llegás con tu número','cl17-sim-no','Abrir el simulador')]},
+   {k:'both',when:'Lun 16 · 12:00',code:'D6A',title:'Qué querés llevarte',chips:[['c-both','Plantilla cl17_d6a']],
+    text:`Che ${N}, qué querés llevarte de la clase de mañana?`,btns:['Escalar la pauta','Ordenar el margen','Armar suscripción'],
+    side:[rep('Escalar la pauta','Mañana vas a ver cómo pagar más por cliente que tu competencia y que te siga quedando plata','cl17-quiere-escalar'),rep('Ordenar el margen','Mañana vas a ver de dónde sale el margen que hoy se lleva tu competencia','cl17-quiere-margen'),rep('Armar suscripción','Mañana vas a ver cómo se arma, al lado de la compra única, sin romper lo que hoy vende','cl17-quiere-sus'),res('+ recurso (sin pie)','Te paso un spoiler antes que al grupo 👀 … Mañana no vas a ver otro curso de testear productos ni de cómo pegar un winner','Ver el video','cl17_video_r8')]},
+   {k:'free',when:'Lun 16 · 19:30',code:'D6B',title:'Los 3 agentes',chips:[['c-free','Solo ventana abierta'],['c-warn','Revisar texto']],media:'Foto · cl17_foto_d6b (slide de los agentes)',
+    text:'Y algo que te tengo que contar\n\nA los que se queden hasta el final de la clase les regalo 3 de mis más de 30 agentes de IA, a elección, para que los copies y los pegues en tu marca\n\nEs solo para los que estén en vivo hasta el final\n\nMañana a las 18. Te mando el link por acá así no lo andás buscando?',btns:['Sí, mandámelo'],
+    side:[rep('Sí, mandámelo','Dale, mañana te lo paso por acá. Si querés, dejala agendada así no se te pasa:','cl17-quiere-link · toco-d6b','Agendar la clase')]}
+  ],end:'→ W03 · Día de la clase'},
+
+ {id:'w03',nav:'W03',d:'W03 · martes 17/11',h:'Día de la clase',
+  ps:['Una espera por envío. Si la hora ya pasó, salta al siguiente. Todos los links a la clase usan <span class="cv">cl17_link_clase</span> (falta cargarlo).'],
+  rows:[
+   {k:'both',when:'10:00',code:'D7-10',title:'Hoy es el día',chips:[['c-both','Plantilla cl17_d7_1000']],media:'Foto · cl17_foto_d7_1000',
+    text:`Buen diaa ${N}, hoy es el día\n\n🇦🇷 18:00 · 🇺🇾 18:00 · 🇨🇱 18:00 · 🇨🇴 16:00 · 🇲🇽 15:00 · 🇪🇸 22:00\n\nTe muestro en vivo:\n\n✅ Cómo hago más de 270 millones por mes con suscripción\n✅ Cómo escalar tu ecommerce a +100 millones por mes migrando de compra única a suscripción\n✅ Mis números reales, sin filtro\n✅ Los 3 agentes de IA de regalo para los que se quedan hasta el final\n\nVas a estar? Tocá uno y te mando el link por acá`,btns:['Ahí estaré','Llego tarde'],
+    side:[rep('Ahí estaré','Buenisimo, nos vemos a las 18','cl17-confirma · toco-d7-10','Entrar a la clase'),rep('Llego tarde','Dale, entrá igual cuando puedas. Lo de los agentes es al final','cl17-tarde · toco-d7-10','Entrar a la clase')]},
+   {k:'free',when:'12:00',code:'D7-12',title:'Liberate',chips:[['c-free','Solo ventana abierta']],
+    text:'Liberate de 18 a 19:30. Compu, no celular, algo para anotar que voy a soltar MUCHA data\n\nY si hiciste la cuenta en el simulador, tenela a mano\n\nYa lo tenés bloqueado en el calendario?',btns:['Sí, ya lo bloqueé'],
+    side:[rep('Sí, ya lo bloqueé','Ahí va, nos vemos en un rato','toco-d7-12','Entrar a la clase')]},
+   {k:'free',when:'15:00',code:'D7-15',title:'Faltan 3 horas',chips:[['c-free','Solo ventana abierta']],media:'Foto · cl17_foto_d7_1500',
+    text:'Faltan 3 horas ⏰\n\nEsto se llevan los que se quedan hasta el final: 3 de mis más de 30 agentes de IA, a elección',btns:['Ya me liberé','Llego justo'],
+    side:[rep('Ya me liberé','Responde con el link para entrar.','toco-d7-15','Entrar a la clase'),rep('Llego justo','Responde con el link para entrar.','toco-d7-15','Entrar a la clase')]},
+   {k:'sys',when:'17:00 a 18:30',code:'Cuenta regresiva',title:'9 envíos',chips:[['c-sys','Botón «Entrar a la clase»']],table:[
+     ['17:00','Falta 1 hora ⏰ … (pregunta con 1 botón «Ya estoy listo», foto, sin link)','Plantilla'],
+     ['17:45','En 15 min arrancamos. Cerrá lo que tengas pendiente. Link para entrar 👇 (une el de las 17:30)','Plantilla'],
+     ['17:55','Estamos entrando 🔴',''],
+     ['18:00','🔴 Arrancamos. Entrá ahora (foto)','Plantilla'],
+     ['18:05','Ya arrancó, entrá que todavía estás a tiempo',''],
+     ['18:10','Los 3 agentes son solo para los que se quedan hasta el final 🎁 (foto)',''],
+     ['18:15','Si recién llegás, entrá igual: lo más importante todavía no pasó',''],
+     ['18:20','Estoy mostrando mis números de este mes 👀 (foto)',''],
+     ['18:25','Después se hace difícil engancharla, entrá ahora',''],
+     ['18:30','Mirá cómo está el chat 🔥 (foto)','']],
+    note:'Con la ventana cerrada solo salen las tres marcadas como plantilla; el resto no se manda.'}
+  ],end:'19:35 → W04 · Post-clase'},
+
+ {id:'w04',nav:'W04',d:'W04 · martes 17 a sábado 21',h:'Post-clase',
+  ps:['Filtro al entrar: si tiene el tag <span class="cv">aplico</span> o <span class="cv">cliente</span>, termina. Reingreso desactivado.','Si una fecha ya pasó, salta a la siguiente; la del sábado, si ya pasó, saca al contacto.'],
+  rows:[
+   {k:'both',when:'Mar 17 · 19:35',code:'POST',title:'¿Pudiste estar?',chips:[['c-both','Plantilla cl17_post_pudiste']],
+    text:`Che ${N}, pudiste estar en la clase?`,btns:['Sí, estuve','No pude'],
+    side:[rep('Sí, estuve','Gracias por quedarte hasta el final 🙏\n\nPara los 3 agentes de IA:\n\n1. Escribime por privado qué fue lo más útil de la clase\n2. Elegí tus 3 y te los paso','cl17-estuvo · toco-post','Escribirle a Manu'),res('Después, a los que estuvieron','Y si querés que lo apliquemos en tu marca con mi equipo, aplicá acá y te contactamos 👇','Aplicar a Génesis'),rep('No pude','Que paja que no llegaste a estar\n\nContame para qué lo aplicarías en tu marca y te mando la repetición\n\n[Vender más] [Mejorar margen] [Otra cosa] · espera 15 h','cl17-no-pudo · toco-post',null,'warn'),res('Cualquier botón','Dale, te la paso antes que al grupo. Mirala ya que no queda mucho tiempo arriba 👇','Ver la repetición','cl17-pidio-replay')]},
+   {k:'sys',when:'Mié 18 · 12:00',code:'¿Estuvo?',title:'Se divide por el tag cl17-estuvo',chips:[['c-sys','If/Else']],text:null,
+    side:[br('Tiene cl17-estuvo','Recibe «MIE12 estuvo».'),br('No lo tiene','Recibe «MIE12 repetición».')]},
+   {k:'both',when:'Mié 18 · 12:00',code:'MIE12 estuvo',title:'¿Cómo te quedó?',chips:[['c-both','Plantilla cl17_post_mie_estuvo']],
+    text:`Che ${N}, cómo te quedó la clase de ayer? Qué querés hacer?`,btns:['Quiero aplicar','Tengo dudas'],
+    side:[rep('Quiero aplicar','Buenisimo. Aplicá acá y mi equipo te contacta','cl17-quiere · toco-mie12','Aplicar a Génesis'),rep('Tengo dudas','Dale, escribime por acá y lo hablamos 👇\n\n+ aviso a Manu en GHL: «[nombre] tiene dudas»','cl17-dudas · toco-mie12','Escribirle a Manu')]},
+   {k:'both',when:'Mié 18 · 12:00',code:'MIE12 repetición',title:'¿Viste la repetición?',chips:[['c-both','Plantilla cl17_post_mie_repeticion']],
+    text:`Che ${N}, pudiste ver la repetición?`,btns:['Sí, la vi','Todavía no'],
+    side:[rep('Sí, la vi','Buenísimo. Si querés que lo apliquemos en tu marca, aplicá acá 👇','cl17-vio-replay · toco-mie12','Aplicar a Génesis'),rep('Todavía no','Te la dejo de nuevo, no queda mucho tiempo arriba 👇','toco-mie12','Ver la repetición')]},
+   {k:'free',when:'Mié 18 · 19:30',code:'MIE1930',title:'¿Hablamos?',chips:[['c-free','Solo ventana abierta']],
+    text:`Che ${N}, quedó algo de la clase que quieras hablar conmigo?`,btns:['Sí, escribime','Por ahora no'],
+    side:[rep('Sí, escribime','Dale, escribime acá y lo vemos 👇\n\n+ aviso a Manu en GHL: «[nombre] quiere hablar»','cl17-hablar · toco-mie1930','Escribirle a Manu'),rep('Por ahora no','De una. Si te surge algo me escribís por acá 👇','toco-mie1930','Escribirle a Manu')]},
+   {k:'both',when:'Vie 20 · 12:00',code:'VIE20',title:'Quedan 6 lugares',chips:[['c-both','Plantilla cl17_post_vie20 (con link)']],
+    text:`Che ${N}, quedan 6 lugares para Génesis\n\nSi querés entrar o ver si sirve para tu marca, tocá abajo\n\nCualquier duda me escribís`,btns:['Quiero aplicar','Tengo dudas'],
+    side:[rep('Quiero aplicar','Buenísimo. Aplicá acá y mi equipo te contacta 👇','cl17-quiere · toco-vie20','Aplicar a Génesis'),rep('Tengo dudas','Dale, escribime por acá y lo hablamos 👇\n\n+ aviso a Manu en GHL','cl17-dudas · toco-vie20','Escribirle a Manu')]},
+   {k:'both',when:'Sáb 21 · 12:00',code:'SAB21',title:'Cierre',chips:[['c-both','Plantilla cl17_post_sab21']],
+    text:`Che ${N}, hoy a la noche cierro los lugares de Génesis\n\nSi querés entrar o simplemente ver si sirve para tu marca, es AHORA\n\nDespués de hoy no hay más lugares`,cta:['Aplicar a Génesis'],side:[]}
+  ],end:'Fin del flujo'},
+
+ {id:'w05',nav:'W05',d:'W05 · siempre',h:'Respondió',
+  ps:['Corre aparte, cada vez que alguien responde.'],
+  rows:[
+   {k:'sys',when:'Cada respuesta',code:'W05',title:'Vuelve a la nutrición',chips:[['c-sys','Reingreso activado']],
+    list:['Disparador: el contacto responde por WhatsApp.','Filtro: tiene el tag optin-17-11.','Acción: le saca el tag cl17-reactivacion-pendiente.'],
+    side:[br('Para qué sirve','El que responde cualquier cosa vuelve a recibir la reactivación si después se queda callado.')]}
+  ]}
+];
+
+/* ---------- render ---------- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=s=>esc(s).replace(/\[nombre\]/g,'<span class="var">[nombre]</span>');
+const kindLabel={paid:'PLANTILLA',both:'GRATIS O PLANTILLA',free:'SOLO VENTANA ABIERTA',sys:'LÓGICA'};
+let rot=0;
+function postit(p){
+  const r=[-1.2,.8,-.4,1.1,-.9,.5][rot++%6];
+  const cls=p.extra==='warn'?'p-br':'p-'+p.k;
+  return `<div class="postit ${cls}" style="--r:${r}deg"><div class="h">${fmt(p.h)}</div>${p.tx?`<div class="tx">${fmt(p.tx)}</div>`:''}${p.cta?`<span class="btn cta">${esc(p.cta)}</span>`:''}${p.tg?`<div class="tg">${esc(p.tg)}</div>`:''}</div>`;
+}
+function card(c){
+  let b='';
+  b+=`<h3>${esc(c.code)} · ${esc(c.title)}</h3>`;
+  if(c.chips)b+=`<div class="chips">${c.chips.map(([k,t])=>`<span class="chip ${k}">${esc(t)}</span>`).join('')}</div>`;
+  if(c.media)b+=`<div class="media">${esc(c.media)}</div>`;
+  if(c.text)b+=`<div class="bubble">${fmt(c.text)}</div>`;
+  if(c.btns)b+=`<div class="btns">${c.btns.map(t=>`<span class="btn">${esc(t)}</span>`).join('')}</div>`;
+  if(c.cta)b+=`<div class="btns">${c.cta.map(t=>`<span class="btn cta">${esc(t)}</span>`).join('')}</div>`;
+  if(c.table)b+=`<table class="tbl"><tbody>${c.table.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${r[2]?`<span class="chip c-paid">${esc(r[2])}</span>`:''}</td></tr>`).join('')}</tbody></table>`;
+  if(c.list)b+=`<ul class="notes">${c.list.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  if(c.note)b+=`<p class="note">${esc(c.note)}</p>`;
+  return `<div class="row"><div class="card k-${c.k}"><div class="strip"><span>${esc(c.when)}</span><span>${kindLabel[c.k]}</span></div><div class="cbody">${b}</div></div><div class="side">${(c.side||[]).map(postit).join('')}</div></div>`;
+}
+function todoFrame(){
+  return `<section class="col todo" id="f-todo"><div class="frame-h"><div class="d">Antes de que salga</div><h2>6 pendientes</h2><p>Todo el flujo está cargado en GHL. Esto es lo que falta para publicarlo.</p></div>
+  <div class="todos">${TODOS.map((t,i)=>`<div class="todo-item"><div class="todo-n">${i+1}</div><div><h3>${esc(t.t)}</h3>${t.p.map(x=>`<p>${x}</p>`).join('')}<div class="chips">${t.c.map(([k,x])=>`<span class="chip ${k}">${esc(x)}</span>`).join('')}</div></div></div>`).join('')}</div>
+  <div class="done"><h3>Ya cargado</h3><table class="tbl"><tbody>${LOADED.map(r=>`<tr><td>${esc(r[0])}</td><td><span class="ok">✓</span> ${esc(r[1])}</td></tr>`).join('')}</tbody></table></div></section>`;
+}
+const cols=document.getElementById('cols');
+cols.innerHTML=todoFrame()+FRAMES.map(f=>`<section class="col" id="f-${f.id}"><div class="frame-h"><div class="d">${esc(f.d)}</div><h2>${esc(f.h)}</h2>${f.ps.map(p=>`<p>${p}</p>`).join('')}</div><div class="rows">${f.rows.map(card).join('')}${f.end?`<div class="endrow">${esc(f.end)}</div>`:''}</div></section>`).join('');
+const nav=document.getElementById('nav');
+nav.innerHTML=`<button type="button" class="hot" data-go="f-todo">Pendientes (6)</button>`+FRAMES.map(f=>`<button type="button" data-go="f-${f.id}">${esc(f.nav)} · ${esc(f.h)}</button>`).join('');
+
+/* ---------- lienzo ---------- */
+const vp=document.getElementById('vp'),cv=document.getElementById('cv'),zl=document.getElementById('zlvl');
+let S={x:0,y:0,s:1};
+const clampS=s=>Math.min(1.6,Math.max(.12,s));
+function apply(anim){cv.classList.toggle('anim',!!anim);cv.style.transform=`translate(${S.x}px,${S.y}px) scale(${S.s})`;zl.textContent=Math.round(S.s*100)+'%';}
+function zoomAt(f,px,py,anim){const ns=clampS(S.s*f);S.x=px-(px-S.x)*ns/S.s;S.y=py-(py-S.y)*ns/S.s;S.s=ns;apply(anim);}
+function fit(){const w=cols.scrollWidth,h=cols.scrollHeight,vw=vp.clientWidth,vh=vp.clientHeight;S.s=clampS(Math.min(vw/w,vh/h));S.x=(vw-w*S.s)/2;S.y=Math.max(10,(vh-h*S.s)/2);apply(true);}
+function goTo(id,anim=true){const el=document.getElementById(id);if(!el)return;const vw=vp.clientWidth;S.s=clampS(Math.min(.9,(vw-24)/(el.offsetWidth+40)));S.x=-(el.offsetLeft-20)*S.s+Math.max(12,(vw-el.offsetWidth*S.s)/2-20*S.s);S.y=-(el.offsetTop-30)*S.s;apply(anim);}
+nav.addEventListener('click',e=>{const b=e.target.closest('button[data-go]');if(b)goTo(b.dataset.go);});
+document.getElementById('zin').onclick=()=>zoomAt(1.2,vp.clientWidth/2,vp.clientHeight/2,true);
+document.getElementById('zout').onclick=()=>zoomAt(1/1.2,vp.clientWidth/2,vp.clientHeight/2,true);
+document.getElementById('zfit').onclick=fit;
+vp.addEventListener('wheel',e=>{e.preventDefault();const r=vp.getBoundingClientRect();if(e.ctrlKey||e.metaKey){zoomAt(Math.exp(-e.deltaY*0.0025),e.clientX-r.left,e.clientY-r.top);}else{S.x-=e.deltaX;S.y-=e.deltaY;apply();}},{passive:false});
+const pts=new Map();let last=null,pinch=null;
+vp.addEventListener('pointerdown',e=>{if(e.target.closest('.zoom'))return;vp.setPointerCapture(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pts.size===1){last={x:e.clientX,y:e.clientY};vp.classList.add('drag');}if(pts.size===2){const [a,b]=[...pts.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)};}});
+vp.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;pts.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pts.size===2&&pinch){const [a,b]=[...pts.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);const r=vp.getBoundingClientRect();zoomAt(d/pinch.d,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top);pinch.d=d;return;}if(last){S.x+=e.clientX-last.x;S.y+=e.clientY-last.y;last={x:e.clientX,y:e.clientY};apply();}});
+const up=e=>{pts.delete(e.pointerId);if(pts.size<2)pinch=null;if(pts.size===1){const p=[...pts.values()][0];last={x:p.x,y:p.y};}if(pts.size===0){last=null;vp.classList.remove('drag');}};
+vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
+vp.addEventListener('keydown',e=>{const k=e.key,st=60;if(k==='ArrowLeft')S.x+=st;else if(k==='ArrowRight')S.x-=st;else if(k==='ArrowUp')S.y+=st;else if(k==='ArrowDown')S.y-=st;else if(k==='+'||k==='=')return zoomAt(1.2,vp.clientWidth/2,vp.clientHeight/2,true);else if(k==='-')return zoomAt(1/1.2,vp.clientWidth/2,vp.clientHeight/2,true);else return;e.preventDefault();apply();});
+const start=()=>goTo('f-todo',false);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(start);else start();
+start();
+})();
+</script>
