@@ -14,7 +14,7 @@ Los 16 mails para los registrados: confirmación, 1 mail por día del miércoles
 | Caso de Lucas y Santi | Venían haciendo 1.3 millones por día con 2,4% de margen · salieron 4 marcas a competir un producto casi igual · «Hace mucho que no tenemos un día bueno» · 600k abajo en una noche · relanzamiento con 40% de margen · facturó 60M con -5% de margen (mail 4). Hoy: 2.8 millones por día con 40% de margen (en el grupo). Sin nombre ni detalles de su marca. |
 | Grupo de WhatsApp | https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ (es el mismo link del grupo de la clase del 24/10). |
 | Link para agendar | El de Google Calendar con el evento cargado (martes 17/11, 18 a 19:30 hs ARG). Va detrás del texto «AGENDA» en los mails 1 a 6. |
-| Link de la clase | Los mails 10 y 11 mandan al grupo; los mails 12 a 15 todavía tienen `[LINK CLASE]`. |
+| Link de la clase | Los mails 10 a 15 mandan al grupo de WhatsApp (decisión de Santi, 07/11): el link de la clase se pasa por el grupo. |
 
 ### La pieza exclusiva de cada mail
 
@@ -39,14 +39,14 @@ Cosas que se ven en la versión final y conviene resolver antes de cargarla:
    - El **simulador** se regala en el mail 2, y el link de la «Calculadora de suscripciones» del mail 5 lleva al mismo artifact («Genesis OS · Simulador de suscripción»).
 2. **Frase textual cambiada en el mail 4:** «-5% de ganancia. Sobreviviendo» va entre comillas como dicho por Lucas, pero en la llamada dijo «7 lucas de ganancia. Sobreviviendo.». Si el -5% es el dato real, conviene sacarle las comillas o contarlo sin atribuírselo textual.
 3. **El link del mail 5 es un link de Claude con clave para compartir** (`claude.ai/artifact/...?sk=...`). Confirmar que lo pueda abrir cualquier persona sin cuenta.
-4. **Mails 12 a 15 sin link:** tienen `[LINK CLASE]`. Los mails 10 y 11 mandan al grupo; si el link de la clase va solo por el grupo, cambiar estos cuatro igual.
-5. **Mail 14 sin terminar:** el sub header queda cortado («ya arrancó la explicacion de como podes») y el cuerpo tiene el corchete `[QUÉ SE ESTÁ MOSTRANDO…]`.
-6. **Mail 15:** sigue el corchete `[SI NO HAY REPLAY: …]`.
-7. **Mail 11:** el link del grupo tiene un `]` suelto al final.
+4. ~~**Mails 12 a 15 sin link:**~~ Resuelto el 07/11: van al grupo. tienen `[LINK CLASE]`. Los mails 10 y 11 mandan al grupo; si el link de la clase va solo por el grupo, cambiar estos cuatro igual.
+5. **Mail 14:** Claude escribió una versión el 07/11, **pendiente de revisar**. Antes: el sub header queda cortado («ya arrancó la explicacion de como podes») y el cuerpo tiene el corchete `[QUÉ SE ESTÁ MOSTRANDO…]`.
+6. ~~**Mail 15:**~~ Resuelto el 07/11 (hay repetición: se borró el corchete). Antes tenía el corchete `[SI NO HAY REPLAY: …]`.
+7. ~~**Mail 11:**~~ Resuelto el 07/11: se sacó el `]` suelto.
 8. **Mail 6:** la primera viñeta quedó cortada («Otro curso de testear productos:»).
 9. **Errores de tipeo** (no se corrigieron, para dejar el texto como lo cerró Santi): «implentarlo», «retencion», «mas», «podes» (mail 0) · «numeros» (mail 1) · «Estába», «proyeccion», «como utilizarlo» (mail 2) · «válidas un producto», «dejáste», «como», «perdida», «podes» (mail 3) · «tenes», «retencion», «volves», «como podes» (mail 4) · «estas», «porque», «facil», «Completas», «ELECCION» (mail 5) · «replicas» (mail 6) · «envio» (mail 10).
 10. **El período de los «casi dos palos»** ya no aparece en ningún mail (el mail 3 quedó solo con el 40% de margen): no hace falta confirmarlo.
-11. **Mail 8** pide traer «tu Cuenta del CPA», pero el regalo del mail 5 ahora se llama «Calculadora de suscripciones». Igual en el mail 6.
+11. ~~**Mail 8**~~ Resuelto el 07/11 (también en el mail 6): ahora dice «tu Calculadora de suscripciones». Antes pedía traer «tu Calculadora de suscripciones», pero el regalo del mail 5 ahora se llama «Calculadora de suscripciones». Igual en el mail 6.
 
 ---
 
@@ -62,7 +62,7 @@ Cosas que se ven en la versión final y conviene resolver antes de cargarla:
 | 5 | Dom 15 · 09:00 | Como ganarle a toda tu competencia ✅ | sin bajar el CPA |
 | 6 | Lun 16 · 08:30 | Mañana te muestro TODO 👀 | y tengo un 🎁 ⚠️SOLO⚠️ para los que estén en vivo |
 | 7 | Mar 17 · 12:00 | 🚨 HOY es el día 🚨 | hoy te muestro TODO el modelo por dentro |
-| 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | traé tu cuenta (y el 🎁 es SOLO en vivo) |
+| 8 | Mar 17 · 15:00 | Faltan 3 horas ⏳ | Los 🎁 son SOLO para las personas que esten en el vivo |
 | 9 | Mar 17 · 16:00 | En 2 horas te muestro cómo hago +$280M por mes | el modelo, la cuenta, los sistemas… TODO |
 | 10 | Mar 17 · 17:00 | Falta 1 HORA ⏰ | agarrá algo para anotar |
 | 11 | Mar 17 · 17:45 | En 15 min abro la sala 🚨 | entrá temprano así no te quedás afuera |
@@ -319,7 +319,7 @@ Lo que te llevás:
 
 Y a los que estén EN VIVO les tengo algo que no voy a dar en ningún otro lado 🎁
 
-Para aprovecharla, tené listos tu Cuenta del CPA, tu número de recompra y una hora sin interrupciones, en la compu.
+Para aprovecharla, tené listos tu Calculadora de suscripciones, tu número de recompra y una hora sin interrupciones, en la compu.
 
 La pieza exclusiva de hoy es el video de las 13:00 por el grupo, donde te muestro cómo estoy preparando la clase. El link para entrar mañana también pasa por ahí.
 
@@ -353,13 +353,11 @@ Manu
 
 **Header:** Faltan 3 horas ⏳
 
-**Sub header:** traé tu cuenta (y el 🎁 es SOLO en vivo)
+**Sub header:** Los 🎁 son SOLO para las personas que esten en el vivo
 
 Faltan pocas horas.
 
-Acordate: el que está en vivo se lleva el bonus. El que no… no.
-
-Tené a mano tu Cuenta del CPA y tu número de recompra. Y avisá que a las 18 estás ocupado.
+Acordate: Los regalos son unicamente para los que esten en vivo
 
 Nos vemos hoy.
 
@@ -405,7 +403,7 @@ Ya casi.
 
 En 15 minutos abro.
 
-Entrá temprano 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)]
+Entrá temprano 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
 Manu
 
@@ -417,7 +415,7 @@ Manu
 
 Estamos por arrancar.
 
-Entrá ahora 👉 [LINK CLASE]
+Entrá ahora 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
 Nos vemos adentro.
 
@@ -433,7 +431,7 @@ Ya arrancamos.
 
 Pero tranquilo, todavía llegás.
 
-Entrá ahora 👉 [LINK CLASE]
+Entrá ahora 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
 Manu
 
@@ -441,17 +439,17 @@ Manu
 
 **Header:** ⚠️ Te lo estás perdiendo ⚠️
 
-**Sub header:** ya arrancó la explicacion de como podes
+**Sub header:** ya arrancó la explicación de cuánto podés pagar por cada cliente
 
-Estamos en vivo y ya arranqué con [QUÉ SE ESTÁ MOSTRANDO: por ejemplo, la cuenta de cuánto podés pagar por cliente].
+Estamos en vivo y ya arranqué con la cuenta: cuánto podés pagar por cada cliente cuando te compra más de una vez.
 
-En un rato doy el bonus, y es SOLO para los que están adentro.
+Al final regalo 3 de mis más de 30 agentes de IA, a elección, y es SOLO para los que están adentro.
 
-Entrá 👉 [LINK CLASE]
+Entrá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
 Manu
 
-*[CONFIRMAR qué se muestra a las 18:10 según el guion real de la clase, y ajustar también el sub header. SI NO HAY BONUS EN VIVO: se borra la segunda línea.]*
+*[PENDIENTE DE REVISAR (Santi, 07/11): versión escrita por Claude. Confirmar que a las 18:10 la clase está en la cuenta de cuánto podés pagar por cliente; si no, ajustar la primera línea y el sub header.]*
 
 ### **Mail 15 · 18:20**
 
@@ -461,9 +459,9 @@ Manu
 
 Es tu última chance de ver esto en vivo.
 
-Lo más importante de la clase viene ahora. [SI NO HAY REPLAY: No hay grabación, no se repite.]
+Lo más importante de la clase viene ahora.
 
-Si entrás ahora, llegás a la parte fuerte (y al bonus) 👉 [LINK CLASE]
+Si entrás ahora, llegás a la parte fuerte (y al bonus) 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
 Nos vemos. Manu
 
@@ -485,10 +483,10 @@ Nos vemos. Manu
 | 9 | Mar 17/11 | 16:00 | En 2 horas te muestro cómo hago +$280M por mes | — |
 | 10 | Mar 17/11 | 17:00 | Falta 1 HORA ⏰ | Grupo |
 | 11 | Mar 17/11 | 17:45 | En 15 min abro la sala 🚨 | Grupo |
-| 12 | Mar 17/11 | 17:55 | 🔴 EMPEZAMOS | `[LINK CLASE]` |
-| 13 | Mar 17/11 | 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | `[LINK CLASE]` |
-| 14 | Mar 17/11 | 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | `[LINK CLASE]` |
-| 15 | Mar 17/11 | 18:20 | Última llamada 🚪 | `[LINK CLASE]` |
+| 12 | Mar 17/11 | 17:55 | 🔴 EMPEZAMOS | Grupo |
+| 13 | Mar 17/11 | 18:00 | 🔴 Estamos EN VIVO (todavía llegás) | Grupo |
+| 14 | Mar 17/11 | 18:10 | ⚠️ Te lo estás perdiendo ⚠️ | Grupo |
+| 15 | Mar 17/11 | 18:20 | Última llamada 🚪 | Grupo |
 
 **Los mails de los días 1 a 6 salen antes que el contenido del grupo** (08:30, y 09:00 el domingo), para que el hook al video de las 13 llegue a tiempo.
 
