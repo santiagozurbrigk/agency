@@ -474,50 +474,39 @@ fbq('track', 'PageView');
   .error { margin-top: 6px; }
   @media (max-width: 767px) { #paso2 h2 { font-size: 17px; } .op { padding: 11px 12px; font-size: 14.5px; } }
 
-  /* ===== Facturación de nuestras clases, pasando abajo del form ===== */
-  .ventas { margin-top: 26px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .ventas[hidden] { display: none; }
-  .ventas-titulo { text-align: center; font-family: "Caveat", cursive; font-size: 24px; color: var(--naranja-oscuro); margin-bottom: 12px; padding: 0 18px; }
-  .ventas-pista { display: flex; gap: 14px; width: max-content; animation: marquesina 45s linear infinite; }
-  .ventas-pista img { height: 170px; width: auto; border-radius: 12px; border: 1px solid var(--linea); box-shadow: var(--sombra-chica); background: var(--superficie); }
-  @media (min-width: 768px) { .ventas-pista img { height: 210px; } }
+  /* ===== Mi marca hoy (debajo del form), una sola vez ===== */
+  .marca-hoy { max-width: 620px; margin: 26px auto 0; padding: 0 18px; text-align: center; }
+  .marca-hoy p { font-weight: 700; font-size: 16px; color: var(--tinta); margin-bottom: 12px; }
+  .marca-hoy img { width: 100%; border-radius: 14px; border: 1px solid var(--linea); box-shadow: var(--sombra); }
 
-  /* ===== Muro de wins ===== */
-  .wins-sec .kicker-a { font-family: "Caveat", cursive; font-size: 24px; color: var(--naranja-oscuro); display: block; margin-top: 14px; }
-  .wins-sec .sec-head h2 { margin-top: 2px; }
-  .muro { display: flex; gap: 12px; align-items: flex-start; max-width: 1040px; margin: 0 auto; }
+  /* ===== Todo lo que incluye la clase: miniaturas pixeladas en un recuadro punteado ===== */
+  .incluye-sec { padding: 34px 0 44px; }
+  .incluye { max-width: 1020px; margin: 0 auto; border: 1.5px dashed var(--linea-2); border-radius: 18px; padding: 24px 16px 22px; background: rgba(255,255,255,.55); }
+  .incluye h2 { text-align: center; font-size: 27px; font-weight: 800; line-height: 1.25; margin-bottom: 20px; }
+  .incluye h2 .marca { padding: 0 .18em; border-radius: .14em; }
+  .inc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .inc { margin: 0; }
+  .inc img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; image-rendering: pixelated; border-radius: 8px; background: #fff; border: 1px solid var(--linea); box-shadow: var(--sombra-chica); }
+  .inc .inc-n { display: block; margin-top: 9px; font-size: 11px; font-weight: 800; color: var(--naranja-oscuro); }
+  .inc b { display: block; font-size: 14px; line-height: 1.3; margin-top: 2px; }
+  .cta-centro { text-align: center; margin-top: 26px; }
+  @media (min-width: 768px) { .incluye { padding: 28px 30px 30px; } .incluye h2 { font-size: 36px; } .inc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }
+
+  /* ===== Testimonios: 2 columnas de capturas al ras, botón cada 8 ===== */
+  .testi-sec .sec-head h2 { max-width: 17em; margin-left: auto; margin-right: auto; }
+  .testi { max-width: 980px; margin: 0 auto; }
+  .muro { display: flex; gap: 10px; align-items: flex-start; }
   .muro-col { flex: 1; min-width: 0; }
-  .win-top { max-width: 1040px; margin: 0 auto 12px; }
-  .win-top .win { margin: 0; }
-  .win { break-inside: avoid; margin: 0 0 12px; background: var(--superficie); border: 1px solid var(--linea); border-radius: 14px; overflow: hidden; box-shadow: var(--sombra-chica); }
-  .win img { width: 100%; background: #111; }
-  .win figcaption { padding: 9px 11px 10px; font-size: 13px; color: var(--texto-2); line-height: 1.3; }
-  .win figcaption b { font-family: var(--titulos); font-size: 16px; color: var(--tinta); }
-  .win.top1 { border-color: rgba(var(--naranja-rgb), .5); box-shadow: 0 0 0 3px rgba(var(--naranja-rgb), .12), var(--sombra); }
-  .win.top1 figcaption b { color: var(--naranja-oscuro); }
-  .win.chat figcaption { font-family: "Caveat", cursive; font-size: 20px; color: var(--naranja-oscuro); }
-  .muro.cerrado .extra { display: none; }
-  .muro-mas { text-align: center; margin-top: 10px; }
-  .muro-mas[hidden] { display: none; }
-  .btn-blanco { background: var(--superficie); color: var(--tinta); border: 1.5px solid rgba(var(--naranja-rgb), .5); box-shadow: 0 8px 22px rgba(var(--naranja-rgb), .15); max-width: 320px; font-size: 14px; padding: 14px 18px; }
-  @media (min-width: 768px) { .muro { gap: 16px; } .win { margin-bottom: 16px; } .win-top { max-width: 640px; margin-bottom: 16px; } }
-
-  /* ===== Slides pixeladas ===== */
-  .slides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 1040px; margin: 0 auto 18px; }
-  .slide { margin: 0; position: relative; }
-  .slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: pixelated; border-radius: 12px; border: 1px solid var(--linea); box-shadow: var(--sombra-chica); background: #0f0f12; }
-  .slide .candado { position: absolute; top: 8px; left: 8px; display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(15,15,18,.78); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 4px 8px; border-radius: 99px; }
-  .slide .candado::before { content: ""; width: 9px; height: 10px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1h1Zm2 0h6V7a3 3 0 0 0-6 0v3Z'/%3E%3C/svg%3E") center / contain no-repeat; }
-  .slide figcaption { font-size: 13px; color: var(--texto-2); margin-top: 7px; line-height: 1.3; }
-  .slide figcaption b { color: var(--naranja-oscuro); margin-right: 4px; }
-  @media (min-width: 900px) { .slides { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } }
-  @media (prefers-reduced-motion: reduce) { .ventas-pista, .carga i { animation: none; } }
+  .muro img { width: 100%; margin-bottom: 10px; border-radius: 3px; background: #1e1f22; box-shadow: 0 6px 16px rgba(23,24,28,.12); }
+  .testi .cta-centro { margin: 22px 0 30px; }
+  @media (min-width: 768px) { .muro { gap: 18px; } .muro img { margin-bottom: 18px; } .testi .cta-centro { margin: 26px 0 40px; } }
+  @media (prefers-reduced-motion: reduce) { .carga i { animation: none; } }
 </style>
 <!-- vTurb: precarga del VSL -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
-<link rel="preload" href="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac837548f7a49438d7617bc/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6af0436bd779234bdaf8cdf5/v4/player.js" as="script">
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-<link rel="preload" href="https://cdn.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/6ac836857a65a567fff62474/main.m3u8" as="fetch">
+<link rel="preload" href="https://cdn.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/6af0432aa315ca7972372bd5/main.m3u8" as="fetch">
 <link rel="dns-prefetch" href="https://cdn.converteai.net">
 <link rel="dns-prefetch" href="https://scripts.converteai.net">
 <link rel="dns-prefetch" href="https://images.converteai.net">
@@ -732,7 +721,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- b2) VSL de registro (vTurb). En la versión 2 va debajo del formulario; en la 3 no se carga. -->
 <section class="vsl-sec" id="vsl-sec">
   <div class="wrap">
-    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6ac837548f7a49438d7617bc" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> if (ORDEN === "3") { var v3 = document.getElementById("vsl-sec"); v3.parentNode.removeChild(v3); } else { var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6ac837548f7a49438d7617bc/v4/player.js", s.async=!0,document.head.appendChild(s); } </script></div>
+    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6af0436bd779234bdaf8cdf5" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> if (ORDEN === "3") { var v3 = document.getElementById("vsl-sec"); v3.parentNode.removeChild(v3); } else { var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6af0436bd779234bdaf8cdf5/v4/player.js", s.async=!0,document.head.appendChild(s); } </script></div>
   </div>
 </section>
 
@@ -809,40 +798,71 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       </form>
     </div>
   </div>
-  <!-- c2) Mientras completan el form: capturas de la marca de Manu (facturación y suscriptores) pasando abajo.
-       Se carga en VENTAS_CLASES (CONFIG, al final). Vacío = la tira no aparece. -->
-  <div class="ventas" id="ventas" hidden>
-    <p class="ventas-titulo" id="ventas-titulo"></p>
-    <div class="ventas-pista" id="ventas-pista"></div>
+  <!-- c2) Mi marca hoy: la captura del panel de la marca de Manu, una sola vez -->
+  <div class="marca-hoy">
+    <p>Mi marca hoy: 3.943 suscriptores y +$275M/mes recurrentes</p>
+    <img src="ventas/marca-panel.webp" width="900" height="481" loading="lazy" decoding="async" alt="Panel de mi marca: 3.943 suscripciones activas, 1.626 nuevos suscriptores y 275,2 millones de ingresos recurrentes">
   </div>
 </section>
 
-<!-- c3) Muro de wins de alumnos: de mayor resultado a testimonio. Montos en pesos. -->
-<section class="sec wins-sec" id="wins">
+<!-- c3) Todo lo que incluye la clase: slides pixeladas a propósito (se ven, pero no se leen).
+     Cada imagen es una miniatura de 48 px de ancho que el navegador agranda en bloques (1-2 KB).
+     Para cambiarlas: captura de la slide real achicada a 48 px de ancho. -->
+<section class="incluye-sec">
+  <div class="wrap">
+    <div class="incluye">
+      <h2>Todo lo que incluye la <span class="marca">Clase Privada</span> ↓</h2>
+      <div class="inc-grid">
+        <figure class="inc"><img src="slides/s1.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">01</span><b>El Método B.A.S.E., capa por capa</b></figure>
+        <figure class="inc"><img src="slides/s2.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">02</span><b>Los 4 sistemas que corren juntos</b></figure>
+        <figure class="inc"><img src="slides/s3.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">03</span><b>De compra única a suscripción, sin depender de Meta</b></figure>
+        <figure class="inc"><img src="slides/s4.png" width="48" height="30" alt="" loading="lazy"><span class="inc-n">04</span><b>Regalo: 3 de mis +30 sistemas</b></figure>
+      </div>
+    </div>
+    <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+  </div>
+</section>
+
+<!-- c4) Testimonios: de mayor resultado a menor, en 2 columnas que se leen por filas, con el botón cada 8.
+     Montos en pesos. Los alumnos autorizaron mostrar su nombre; las marcas se tapan. -->
+<section class="sec testi-sec" id="wins">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag-estado"><i></i>Alumnos</span>
-      <span class="kicker-a">esto pasa cuando nos metemos en una marca ↓</span>
-      <h2>Lo que facturan mis alumnos</h2>
+      <h2>Alumnos como vos lo aplicaron en su marca y esto me mandaron</h2>
     </div>
-    <div class="muro" id="muro">
-      <figure class="win top1"><img src="wins/w01.webp" width="720" height="388" loading="lazy" decoding="async" alt="Dashboard: 810 órdenes y 45 millones de facturación en un día"><figcaption><b>$45M</b> en un solo día · 810 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w02.webp" width="720" height="275" loading="lazy" decoding="async" alt="Dashboard: 615 órdenes y 34,2 millones de facturación"><figcaption><b>$34,2M</b> · 615 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w03.webp" width="720" height="520" loading="lazy" decoding="async" alt="Dashboard: 346 órdenes y 18,7 millones de facturación"><figcaption><b>$18,7M</b> · 346 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w04.webp" width="720" height="488" loading="lazy" decoding="async" alt="Dashboard: 331 órdenes y 18,3 millones de facturación, +49% de ganancia"><figcaption><b>$18,3M</b> · +49% de ganancia · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w05.webp" width="720" height="487" loading="lazy" decoding="async" alt="Dashboard: 326 órdenes y 17,8 millones de facturación"><figcaption><b>$17,8M</b> · 326 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w06.webp" width="720" height="487" loading="lazy" decoding="async" alt="Dashboard: 288 órdenes y 16,2 millones de facturación"><figcaption><b>$16,2M</b> · 288 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w07.webp" width="720" height="282" loading="lazy" decoding="async" alt="Dashboard: 260 órdenes y 14,1 millones de facturación"><figcaption><b>$14,1M</b> · 260 órdenes · Jose</figcaption></figure>
-      <figure class="win"><img src="wins/w08.webp" width="720" height="496" loading="lazy" decoding="async" alt="Dashboard: 192 órdenes y 10,4 millones de facturación"><figcaption><b>$10,4M</b> · 32% de margen</figcaption></figure>
-      <figure class="win extra"><img src="wins/w09.webp" width="720" height="486" loading="lazy" decoding="async" alt="Dashboard: 177 órdenes y 9,5 millones de facturación"><figcaption><b>$9,5M</b> · 33% de margen</figcaption></figure>
-      <figure class="win extra"><img src="wins/w10.webp" width="720" height="486" loading="lazy" decoding="async" alt="Dashboard: 111 órdenes y 6,4 millones de facturación"><figcaption><b>$6,4M</b> · 111 órdenes</figcaption></figure>
-      <figure class="win extra"><img src="wins/w11.webp" width="720" height="506" loading="lazy" decoding="async" alt="Dashboard: 110 órdenes y 6,1 millones de facturación"><figcaption><b>$6,1M</b> · 33% de margen</figcaption></figure>
-      <figure class="win extra"><img src="wins/w12.webp" width="720" height="488" loading="lazy" decoding="async" alt="Dashboard: 104 órdenes y 5,9 millones de facturación"><figcaption><b>$5,9M</b> · 104 órdenes</figcaption></figure>
-      <figure class="win extra"><img src="wins/w13.webp" width="720" height="279" loading="lazy" decoding="async" alt="Dashboard: 47 órdenes y 2,3 millones de facturación"><figcaption><b>$2,3M</b> · +38% de órdenes</figcaption></figure>
-      <figure class="win extra"><img src="wins/w14.webp" width="720" height="476" loading="lazy" decoding="async" alt="Dashboard: 34 órdenes y 1,7 millones de facturación"><figcaption><b>$1,7M</b> · 44% de margen</figcaption></figure>
-      <figure class="win extra chat"><img src="wins/w15.webp" width="600" height="1021" loading="lazy" decoding="async" alt="Chat de un alumno con Manu: 6,6 millones de facturación en el día"><figcaption>«Me quedé ahí de las 100» · Andrés Kette</figcaption></figure>
+    <div class="testi">
+      <div class="muro">
+        <img src="wins/n-lionel.webp" width="890" height="389" loading="lazy" decoding="async" alt="Lionel Martínez: 161,2 millones de facturación en el mes">
+        <img src="wins/n-resumen.webp" width="576" height="179" loading="lazy" decoding="async" alt="Resumen mensual de un alumno: 50,8 millones de ingresos y 11,7 millones de profit">
+        <img src="wins/w01.webp" width="720" height="388" loading="lazy" decoding="async" alt="Jose: 810 órdenes y 45 millones de facturación en un día">
+        <img src="wins/w02.webp" width="720" height="275" loading="lazy" decoding="async" alt="Jose: 615 órdenes y 34,2 millones de facturación">
+        <img src="wins/w03.webp" width="720" height="520" loading="lazy" decoding="async" alt="Jose: 346 órdenes y 18,7 millones de facturación">
+        <img src="wins/w04.webp" width="720" height="488" loading="lazy" decoding="async" alt="Jose: 331 órdenes y 18,3 millones de facturación">
+        <img src="wins/w05.webp" width="720" height="487" loading="lazy" decoding="async" alt="Jose: 326 órdenes y 17,8 millones de facturación">
+        <img src="wins/w06.webp" width="720" height="487" loading="lazy" decoding="async" alt="Jose: 288 órdenes y 16,2 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+      <div class="muro">
+        <img src="wins/w07.webp" width="720" height="282" loading="lazy" decoding="async" alt="Jose: 260 órdenes y 14,1 millones de facturación">
+        <img src="wins/w08.webp" width="720" height="496" loading="lazy" decoding="async" alt="192 órdenes y 10,4 millones de facturación">
+        <img src="wins/n-carlos.webp" width="310" height="558" loading="lazy" decoding="async" alt="Carlos Cabral: 133 órdenes y 9,5 millones de facturación en un día">
+        <img src="wins/w09.webp" width="720" height="486" loading="lazy" decoding="async" alt="177 órdenes y 9,5 millones de facturación">
+        <img src="wins/n-santiago.webp" width="638" height="220" loading="lazy" decoding="async" alt="Santiago Blachman: 8,6 millones de facturación en el cyber">
+        <img src="wins/w15.webp" width="600" height="1021" loading="lazy" decoding="async" alt="Andrés Kette: 6,6 millones de facturación en un día">
+        <img src="wins/w10.webp" width="720" height="486" loading="lazy" decoding="async" alt="111 órdenes y 6,4 millones de facturación">
+        <img src="wins/w11.webp" width="720" height="506" loading="lazy" decoding="async" alt="110 órdenes y 6,1 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+      <div class="muro">
+        <img src="wins/w12.webp" width="720" height="488" loading="lazy" decoding="async" alt="104 órdenes y 5,9 millones de facturación">
+        <img src="wins/n-nicolas-1.webp" width="656" height="184" loading="lazy" decoding="async" alt="Nicolás Escudero: duplicó las ventas, 4 millones">
+        <img src="wins/n-nicolas-2.webp" width="597" height="451" loading="lazy" decoding="async" alt="Nicolás Escudero: 3,3 millones de facturación y casi un palo de profit">
+        <img src="wins/w13.webp" width="720" height="279" loading="lazy" decoding="async" alt="47 órdenes y 2,3 millones de facturación">
+        <img src="wins/w14.webp" width="720" height="476" loading="lazy" decoding="async" alt="34 órdenes y 1,7 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
     </div>
-    <div class="muro-mas"><button type="button" class="btn btn-blanco" id="muro-mas">Ver más resultados</button></div>
   </div>
 </section>
 
@@ -859,15 +879,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <h2>Lo que vas a ver en vivo</h2>
     </div>
 
-    <!-- Slides de lo que incluye, pixeladas a propósito: se ven, pero no se leen.
-         Cada imagen es una miniatura de 48 px de ancho que el navegador agranda en bloques
-         (pesa 1-2 KB). Para cambiarlas: captura de la slide real achicada a 48 px de ancho. -->
-    <div class="slides">
-      <figure class="slide"><img src="slides/s1.png" width="48" height="27" alt="" loading="lazy"><span class="candado">Se revela en vivo</span><figcaption><b>01</b> El Método B.A.S.E., capa por capa</figcaption></figure>
-      <figure class="slide"><img src="slides/s2.png" width="48" height="27" alt="" loading="lazy"><span class="candado">Se revela en vivo</span><figcaption><b>02</b> Los 4 sistemas que corren juntos</figcaption></figure>
-      <figure class="slide"><img src="slides/s3.png" width="48" height="27" alt="" loading="lazy"><span class="candado">Se revela en vivo</span><figcaption><b>03</b> De compra única a suscripción, sin depender de Meta</figcaption></figure>
-      <figure class="slide"><img src="slides/s4.png" width="48" height="30" alt="" loading="lazy"><span class="candado">Por asistir</span><figcaption><b>+</b> La biblioteca de +30 sistemas</figcaption></figure>
-    </div>
 
     <div class="temas">
       <div class="tema">
@@ -1241,39 +1252,14 @@ document.addEventListener("DOMContentLoaded", function () {
     location.href = THANK_YOU_URL + (THANK_YOU_URL.indexOf("?") > -1 ? "&" : "?") + "email=" + encodeURIComponent(datos.email);
   }
 
-  /* Muro de wins: el primero (el más grande) va solo arriba y el resto se reparte por filas
-     en 2 columnas (celular) o 3 (escritorio), así se lee de mayor a menor de izquierda a derecha.
-     En el celular arranca con los 8 más grandes y el botón abre el resto. */
-  var muro = document.getElementById("muro"), muroMas = document.getElementById("muro-mas");
-  var wins = [].slice.call(muro.querySelectorAll(".win"));
-  var top = document.createElement("div"); top.className = "win-top"; top.appendChild(wins.shift());
-  muro.parentNode.insertBefore(top, muro);
-  var colsAhora = 0;
-  function armarMuro() {
-    var n = innerWidth < 768 ? 2 : 3;
-    if (n === colsAhora) return; colsAhora = n;
-    muro.innerHTML = "";
-    var cols = [];
-    for (var c = 0; c < n; c++) { cols.push(document.createElement("div")); cols[c].className = "muro-col"; muro.appendChild(cols[c]); }
-    wins.forEach(function (w, i) { cols[i % n].appendChild(w); });
-  }
-  armarMuro(); addEventListener("resize", armarMuro);
-  if (innerWidth < 768) {
-    muro.classList.add("cerrado");
-    muroMas.addEventListener("click", function () { muro.classList.remove("cerrado"); muroMas.parentNode.hidden = true; });
-  } else {
-    muroMas.parentNode.hidden = true;
-  }
-
-  /* Capturas de la marca de Manu, pasando abajo del form (la tira se duplica para que el loop no corte) */
-  if (VENTAS_CLASES.length) {
-    var pista = document.getElementById("ventas-pista"), html = "";
-    VENTAS_CLASES.forEach(function (v) { html += '<img src="' + v.src + '" alt="' + (v.alt || "Captura de facturación") + '" loading="lazy" decoding="async"' + (v.w ? ' width="' + v.w + '" height="' + v.h + '"' : "") + ">"; });
-    /* Pocas capturas: se repiten para que la mitad de la tira sea más ancha que la pantalla */
-    var copia = html.replace(/<img /g, '<img aria-hidden="true" '), mitad = html + copia + copia;
-    pista.innerHTML = mitad + copia + copia + copia;
-    document.getElementById("ventas-titulo").textContent = VENTAS_TITULO;
-    document.getElementById("ventas").hidden = false;
+  /* Testimonios: cada grupo se reparte por filas en 2 columnas, así se lee de mayor a menor
+     de izquierda a derecha (con columnas de CSS se leería de arriba hacia abajo). */
+  var muros = document.querySelectorAll(".muro");
+  for (var g = 0; g < muros.length; g++) {
+    var imgs = [].slice.call(muros[g].querySelectorAll("img")), cols = [];
+    muros[g].innerHTML = "";
+    for (var c = 0; c < 2; c++) { cols.push(document.createElement("div")); cols[c].className = "muro-col"; muros[g].appendChild(cols[c]); }
+    imgs.forEach(function (im, i) { cols[i % 2].appendChild(im); });
   }
 
   /* Tracking diferido: Hyros y player 300 ms después del load (red de seguridad a 3500 ms).
@@ -1308,17 +1294,6 @@ var EVENT_TZ_LABEL   = "18:00 hs (Argentina)";
 var THANK_YOU_URL    = "/thank-you";
 var INVERSION_LEAD   = ["De 100 a 200 dólares", "De 200 a 500 dólares", "De 500 a 1.000 dólares", "Más de 1.000 dólares"];
 var HYROS_SCRIPT_URL = "";
-/* Capturas de facturación y suscriptores de la marca de Manu: pasan en loop abajo del form mientras completan.
-   Guardalas en /ventas como .webp de ~400 px de alto y sumalas así:
-     { src: "ventas/clase-19-10.webp", w: 600, h: 400, alt: "Facturación de la clase del 19/10" }
-   Vacío = la tira no aparece. */
-var VENTAS_CLASES    = [
-  { src: "ventas/marca-panel.webp", w: 900, h: 481, alt: "Panel de mi marca: 3.943 suscripciones activas y 275,2 millones de ingresos recurrentes" },
-  { src: "ventas/marca-suscriptores.webp", w: 390, h: 450, alt: "3.943 suscripciones activas" },
-  { src: "ventas/marca-recurrentes.webp", w: 372, h: 430, alt: "275,2 millones de ingresos recurrentes" },
-  { src: "ventas/marca-nuevos.webp", w: 362, h: 445, alt: "1.626 nuevos suscriptores" }
-];
-var VENTAS_TITULO    = "mi marca hoy: 3.943 suscriptores y $275M recurrentes ↓";
 // El webhook de GHL NO va acá: vive en la variable de entorno GHL_WEBHOOK_URL de Vercel.
 </script>
 </body>
