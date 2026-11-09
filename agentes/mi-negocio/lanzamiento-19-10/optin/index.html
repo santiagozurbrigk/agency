@@ -450,29 +450,10 @@ fbq('track', 'PageView');
     .form-card .nota { font-size: 11.5px; }
   }
 
-  /* ===== Form en dos pasos ===== */
-  .paso { display: grid; gap: 9px; }
-  .paso[hidden] { display: none; }
-  #paso2 { animation: entra-paso .35s cubic-bezier(.2,.8,.2,1); }
-  @keyframes entra-paso { from { opacity: 0; transform: translateX(18px); } }
-  .carga { height: 10px; border-radius: 99px; background: var(--superficie-2); overflow: hidden; box-shadow: inset 0 0 0 1px var(--linea); }
-  .carga i { display: block; height: 100%; width: 90%; border-radius: inherit; background: linear-gradient(90deg, var(--naranja), #FF9147, var(--naranja)) 0 0 / 200% 100%; animation: brillo-barra 2.4s linear infinite, llena 1s cubic-bezier(.2,.8,.2,1); }
-  @keyframes llena { from { width: 62%; } }
-  .carga-txt { text-align: center; font-size: 12.5px; font-weight: 600; color: var(--texto-3); margin-top: -2px; }
-  .carga-txt b { color: var(--naranja-oscuro); font-variant-numeric: tabular-nums; }
-  #paso2 h2 { margin: 6px 0 4px; text-transform: none; letter-spacing: -.01em; font-size: 19px; }
-  .opciones { display: grid; gap: 7px; }
-  .op { font: inherit; font-size: 15px; font-weight: 600; text-align: left; color: var(--tinta); background: #FCFAF7; border: 1.5px solid #D6CEC0; border-radius: 11px; padding: 12px 14px; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: border-color .15s, background .15s, transform .08s; }
-  .op::before { content: ""; flex: none; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid #BFB6A8; background: #fff; }
-  .op:hover { border-color: var(--naranja); }
-  .op:focus { outline: none; }
-  .op:focus-visible { border-color: var(--naranja); box-shadow: 0 0 0 3px rgba(var(--naranja-rgb), .2); }
-  .op:active { transform: scale(.99); }
-  .op[aria-checked="true"] { border-color: var(--naranja); background: rgba(var(--naranja-rgb), .08); }
-  .op[aria-checked="true"]::before { border: 5px solid var(--naranja); }
-  .volver { font: inherit; font-size: 12.5px; color: var(--texto-3); background: none; border: 0; cursor: pointer; padding: 4px; justify-self: center; }
+  /* ===== Form en un solo paso ===== */
+  .form-card select#inversion_meta { width: 100%; }
+  .form-card select#inversion_meta option { color: var(--tinta); }
   .error { margin-top: 6px; }
-  @media (max-width: 767px) { #paso2 h2 { font-size: 17px; } .op { padding: 11px 12px; font-size: 14.5px; } }
 
   /* ===== Mi marca hoy (debajo del form), una sola vez ===== */
   .marca-hoy { max-width: 620px; margin: 26px auto 0; padding: 0 18px; text-align: center; }
@@ -732,8 +713,6 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <p class="cd-titulo">La clase empieza en</p>
       <div class="cd-form" aria-label="Falta para la clase"><span><b data-cd="d">00</b>Días</span><span><b data-cd="h">00</b>Horas</span><span><b data-cd="m">00</b>Min</span><span class="seg"><b data-cd="s">00</b>Seg</span></div>
       <form id="form" novalidate>
-       <!-- Paso 1: apenas nombre, email y WhatsApp son válidos pasa solo al paso 2 (no se avisa que hay un paso 2) -->
-       <div class="paso" id="paso1">
         <h2>Registrate gratis</h2>
         <div>
           <label for="nombre">Nombre</label>
@@ -771,29 +750,24 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
             <input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Cód. de área + número" required>
           </div>
         </div>
+        <div>
+          <label for="inversion_meta">¿Cuánto estás invirtiendo en Meta por día?</label>
+          <select id="inversion_meta" name="inversion_meta" required>
+            <option value="" disabled selected>¿Cuánto invertís en Meta por día?</option>
+            <option>0, todavía no tengo marca</option>
+            <option>Menos de 100 dólares</option>
+            <option>De 100 a 200 dólares</option>
+            <option>De 200 a 500 dólares</option>
+            <option>De 500 a 1.000 dólares</option>
+            <option>Más de 1.000 dólares</option>
+          </select>
+        </div>
         <div class="hp" aria-hidden="true">
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
         </div>
-        <button type="button" class="btn btn-naranja" id="seguir">Reservá tu lugar gratis</button>
+        <button type="submit" class="btn btn-naranja" id="seguir">Reservá tu lugar gratis</button>
         <p class="nota">Sin costo y en vivo. El acceso te llega por el grupo de WhatsApp.</p>
-       </div>
-       <!-- Paso 2: arranca con la barra al 90%. Tocar una respuesta ya registra (sin botón). -->
-       <div class="paso" id="paso2" hidden>
-        <div class="carga" aria-hidden="true"><i></i></div>
-        <p class="carga-txt">Reservando tu lugar… <b>90%</b></p>
-        <h2 id="p2-titulo">¿Cuánto estás invirtiendo en Meta por día?</h2>
-        <input type="hidden" id="inversion_meta" name="inversion_meta">
-        <div class="opciones" role="radiogroup" aria-labelledby="p2-titulo">
-          <button type="button" class="op" role="radio">0, todavía no tengo marca</button>
-          <button type="button" class="op" role="radio">Menos de 100 dólares</button>
-          <button type="button" class="op" role="radio">De 100 a 200 dólares</button>
-          <button type="button" class="op" role="radio">De 200 a 500 dólares</button>
-          <button type="button" class="op" role="radio">De 500 a 1.000 dólares</button>
-          <button type="button" class="op" role="radio">Más de 1.000 dólares</button>
-        </div>
-        <button type="button" class="volver" id="volver">← Corregir mis datos</button>
-       </div>
         <p class="error" id="error">No pudimos registrarte. Probá de nuevo en unos segundos.</p>
       </form>
     </div>
@@ -1133,16 +1107,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   } catch (e) {}
 
-  /* Form en dos pasos.
-     Paso 1: nombre, email y WhatsApp. Apenas los tres son válidos pasa solo al paso 2
-     (no hace falta tocar el botón; el botón queda por si alguien lo toca igual).
-     Paso 2: la pregunta de inversión con la barra al 90%. Tocar una respuesta ya registra. */
+  /* Form en un solo paso: nombre, email, WhatsApp y la inversión en Meta, y un botón. */
   var form = document.getElementById("form");
   var err = document.getElementById("error");
-  var paso1 = document.getElementById("paso1"), paso2 = document.getElementById("paso2");
+  var boton = document.getElementById("seguir");
   var nombre = form.nombre, email = form.email, tel = form.tel, inversion = form.inversion_meta;
-  var opciones = paso2.querySelectorAll(".op");
-  var enviando = false, timerPaso;
+  var enviando = false;
 
   /* Número listo para WhatsApp, o "" si todavía no es válido.
      Argentina: código de área + número = 10 dígitos; WhatsApp necesita el 9 después del +54. */
@@ -1157,56 +1127,29 @@ document.addEventListener("DOMContentLoaded", function () {
     return n.length >= 8 ? n : "";
   }
   function emailOk() { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim()); }
-  function paso1Ok(marcar) {
+  function datosOk() {
     var mal = [];
     if (nombre.value.trim().length < 2) mal.push(nombre);
     if (!emailOk()) mal.push(email);
     if (!numeroTel()) mal.push(tel);
-    if (marcar) mal.forEach(function (i) { i.classList.add("campo-error"); });
+    if (!inversion.value) mal.push(inversion);
+    mal.forEach(function (i) { i.classList.add("campo-error"); });
+    if (mal.length) mal[0].focus();
     return mal.length === 0;
   }
-  function irPaso2() {
-    clearTimeout(timerPaso);
-    if (!paso2.hidden || form.empresa.value) return; /* empresa = anti-spam */
-    paso1.hidden = true; paso2.hidden = false;
-    setTimeout(function () { opciones[0].focus({ preventScroll: true }); }, 50);
-  }
-  /* Mientras escribe: si los tres quedan válidos, pasa solo después de una pausa corta.
-     Al salir del campo o con el autocompletado del navegador (change), pasa enseguida. */
-  [nombre, email, tel, form.pais].forEach(function (i) {
-    i.addEventListener("input", function () {
-      i.classList.remove("campo-error");
-      clearTimeout(timerPaso);
-      if (paso1Ok(false)) timerPaso = setTimeout(irPaso2, 1100);
-    });
-    i.addEventListener("change", function () {
-      clearTimeout(timerPaso);
-      if (paso1Ok(false)) timerPaso = setTimeout(irPaso2, 250);
-    });
+  [nombre, email, tel, inversion].forEach(function (i) {
+    i.addEventListener("input", function () { i.classList.remove("campo-error"); });
+    i.addEventListener("change", function () { i.classList.remove("campo-error"); });
   });
-  document.getElementById("seguir").addEventListener("click", function () { if (paso1Ok(true)) irPaso2(); });
-  document.getElementById("volver").addEventListener("click", function () {
-    paso2.hidden = true; paso1.hidden = false; tel.focus();
-  });
-  for (var o = 0; o < opciones.length; o++) {
-    opciones[o].addEventListener("click", function () {
-      if (enviando) return;
-      for (var j = 0; j < opciones.length; j++) opciones[j].setAttribute("aria-checked", opciones[j] === this ? "true" : "false");
-      inversion.value = this.textContent.trim();
-      enviar();
-    });
-  }
-  /* Enter en el paso 1 = pasar al 2 */
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
-    if (!paso2.hidden) return;
-    if (paso1Ok(true)) irPaso2();
+    if (!enviando) enviar();
   });
 
   function enviar() {
     err.style.display = "none";
     if (form.empresa.value) return; /* anti-spam */
-    if (!paso1Ok(true)) { paso2.hidden = true; paso1.hidden = false; return; }
+    if (!datosOk()) return;
     var numero = numeroTel();
 
     var datos = {
@@ -1235,8 +1178,8 @@ document.addEventListener("DOMContentLoaded", function () {
     try { localStorage.setItem("genesis_optin", JSON.stringify({ email: datos.email, telefono: datos.telefono, nombre: datos.nombre })); } catch (e) {}
 
     enviando = true;
-    paso2.querySelector(".carga i").style.width = "100%";
-    paso2.querySelector(".carga-txt").innerHTML = "Lugar reservado <b>100%</b>";
+    boton.disabled = true;
+    boton.textContent = "Reservando tu lugar…";
     try {
       fetch("/api/register", {
         method: "POST",
@@ -1246,6 +1189,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }).catch(function () {});
     } catch (e) {
       enviando = false;
+      boton.disabled = false;
+      boton.textContent = "Reservá tu lugar gratis";
       err.style.display = "block";
       return;
     }
