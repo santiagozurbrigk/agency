@@ -244,8 +244,11 @@ try {
   .paso .aviso b { color: #DC2626; }
   .paso .pedido { margin-top: 12px; }
   .paso .btn.btn-wa { margin-top: 16px; }
-  .paso-ic { width: 56px; height: 56px; margin: 4px auto 10px; border-radius: 50%; display: grid; place-items: center; color: #7C3AED; background: rgba(139,92,246,.12); box-shadow: 0 0 0 8px rgba(139,92,246,.06); }
-  .paso-ic svg { width: 26px; height: 26px; }
+  .paso-ic { width: 64px; height: 64px; margin: 4px auto 14px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #A78BFA, #7C3AED); box-shadow: 0 0 0 10px rgba(139,92,246,.12), 0 0 0 20px rgba(139,92,246,.06), 0 10px 24px rgba(124,58,237,.35); }
+  .paso-ic svg { width: 28px; height: 28px; }
+  .paso.p2 h2 { line-height: 1.25; }
+  .paso .abajo { margin: 14px auto 0; padding: 10px 14px; border-radius: 12px; background: rgba(139,92,246,.08); color: #4C1D95; font-size: 15px; }
+  .paso .abajo b { color: #6D28D9; }
   .paso .btn-cal { margin-top: 14px; box-shadow: 0 0 0 2px #8B5CF6, var(--sombra-chica); }
   .paso .btn-cal svg { color: #7C3AED; }
   @media (max-width: 480px) {
@@ -331,10 +334,10 @@ try {
     </div>
     <div class="paso p2">
       <span class="paso-tag"><i></i>Paso 2 · Muy importante</span>
-      <div class="paso-ic"><svg><use href="#i-cal"/></svg></div>
-      <h2>Agendá la clase</h2>
-      <p class="pedido">El <b class="js-fecha-min"></b> a las 18 hs (Argentina). Agendala ahora así no se te pasa.</p>
-      <a class="btn btn-cal js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agendar en Google Calendar</a>
+      <div class="paso-ic tel-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/></svg></div>
+      <h2>Atendé nuestra llamada y recibí de regalo <span class="marca">un recurso</span> de mi marca propia</h2>
+      <p class="pedido">Mi equipo te va a llamar al número que dejaste. En esa llamada te paso <b>un recurso que uso en mi propia marca</b>, así que estate atento 📲</p>
+      <p class="abajo">Elegís <b>cualquiera de los que ves acá abajo</b> 👇</p>
     </div>
 
   </div>
