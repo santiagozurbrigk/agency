@@ -231,6 +231,29 @@ try {
   }
   @media (min-width: 1240px) { .flota { display: block; } }
   @media (prefers-reduced-motion: reduce) { .alerta, .flota .notif { animation: none; opacity: 1; } .vivo { animation: none; } }
+  /* Pasos 1 y 2 (recuadros con etiqueta arriba) */
+  .paso { position: relative; max-width: 560px; margin: 34px auto 0; padding: 30px 18px 20px; background: #fff; border: 2px solid; border-radius: 22px; text-align: center; }
+  .paso.p1 { border-color: var(--verde-2); box-shadow: 0 0 0 6px rgba(37,211,102,.10), var(--sombra-chica); }
+  .paso.p2 { border-color: #8B5CF6; box-shadow: 0 0 0 6px rgba(139,92,246,.10), var(--sombra-chica); }
+  .paso-tag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; padding: 6px 14px; border-radius: 999px; color: #fff; font-size: 12.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+  .paso-tag i { width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+  .p1 .paso-tag { background: #DC2626; }
+  .p2 .paso-tag { background: #7C3AED; }
+  .paso h2 { font-size: 26px; font-weight: 800; line-height: 1.15; margin: 0; }
+  .paso .aviso { margin: 14px auto 0; padding: 11px 14px; border-radius: 12px; background: #FEF2F2; border: 1px solid #FCA5A5; color: #7F1D1D; font-size: 14.5px; line-height: 1.4; }
+  .paso .aviso b { color: #DC2626; }
+  .paso .pedido { margin-top: 12px; }
+  .paso .btn.btn-wa { margin-top: 16px; }
+  .paso-ic { width: 56px; height: 56px; margin: 4px auto 10px; border-radius: 50%; display: grid; place-items: center; color: #7C3AED; background: rgba(139,92,246,.12); box-shadow: 0 0 0 8px rgba(139,92,246,.06); }
+  .paso-ic svg { width: 26px; height: 26px; }
+  .paso .btn-cal { margin-top: 14px; box-shadow: 0 0 0 2px #8B5CF6, var(--sombra-chica); }
+  .paso .btn-cal svg { color: #7C3AED; }
+  @media (max-width: 480px) {
+    .paso { margin-top: 26px; padding: 26px 14px 16px; }
+    .paso h2 { font-size: 22px; }
+    .paso .aviso { font-size: 13.5px; }
+    .paso .btn.btn-wa, .paso .btn-cal { font-size: 14px; letter-spacing: .01em; }
+  }
   /* En el celular, todo más compacto para que el regalo asome en la primera pantalla */
   @media (max-width: 480px) {
     .hero { padding: 14px 0 0; }
@@ -298,9 +321,21 @@ try {
       </div>
     </div>
 
-    <p class="pedido">En el grupo de WhatsApp te paso los <b>SOPs y recursos EXCLUSIVOS</b> que uso en mis marcas de suscripción. Y el martes, 15 minutos antes, <b>el link para entrar a la clase</b>: no llega por mail.</p>
-    <a class="btn btn-wa" id="btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Entrar al grupo de WhatsApp</a>
-    <a class="btn btn-cal js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agendar en Google Calendar</a>
+    <!-- Paso 1 (obligatorio): el grupo. Paso 2: agendar la clase. -->
+    <div class="paso p1">
+      <span class="paso-tag"><i></i>Paso 1 · Obligatorio</span>
+      <h2>Entrá al grupo de WhatsApp</h2>
+      <p class="aviso">⚠️ <b>INDISPENSABLE:</b> el link para entrar a la clase llega solo por el grupo, 15 minutos antes. No llega por mail.</p>
+      <p class="pedido">Ahí también te paso los <b>SOPs y recursos EXCLUSIVOS</b> que uso en mis marcas.</p>
+      <a class="btn btn-wa" id="btn-wa" href="#" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>Entrar al grupo de WhatsApp</a>
+    </div>
+    <div class="paso p2">
+      <span class="paso-tag"><i></i>Paso 2 · Muy importante</span>
+      <div class="paso-ic"><svg><use href="#i-cal"/></svg></div>
+      <h2>Agendá la clase</h2>
+      <p class="pedido">El <b class="js-fecha-min"></b> a las 18 hs (Argentina). Agendala ahora así no se te pasa.</p>
+      <a class="btn btn-cal js-cal" href="#" target="_blank" rel="noopener"><svg><use href="#i-cal"/></svg>Agendar en Google Calendar</a>
+    </div>
 
   </div>
 </section>
@@ -377,6 +412,7 @@ var BANDERAS = {
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
   function poner(sel, v) { var els = document.querySelectorAll(sel); for (var i = 0; i < els.length; i++) els[i].textContent = v; }
   poner(".js-fecha", cap(fmt(ZONA, { weekday: "long" })) + " " + fmt(ZONA, { day: "numeric", month: "long" }));
+  poner(".js-fecha-min", fmt(ZONA, { weekday: "long" }) + " " + fmt(ZONA, { day: "numeric", month: "long" }));
 
   /* Horario por país: agrupa los que comparten hora; "+1" si cae al día siguiente */
   var diaAR = fmt(ZONA, { year: "numeric", month: "2-digit", day: "2-digit" });
