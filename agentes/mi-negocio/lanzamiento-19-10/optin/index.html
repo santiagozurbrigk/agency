@@ -516,7 +516,8 @@ fbq('track', 'PageView');
   .testi-sec .sec-head h2 { max-width: 17em; margin-left: auto; margin-right: auto; }
   .testi { max-width: 980px; margin: 0 auto; }
   .muro { display: flex; gap: 10px; align-items: flex-start; }
-  .muro-col { flex: 1; min-width: 0; }
+  .muro { align-items: stretch; }
+  .muro-col { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
   .muro img { width: 100%; margin-bottom: 10px; border-radius: 3px; background: #1e1f22; box-shadow: 0 6px 16px rgba(23,24,28,.12); }
   .testi .cta-centro { margin: 22px 0 30px; }
   @media (min-width: 768px) { .muro { gap: 18px; } .muro img { margin-bottom: 18px; } .testi .cta-centro { margin: 26px 0 40px; } }
@@ -846,7 +847,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="sec-head">
       <span class="tag-estado"><i></i>Marcas</span>
-      <h2>Marcas como la tuya lo aplicaron y esto me mandaron</h2>
+      <h2>Marcas que vieron la clase, aplicaron el modelo y esto nos contaron</h2>
     </div>
     <div class="testi">
       <div class="muro">
@@ -1254,14 +1255,23 @@ document.addEventListener("DOMContentLoaded", function () {
     location.href = THANK_YOU_URL + (THANK_YOU_URL.indexOf("?") > -1 ? "&" : "?") + "email=" + encodeURIComponent(datos.email);
   }
 
-  /* Testimonios: cada grupo se reparte por filas en 2 columnas, así se lee de mayor a menor
-     de izquierda a derecha (con columnas de CSS se leería de arriba hacia abajo). */
+  /* Testimonios: cada grupo se reparte en 2 columnas que terminen a la misma altura.
+     Se prueban todas las formas de repartir las capturas del grupo (son 8 como mucho) y se queda
+     la de menor diferencia de alto; dentro de cada columna se respeta el orden de mayor a menor. */
   var muros = document.querySelectorAll(".muro");
   for (var g = 0; g < muros.length; g++) {
     var imgs = [].slice.call(muros[g].querySelectorAll("img")), cols = [];
+    var alto = imgs.map(function (im) { return +im.getAttribute("height") / +im.getAttribute("width") + 0.06; });
+    var mejor = 0, dif = Infinity;
+    for (var m = 0; m < (1 << imgs.length); m++) {
+      var a = 0, b = 0;
+      for (var k = 0; k < imgs.length; k++) { if (m >> k & 1) a += alto[k]; else b += alto[k]; }
+      if (Math.abs(a - b) < dif) { dif = Math.abs(a - b); mejor = m; }
+    }
     muros[g].innerHTML = "";
     for (var c = 0; c < 2; c++) { cols.push(document.createElement("div")); cols[c].className = "muro-col"; muros[g].appendChild(cols[c]); }
-    imgs.forEach(function (im, i) { cols[i % 2].appendChild(im); });
+    if (!(mejor & 1)) mejor = ~mejor; /* la primera captura (el resultado más grande) siempre arriba a la izquierda */
+    imgs.forEach(function (im, i) { cols[mejor >> i & 1 ? 0 : 1].appendChild(im); });
   }
 
   /* Tracking diferido: Hyros y player 300 ms después del load (red de seguridad a 3500 ms).
