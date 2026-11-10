@@ -292,58 +292,33 @@ fbq('track', 'PageView');
   }
   @media (prefers-reduced-motion: reduce) { .informe.anim .col .b, .linea-t.anim .p i { transform: none; opacity: 1; transition: none; } }
 
-  /* d2) Los 3 regalos: tarjetas tangibles con la captura real de cada bonus */
+  /* d2) El regalo: 3 de los +30 sistemas, a elección */
   .bonus-sec .kicker-a { font-family: "Caveat", cursive; font-size: 24px; color: var(--naranja); display: block; margin-top: 14px; }
   .bonus-sec .sec-head h2 { margin-top: 2px; }
   .bonus-sec .sec-head p { color: var(--gris-2); max-width: 34em; margin: 10px auto 0; }
-  .biblio { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; max-width: 1000px; margin: 34px auto 0; }
-  .biblio img { width: 100%; height: auto; aspect-ratio: 580 / 401; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 14px 34px rgba(0,0,0,.45); background: #fff; }
-  .biblio-pie { text-align: center; color: var(--gris-2, #b9b4ad); font-size: 15px; max-width: 640px; margin: 20px auto 0; }
-  .biblio-pie b { color: #fff; }
-  @media (min-width: 768px) { .biblio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; } }
-  .bonos { display: grid; gap: 22px; max-width: 1100px; margin: 34px auto 0; }
-  .bono { position: relative; border-radius: 22px; padding: 18px 18px 22px; display: flex; flex-direction: column; gap: 18px;
+  .bonos { display: grid; gap: 18px; max-width: 980px; margin: 30px auto 0; }
+  .bono { position: relative; border-radius: 20px; padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 14px;
     background: linear-gradient(180deg, #1a1311, #0f0f10 60%); border: 1px solid rgba(var(--naranja-rgb), .28);
-    box-shadow: 0 30px 60px rgba(0,0,0,.45); transition: transform .35s cubic-bezier(.2,.8,.2,1); }
-  .bono.papel { background: var(--hueso); color: var(--tinta); border-color: #E2D9CA; }
-  .bono .top { display: flex; align-items: center; justify-content: space-between; }
-  .bono .ico { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(var(--naranja-rgb), .14); color: var(--naranja); }
+    box-shadow: 0 30px 60px rgba(0,0,0,.45); }
+  .bono .top { display: flex; align-items: center; gap: 12px; }
+  .bono .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(var(--naranja-rgb), .14); color: var(--naranja); }
   .bono .ico svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .bono .num { font-family: var(--titulos); font-style: italic; font-weight: 700; font-size: 17px; color: var(--naranja); border: 1.5px solid var(--naranja); border-radius: 9px; padding: 1px 10px; transform: rotate(-4deg); }
-  .bono .num small { font-style: normal; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px; opacity: .8; }
-  /* Ventana de navegador con la captura */
-  .ventana { position: relative; border-radius: 12px; overflow: visible; }
-  .ventana .marco { border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid rgba(255,255,255,.14); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
-  .bono.papel .ventana .marco { border-color: #D9CFBF; box-shadow: 0 14px 30px rgba(60,40,20,.18); }
-  .ventana .barra-v { height: 24px; background: #EDE7DD; display: flex; align-items: center; gap: 5px; padding: 0 9px; }
-  .ventana .barra-v i { width: 7px; height: 7px; border-radius: 50%; background: #CFC6B8; }
-  .ventana .barra-v span { margin-left: 8px; flex: 1; height: 13px; border-radius: 4px; background: #fff; font-size: 8.5px; line-height: 13px; color: #8a8378; padding-left: 7px; overflow: hidden; white-space: nowrap; }
-  .ventana img { width: 100%; aspect-ratio: 1400 / 762; object-fit: cover; object-position: top left; }
-  .ventana .pegote { position: absolute; z-index: 2; background: var(--naranja); color: #fff; font-weight: 700; font-size: 13px; border-radius: 10px; padding: 7px 12px;
-    box-shadow: 0 10px 24px rgba(var(--naranja-rgb), .45); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-  .ventana .pegote.abajo { left: 50%; bottom: -16px; transform: translateX(-50%) rotate(-2deg); }
-  .ventana .pegote.dato { right: -6px; bottom: -18px; transform: rotate(3deg); background: var(--tinta); box-shadow: 0 10px 24px rgba(0,0,0,.35); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 12px; }
-  .ventana .pegote.dato small { font-size: 10px; font-weight: 600; color: var(--gris-2); letter-spacing: .04em; }
-  .ventana .pegote.dato b { font-family: var(--titulos); font-size: 20px; color: var(--naranja); line-height: 1.1; }
-  .bono h3 { font-size: 20px; font-weight: 800; margin-top: 6px; }
-  .bono .desc { font-size: 15.5px; color: var(--gris-2); margin-top: 6px; }
-  .bono.papel .desc { color: #4f4a42; }
-  .bono .desc b { color: #fff; }
-  .bono.papel .desc b { color: var(--tinta); }
-  .bono ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 7px; font-size: 14px; }
+  .bono h3 { font-size: 20px; font-weight: 800; }
+  .bono .area { display: block; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gris); margin-bottom: 2px; }
+  .bono ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 7px; font-size: 14.5px; }
   .bono li { display: flex; gap: 8px; align-items: flex-start; color: var(--gris-2); }
-  .bono.papel li { color: #4f4a42; }
   .bono li::before { content: ""; flex: none; width: 16px; height: 16px; margin-top: 2px; border-radius: 50%; background: rgba(var(--naranja-rgb), .16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F26A1B' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 10px no-repeat; }
-  .bono-pie { text-align: center; color: var(--gris); font-size: 14px; margin-top: 30px; }
+  .bono ul.dos { grid-template-columns: 1fr; }
+  @media (min-width: 520px) { .bono ul.dos { grid-template-columns: 1fr 1fr; column-gap: 14px; } }
+  /* La biblioteca completa: las áreas que cubren los +30 */
+  .biblio { max-width: 980px; margin: 26px auto 0; text-align: center; }
+  .biblio p { font-size: 14px; color: var(--gris); margin-bottom: 12px; }
+  .biblio p b { color: #fff; }
+  .areas { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+  .areas span { font-size: 13px; color: var(--gris-2); background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 5px 11px; }
+  .bono-pie { text-align: center; color: var(--gris); font-size: 14px; margin-top: 26px; }
   .bono-pie b { color: #fff; }
-  @media (min-width: 960px) {
-    .bonos { grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
-    .bono:nth-child(1) { transform: rotate(-2deg); }
-    .bono:nth-child(2) { transform: rotate(1.5deg) translateY(14px); }
-    .bono:nth-child(3) { transform: rotate(-1.5deg); }
-    .bono:hover { transform: rotate(0) translateY(-6px); }
-  }
-  @media (prefers-reduced-motion: reduce) { .bono { transition: none; } }
+  @media (min-width: 768px) { .bonos { grid-template-columns: 1fr 1fr; gap: 22px; } }
 
   /* e) Anfitrión */
   .host { display: grid; gap: 24px; align-items: start; max-width: 980px; margin: 0 auto; }
@@ -885,25 +860,39 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- d2) Los 3 regalos por asistir -->
+<!-- d2) El regalo por asistir: 3 de los +30 sistemas de Manu, a elección.
+     Se muestran los 4 que se especifican en la clase (Creativos, Meta, Operaciones, Flujos de email). -->
 <section class="sec bonus-sec" id="regalos">
   <div class="wrap">
     <div class="sec-head">
       <span class="tag-estado"><i></i>Por asistir en vivo</span>
       <span class="kicker-a">esto es lo que te llevás de la clase ↓</span>
-      <h2>Mis mejores sistemas de backend, operaciones e IA de mi marca propia, a elección</h2>
-      <p>No son PDFs para leer y olvidar: son las mismas herramientas que uso en mi marca, listas para cargar los números de la tuya. Salen de mi biblioteca de <b>agentes de IA y SOPs</b> 👇</p>
+      <h2>Te regalo 3 de mis +30 sistemas</h2>
+      <p>Los sistemas de backend, operaciones e IA que uso en mis marcas. Elegís 3, los copiás y los pegás en la tuya.</p>
+    </div>
+    <div class="bonos">
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="m10 8 5 3-5 3z"/><path d="M8 21h8"/></svg></div><div><span class="area">Agente</span><h3>Creativos</h3></div></div>
+        <ul><li>Scripts y guiones</li><li>Variantes de creativos estáticos con IA</li></ul>
+      </article>
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></div><div><span class="area">Agente</span><h3>Meta</h3></div></div>
+        <ul><li>Configurador de campañas</li><li>Análisis de métricas</li></ul>
+      </article>
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div><div><span class="area">Agente</span><h3>Operaciones</h3></div></div>
+        <ul><li>Atención al cliente</li><li>Community manager</li><li>Director creativo</li><li>Optimizador de procesos</li></ul>
+      </article>
+      <article class="bono">
+        <div class="top"><div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><span class="area">Agente</span><h3>Flujos de email</h3></div></div>
+        <ul class="dos"><li>Bienvenida</li><li>Onboarding</li><li>Pre-onboarding</li><li>Carrito abandonado</li><li>Checkout abandonado</li><li>Browse abandonado</li><li>Confirmación de pedido</li><li>Pre-cobro y cobro</li><li>Winback</li><li>Sunset</li></ul>
+      </article>
     </div>
     <div class="biblio">
-      <img src="bonus-ty/b1.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 1">
-      <img src="bonus-ty/b2.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 2">
-      <img src="bonus-ty/b3.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 3">
-      <img src="bonus-ty/b4.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 4">
-      <img src="bonus-ty/b5.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 5">
-      <img src="bonus-ty/b6.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 6">
+      <p>Y la biblioteca completa cubre <b>todo el negocio</b>:</p>
+      <div class="areas"><span>Búsqueda de producto</span><span>Validación de producto</span><span>Investigación de mercado</span><span>Finanzas</span><span>Proveedores</span><span>Creativos</span><span>Landings</span><span>Oferta</span><span>Embudo de ventas</span><span>Meta Ads</span><span>Flujos de email</span><span>Flujo de WhatsApp</span><span>Retención</span><span>Operaciones</span></div>
     </div>
-    <p class="biblio-pie">La biblioteca cubre <b>todo el negocio</b>: producto, finanzas, proveedores, landings, oferta, WhatsApp, retención y más.</p>
-    <p class="bono-pie">Los elegís <b>por asistir a la clase en vivo</b>.</p>
+    <p class="bono-pie">Elegís 3. Te llegan <b>por asistir a la clase en vivo</b>.</p>
   </div>
 </section>
 
