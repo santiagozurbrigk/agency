@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Clase en vivo · Martes 17/11 · Manu Dominguez</title>
-<meta name="description" content="Clase en vivo, privada y gratis. Cómo hago +270M por mes con el modelo de suscripciones sin depender del CPA ni de Meta.">
+<meta name="description" content="Clase en vivo, privada y gratis. Cómo escalar tu ecommerce a +$100M por mes con el modelo de suscripciones sin depender del CPA ni de Meta.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#FAF7F2">
@@ -450,9 +450,48 @@ fbq('track', 'PageView');
     .form-card .nota { font-size: 11.5px; }
   }
 
-  /* ===== Form en un solo paso ===== */
-  .form-card select#inversion_meta { width: 100%; }
-  .form-card select#inversion_meta option { color: var(--tinta); }
+  /* ===== Form en un solo paso, con el diseño de la referencia (10/11):
+     tarjeta blanca con borde naranja y cinta arriba, encabezado naranja, etiquetas visibles,
+     la inversión en Meta que se abre en 3 opciones y el contador grande abajo del botón. */
+  .form-card { max-width: 460px; padding: 0 0 22px; background: #fff; border: 2.5px solid var(--naranja); border-radius: 24px; transform: rotate(-1deg); }
+  .form-card::before, .form-card::after { display: none; }
+  .form-card .cinta { position: absolute; top: -15px; left: 50%; z-index: 2; width: 118px; height: 30px; transform: translateX(-50%) rotate(-2deg); background: rgba(244, 220, 170, .9); box-shadow: 0 2px 6px rgba(60,40,20,.12); }
+  .form-card .form-head { position: relative; overflow: hidden; margin: 0; padding: 22px 16px 18px; border-radius: 21px 21px 0 0; text-align: center; font-size: 21px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    color: #fff; -webkit-text-fill-color: #fff; background: linear-gradient(100deg, #DE5810, #F27A2E 50%, #E5661C); -webkit-background-clip: border-box; background-clip: border-box; }
+  .form-card .form-head::after { content: ""; position: absolute; top: -40%; right: 12%; width: 70px; height: 180%; transform: rotate(24deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); }
+  .form-card form { padding: 20px 22px 0; gap: 14px; }
+  .form-card label { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; margin-bottom: 7px; font-size: 12.5px; font-weight: 800; letter-spacing: .1em; color: #6B6660; }
+  .form-card input, .form-card select { padding: 14px 16px; font-size: 17px; border: 2px solid #D9D5CF; border-radius: 14px; background-color: #fff; }
+  .form-card select, .inv-campo { -webkit-appearance: none; appearance: none; padding-right: 36px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F26A1B' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") right 12px center / 16px no-repeat; }
+  .form-card .tel { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+  .inv-campo { display: block; width: 100%; text-align: left; font: inherit; font-size: 17px; padding: 14px 40px 14px 16px; border: 2px solid #D9D5CF; border-radius: 14px; color: #8A857C; cursor: pointer; }
+  .inv-campo.lleno { color: var(--tinta); font-weight: 600; }
+  .inv-campo[aria-expanded="true"] { border-color: var(--naranja); }
+  .inv-ops { display: grid; gap: 10px; margin-top: 10px; }
+  .inv-ops[hidden] { display: none; }
+  .inv-op { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; font: inherit; font-size: 17px; font-weight: 700; color: var(--tinta); background: #fff; border: 2px solid #E2DED8; border-radius: 14px; padding: 16px; cursor: pointer; transition: border-color .15s, background .15s; }
+  .inv-op::before { content: ""; flex: none; width: 22px; height: 22px; border-radius: 50%; border: 2px solid #9A958E; background: #fff; box-sizing: border-box; }
+  .inv-op:hover { border-color: rgba(var(--naranja-rgb), .6); }
+  .inv-op[aria-checked="true"] { border-color: var(--naranja); background: rgba(var(--naranja-rgb), .06); }
+  .inv-op[aria-checked="true"]::before { border: 7px solid var(--naranja); }
+  .inv-campo.campo-error { border-color: #b3261e; }
+  .form-card .btn { margin-top: 6px; padding: 20px 18px; font-size: 19px; font-weight: 800; letter-spacing: .05em; border-radius: 16px; }
+  .form-card .cd-form { display: flex; justify-content: center; align-items: baseline; gap: 20px; margin: 20px 0 0; }
+  .form-card .cd-form span { flex-direction: row; align-items: baseline; gap: 3px; padding: 0; border-radius: 0; background: none; box-shadow: none; overflow: visible; animation: none; color: #8A857C; }
+  .form-card .cd-form span::after { display: none; }
+  .form-card .cd-form b { margin: 0; font-size: 46px; font-weight: 900; letter-spacing: -.04em; color: var(--tinta); text-shadow: none; }
+  .form-card .cd-form i { font-style: normal; font-size: 15px; font-weight: 700; }
+  @media (max-width: 767px) {
+    .form-card { padding: 0 0 18px; border-radius: 20px; }
+    .form-card .form-head { font-size: 17px; padding: 18px 12px 14px; border-radius: 17px 17px 0 0; }
+    .form-card form { padding: 16px 16px 0; gap: 11px; }
+    .form-card input, .form-card select, .inv-campo, .inv-op { font-size: 16px; padding-top: 12px; padding-bottom: 12px; }
+    .inv-op { padding: 13px 14px; }
+    .form-card .btn { padding: 17px 14px; font-size: 16px; }
+    .form-card .cd-form { gap: 14px; margin-top: 16px; }
+    .form-card .cd-form b { font-size: 38px; }
+  }
   .error { margin-top: 6px; }
 
   /* ===== Mi marca hoy (debajo del form), una sola vez ===== */
@@ -561,9 +600,9 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div></div>
 
     <div class="copy">
-      <h1 id="headline">Te voy a revelar cómo hago <span class="marca">+$270M/mes</span> con el modelo de suscripciones sin depender del CPA ni de Meta</h1>
+      <h1 id="headline">Vas a ver cómo escalar tu ecommerce a <span class="marca">+$100M/mes</span> con el modelo de suscripciones sin depender del CPA ni de Meta</h1>
       <div class="tags" aria-label="Qué incluye"><span>Roadmaps</span><span>Procesos</span><span>Agentes de IA</span></div>
-      <p class="sub" id="sub" data-txt="sub">Cómo escalar tu ecommerce a <span class="n">+$100M/mes</span> migrando de compra única al <b>modelo de suscripción</b>. <span class="junto">Clase en vivo, privada y gratis.</span></p>
+      <p class="sub" id="sub" data-txt="sub">Te muestro el mismo sistema con el que mis marcas facturan <span class="n">+$270M/mes</span> con el <b>modelo de suscripción</b>. <span class="junto">Clase en vivo, privada y gratis.</span></p>
     </div>
     <script>
     /* ===== LANDINGS POR DOLOR =====
@@ -642,7 +681,12 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
        Para apagar el reparto del link general: AB_TEST = false (todos ven la 1). */
     var AB_TEST    = true;
     var VERSIONES  = ["1", "2", "3"];
-    var HEADLINE   = 'Te voy a revelar cómo hago <span class="marca m-nar">+$270M/mes</span> con el <span class="marca m-azul">modelo de suscripciones</span> sin depender del <span class="marca m-ver">CPA</span> ni de <span class="marca m-vio">Meta</span>';
+    /* Cada versión del test lleva su propio titular (10/11): se compara dónde va el form y la promesa a la vez. */
+    var HEADLINES  = {
+      "1": 'Vas a ver cómo escalar tu ecommerce a <span class="marca m-nar">+$100M/mes</span> con el <span class="marca m-azul">modelo de suscripciones</span> sin depender del <span class="marca m-ver">CPA</span> ni de <span class="marca m-vio">Meta</span>',
+      "2": 'Vas a ver cómo llevar tu ecommerce a <span class="marca m-nar">+$100M/mes</span> con <span class="marca m-azul">clientes que te compran todos los meses</span>, sin depender del <span class="marca m-ver">CPA</span> ni de <span class="marca m-vio">Meta</span>',
+      "3": 'Vas a ver cómo escalar tu ecommerce a <span class="marca m-nar">+$100M/mes</span> pudiendo <span class="marca m-azul">pagar más que tu competencia</span> por cada cliente, sin depender del <span class="marca m-ver">CPA</span> ni de <span class="marca m-vio">Meta</span>'
+    };
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
     /* /1, /2 o /3 (o ?v=2): versión fijada por el link de redirección. Gana sobre todo lo guardado. */
@@ -688,7 +732,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     var ORDEN = LANDING ? "1" : VERSION;
     document.documentElement.setAttribute("data-orden", ORDEN);
     if (!LANDING) {
-      document.getElementById("headline").innerHTML = HEADLINE;
+      document.getElementById("headline").innerHTML = HEADLINES[VERSION] || HEADLINES["1"];
       /* El cierre repite el headline de su versión (sin el resaltado) */
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("final-titulo").textContent = document.getElementById("headline").textContent;
@@ -710,10 +754,9 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <section class="form-sec" id="registro">
   <div class="wrap">
     <div class="form-card">
-      <p class="cd-titulo">La clase empieza en</p>
-      <div class="cd-form" aria-label="Falta para la clase"><span><b data-cd="d">00</b>Días</span><span><b data-cd="h">00</b>Horas</span><span><b data-cd="m">00</b>Min</span><span class="seg"><b data-cd="s">00</b>Seg</span></div>
+      <span class="cinta" aria-hidden="true"></span>
+      <h2 class="form-head">Registrate gratis abajo</h2>
       <form id="form" novalidate>
-        <h2>Registrate gratis</h2>
         <div>
           <label for="nombre">Nombre</label>
           <input id="nombre" name="nombre" type="text" autocomplete="given-name" placeholder="Tu nombre" required>
@@ -726,50 +769,50 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
           <label for="tel">WhatsApp</label>
           <div class="tel">
             <select id="pais" name="pais" aria-label="Código de país">
-              <option value="54" selected>AR +54</option>
-              <option value="34">ES +34</option>
-              <option value="57">CO +57</option>
-              <option value="56">CL +56</option>
-              <option value="52">MX +52</option>
-              <option value="598">UY +598</option>
-              <option value="51">PE +51</option>
-              <option value="593">EC +593</option>
-              <option value="1">EEUU +1</option>
-              <option value="595">PY +595</option>
-              <option value="591">BO +591</option>
-              <option value="58">VE +58</option>
-              <option value="506">CR +506</option>
-              <option value="507">PA +507</option>
-              <option value="502">GT +502</option>
-              <option value="503">SV +503</option>
-              <option value="504">HN +504</option>
-              <option value="505">NI +505</option>
-              <option value="1809">DO +1809</option>
-              <option value="53">CU +53</option>
+              <option value="54" selected>🇦🇷 Argentina +54</option>
+              <option value="34">🇪🇸 España +34</option>
+              <option value="57">🇨🇴 Colombia +57</option>
+              <option value="56">🇨🇱 Chile +56</option>
+              <option value="52">🇲🇽 México +52</option>
+              <option value="598">🇺🇾 Uruguay +598</option>
+              <option value="51">🇵🇪 Perú +51</option>
+              <option value="593">🇪🇨 Ecuador +593</option>
+              <option value="1">🇺🇸 EEUU +1</option>
+              <option value="595">🇵🇾 Paraguay +595</option>
+              <option value="591">🇧🇴 Bolivia +591</option>
+              <option value="58">🇻🇪 Venezuela +58</option>
+              <option value="506">🇨🇷 Costa Rica +506</option>
+              <option value="507">🇵🇦 Panamá +507</option>
+              <option value="502">🇬🇹 Guatemala +502</option>
+              <option value="503">🇸🇻 El Salvador +503</option>
+              <option value="504">🇭🇳 Honduras +504</option>
+              <option value="505">🇳🇮 Nicaragua +505</option>
+              <option value="1809">🇩🇴 Rep. Dominicana +1809</option>
+              <option value="53">🇨🇺 Cuba +53</option>
             </select>
-            <input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="Cód. de área + número" required>
+            <input id="tel" name="tel" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="9 11 2345 6789" required>
           </div>
         </div>
-        <div>
-          <label for="inversion_meta">¿Cuánto estás invirtiendo en Meta por día?</label>
-          <select id="inversion_meta" name="inversion_meta" required>
-            <option value="" disabled selected>¿Cuánto invertís en Meta por día?</option>
-            <option>0, todavía no tengo marca</option>
-            <option>Menos de 100 dólares</option>
-            <option>De 100 a 200 dólares</option>
-            <option>De 200 a 500 dólares</option>
-            <option>De 500 a 1.000 dólares</option>
-            <option>Más de 1.000 dólares</option>
-          </select>
+        <!-- Inversión en Meta: el campo se abre en 3 opciones al tocarlo. El valor viaja en el input oculto. -->
+        <div class="inv">
+          <label id="inv-lab" for="inv-campo">Inversión en Meta</label>
+          <button type="button" class="inv-campo" id="inv-campo" aria-expanded="false" aria-controls="inv-ops">¿Cuánto invertís en Meta por día?</button>
+          <div class="inv-ops" id="inv-ops" role="radiogroup" aria-labelledby="inv-lab" hidden>
+            <button type="button" class="inv-op" role="radio" aria-checked="false" data-v="0, todavía no tengo marca">0, todavía no tengo marca</button>
+            <button type="button" class="inv-op" role="radio" aria-checked="false" data-v="Menos de 100 dólares">Menos de 100 dólares por día</button>
+            <button type="button" class="inv-op" role="radio" aria-checked="false" data-v="De 100 a 400 dólares">100-400 dólares por día</button>
+            <button type="button" class="inv-op" role="radio" aria-checked="false" data-v="Más de 400 dólares">+400 dólares por día</button>
+          </div>
+          <input type="hidden" id="inversion_meta" name="inversion_meta">
         </div>
         <div class="hp" aria-hidden="true">
           <label for="empresa">Empresa</label>
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
         </div>
         <button type="submit" class="btn btn-naranja" id="seguir">Reservá tu lugar gratis</button>
-        <p class="nota">Sin costo y en vivo. El acceso te llega por el grupo de WhatsApp.</p>
         <p class="error" id="error">No pudimos registrarte. Probá de nuevo en unos segundos.</p>
       </form>
+      <div class="cd-form" aria-label="Falta para la clase"><span><b data-cd="d">00</b><i>D</i></span><span><b data-cd="h">00</b><i>H</i></span><span><b data-cd="m">00</b><i>M</i></span><span><b data-cd="s">00</b><i>S</i></span></div>
     </div>
   </div>
   <!-- c2) Mi marca hoy: la captura del panel de la marca de Manu, una sola vez -->
@@ -787,10 +830,10 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     <div class="incluye">
       <h2>Todo lo que incluye la <span class="marca">Clase Privada</span> ↓</h2>
       <div class="inc-grid">
-        <figure class="inc"><img src="slides/s1.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">01</span><b>El Método B.A.S.E., capa por capa</b></figure>
-        <figure class="inc"><img src="slides/s2.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">02</span><b>Los 4 sistemas que corren juntos</b></figure>
-        <figure class="inc"><img src="slides/s3.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">03</span><b>De compra única a suscripción, sin depender de Meta</b></figure>
-        <figure class="inc"><img src="slides/s4.png" width="48" height="30" alt="" loading="lazy"><span class="inc-n">04</span><b>Regalo: 3 de mis +30 sistemas</b></figure>
+        <figure class="inc"><img src="slides/s1.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">01</span><b>Cómo hacer que tu marca arranque cada mes con plata ya entrando, y no en cero</b></figure>
+        <figure class="inc"><img src="slides/s2.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">02</span><b>Los 4 sistemas que hacen que el que te compró una vez te vuelva a comprar solo</b></figure>
+        <figure class="inc"><img src="slides/s3.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">03</span><b>Cómo pasar a suscripción sin tocar lo que hoy te vende ni depender de Meta</b></figure>
+        <figure class="inc"><img src="slides/s4.png" width="48" height="30" alt="" loading="lazy"><span class="inc-n">04</span><b>3 de mis +30 sistemas armados para copiar en tu marca. Solo para los que se quedan hasta el final</b></figure>
       </div>
     </div>
     <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
@@ -975,7 +1018,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- g) CTA final -->
 <section class="sec final">
   <div class="wrap">
-    <h2 id="final-titulo" data-txt="final-titulo">Te voy a revelar cómo hago +$270M/mes con el modelo de suscripciones sin depender del CPA ni de Meta</h2>
+    <h2 id="final-titulo" data-txt="final-titulo">Vas a ver cómo escalar tu ecommerce a +$100M/mes con el modelo de suscripciones sin depender del CPA ni de Meta</h2>
     <a href="#registro" class="btn btn-naranja">Reservá tu lugar gratis</a>
     <p class="chico">Registrate en menos de 30 segundos.</p>
   </div>
@@ -1132,14 +1175,28 @@ document.addEventListener("DOMContentLoaded", function () {
     if (nombre.value.trim().length < 2) mal.push(nombre);
     if (!emailOk()) mal.push(email);
     if (!numeroTel()) mal.push(tel);
-    if (!inversion.value) mal.push(inversion);
+    if (!inversion.value) { mal.push(invCampo); abrirInv(true); }
     mal.forEach(function (i) { i.classList.add("campo-error"); });
     if (mal.length) mal[0].focus();
     return mal.length === 0;
   }
-  [nombre, email, tel, inversion].forEach(function (i) {
+  [nombre, email, tel].forEach(function (i) {
     i.addEventListener("input", function () { i.classList.remove("campo-error"); });
     i.addEventListener("change", function () { i.classList.remove("campo-error"); });
+  });
+  /* Inversión en Meta: al tocar el campo se abren las 3 opciones; al elegir una, se cierra y queda escrita. */
+  var invCampo = document.getElementById("inv-campo"), invOps = document.getElementById("inv-ops");
+  function abrirInv(abrir) { invOps.hidden = !abrir; invCampo.setAttribute("aria-expanded", abrir ? "true" : "false"); }
+  invCampo.addEventListener("click", function () { abrirInv(invOps.hidden); });
+  [].forEach.call(invOps.querySelectorAll(".inv-op"), function (op) {
+    op.addEventListener("click", function () {
+      [].forEach.call(invOps.querySelectorAll(".inv-op"), function (o) { o.setAttribute("aria-checked", o === op ? "true" : "false"); });
+      inversion.value = op.getAttribute("data-v");
+      invCampo.textContent = op.textContent;
+      invCampo.classList.add("lleno");
+      invCampo.classList.remove("campo-error");
+      abrirInv(false);
+    });
   });
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
@@ -1237,7 +1294,7 @@ document.addEventListener("DOMContentLoaded", function () {
 var EVENT_DATE       = "2026-11-17T18:00:00-03:00";
 var EVENT_TZ_LABEL   = "18:00 hs (Argentina)";
 var THANK_YOU_URL    = "/thank-you";
-var INVERSION_LEAD   = ["De 100 a 200 dólares", "De 200 a 500 dólares", "De 500 a 1.000 dólares", "Más de 1.000 dólares"];
+var INVERSION_LEAD   = ["De 100 a 400 dólares", "Más de 400 dólares", "De 100 a 200 dólares", "De 200 a 500 dólares", "De 500 a 1.000 dólares", "Más de 1.000 dólares"];
 var HYROS_SCRIPT_URL = "";
 // El webhook de GHL NO va acá: vive en la variable de entorno GHL_WEBHOOK_URL de Vercel.
 </script>
