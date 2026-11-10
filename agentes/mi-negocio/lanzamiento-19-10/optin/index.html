@@ -314,6 +314,9 @@ fbq('track', 'PageView');
   .biblio { max-width: 980px; margin: 26px auto 0; text-align: center; }
   .biblio p { font-size: 14px; color: var(--gris); margin-bottom: 12px; }
   .biblio p b { color: #fff; }
+  .biblio-imgs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 4px 0 18px; }
+  .biblio-imgs img { width: 100%; height: auto; aspect-ratio: 580 / 401; object-fit: cover; object-position: top; border-radius: 12px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 14px 34px rgba(0,0,0,.45); background: #fff; }
+  @media (min-width: 768px) { .biblio-imgs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
   .areas { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
   .areas span { font-size: 13px; color: var(--gris-2); background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 5px 11px; }
   .bono-pie { text-align: center; color: var(--gris); font-size: 14px; margin-top: 26px; }
@@ -890,6 +893,14 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div>
     <div class="biblio">
       <p>Y la biblioteca completa cubre <b>todo el negocio</b>:</p>
+      <div class="biblio-imgs">
+        <img src="bonus-ty/b1.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 1">
+        <img src="bonus-ty/b2.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 2">
+        <img src="bonus-ty/b3.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 3">
+        <img src="bonus-ty/b4.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 4">
+        <img src="bonus-ty/b5.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 5">
+        <img src="bonus-ty/b6.webp" width="580" height="401" loading="lazy" decoding="async" alt="Biblioteca de agentes de Génesis, parte 6">
+      </div>
       <div class="areas"><span>Búsqueda de producto</span><span>Validación de producto</span><span>Investigación de mercado</span><span>Finanzas</span><span>Proveedores</span><span>Creativos</span><span>Landings</span><span>Oferta</span><span>Embudo de ventas</span><span>Meta Ads</span><span>Flujos de email</span><span>Flujo de WhatsApp</span><span>Retención</span><span>Operaciones</span></div>
     </div>
     <p class="bono-pie">Elegís 3. Te llegan <b>por asistir a la clase en vivo</b>.</p>
