@@ -553,6 +553,31 @@ fbq('track', 'PageView');
   /* Bajada del titular: texto gris parejo, sin resaltados ni negritas (en todas las versiones) */
   .hero .sub { color: var(--gris-2); font-weight: 400; }
   .hero .sub b, .hero .sub .n { color: inherit; font-weight: inherit; background: none; -webkit-text-fill-color: currentColor; }
+
+  /* ===== Secciones que vuelven de la versión del 9/11: lo que incluye la clase (slides pixeladas) y testimonios ===== */
+  :root { --linea-2: rgba(23,24,28,.16); }
+  /* ===== Todo lo que incluye la clase: miniaturas pixeladas en un recuadro punteado ===== */
+  .incluye-sec { padding: 34px 0 44px; }
+  .incluye { max-width: 1020px; margin: 0 auto; border: 1.5px dashed var(--linea-2); border-radius: 18px; padding: 24px 16px 22px; background: rgba(255,255,255,.55); }
+  .incluye h2 { text-align: center; font-size: 27px; font-weight: 800; line-height: 1.25; margin-bottom: 20px; }
+  .incluye h2 .marca { padding: 0 .18em; border-radius: .14em; }
+  .inc-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+  .inc { margin: 0; }
+  .inc img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; image-rendering: pixelated; border-radius: 8px; background: #fff; border: 1px solid var(--linea); box-shadow: var(--sombra-chica); }
+  .inc .inc-n { display: block; margin-top: 9px; font-size: 11px; font-weight: 800; color: var(--naranja-oscuro); }
+  .inc b { display: block; font-size: 14px; line-height: 1.3; margin-top: 2px; }
+  .cta-centro { text-align: center; margin-top: 26px; }
+  @media (min-width: 768px) { .incluye { padding: 28px 30px 30px; } .incluye h2 { font-size: 36px; } .inc-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; } }
+
+  /* ===== Testimonios: 2 columnas de capturas al ras, botón cada 8 ===== */
+  .testi-sec .sec-head h2 { max-width: 17em; margin-left: auto; margin-right: auto; }
+  .testi { max-width: 980px; margin: 0 auto; }
+  .muro { display: flex; gap: 10px; align-items: flex-start; }
+  .muro { align-items: stretch; }
+  .muro-col { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; }
+  .muro img { width: 100%; margin-bottom: 10px; border-radius: 3px; background: #1e1f22; box-shadow: 0 6px 16px rgba(23,24,28,.12); }
+  .testi .cta-centro { margin: 22px 0 30px; }
+  @media (min-width: 768px) { .muro { gap: 18px; } .muro img { margin-bottom: 18px; } .testi .cta-centro { margin: 26px 0 40px; } }
 </style>
 <!-- vTurb: precarga del VSL -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
@@ -863,6 +888,87 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+<!-- c3) Todo lo que incluye la clase: slides pixeladas a propósito (se ven, pero no se leen).
+     Cada imagen es una miniatura de 48 px de ancho que el navegador agranda en bloques (1-2 KB).
+     Para cambiarlas: captura de la slide real achicada a 48 px de ancho. -->
+<section class="incluye-sec">
+  <div class="wrap">
+    <div class="incluye">
+      <h2>Todo lo que incluye la <span class="marca">Clase Privada</span> ↓</h2>
+      <div class="inc-grid">
+        <figure class="inc"><img src="slides/s1.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">01</span><b>Cómo hacer que tu marca arranque cada mes con plata ya entrando, y no en cero</b></figure>
+        <figure class="inc"><img src="slides/s2.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">02</span><b>Los 4 sistemas que hacen que el que te compró una vez te vuelva a comprar solo</b></figure>
+        <figure class="inc"><img src="slides/s3.png" width="48" height="27" alt="" loading="lazy"><span class="inc-n">03</span><b>Cómo pasar a suscripción sin tocar lo que hoy te vende ni depender de Meta</b></figure>
+        <figure class="inc"><img src="slides/s4.png" width="48" height="30" alt="" loading="lazy"><span class="inc-n">04</span><b>3 de mis +30 sistemas armados para copiar en tu marca. Solo para los que se quedan hasta el final</b></figure>
+      </div>
+    </div>
+    <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+  </div>
+</section>
+
+<!-- c4) Testimonios: de mayor resultado a menor, en 2 columnas que se leen por filas, con el botón cada 8.
+     Montos en pesos. Los dueños autorizaron mostrar su nombre; los nombres de las marcas se tapan. -->
+<section class="sec testi-sec" id="wins">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag-estado"><i></i>Marcas</span>
+      <h2>Marcas que vieron la clase, aplicaron el modelo y esto nos contaron</h2>
+    </div>
+    <div class="testi">
+      <div class="muro">
+        <img src="wins/n-lionel.webp" width="890" height="389" loading="lazy" decoding="async" alt="Lionel Martínez: 161,2 millones de facturación en el mes">
+        <img src="wins/n-resumen.webp" width="576" height="179" loading="lazy" decoding="async" alt="Resumen mensual de una marca: 50,8 millones de ingresos y 11,7 millones de profit">
+        <img src="wins/w01.webp" width="720" height="388" loading="lazy" decoding="async" alt="Jose: 810 órdenes y 45 millones de facturación en un día">
+        <img src="wins/w02.webp" width="720" height="275" loading="lazy" decoding="async" alt="Jose: 615 órdenes y 34,2 millones de facturación">
+        <img src="wins/w03.webp" width="720" height="520" loading="lazy" decoding="async" alt="Jose: 346 órdenes y 18,7 millones de facturación">
+        <img src="wins/w04.webp" width="720" height="488" loading="lazy" decoding="async" alt="Jose: 331 órdenes y 18,3 millones de facturación">
+        <img src="wins/w05.webp" width="720" height="487" loading="lazy" decoding="async" alt="Jose: 326 órdenes y 17,8 millones de facturación">
+        <img src="wins/w06.webp" width="720" height="487" loading="lazy" decoding="async" alt="Jose: 288 órdenes y 16,2 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+      <div class="muro">
+        <img src="wins/w07.webp" width="720" height="282" loading="lazy" decoding="async" alt="Jose: 260 órdenes y 14,1 millones de facturación">
+        <img src="wins/w08.webp" width="720" height="496" loading="lazy" decoding="async" alt="192 órdenes y 10,4 millones de facturación">
+        <img src="wins/n-carlos.webp" width="310" height="558" loading="lazy" decoding="async" alt="Carlos Cabral: 133 órdenes y 9,5 millones de facturación en un día">
+        <img src="wins/w09.webp" width="720" height="486" loading="lazy" decoding="async" alt="177 órdenes y 9,5 millones de facturación">
+        <img src="wins/n-santiago.webp" width="638" height="220" loading="lazy" decoding="async" alt="Santiago Blachman: 8,6 millones de facturación en el cyber">
+        <img src="wins/w15.webp" width="600" height="1021" loading="lazy" decoding="async" alt="Andrés Kette: 6,6 millones de facturación en un día">
+        <img src="wins/w10.webp" width="720" height="486" loading="lazy" decoding="async" alt="111 órdenes y 6,4 millones de facturación">
+        <img src="wins/w11.webp" width="720" height="506" loading="lazy" decoding="async" alt="110 órdenes y 6,1 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+      <div class="muro">
+        <img src="wins/w12.webp" width="720" height="488" loading="lazy" decoding="async" alt="104 órdenes y 5,9 millones de facturación">
+        <img src="wins/n-nicolas-1.webp" width="656" height="184" loading="lazy" decoding="async" alt="Nicolás Escudero: duplicó las ventas, 4 millones">
+        <img src="wins/n-nicolas-2.webp" width="597" height="451" loading="lazy" decoding="async" alt="Nicolás Escudero: 3,3 millones de facturación y casi un palo de profit">
+        <img src="wins/w13.webp" width="720" height="279" loading="lazy" decoding="async" alt="47 órdenes y 2,3 millones de facturación">
+        <img src="wins/w14.webp" width="720" height="476" loading="lazy" decoding="async" alt="34 órdenes y 1,7 millones de facturación">
+      </div>
+      <div class="cta-centro"><a href="#registro" class="btn btn-naranja">Quiero reservar mi lugar</a></div>
+    </div>
+  </div>
+</section>
+<script>
+  /* Testimonios: cada grupo se reparte en 2 columnas que terminen a la misma altura.
+     Se prueban todas las formas de repartir las capturas del grupo (son 8 como mucho) y se queda
+     la de menor diferencia de alto; dentro de cada columna se respeta el orden de mayor a menor. */
+  var muros = document.querySelectorAll(".muro");
+  for (var g = 0; g < muros.length; g++) {
+    var imgs = [].slice.call(muros[g].querySelectorAll("img")), cols = [];
+    var alto = imgs.map(function (im) { return +im.getAttribute("height") / +im.getAttribute("width") + 0.06; });
+    var mejor = 0, dif = Infinity;
+    for (var m = 0; m < (1 << imgs.length); m++) {
+      var a = 0, b = 0;
+      for (var k = 0; k < imgs.length; k++) { if (m >> k & 1) a += alto[k]; else b += alto[k]; }
+      if (Math.abs(a - b) < dif) { dif = Math.abs(a - b); mejor = m; }
+    }
+    muros[g].innerHTML = "";
+    for (var c = 0; c < 2; c++) { cols.push(document.createElement("div")); cols[c].className = "muro-col"; muros[g].appendChild(cols[c]); }
+    if (!(mejor & 1)) mejor = ~mejor; /* la primera captura (el resultado más grande) siempre arriba a la izquierda */
+    imgs.forEach(function (im, i) { cols[mejor >> i & 1 ? 0 : 1].appendChild(im); });
+  }
+</script>
 
 <script>
   /* Versión 2: el formulario va arriba del video. */
