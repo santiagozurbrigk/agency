@@ -758,6 +758,10 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       a: 'Te voy a dar <span class="n">TODO</span> lo que necesitás para llegar a <span class="n">+40% de margen</span> sin depender del <span class="n">CPA</span> ni de <span class="n">Meta</span>, en vivo y gratis.'
     };
     var VERSIONES  = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
+    /* Entre cuáles reparte /clase (y el link general). Desde el 12-nov solo a2 y a3; las demás
+       siguen andando por su link fijo (/a1, /b1…), pero ya no se reparten. Quien tenía guardada
+       una versión que no está acá, vuelve a sortearse entre estas. */
+    var REPARTO    = ["a2", "a3"];
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
     /* /a1 … /c3 (o ?v=b2): versión fijada por el link. Gana sobre todo lo guardado. */
@@ -794,8 +798,8 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       try { localStorage.setItem("optin_v_1211", VERSION); } catch (e) {}
     } else if (!LANDING && AB_TEST) {
       try { VERSION = localStorage.getItem("optin_v_1211") || ""; } catch (e) { VERSION = ""; }
-      if (VERSIONES.indexOf(VERSION) === -1) {
-        VERSION = VERSIONES[Math.floor(Math.random() * VERSIONES.length)];
+      if (REPARTO.indexOf(VERSION) === -1) {
+        VERSION = REPARTO[Math.floor(Math.random() * REPARTO.length)];
         try { localStorage.setItem("optin_v_1211", VERSION); } catch (e) {}
       }
     }
