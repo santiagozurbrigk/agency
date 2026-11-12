@@ -825,7 +825,23 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
 <!-- b2) VSL de registro (vTurb). En la versión 2 va debajo del formulario; en la 3 no se carga. -->
 <section class="vsl-sec" id="vsl-sec">
   <div class="wrap">
-    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6af0436bd779234bdaf8cdf5" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> if (ORDEN === "3") { var v3 = document.getElementById("vsl-sec"); v3.parentNode.removeChild(v3); } else { var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6af0436bd779234bdaf8cdf5/v4/player.js", s.async=!0,document.head.appendChild(s); } </script></div>
+    <div class="vsl" id="vsl"><vturb-smartplayer id="vid-6af0436bd779234bdaf8cdf5" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> if (ORDEN === "3") { var v3 = document.getElementById("vsl-sec"); v3.parentNode.removeChild(v3); } else { var s=document.createElement("script"); s.src="https://scripts.converteai.net/f742aa68-fd02-43e3-862f-368d962ade9f/players/6af0436bd779234bdaf8cdf5/v4/player.js", s.async=!0,document.head.appendChild(s); } </script>
+    <script>
+    /* El doble toque (celular) o doble click sobre el VSL activa la «pantalla completa» del player de vTurb,
+       que se rompe: el video queda negro, tapa el titular y el formulario se le monta encima.
+       Lo cortamos antes de que llegue al player. Un toque solo sigue funcionando normal (play/sonido). */
+    (function () {
+      var w = document.getElementById("vsl"); if (!w) return;
+      var corta = function (e) { e.stopPropagation(); e.preventDefault(); };
+      w.addEventListener("dblclick", corta, true);
+      var ultimo = 0;
+      w.addEventListener("touchend", function (e) {
+        var ahora = Date.now();
+        if (ahora - ultimo < 400) { corta(e); ultimo = 0; return; }
+        ultimo = ahora;
+      }, { capture: true, passive: false });
+    })();
+    </script></div>
   </div>
 </section>
 
