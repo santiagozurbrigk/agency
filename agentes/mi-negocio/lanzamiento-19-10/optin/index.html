@@ -652,24 +652,30 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         }
       }
     };
-    /* ===== TEST DE 3 VERSIONES (dónde va el formulario) =====
-       Link para los anuncios: https://TU-DOMINIO/clase → reparte en partes iguales a /1, /2 o /3
-       (lo hace api/clase.js, que conserva los utm y deja una cookie para que la misma persona
-       caiga siempre en la misma versión).
-         /1 → video y el formulario abajo · /2 → formulario arriba del video · /3 → formulario sin video
-       (también sirven solos, para revisar cada versión; los links viejos /a y /b caen en la 1 y la 2).
-       Quien entra al link general (/) sin versión también se reparte en partes iguales acá.
-       La versión viaja con la visita y con el registro (tracking.ab) y el tablero de tracking
-       las compara. Las landings por dolor (/cpa, /margen, /meta) usan siempre el orden de la 1.
-       Para apagar el reparto del link general: AB_TEST = false (todos ven la 1). */
+    /* ===== TEST DE 9 VERSIONES: 3 titulares × 3 órdenes (desde el 12-nov) =====
+       Cada versión es letra + número:
+         letra  = titular → a, b o c (ver HEADLINES abajo)
+         número = orden   → 1 titular + video + registro · 2 titular + registro + video · 3 titular + registro (sin video)
+       Link para los anuncios: https://TU-DOMINIO/clase → reparte en partes iguales entre las 9.
+       Cada versión también tiene su link fijo, para revisarla o mandarla sola:
+         /a1 /a2 /a3 · /b1 /b2 /b3 · /c1 /c2 /c3   (o ?v=b2)
+       La misma persona sigue viendo siempre la misma versión (queda guardada en el navegador).
+       Los links viejos /1, /2 y /3 (y /a, /b) caen en a1, a2 y a3.
+       La versión viaja con la visita y con el registro (tracking.ab = "a1"… "c3") y el tablero
+       de tracking las compara. Las landings por dolor (/cpa, /margen, /meta) no cambian.
+       Para apagar el reparto del link general: AB_TEST = false (todos ven la a1). */
     var AB_TEST    = true;
-    var VERSIONES  = ["1", "2", "3"];
-    var HEADLINE   = 'Cómo un ecommerce hizo <span class="marca m-nar">+$270M</span> con <span class="marca m-ver">+40% de margen</span> y <span class="marca m-vio">sin pautar un solo peso en Meta</span>, cambiando al <span class="marca m-azul">modelo de suscripción</span>';
+    var HEADLINES  = {
+      a: 'Copia mi <span class="marca m-azul">modelo de suscripciones</span> con el que pasé de <span class="marca m-nar">60M/mes</span> a <span class="marca m-ver">+270M/mes</span>',
+      b: 'Copia y Pega el <span class="marca m-azul">Modelo de Suscripciones</span> que Uso En Mi Marca Para Hacer <span class="marca m-nar">$270M/Mes</span> Con <span class="marca m-ver">40% De Margen</span>…',
+      c: 'Te voy a regalar el secreto de cómo hago <span class="marca m-nar">+270M/mes</span> en mi ecommerce y <span class="marca m-ver">+40% de margen</span> únicamente con el <span class="marca m-azul">modelo de suscripción</span>'
+    };
+    var VERSIONES  = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
-    /* /1, /2 o /3 (o ?v=2): versión fijada por el link de redirección. Gana sobre todo lo guardado. */
+    /* /a1 … /c3 (o ?v=b2): versión fijada por el link. Gana sobre todo lo guardado. */
     var AB_FIJA = (location.pathname.replace(/^\/+|\/+$/g, "") || new URLSearchParams(location.search).get("v") || "").toLowerCase();
-    AB_FIJA = { a: "1", b: "2" }[AB_FIJA] || AB_FIJA;
+    AB_FIJA = { "1": "a1", "2": "a2", "3": "a3", a: "a1", b: "a2" }[AB_FIJA] || AB_FIJA;
     if (VERSIONES.indexOf(AB_FIJA) === -1) AB_FIJA = "";
     var LANDING = (function () {
       if (AB_FIJA) return "";
@@ -693,23 +699,24 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     aplicarLanding();
     document.addEventListener("DOMContentLoaded", aplicarLanding);
 
-    /* Versión que ve: la landing del dolor o, en el link general, 1, 2 o 3 (clave nueva del test del 16-oct). */
-    var VERSION = LANDING || "1";
+    /* Versión que ve: la landing del dolor o, en el link general, a1 … c3 (clave nueva del test del 12-nov,
+       así los que ya habían entrado con el test viejo también se reparten entre las 9). */
+    var VERSION = LANDING || "a1";
     if (AB_FIJA) {
       VERSION = AB_FIJA;
-      try { localStorage.setItem("optin_v_1610", VERSION); } catch (e) {}
+      try { localStorage.setItem("optin_v_1211", VERSION); } catch (e) {}
     } else if (!LANDING && AB_TEST) {
-      try { VERSION = localStorage.getItem("optin_v_1610") || ""; } catch (e) { VERSION = ""; }
+      try { VERSION = localStorage.getItem("optin_v_1211") || ""; } catch (e) { VERSION = ""; }
       if (VERSIONES.indexOf(VERSION) === -1) {
         VERSION = VERSIONES[Math.floor(Math.random() * VERSIONES.length)];
-        try { localStorage.setItem("optin_v_1610", VERSION); } catch (e) {}
+        try { localStorage.setItem("optin_v_1211", VERSION); } catch (e) {}
       }
     }
-    /* Orden de la página: 1 = video y form abajo · 2 = form arriba del video · 3 = form sin video */
-    var ORDEN = LANDING ? "1" : VERSION;
+    /* Orden de la página (el número de la versión): 1 = video y form abajo · 2 = form arriba del video · 3 = form sin video */
+    var ORDEN = LANDING ? "1" : VERSION.charAt(1);
     document.documentElement.setAttribute("data-orden", ORDEN);
     if (!LANDING) {
-      document.getElementById("headline").innerHTML = HEADLINE;
+      document.getElementById("headline").innerHTML = HEADLINES[VERSION.charAt(0)];
       /* El cierre repite el headline de su versión (sin el resaltado) */
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("final-titulo").textContent = document.getElementById("headline").textContent;
@@ -1156,7 +1163,7 @@ document.addEventListener("DOMContentLoaded", function () {
    - El píxel de Meta (ID 1105986771965346) está en el <head>.
    - HYROS_SCRIPT_URL: vacío = no carga.
    - INVERSION_LEAD: las respuestas de inversión diaria en Meta que cuentan como Lead para Meta.
-   - El test A/B de headline (AB_TEST, HEADLINE_A, HEADLINE_B) está arriba, junto al titular.
+   - El test de 9 versiones (AB_TEST, HEADLINES, VERSIONES: 3 titulares × 3 órdenes) está arriba, junto al titular.
    - Las landings por dolor (/cpa, /margen, /meta) se configuran en LANDINGS, justo abajo del titular.
    ========================================== */
 var EVENT_DATE       = "2026-11-17T18:00:00-03:00";
