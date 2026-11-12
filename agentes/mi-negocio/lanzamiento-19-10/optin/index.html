@@ -550,6 +550,9 @@ fbq('track', 'PageView');
   .lock { background: radial-gradient(100% 70% at 50% 0%, rgba(var(--naranja-rgb), .22), transparent 70%), #fff; box-shadow: var(--sombra); }
   .lock-date, .lock-time { color: var(--tinta); }
   .sticky { background: rgba(250,247,242,.94); }
+  /* Bajada del titular: texto gris parejo, sin resaltados ni negritas (en todas las versiones) */
+  .hero .sub { color: var(--gris-2); font-weight: 400; }
+  .hero .sub b, .hero .sub .n { color: inherit; font-weight: inherit; background: none; -webkit-text-fill-color: currentColor; }
 </style>
 <!-- vTurb: precarga del VSL -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
