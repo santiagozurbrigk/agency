@@ -415,5 +415,22 @@ var TESTIMONIOS = [
   }
 })();
 </script>
+<script>
+/* Pantalla completa del VSL en el celular: vTurb la simula con una capa fija, que quedaba debajo de las
+   demás secciones (todas tienen z-index propio). Cuando el player entra en ese modo su caja queda en 0 de
+   alto: ahí subimos su sección por encima de todo, y la bajamos al salir. */
+(function () {
+  if (!window.ResizeObserver) return;
+  var ps = document.querySelectorAll("vturb-smartplayer");
+  for (var i = 0; i < ps.length; i++) (function (p) {
+    var top = p; while (top.parentElement && top.parentElement !== document.body) top = top.parentElement;
+    new ResizeObserver(function () {
+      var full = p.getBoundingClientRect().height < 4 && !document.fullscreenElement;
+      top.style.zIndex = full ? "2147483000" : "";
+      if (getComputedStyle(top).position === "static") top.style.position = full ? "relative" : "";
+    }).observe(p);
+  })(ps[i]);
+})();
+</script>
 </body>
 </html>
