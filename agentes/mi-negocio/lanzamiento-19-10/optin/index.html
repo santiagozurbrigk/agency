@@ -409,6 +409,8 @@ fbq('track', 'PageView');
   .marca.m-vio { background: linear-gradient(135deg, #A78BFA, #7C3AED 55%, #5B21B6); box-shadow: 0 6px 22px rgba(139,92,246,.45), inset 0 1px 0 rgba(255,255,255,.3); }
   .marca.m-azul { background: linear-gradient(135deg, #60A5FA, #2563EB 55%, #1E40AF); box-shadow: 0 6px 22px rgba(59,130,246,.42), inset 0 1px 0 rgba(255,255,255,.3); }
   .hero h1 .marca { padding: 0 .18em; border-radius: .2em; }
+  /* Segunda línea del titular (versiones B): centrada abajo y un poco más chica */
+  .hero h1 .h-linea2 { display: block; font-size: .74em; margin-top: .3em; }
   .hero .sub .n { background: linear-gradient(90deg, #FFB067, var(--naranja)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   /* Fondo del hero: manchas de color que respiran */
   .hero::after { content: ""; position: absolute; inset: -10% -20% auto; height: 760px; z-index: -1; pointer-events: none;
@@ -720,7 +722,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     var AB_TEST    = true;
     var HEADLINES  = {
       a: 'Copia mi <span class="marca m-azul">modelo de suscripciones</span> con el que pasé de <span class="marca m-nar">60M/mes</span> a <span class="marca m-ver">+270M/mes</span>',
-      b: 'Copia y Pega el <span class="marca m-azul">Modelo de Suscripciones</span> que Uso En Mi Marca Para Hacer <span class="marca m-nar">$270M/Mes</span> Con <span class="marca m-ver">40% De Margen</span>…',
+      b: 'Copia y Pega el <span class="marca m-azul">Modelo de Suscripciones</span> que Uso En Mi Marca Para Hacer <span class="marca m-nar">$270M/Mes</span> <span class="h-linea2">Con <span class="marca m-ver">40% De Margen</span>…</span>',
       c: 'Te voy a regalar el secreto de cómo hago <span class="marca m-nar">+270M/mes</span> en mi ecommerce y <span class="marca m-ver">+40% de margen</span> únicamente con el <span class="marca m-azul">modelo de suscripción</span>'
     };
     /* Bajada debajo del titular, por titular. La letra que no está acá muestra la bajada general del HTML. */
