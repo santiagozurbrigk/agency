@@ -669,6 +669,10 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       b: 'Copia y Pega el <span class="marca m-azul">Modelo de Suscripciones</span> que Uso En Mi Marca Para Hacer <span class="marca m-nar">$270M/Mes</span> Con <span class="marca m-ver">40% De Margen</span>…',
       c: 'Te voy a regalar el secreto de cómo hago <span class="marca m-nar">+270M/mes</span> en mi ecommerce y <span class="marca m-ver">+40% de margen</span> únicamente con el <span class="marca m-azul">modelo de suscripción</span>'
     };
+    /* Bajada debajo del titular, por titular. La letra que no está acá muestra la bajada general del HTML. */
+    var SUBS       = {
+      a: '¿Vendés todos los días pero cada vez te queda menos margen? Te muestro paso a paso cómo llegar a <span class="n">+40% de margen</span> sin depender del CPA ni de Meta, en vivo y gratis.'
+    };
     var VERSIONES  = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
@@ -716,6 +720,7 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     document.documentElement.setAttribute("data-orden", ORDEN);
     if (!LANDING) {
       document.getElementById("headline").innerHTML = HEADLINES[VERSION.charAt(0)];
+      if (SUBS[VERSION.charAt(0)]) document.getElementById("sub").innerHTML = SUBS[VERSION.charAt(0)];
       /* El cierre repite el headline de su versión (sin el resaltado) */
       document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("final-titulo").textContent = document.getElementById("headline").textContent;
