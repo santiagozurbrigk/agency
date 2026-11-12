@@ -737,11 +737,11 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     };
     /* ===== TEST DE 9 VERSIONES: 3 titulares × 3 órdenes (desde el 12-nov) =====
        Cada versión es letra + número:
-         letra  = titular → a, b o c (ver HEADLINES abajo)
+         letra  = titular → a, b, c o d (ver HEADLINES abajo; d solo existe en d1 y d3)
          número = orden   → 1 titular + video + registro · 2 titular + registro + video · 3 titular + registro (sin video)
        Link para los anuncios: https://TU-DOMINIO/clase → reparte en partes iguales entre las 9.
        Cada versión también tiene su link fijo, para revisarla o mandarla sola:
-         /a1 /a2 /a3 · /b1 /b2 /b3 · /c1 /c2 /c3   (o ?v=b2)
+         /a1 /a2 /a3 · /b1 /b2 /b3 · /c1 /c2 /c3 · /d1 /d3   (o ?v=b2)
        La misma persona sigue viendo siempre la misma versión (queda guardada en el navegador).
        Los links viejos /1, /2 y /3 (y /a, /b) caen en a1, a2 y a3.
        La versión viaja con la visita y con el registro (tracking.ab = "a1"… "c3") y el tablero
@@ -751,17 +751,20 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
     var HEADLINES  = {
       a: 'Copia mi <span class="marca m-azul">modelo de suscripciones</span> con el que pasé de <span class="marca m-nar">60M/mes</span> a <span class="marca m-ver">+270M/mes</span>',
       b: 'Copia y Pega el <span class="marca m-azul">Modelo de Suscripciones</span> que Uso En Mi Marca Para Hacer <span class="marca m-nar">$270M/Mes</span> <span class="h-linea2">Con <span class="marca m-ver">40% De Margen</span>…</span>',
-      c: 'Te voy a regalar el secreto de cómo hago <span class="marca m-nar">+270M/mes</span> en mi ecommerce y <span class="marca m-ver">+40% de margen</span> únicamente con el <span class="marca m-azul">modelo de suscripción</span>'
+      c: 'Te voy a regalar el secreto de cómo hago <span class="marca m-nar">+270M/mes</span> en mi ecommerce y <span class="marca m-ver">+40% de margen</span> únicamente con el <span class="marca m-azul">modelo de suscripción</span>',
+      d: 'Te regalo mis sistemas con los que facturo <span class="marca m-nar">$275M/Mes</span> <span class="marca m-ver">solo de recompras</span> y <span class="marca m-azul">sin depender de Meta</span>'
     };
     /* Bajada debajo del titular, por titular. La letra que no está acá muestra la bajada general del HTML. */
     var SUBS       = {
-      a: 'Te voy a dar <span class="n">TODO</span> lo que necesitás para llegar a <span class="n">+40% de margen</span> sin depender del <span class="n">CPA</span> ni de <span class="n">Meta</span>, en vivo y gratis.'
+      a: 'Te voy a dar <span class="n">TODO</span> lo que necesitás para llegar a <span class="n">+40% de margen</span> sin depender del <span class="n">CPA</span> ni de <span class="n">Meta</span>, en vivo y gratis.',
+      d: '¿Tu ecommerce de consumibles depende de conseguir clientes nuevos todos los meses para facturar? Te muestro mi plan paso a paso para facturar +$100M/mes solo de recompras, en vivo y gratis.'
     };
-    var VERSIONES  = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3"];
-    /* Entre cuáles reparte /clase (y el link general). Desde el 12-nov solo a2 y a3; las demás
-       siguen andando por su link fijo (/a1, /b1…), pero ya no se reparten. Quien tenía guardada
+    var VERSIONES  = ["a1", "a2", "a3", "b1", "b2", "b3", "c1", "c2", "c3", "d1", "d3"];
+    /* Entre cuáles reparte /clase (y el link general). Desde el 12-nov (noche) solo d1 y d3
+       (titular «Te regalo mis sistemas…» con la bajada por dolor); antes eran a2 y a3. Las demás
+       siguen andando por su link fijo (/a2, /b1…), pero ya no se reparten. Quien tenía guardada
        una versión que no está acá, vuelve a sortearse entre estas. */
-    var REPARTO    = ["a2", "a3"];
+    var REPARTO    = ["d1", "d3"];
 
     /* Qué landing ve: la del link (?l=cpa o /cpa) y, si entra sin link, la guardada. "" = la general. */
     /* /a1 … /c3 (o ?v=b2): versión fijada por el link. Gana sobre todo lo guardado. */
