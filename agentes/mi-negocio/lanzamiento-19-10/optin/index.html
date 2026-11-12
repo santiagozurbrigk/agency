@@ -172,6 +172,9 @@ fbq('track', 'PageView');
     background: #000; border: 1px solid var(--linea);
   }
   .vsl iframe, .vsl video { width: 100%; height: 100%; border: 0; display: block; }
+  /* Pantalla completa simulada del player en el celular: la sección del video va por encima de todo */
+  html.vsl-full .vsl-sec { z-index: 2147483000; }
+  html.vsl-full .sticky { display: none; }
   .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
   .chip { background: var(--negro-2); border: 1px solid var(--linea); border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--gris-2); }
   .chip { display: inline-flex; align-items: center; gap: 7px; }
@@ -840,6 +843,19 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
         if (ahora - ultimo < 400) { corta(e); ultimo = 0; return; }
         ultimo = ahora;
       }, { capture: true, passive: false });
+
+      /* En el celular, el botón de pantalla completa de vTurb no usa la pantalla completa del navegador:
+         la simula con una capa fija que ocupa toda la pantalla. Como cada sección de la página tiene z-index 1,
+         esa capa quedaba debajo de la barra de la fecha y del formulario (se veía negro con el form encima).
+         Cuando el player entra en ese modo, su caja en la página queda en 0 de alto: ahí subimos la sección
+         del video por encima de todo, y la bajamos cuando vuelve. */
+      var p = w.querySelector("vturb-smartplayer");
+      if (!p || !window.ResizeObserver) return;
+      var html = document.documentElement;
+      new ResizeObserver(function () {
+        var alto = p.getBoundingClientRect().height;
+        html.classList.toggle("vsl-full", alto < 4 && !document.fullscreenElement);
+      }).observe(p);
     })();
     </script></div>
   </div>
