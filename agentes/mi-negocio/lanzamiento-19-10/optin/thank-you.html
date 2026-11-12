@@ -252,6 +252,27 @@ try {
   .paso .pie b { color: #17181C; }
   .paso.p2 { max-width: 760px; }
   @media (min-width: 768px) { .paso .biblio-ty { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } }
+
+  /* ===== MODO CLARO (12-nov) =====
+     La paleta clara del 30/10 sobre el diseño actual. Para volver al modo oscuro, borrá este bloque entero. */
+  :root {
+    --negro: #FAF7F2; --negro-2: #FFFFFF; --negro-3: #F3EEE6;
+    --linea: rgba(23,24,28,.10); --gris: #6E6A63; --gris-2: #46433D;
+  }
+  body { color: var(--tinta); }
+  .alerta .nb p strong, .horas .h b, .fecha-l b, .pedido b, footer .logo { color: var(--tinta); }
+  .horas .h:first-of-type b { color: var(--naranja); }
+  .bg-chart .grid line { stroke: rgba(23,24,28,.06); }
+  .top { background: rgba(250,247,242,.9); }
+  .hero::before { background: radial-gradient(closest-side, rgba(var(--naranja-rgb), .13), transparent 70%); }
+  .notif { background: rgba(255,255,255,.97); border-color: var(--linea); color: var(--tinta); box-shadow: 0 6px 18px rgba(60,40,20,.08); }
+  .notif .nb p { color: var(--tinta); }
+  .video { box-shadow: 0 24px 60px rgba(60,40,20,.16); }
+  .horas { box-shadow: 0 6px 18px rgba(60,40,20,.08); }
+  .bandera { box-shadow: 0 0 0 1px rgba(0,0,0,.12); }
+  .paso { box-shadow: 0 18px 44px rgba(60,40,20,.10); }
+  .btn-cal { background: var(--tinta); color: #fff; }
+  .fijo { background: rgba(250,247,242,.94); }
 </style>
 <!-- vTurb: precarga del VSL -->
 <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
