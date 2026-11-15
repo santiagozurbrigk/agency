@@ -1,0 +1,966 @@
+<title>Proceso de Ventas Post Webinar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+/* Layout: lienzo infinito estilo Miro. Cada fase es un frame sobre una grilla de puntos; zoom, paneo, minimapa y navegación por fases flotan encima. */
+:root{
+  color-scheme:dark;
+  --bg:#0e1015; --dot:#262a33; --ui:#15181e; --ui-line:#2a2f39; --panel:#14171d; --node:#1a1e25; --node-line:#2c323d;
+  --fg:#e7eaf0; --muted:#8f97a7; --wire:#7f8797; --accent:#5b7cfa; --accent-tx:#a9b8ff;
+  --dec:#2e1d10; --dec-line:#b0601f; --dec-fg:#f2a35c;
+  --amber:#262010; --amber-line:#cf9f2a; --amber-fg:#e8c66a; --amber-tx:#eadfbe; --amber-edge:#3d331a;
+  --red:#2a1214; --red-line:#c43c33; --red-fg:#f07a70; --red-tx:#f2d2cf; --red-edge:#47201f;
+  --ok:#4fc77a; --bubble:#173a26; --bubble-tx:#e1f4e8; --var-bg:rgba(255,255,255,.12); --ok-bg:#112319; --ok-line:#2a6b42; --field:#0f1216; --scrim:rgba(5,6,9,.72);
+  --sdr:#ff7a45; --manu:#e8b44a; --closer:#a98bf5;
+  --p1:#5b7cfa; --p2:#f08a3c; --p3:#d9a925; --p4:#e0577f; --p5:#9a6cf0; --p6:#3fb56b; --p7:#22a8a0; --p8:#2fb3d9; --p9:#d65fd9;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --w:178px; --mid:30px;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  color-scheme:light;
+  --bg:#eef0f4; --dot:#c9ced8; --ui:#ffffff; --ui-line:#d8dce4; --panel:#ffffff; --node:#f7f8fa; --node-line:#d6dae2;
+  --fg:#151820; --muted:#5d6576; --wire:#7a8291; --accent:#3f5fe6; --accent-tx:#3049c4;
+  --dec:#fff1e4; --dec-line:#d9822b; --dec-fg:#b0560c;
+  --amber:#fff7dc; --amber-line:#c9971c; --amber-fg:#8a6508; --amber-tx:#4a3d14; --amber-edge:#efdfa6;
+  --red:#fdeceb; --red-line:#d0453b; --red-fg:#b4322a; --red-tx:#5a1e1a; --red-edge:#f3c9c5;
+  --ok:#1e8a46; --bubble:#dcf5e3; --bubble-tx:#12301e; --var-bg:rgba(0,0,0,.07); --ok-bg:#e3f4e9; --ok-line:#9fd3b2; --field:#eef0f4; --scrim:rgba(20,24,32,.45);
+  --sdr:#e0561d; --manu:#b07a0c; --closer:#7a52d9}}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#eef0f4; --dot:#c9ced8; --ui:#ffffff; --ui-line:#d8dce4; --panel:#ffffff; --node:#f7f8fa; --node-line:#d6dae2;
+  --fg:#151820; --muted:#5d6576; --wire:#7a8291; --accent:#3f5fe6; --accent-tx:#3049c4;
+  --dec:#fff1e4; --dec-line:#d9822b; --dec-fg:#b0560c;
+  --amber:#fff7dc; --amber-line:#c9971c; --amber-fg:#8a6508; --amber-tx:#4a3d14; --amber-edge:#efdfa6;
+  --red:#fdeceb; --red-line:#d0453b; --red-fg:#b4322a; --red-tx:#5a1e1a; --red-edge:#f3c9c5;
+  --ok:#1e8a46; --bubble:#dcf5e3; --bubble-tx:#12301e; --var-bg:rgba(0,0,0,.07); --ok-bg:#e3f4e9; --ok-line:#9fd3b2; --field:#eef0f4; --scrim:rgba(20,24,32,.45);
+  --sdr:#e0561d; --manu:#b07a0c; --closer:#7a52d9}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:13px;line-height:1.5;overflow:hidden}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;line-height:1.15}
+p{margin:0}
+.mono{font-family:var(--f-mono)}
+button{font-family:inherit}
+
+/* Lienzo */
+#vp{position:fixed;inset:0;overflow:hidden;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
+  background-color:var(--bg);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.3px)}
+#vp.dragging{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+#wires{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.wire{fill:none;stroke:var(--wire);stroke-width:2}
+.wire.dash{stroke-dasharray:7 6}
+.wl-bg{fill:var(--bg);stroke:var(--ui-line)}
+.wl{font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.08em;fill:var(--ok)}
+
+/* Frames */
+.frame{position:absolute;width:max-content;background:var(--panel);border:1px solid var(--node-line);border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+.frame::before{content:"";display:block;height:4px;background:var(--pc)}
+.fh{display:flex;align-items:center;gap:14px;padding:16px 22px;border-bottom:1px solid var(--node-line)}
+.fk{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--pc);border:1px solid var(--pc);border-radius:5px;padding:3px 9px;font-weight:700}
+.fh h2{font-size:21px;font-weight:750;font-stretch:92%}
+.fw{margin-left:auto;padding-left:24px;font-size:12px;color:var(--muted)}
+.board{padding:24px 22px 26px;display:flex;flex-direction:column;gap:18px}
+.frame{min-height:300px}
+.cover{position:absolute;inset:4px 0 0;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:16px 24px;opacity:0;pointer-events:none;transition:opacity .25s}
+.cover .ck{font-family:var(--f-mono);font-size:34px;font-weight:700;letter-spacing:.12em;color:var(--pc)}
+.cover h2{font-size:64px;font-weight:800;font-stretch:85%;max-width:12ch;letter-spacing:-.01em}
+#world.far .cover{opacity:1}
+#world.far .frame{cursor:zoom-in}
+
+/* Nodos */
+.row{display:flex;align-items:flex-start}
+.cell{width:var(--w);flex:none;display:flex;flex-direction:column}
+.node{background:var(--node);border:1px solid var(--node-line);border-radius:8px;padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px}
+.node.key{border-color:var(--fg)}
+.nh{display:flex;gap:6px;align-items:flex-start;min-height:20px}
+.nh h3{font-size:13px;font-weight:700;font-stretch:100%;line-height:1.3}
+.nh .n{font-family:var(--f-mono);color:var(--muted);font-weight:500}
+.node p{color:var(--muted);font-size:12px}
+.node.dec{background:var(--dec);border-color:var(--dec-line)}
+.node.dec h3{color:var(--dec-fg)}
+.node.dec .nh::before{content:"";width:9px;height:9px;background:var(--dec-fg);transform:rotate(45deg);margin:4px 3px 0 1px;flex:none}
+.start{margin-top:calc(var(--mid) - 16px);height:32px;border-radius:6px;background:var(--fg);color:var(--bg);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;font-weight:700;letter-spacing:.1em}
+.chips{display:flex;flex-direction:column;gap:4px}
+.chip{font-family:var(--f-mono);font-size:10px;letter-spacing:.04em;padding:3px 7px;border-radius:4px;border:1px solid var(--accent);color:var(--accent-tx);text-align:center}
+.tag{font-family:var(--f-mono);font-size:9px;font-weight:700;letter-spacing:.06em;padding:1px 6px;border-radius:999px;border:1px solid currentColor;line-height:1.5;flex:none}
+.t-sdr{color:var(--sdr)} .t-manu{color:var(--manu)} .t-closer{color:var(--closer)}
+.ex{align-self:flex-start;margin-top:2px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;color:var(--fg);background:transparent;border:1px solid var(--node-line);border-radius:4px;padding:3px 8px;cursor:pointer}
+.ex:hover,.ex:focus-visible{border-color:var(--accent);color:var(--accent-tx);outline:none}
+.arr{flex:none;width:44px;height:calc(var(--mid) * 2);position:relative}
+.arr::before{content:"";position:absolute;left:4px;right:6px;top:var(--mid);border-top:1.5px solid var(--wire)}
+.arr::after{content:"";position:absolute;right:1px;top:calc(var(--mid) - 4.25px);border-left:7px solid var(--wire);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.arr b{position:absolute;left:10px;top:calc(var(--mid) - 17px);font-family:var(--f-mono);font-size:10px;font-weight:700;color:var(--ok);letter-spacing:.06em}
+.stem{height:26px;width:0;margin-left:calc(var(--w) / 2);border-left:1.5px dashed var(--wire);position:relative}
+.stem b{position:absolute;left:8px;top:5px;font-family:var(--f-mono);font-size:10px;font-weight:700;color:var(--red-fg);letter-spacing:.06em}
+.stem.no{border-left-color:var(--red-line)}
+.note{border-radius:6px;padding:10px 11px;font-size:12px;display:flex;flex-direction:column;gap:6px;background:var(--amber);border:1px solid var(--amber-edge);border-left:3px solid var(--amber-line);color:var(--amber-tx)}
+.note .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-fg);font-weight:700}
+.note.red{background:var(--red);border-color:var(--red-edge);border-left-color:var(--red-line);color:var(--red-tx)}
+.note.red .k,.note .loop{color:var(--red-fg)}
+.note .loop{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.08em;font-weight:700}
+.note ul{margin:0;padding-left:15px;display:flex;flex-direction:column;gap:2px}
+.note .ex{color:inherit}
+.end{margin-top:calc(var(--mid) - 24px);border:1.5px dashed var(--ok);border-radius:8px;padding:9px 12px;display:flex;flex-direction:column;gap:3px}
+.end.next{border-color:var(--p8)} .end.next .k{color:var(--p8)}
+.end .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--ok);font-weight:700}
+.end p{font-size:12px}
+.fields{display:flex;flex-wrap:wrap;gap:4px}
+.fields span{font-family:var(--f-mono);font-size:10px;padding:2px 6px;border-radius:3px;background:var(--field);border:1px solid var(--node-line);color:var(--fg)}
+.note .fields span{background:transparent;border-color:currentColor;color:inherit}
+table{border-collapse:collapse;font-size:13px;width:720px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--node-line);vertical-align:top}
+th{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:0}
+.st{font-family:var(--f-mono);font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:4px;white-space:nowrap;border:1px solid}
+.st-n{color:var(--muted);border-color:var(--node-line)}
+.st-no{color:var(--red-fg);border-color:var(--red-line);background:var(--red)}
+.st-warn{color:var(--amber-fg);border-color:var(--amber-line);background:var(--amber)}
+.st-ok{color:var(--ok);border-color:var(--ok-line);background:var(--ok-bg)}
+
+/* Interfaz flotante */
+.ui{position:fixed;z-index:5;background:var(--ui);border:1px solid var(--ui-line);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.topbar{position:fixed;z-index:5;left:calc(14px + env(safe-area-inset-left,0px));right:calc(14px + env(safe-area-inset-right,0px));top:calc(14px + env(safe-area-inset-top,0px));display:flex;gap:10px;align-items:stretch;pointer-events:none}
+.topbar > *{pointer-events:auto;position:static}
+.brand{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;flex:none}
+.logo{width:30px;height:30px;border-radius:7px;background:var(--p2);color:#fff;display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:15px}
+.brand b{display:block;font-family:var(--f-display);font-size:14px;font-weight:750;line-height:1.2}
+.brand small{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted)}
+.nav{display:flex;gap:2px;align-items:center;padding:5px;overflow-x:auto;min-width:0;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button,.pill{display:flex;align-items:center;gap:7px;white-space:nowrap;background:transparent;border:0;color:var(--fg);font-size:12.5px;font-weight:600;padding:7px 10px;border-radius:7px;cursor:pointer}
+.nav button:hover,.nav button:focus-visible{background:var(--node);outline:none}
+.nav button.on{background:var(--node);color:var(--p2)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--c);flex:none}
+.pill{flex:none;padding:0 14px;border:1px solid var(--ui-line);background:var(--ui);border-radius:10px}
+.pill.trk{border-color:var(--p6)}
+.pill:hover,.pill:focus-visible{border-color:var(--accent);outline:none}
+.half{width:14px;height:14px;border-radius:50%;border:2px solid var(--fg);background:linear-gradient(90deg,var(--fg) 50%,transparent 50%)}
+.legend{right:calc(14px + env(safe-area-inset-right,0px));top:calc(74px + env(safe-area-inset-top,0px));display:flex;flex-wrap:wrap;gap:6px 14px;padding:9px 14px;font-size:11.5px;color:var(--muted);max-width:calc(100% - 28px)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sq{width:9px;height:9px;border-radius:2px;background:var(--c)}
+.dm{width:8px;height:8px;background:var(--dec-fg);transform:rotate(45deg)}
+.mini{left:calc(14px + env(safe-area-inset-left,0px));bottom:calc(58px + env(safe-area-inset-bottom,0px));width:240px;padding:9px 10px 10px}
+.mini-h{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);margin-bottom:7px}
+#mm{position:relative;height:96px;background:var(--bg);border-radius:6px;overflow:hidden;cursor:pointer}
+#mm i{position:absolute;border-radius:2px;background:var(--c);opacity:.85}
+#mm-v{position:absolute;border:1.5px solid var(--fg);border-radius:2px;pointer-events:none}
+.mini{bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+/* Stepper de fases */
+.stepper{left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:4px;padding:5px;border-radius:12px;max-width:calc(100% - 28px)}
+.sp-b{width:38px;height:38px;border-radius:8px;border:0;background:transparent;color:var(--fg);font-size:18px;cursor:pointer;display:grid;place-items:center;flex:none}
+.sp-b:hover,.sp-b:focus-visible{background:var(--node);outline:none}
+.sp-b:disabled{opacity:.3;cursor:default;background:transparent}
+.sp-m{display:flex;flex-direction:column;align-items:center;min-width:0;padding:0 10px;width:300px}
+.sp-m b{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:14px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.sp-m small{font-family:var(--f-mono);font-size:9.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.sp-track{display:flex;gap:3px;margin-top:5px}
+.sp-track i{width:16px;height:3px;border-radius:2px;background:var(--node-line);transition:background .2s}
+.sp-track i.on{background:var(--c)}
+/* Ayuda */
+.help{right:calc(66px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));width:300px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.help h4{margin:0;font-family:var(--f-display);font-size:15px;font-weight:750}
+.help dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 12px;font-size:12.5px;align-items:center}
+.help dt{font-family:var(--f-mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border:1px solid var(--ui-line);border-radius:4px;background:var(--node);justify-self:start}
+.help dd{margin:0;color:var(--muted)}
+.help .btn{align-self:flex-end}
+.zoom{position:fixed;z-index:5;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;align-items:center}
+.zb{width:40px;height:40px;display:grid;place-items:center;font-size:18px;color:var(--fg);cursor:pointer;position:static}
+.zb:hover,.zb:focus-visible{border-color:var(--accent);outline:none}
+#zl{font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+@media (max-width:1180px){.mini{display:none}}
+@media (max-width:760px){
+  .brand small,.legend,.mini,.zoom{display:none}
+  .topbar{flex-wrap:wrap;gap:8px}
+  .nav{order:5;flex:1 0 100%}
+  .pill{min-height:42px;flex:1;justify-content:center}
+  .brand{padding:6px 8px}.brand b{display:none}
+  .stepper{left:calc(14px + env(safe-area-inset-left,0px));right:calc(14px + env(safe-area-inset-right,0px));transform:none;justify-content:space-between}
+  .sp-m{width:auto;flex:1}
+  .help{right:14px;left:14px;width:auto;bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+
+/* Guion (modal) */
+[hidden]{display:none!important}
+.side{position:fixed;z-index:20;right:calc(14px + env(safe-area-inset-right,0px));top:calc(78px + env(safe-area-inset-top,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  width:min(420px,calc(100% - 28px));background:var(--panel);border:1px solid var(--ui-line);border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.35);
+  display:flex;flex-direction:column;overflow:hidden;user-select:text;-webkit-user-select:text}
+.side-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:18px 20px 14px;border-bottom:1px solid var(--node-line)}
+.side-k{display:block;margin-bottom:6px;font-family:var(--f-mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--pc,var(--accent))}
+.side-h h3{font-size:21px;font-weight:750;font-stretch:92%}
+.side-b{flex:1;overflow-y:auto;padding:16px 20px 22px;display:flex;flex-direction:column;gap:12px}
+.lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.side-b > .tag{align-self:flex-start;font-size:10px;padding:2px 9px}
+.what{font-size:15px;line-height:1.6}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}
+.bubble{background:var(--bubble);color:var(--bubble-tx);border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.6;white-space:pre-line}
+.var{font-weight:700;background:var(--var-bg);padding:0 3px;border-radius:3px}
+.rule{border:1.5px dashed var(--amber-line);background:var(--amber);color:var(--amber-tx);border-radius:10px;padding:14px 16px;font-size:14.5px;line-height:1.6}
+.side-f{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-top:1px solid var(--node-line)}
+.side-f span{font-family:var(--f-mono);font-size:11px;color:var(--muted);text-align:center}
+.btn{font:700 12.5px var(--f-body);color:var(--fg);background:var(--node);border:1px solid var(--node-line);border-radius:7px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent)}
+.btn:disabled{opacity:.4;cursor:default;border-color:var(--node-line)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn.sm{font-size:11.5px;padding:5px 10px}
+.side-prog{height:3px;background:var(--node-line)}
+.side-prog i{display:block;height:100%;background:var(--pc,var(--accent));transition:width .3s}
+.side-h .tags{display:flex;gap:6px;margin-top:10px}
+.side-h .tags .tag{font-size:10px;padding:2px 9px}
+.tag.t-dec{color:var(--dec-fg)}
+.tag.t-ex{color:var(--accent-tx)}
+.xtra{display:flex;flex-direction:column;gap:8px}
+.xtra .chips{flex-direction:row;flex-wrap:wrap}
+.pnote{border-radius:10px;padding:13px 15px;font-size:14px;line-height:1.55;background:var(--amber);border:1px solid var(--amber-edge);border-left:3px solid var(--amber-line);color:var(--amber-tx);display:flex;flex-direction:column;gap:6px}
+.pnote .k{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-fg);font-weight:700}
+.pnote.red{background:var(--red);border-color:var(--red-edge);border-left-color:var(--red-line);color:var(--red-tx)}
+.pnote.red .k,.pnote .loop{color:var(--red-fg)}
+.pnote .loop{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;font-weight:700}
+.pnote ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.pnote .fields span{font-size:11px;background:transparent;border-color:currentColor;color:inherit}
+.yes{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+.yes b{font-family:var(--f-mono);font-size:10px;color:var(--ok);border:1px solid var(--ok-line);background:var(--ok-bg);padding:1px 7px;border-radius:4px}
+.side-b > *{flex:none}
+/* Tarjetas clickeables */
+[data-step]{cursor:pointer;transition:transform .15s,box-shadow .15s,border-color .15s}
+.node[data-step]:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.22);border-color:var(--accent)}
+.note[data-step]:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.22)}
+[data-step]:hover .ex{border-color:var(--accent);color:var(--accent-tx)}
+.node[data-step]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.node.active,.note.active{outline:2px solid var(--accent);outline-offset:3px}
+#world.far [data-step]{transform:none!important;pointer-events:none}
+#world.far .frame{transition:box-shadow .2s}
+#world.far .frame:hover{box-shadow:0 0 0 14px var(--pc)}
+.cover .cm{font-family:var(--f-mono);font-size:26px;letter-spacing:.06em;color:var(--muted)}
+.cover .cr{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cover .cr .tag{font-size:22px;padding:4px 16px;border-width:2px}
+@media (prefers-reduced-motion:reduce){[data-step],.side-prog i{transition:none!important}}
+@media (max-width:760px){.side{left:0;right:0;top:auto;bottom:0;width:auto;max-height:68vh;border-radius:16px 16px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}}
+</style>
+
+
+<div id="vp">
+<div id="world">
+<svg id="wires" width="1" height="1" aria-hidden="true">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--wire)"/></marker></defs>
+</svg>
+
+<!-- 01 -->
+<section class="frame" id="f1" style="--pc:var(--p1)">
+  <div class="fh"><span class="fk">FASE 01</span><h2>Primer contacto</h2><span class="fw">SDR · apenas entra el formulario</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell"><div class="start">WEBINAR</div></div>
+      <i class="arr"></i>
+      <div class="cell"><div class="node"><div class="nh"><h3><span class="n">1-</span> CTA</h3></div><p>Al cierre del webinar se invita a aplicar completando el formulario.</p></div></div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><h3><span class="n">2-</span> Formulario</h3></div><p>Responde las preguntas y al terminar va a un walink al WhatsApp del SDR.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Reparto 50/50</span><p>El walink es el WSP de un SDR. Como somos 2 (Mati y Santi), se reparte mitad y mitad.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">3-</span> Cold call</h3></div><p>Primero lo agendamos. Después lo llamamos 3 veces.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Cómo se agenda</span><p>Nombre / rango de facturación.<br>El tracker se actualiza solo.<br><span class="mono">Lucas / 1000 a 3000</span></p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Atendió?</h3></div><p>Después de las 3 llamadas.</p></div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red">
+          <span class="k">No atendió</span>
+          <ul><li>Tracker: <b>No atendió</b>.</li><li>Le dejamos un audio.</li><li>Seguimiento al otro día. Si ya es el 2.º seguimiento, lo llamamos el mismo día en otro horario.</li><li><b>Cada seguimiento lo anotamos en el tracker.</b></li></ul>
+          <button class="ex" type="button" data-ex="audio-no">VER EJEMPLO →</button>
+          <span class="loop">↺ VOLVER A LLAMAR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 01</span><h2>Primer contacto</h2></div>
+</section>
+
+
+<!-- Regalos -->
+<section class="frame" id="reg" style="--pc:var(--p9)">
+  <div class="fh"><span class="fk">RUTA REGALOS</span><h2>Piden los regalos por WhatsApp</h2><span class="fw">SDR desde la cuenta de Manu · al terminar la clase</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell"><div class="start">FIN DE LA CLASE</div></div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G1-</span> CTA de regalos</h3></div><p>En el vivo, Manu pide que le escriban al WhatsApp: qué les pareció la clase y que le pidan los regalos.</p><button class="ex" type="button" data-ex="reg-cta">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Los regalos</span><ul><li>3 de los +30 agentes de IA, a elección.</li><li>Bonus: las herramientas del video filtrado (skill de fotos de producto, principios de copy, tutorial de Higgsfield).</li></ul></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G2-</span> Responde y pregunta</h3></div><p>Agradece lo que dijo de la clase y hace 2 preguntas «para mandarte los que más te sirvan».</p><button class="ex" type="button" data-ex="reg-hola">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Antes de responder</span><p>Fijarse en el tracker si ya aplicó en el formulario. Si aplicó, sigue la ruta del formulario con su SDR: no se le repiten preguntas.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G3-</span> Descubrimiento suave</h3></div><p>Una pregunta más sobre lo que lo frena. Charla, no formulario.</p><button class="ex" type="button" data-ex="reg-desc">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Se carga en el tracker</span><div class="fields"><span>Regalos · pidió</span><span>Qué vende</span><span>Inversión en Meta</span><span>Dolor</span></div></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Califica y tiene intención?</h3></div>
+          <div class="chips"><span class="chip">USD 100+/DÍA EN META</span><span class="chip">MARCA VENDIENDO</span><span class="chip">PREGUNTA CÓMO APLICARLO</span></div>
+        </div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red">
+          <span class="k">Página de regalos</span>
+          <ul><li>Se le manda la página con los recursos para descargar (máximo 3).</li><li>Se le recomienda por cuál arrancar, según lo que contó.</li><li>Tracker: <b>Regalos · no califica</b>. No se le insiste.</li></ul>
+          <button class="ex" type="button" data-ex="reg-pagina">VER EJEMPLO →</button>
+        </div>
+      </div>
+      <i class="arr"><b>SÍ</b></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G4-</span> Regalos + puente</h3></div><p>Primero le da los regalos. Después conecta su problema con la llamada, sin vender.</p><button class="ex" type="button" data-ex="reg-entrega">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Sin ser directos</span><ul><li>Nunca precio, «programa» ni «Génesis» primero.</li><li>La llamada se ofrece como «ver cómo lo aplicarías en tu marca».</li><li>Técnica de las dos opciones del SOP.</li></ul></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Acepta la llamada?</h3></div><p>Si duda, la pregunta que destraba.</p></div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red">
+          <span class="k">Todavía no</span>
+          <ul><li>Pregunta que destraba.</li><li>Seguimiento a las 24 h: «¿pudiste probar los agentes?».</li><li>Si responde, se retoma con setting de siempre.</li><li>Tracker: <b>Regalos · calificado sin agenda</b>.</li></ul>
+          <button class="ex" type="button" data-ex="reg-seguimiento">VER EJEMPLO →</button>
+          <span class="loop">↺ VOLVER AL PUENTE</span>
+        </div>
+      </div>
+      <i class="arr"><b>SÍ</b></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">G5-</span> Agenda con el closer</h3></div><p>Se agenda ahí mismo, en la charla. Igual que en el paso 5: no queda para después.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Cómo se agenda</span><p>Nombre / rango de facturación, origen «Regalos».<br><span class="mono">Lucas / 1000 a 3000 / Regalos</span></p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell"><div class="end next"><span class="k">→ FASE 03</span><p>Setteo desde la cuenta de Manu.</p></div></div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">RUTA REGALOS</span><h2>Piden los regalos</h2></div>
+</section>
+
+<!-- 02 -->
+<section class="frame" id="f2" style="--pc:var(--p2)">
+  <div class="fh"><span class="fk">FASE 02</span><h2>Descubrimiento y calificación</h2><span class="fw">SDR · en la misma llamada</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">4-</span> Descubrimiento</h3></div><p>Preguntas para entender dónde está y qué le pasa.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Qué preguntar</span><ul><li>¿Hace cuánto hace ecom?</li><li>¿Ya pagó otras mentorías?</li><li>¿Qué problemas tiene?</li><li>¿Qué le pareció la clase?</li></ul></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿A qué califica?</h3></div>
+          <div class="chips"><span class="chip">GENESIS OS</span><span class="chip">FAST SUBSCRIPTIONS</span></div>
+        </div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">5-</span> Agenda en la llamada</h3></div><p>Sea cual sea la oferta, lo agendamos ahí mismo con el closer.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Ojo</span><p>La agenda se cierra en la misma cold call. No queda para después.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 02</span><h2>Califica y agenda</h2></div>
+</section>
+
+<!-- 03 -->
+<section class="frame" id="f3" style="--pc:var(--p3)">
+  <div class="fh"><span class="fk">FASE 03</span><h2>Setteo desde la cuenta de Manu</h2><span class="fw">Manu (WSP) · apenas agenda</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">6-</span> Mensaje de setteo</h3></div><p>Desde la cuenta de Manu por WSP, una vez que ya agendó.</p><button class="ex" type="button" data-ex="setteo">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Simulando que somos Manu</span><p>El lead tiene que sentir que le escribe Manu en persona.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Confirma fecha y hora?</h3></div><p>Le pedimos que confirme antes de mandar nada.</p></div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red"><span class="k">Todavía no</span><p>Esperamos a que confirme. Los recursos se mandan recién después.</p></div>
+      </div>
+      <i class="arr"><b>SÍ</b></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">7-</span> Grupo + recursos</h3></div><p>Creamos el grupo con el lead y el closer, y enviamos los 3 recursos.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Nombre del grupo</span><p>Nombre del lead / horario / fecha de la llamada.<br><span class="mono">Santino / 19hs / 20/10</span></p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 03</span><h2>Setteo de Manu</h2></div>
+</section>
+
+<!-- Recursos -->
+<section class="frame" id="rec" style="--pc:var(--p3)">
+  <div class="fh"><span class="fk">RECURSOS</span><h2>Lo que se envía al grupo</h2><span class="fw">Según la oferta a la que calificó</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell"><div class="node"><div class="nh"><h3><span class="n">R1</span> Recurso 1</h3></div></div></div>
+      <i class="arr"></i>
+      <div class="cell"><div class="node"><div class="nh"><h3>VSL por oferta</h3></div><p>El video de venta de su oferta.</p></div></div>
+      <i class="arr"></i>
+      <div class="cell"><div class="chips" style="margin-top:12px"><span class="chip">GENESIS OS</span><span class="chip">FAST SUBSCRIPTIONS</span></div></div>
+    </div>
+    <div class="row">
+      <div class="cell"><div class="node"><div class="nh"><h3><span class="n">R2</span> Recurso 2</h3></div></div></div>
+      <i class="arr"></i>
+      <div class="cell"><div class="node"><div class="nh"><h3>Testimonio</h3></div><p>Un caso de alguien de su misma oferta.</p></div></div>
+      <i class="arr"></i>
+      <div class="cell"><div class="chips" style="margin-top:12px"><span class="chip">GENESIS OS</span><span class="chip">FAST SUBSCRIPTIONS</span></div></div>
+    </div>
+    <div class="row">
+      <div class="cell"><div class="node"><div class="nh"><h3><span class="n">R3</span> Recurso 3</h3></div></div></div>
+      <i class="arr"></i>
+      <div class="cell" style="width:calc(var(--w) * 2 + 44px)"><div class="note"><span class="k">Documento a medida</span><p>Según lo que habló con el SDR y lo que llenó en el formulario, le mandamos un documento que soluciona su problema.</p></div></div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">RECURSOS</span><h2>VSL, testimonio y documento</h2></div>
+</section>
+
+<!-- 04 -->
+<section class="frame" id="f4" style="--pc:var(--p4)">
+  <div class="fh"><span class="fk">FASE 04</span><h2>Handoff al closer</h2><span class="fw">Manu → Closer · en el grupo</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">8-</span> Audio de handoff</h3></div><p>Manu presenta al closer como su mano derecha.</p><button class="ex" type="button" data-ex="handoff">VER EJEMPLO →</button></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">9-</span> Se presenta con un audio</h3></div><p>Confirma día y hora, y abre la puerta a dudas.</p><button class="ex" type="button" data-ex="closer">VER EJEMPLO →</button></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">10-</span> Resuelve dudas</h3></div><p>Si el lead tiene alguna duda antes de la call, la responde el closer en el grupo.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 04</span><h2>Handoff al closer</h2></div>
+</section>
+
+<!-- 05 -->
+<section class="frame" id="f5" style="--pc:var(--p5)">
+  <div class="fh"><span class="fk">FASE 05</span><h2>Día de la call</h2><span class="fw">Closer · el día agendado</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">11-</span> 2–3 h antes</h3></div><p>Audio recordando la llamada y avisando que el link llega 10 min antes.</p><button class="ex" type="button" data-ex="pre3h">VER EJEMPLO →</button></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">12-</span> 30 min antes</h3></div><p>Mensaje corto: en 20 minutos le llega el link.</p><button class="ex" type="button" data-ex="pre30">VER EJEMPLO →</button></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">13-</span> 10 min antes</h3></div><p>Se envía el link de la llamada.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 05</span><h2>Día de la call</h2></div>
+</section>
+
+<!-- 06 -->
+<section class="frame" id="f6" style="--pc:var(--p6)">
+  <div class="fh"><span class="fk">FASE 06</span><h2>Cierre</h2><span class="fw">Closer · al terminar la call</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Se cerró?</h3></div><p>Al terminar la llamada.</p></div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red"><span class="k">Actualizamos tracker</span><div class="fields"><span>No se cerró</span><span>Razón</span><span>Fathom</span></div></div>
+      </div>
+      <i class="arr"><b>SÍ</b></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Dejó seña o pagó todo?</h3></div><p>Define qué se carga en el tracker.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-closer">CLOSER</span><h3><span class="n">14-</span> Tracker: cliente, falta onboarding</h3></div>
+          <div class="fields"><span>Cliente · falta onboarding</span><span>Fathom</span><span>Cuánto pagó</span><span>Cuotas</span><span>Seña (si señó)</span></div>
+        </div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell"><div class="end next"><span class="k">→ FASE 07</span><p>Onboarding.</p></div></div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 06</span><h2>Cierre</h2></div>
+</section>
+
+<!-- 07 -->
+<section class="frame" id="f7" style="--pc:var(--p8)">
+  <div class="fh"><span class="fk">FASE 07</span><h2>Onboarding</h2><span class="fw">Mati/Santi desde la cuenta de Manu · apenas paga</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">15-</span> Mensaje de bienvenida</h3></div><p>Mati o Santi escriben en el grupo (lead + closer) desde la cuenta de Manu.</p><button class="ex" type="button" data-ex="bienvenida">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Campus nuevo: 1/11</span><p>El campus nuevo y el plan de la mentoría arrancan el 1 de noviembre. Mientras tanto, acceso al campus viejo en Skool.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">16-</span> Link al Discord</h3></div><p>Le enviamos el link de invitación al Discord.</p></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Al entrar</span><p>Se pone nombre y apellido. Ahí tiene los días y horarios de las grupales.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">17-</span> Acceso en Skool</h3></div><p>Le damos acceso al campus viejo en Skool para que ya vaya accionando.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">18-</span> Canal 1 a 1</h3></div><p>Creamos el canal 1 a 1 con el lead en el Discord.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">19-</span> Tracker: cliente</h3></div><div class="fields"><span>Cliente</span></div></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Estado final</span><p>Pasa de "Cliente · falta onboarding" a "Cliente", el estado normal después del onboarding.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell"><div class="end"><span class="k">✓ ONBOARDING TERMINADO</span><p>Alumno adentro.</p></div></div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">FASE 07</span><h2>Onboarding</h2></div>
+</section>
+
+<!-- Tracker -->
+<section class="frame" id="trk" style="--pc:var(--p7)">
+  <div class="fh"><span class="fk">TRACKER</span><h2>Estados del tracker</h2><span class="fw">Qué se carga en cada momento</span></div>
+  <div class="board">
+    <table>
+      <thead><tr><th>Estado</th><th>Cuándo</th><th>Quién</th><th>Qué se carga</th></tr></thead>
+      <tbody>
+                <tr><td><span class="st st-n">Regalos · pidió</span></td><td>Escribe al WhatsApp de Manu pidiendo los regalos</td><td>SDR</td><td>Qué vende, inversión en Meta, dolor</td></tr>
+        <tr><td><span class="st st-n">Regalos · no califica</span></td><td>Se le manda la página de regalos</td><td>SDR</td><td>Qué recurso se le recomendó</td></tr>
+        <tr><td><span class="st st-warn">Regalos · calificado sin agenda</span></td><td>Califica pero no aceptó la llamada todavía</td><td>SDR</td><td>Dolor, fecha del seguimiento</td></tr>
+        <tr><td><span class="st st-no">No se presentó (no show)</span></td><td>No se conecta a la llamada agendada</td><td>Closer</td><td>Estado no show</td></tr>
+        <tr><td><span class="st st-no">No se cerró</span></td><td>Después de la call</td><td>Closer</td><td>Razón, Fathom</td></tr>
+        <tr><td><span class="st st-warn">Cliente · falta onboarding</span></td><td>Cuando paga (seña o total)</td><td>Closer</td><td>Fathom, cuánto pagó, cuotas, seña</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="cover"><span class="ck">TRACKER</span><h2>Estados del tracker</h2></div>
+</section>
+</div>
+</div>
+
+<!-- UI -->
+<div class="topbar">
+  <div class="ui brand"><span class="logo">G</span><div><b>Mapa de ventas</b><small>POST WEBINAR · 17/11</small></div></div>
+  <nav class="ui nav" id="nav" aria-label="Fases">
+    <button type="button" data-go="all" style="font-weight:800">Mapa</button>
+    <button type="button" data-go="f1"><span class="dot" style="--c:var(--p1)"></span>01 Primer contacto</button>
+    <button type="button" data-go="reg"><span class="dot" style="--c:var(--p9)"></span>Regalos</button>
+    <button type="button" data-go="f2"><span class="dot" style="--c:var(--p2)"></span>02 Califica</button>
+    <button type="button" data-go="f3"><span class="dot" style="--c:var(--p3)"></span>03 Setteo</button>
+    <button type="button" data-go="f4"><span class="dot" style="--c:var(--p4)"></span>04 Handoff</button>
+    <button type="button" data-go="f5"><span class="dot" style="--c:var(--p5)"></span>05 Día de la call</button>
+    <button type="button" data-go="f6"><span class="dot" style="--c:var(--p6)"></span>06 Cierre</button>
+    <button type="button" data-go="f7"><span class="dot" style="--c:var(--p8)"></span>07 Onboarding</button>
+  </nav>
+  <button class="pill trk" type="button" data-go="trk"><span class="dot" style="--c:var(--p6)"></span>Tracker de leads</button>
+  <button class="pill" type="button" id="theme"><span class="half"></span><span id="theme-l">Modo claro</span></button>
+</div>
+<div class="ui legend">
+  <span><i class="sq" style="--c:var(--sdr)"></i>SDR</span>
+  <span><i class="sq" style="--c:var(--manu)"></i>Manu</span>
+  <span><i class="sq" style="--c:var(--closer)"></i>Closer</span>
+  <span><i class="dm"></i>Decisión</span>
+  <span><i class="sq" style="--c:var(--amber-line)"></i>Nota</span>
+  <span><i class="sq" style="--c:var(--red-line)"></i>Rama "no"</span>
+</div>
+<div class="ui mini"><div class="mini-h"><span>VISTA GENERAL</span><span>MAPA</span></div><div id="mm"><span id="mm-v"></span></div></div>
+<div class="ui stepper" role="group" aria-label="Recorrer fases">
+  <button class="sp-b" type="button" id="sp-prev" aria-label="Fase anterior">‹</button>
+  <div class="sp-m"><small id="sp-k">Vista general</small><b id="sp-name">Mapa completo</b><div class="sp-track" id="sp-track"></div></div>
+  <button class="sp-b" type="button" id="sp-next" aria-label="Fase siguiente">›</button>
+</div>
+<div class="ui help" id="help" hidden>
+  <h4>Cómo usar el mapa</h4>
+  <dl>
+    <dt>CLIC</dt><dd>En una card, abre el detalle y el guion</dd>
+    <dt>‹ ›</dt><dd>Abajo, o con ← →, recorre las fases</dd>
+    <dt>RUEDA</dt><dd>Acerca y aleja (o pellizcá)</dd>
+    <dt>ARRASTRAR</dt><dd>Mueve el lienzo</dd>
+    <dt>0</dt><dd>Vuelve al mapa completo</dd>
+    <dt>ESC</dt><dd>Cierra el panel</dd>
+  </dl>
+  <button class="btn sm" type="button" id="help-ok">Entendido</button>
+</div>
+<div class="zoom">
+  <button class="ui zb" type="button" id="zhelp" aria-label="Ayuda" style="font-size:15px;font-weight:700">?</button>
+  <button class="ui zb" type="button" id="zin" aria-label="Acercar">+</button>
+  <button class="ui zb" type="button" id="zout" aria-label="Alejar">−</button>
+  <button class="ui zb" type="button" id="zfit" aria-label="Ver todo">⤢</button>
+  <span id="zl">100%</span>
+</div>
+
+<aside class="side" id="modal" aria-labelledby="m-title" hidden>
+  <div class="side-prog"><i id="m-bar"></i></div>
+  <div class="side-h">
+    <div><span class="side-k" id="m-kind"></span><h3 id="m-title"></h3><div class="tags" id="m-tags"></div></div>
+    <button class="btn sm" type="button" id="m-close">Cerrar</button>
+  </div>
+  <div class="side-b" id="m-body"></div>
+  <div class="side-f">
+    <button class="btn" type="button" id="m-prev">← Anterior</button>
+    <span id="m-pos"></span>
+    <button class="btn" type="button" id="m-next">Siguiente →</button>
+  </div>
+</aside>
+
+<script>
+/* ---------- Guiones ---------- */
+const EX={
+  "reg-cta":{phase:"reg",kind:"Ruta regalos",title:"CTA de regalos en el vivo",role:"manu",
+    what:"Al final de la clase, después de mostrar el slide de los regalos, Manu dice cómo pedirlos. La persona escribe primero: así la charla arranca en el WhatsApp de Manu.",
+    ch:"En el vivo · Manu a cámara",
+    rule:"El número de Manu (y un QR) en pantalla mientras lo dice, y de nuevo al cierre. Pedir las dos cosas: qué le pareció la clase y los regalos. Lo que contesten de la clase es la primera pista para el setteo.",
+    text:"Bueno, los regalos. Para recibirlos, escribime al WhatsApp, a este número que tenés en pantalla (número de Manu).\n\nContame qué te pareció la clase y pedime los regalos. Te los mando yo, eh. Leo todos los mensajes."},
+  "reg-hola":{phase:"reg",kind:"Ruta regalos",title:"Respuesta al que pide los regalos",role:"manu",
+    what:"Mati o Santi responden desde la cuenta de Manu. Agradecen lo que dijo de la clase, con sus palabras, y hacen 2 preguntas justificadas en mandarle los regalos que más le sirvan.",
+    ch:"WhatsApp · cuenta de Manu al lead",
+    rule:"Responder en menos de 1 hora. Una línea sobre lo que dijo de la clase, nunca genérica. Las 2 preguntas van como charla, no como formulario. Si ya aplicó en el formulario, no se le pregunta nada: se lo pasa a su SDR.",
+    text:"¡(Nombre)! Qué bueno que te sirvió (lo que dijo de la clase), gracias por escribirme 🙌\n\nAhora te paso los regalos. Para mandarte los que más te sirvan, contame dos cosas rápidas:\n\n1. ¿Qué vendés y hace cuánto?\n2. ¿Cuánto estás invirtiendo más o menos por día en Meta?"},
+  "reg-desc":{phase:"reg",kind:"Ruta regalos",title:"Descubrimiento suave",role:"manu",
+    what:"Una sola pregunta más, sobre lo que lo frena hoy. Con eso alcanza para saber si califica y si hay intención.",
+    ch:"WhatsApp · cuenta de Manu al lead",
+    rule:"Una pregunta por mensaje. Señales de intención: pregunta cómo aplicarlo a su marca, cuenta un problema concreto con números, pregunta cómo trabajar con Manu. Se carga en el tracker como «Regalos · pidió».",
+    text:"Buenísimo. ¿Y qué es lo que más te está frenando hoy? ¿El CPA, que no tenés días estables, el margen…?"},
+  "reg-pagina":{phase:"reg",kind:"Ruta regalos",title:"No califica: página de regalos",role:"manu",
+    what:"Si no califica o no hay intención de compra, se le manda la página con los recursos para descargar (máximo 3) y se le recomienda por cuál arrancar.",
+    ch:"WhatsApp · cuenta de Manu al lead",
+    rule:"Máximo 3 recursos en la página. Se le recomienda uno según lo que contó. Tracker: «Regalos · no califica». No se le insiste ni se le ofrece la llamada: queda en la base para los próximos lanzamientos.",
+    text:"Te dejo acá los regalos, (nombre) 🎁\n\n👉 (link de la página de regalos)\n\nArrancá por (el recurso que más le sirve), que es justo para lo que me contaste de (su problema).\n\nCualquier cosa que te trabe al usarlos, escribime."},
+  "reg-entrega":{phase:"reg",kind:"Ruta regalos",title:"Califica: regalos + puente a la llamada",role:"manu",
+    what:"Primero se le dan los regalos. Después se conecta su problema con una llamada para verlo aplicado a su marca. Nunca se nombra el precio ni la oferta.",
+    ch:"WhatsApp · cuenta de Manu al lead · 2 mensajes",
+    rule:"Dar antes de pedir. La llamada es «para ver cómo lo aplicarías en tu marca», con alguien de mi equipo. Si duda: «¿Hay alguna duda puntual que, si no te la saco, te frena?». Si acepta, se agenda ahí mismo.",
+    text:"Te dejo los regalos 🎁\n👉 (link de la página de regalos)\n\nTe digo algo por lo que me contaste: con (lo que vende / lo que pauta), los agentes te van a ahorrar tiempo, pero lo que más te movería los números es resolver (su problema: el CPA / los días malos / el margen).\n\n— segundo mensaje —\n\nCon marcas como la tuya lo que hacemos es sentarnos a ver los números y armar cómo meter la suscripción sin tocar lo que ya te vende.\n\nSi querés, te armo una llamada corta con alguien de mi equipo para verlo en tu marca. ¿Te queda mejor esta semana o la que viene?"},
+  "reg-seguimiento":{phase:"reg",kind:"Ruta regalos",title:"No acepta todavía: seguimiento",role:"manu",
+    what:"Si califica pero no acepta la llamada, se le hace la pregunta que destraba. Si igual no, seguimiento a las 24 horas preguntando por los regalos.",
+    ch:"WhatsApp · cuenta de Manu al lead",
+    rule:"Un solo seguimiento por los regalos. Si responde, se retoma con el setting de siempre. Tracker: «Regalos · calificado sin agenda», con la fecha del seguimiento.",
+    text:"Dale, cero drama. ¿Hay alguna duda puntual que, si no te la saco, te frena?\n\n— a las 24 horas, si no respondió —\n\n(Nombre), ¿pudiste probar los agentes? ¿Cuál usaste primero?"},
+
+  "audio-no":{phase:"f1",kind:"Fase 01 · Primer contacto",title:"Audio: no atendió",role:"sdr",
+    what:"Si no atiende ninguna de las 3 llamadas, en el tracker ponemos No atendió y le dejamos este audio por WhatsApp.",
+    ch:"Audio de WhatsApp · del SDR al lead",
+    rule:"Seguimiento al otro día. Si ya es el segundo seguimiento, lo llamamos el mismo día en otro horario. Cada seguimiento que le hacemos lo anotamos en el tracker.",
+    text:"(Lead), ¿cómo estás? Soy (Mati/Santi), del equipo de Manu Domínguez. Te llamé porque habías rellenado el formulario para aplicar a Genesis. Quería que me cuentes un poco sobre tu situación: si ya tenés una marca, los problemas que venís teniendo y demás. Avisame en qué horario te queda más cómodo que te llame, así vemos cómo te puedo ayudar."},
+  "setteo":{phase:"f3",kind:"Fase 03 · Setteo",title:"Mensaje de setteo",role:"manu",
+    what:"Una vez que el lead agendó, le escribimos desde la cuenta de Manu simulando que es él.",
+    ch:"WhatsApp · cuenta de Manu al lead",
+    rule:"Esperamos a que confirme fecha y hora antes de mandar nada. Cuando confirma, creamos el grupo (nombre: Lead / horario / fecha, por ejemplo Santino / 19hs / 20/10) y enviamos los 3 recursos: VSL y testimonio de su oferta, y el documento a medida.",
+    text:"Ahí vi que pudiste agendar, (nombre del lead), con (Mati/Santi). ¡Bien ahí!\n\nTe cuento un poco cómo va a ser ahora: voy a armar un grupo con vos y una persona de mi equipo, que es con quien vas a tener la llamada.\n\nTambién, en base a lo que hablaste con (Santi/Mati) y lo que llenaste en el formulario, te voy a enviar un video y un documento que te van a servir para tu situación.\n\nAntes de enviarte las cosas, ¿me confirmás que sí vas a poder estar en la fecha que agendaste, a las (hora)?"},
+  "handoff":{phase:"f4",kind:"Fase 04 · Handoff",title:"Audio de handoff",role:"manu",
+    what:"En el grupo, después de los recursos, Manu presenta al closer con un audio.",
+    ch:"Audio en el grupo · Manu",
+    rule:"Inmediatamente después de este audio, el closer se presenta con el suyo.",
+    text:"Amigo, ¿cómo estás? Te presento a (nombre closer). Él es mi mano derecha, es el único que tiene permiso para decidir quiénes entran y quiénes no. La llamada la vas a tener con él. Ahora te va a enviar un mensaje así ya se van conociendo."},
+  "closer":{phase:"f4",kind:"Fase 04 · Handoff",title:"El closer se presenta",role:"closer",
+    what:"El closer se presenta, confirma el día y la hora de la llamada y le abre la puerta a dudas.",
+    ch:"Audio en el grupo · Closer",
+    rule:"Si el lead tiene alguna duda antes de la llamada, la resuelve el closer en el grupo.",
+    text:"¡Buenas, (nombre lead)! Acá te habla (tu nombre). Bueno, como te comentaba Manu, la llamada la vas a tener conmigo. Quería confirmar si vas a estar disponible el día que agendaste, que sería el (fecha y hora), y también comentame las dudas que tengas por acá así vamos hablando."},
+  "pre3h":{phase:"f5",kind:"Fase 05 · Día de la call",title:"2–3 horas antes",role:"closer",
+    what:"El día de la llamada, el closer le manda un audio recordándole el horario.",
+    ch:"Audio en el grupo · Closer",
+    rule:"Secuencia del día: 2–3 h antes este audio, 30 min antes un mensaje corto y 10 min antes el link de la llamada.",
+    text:"(Nombre del lead), ¿cómo estás? Hoy tenemos la llamada a las (horario). Quería comentarte que te voy a estar pasando el link 10 minutos antes."},
+  "pre30":{phase:"f5",kind:"Fase 05 · Día de la call",title:"30 minutos antes",role:"closer",
+    what:"Media hora antes, un mensaje corto avisando que el link está por llegar.",
+    ch:"WhatsApp en el grupo · Closer",
+    rule:"El link de la llamada se envía 10 minutos antes, no antes.",
+    text:"(Nombre del lead), ¿cómo va? En 20 ya te envío el link."},
+  "bienvenida":{phase:"f7",kind:"Fase 07 · Onboarding",title:"Mensaje de bienvenida",role:"manu",
+    what:"Una vez que hizo el pago, Mati o Santi escriben en el grupo con el closer y el lead, desde la cuenta de Manu.",
+    ch:"WhatsApp en el grupo · cuenta de Manu",
+    rule:"Después del mensaje: le enviamos el link al Discord, le damos acceso en Skool y creamos el canal 1 a 1 con el lead. Al terminar, en el tracker lo pasamos de «Cliente · falta onboarding» a «Cliente».",
+    text:"Amigo, ¡bien ahí que entraste! Te voy a dar acceso al Discord: cuando entres, ponete tu nombre y apellido.\n\nTambién te comento, por si no te dijo (nombre de quien tomó la llamada): el acceso al campus nuevo recién lo estamos dando el 1 de noviembre. Quedate tranquilo, que el plan de la mentoría también arranca a correr ese mismo día. Por el momento te doy acceso al campus viejo, que es en Skool, para que ya vayas accionando en este tiempo.\n\nFijate también que en el Discord están los días y horarios de las grupales, y tenés el chat 1 a 1 conmigo y José para cualquier cosa."}
+};
+const EX_IDS=Object.keys(EX);
+const ROLE={sdr:["SDR","t-sdr"],manu:["MANU","t-manu"],closer:["CLOSER","t-closer"]};
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const V=s=>esc(s).replace(/\(([^)]+)\)/g,'<span class="var">($1)</span>');
+const modal=document.getElementById('modal');
+const $=id=>document.getElementById(id);
+let current="",curStep=-1;
+
+/* ---------- Pasos: cada card de las fases 01–06 abre su detalle ---------- */
+const STEPS=[...document.querySelectorAll('#f1 .node,#reg .node,#f2 .node,#f3 .node,#f4 .node,#f5 .node,#f6 .node,#f7 .node')].map((n,i)=>{
+  const cell=n.closest('.cell'),notes=[...cell.querySelectorAll('.note')];
+  const exEl=cell.querySelector('[data-ex]');
+  n.dataset.step=i;n.tabIndex=0;n.setAttribute('role','button');
+  notes.forEach(x=>x.dataset.step=i);
+  return{el:n,frame:n.closest('.frame'),notes,ex:exEl&&exEl.dataset.ex,dec:n.classList.contains('dec')};
+});
+const tagHTML=(t,c)=>`<span class="tag ${c}">${t}</span>`;
+function openStep(i){
+  const st=STEPS[i];if(!st)return;curStep=i;
+  const fr=st.frame,n=st.el,e=st.ex&&EX[st.ex];
+  modal.style.setProperty('--pc',`var(${COLORS[fr.id]})`);
+  $('m-kind').textContent=fr.querySelector('.fk').textContent+' · '+fr.querySelector('.fh h2').textContent;
+  const h3=n.querySelector('h3'),num=h3.querySelector('.n');
+  const name=[...h3.childNodes].filter(c=>c!==num).map(c=>c.textContent).join('').trim();
+  $('m-title').textContent=(num?num.textContent.replace('-','').trim()+' · ':'')+name;
+  const role=n.querySelector('.nh .tag');
+  $('m-tags').innerHTML=(role?tagHTML(role.textContent,role.className.replace('tag','').trim()):'')+(st.dec?tagHTML('DECISIÓN','t-dec'):'')+(e?tagHTML('GUION','t-ex'):'');
+  const desc=n.querySelector('p');
+  let h=`<span class="lbl">Qué se hace</span><p class="what">${esc(e&&n.querySelector('[data-ex]')?e.what:(desc?desc.textContent:''))}</p>`;
+  const extra=[...n.querySelectorAll(':scope > .chips, :scope > .fields')].map(x=>x.outerHTML).join('');
+  if(extra)h+=`<div class="xtra">${extra}</div>`;
+  if(st.notes.length){
+    h+=`<span class="lbl">${st.dec?'Si la respuesta es no':'A tener en cuenta'}</span>`;
+    st.notes.forEach(x=>{const c=x.cloneNode(true);c.querySelectorAll('.ex').forEach(b=>b.remove());
+      h+=`<div class="pnote${x.classList.contains('red')?' red':''}">${c.innerHTML}</div>`});
+  }
+  if(st.dec&&i<STEPS.length-1&&STEPS[i+1].frame===fr)h+=`<p class="yes"><b>SÍ</b> Sigue al próximo paso.</p>`;
+  if(e){
+    current=e.text;
+    h+=`<span class="lbl">Ejemplo</span><div class="ch"><span>${esc(e.ch)}</span><button class="btn sm" type="button" id="m-copy">Copiar</button></div>
+      <div class="bubble" id="m-script">${V(e.text)}</div><span class="lbl">La regla</span><div class="rule">${esc(e.rule)}</div>`;
+  }
+  $('m-body').innerHTML=h;
+  if(e)$('m-copy').addEventListener('click',copyScript);
+  const same=STEPS.filter(x=>x.frame===fr),k=same.indexOf(st);
+  $('m-pos').textContent=`${k+1} de ${same.length} en esta fase`;
+  $('m-bar').style.width=((i+1)/STEPS.length*100)+'%';
+  $('m-prev').disabled=i===0;$('m-next').disabled=i===STEPS.length-1;
+  modal.hidden=false;$('m-body').scrollTop=0;
+  document.querySelectorAll('.active').forEach(x=>x.classList.remove('active'));
+  n.classList.add('active');reveal(n);
+}
+function copyScript(){
+  const b=$('m-copy');
+  const fb=()=>{const r=document.createRange();r.selectNodeContents($('m-script'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Seleccionado'};
+  try{navigator.clipboard.writeText(current).then(()=>b.textContent='Copiado ✓',fb)}catch(_){fb()}
+}
+// Si el paso queda tapado por el panel, correr el lienzo para que se vea a la izquierda
+function reveal(el){
+  const r=el.getBoundingClientRect(),panel=modal.getBoundingClientRect();
+  let dx=0,dy=0;
+  if(innerWidth<760){
+    // en celular el panel es una hoja inferior: subir el paso para que quede arriba
+    const free=panel.top-16;if(r.bottom>free||r.top<80)dy=Math.max(80,(free-r.height)/2)-r.top;
+    if(r.left<16||r.right>innerWidth-16)dx=innerWidth/2-(r.left+r.width/2);
+  }else{
+    const free=panel.left-24;
+    if(r.right>free)dx=free-r.right;
+    if(r.left+dx<24)dx=24-r.left;
+    if(r.top<90)dy=90-r.top;else if(r.bottom>innerHeight-90)dy=innerHeight-90-r.bottom;
+  }
+  if(dx||dy)fly({s,tx:tx+dx,ty:ty+dy});
+}
+function closeEx(){modal.hidden=true;curStep=-1;document.querySelectorAll('.active').forEach(n=>n.classList.remove('active'));}
+const stepEx=d=>{const i=curStep+d;if(i>=0&&i<STEPS.length)openStep(i)};
+$('m-close').onclick=closeEx;$('m-prev').onclick=()=>stepEx(-1);$('m-next').onclick=()=>stepEx(1);
+
+/* ---------- Tema ---------- */
+const root=document.documentElement,themeL=document.getElementById('theme-l');
+const isDark=()=>root.dataset.theme?root.dataset.theme==='dark':!matchMedia('(prefers-color-scheme: light)').matches;
+const syncTheme=()=>{themeL.textContent=isDark()?'Modo claro':'Modo oscuro'};
+try{const t=localStorage.getItem('mv-theme');if(t)root.dataset.theme=t}catch(e){}
+syncTheme();
+document.getElementById('theme').onclick=()=>{root.dataset.theme=isDark()?'light':'dark';syncTheme();try{localStorage.setItem('mv-theme',root.dataset.theme)}catch(e){}};
+
+/* ---------- Lienzo ---------- */
+const vp=document.getElementById('vp'),world=document.getElementById('world'),svg=document.getElementById('wires');
+const zl=document.getElementById('zl'),mm=document.getElementById('mm'),mmv=document.getElementById('mm-v');
+const ORDER=['f1','reg','f2','f3','rec','f4','f5','f6','f7','trk'];
+const COLORS={f1:'--p1',reg:'--p9',f2:'--p2',f3:'--p3',rec:'--p3',f4:'--p4',f5:'--p5',f6:'--p6',f7:'--p8',trk:'--p7'};
+const R={};let bounds={x:0,y:0,w:1,h:1};
+let s=1,tx=0,ty=0,anim=0,cur=-1;
+const MIN=.04,MAX=2.2,FAR=.42,TOP=130;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function layout(){
+  const GAP=240,DROP=200,size=id=>{const el=document.getElementById(id);return{el,w:el.offsetWidth,h:el.offsetHeight}};
+  let x=0;
+  for(const id of ['f1','f2','f3','f4','f5','f6','f7']){const f=size(id);R[id]={x,y:0,w:f.w,h:f.h};x+=f.w+GAP;}
+  const below=(id,p)=>{const f=size(id),q=R[p];R[id]={x:q.x+(q.w-f.w)/2,y:q.h+DROP,w:f.w,h:f.h}};
+  below('rec','f3');below('trk','f6');
+  {const f=size('reg');R.reg={x:R.f1.x,y:Math.max(R.f1.h,R.f2.h)+DROP,w:f.w,h:f.h};}
+  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+  for(const id in R){const r=R[id],el=document.getElementById(id);el.style.left=r.x+'px';el.style.top=r.y+'px';
+    x0=Math.min(x0,r.x);y0=Math.min(y0,r.y);x1=Math.max(x1,r.x+r.w);y1=Math.max(y1,r.y+r.h);}
+  bounds={x:x0,y:y0,w:x1-x0,h:y1-y0};
+  drawWires();buildMini();
+}
+function drawWires(){
+  svg.querySelectorAll('g').forEach(g=>g.remove());
+  const Y=96,ns='http://www.w3.org/2000/svg';
+  const add=(d,label,dash,lx,ly)=>{
+    const g=document.createElementNS(ns,'g');
+    const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('class','wire'+(dash?' dash':''));p.setAttribute('marker-end','url(#ah)');g.appendChild(p);
+    if(label){const t=document.createElementNS(ns,'text');t.setAttribute('class','wl');t.setAttribute('x',lx);t.setAttribute('y',ly);t.setAttribute('text-anchor','middle');t.setAttribute('dominant-baseline','central');t.textContent=label;
+      const b=document.createElementNS(ns,'rect');b.setAttribute('class','wl-bg');b.setAttribute('rx',5);g.appendChild(b);g.appendChild(t);svg.appendChild(g);
+      const bb=t.getBBox();b.setAttribute('x',bb.x-9);b.setAttribute('y',bb.y-5);b.setAttribute('width',bb.width+18);b.setAttribute('height',bb.height+10);}
+    else svg.appendChild(g);
+  };
+  const h=(a,b,l)=>{const A=R[a],B=R[b],x1=A.x+A.w,x2=B.x-2;add(`M${x1} ${Y}H${x2}`,l,false,(x1+x2)/2,Y)};
+  const v=(a,b,l)=>{const A=R[a],B=R[b],cx=A.x+A.w/2,y1=A.y+A.h,y2=B.y-2;add(`M${cx} ${y1}V${y2}`,l,true,cx,(y1+y2)/2)};
+  h('f1','f2','SÍ ATENDIÓ');h('f2','f3','AGENDÓ');h('f3','f4','GRUPO CREADO');h('f4','f5','LLEGA EL DÍA');h('f5','f6','TERMINA LA CALL');h('f6','f7','PAGÓ');
+  v('f3','rec','SE ENVÍAN');v('f1','reg','PIDEN REGALOS');v('f6','trk','SE CARGA EN');
+}
+function buildMini(){
+  mm.querySelectorAll('i').forEach(i=>i.remove());
+  const W=mm.clientWidth||220,H=mm.clientHeight||96,pad=8,m=Math.min((W-2*pad)/bounds.w,(H-2*pad)/bounds.h);
+  mm._m={m,ox:pad+(W-2*pad-bounds.w*m)/2-bounds.x*m,oy:pad+(H-2*pad-bounds.h*m)/2-bounds.y*m};
+  for(const id in R){const r=R[id],i=document.createElement('i');i.style.cssText=`left:${mm._m.ox+r.x*m}px;top:${mm._m.oy+r.y*m}px;width:${r.w*m}px;height:${r.h*m}px;--c:var(${COLORS[id]})`;mm.insertBefore(i,mmv);}
+}
+function apply(){
+  world.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;
+  const g=24*s;vp.style.backgroundSize=`${g}px ${g}px`;vp.style.backgroundPosition=`${tx}px ${ty}px`;
+  zl.textContent=Math.round(s*100)+'%';
+  world.classList.toggle('far',s<FAR);
+  if(mm._m){const {m,ox,oy}=mm._m,vx=-tx/s,vy=-ty/s,vw=innerWidth/s,vh=innerHeight/s;
+    mmv.style.cssText=`left:${ox+vx*m}px;top:${oy+vy*m}px;width:${vw*m}px;height:${vh*m}px`;}
+  if(!syncQ){syncQ=true;requestAnimationFrame(syncNav)}
+}
+// Marca en la barra y el stepper la fase que está en el centro de la pantalla
+let syncQ=false;
+function syncNav(){
+  syncQ=false;let id='all';
+  if(s>=FAR&&R.f1){
+    const cx=(innerWidth/2-tx)/s,cy=(innerHeight/2-ty)/s;let best=1e18;
+    for(const k of ORDER){const r=R[k],dx=Math.max(r.x-cx,0,cx-r.x-r.w),dy=Math.max(r.y-cy,0,cy-r.y-r.h),d=dx*dx+dy*dy;if(d<best){best=d;id=k}}
+  }
+  cur=ORDER.indexOf(id);
+  const navId=id==='rec'?'f3':id;
+  navBtns.forEach(b=>b.classList.toggle('on',b.dataset.go===navId));
+  if(id==='all'){$('sp-k').textContent='Vista general';$('sp-name').textContent='Mapa completo'}
+  else{const fr=$(id);$('sp-k').textContent=fr.querySelector('.fk').textContent+` · ${cur+1} de ${ORDER.length}`;$('sp-name').innerHTML=`<span class="dot" style="--c:var(${COLORS[id]})"></span>`+esc(fr.querySelector('.fh h2').textContent)}
+  [...$('sp-track').children].forEach((t,k)=>t.classList.toggle('on',k===cur));
+  $('sp-prev').disabled=cur<=0;
+  $('sp-next').disabled=cur===ORDER.length-1;
+}
+const clamp=v=>Math.min(MAX,Math.max(MIN,v));
+function zoomAt(px,py,ns){ns=clamp(ns);const wx=(px-tx)/s,wy=(py-ty)/s;s=ns;tx=px-wx*s;ty=py-wy*s;apply();}
+function viewFor(r,pad=40){
+  const W=innerWidth,H=innerHeight,top=W<760?126:TOP,bot=W<760?80:80;
+  const ns=clamp(Math.min((W-2*pad)/r.w,(H-top-bot-pad)/r.h,1.15));
+  // fase que no entra legible (celular): zoom de lectura alineado al inicio de la fase
+  if(r!==bounds&&ns<.6){const rs=W<760?.62:.6;return{s:rs,tx:16-r.x*rs,ty:top+16-r.y*rs}}
+  return{s:ns,tx:W/2-(r.x+r.w/2)*ns,ty:top+(H-top-bot)/2-(r.y+r.h/2)*ns};
+}
+function fly(t){
+  cancelAnimationFrame(anim);
+  if(reduce){s=t.s;tx=t.tx;ty=t.ty;apply();return}
+  const a={s,tx,ty},t0=performance.now(),D=520,ease=k=>1-Math.pow(1-k,3);
+  // interpolar en espacio de zoom logarítmico para que el movimiento se vea parejo
+  const step=now=>{const k=Math.min(1,(now-t0)/D),e=ease(k);
+    const ls=Math.log(a.s)+(Math.log(t.s)-Math.log(a.s))*e;s=Math.exp(ls);
+    tx=a.tx+(t.tx-a.tx)*e;ty=a.ty+(t.ty-a.ty)*e;apply();if(k<1)anim=requestAnimationFrame(step)};
+  anim=requestAnimationFrame(step);
+}
+const navBtns=[...document.querySelectorAll('[data-go]')];
+function go(id){
+  if(id!=='all'&&!modal.hidden&&STEPS[curStep]&&STEPS[curStep].frame.id!==id)closeEx();
+  fly(id==='all'?viewFor(bounds,60):viewFor(R[id]));
+}
+ORDER.forEach(id=>{const t=document.createElement('i');t.style.setProperty('--c',`var(${COLORS[id]})`);$('sp-track').appendChild(t)});
+$('sp-prev').onclick=()=>go(ORDER[Math.max(0,cur-1)]);
+$('sp-next').onclick=()=>go(ORDER[Math.min(ORDER.length-1,cur+1)]);
+/* Resumen en la portada de cada fase (vista de lejos) */
+['f1','reg','f2','f3','f4','f5','f6','f7'].forEach(id=>{
+  const st=STEPS.filter(x=>x.frame.id===id),g=st.filter(x=>x.ex).length;
+  const roles=[...new Set(st.map(x=>{const t=x.el.querySelector('.nh .tag');return t?t.outerHTML:''}).filter(Boolean))];
+  const c=$(id).querySelector('.cover');
+  c.insertAdjacentHTML('beforeend',`<p class="cm">${st.length} pasos${g?` · ${g} guion${g>1?'es':''}`:''}</p><div class="cr">${roles.join('')}</div>`);
+});
+/* Ayuda */
+const help=$('help');
+const hideHelp=()=>{help.hidden=true;try{localStorage.setItem('mv-help','1')}catch(_){}};
+$('zhelp').onclick=()=>{help.hidden=!help.hidden};$('help-ok').onclick=hideHelp;
+try{if(!localStorage.getItem('mv-help'))help.hidden=false}catch(_){help.hidden=false}
+navBtns.forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+document.getElementById('zin').onclick=()=>{cancelAnimationFrame(anim);zoomAt(innerWidth/2,innerHeight/2,s*1.3)};
+document.getElementById('zout').onclick=()=>{cancelAnimationFrame(anim);zoomAt(innerWidth/2,innerHeight/2,s/1.3)};
+document.getElementById('zfit').onclick=()=>go('all');
+
+/* Rueda */
+vp.addEventListener('wheel',e=>{e.preventDefault();cancelAnimationFrame(anim);
+  const k=e.ctrlKey?.012:.0016;zoomAt(e.clientX,e.clientY,s*Math.exp(-e.deltaY*k));},{passive:false});
+
+/* Arrastre y pellizco */
+const P=new Map();let moved=false,pinch=null,captured=false;
+vp.addEventListener('pointerdown',e=>{
+  if(e.button!==0&&e.pointerType==='mouse')return;
+  cancelAnimationFrame(anim);P.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(P.size===1){moved=false;captured=false}
+  if(P.size===2){const [a,b]=[...P.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y),mx:(a.x+b.x)/2,my:(a.y+b.y)/2};moved=true}
+});
+vp.addEventListener('pointermove',e=>{
+  const p=P.get(e.pointerId);if(!p)return;
+  const dx=e.clientX-p.x,dy=e.clientY-p.y;
+  if(P.size===1){
+    if(!moved&&Math.hypot(dx,dy)<4)return;
+    if(!moved){moved=true}
+    if(!captured){try{vp.setPointerCapture(e.pointerId)}catch(_){}captured=true;vp.classList.add('dragging')}
+    tx+=dx;ty+=dy;p.x=e.clientX;p.y=e.clientY;apply();
+  }else if(P.size===2&&pinch){
+    p.x=e.clientX;p.y=e.clientY;const [a,b]=[...P.values()];
+    const d=Math.hypot(a.x-b.x,a.y-b.y),mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
+    tx+=mx-pinch.mx;ty+=my-pinch.my;zoomAt(mx,my,s*d/pinch.d);pinch={d,mx,my};
+  }
+});
+const up=e=>{P.delete(e.pointerId);if(P.size<2)pinch=null;if(!P.size){vp.classList.remove('dragging');captured=false}
+  if(P.size===1){const q=[...P.values()][0];q.x=q.x;}};
+vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
+
+/* Clics: ejemplo, entrar a una fase, doble clic */
+vp.addEventListener('click',e=>{
+  if(moved){e.preventDefault();e.stopPropagation();moved=false;return}
+  const card=e.target.closest('[data-step]');
+  if(card&&!world.classList.contains('far')){openStep(+card.dataset.step);return}
+  const fr=e.target.closest('.frame');
+  if(fr&&world.classList.contains('far'))go(fr.id);
+},true);
+vp.addEventListener('dblclick',e=>{if(e.target.closest('button'))return;
+  const ns=clamp(s*1.9),wx=(e.clientX-tx)/s,wy=(e.clientY-ty)/s;fly({s:ns,tx:e.clientX-wx*ns,ty:e.clientY-wy*ns});});
+
+/* Teclado */
+addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&document.activeElement&&document.activeElement.dataset.step){e.preventDefault();openStep(+document.activeElement.dataset.step);return}
+  if(e.key==='Escape'&&!help.hidden){hideHelp();return}
+  if(!modal.hidden){
+    if(e.key==='Escape'){closeEx();return}
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();stepEx(e.key==='ArrowRight'?1:-1);return}
+  }
+  if(e.key==='ArrowRight'){e.preventDefault();go(ORDER[Math.min(ORDER.length-1,cur+1)])}
+  else if(e.key==='ArrowLeft'){e.preventDefault();go(ORDER[Math.max(0,cur-1)])}
+  else if(e.key==='+'||e.key==='='){zoomAt(innerWidth/2,innerHeight/2,s*1.3)}
+  else if(e.key==='-'){zoomAt(innerWidth/2,innerHeight/2,s/1.3)}
+  else if(e.key==='0'){go('all')}
+});
+
+/* Minimapa */
+mm.addEventListener('click',e=>{if(!mm._m)return;const r=mm.getBoundingClientRect(),{m,ox,oy}=mm._m;
+  const wx=(e.clientX-r.left-ox)/m,wy=(e.clientY-r.top-oy)/m;fly({s,tx:innerWidth/2-wx*s,ty:innerHeight/2-wy*s});});
+
+/* Inicio */
+let started=false;
+function init(){layout();if(!started){const v=viewFor(bounds,60);s=v.s;tx=v.tx;ty=v.ty;started=true;navBtns[0].classList.add('on')}apply();}
+init();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{layout();const v=viewFor(bounds,60);if(cur<0){s=v.s;tx=v.tx;ty=v.ty}apply();});
+addEventListener('resize',()=>{buildMini();apply()});
+</script>
+
+
