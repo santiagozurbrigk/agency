@@ -372,7 +372,7 @@ tr:last-child td{border-bottom:0}
       </div>
       <i class="arr"><b>SÍ</b></i>
       <div class="cell">
-        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">C2-</span> Anotado</h3></div><p>Respuesta corta y se carga en el tracker.</p><button class="ex" type="button" data-ex="conf-ok">VER EJEMPLO →</button></div>
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">C2-</span> Anotado</h3></div><p>Respuesta corta y le avisa que Manu manda el link por el grupo 10 minutos antes. Se carga en el tracker.</p><button class="ex" type="button" data-ex="conf-ok">VER EJEMPLO →</button></div>
         <div class="stem"></div>
         <div class="note"><span class="k">Se carga en el tracker</span><div class="fields"><span>Confirmado</span></div></div>
       </div>
@@ -668,10 +668,10 @@ const EX={
     rule:"Se manda el lunes 16/11. Los 3 mensajes separados, como charla. Si confirma, se le responde corto y se carga como «Confirmado» en el tracker.",
     text:"(Nombre) como estas??\n\n— segundo mensaje —\n\nEstamos contactando a las personas que se registraron, para confirmar los lugares de la clase del martes a las 18hs y poder darte prioridad a la hora de entregar los regalos que armo Manu\n\n— tercer mensaje —\n\nSi me confirmas ya te anoto para el martes"},
   "conf-ok":{phase:"conf",kind:"Confirmación",title:"Anotado",role:"sdr",
-    what:"Cuando confirma, una respuesta corta.",
-    ch:"WhatsApp · del SDR al registrado",
+    what:"Cuando confirma, una respuesta corta y después cómo le va a llegar el link de la clase.",
+    ch:"WhatsApp · del SDR al registrado · 2 mensajes",
     rule:"Tracker: «Confirmado». El link de la clase llega el día de la clase por el grupo de WhatsApp y por mail.",
-    text:"Anotadooo"},
+    text:"Anotadooo\n\n— segundo mensaje —\n\nJoyaa (nombre), te comento que el link de la clase lo va a enviar Manu por el grupo de whatsapp 10 minutos antes"},
   "reg-cta":{phase:"reg",kind:"Ruta regalos",title:"CTA de regalos en el vivo",role:"manu",
     what:"Al final de la clase, con el slide de cómo pedir los regalos en pantalla, Manu explica cómo pedirlos. La persona escribe primero: así la charla arranca en el WhatsApp de Manu.",
     ch:"En el vivo · Manu a cámara, con el slide de cómo pedir los regalos",
