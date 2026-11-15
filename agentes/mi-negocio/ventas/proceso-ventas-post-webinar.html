@@ -13,7 +13,7 @@
   --red:#2a1214; --red-line:#c43c33; --red-fg:#f07a70; --red-tx:#f2d2cf; --red-edge:#47201f;
   --ok:#4fc77a; --bubble:#173a26; --bubble-tx:#e1f4e8; --var-bg:rgba(255,255,255,.12); --ok-bg:#112319; --ok-line:#2a6b42; --field:#0f1216; --scrim:rgba(5,6,9,.72);
   --sdr:#ff7a45; --manu:#e8b44a; --closer:#a98bf5;
-  --p1:#5b7cfa; --p2:#f08a3c; --p3:#d9a925; --p4:#e0577f; --p5:#9a6cf0; --p6:#3fb56b; --p7:#22a8a0; --p8:#2fb3d9; --p9:#d65fd9;
+  --p1:#5b7cfa; --p2:#f08a3c; --p3:#d9a925; --p4:#e0577f; --p5:#9a6cf0; --p6:#3fb56b; --p7:#22a8a0; --p8:#2fb3d9; --p9:#d65fd9; --p10:#9bb83a;
   --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
   --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -352,6 +352,37 @@ tr:last-child td{border-bottom:0}
   <div class="cover"><span class="ck">RUTA REGALOS</span><h2>Piden los regalos</h2></div>
 </section>
 
+<!-- Confirmación -->
+<section class="frame" id="conf" style="--pc:var(--p10)">
+  <div class="fh"><span class="fk">CONFIRMACIÓN</span><h2>Confirmar lugar en la clase</h2><span class="fw">SDR por WhatsApp · el día antes de la clase</span></div>
+  <div class="board">
+    <div class="row">
+      <div class="cell"><div class="start">DÍA ANTES · 16/11</div></div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node key"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">C1-</span> Mensaje de confirmación</h3></div><p>A cada registrado: confirmamos lugares para la clase de mañana y para entregar los regalos que armó Manu.</p><button class="ex" type="button" data-ex="conf-msg">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">3 mensajes</span><p>Saludo, el motivo y el pedido de confirmación. Separados, como charla.</p></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell">
+        <div class="node dec"><div class="nh"><h3>¿Confirma?</h3></div><p>Que diga que va a estar.</p></div>
+        <div class="stem no"><b>NO</b></div>
+        <div class="note red"><span class="k">No confirma o no puede</span><ul><li>Tracker: <b>No confirmó</b>.</li><li>Igual recibe los recordatorios del grupo y los mails.</li><li>Si no entra a la clase, después del vivo va al grupo 3 del SOP: se le manda la grabación.</li></ul></div>
+      </div>
+      <i class="arr"><b>SÍ</b></i>
+      <div class="cell">
+        <div class="node"><div class="nh"><span class="tag t-sdr">SDR</span><h3><span class="n">C2-</span> Anotado</h3></div><p>Respuesta corta y se carga en el tracker.</p><button class="ex" type="button" data-ex="conf-ok">VER EJEMPLO →</button></div>
+        <div class="stem"></div>
+        <div class="note"><span class="k">Se carga en el tracker</span><div class="fields"><span>Confirmado</span></div></div>
+      </div>
+      <i class="arr"></i>
+      <div class="cell"><div class="end next"><span class="k">→ DÍA DE LA CLASE</span><p>El link llega por el grupo de WhatsApp y por mail.</p></div></div>
+    </div>
+  </div>
+  <div class="cover"><span class="ck">CONFIRMACIÓN</span><h2>Confirmar lugar</h2></div>
+</section>
+
 <!-- 02 -->
 <section class="frame" id="f2" style="--pc:var(--p2)">
   <div class="fh"><span class="fk">FASE 02</span><h2>Descubrimiento y calificación</h2><span class="fw">SDR · en la misma llamada</span></div>
@@ -546,7 +577,9 @@ tr:last-child td{border-bottom:0}
     <table>
       <thead><tr><th>Estado</th><th>Cuándo</th><th>Quién</th><th>Qué se carga</th></tr></thead>
       <tbody>
-                <tr><td><span class="st st-n">Regalos · pidió</span></td><td>Escribe al WhatsApp de Manu pidiendo los regalos</td><td>SDR</td><td>Regalos elegidos, qué vende, inversión en Meta, dolor</td></tr>
+                <tr><td><span class="st st-ok">Confirmado</span></td><td>El día antes, confirma que va a la clase</td><td>SDR</td><td>Estado confirmado</td></tr>
+        <tr><td><span class="st st-n">No confirmó</span></td><td>No responde o dice que no puede</td><td>SDR</td><td>Estado no confirmó</td></tr>
+        <tr><td><span class="st st-n">Regalos · pidió</span></td><td>Escribe al WhatsApp de Manu pidiendo los regalos</td><td>SDR</td><td>Regalos elegidos, qué vende, inversión en Meta, dolor</td></tr>
         <tr><td><span class="st st-n">Regalos · no califica</span></td><td>Se le manda la página de regalos</td><td>SDR</td><td>Link de la página enviado</td></tr>
         <tr><td><span class="st st-warn">Regalos · calificado sin agenda</span></td><td>Califica pero no aceptó la llamada todavía</td><td>SDR</td><td>Dolor, fecha del seguimiento</td></tr>
         <tr><td><span class="st st-no">No se presentó (no show)</span></td><td>No se conecta a la llamada agendada</td><td>Closer</td><td>Estado no show</td></tr>
@@ -567,6 +600,7 @@ tr:last-child td{border-bottom:0}
     <button type="button" data-go="all" style="font-weight:800">Mapa</button>
     <button type="button" data-go="f1"><span class="dot" style="--c:var(--p1)"></span>01 Primer contacto</button>
     <button type="button" data-go="reg"><span class="dot" style="--c:var(--p9)"></span>Regalos</button>
+    <button type="button" data-go="conf"><span class="dot" style="--c:var(--p10)"></span>Confirmación</button>
     <button type="button" data-go="f2"><span class="dot" style="--c:var(--p2)"></span>02 Califica</button>
     <button type="button" data-go="f3"><span class="dot" style="--c:var(--p3)"></span>03 Setteo</button>
     <button type="button" data-go="f4"><span class="dot" style="--c:var(--p4)"></span>04 Handoff</button>
@@ -628,6 +662,16 @@ tr:last-child td{border-bottom:0}
 <script>
 /* ---------- Guiones ---------- */
 const EX={
+  "conf-msg":{phase:"conf",kind:"Confirmación",title:"Mensaje de confirmación",role:"sdr",
+    what:"El día antes de la clase, Mati o Santi le escriben a cada registrado para confirmar su lugar. La excusa: confirmar lugares y poder entregar los regalos que armó Manu.",
+    ch:"WhatsApp · del SDR al registrado · 3 mensajes",
+    rule:"Se manda el lunes 16/11. Los 3 mensajes separados, como charla. Si confirma, se le responde corto y se carga como «Confirmado» en el tracker.",
+    text:"(Nombre) como estas??\n\n— segundo mensaje —\n\nEstamos contactando a las personas que se registraron, para confirmar los lugares de la clase de mañana a las 18hs y poder entregar los regalos que armo Manu\n\n— tercer mensaje —\n\nSi me confirmas ya te anoto para mañana"},
+  "conf-ok":{phase:"conf",kind:"Confirmación",title:"Anotado",role:"sdr",
+    what:"Cuando confirma, una respuesta corta.",
+    ch:"WhatsApp · del SDR al registrado",
+    rule:"Tracker: «Confirmado». El link de la clase llega el día de la clase por el grupo de WhatsApp y por mail.",
+    text:"Anotadooo"},
   "reg-cta":{phase:"reg",kind:"Ruta regalos",title:"CTA de regalos en el vivo",role:"manu",
     what:"Al final de la clase, con el slide de cómo pedir los regalos en pantalla, Manu explica cómo pedirlos. La persona escribe primero: así la charla arranca en el WhatsApp de Manu.",
     ch:"En el vivo · Manu a cámara, con el slide de cómo pedir los regalos",
@@ -704,7 +748,7 @@ const $=id=>document.getElementById(id);
 let current="",curStep=-1;
 
 /* ---------- Pasos: cada card de las fases 01–06 abre su detalle ---------- */
-const STEPS=[...document.querySelectorAll('#f1 .node,#reg .node,#f2 .node,#f3 .node,#f4 .node,#f5 .node,#f6 .node,#f7 .node')].map((n,i)=>{
+const STEPS=[...document.querySelectorAll('#f1 .node,#reg .node,#conf .node,#f2 .node,#f3 .node,#f4 .node,#f5 .node,#f6 .node,#f7 .node')].map((n,i)=>{
   const cell=n.closest('.cell'),notes=[...cell.querySelectorAll('.note')];
   const exEl=cell.querySelector('[data-ex]');
   n.dataset.step=i;n.tabIndex=0;n.setAttribute('role','button');
@@ -783,8 +827,8 @@ document.getElementById('theme').onclick=()=>{root.dataset.theme=isDark()?'light
 /* ---------- Lienzo ---------- */
 const vp=document.getElementById('vp'),world=document.getElementById('world'),svg=document.getElementById('wires');
 const zl=document.getElementById('zl'),mm=document.getElementById('mm'),mmv=document.getElementById('mm-v');
-const ORDER=['f1','reg','f2','f3','rec','f4','f5','f6','f7','trk'];
-const COLORS={f1:'--p1',reg:'--p9',f2:'--p2',f3:'--p3',rec:'--p3',f4:'--p4',f5:'--p5',f6:'--p6',f7:'--p8',trk:'--p7'};
+const ORDER=['f1','reg','conf','f2','f3','rec','f4','f5','f6','f7','trk'];
+const COLORS={f1:'--p1',reg:'--p9',conf:'--p10',f2:'--p2',f3:'--p3',rec:'--p3',f4:'--p4',f5:'--p5',f6:'--p6',f7:'--p8',trk:'--p7'};
 const R={};let bounds={x:0,y:0,w:1,h:1};
 let s=1,tx=0,ty=0,anim=0,cur=-1;
 const MIN=.04,MAX=2.2,FAR=.42,TOP=130;
@@ -797,6 +841,7 @@ function layout(){
   const below=(id,p)=>{const f=size(id),q=R[p];R[id]={x:q.x+(q.w-f.w)/2,y:q.h+DROP,w:f.w,h:f.h}};
   below('rec','f3');below('trk','f6');
   {const f=size('reg');R.reg={x:R.f1.x,y:Math.max(R.f1.h,R.f2.h)+DROP,w:f.w,h:f.h};}
+  {const f=size('conf');R.conf={x:R.f1.x,y:R.reg.y+R.reg.h+DROP,w:f.w,h:f.h};}
   let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   for(const id in R){const r=R[id],el=document.getElementById(id);el.style.left=r.x+'px';el.style.top=r.y+'px';
     x0=Math.min(x0,r.x);y0=Math.min(y0,r.y);x1=Math.max(x1,r.x+r.w);y1=Math.max(y1,r.y+r.h);}
@@ -879,7 +924,7 @@ ORDER.forEach(id=>{const t=document.createElement('i');t.style.setProperty('--c'
 $('sp-prev').onclick=()=>go(ORDER[Math.max(0,cur-1)]);
 $('sp-next').onclick=()=>go(ORDER[Math.min(ORDER.length-1,cur+1)]);
 /* Resumen en la portada de cada fase (vista de lejos) */
-['f1','reg','f2','f3','f4','f5','f6','f7'].forEach(id=>{
+['f1','reg','conf','f2','f3','f4','f5','f6','f7'].forEach(id=>{
   const st=STEPS.filter(x=>x.frame.id===id),g=st.filter(x=>x.ex).length;
   const roles=[...new Set(st.map(x=>{const t=x.el.querySelector('.nh .tag');return t?t.outerHTML:''}).filter(Boolean))];
   const c=$(id).querySelector('.cover');
