@@ -300,13 +300,13 @@ tr:last-child td{border-bottom:0}
       </div>
       <i class="arr"></i>
       <div class="cell">
-        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G2-</span> Elige sus regalos</h3></div><p>Le pregunta qué le pareció la clase y qué le sirvió más, «para mejorar las clases a futuro».</p><button class="ex" type="button" data-ex="reg-hola">VER EJEMPLO →</button></div>
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G2-</span> Feedback de la clase</h3></div><p>Le pregunta qué le pareció la clase y qué le sirvió más, «para mejorar las clases a futuro».</p><button class="ex" type="button" data-ex="reg-hola">VER EJEMPLO →</button></div>
         <div class="stem"></div>
         <div class="note"><span class="k">Antes de responder</span><p>Fijarse en el tracker si ya aplicó en el formulario. Si aplicó, sigue la ruta del formulario con su SDR: no se le repiten preguntas.</p></div>
       </div>
       <i class="arr"></i>
       <div class="cell">
-        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G3-</span> Indaga según la charla</h3></div><p>Si responde bien, se sigue preguntando: si ya tiene ecommerce, qué vende, cuánto pauta y qué lo frena. De a una pregunta.</p><button class="ex" type="button" data-ex="reg-desc">VER EJEMPLO →</button></div>
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G3-</span> Elige regalos e indaga</h3></div><p>Agradece el feedback y le pasa la lista para que elija sus regalos. Si se abre, sigue preguntando: ecommerce, qué vende, cuánto pauta y qué lo frena.</p><button class="ex" type="button" data-ex="reg-desc">VER EJEMPLO →</button></div>
         <div class="stem"></div>
         <div class="note"><span class="k">Se carga en el tracker</span><div class="fields"><span>Regalos · pidió</span><span>Regalos elegidos</span><span>Qué vende</span><span>Inversión en Meta</span><span>Dolor</span></div></div>
       </div>
@@ -334,7 +334,7 @@ tr:last-child td{border-bottom:0}
         <div class="stem no"><b>NO</b></div>
         <div class="note red">
           <span class="k">Todavía no</span>
-          <ul><li>Pregunta que destraba.</li><li>Seguimiento a las 24 h: «¿pudiste probar los agentes?».</li><li>Si responde, se retoma con setting de siempre.</li><li>Tracker: <b>Regalos · calificado sin agenda</b>.</li></ul>
+          <ul><li>Pregunta que destraba.</li><li>Seguimiento a las 24 h: «¿pudiste probar los regalos?».</li><li>Si responde, se retoma con setting de siempre.</li><li>Tracker: <b>Regalos · calificado sin agenda</b>.</li></ul>
           <button class="ex" type="button" data-ex="reg-seguimiento">VER EJEMPLO →</button>
           <span class="loop">↺ VOLVER AL PUENTE</span>
         </div>
@@ -636,13 +636,13 @@ const EX={
   "reg-hola":{phase:"reg",kind:"Ruta regalos",title:"Respuesta al que pide los regalos",role:"manu",
     what:"Mati o Santi responden desde la cuenta de Manu. Le preguntan qué le pareció la clase y qué le sirvió más, con la excusa de mejorar las clases a futuro. Esa es la excusa para abrir la charla.",
     ch:"WhatsApp · cuenta de Manu al lead",
-    rule:"Responder en menos de 1 hora. Los regalos los elige la persona (hasta 3): no se los elegimos nosotros. No se le piden datos de entrada: solo el feedback. Si en su primer mensaje ya contó qué le pareció, se le agradece con sus palabras y se le pregunta qué parte le sirvió más. Si ya aplicó en el formulario, no se le pregunta nada: se lo pasa a su SDR.",
+    rule:"Responder en menos de 1 hora. En este mensaje no se mandan los regalos ni se piden datos: solo el feedback, con la excusa de mejorar las clases. Si en su primer mensaje ya contó qué le pareció, se le agradece con sus palabras y se le pregunta qué parte le sirvió más. Si ya aplicó en el formulario, no se le pregunta nada: se lo pasa a su SDR.",
     text:"(Nombre) Queridoo como estas??\n\nQue bueno que pudiste entrar a la clase\n\nQueres contarme un poco que te parecio, que fue lo que mas te sirvio y de mas\n\nTe pregunto para mejorar las clases a futuro y que cada vez te aporte mas valor"},
-  "reg-desc":{phase:"reg",kind:"Ruta regalos",title:"Indaga según la charla",role:"manu",
-    what:"Según lo que conteste del feedback, se sigue la charla para saber si ya tiene ecommerce, qué vende, cuánto pauta y qué lo frena. Cada pregunta se engancha con lo que dijo.",
+  "reg-desc":{phase:"reg",kind:"Ruta regalos",title:"Elige regalos e indaga",role:"manu",
+    what:"Cuando contesta el feedback, se le agradece con sus palabras y se le pasa la lista para que elija sus regalos. Cuando elige, mientras «se los preparan», se sigue la charla: si ya tiene ecommerce, qué vende, cuánto pauta y qué lo frena.",
     ch:"WhatsApp · cuenta de Manu al lead · de a una pregunta",
-    rule:"Una pregunta por mensaje, y solo si la anterior la respondió bien. Si responde corto o no cuenta mucho, no se insiste: se le manda la página con sus regalos. Señales de intención: pregunta cómo aplicarlo a su marca, cuenta un problema concreto con números, pregunta cómo trabajar con Manu. Se carga en el tracker como «Regalos · pidió».",
-    text:"Buenísimo, gracias 🙌 ¿Y vos ya tenés tu ecommerce andando o estás arrancando?\n\n— si ya tiene —\n\n¿Qué vendés? ¿Hace cuánto?\n\n— si sigue respondiendo bien —\n\n¿Y cómo venís con Meta? ¿Cuánto estás invirtiendo más o menos por día?\n\n— si sigue —\n\n¿Y qué es lo que más te está frenando hoy? ¿El CPA, que no tenés días estables, el margen…?"},
+    rule:"Agradecer el feedback citando algo que dijo, nunca genérico. La persona elige hasta 3 regalos: no se los elegimos nosotros. Después, una pregunta por mensaje y solo si la anterior la respondió bien. Si el feedback fue corto o no cuenta mucho, se le pasa igual la lista y, cuando elige, la página con sus regalos: no se insiste. Señales de intención: pregunta cómo aplicarlo a su marca, cuenta un problema concreto con números, pregunta cómo trabajar con Manu. Se carga en el tracker como «Regalos · pidió».",
+    text:"Graciass por contarme 🙌 Me re sirve lo que me decís de (algo que dijo de la clase)\n\nTe paso los regalos. Elegí los 3 que quieras y pasame los números:\n\n(lista de regalos numerada)\n\n— cuando elige —\n\nAnotado 🙌 Te los preparo y te los paso.\n\nMientras tanto, ¿vos ya tenés tu ecommerce andando o estás arrancando?\n\n— si ya tiene —\n\n¿Qué vendés? ¿Hace cuánto?\n\n— si sigue respondiendo bien —\n\n¿Y cómo venís con Meta? ¿Cuánto estás invirtiendo más o menos por día?\n\n— si sigue —\n\n¿Y qué es lo que más te está frenando hoy? ¿El CPA, que no tenés días estables, el margen…?"},
   "reg-pagina":{phase:"reg",kind:"Ruta regalos",title:"No califica: página de regalos",role:"manu",
     what:"Si responde corto, no cuenta mucho, no califica o no hay intención de compra, se le manda la página para descargar los regalos que eligió (máximo 3).",
     ch:"WhatsApp · cuenta de Manu al lead",
@@ -657,7 +657,7 @@ const EX={
     what:"Si califica pero no acepta la llamada, se le hace la pregunta que destraba. Si igual no, seguimiento a las 24 horas preguntando por los regalos.",
     ch:"WhatsApp · cuenta de Manu al lead",
     rule:"Un solo seguimiento por los regalos. Si responde, se retoma con el setting de siempre. Tracker: «Regalos · calificado sin agenda», con la fecha del seguimiento.",
-    text:"Dale, cero drama. ¿Hay alguna duda puntual que, si no te la saco, te frena?\n\n— a las 24 horas, si no respondió —\n\n(Nombre), ¿pudiste probar los agentes? ¿Cuál usaste primero?"},
+    text:"Dale, cero drama. ¿Hay alguna duda puntual que, si no te la saco, te frena?\n\n— a las 24 horas, si no respondió —\n\n(Nombre), ¿pudiste probar los regalos? ¿Cuál usaste primero?"},
 
   "audio-no":{phase:"f1",kind:"Fase 01 · Primer contacto",title:"Audio: no atendió",role:"sdr",
     what:"Si no atiende ninguna de las 3 llamadas, en el tracker ponemos No atendió y le dejamos este audio por WhatsApp.",
