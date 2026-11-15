@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+/* Siempre se entra arriba de todo (en el headline), aunque el link del anuncio traiga #registro u otra ancla,
+   o el navegador del celular quiera volver a donde estaba. Se borra el # de la URL sin tocar los ?utm. */
+(function () {
+  try { if ("scrollRestoration" in history) history.scrollRestoration = "manual"; } catch (e) {}
+  if (location.hash) {
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  }
+  function arriba() { window.scrollTo(0, 0); }
+  arriba();
+  document.addEventListener("DOMContentLoaded", arriba);
+  /* Durante la carga, si algo (el player, el autocompletar) mueve la página antes de que la persona toque, la volvemos arriba. */
+  var tocó = false, fin = Date.now() + 2500;
+  ["touchstart", "wheel", "keydown", "mousedown"].forEach(function (ev) {
+    addEventListener(ev, function () { tocó = true; }, { passive: true, once: true });
+  });
+  addEventListener("load", function () { if (!tocó) arriba(); });
+  addEventListener("scroll", function () { if (!tocó && Date.now() < fin && scrollY > 0) arriba(); }, { passive: true });
+})();
+</script>
 <title>Clase en vivo · Martes 17/11 · Manu Dominguez</title>
 <meta name="description" content="Clase en vivo privada y gratis. El roadmap con el que pasé mi marca de consumibles de 60 a más de 270 millones por mes con el modelo de suscripción.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
