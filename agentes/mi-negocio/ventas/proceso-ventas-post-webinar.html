@@ -300,25 +300,25 @@ tr:last-child td{border-bottom:0}
       </div>
       <i class="arr"></i>
       <div class="cell">
-        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G2-</span> Elige sus regalos</h3></div><p>Agradece lo que dijo de la clase y le pasa la lista para que elija sus regalos. Mientras se los preparan, 2 preguntas.</p><button class="ex" type="button" data-ex="reg-hola">VER EJEMPLO →</button></div>
+        <div class="node key"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G2-</span> Elige sus regalos</h3></div><p>Le pasa la lista para que elija sus regalos y, mientras se los preparan, le pide feedback de la clase «para mejorarlas».</p><button class="ex" type="button" data-ex="reg-hola">VER EJEMPLO →</button></div>
         <div class="stem"></div>
         <div class="note"><span class="k">Antes de responder</span><p>Fijarse en el tracker si ya aplicó en el formulario. Si aplicó, sigue la ruta del formulario con su SDR: no se le repiten preguntas.</p></div>
       </div>
       <i class="arr"></i>
       <div class="cell">
-        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G3-</span> Descubrimiento suave</h3></div><p>Una pregunta más sobre lo que lo frena. Charla, no formulario.</p><button class="ex" type="button" data-ex="reg-desc">VER EJEMPLO →</button></div>
+        <div class="node"><div class="nh"><span class="tag t-manu">MANU</span><h3><span class="n">G3-</span> Indaga según la charla</h3></div><p>Si responde bien, se sigue preguntando: si ya tiene ecommerce, qué vende, cuánto pauta y qué lo frena. De a una pregunta.</p><button class="ex" type="button" data-ex="reg-desc">VER EJEMPLO →</button></div>
         <div class="stem"></div>
         <div class="note"><span class="k">Se carga en el tracker</span><div class="fields"><span>Regalos · pidió</span><span>Regalos elegidos</span><span>Qué vende</span><span>Inversión en Meta</span><span>Dolor</span></div></div>
       </div>
       <i class="arr"></i>
       <div class="cell">
-        <div class="node dec"><div class="nh"><h3>¿Califica y tiene intención?</h3></div>
-          <div class="chips"><span class="chip">USD 100+/DÍA EN META</span><span class="chip">MARCA VENDIENDO</span><span class="chip">PREGUNTA CÓMO APLICARLO</span></div>
+        <div class="node dec"><div class="nh"><h3>¿Se abre y califica?</h3></div>
+          <div class="chips"><span class="chip">RESPONDE CON DETALLE</span><span class="chip">USD 100+/DÍA EN META</span><span class="chip">MARCA VENDIENDO</span><span class="chip">PREGUNTA CÓMO APLICARLO</span></div>
         </div>
         <div class="stem no"><b>NO</b></div>
         <div class="note red">
           <span class="k">Página de regalos</span>
-          <ul><li>Se le manda la página para descargar los regalos que eligió (máximo 3).</li><li>Tracker: <b>Regalos · no califica</b>. No se le insiste.</li></ul>
+          <ul><li>Responde corto, no cuenta mucho o no califica: no se insiste.</li><li>Se le manda la página para descargar los regalos que eligió (máximo 3).</li><li>Tracker: <b>Regalos · no califica</b>. No se le insiste.</li></ul>
           <button class="ex" type="button" data-ex="reg-pagina">VER EJEMPLO →</button>
         </div>
       </div>
@@ -634,17 +634,17 @@ const EX={
     rule:"Mientras Manu lo dice, alguien del equipo manda por el chat del Zoom el walink de Manu (link de WhatsApp de Manu), y lo repite al cierre. Pedir las dos cosas: qué le pareció la clase y los regalos. Lo que contesten de la clase es la primera pista para el setteo.",
     text:"Bueno, los regalos. Para recibirlos, escribime al WhatsApp: te dejo el link en el chat del Zoom.\n\nContame qué te pareció la clase y pedime los regalos. Te los mando yo. Leo todos los mensajes."},
   "reg-hola":{phase:"reg",kind:"Ruta regalos",title:"Respuesta al que pide los regalos",role:"manu",
-    what:"Mati o Santi responden desde la cuenta de Manu. Agradecen lo que dijo de la clase, con sus palabras, y le pasan la lista de regalos para que elija. Mientras se los preparan, le hacen 2 preguntas.",
+    what:"Mati o Santi responden desde la cuenta de Manu. Le pasan la lista de regalos para que elija y, mientras se los preparan, le piden que cuente qué le pareció la clase porque el feedback sirve para mejorarlas. Esa es la excusa para abrir la charla.",
     ch:"WhatsApp · cuenta de Manu al lead",
-    rule:"Responder en menos de 1 hora. Una línea sobre lo que dijo de la clase, nunca genérica. Los regalos los elige la persona (hasta 3): no se los elegimos nosotros. Las 2 preguntas van como charla, no como formulario. Si ya aplicó en el formulario, no se le pregunta nada: se lo pasa a su SDR.",
-    text:"¡(Nombre)! Qué bueno que te sirvió (lo que dijo de la clase), gracias por escribirme 🙌\n\nAcá tenés la lista de regalos. Elegí los 3 que quieras y pasame los números:\n\n(lista de regalos numerada)\n\nMientras te los preparo, contame dos cosas rápidas:\n\n1. ¿Qué vendés y hace cuánto?\n2. ¿Cuánto estás invirtiendo más o menos por día en Meta?"},
-  "reg-desc":{phase:"reg",kind:"Ruta regalos",title:"Descubrimiento suave",role:"manu",
-    what:"Una sola pregunta más, sobre lo que lo frena hoy. Con eso alcanza para saber si califica y si hay intención.",
-    ch:"WhatsApp · cuenta de Manu al lead",
-    rule:"Una pregunta por mensaje. Señales de intención: pregunta cómo aplicarlo a su marca, cuenta un problema concreto con números, pregunta cómo trabajar con Manu. Se carga en el tracker como «Regalos · pidió».",
-    text:"Buenísimo. ¿Y qué es lo que más te está frenando hoy? ¿El CPA, que no tenés días estables, el margen…?"},
+    rule:"Responder en menos de 1 hora. Los regalos los elige la persona (hasta 3): no se los elegimos nosotros. No se le piden datos de entrada: solo el feedback. Si en su primer mensaje ya contó qué le pareció, se le agradece con sus palabras y se le pregunta qué parte le sirvió más. Si ya aplicó en el formulario, no se le pregunta nada: se lo pasa a su SDR.",
+    text:"¡(Nombre)! Gracias por escribirme 🙌\n\nAcá tenés la lista de regalos. Elegí los 3 que quieras y pasame los números:\n\n(lista de regalos numerada)\n\nMientras te los preparo, ¿me contás un poco qué te pareció la clase? Me sirve mucho el feedback para mejorarlas."},
+  "reg-desc":{phase:"reg",kind:"Ruta regalos",title:"Indaga según la charla",role:"manu",
+    what:"Según lo que conteste del feedback, se sigue la charla para saber si ya tiene ecommerce, qué vende, cuánto pauta y qué lo frena. Cada pregunta se engancha con lo que dijo.",
+    ch:"WhatsApp · cuenta de Manu al lead · de a una pregunta",
+    rule:"Una pregunta por mensaje, y solo si la anterior la respondió bien. Si responde corto o no cuenta mucho, no se insiste: se le manda la página con sus regalos. Señales de intención: pregunta cómo aplicarlo a su marca, cuenta un problema concreto con números, pregunta cómo trabajar con Manu. Se carga en el tracker como «Regalos · pidió».",
+    text:"Buenísimo, gracias 🙌 ¿Y vos ya tenés tu ecommerce andando o estás arrancando?\n\n— si ya tiene —\n\n¿Qué vendés? ¿Hace cuánto?\n\n— si sigue respondiendo bien —\n\n¿Y cómo venís con Meta? ¿Cuánto estás invirtiendo más o menos por día?\n\n— si sigue —\n\n¿Y qué es lo que más te está frenando hoy? ¿El CPA, que no tenés días estables, el margen…?"},
   "reg-pagina":{phase:"reg",kind:"Ruta regalos",title:"No califica: página de regalos",role:"manu",
-    what:"Si no califica o no hay intención de compra, se le manda la página para descargar los regalos que eligió (máximo 3).",
+    what:"Si responde corto, no cuenta mucho, no califica o no hay intención de compra, se le manda la página para descargar los regalos que eligió (máximo 3).",
     ch:"WhatsApp · cuenta de Manu al lead",
     rule:"Máximo 3 regalos, los que eligió la persona. Tracker: «Regalos · no califica». No se le insiste ni se le ofrece la llamada: queda en la base para los próximos lanzamientos.",
     text:"Te dejo acá tus regalos, (nombre) 🎁\n\n👉 (link de la página de regalos)\n\nAhí están los que elegiste: (regalos elegidos).\n\nCualquier cosa que te trabe al usarlos, escribime."},
