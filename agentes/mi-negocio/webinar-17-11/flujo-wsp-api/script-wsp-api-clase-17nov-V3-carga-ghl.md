@@ -30,6 +30,28 @@ Hecho con el agente `../../agentes/creador-flujos-wsp.md` (07/11/2026). Son los 
 - **Prompt 3 (W01): armado en borrador.** Sin publicar.
 - **Valores nuevos:** `cl17_video_i1` y `cl17_foto_i2` (los archivos del encabezado de I.1 e I.2) y `cl17_link_agendar` (el link de Google Calendar de los mails). Para poner el video y la foto reales de Manu alcanza con cambiar esos valores.
 
+### Arranque (11/11/2026, 19:30)
+
+- **Publicados:** W01, W02 (columna), los 12 envíos D1A…D6B y W05. **W03 y W04 (y sus envíos) siguen en borrador:** hay que publicarlos antes del lunes 16/11 a la noche (W02 los llama al final) y cargar `cl17_link_clase`, `cl17_link_aplicacion` y `cl17_link_replay`.
+- **Videos:** `cl17_video_i1` = BIENVENIDA y `cl17_video_r2` = R2 (subidos a Contenido multimedia, comprimidos a 720p y menos de 10 MB). Originales y comprimidos en `../videos-wsp/`.
+- **Fotos de hoy:** `cl17_foto_i2` = imagen armada de la casilla (Principal / Promociones / Spam con el asunto y la vista previa reales del M-0); `cl17_foto_d1b` = captura del panel de la marca (3943 · 275.2M · 7,2%). **El resto de las `cl17_foto_*` siguen con la foto de prueba negra.**
+- **Mails:** «Clase martes 17/11 · mails» estaba en borrador; se publicó el 11/11 19:25 y los mismos 163 entran a las 19:30 (reciben el M-0; el M-1 de la mañana se saltea porque la espera tiene «omitir comunicaciones si ya pasó»).
+- **Carga masiva:** los 163 contactos con `optin-17-11` entran a W01 el 11/11 a las 19:30 (acción en lote programada «cl17 arranque dia 1 - registrados a W01»).
+- **Cambio solo por el arranque tarde (W02 columna):** «Esperar D1A» pasó de 12:00 a **19:30** y, si la fecha ya pasó, **sigue con la D1A** en vez de saltarla; «Esperar D1B» pasó a **21:30**. **Volver a dejar la D1A en «si ya pasó → ir a Esperar D1B»** desde el 12/11, para que los que se registren después no reciban la D1A tarde.
+
+### Plan sin videos nuevos de Manu (12/11/2026)
+
+Manu no grabó el resto del contenido. Timeline aprobado en Figma (página «Timeline del lead · 12→17/11» del archivo de historias). Cambios ya cargados:
+
+- **Simulador:** `cl17_loom_simulador` = Loom de Santi (https://www.loom.com/share/aea8fcb8dd724cb28a87f027c0cd18df). `cl17_link_simulador` ya era el artifact.
+- **D2B (los 3 mensajes):** imagen `cl17_foto_d2b_hoy` = antes/después de Lucas armada con las capturas del Doc (`videos-wsp/cl17-foto-d2b-lucas.jpg`); se sumó al cuerpo «Qué cambiaron…» + «Hacé la cuenta con tu marca en el simulador 👇»; el botón pasó de «Ver video de Lucas» (`cl17_video_lucas`) a **«Hacer mi cuenta» → `cl17_link_simulador`**.
+- **D3A:** la pregunta pasó a «¿cuánto te cambió el CPA **en las últimas 2 semanas**?» en el interactivo y en la plantilla `cl17_d3a` (editada y reaprobada por Meta el 12/11 03:13).
+- **D3B (los 3 mensajes):** «Te lo explico en un minuto 👇» + botón «Ver el video» (`cl17_video_r5`) se reemplazó por la respuesta a la objeción escrita + **«Hacer mi cuenta» → `cl17_link_simulador`**.
+- **Fotos:** `cl17_foto_d4b` = captura del panel (la misma del D1B); `cl17_foto_d6b` y `cl17_foto_d7_1500` = biblioteca de agentes (`videos-wsp/cl17-foto-agentes.jpg`).
+- **Respuestas de Santi (12/11):** `cl17_link_manu` = **https://wa.me/5491121841477** (WhatsApp Business de Manu, donde está el SDR) · **Génesis cierra el VIERNES 20/11** y los lugares (`cl17_lugares` = 6) están bien → al publicar W04, el VIE20 pasa a ser el «hoy cierra» y el SAB21 se saca · **los flujos van sin Loom**: se borró la línea de `cl17_loom_flujos` de los 3 mensajes del D4A y del mail 4 · suscriptores nuevos de la semana = **278** (grupo sáb 17:00) · mail 6 ahora promete «un spoiler de lo que vas a ver mañana» a las 13:00 por el grupo.
+- **Domingo con el video de YouTube (12/11):** `cl17_video_r7` = https://youtu.be/fXYZR8d2DAY (video de suscripciones; el título tiene una cifra vieja, se comunica como «hace 2 meses… ya hacía 150 millones por mes en recurrencias»). Los 3 mensajes del D5A cambiaron el texto a ese encuadre + la cuenta 30.000 / 90.000; botón «Ver el video». El recorte de la clase ya no hace falta para el domingo. El video de Operaciones está en edición: cuando llegue, va como regalo del lunes.
+- **Pendiente:** `cl17_video_r4` (D3A, vie 12:00) y `cl17_video_r7` (D5A) → recortes de la clase del 19/10; `cl17_loom_flujos` (D4A); `cl17_video_r8` (D6A, spoiler); fotos del día 7; mails 4 y 6 (sacar la promesa de video). **La vuelta atrás de «Esperar D1A» se hace el 12/11 después de las 20:00**, cuando ya pasaron los que respondieron tarde el día 1.
+
 ### Cómo quedó W01 distinto de este doc
 
 - **Disparador:** tag `optin-17-11` agregado (lo pone el workflow del webhook de la landing), no un webhook propio.
@@ -89,7 +111,9 @@ Ningún mensaje manda al WhatsApp privado de Manu (`cl17_link_manu` ya no se usa
 
 - **D4B (las 3 respuestas):** «Así está hoy mi panel 👇 El martes a las 18 te muestro cómo se arma» + botón «Agendar la clase».
 - **D5B «Sí, ya lo usé»:** «Buenísimo. Tené ese número a mano el martes, lo vamos a usar en la clase» + «Agendar la clase».
-- **POST «Sí, estuve»:** un solo mensaje: «Gracias por quedarte hasta el final 🙏 Y si querés que lo apliquemos en tu marca con mi equipo, aplicá acá y te contactamos 👇» + «Aplicar a Génesis». Se sacó el pedido de los 3 agentes por privado. **Pendiente:** definir cómo se entregan (un link para elegirlos, o en la clase o el grupo).
+- **POST «Sí, estuve» (vuelve como estaba, decisión de Santi del 08/11):** en la clase se avisa que a todos les llega el WhatsApp de si estuvieron. «Sí, estuve» → «Para los 3 agentes de IA: 1. Escribime por privado… 2. Elegí tus 3 y te los paso» con el botón «Escribirle a Manu» (`cl17_link_manu`). **Ese WhatsApp es un SDR** que habla como Manu: califica, entrega los agentes y agenda a los que no aplicaron en el webinar en applygenesis.com/aplication. Después sale «Aplicar a Génesis» igual que antes.
+- **PENDIENTE · número nuevo del SDR (en trámite, 08/11):** `wa.link/ouqu06` **no es el SDR**. Cuando esté el número nuevo: (1) cargarlo en `cl17_link_manu` (el botón del POST) y (2) ponerlo al final de la aplicación (el WhatsApp del SDR en el campus). El SDR va a usar ManyChat, con audios pregrabados de Manu; no está conectado a GHL.
+- **Tracking del POST:** si abre el link del SDR → tag `cl17-abrio-manu`. El link de aplicación del POST lleva `?utm_source=whatsapp&utm_medium=post-clase&utm_content=cl17`; la página de aplicación guarda los UTM del link y el tracker los muestra como «vía whatsapp / post-clase / cl17».
 - **MIE12 y VIE20 «Tengo dudas»:** «Dale, aplicá acá y en la llamada te respondo todo 👇» + «Aplicar a Génesis». Sigue el aviso interno a Manu.
 - **MIE1930 «Sí, escribime»:** «Dale, aplicá acá y en la llamada lo hablamos 👇» + «Aplicar a Génesis», con el aviso a Manu. **«Por ahora no»:** pone el tag y termina, sin mensaje.
 

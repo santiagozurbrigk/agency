@@ -1,5 +1,7 @@
 # Historias del lanzamiento · clase del martes 17/11, 18 hs
 
+> **Del 09/11 al 21/11 mandan los archivos `historias-v3-*.md`.** Este archivo queda como historial.
+
 Todas las secuencias de historias de Instagram, desde el hype hasta el cierre del post-clase. Una secuencia por día, con su tema, como en el tablero de Naza que pasó Santi el 04/11.
 
 Hechas con dos agentes de Limitless: `agentes/M4-webinar-organico/calendario-historias.md` (qué toca cada día) y `agentes/M4-webinar-organico/agente-secuencias-historias.md` (cada secuencia, historia por historia). Datos: `CONTEXTO.md`, `contexto.md`, `analisis-ventas-calificadas.md`, `calendario-nutricion-whatsapp.md` y las capturas de `../testimonios/alumnos/`. Cubre las tareas ADQ-01, NUT-01, WEB-01 y POST-02 del tracker.

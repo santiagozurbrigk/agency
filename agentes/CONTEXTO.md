@@ -16,7 +16,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
     - 4 llamadas grupales semanales y chat 1 a 1 con Manu.
     - Acceso al campus: toda la información y herramientas propias (automatizaciones, flujos, agentes de IA y CRM).
     - Bonus que se nombran en la clase: Puentify y acceso a la Red Génesis.
-    - **10 lugares.** El carrito del 17/11 cierra el **sábado 21/11**.
+    - **10 lugares.** El carrito del 17/11 cierra el **viernes 20/11**.
   - **Cómo se entra:** en el webinar y en el post-webinar no se agenda una llamada: se **aplica** completando un formulario, y después el equipo contacta a los que aplicaron. Todos los CTA de venta dicen «aplicá», nunca «agendá».
   - Frase de la oferta (cerrada 6-sep): *"Escalo tu ecomm de consumibles a +$100M al mes convirtiéndolo a modelo de suscripción, sin depender del CPA ni dejar de vender."*
 

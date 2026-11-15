@@ -230,7 +230,7 @@ Y acá está lo que casi nadie ve sobre el modelo de suscripciones:
 
 La pieza exclusiva de hoy: **Los flujos de retencion de email y whatsapp**, que utilizo en mis propias marcas para que el cliente que ya me compró no se vaya a la competencia. Es para empezar a cobrar esa plata sentada en tu base.
 
-Te lo dejo en el grupo, junto con el video explicando como podes implementarlos y como armar buenas ofertas para suscripciones
+Te lo dejo hoy a las 13:00 en el grupo, listo para que lo copies en tu marca
 
 sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
@@ -321,7 +321,7 @@ Y a los que estén EN VIVO les tengo algo que no voy a dar en ningún otro lado 
 
 Para aprovecharla, tené listos tu Calculadora de suscripciones, tu número de recompra y una hora sin interrupciones, en la compu.
 
-La pieza exclusiva de hoy es el video de las 13:00 por el grupo, donde te muestro cómo estoy preparando la clase. El link para entrar mañana también pasa por ahí.
+La pieza exclusiva de hoy es un spoiler de lo que vas a ver mañana: te lo mando a las 13:00 por el grupo. El link para entrar mañana también pasa por ahí.
 
 Si no estás sumate acá 👉 [GRUPO DE WHATSAPP](https://chat.whatsapp.com/HBbSIYz620WJgSQp0ZuVDJ)
 
