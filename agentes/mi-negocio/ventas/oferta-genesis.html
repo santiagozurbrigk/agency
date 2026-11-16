@@ -119,9 +119,10 @@
   .tags span { font-size: clamp(10.5px, 1.5vh, 12px); padding: clamp(3px, .45vh, 5px) 10px; border-radius: 999px; border: 1px solid var(--borde); background: rgba(255,255,255,.03); color: var(--gris-2); white-space: nowrap; }
   .tags span.herr { color: var(--naranja); border-color: rgba(232,130,58,.4); background: rgba(232,130,58,.07); }
   .sop-grupos { display: grid; gap: clamp(6px, 1vh, 10px); }
-  .sop-grupos .grupo { display: grid; grid-template-columns: clamp(96px, 9vw, 130px) minmax(0, 1fr); gap: 10px; align-items: center; }
-  .sop-grupos .sub-lbl { line-height: 1.3; }
-  .herr-fila { display: flex; gap: 8px; align-items: baseline; font-size: clamp(11.5px, 1.65vh, 13px); color: var(--gris-2); padding: 8px 12px; border-radius: 10px; background: rgba(232,130,58,.08); border: 1px solid rgba(232,130,58,.3); }
+  .sop-grupos .grupo { --chip-h: calc(clamp(10.5px, 1.5vh, 12px) * 1.45 + 2 * clamp(3px, .45vh, 5px) + 2px); display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .sop-grupos .sub-lbl { line-height: var(--chip-h); white-space: nowrap; }
+  .herr-fila .ok { transform: none; }
+  .herr-fila { display: flex; gap: 8px; align-items: center; font-size: clamp(11.5px, 1.65vh, 13px); color: var(--gris-2); padding: 8px 12px; border-radius: 10px; background: rgba(232,130,58,.08); border: 1px solid rgba(232,130,58,.3); }
   .herr-fila b { color: var(--naranja); font-weight: 600; }
   .campus-mini { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; border: 1px solid var(--borde); display: block; }
@@ -401,9 +402,9 @@ const TOP_FACT = [["top1","$8.0M"],["top2","$7.8M"],["top3","$7.4M"]];
 const RES_MOVIL = ["r10","r11","r12","r13","r14","r02","r03","r04"];
 const resImg = (k, extra = "") => `<img src="oferta-genesis-img/resultados/${k}.webp" alt="Métricas diarias de una marca que trabaja con Genesis" class="${extra}" loading="lazy">`;
 const SOP_GRUPOS = [
-  ["Producto y oferta", ["Investigación","Oferta","Blackhat"]],
+  ["Producto", ["Investigación","Oferta","Blackhat"]],
   ["Adquisición", ["Ads","Media buying","Funnels","Landings","Copywriting y guiones","Edición y creativos"]],
-  ["Operación y retención", ["Operaciones","Logística","Atención al cliente","Retención"]]
+  ["Operación", ["Operaciones","Logística","Atención al cliente","Retención"]]
 ];
 const SOPS = ["Investigación","Operaciones","Funnels","Retención","Oferta","Blackhat","Ads","Landings","Atención al cliente","Logística","Media buying","Copywriting y guiones","Edición y creativos"];
 const CONTACTOS = ["Proveedores","Laboratorios","Contadores especializados","Logística propia","Abogados especializados","Bolsa de trabajo","Contacto de registro: INPI, ANMAT y SENASA"];
