@@ -421,7 +421,7 @@ const OFERTAS = {
     tag: "Escalá tu ecomm de consumibles a +$100M al mes con modelo de suscripción, sin depender del CPA ni dejar de vender.",
     acomp: [
       { t: "Sesiones 1 a 1 ilimitadas", c: "Sesiones 1 a 1", chip: "Ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
-      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "Grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
+      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "64 clases grupales", fotos: ["grupal"] },
       { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chat"] }
     ],
     dwy: ["Auditoría de tus números + roadmap","Suscripción instalada","Ofertas","Creación de anuncios","Procesos de retención","Proyección de stock"],
@@ -514,8 +514,7 @@ function render() {
         <div class="acomp-item">
           <div class="fotos">${a.fotos.map(f => img(f)).join("")}</div>
           <div class="tx"><b>${a.c}</b><small>${a.s}</small><span class="chip n">${a.chip}</span></div>
-        </div>`).join("")}</div>
-      <p class="dwy-nota">${o.dwy ? "<em>Done with you:</em> auditoría, suscripción instalada, ofertas, anuncios, retención y stock, con vos." : "<em>Lo implementás vos,</em> con nosotros al lado todo el tiempo."}</p>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
+        </div>`).join("")}</div>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
 
     <div class="a-bon" style="--n:${o.bonus.length + 1}">
       ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>1 encuentro presencial por mes</small></div>`, "foto", "Comunidad")}
