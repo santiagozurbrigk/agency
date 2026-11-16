@@ -12,19 +12,19 @@ Cambiá los valores, no los nombres. Si rompés el formato, la skill te avisa.
 ```json
 {
   "subtitulos": {
-    "fuente": "Montserrat",
+    "fuente": "Inter Tight",
     "peso": 800,
     "tamano": 66,
-    "color": "#FFFFFF",
-    "resaltado": "#FFD400",
-    "borde": "#000000",
+    "color": "#F2EDE4",
+    "resaltado": "#F26A1B",
+    "borde": "#0B0B0C",
     "grosorBorde": 8,
     "caja": null,
     "mayusculas": false,
     "palabrasPorLinea": 3,
     "sinPuntuacion": true,
-    "posicionCam": 0.70,
-    "posicionSplit": 0.50
+    "posicionCam": 0.7,
+    "posicionSplit": 0.5
   },
   "cortes": {
     "silencioMax": 0.35,
@@ -33,26 +33,38 @@ Cambiá los valores, no los nombres. Si rompés el formato, la skill te avisa.
   },
   "zoom": {
     "cuanto": 1.15,
-    "origenY": 0.40
+    "origenY": 0.4
   },
   "hook": {
-    "fuente": "Montserrat",
-    "fondo": "#FFFFFF",
-    "color": "#000000",
+    "fuente": "Inter Tight",
+    "fondo": "#0B0B0C",
+    "color": "#F2EDE4",
     "tamano": 60,
     "posicionY": 0.14,
-    "duracion": 3
+    "duracion": 3,
+    "borde": "#F26A1B"
   },
   "cta": {
-    "fuente": "Playfair Display",
+    "fuente": "Inter Tight",
     "tamano": 150,
-    "color": "#FFFFFF",
+    "color": "#F26A1B",
     "posicionY": 0.25
   },
   "split": {
-    "fondo": "#0B0B0F",
+    "fondo": "#0B0B0C",
     "encuadreCam": 0.35,
     "ajusteBroll": "contain"
+  },
+  "graficos": {
+    "acento": "#F26A1B",
+    "fondo": "#0B0B0C",
+    "claro": "#F2EDE4",
+    "fuente": "Inter Tight",
+    "desenfoque": 18,
+    "oscurecer": 0.45,
+    "brillo": 0.6,
+    "entrada": 0.45,
+    "duracion": 3.5
   }
 }
 ```
@@ -72,6 +84,12 @@ Qué es cada cosa:
 - `split.encuadreCam`: qué parte de tu cara queda en la mitad de abajo (0 = la parte de arriba
   de la toma, 1 = la de abajo).
 - `ajusteBroll`: `contain` muestra lo de arriba entero, `cover` lo recorta para llenar.
+- `hook.borde`: color del borde de la caja del hook (con brillo). `null` para la caja redonda sin borde.
+- `graficos`: los motion graphics. `acento` es el color que brilla (el naranja de Genesis),
+  `fondo` el negro de las placas, `claro` el de los puntos, líneas y textos chicos.
+  `desenfoque` (en píxeles) y `oscurecer` (0 a 1) son cuánto se apaga la cámara atrás de un
+  gráfico. `brillo` (0 a 1) es cuánto glow tiene el acento. `entrada` es cuánto tarda en
+  aparecer (segundos) y `duracion` cuánto dura un gráfico si no se dice otra cosa.
 
 ## Mis referencias
 
@@ -80,7 +98,9 @@ Qué es cada cosa:
 
 - **guia-infoproductos** (video de YouTube de 31 min, "Guía definitiva para hacer +$100.000 USD en
   2026 con Infoproductos"). Le gusta: "los motion graphics y animaciones y estilo". Es horizontal y
-  largo: de acá se copia la estética de los gráficos, no el ritmo ni el formato.
+  largo: de acá se copia la estética de los gráficos, no el ritmo ni el formato. La referencia es
+  roja y negra, pero **se usa con la paleta de Genesis**: naranja #F26A1B, negro #0B0B0C y hueso
+  #F2EDE4, con Inter Tight (la guía de estilo de la marca).
 
 ## Cómo corto
 
@@ -92,10 +112,10 @@ Qué es cada cosa:
 
 ## Motion graphics
 
-(De guia-infoproductos. Todo a ojo: el motor todavía no dibuja estos gráficos.)
+(De guia-infoproductos, con la paleta de Genesis. Se piden en `edicion.json` → `graficos`.)
 
-- Paleta negro + rojo con brillo. Blanco solo para puntos y líneas finas. Nada de otros colores,
-  salvo un verde puntual para un logro.
+- Paleta negro + naranja Genesis con brillo. Hueso solo para puntos, líneas finas y textos
+  chicos. Nada de otros colores.
 - Cuando hay un gráfico encima de la cámara, la cámara se desenfoca y se oscurece atrás.
 - Números y cifras en tarjetas rojas con degradé y borde fino.
 - Conceptos en placas sobre fondo negro con viñeta roja: tarjetas con íconos de línea unidas por
@@ -103,8 +123,13 @@ Qué es cada cosa:
 - Crecimiento = línea punteada roja que sube, con puntos blancos y una etiqueta con borde rojo.
 - Títulos de sección: mayúsculas, sans muy gruesa, roja con glow.
 - Las animaciones entran suave (deslizan y aparecen); nada rebota.
+- Un gráfico va donde la frase dice algo que se puede VER: una cifra, un crecimiento, una lista
+  de pasos, el arranque de una sección. Si no se puede escribir el porqué, no va.
 
 ## Los subtítulos
+
+- Inter Tight, blancos hueso con borde negro, la palabra que se está diciendo en naranja Genesis.
+- Se apagan mientras hay una placa a pantalla completa (pasos, título).
 
 ## Lo que no quiero nunca
 

@@ -13,7 +13,7 @@ import {spawnSync} from "node:child_process";
 import {MOTOR, fallar, leerEstilo, leerJson, escribirJson} from "./comun.mjs";
 
 const args = process.argv.slice(2);
-const arg = args.find((a) => !a.startsWith("--") && !/^[\d.,]+$/.test(a));
+const arg = args.find((a) => !a.startsWith("--") && !/^\d[\d.,]*$/.test(a));
 // Absoluta: Remotion corre parado en motor/ y una ruta relativa no la encuentra.
 const carpeta = arg && path.resolve(arg);
 if (!carpeta) fallar("Uso: node render.mjs <carpeta-del-reel> [--borrador] [--fotos 1,5,9]");
@@ -103,7 +103,40 @@ const zooms = (ed.zooms || []).map((z, n) => {
 const primerCambio = planos.find((p) => p.t > 0.5)?.t ?? 3;
 const hook = ed.hook ? {texto: ed.hook.texto, desde: ed.hook.desde ?? 0, hasta: ed.hook.hasta ?? Math.min(primerCambio, estilo.hook.duracion ?? 3)} : null;
 const cta = ed.cta ? {texto: ed.cta.texto, desde: resolver(ed.cta, 0, "cta").t} : null;
-if (!hook && (planos[0]?.plano ?? "cam") === "cam") avisos.push("el arranque es solo tu cara: no hay texto ni nada visual en el hook");
+// 5b. Motion graphics. Arrancan en "cue" (o "t") y duran "dur" segundos, o hasta que se dice
+//     "hasta", o lo que diga estilo.md (graficos.duracion).
+const TIPOS = {
+  cifra: (g) => (g.valores?.length ? null : 'necesita "valores": ["$50K", "$100K"]'),
+  crecimiento: (g) => (!g.puntos || g.puntos.length >= 2 ? null : '"puntos" necesita al menos dos números'),
+  pasos: (g) => (g.items?.length >= 2 && g.items.length <= 5 ? null : 'necesita "items" (de 2 a 5), cada uno con "titulo"'),
+  titulo: (g) => (g.texto ? null : 'necesita "texto"'),
+  rotulo: (g) => (g.texto ? null : 'necesita "texto"'),
+};
+const ICONOS = ["dinero", "caja", "persona", "grafico", "chat", "megafono", "engranaje", "rayo", "check", "estrella", "objetivo", "cruz"];
+const durGrafico = estilo.graficos?.duracion ?? 3.5;
+const graficos = (ed.graficos || []).map((g, n) => {
+  const que = `gráfico ${n + 1} (${g.tipo})`;
+  if (!TIPOS[g.tipo]) fallar(`${que}: el tipo tiene que ser uno de ${Object.keys(TIPOS).join(", ")}`);
+  const error = TIPOS[g.tipo](g);
+  if (error) fallar(`${que}: ${error}`);
+  for (const ic of [g.icono, ...(g.items || []).map((x) => x.icono)]) {
+    if (ic && !ICONOS.includes(ic)) fallar(`${que}: no hay ícono "${ic}". Los que hay: ${ICONOS.join(", ")}`);
+  }
+  if (!g.por) avisos.push(`${que} no tiene "por": si no se puede escribir el porqué, no va`);
+  const {t} = resolver(g, 0, que);
+  let t1 = typeof g.dur === "number" ? t + g.dur : g.hasta ? resolver({cue: g.hasta}, t + 0.1, `${que} → hasta`).t : t + durGrafico;
+  t1 = Math.min(t1, duracion);
+  if (t1 - t < 0.8) avisos.push(`${que} dura ${(t1 - t).toFixed(1)} s: no llega a leerse`);
+  const {cue, hasta, dur, por, t: _t, ...resto} = g;
+  return {...resto, t0: +t.toFixed(3), t1: +t1.toFixed(3)};
+});
+graficos.forEach((g, k) => {
+  for (const h of graficos.slice(k + 1)) if (h.t0 < g.t1 && g.t0 < h.t1) avisos.push(`los gráficos ${g.tipo} (${g.t0.toFixed(1)} s) y ${h.tipo} (${h.t0.toFixed(1)} s) se pisan`);
+  for (const z of zooms) if (["pasos", "titulo"].includes(g.tipo) && z.t0 < g.t1 && g.t0 < z.t1) avisos.push(`hay un zoom a los ${z.t0.toFixed(1)} s debajo de una placa a pantalla completa: no se ve`);
+});
+
+const visualAlArranque = graficos.some((g) => g.t0 < 1);
+if (!hook && !visualAlArranque && (planos[0]?.plano ?? "cam") === "cam") avisos.push("el arranque es solo tu cara: no hay texto ni nada visual en el hook");
 
 // 6. Subtítulos en líneas.
 const sub = estilo.subtitulos;
@@ -122,7 +155,7 @@ quedan.forEach((w, k) => {
 cerrar();
 for (let k = 0; k < lineas.length - 1; k++) lineas[k].t1 = Math.min(lineas[k].t1, lineas[k + 1].t0);
 
-const props = {toma: ed.toma, duracion, segmentos, planos, zooms, lineas, hook, cta, estilo};
+const props = {toma: ed.toma, duracion, segmentos, planos, zooms, lineas, hook, cta, graficos, estilo};
 const dirRender = path.join(carpeta, ".render");
 fs.mkdirSync(dirRender, {recursive: true});
 const fprops = path.join(dirRender, "props.json");
@@ -134,12 +167,14 @@ planos.forEach((p, k) => {
   const fin = planos[k + 1]?.t ?? duracion;
   porPlano[p.plano] = (porPlano[p.plano] || 0) + fin - p.t;
 });
-console.error(`  Duración: ${duracion.toFixed(1)} s · ${segmentos.length} tramos · ${zooms.length} zooms · ${planos.length} planos`);
+console.error(`  Duración: ${duracion.toFixed(1)} s · ${segmentos.length} tramos · ${zooms.length} zooms · ${planos.length} planos · ${graficos.length} gráficos`);
 console.error("  Tiempo por plano: " + Object.entries(porPlano).map(([k, v]) => `${k} ${Math.round((v / duracion) * 100)}%`).join(" · "));
 for (const a of avisos) console.error(`  ⚠️  ${a}`);
 
 const npx = process.platform === "win32" ? "npx.cmd" : "npx";
 const comun = [`--props=${fprops}`, `--public-dir=${path.resolve(carpeta)}`, "--log=error"];
+// Si Remotion no puede bajar su Chrome (redes cerradas), se le pasa uno: REMOTION_CHROME=/ruta/al/chrome
+if (process.env.REMOTION_CHROME) comun.push(`--browser-executable=${process.env.REMOTION_CHROME}`);
 const correr = (a) => {
   const r = spawnSync(npx, ["remotion", ...a, ...comun], {cwd: MOTOR, stdio: "inherit", shell: process.platform === "win32"});
   if (r.status !== 0) fallar("El render falló. Mirá el error de arriba.");

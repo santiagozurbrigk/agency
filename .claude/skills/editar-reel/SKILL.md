@@ -51,6 +51,10 @@ Medir es contar: lo que dice `medidas.md` sale del script. Lo que no se pudo med
    (hook, muestra, prueba, dolor, giro, CTA) con la tabla de `criterio.md` §2 y lo que diga
    `estilo.md`. Cada plano y cada zoom lleva `"por"` con el motivo. Si no hay material para arriba,
    preguntar si tiene una grabación de pantalla o una imagen; si no, todo cámara + zoom.
+5b. **Motion graphics.** Donde una frase dice algo que se puede VER (una cifra, un crecimiento,
+   una lista de pasos, el arranque de una sección), proponer un gráfico en `graficos` con su
+   `"por"`, siguiendo la sección "Motion graphics" de `estilo.md`. Pocos y con motivo: un reel de
+   30-60 s lleva 2 a 4, no uno por frase. No pisar dos gráficos ni poner zoom debajo de una placa.
 6. **Hook y CTA:** `hook.texto` corto, con lo mismo que dice en los primeros segundos.
    `cta.texto` = la palabra clave, si el reel tiene una.
 7. **Borrador y fotos:** `node "<SKILL>/scripts/render.mjs" <carpeta> --fotos 0.3,<cada cambio>,<cada zoom>`
@@ -74,6 +78,14 @@ Medir es contar: lo que dice `medidas.md` sale del script. Lo que no se pudo med
     {"cue": "fijate acá", "plano": "broll", "broll": "pantalla.mp4", "por": "muestra la demo"}
   ],
   "zooms": [{"cue": "lo mejor es que", "por": "giro", "zoom": 1.15}],
+  "graficos": [
+    {"tipo": "cifra", "cue": "pasamos de cincuenta", "dur": 3, "valores": ["$50K", "$100K", "$200K"], "etiqueta": "Facturación", "por": "prueba: la cifra"},
+    {"tipo": "pasos", "cue": "fueron cuatro cosas", "hasta": "y el crecimiento", "texto": "Las 4 claves",
+     "items": [{"titulo": "Marketing", "icono": "megafono", "estrellas": 5}, {"titulo": "Ventas", "icono": "dinero"}], "por": "lista"},
+    {"tipo": "crecimiento", "cue": "el crecimiento vino", "puntos": [1, 1.3, 2.4, 4.5], "etiqueta": "Crecimiento", "numeroFondo": "2026", "por": "muestra la subida"},
+    {"tipo": "titulo", "cue": "la primera parte", "dur": 2.5, "texto": "La ventaja", "sub": "Parte 1", "por": "arranca sección"},
+    {"tipo": "rotulo", "cue": "no fue magia", "dur": 1.5, "icono": "cruz", "texto": "No fue magia", "por": "giro"}
+  ],
   "hook": {"texto": "Esto edita solo"},
   "cta": {"cue": "comentá", "texto": "\"EDITAR\""}
 }
@@ -85,6 +97,21 @@ Medir es contar: lo que dice `medidas.md` sale del script. Lo que no se pudo med
 - `plano`: `cam` (la cara sola), `split` (arriba lo que mostrás, abajo la cara), `broll` (lo que
   mostrás en pantalla completa, la voz sigue). `broll` es un video o una imagen dentro de la carpeta.
 - Un zoom sin `dur` dura hasta el final de la frase. `zoom` sin valor usa el de `estilo.md`.
+- `graficos`: arrancan en `cue` (o `t`) y duran `dur` segundos, o hasta que se dice `hasta`, o
+  `graficos.duracion` de `estilo.md`. Los tipos:
+  - `cifra`: tarjeta con `valores` que van cambiando (uno por tramo igual) y `etiqueta` arriba.
+    Desenfoca la cámara atrás.
+  - `crecimiento`: línea punteada que sube por `puntos`, con `etiqueta` y `numeroFondo` gigante.
+    Desenfoca la cámara.
+  - `pasos`: placa a pantalla completa con 2 a 5 `items` (`titulo`, `icono`, `estrellas`) unidos
+    por una línea; `texto` opcional arriba. Tapa la cámara y apaga los subtítulos.
+  - `titulo`: título de sección a pantalla completa (`texto`, `sub`). Tapa la cámara.
+  - `rotulo`: cajita con `icono` y `texto` corto sobre la cámara, sin taparla.
+  - Íconos: dinero, caja, persona, grafico, chat, megafono, engranaje, rayo, check, estrella,
+    objetivo, cruz.
+- Los colores, la fuente, el desenfoque y el brillo salen de `graficos` en `estilo.md`.
+- Si Remotion no puede bajar su navegador (red cerrada), correr con
+  `REMOTION_CHROME=/ruta/a/chrome node render.mjs ...`.
 
 ---
 

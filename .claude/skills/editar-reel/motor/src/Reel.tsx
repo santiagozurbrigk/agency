@@ -14,6 +14,7 @@ import {
   useVideoConfig,
 } from 'remotion';
 import {getAvailableFonts} from '@remotion/google-fonts';
+import {DESENFOCA, GRAFICOS_DEFECTO, Grafico, Graficos, EstiloGraficos, TAPA, envolvente, hexA} from './Graficos';
 
 export type Segmento = {in: number; out: number; desde: number};
 export type Plano = {t: number; plano: 'cam' | 'split' | 'broll'; broll?: string};
@@ -35,9 +36,10 @@ export type Estilo = {
     posicionSplit: number;
   };
   zoom: {origenY: number};
-  hook: {fondo: string; color: string; tamano: number; posicionY: number; fuente: string};
+  hook: {fondo: string; color: string; tamano: number; posicionY: number; fuente: string; borde?: string | null};
   cta: {fuente: string; tamano: number; color: string; posicionY: number};
   split: {fondo: string; encuadreCam: number; ajusteBroll: 'cover' | 'contain'};
+  graficos?: Partial<EstiloGraficos>;
 };
 
 export type ReelProps = {
@@ -49,27 +51,42 @@ export type ReelProps = {
   lineas: Linea[];
   hook: {texto: string; desde: number; hasta: number} | null;
   cta: {texto: string; desde: number} | null;
+  graficos?: Grafico[];
   estilo: Estilo;
 };
 
 const esVideo = (f: string) => /\.(mp4|mov|webm|m4v)$/i.test(f);
 
 // Carga la fuente de Google que pida estilo.md. Si no existe, queda la del sistema.
+// Solo los pesos y alfabetos que se usan: cargar todas las variantes tarda tanto que el render
+// se corta por tiempo.
+const PESOS = ['400', '500', '600', '700', '800', '900'];
+const ALFABETOS = ['latin', 'latin-ext'];
 const useFuente = (familias: string[]) => {
   const [handle] = useState(() => delayRender('fuentes'));
+  const clave = [...new Set(familias)].join('|');
   useEffect(() => {
     const disponibles = getAvailableFonts();
     Promise.all(
-      [...new Set(familias)].map(async (f) => {
+      clave.split('|').map(async (f) => {
         const info = disponibles.find((x) => x.fontFamily === f);
         if (!info) return;
         const mod = await info.load();
-        await mod.loadFont().waitUntilDone();
+        const {fonts, subsets} = mod.getInfo() as {fonts: Record<string, Record<string, unknown>>; subsets: string[]};
+        const alfabetos = ALFABETOS.filter((s) => subsets.includes(s));
+        await Promise.all(
+          (['normal', 'italic'] as const)
+            .filter((estilo) => fonts[estilo])
+            .map((estilo) => {
+              const pesos = Object.keys(fonts[estilo]).filter((w) => (estilo === 'normal' ? PESOS : ['800']).includes(w));
+              return pesos.length ? mod.loadFont(estilo, {weights: pesos, subsets: alfabetos}).waitUntilDone() : null;
+            }),
+        );
       }),
     )
       .catch(() => null)
       .finally(() => continueRender(handle));
-  }, [handle, familias]);
+  }, [handle, clave]);
 };
 
 const planoEn = (planos: Plano[], t: number): Plano => {
@@ -176,7 +193,12 @@ export const Reel: React.FC<ReelProps> = (p) => {
   const {fps, width: W, height: H} = useVideoConfig();
   const t = frame / fps;
   const e = p.estilo;
-  useFuente([e.subtitulos.fuente, e.hook.fuente, e.cta.fuente]);
+  const G: EstiloGraficos = {...GRAFICOS_DEFECTO, ...(e.graficos || {})};
+  useFuente([e.subtitulos.fuente, e.hook.fuente, e.cta.fuente, G.fuente]);
+  const graficos = p.graficos || [];
+  // Cuánto se desenfoca la cámara: lo que pida el gráfico más presente en este momento.
+  const desenfoque = Math.max(0, ...graficos.filter((g) => DESENFOCA[g.tipo]).map((g) => envolvente(t, g, G.entrada)));
+  const tapa = graficos.some((g) => TAPA[g.tipo] && t >= g.t0 && t < g.t1);
 
   const plano = planoEn(p.planos, t);
   const z = p.zooms.find((x) => t >= x.t0 && t < x.t1);
@@ -186,6 +208,7 @@ export const Reel: React.FC<ReelProps> = (p) => {
 
   return (
     <AbsoluteFill style={{background: e.split.fondo}}>
+      <AbsoluteFill style={desenfoque > 0 ? {filter: `blur(${desenfoque * G.desenfoque}px) brightness(${1 - desenfoque * G.oscurecer})`} : undefined}>
       {plano.plano === 'cam' && <Camara p={p} caja={{left: 0, top: 0, width: W, height: H}} zoom={zoom} />}
       {plano.plano === 'split' && (
         <>
@@ -202,6 +225,9 @@ export const Reel: React.FC<ReelProps> = (p) => {
           {plano.broll && <Broll archivo={plano.broll} desde={plano.t} caja={{left: 0, top: 0, width: W, height: H}} ajuste={e.split.ajusteBroll} />}
         </>
       )}
+      </AbsoluteFill>
+
+      <Graficos graficos={graficos} t={t} G={G} W={W} H={H} />
 
       {p.hook && t >= p.hook.desde && t < p.hook.hasta && (
         <div style={{position: 'absolute', left: 0, right: 0, top: `${e.hook.posicionY * 100}%`, display: 'flex', justifyContent: 'center'}}>
@@ -213,7 +239,9 @@ export const Reel: React.FC<ReelProps> = (p) => {
               fontWeight: 800,
               fontSize: e.hook.tamano,
               padding: '18px 30px',
-              borderRadius: 18,
+              borderRadius: e.hook.borde ? 0 : 18,
+              border: e.hook.borde ? `3px solid ${e.hook.borde}` : undefined,
+              boxShadow: e.hook.borde ? `0 0 ${50 * G.brillo}px ${hexA(e.hook.borde, 0.5 * G.brillo)}` : undefined,
               maxWidth: W - 140,
               textAlign: 'center',
               lineHeight: 1.1,
@@ -226,12 +254,12 @@ export const Reel: React.FC<ReelProps> = (p) => {
 
       {enCta && p.cta ? (
         <div style={{position: 'absolute', left: 40, right: 40, top: `${e.cta.posicionY * 100}%`, transform: 'translateY(-50%)', textAlign: 'center'}}>
-          <div style={{fontFamily: e.cta.fuente, fontSize: e.cta.tamano, color: e.cta.color, fontWeight: 700, textShadow: '0 4px 24px rgba(0,0,0,.55)'}}>
+          <div style={{fontFamily: e.cta.fuente, fontSize: e.cta.tamano, color: e.cta.color, fontWeight: 800, textShadow: e.cta.color.startsWith('#') ? `0 0 ${40 * G.brillo}px ${hexA(e.cta.color, 0.7 * G.brillo)}, 0 4px 24px rgba(0,0,0,.55)` : '0 4px 24px rgba(0,0,0,.55)'}}>
             {p.cta.texto}
           </div>
         </div>
       ) : (
-        <Subtitulo p={p} t={t} plano={plano.plano} />
+        !tapa && <Subtitulo p={p} t={t} plano={plano.plano} />
       )}
     </AbsoluteFill>
   );
