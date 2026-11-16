@@ -109,7 +109,7 @@ Dale, anotado
 | Botón de I.3 | Primera línea |
 |---|---|
 | Ya vendo suscripción | `Bien. Lo que si, tener suscripción no es lo mismo que tener una base que te cobra sola todos los meses. Ahí está la diferencia` |
-| Nunca la probé | `Yo también pensaba que en Argentina no se suscribe nadie. Hoy tengo 3.943 suscriptores activos` |
+| Nunca la probé | `Yo también pensaba que en Argentina no se suscribe nadie. Hoy tengo más de 4.000 suscriptores activos` |
 | La probé, no anduvo | `Casi siempre no anda por cómo se armó (el precio, el ciclo, a quién se la ofreciste), no porque la gente no se suscriba` |
 
 ```
@@ -201,7 +201,7 @@ Otra. Si mañana apagás la pauta, cuánto facturás ese mes?
 ```
 Yo facturaba 60 millones por mes con compra única. Y en breakeven: cada venta me dejaba casi lo mismo que me costaba
 
-Hoy son más de 270 millones por mes, con 3.943 suscriptores que me compran todos los meses sin que vuelva a pautarles
+Hoy son más de 270 millones por mes, con más de 4.000 suscriptores que me compran todos los meses sin que vuelva a pautarles
 
 [CAPTURA F2]
 
@@ -326,7 +326,7 @@ Te lo explico en un minuto 👇
 
 | Botón | Primera línea |
 |---|---|
-| Nadie se suscribe | `Tengo 3.943 suscriptores activos en Argentina. No es cultura, es cómo se arma` |
+| Nadie se suscribe | `Tengo más de 4.000 suscriptores activos en Argentina. No es cultura, es cómo se arma` |
 | Se dan de baja | `Se quedan si tenés buenos procesos de retención. Te paso los míos` |
 | Romper lo que anda | `Nono, va al lado de la compra única, sin tocarla. Seguís vendiendo igual que hoy` |
 

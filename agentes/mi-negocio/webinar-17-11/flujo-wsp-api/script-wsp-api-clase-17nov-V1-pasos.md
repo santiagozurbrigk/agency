@@ -68,7 +68,7 @@ Esta capa es el esqueleto: cada envío con su día, hora, pregunta, botones y re
 | Botón | Por dónde va la primera línea |
 |---|---|
 | Ya vendo suscripción | Tener suscripción no es lo mismo que tener una base que cobra sola: lo que se mira es cuánto se quedan y cuánto podés pagar por cliente. |
-| Nunca la probé | El que nunca la probó cree que en Argentina nadie se suscribe. Manu también lo creía: hoy 3.943 suscriptores activos. |
+| Nunca la probé | El que nunca la probó cree que en Argentina nadie se suscribe. Manu también lo creía: hoy más de 4.000 suscriptores activos. |
 | La probé, no anduvo | Casi siempre no anda por cómo se armó (precio, ciclo, la base), no porque la gente no se suscriba. |
 
 > Se pregunta por la suscripción y no por la facturación ni la pauta: eso ya lo pregunta el formulario de registro (calificado = USD 100 por día o más en Meta). **Confirmar** qué preguntas tiene hoy el formulario para no repetir ninguna.
@@ -95,7 +95,7 @@ Esta capa es el esqueleto: cada envío con su día, hora, pregunta, botones y re
 - **Pregunta:** si mañana apagás la pauta, cuánto facturás ese mes.
 - **Botones:** [Casi nada] [La mitad] [Casi lo mismo]
 - **Tags:** `cl17-meta-nada` · `cl17-meta-mitad` · `cl17-meta-igual` · `env-D1B` · `toco-D1B`
-- **Recurso:** sin video. El antes y el después de Manu con captura: 60M por mes con compra única, en breakeven → $275M por mes y 3.943 suscriptores.
+- **Recurso:** sin video. El antes y el después de Manu con captura: 60M por mes con compra única, en breakeven → $275M por mes recurrentes y más de 4.000 suscriptores.
 
 | Botón | Por dónde va la primera línea |
 |---|---|
@@ -178,7 +178,7 @@ Esta capa es el esqueleto: cada envío con su día, hora, pregunta, botones y re
 
 | Botón | Por dónde va la primera línea |
 |---|---|
-| Nadie se suscribe | 3.943 suscriptores activos en Argentina. No es cultura, es cómo se arma. |
+| Nadie se suscribe | Más de 4.000 suscriptores activos en Argentina. No es cultura, es cómo se arma. |
 | Se dan de baja | Se quedan si tenés buenos procesos de retención. Estos son los míos. |
 | Romper lo que anda | Va al lado de la compra única, sin tocarla. Seguís vendiendo igual. |
 
@@ -371,7 +371,7 @@ El llamado a la acción es **aplicar** (el formulario). Nunca «agendá». Los 3
 2. **El recurso de cada A es la pieza del grupo de ese día, una hora antes.** Para el lead del chat se siente personal («a vos te lo paso antes»), y no hace falta producir recursos nuevos.
 3. **Quién atiende a los derivados del post-clase** ([Tengo dudas], [Sí, escribime], prioridad, los que piden los agentes): **el privado de Manu**, como en el grupo. Si lo atiende Mati o el closer desde su número, cambia el texto de esas ramas.
 4. **Perfiles:** ya vende con suscripción / nunca la probó / la probó y no anduvo. El avatar ampliado (vende en Mercado Libre o importa) entra en «nunca la probé».
-5. **Números:** 3.943 suscriptores y $275M (los confirmados el 02/11). El grupo usa «+3.500» y «menos del 5% de churn»; el dato confirmado es **7,2% de cancelaciones**, así que el chat no menciona el churn.
+5. **Números:** más de 4.000 suscriptores y más de $275M recurrentes (actualizados el 16/11; antes 3.943 y $275M del 02/11). El grupo usa «+3.500» y «menos del 5% de churn»; el dato confirmado es **7,2% de cancelaciones**, así que el chat no menciona el churn.
 6. **D5-A a las 12:00** choca con el video del grupo, que sale a la misma hora. Propongo correrlo a las 11:00 ese día.
 7. **«Lo que te perdiste»:** propongo sumar un I.6 para el que se registra desde el jueves 12, con el simulador y los flujos en un mensaje, porque en el grupo no los va a ver.
 8. **Repetición:** el grupo la manda abierta el miércoles 18. En el chat, el que no pudo la recibe la noche del martes contando para qué la usaría, antes que el grupo.

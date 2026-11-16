@@ -426,7 +426,7 @@ Botones: Este mes | En 1 a 3 meses | No sé todavía
 
 Paso 8 · I.5 (sin botones). Primero la primera línea según el perfil (If/Else por tag):
 - cl17-perfil-ya: Bien. Lo que si, tener suscripción no es lo mismo que tener una base que te cobra sola todos los meses. Ahí está la diferencia
-- cl17-perfil-nunca: Yo también pensaba que en Argentina no se suscribe nadie. Hoy tengo 3.943 suscriptores activos
+- cl17-perfil-nunca: Yo también pensaba que en Argentina no se suscribe nadie. Hoy tengo más de 4.000 suscriptores activos
 - cl17-perfil-probo: Casi siempre no anda por cómo se armó (el precio, el ciclo, a quién se la ofreciste), no porque la gente no se suscriba
 Después, para todos:
 Te dejo el roadmap que seguí para pasar mi marca de compra única a suscripción. Es lo primero que tenés que ver antes del martes
@@ -517,7 +517,7 @@ Botones y tags:
 Recurso (para todos), con la captura de facturación y suscriptores como imagen (archivo de prueba por ahora):
 Yo facturaba 60 millones por mes con compra única. Y en breakeven: cada venta me dejaba casi lo mismo que me costaba
 
-Hoy son más de 270 millones por mes, con 3.943 suscriptores que me compran todos los meses sin que vuelva a pautarles
+Hoy son más de 270 millones por mes, con más de 4.000 suscriptores que me compran todos los meses sin que vuelva a pautarles
 
 El martes a las 18 te muestro cómo
 ```
@@ -598,7 +598,7 @@ D4-A · 12:00 · código D4A · plantilla: cl17_d4a
 Pregunta:
 Che [nombre], qué es lo que más te frena de la suscripción?
 Botones y tags:
-- Nadie se suscribe → cl17-obj-cultura → Tengo 3.943 suscriptores activos en Argentina. No es cultura, es cómo se arma
+- Nadie se suscribe → cl17-obj-cultura → Tengo más de 4.000 suscriptores activos en Argentina. No es cultura, es cómo se arma
 - Se dan de baja → cl17-obj-bajas → Se quedan si tenés buenos procesos de retención. Te paso los míos
 - Romper lo que anda → cl17-obj-romper → Nono, va al lado de la compra única, sin tocarla. Seguís vendiendo igual que hoy
 Recurso:

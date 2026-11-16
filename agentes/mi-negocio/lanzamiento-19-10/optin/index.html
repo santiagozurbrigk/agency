@@ -1089,12 +1089,12 @@ src="https://www.facebook.com/tr?id=1105986771965346&ev=PageView&noscript=1"
       <h3>Soy Manu Dominguez</h3>
       <div class="bio">
         <p data-txt="bio-1">Facturaba <b>60 millones por mes</b> con un consumible de compra única. Cada venta me costaba lo mismo que la anterior.</p>
-        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>más de 270 millones por mes</b>, con <b>3.943 suscriptores activos</b> y <b>7,2% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
+        <p>Cambié el modelo. Pasé mi marca a suscripción y llegué a <b>más de 270 millones por mes</b>, con <b>más de 4.000 suscriptores activos</b> y <b>7,2% de churn</b>. En Argentina, donde todos dicen que nadie se suscribe.</p>
         <p>En esta clase te muestro el roadmap que seguí, con mis números reales.</p>
       </div>
       <div class="stats">
         <div class="stat naranja"><div class="l">Por mes</div><div class="v">+270M</div></div>
-        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">3.943</div></div>
+        <div class="stat"><div class="l">Suscriptores activos</div><div class="v">+4.000</div></div>
         <div class="stat"><div class="l">Churn</div><div class="v">7,2%</div></div>
       </div>
     </div>
@@ -1171,7 +1171,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* Fondo: la línea de suscriptores se dibuja a medida que bajás.
-     El número final (3.943) es el real; la forma de la curva es ilustrativa. */
+     El número final (4.000, «más de 4.000») es el real; la forma de la curva es ilustrativa. */
   var linea = document.getElementById("linea-subs");
   var clip = document.getElementById("clip-rect");
   var punto = document.getElementById("bg-punto");
@@ -1190,8 +1190,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var x = pt.x / 1000 * innerWidth, y = pt.y / 1000 * innerHeight;
     punto.style.left = x + "px"; punto.style.top = y + "px";
     tip.style.left = (x - 14) + "px"; tip.style.top = y + "px";
-    var n = p >= 0.995 ? 3943 : Math.round(3943 * (p - 0.12) / 0.88); /* al llegar abajo, el número completo */
-    num.textContent = n.toLocaleString("es-AR");
+    var n = p >= 0.995 ? 4000 : Math.round(4000 * (p - 0.12) / 0.88); /* al llegar abajo, el número completo */
+    num.textContent = (p >= 0.995 ? "+" : "") + n.toLocaleString("es-AR");
   }
   function pedir() { if (!pendiente) { pendiente = true; requestAnimationFrame(dibujar); } }
   addEventListener("scroll", pedir, { passive: true });

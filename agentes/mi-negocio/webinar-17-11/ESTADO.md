@@ -41,7 +41,7 @@ Herbora, Alan, Santi Núñez y Thiago Lopo (falta la de Andy Kette: el link que 
 
 Los Docs son copias: si se cambia un .md, hay que volver a subirlo. Todos los anteriores quedaron obsoletos.
 
-**Regla (02/11):** cuando Manu habla de una de sus marcas, en cualquier pieza, se usan sus números: facturación $275.225.343 (en la promesa, «más de 270 millones»), 3.943 suscriptores y 7,2% de cancelaciones. El «220 millones sin Meta» de D3_V6 pasó a 275 millones. En WhatsApp y YouTube la marca cliente es «una marca que trabaja conmigo», sin nombre ni producto, y la pizarra es el iPad.
+**Regla (02/11):** cuando Manu habla de una de sus marcas, en cualquier pieza, se usan sus números (actualizados el 16/11): más de 400 millones por mes en total, más de 275 millones recurrentes por suscripción (en la promesa, «más de 270 millones»), más de 4.000 suscriptores y 7,2% de cancelaciones. Segunda marca: 60 millones por mes. El «220 millones sin Meta» de D3_V6 pasó a 275 millones. En WhatsApp y YouTube la marca cliente es «una marca que trabaja conmigo», sin nombre ni producto, y la pizarra es el iPad.
 
 | Pieza | Para Manu (grabar) | Completo (igual al .md) |
 | --- | --- | --- |
@@ -83,7 +83,7 @@ Los Docs son copias: si se cambia un .md, hay que volver a subirlo. Todos los an
 
 | Dato | Dónde impacta | Estado |
 | --- | --- | --- |
-| **Números de Manu** | Todos los guiones, la landing y los Docs. | **Confirmados por Santi el 02/11 y ya reemplazados:** facturación **$275.225.343 por mes** (en la promesa se dice «más de 270 millones»; en los winners de D4_V3, «275 millones el mes pasado»), **3.943 suscriptores activos** y **7,2% de cancelaciones**. **Siguen a definir:** el margen (`X%`; los ads dicen «más de un 40%») y la facturación con compra única (`$Y` / 60M). `CONTEXTO.md` todavía guarda el dato de septiembre (156,8M, 2.200 suscriptores, 1,28%): solo se cambia si lo pide Santi. |
+| **Números de Manu** | Todos los guiones, la landing y los Docs. | **Actualizados el 16/11** con lo que dice Manu en los reminders: más de 400 millones por mes en total, más de 275 millones recurrentes, más de 4.000 suscriptores, 7,2% de cancelaciones y la segunda marca en 60 millones por mes. Ya cambiados en `CONTEXTO.md`, la landing y los flujos de WhatsApp; los guiones ya grabados quedan con los del 02/11. **Antes (02/11):** facturación **$275.225.343 por mes** (en la promesa se dice «más de 270 millones»; en los winners de D4_V3, «275 millones el mes pasado»), **3.943 suscriptores activos** y **7,2% de cancelaciones**. **Siguen a definir:** el margen (`X%`; los ads dicen «más de un 40%») y la facturación con compra única (`$Y` / 60M). `CONTEXTO.md` todavía guarda el dato de septiembre (156,8M, 2.200 suscriptores, 1,28%): solo se cambia si lo pide Santi. |
 | Link de la Cuenta del CPA (regalo del día 5 de WhatsApp) | `contenido-nutricion-dias-1-6.md`, donde dice `[LINK DE LA CUENTA DEL CPA]` | El regalo está confirmado; falta el link. |
 | Período de los «casi dos palos de ganancia» de Herbora | Día 3 de WhatsApp | Confirmar con Manu si fue en un día o en otro período. |
 | Link de la clase | WhatsApp día 7, reminders | Pendiente. |
