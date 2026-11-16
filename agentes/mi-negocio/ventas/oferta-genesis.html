@@ -309,6 +309,12 @@
   .bloque-ac { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 18px; align-items: start; padding: 18px; }
   .bloque-ac .pill { font-size: 18px; }
   .bloque-ac .galeria { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .chat-gal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: start; }
+  @media (max-width: 700px) { .chat-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .chat-gal figure { margin: 0; }
+  .chat-gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: left top; border-radius: 10px; border: 1px solid var(--borde); display: block; background: #1b1b1f; }
+  .chat-gal figure.destacada { grid-column: 1 / -1; }
+  .chat-gal figure.destacada img { aspect-ratio: auto; object-fit: contain; max-height: 460px; width: auto; max-width: 100%; }
   .bloque-ac .galeria img.chat { width: auto; max-width: 100%; max-height: 560px; object-fit: contain; justify-self: start; }
   .bloque-ac .galeria figure:has(img.chat) { justify-items: start; }
   .portada { min-height: 60vh; align-content: center; justify-items: center; text-align: center; }
@@ -391,6 +397,11 @@ const IMG = {
   miro: { src: "oferta-genesis-img/sesion-1a1-miro.webp", alt: "Sesión 1 a 1: armando el funnel en Miro con Manu" },
   grupal: { src: "oferta-genesis-img/grupal.webp", alt: "Clase grupal en vivo con Manu" },
   chat: { src: "oferta-genesis-img/chat.webp", alt: "Chat 1 a 1 directo con Manu", cls: "arriba" },
+  chatTransfer: { src: "oferta-genesis-img/chat-transferencia.webp", alt: "Chat 1 a 1: José le presta $1.500.000 a un alumno para la pauta", cls: "arriba" },
+  chatProductos: { src: "oferta-genesis-img/chat-productos.webp", alt: "Chat 1 a 1: un alumno comparte sus productos para validar", cls: "arriba" },
+  chatLanding: { src: "oferta-genesis-img/chat-landing.webp", alt: "Chat 1 a 1: José revisa la landing de un alumno", cls: "arriba" },
+  chatSkills: { src: "oferta-genesis-img/chat-skills.webp", alt: "Chat 1 a 1: Manu comparte skills de copy y creativos", cls: "arriba" },
+  chatValidacion: { src: "oferta-genesis-img/chat-validacion.webp", alt: "Chat 1 a 1: Manu responde la validación de productos de un alumno", cls: "arriba" },
   manuFoto: { src: "oferta-genesis-img/manu-foto.webp", alt: "Manu Dominguez, founder de Genesis OS" },
   joseFoto: { src: "oferta-genesis-img/jose-foto.webp", alt: "José, co-founder de Genesis OS" },
   manuPanel: { src: "oferta-genesis-img/manu-panel.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 1626 nuevos, 275.2M de ingresos recurrentes, 7,2% de cancelaciones" },
@@ -423,7 +434,7 @@ const OFERTAS = {
     acomp: [
       { t: "Sesiones 1 a 1 ilimitadas", c: "Sesiones 1 a 1", chip: "Ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
       { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "64 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
-      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chat"] }
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
     ],
     dwy: ["Auditoría de tus números + roadmap","Suscripción instalada","Ofertas","Creación de anuncios","Procesos de retención","Proyección de stock"],
     nucleo: ["Software propio","Acceso para 2 personas de tu equipo","Tablero de suscriptores y bajas"],
@@ -437,7 +448,7 @@ const OFERTAS = {
     tag: "Arrancá en ecommerce por el lado correcto: un consumible, un proceso paso a paso y alguien al lado que ya lo hizo.",
     acomp: [
       { t: "Grupales (3 por semana)", c: "Clases grupales", chip: "3 por semana", s: "36 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
-      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chat"] }
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
     ],
     dwy: null,
     nucleo: ["Software propio","Tablero de suscriptores y bajas"],
@@ -513,7 +524,7 @@ function render() {
     ${card("acompanamiento", `
       <div class="acomp">${o.acomp.map(a => `
         <div class="acomp-item">
-          <div class="fotos">${a.fotos.map(f => img(f)).join("")}</div>
+          <div class="fotos">${a.fotos.slice(0, a.chats ? 1 : 2).map(f => img(f)).join("")}</div>
           <div class="tx"><b>${a.c}</b><small>${a.s}</small><span class="chip n">${a.chip}</span></div>
         </div>`).join("")}</div>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
 
@@ -590,7 +601,9 @@ function armarSlides() {
       ${o.acomp.map(a => `
         <div class="vidrio bloque-ac">
           <div style="display:grid;gap:10px"><div class="pill">${a.t}</div><p style="color:var(--gris-2)">${a.s}</p></div>
-          <div class="galeria">${a.fotos.map(f => `<figure>${img(f, f === "chat" ? "chat" : "")}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>
+          ${a.chats
+            ? `<div class="chat-gal">${a.fotos.map((f, i) => `<figure class="${i === 0 ? "destacada" : ""}">${img(f)}</figure>`).join("")}</div>`
+            : `<div class="galeria">${a.fotos.map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>`}
         </div>`).join("")}
       ${o.dwy ? `<div class="tarjeta vidrio"><span class="tag-n">Done with you · lo hacemos con vos</span><ul class="lista" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">${li(o.dwy)}</ul></div>` : ""}
     </div>` });
