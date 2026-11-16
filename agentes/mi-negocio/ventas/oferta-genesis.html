@@ -551,14 +551,8 @@ function armarSlides() {
 
   S.push({ id: "resultados", nombre: "Resultados", html: `
     <div class="slide">
-      <div class="slide-head"><span class="k">Resultados de clientes</span><h2>Una marca que trabaja con nosotros, día por día</h2><p>Capturas de su panel de métricas, sin editar. El mejor día de la semana del 29 de julio al 4 de agosto de 2026:</p></div>
-      <div class="resultados-top">
-        <div class="tarjeta vidrio"><span class="tag-n">Facturación del día</span><span class="big num">$8.0<em>M</em></span><p>2 ago 2026 · +99,5%</p></div>
-        <div class="tarjeta vidrio"><span class="tag-n">Ganancia del día</span><span class="big num">$2.9<em>M</em></span><p>2 ago 2026 · +208,5%</p></div>
-        <div class="tarjeta vidrio"><span class="tag-n">Margen de ganancia</span><span class="big num">36,6<em>%</em></span><p>2 ago 2026</p></div>
-        <div class="tarjeta vidrio"><span class="tag-n">Órdenes del día</span><span class="big num">139</span><p>2 ago 2026 · +75,9%</p></div>
-      </div>
-      <div class="galeria grande">${RES_DESK.map(r => `<figure>${resImg(r[0])}<figcaption>${r[1]}</figcaption></figure>`).join("")}</div>
+      <div class="slide-head"><h2>Resultados de clientes</h2></div>
+      <div class="galeria grande">${["r16", ...RES_DESK.map(r => r[0])].map(k => resImg(k)).join("")}</div>
       <div class="galeria-movil">${RES_MOVIL.map(k => resImg(k)).join("")}</div>
     </div>` });
 
