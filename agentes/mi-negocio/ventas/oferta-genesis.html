@@ -137,15 +137,16 @@
   .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
   .res .dato b em { font-style: normal; color: var(--naranja); }
   .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
-  .total { display: flex; align-items: baseline; gap: 12px; }
+  .total { display: flex; align-items: center; gap: 12px; }
+  .total b, .total small { display: block; line-height: 1; }
   .total b { font-size: clamp(28px, 4.8vh, 44px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
   .total b em { font-style: normal; color: var(--naranja); }
   .total small { font-size: clamp(20px, 3.4vh, 32px); font-weight: 300; letter-spacing: -0.03em; color: var(--hueso); line-height: 1.1; }
   .res-zoom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .res-zoom figcaption b { color: var(--naranja); font-weight: 600; }
-  .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; }
-  .res-zoom img { width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: left top; border-radius: 8px; border: 1px solid var(--borde); display: block; }
-  .res-zoom figcaption { font-size: 10.5px; color: var(--gris); }
+  .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 6px; justify-items: center; }
+  .res-zoom img { max-width: 100%; max-height: 100%; width: auto; height: auto; min-height: 0; border-radius: 8px; border: 1px solid var(--borde); display: block; align-self: center; }
+  .res-zoom figcaption { font-size: 10.5px; color: var(--gris); text-align: center; }
   .fotos { min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
   .fotos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); display: block; background: #120d0a; }
   .fotos img.arriba { object-position: top left; }
