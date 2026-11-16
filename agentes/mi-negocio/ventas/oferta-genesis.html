@@ -57,11 +57,11 @@
   .btn.prim { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); font-weight: 600; }
 
   /* Cabeza: título a la izquierda, prueba (panel de Manu) a la derecha */
-  .cabeza { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 16px 32px; padding-top: clamp(4px, 1vh, 12px); }
-  .cabeza .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: clamp(4px, .8vh, 10px); }
+  .cabeza { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 20px; }
+  .cabeza .meta { display: flex; gap: 8px; flex-wrap: wrap; }
   .chip { font-size: 11px; font-weight: 500; letter-spacing: .04em; padding: 4px 11px; border: 1px solid var(--borde-2); border-radius: 999px; color: var(--gris-2); background: rgba(255,255,255,.02); }
   .chip.n { color: var(--naranja); border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.08); }
-  .cabeza h1 { font-size: clamp(38px, 7.4vh, 76px); font-weight: 300; letter-spacing: -0.055em; line-height: .92; }
+  .cabeza h1 { font-size: clamp(32px, 6vh, 60px); font-weight: 300; letter-spacing: -0.055em; line-height: .92; }
   .cabeza h1 em { font-style: normal; color: var(--naranja); font-weight: 400; }
   .cabeza .tag { color: var(--gris-2); font-weight: 300; font-size: clamp(13px, 1.8vh, 16px); margin-top: clamp(4px, .9vh, 10px); max-width: 62ch; }
   .prueba { display: grid; gap: 8px; justify-items: end; }
@@ -73,8 +73,8 @@
   .prueba .stat small { font-size: 10.5px; color: var(--gris); letter-spacing: .02em; }
 
   /* Tablero en bloques */
-  .tablero { min-height: 0; display: grid; grid-template-columns: 1fr 1.3fr 1.05fr; grid-template-rows: auto minmax(0, 1fr) auto;
-    grid-template-areas: "eq info ac" "com res ac" "bon bon bon"; gap: clamp(8px, 1.3vh, 14px); }
+  .tablero { min-height: 0; display: grid; grid-template-columns: 1fr 1.15fr 1fr; grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "eq info ac" "eq res ac" "bon bon bon"; gap: clamp(8px, 1.3vh, 14px); }
   .a-eq { grid-area: eq; } .a-com { grid-area: com; } .a-info { grid-area: info; } .a-res { grid-area: res; } .a-ac { grid-area: ac; } .a-bon { grid-area: bon; }
 
   .card { position: relative; text-align: left; width: 100%; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 12px);
@@ -97,13 +97,13 @@
   .persona b { display: block; font-weight: 500; font-size: 14px; }
   .a-eq .persona b { color: var(--naranja); font-size: clamp(13px, 1.9vh, 14.5px); }
   .avatar-foto { width: clamp(38px, 5.6vh, 50px); aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 0 0 1px rgba(232,130,58,.55), 0 0 0 4px rgba(232,130,58,.08); }
-  .miembro { display: grid; gap: clamp(5px, .8vh, 8px); }
-  .prueba-img img { width: 100%; height: clamp(44px, 7.6vh, 80px); object-fit: cover; object-position: center; border-radius: 8px; border: 1px solid var(--borde); display: block; background: #fff; }
-  .prueba-img img.arriba { object-position: left top; background: #000; }
+  .a-eq .personas { flex: 1 1 0; min-height: 0; grid-template-rows: repeat(2, minmax(0, auto)); align-content: space-evenly; }
+  .miembro { display: grid; gap: clamp(5px, .8vh, 8px); min-height: 0; }
+  .prueba-img img { width: 100%; height: auto; max-height: clamp(90px, 24vh, 240px); object-fit: contain; object-position: left center; border-radius: 8px; display: block; }
   .persona small { color: var(--gris); font-size: 12px; }
 
   /* Comunidad: foto a sangre */
-  .card.foto { padding: 0; }
+  .card.foto { padding: 0; min-height: clamp(90px, 14vh, 130px); }
   .card.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .card.foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,8,7,.55) 0%, rgba(10,8,7,0) 30%, rgba(10,8,7,0) 50%, rgba(10,8,7,.92) 100%); }
   .card.foto .card-h, .card.foto .pie { position: relative; z-index: 1; }
@@ -128,6 +128,10 @@
   .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
   .res .dato b em { font-style: normal; color: var(--naranja); }
   .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
+  .res-zoom { grid-template-columns: 1fr 1fr; }
+  .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; }
+  .res-zoom img { width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: left top; border-radius: 8px; border: 1px solid var(--borde); display: block; }
+  .res-zoom figcaption { font-size: 10.5px; color: var(--gris); }
   .fotos { min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
   .fotos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); display: block; background: #120d0a; }
   .fotos img.arriba { object-position: top left; }
@@ -237,6 +241,11 @@
     .cp-tres, .cp-herr, .cp-mods, .cp-stats { grid-template-columns: 1fr; }
     .cp-prog { grid-template-columns: 1fr; }
   }
+  .galeria.grande { grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); }
+  .escena img { cursor: zoom-in; }
+  .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(5,4,3,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+  .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+  .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
   [hidden] { display: none !important; }
   /* Detalle / slides */
   .visor { position: fixed; inset: 0; z-index: 20; background: rgba(10,8,7,.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -300,7 +309,7 @@
     .app { height: auto; grid-template-rows: auto auto auto; }
     .cabeza { grid-template-columns: 1fr; }
     .prueba { justify-items: start; }
-    .tablero { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "eq" "com" "info" "res" "ac" "bon"; }
+    .tablero { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "eq" "info" "res" "ac" "bon"; }
     .card.foto { min-height: 260px; }
     .res { flex: none; height: 150px; }
     .acomp { flex: none; grid-auto-rows: 150px; }
@@ -355,6 +364,11 @@
   </div>
 </div>
 
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <img id="lightbox-img" alt="">
+  <button type="button" class="btn" id="lightbox-cerrar">Cerrar ✕</button>
+</div>
+
 <script>
 const IMG = {
   tienda: { src: "oferta-genesis-img/sesion-1a1-tienda.webp", alt: "Sesión 1 a 1: Manu revisando la tienda de una marca en vivo" },
@@ -363,8 +377,10 @@ const IMG = {
   chat: { src: "oferta-genesis-img/chat.webp", alt: "Chat 1 a 1 directo con Manu", cls: "arriba" },
   manuFoto: { src: "oferta-genesis-img/manu-foto.webp", alt: "Manu Dominguez, founder de Genesis OS" },
   joseFoto: { src: "oferta-genesis-img/jose-foto.webp", alt: "José, co-founder de Genesis OS" },
-  manuPanel: { src: "oferta-genesis-img/manu-panel.webp", alt: "Panel de suscripciones de la marca de Manu: 3153 activas, 220.1M de ingresos recurrentes, 4,2% de cancelaciones" },
-  joseVentas: { src: "oferta-genesis-img/jose-ventas.webp", alt: "Ventas de la marca de José: 458,7M en septiembre, +72%", cls: "arriba" },
+  manuPanel: { src: "oferta-genesis-img/manu-panel.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 1626 nuevos, 275.2M de ingresos recurrentes, 7,2% de cancelaciones" },
+  manuPanelMini: { src: "oferta-genesis-img/manu-panel-compacto.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 1626 nuevos, 275.2M de ingresos recurrentes, 7,2% de cancelaciones" },
+  joseVentas: { src: "oferta-genesis-img/jose-ventas.webp", alt: "Ventas de la marca de José: 458,7M en septiembre, +72%" },
+  joseVentasMini: { src: "oferta-genesis-img/jose-ventas-compacto.webp", alt: "Ventas de la marca de José: 458,7M, +72%, 8.361 pedidos" },
   manu: { src: "oferta-genesis-img/manu-dashboard.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 275.2M de ingresos recurrentes, 7,2% de cancelaciones", cls: "arriba" },
   mesa: { src: "oferta-genesis-img/comunidad-mesa.webp", alt: "Encuentro presencial de la comunidad Genesis" },
   terraza: { src: "oferta-genesis-img/comunidad-terraza.webp", alt: "La comunidad Genesis en el encuentro presencial" }
@@ -410,8 +426,8 @@ const OFERTAS = {
 };
 
 const EQUIPO = [
-  { nombre: "Manu · Founder de Genesis OS", dato: "+USD 3M · 3 años", foto: "manuFoto", prueba: "manuPanel" },
-  { nombre: "José · Co-founder de Genesis OS", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas" }
+  { nombre: "Manu · Founder de Genesis OS", dato: "+USD 3M · 3 años", foto: "manuFoto", prueba: "manuPanel", mini: "manuPanelMini" },
+  { nombre: "José · Co-founder de Genesis OS", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentasMini" }
 ];
 const ETAPAS = [
   ["Buscar el producto","Un consumible: algo que se termina y tu cliente vuelve a comprar."],
@@ -441,10 +457,8 @@ function render() {
   const o = OFERTAS[oferta];
   const lite = oferta === "lite";
   $("#cabeza").innerHTML = `
-    <div>
-      <div class="meta"><span class="chip n">${o.dur}</span><span class="chip">${o.modo}</span><span class="chip">Método B.A.S.E.</span></div>
-      <h1>${o.titulo}</h1>
-    </div>`;
+    <h1>${o.titulo}</h1>
+    <div class="meta"><span class="chip n">${o.dur}</span><span class="chip">${o.modo}</span><span class="chip">Método B.A.S.E.</span></div>`;
 
   const bonus = {
     contactos: n => card("bonus-contactos", `<span class="k">Bonus ${n}</span><b>Red de contactos</b><small>Proveedores, laboratorios, contadores, logística y registros</small>`, "bonus"),
@@ -457,11 +471,10 @@ function render() {
       <div class="personas">${EQUIPO.map(e => `
         <div class="miembro">
           <div class="persona">${img(e.foto, "avatar-foto")}<div><b>${e.nombre}</b><small class="num">${e.dato}</small></div></div>
-          <div class="prueba-img">${img(e.prueba)}</div>
+          <div class="prueba-img">${img(e.mini)}</div>
         </div>`).join("")}
       </div>`, "a-eq", "Equipo")}
 
-    ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>Dueños de marca haciendo el mismo camino · encuentros presenciales</small></div>`, "a-com foto", "Comunidad")}
 
     ${card("informacion", `
       <p class="titulo-card">SOPs de <em>13 áreas</em> del negocio + herramientas</p>
@@ -470,10 +483,10 @@ function render() {
       <div class="campus-mini">${["ingreso","inicio","progreso","herramientas"].map(k => `<img src="oferta-genesis-img/campus-${k}.webp" alt="Campus Genesis: pantalla de ${k}" loading="lazy">`).join("")}</div></div>`, "a-info", "Información", "Campus propio")}
 
     ${card("resultados", `
-      <div class="res">
-        <div class="dato num"><b>$8.0<em>M</em></b><small>facturados en un día por una marca cliente</small></div>
-        <div class="fotos">${RES_DESK.slice(-3).map(r => resImg(r[0], "arriba")).join("")}</div>
-      </div>`, "a-res", "Resultados", "Métricas diarias")}
+      <div class="res res-zoom">
+        <figure>${resImg("r05-zoom")}<figcaption>2 ago 2026</figcaption></figure>
+        <figure>${resImg("r09-zoom")}<figcaption>3 ago 2026</figcaption></figure>
+      </div>`, "a-res", "Resultados", "Una marca cliente · por día")}
 
     ${card("acompanamiento", `
       <div class="acomp">${o.acomp.map(a => `
@@ -483,7 +496,8 @@ function render() {
         </div>`).join("")}</div>
       <p class="dwy-nota">${o.dwy ? "<em>Done with you:</em> auditoría, suscripción instalada, ofertas, anuncios, retención y stock, con vos." : "<em>Lo implementás vos,</em> con nosotros al lado todo el tiempo."}</p>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
 
-    <div class="a-bon" style="--n:${o.bonus.length}">
+    <div class="a-bon" style="--n:${o.bonus.length + 1}">
+      ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>Encuentros presenciales</small></div>`, "foto", "Comunidad")}
       ${o.bonus.map((b, i) => bonus[b](i + 1)).join("")}
     </div>
   `;
@@ -526,7 +540,7 @@ function armarSlides() {
         <div class="tarjeta vidrio"><span class="tag-n">Margen de ganancia</span><span class="big num">36,6<em>%</em></span><p>2 ago 2026</p></div>
         <div class="tarjeta vidrio"><span class="tag-n">Órdenes del día</span><span class="big num">139</span><p>2 ago 2026 · +75,9%</p></div>
       </div>
-      <div class="galeria">${RES_DESK.map(r => `<figure>${resImg(r[0])}<figcaption>${r[1]}</figcaption></figure>`).join("")}</div>
+      <div class="galeria grande">${RES_DESK.map(r => `<figure>${resImg(r[0])}<figcaption>${r[1]}</figcaption></figure>`).join("")}</div>
       <div class="galeria-movil">${RES_MOVIL.map(k => resImg(k)).join("")}</div>
     </div>` });
 
@@ -736,7 +750,17 @@ $("#presentar").addEventListener("click", () => abrir("portada"));
 $("#cerrar").addEventListener("click", cerrar);
 $("#ant").addEventListener("click", () => ir(-1));
 $("#sig").addEventListener("click", () => ir(1));
+$("#escena").addEventListener("click", e => {
+  const im = e.target.closest("img");
+  if (!im || e.target.closest(".navegador")) return;
+  $("#lightbox-img").src = im.currentSrc || im.src;
+  $("#lightbox-img").alt = im.alt;
+  $("#lightbox").hidden = false;
+});
+const cerrarLb = () => { $("#lightbox").hidden = true; };
+$("#lightbox").addEventListener("click", cerrarLb);
 document.addEventListener("keydown", e => {
+  if (!$("#lightbox").hidden) { if (e.key === "Escape") cerrarLb(); return; }
   if ($("#visor").hidden) return;
   if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); ir(1); }
   if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); ir(-1); }
