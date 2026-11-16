@@ -113,6 +113,79 @@
   .puentify { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
   .puentify i { font-style: normal; color: #A98BFF; font-size: 16px; }
 
+
+  /* Campus: réplica navegable de la plataforma, dentro de un marco de navegador */
+  .navegador { border: 1px solid var(--borde-2); border-radius: 14px; overflow: hidden; background: #070505; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .nav-barra { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #141010; border-bottom: 1px solid var(--borde); }
+  .nav-barra .dots { display: flex; gap: 6px; }
+  .nav-barra .dots i { width: 10px; height: 10px; border-radius: 50%; background: #3a3230; }
+  .nav-barra .url { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: var(--gris); background: #0b0808; border-radius: 6px; padding: 4px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .campus-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .campus-tabs button { border: 1px solid var(--borde-2); background: var(--vidrio); border-radius: 999px; padding: 7px 14px; font-size: 13px; color: var(--gris-2); }
+  .campus-tabs button[aria-pressed="true"] { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); font-weight: 600; }
+  .cp { position: relative; min-height: 460px; padding: 28px clamp(16px, 4vw, 48px) 36px; overflow: hidden; font-size: 13px; color: #EDE6DF; }
+  .cp::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(42% 55% at 82% 8%, rgba(228,98,20,.55), rgba(228,98,20,0) 70%), radial-gradient(38% 50% at 6% 96%, rgba(228,98,20,.45), rgba(228,98,20,0) 70%); }
+  .cp > * { position: relative; }
+  .cp-k { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); }
+  .cp-k.n { color: var(--naranja); }
+  .cp h4 { margin: 0; font-weight: 300; letter-spacing: -0.035em; font-size: clamp(26px, 3.6vw, 36px); line-height: 1.05; }
+  .cp-card { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 14px; min-width: 0; }
+  .cp-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: -12px 0 22px; flex-wrap: wrap; }
+  .cp-top .marca { font-size: 10px; letter-spacing: .34em; color: var(--naranja); font-weight: 600; }
+  .cp-top nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .cp-top nav button { border: 0; background: transparent; color: var(--gris-2); font-size: 11.5px; padding: 5px 10px; border-radius: 999px; }
+  .cp-top nav button.on { background: rgba(232,130,58,.22); color: var(--naranja); border: 1px solid rgba(232,130,58,.4); }
+  .cp-av { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: rgba(232,130,58,.25); color: var(--naranja); font-size: 11px; font-weight: 600; }
+  /* ingreso */
+  .cp-login { display: grid; justify-items: center; align-content: center; gap: 10px; min-height: 400px; }
+  .cp-login .marca { font-size: 11px; letter-spacing: .36em; color: var(--naranja); font-weight: 600; margin-bottom: 8px; }
+  .cp-login input { width: min(280px, 100%); background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 9px 11px; color: var(--hueso); font: inherit; font-size: 12.5px; }
+  .cp-login .flecha { border: 0; background: transparent; color: var(--naranja); font-size: 20px; margin-top: 6px; }
+  .cp-login .sol { color: var(--naranja); font-size: 12px; font-weight: 500; }
+  /* inicio */
+  .cp-hola { display: grid; justify-items: center; text-align: center; gap: 8px; padding-top: 18px; }
+  .cp-tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; max-width: 760px; margin-inline: auto; }
+  .cp-tres .cp-card { display: grid; gap: 6px; text-align: left; min-height: 150px; align-content: start; }
+  .cp-tres .cp-card .fila { display: flex; justify-content: space-between; color: var(--naranja); font-size: 11px; }
+  .cp-tres .cp-card b { font-weight: 400; font-size: 16px; margin-top: 18px; }
+  .cp-tres .cp-card small { color: var(--gris); font-size: 11px; }
+  .cp-tres .cp-card .bar { height: 2px; background: rgba(255,255,255,.08); border-radius: 2px; }
+  .cp-tres .cp-card .bar i { display: block; height: 100%; width: 83%; background: var(--naranja); border-radius: 2px; }
+  .cp-tres .cp-card button { justify-self: start; margin-top: auto; border: 0; background: transparent; color: var(--gris-2); font-size: 11px; padding: 0; }
+  .cp-tres .cp-card button:hover { color: var(--naranja); }
+  /* progreso */
+  .cp-prog { display: grid; grid-template-columns: 180px 1fr; gap: 10px; margin-top: 16px; }
+  .cp-ring { display: grid; place-items: center; }
+  .cp-ring svg { width: 110px; height: 110px; }
+  .cp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cp-stats .cp-card b { font-weight: 300; font-size: 22px; letter-spacing: -0.03em; }
+  .cp-stats .cp-card b small { font-size: 11px; color: var(--gris); }
+  .cp-cont { grid-column: 1 / -1; }
+  .cp-cont a, .cp-cont span.l { color: var(--naranja); font-size: 13px; }
+  .cp-mods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .cp-mod { display: grid; grid-template-columns: 20px 1fr auto; gap: 4px 8px; align-items: center; padding: 10px 12px; }
+  .cp-mod .i { color: var(--naranja); font-size: 10.5px; }
+  .cp-mod .d { font-size: 10px; color: var(--gris); }
+  .cp-mod .b { grid-column: 2 / -1; height: 2px; background: rgba(255,255,255,.08); border-radius: 2px; }
+  .cp-mod .b i { display: block; height: 100%; background: var(--naranja); border-radius: 2px; }
+  /* herramientas */
+  .cp-filtros { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 14px; align-items: center; }
+  .cp-filtros button { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); border-radius: 999px; padding: 5px 11px; font-size: 11px; color: var(--gris-2); }
+  .cp-filtros button.on { background: rgba(232,130,58,.22); border-color: rgba(232,130,58,.5); color: var(--naranja); }
+  .cp-filtros input { margin-left: auto; min-width: 140px; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.1); border-radius: 999px; padding: 6px 12px; color: var(--hueso); font: inherit; font-size: 11.5px; }
+  .cp-herr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cp-herr .cp-card { display: grid; gap: 6px; align-content: start; }
+  .cp-herr .tg { justify-self: start; font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--gris-2); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 2px 8px; }
+  .cp-herr b { font-weight: 500; font-size: 14px; }
+  .cp-herr p { color: var(--gris); font-size: 11.5px; }
+  .cp-herr .ft { font-size: 8.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--gris); margin-top: 4px; }
+  .cp-vacio { color: var(--gris); padding: 20px 0; }
+  .campus-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; border: 1px solid var(--borde); display: block; }
+  @media (max-width: 760px) {
+    .cp-tres, .cp-herr, .cp-mods, .cp-stats { grid-template-columns: 1fr; }
+    .cp-prog { grid-template-columns: 1fr; }
+  }
   [hidden] { display: none !important; }
   /* Detalle / slides */
   .visor { position: fixed; inset: 0; z-index: 20; background: rgba(10,8,7,.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -328,6 +401,7 @@ function render() {
       ${bloque("informacion", `
         <ul class="checks">${SOPS.map(s => `<li>${ok}<span>+SOPs ${s.toUpperCase()}</span></li>`).join("")}</ul>
         <div class="herr">${ok}<span>+Herramientas (agentes, flujos, skills y dashboards)</span></div>
+        <div class="campus-mini">${["ingreso","inicio","progreso","herramientas"].map(k => `<img src="oferta-genesis-img/campus-${k}.webp" alt="Campus Genesis: pantalla de ${k}" loading="lazy">`).join("")}</div>
       `)}
       ${bloque("resultados", `
         <span class="eyebrow">Resultados de clientes · métricas diarias</span>
@@ -410,6 +484,8 @@ function armarSlides() {
   S.push({ id: "informacion", nombre: "Información", html: `
     <div class="slide">
       <div class="slide-head"><span class="k">Información</span><h2>Todos los SOPs, en el campus</h2><p>13 áreas del negocio documentadas paso a paso, más las herramientas que usamos en nuestras marcas. ${lite ? "Sabés qué hacer hoy, qué hacer mañana y en qué orden." : "Lo que usamos nosotros, listo para copiar y pegar en tu marca."}</p></div>
+      <div id="campus">${campusHTML()}</div>
+      <div class="slide-head"><span class="k">Qué hay adentro</span><h3 style="font-size:28px">13 áreas de SOPs</h3></div>
       <div class="sops">${SOPS.map((s,i) => `<div>${ok}<span>SOPs ${s}</span><small class="num">${String(i+1).padStart(2,"0")}</small></div>`).join("")}</div>
       <div class="tarjetas">
         <div class="tarjeta vidrio"><span class="tag-n">+ Herramientas</span><h3>Agentes, flujos, skills y dashboards</h3><p>Más de 30 agentes de IA: creativos, Meta Ads, operaciones, flujos de email y más.</p></div>
@@ -459,6 +535,96 @@ function armarSlides() {
   return S;
 }
 
+
+/* ---------- Campus (réplica navegable) ---------- */
+const MODULOS = [["Fundamentos",4,4],["Oferta y posicionamiento",6,6],["Adquisición",8,8],["Ventas",7,7],["Operación y escala",9,9],["Suscripción y precios",10,10],["Retención y recompra",9,12],["Logística y stock",0,8]];
+const HERRAMIENTAS = [
+  ["Landing Pages","Landing page","Agente Landing Page","Plantilla de páginas de ventas optimizada para convertir tráfico en clientes."],
+  ["Retención","Retención","Flujo de retención v1","Secuencia de emails y automatizaciones para aumentar la recompra y la vida del cliente."],
+  ["Retención","Retención","Flujo de retención v2","Estrategia avanzada de retención por clientes, contenido y triggers de reactivación."],
+  ["Email Marketing","Email","Flujo de email de onboarding","Secuencia de bienvenida para educar, activar y generar primeras ventas."],
+  ["Automatizaciones","Automatización","Skill: Carrito abandonado","Recuperá ventas perdidas con un flujo inteligente de emails y mensajes."],
+  ["Ecommerce","Landing page","Agente Upsell / Cross-sell","Página y flujo para ofrecer productos complementarios y aumentar el ticket promedio."],
+  ["Analítica","Analítica","Dashboard de métricas","Visualizá ventas, tráfico y LTV en tiempo real."],
+  ["Ecommerce","Ecommerce","Flujo de lanzamiento","Secuencia completa para lanzar un nuevo producto o línea."],
+  ["Automatizaciones","Automatización","Skill: Reabastecimiento","Automatizá avisos y campañas para recuperar stock y maximizar ventas."]
+];
+const FILTROS = ["Todas","Landing Pages","Email Marketing","Automatizaciones","Retención","Ecommerce","Analítica"];
+const VISTAS = [["ingreso","Ingreso"],["inicio","Inicio"],["progreso","Tu progreso"],["herramientas","Herramientas"]];
+let vistaCampus = "inicio", filtroCampus = "Todas", buscaCampus = "";
+
+function cpTop(on) {
+  return `<div class="cp-top"><span class="marca">GENESIS</span><nav>${[["progreso","Tu avance"],["inicio","Módulos"],["herramientas","Baúl de herramientas"]].map(([v,t]) => `<button type="button" data-cp="${v}" class="${on === v ? "on" : ""}">${t}</button>`).join("")}</nav><span class="cp-av">L</span></div>`;
+}
+function vistaHTML(v) {
+  if (v === "ingreso") return `
+    <div class="cp-login">
+      <span class="marca">GENESIS</span>
+      <input type="email" id="cp-email" placeholder="Email" aria-label="Email" autocomplete="off">
+      <input type="password" id="cp-pass" placeholder="Contraseña" aria-label="Contraseña" autocomplete="off">
+      <button type="button" class="flecha" data-cp="inicio" aria-label="Entrar">→</button>
+      <span class="sol">Solicitar acceso</span>
+      <span class="cp-k">Solo miembros de Genesis OS</span>
+    </div>`;
+  if (v === "inicio") return `
+    <div class="cp-hola">
+      <span class="cp-k">Bienvenido de nuevo</span>
+      <h4>Hola, Lauty</h4>
+      <span style="color:var(--gris-2)">¿Por dónde querés continuar hoy?</span>
+    </div>
+    <div class="cp-tres">
+      <div class="cp-card"><span class="fila"><span>01</span><span>↗</span></span><b>Tu avance</b><small>83% del programa completado</small><span class="bar"><i></i></span><button type="button" data-cp="progreso">Ingresar →</button></div>
+      <div class="cp-card"><span class="fila"><span>02</span><span>▤</span></span><b>Módulos</b><small>8 módulos de contenido grabado</small><button type="button" data-cp="progreso">Ingresar →</button></div>
+      <div class="cp-card"><span class="fila"><span>03</span><span>▣</span></span><b>Baúl de herramientas</b><small>42 plantillas y recursos</small><button type="button" data-cp="herramientas">Ingresar →</button></div>
+    </div>`;
+  if (v === "progreso") {
+    const r = 46, c = 2 * Math.PI * r;
+    return `${cpTop("progreso")}
+    <span class="cp-k">01 · Tu avance</span><h4 style="margin-top:6px">Tu progreso</h4>
+    <div class="cp-prog">
+      <div class="cp-card cp-ring"><svg viewBox="0 0 110 110" aria-label="83% completado"><circle cx="55" cy="55" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle cx="55" cy="55" r="${r}" fill="none" stroke="var(--naranja)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${c * .83} ${c}" transform="rotate(-90 55 55)"/><text x="55" y="58" text-anchor="middle" fill="var(--hueso)" font-size="22" font-weight="300" font-family="DM Sans, sans-serif">83%</text><text x="55" y="72" text-anchor="middle" fill="var(--gris)" font-size="6" letter-spacing="1.5" font-family="DM Sans, sans-serif">COMPLETADO</text></svg></div>
+      <div style="display:grid;gap:10px;min-width:0">
+        <div class="cp-stats num">
+          <div class="cp-card"><b>53<small>/64</small></b><div class="cp-k">Lecciones</div></div>
+          <div class="cp-card"><b>6<small>/8</small></b><div class="cp-k">Módulos</div></div>
+          <div class="cp-card"><b>38 h 40 min</b><div class="cp-k">Tiempo visto</div></div>
+        </div>
+        <div class="cp-card cp-cont"><div class="cp-k">Continuar · Módulo 7</div><span class="l">▷ Retención y recompra</span></div>
+      </div>
+    </div>
+    <div class="cp-k" style="margin-top:18px">Por módulo</div>
+    <div class="cp-mods num">${MODULOS.map((m, i) => `<div class="cp-card cp-mod"><span class="i">0${i+1}</span><span>${m[0]}</span><span class="d">${m[1]}/${m[2]} · ${Math.round(m[1]/m[2]*100)}%</span><span class="b"><i style="width:${m[1]/m[2]*100}%"></i></span></div>`).join("")}</div>`;
+  }
+  const q = buscaCampus.trim().toLowerCase();
+  const lista = HERRAMIENTAS.filter(h => (filtroCampus === "Todas" || h[0] === filtroCampus) && (!q || (h[2] + " " + h[3]).toLowerCase().includes(q)));
+  return `${cpTop("herramientas")}
+    <span class="cp-k">02 · Baúl de herramientas</span><h4 style="margin-top:6px">Herramientas</h4>
+    <p style="color:var(--gris-2);margin-top:6px">Plantillas, recursos y software para aplicar lo que aprendés.</p>
+    <div class="cp-filtros">${FILTROS.map(f => `<button type="button" data-filtro="${f}" class="${f === filtroCampus ? "on" : ""}">${f}</button>`).join("")}<input type="search" id="cp-busca" placeholder="Buscar..." aria-label="Buscar herramientas" value="${buscaCampus.replace(/"/g, "&quot;")}"></div>
+    <div class="cp-herr" id="cp-herr">${lista.length ? lista.map(h => `<div class="cp-card"><span class="tg">${h[1]}</span><b>${h[2]}</b><p>${h[3]}</p><span class="ft">${h[0]}</span></div>`).join("") : `<p class="cp-vacio">No hay herramientas con ese filtro.</p>`}</div>`;
+}
+function campusHTML() {
+  return `
+    <div style="display:grid;gap:12px">
+      <div class="campus-tabs" role="group" aria-label="Pantallas del campus">${VISTAS.map(([v,t]) => `<button type="button" data-cpv="${v}" aria-pressed="${v === vistaCampus}">${t}</button>`).join("")}</div>
+      <div class="navegador">
+        <div class="nav-barra"><span class="dots"><i></i><i></i><i></i></span><span class="url">campus.genesis · ${VISTAS.find(x => x[0] === vistaCampus)[1]}</span></div>
+        <div class="cp" id="cp-pantalla">${vistaHTML(vistaCampus)}</div>
+      </div>
+      <p class="pista">Es una réplica navegable del campus: tocá las pestañas, los filtros y los botones de "Ingresar".</p>
+    </div>`;
+}
+function bindCampus(root) {
+  const cont = root.querySelector("#campus");
+  if (!cont) return;
+  const redibujar = (foco) => { cont.innerHTML = campusHTML(); bindCampus(root); if (foco) { const el = cont.querySelector(foco); if (el) { el.focus(); if (el.setSelectionRange) el.setSelectionRange(el.value.length, el.value.length); } } };
+  cont.querySelectorAll("[data-cpv]").forEach(b => b.addEventListener("click", () => { vistaCampus = b.dataset.cpv; redibujar(); }));
+  cont.querySelectorAll("[data-cp]").forEach(b => b.addEventListener("click", () => { vistaCampus = b.dataset.cp; redibujar(); }));
+  cont.querySelectorAll("[data-filtro]").forEach(b => b.addEventListener("click", () => { filtroCampus = b.dataset.filtro; redibujar(); }));
+  const bus = cont.querySelector("#cp-busca");
+  if (bus) bus.addEventListener("input", () => { buscaCampus = bus.value; redibujar("#cp-busca"); });
+}
+
 function abrir(id) {
   const i = slides.findIndex(s => s.id === id);
   idx = i < 0 ? 0 : i;
@@ -485,6 +651,7 @@ function pintar() {
   $("#sig").disabled = idx === slides.length - 1;
   $("#puntos").innerHTML = slides.map((x, i) => `<button type="button" aria-label="${x.nombre}" ${i === idx ? 'aria-current="true"' : ""} data-i="${i}"></button>`).join("");
   $("#puntos").querySelectorAll("button").forEach(b => b.addEventListener("click", () => { idx = +b.dataset.i; pintar(); }));
+  bindCampus($("#escena"));
   $("#escena").querySelectorAll("[data-salto]").forEach(b => b.addEventListener("click", () => abrir(b.dataset.salto)));
   setHash(`${oferta}-${s.id}`);
 }
