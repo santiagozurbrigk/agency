@@ -501,7 +501,7 @@ function render() {
     ${card("resultados", `
       <div class="total num"><b>$38,9<em>M</em></b><small>facturación total en 7 días<br>29 jul al 4 ago 2026 · una marca cliente</small></div>
       <div class="res res-zoom">
-        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption><b>Mejor día #${i + 1}</b> · ${t[1]}</figcaption></figure>`).join("")}
+        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption>${t[1]} en un día</figcaption></figure>`).join("")}
       </div>`, "a-res", "Resultados", "Facturación total")}
 
     ${card("acompanamiento", `
