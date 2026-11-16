@@ -309,12 +309,20 @@
   .bloque-ac { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 18px; align-items: start; padding: 18px; }
   .bloque-ac .pill { font-size: 18px; }
   .bloque-ac .galeria { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .chat-gal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: start; }
-  @media (max-width: 700px) { .chat-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  .chat-gal figure { margin: 0; }
-  .chat-gal img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: left top; border-radius: 10px; border: 1px solid var(--borde); display: block; background: #1b1b1f; }
-  .chat-gal figure.destacada { grid-column: 1 / -1; }
-  .chat-gal figure.destacada img { aspect-ratio: auto; object-fit: contain; max-height: 460px; width: auto; max-width: 100%; }
+  .bloque-ac .ac-head { display: grid; gap: 10px; }
+  .bloque-ac.ancho { grid-template-columns: 1fr; gap: 14px; }
+  .bloque-ac.ancho .ac-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .bloque-ac.ancho .ac-head .pill { padding-inline: 22px; }
+  .chat-gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 210px; gap: 10px; }
+  .chat-gal figure { margin: 0; min-height: 0; border-radius: 12px; border: 1px solid var(--borde); background: #1b1a1f; overflow: hidden; transition: border-color .2s; }
+  .chat-gal figure:hover { border-color: rgba(232,130,58,.55); }
+  .chat-gal img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .chat-gal figure.destacada { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .chat-gal figure:not(.destacada) img { object-fit: cover; object-position: left top; }
+  @media (max-width: 700px) {
+    .chat-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; }
+    .chat-gal figure.destacada { grid-column: 1 / -1; grid-row: span 2; }
+  }
   .bloque-ac .galeria img.chat { width: auto; max-width: 100%; max-height: 560px; object-fit: contain; justify-self: start; }
   .bloque-ac .galeria figure:has(img.chat) { justify-items: start; }
   .portada { min-height: 60vh; align-content: center; justify-items: center; text-align: center; }
@@ -599,8 +607,8 @@ function armarSlides() {
     <div class="slide">
       <div class="slide-head"><span class="k">Acompañamiento</span><h2>${lite ? "Lo implementás vos, con nosotros al lado" : "Lo hacemos con vos, durante 4 meses"}</h2><p>${lite ? "No es «lo hacemos por vos». Es «lo hacés vos, con alguien que ya lo hizo mirando lo que hacés»." : "Done with you: tu marca aplica el método con Manu y el equipo al lado en cada paso."}</p></div>
       ${o.acomp.map(a => `
-        <div class="vidrio bloque-ac">
-          <div style="display:grid;gap:10px"><div class="pill">${a.t}</div><p style="color:var(--gris-2)">${a.s}</p></div>
+        <div class="vidrio bloque-ac ${a.chats ? "ancho" : ""}">
+          <div class="ac-head"><div class="pill">${a.t}</div><p style="color:var(--gris-2)">${a.s}</p></div>
           ${a.chats
             ? `<div class="chat-gal">${a.fotos.map((f, i) => `<figure class="${i === 0 ? "destacada" : ""}">${img(f)}</figure>`).join("")}</div>`
             : `<div class="galeria">${a.fotos.map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>`}
