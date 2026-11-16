@@ -429,15 +429,6 @@ function render() {
     <div>
       <div class="meta"><span class="chip n">${o.dur}</span><span class="chip">${o.modo}</span><span class="chip">Método B.A.S.E.</span></div>
       <h1>${o.titulo}</h1>
-      <p class="tag">${o.tag}</p>
-    </div>
-    <div class="prueba">
-      <div class="stats num">
-        <div class="stat"><b>3.943</b><small>suscriptores activos</small></div>
-        <div class="stat"><b>$275<em>M</em></b><small>ingresos recurrentes / mes</small></div>
-        <div class="stat"><b>7,2<em>%</em></b><small>cancelaciones</small></div>
-      </div>
-      <span class="sub-lbl">La marca de Manu, con suscripción</span>
     </div>`;
 
   const bonus = {
@@ -475,9 +466,8 @@ function render() {
         </div>`).join("")}</div>
       <p class="dwy-nota">${o.dwy ? "<em>Done with you:</em> auditoría, suscripción instalada, ofertas, anuncios, retención y stock, con vos." : "<em>Lo implementás vos,</em> con nosotros al lado todo el tiempo."}</p>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
 
-    <div class="a-bon" style="--n:${o.bonus.length + 1}">
+    <div class="a-bon" style="--n:${o.bonus.length}">
       ${o.bonus.map((b, i) => bonus[b](i + 1)).join("")}
-      ${card("cierre", `<span class="k">${o.cierreCorto.k}</span><b>${o.cierreCorto.t}</b><small style="color:var(--hueso);opacity:.75">${o.cierreCorto.s}</small>`, "bonus cierre")}
     </div>
   `;
 
