@@ -265,7 +265,12 @@
   .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(5,4,3,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
   .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
   .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
-  .slide.pf { justify-items: center; text-align: center; gap: 28px; padding-top: 28px; }
+  .slide.pf { justify-items: center; text-align: center; gap: clamp(14px, 2.6vh, 26px); margin-top: 8px; padding: clamp(22px, 4vh, 40px) clamp(16px, 3vw, 40px) clamp(24px, 4vh, 40px); border-radius: 24px; border: 1px solid var(--borde);
+    background:
+      radial-gradient(55% 70% at 8% 0%, rgba(124, 92, 255, .32), rgba(124, 92, 255, 0) 70%),
+      radial-gradient(50% 65% at 96% 4%, rgba(232, 110, 40, .30), rgba(232, 110, 40, 0) 70%),
+      radial-gradient(60% 50% at 50% 110%, rgba(124, 92, 255, .10), rgba(124, 92, 255, 0) 70%),
+      #0c0a10; }
   .pf-logos { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
   .pf-marca { font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -0.03em; color: var(--hueso); }
   .pf-marca i { font-style: normal; color: #A98BFF; }
@@ -273,13 +278,13 @@
   .pf-gen { display: inline-flex; align-items: center; gap: 8px; font-size: clamp(20px, 2.4vw, 26px); letter-spacing: .14em; font-weight: 400; }
   .pf-gen svg { width: 22px; height: 26px; }
   .pf-gen b { color: var(--naranja); font-weight: 600; }
-  .pf-head { display: grid; gap: 10px; justify-items: center; max-width: 900px; }
+  .pf-head { display: grid; gap: 8px; justify-items: center; max-width: 900px; }
   .pf-head .k { font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--naranja); }
-  .pf-head h2 { font-size: clamp(32px, 4.6vw, 56px); font-weight: 400; letter-spacing: -0.035em; }
+  .pf-head h2 { font-size: clamp(30px, min(4.4vw, 7vh), 54px); font-weight: 400; letter-spacing: -0.035em; }
   .pf-head h2 em { font-style: normal; background: linear-gradient(90deg, #A98BFF, var(--naranja)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .pf-head p { color: var(--gris-2); font-size: 17px; font-weight: 300; }
   .pf-cards { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; text-align: left; }
-  .pf-card { position: relative; padding: 22px 20px 24px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); display: grid; gap: 10px; align-content: start; min-height: 220px; overflow: hidden; }
+  .pf-card { position: relative; padding: 22px 20px 24px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); display: grid; gap: 8px; align-content: start; min-height: clamp(170px, 26vh, 220px); overflow: hidden; }
   .pf-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--c); opacity: .9; }
   .pf-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); margin-bottom: 6px; }
   .pf-ico svg { width: 22px; height: 22px; }
