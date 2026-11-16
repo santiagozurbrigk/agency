@@ -265,6 +265,32 @@
   .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(5,4,3,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
   .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
   .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
+  .slide.pf { justify-items: center; text-align: center; gap: 28px; padding-top: 28px; }
+  .pf-logos { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .pf-marca { font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -0.03em; color: var(--hueso); }
+  .pf-marca i { font-style: normal; color: #A98BFF; }
+  .pf-x { color: var(--gris); font-size: 20px; }
+  .pf-gen { display: inline-flex; align-items: center; gap: 8px; font-size: clamp(20px, 2.4vw, 26px); letter-spacing: .14em; font-weight: 400; }
+  .pf-gen svg { width: 22px; height: 26px; }
+  .pf-gen b { color: var(--naranja); font-weight: 600; }
+  .pf-head { display: grid; gap: 10px; justify-items: center; max-width: 900px; }
+  .pf-head .k { font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--naranja); }
+  .pf-head h2 { font-size: clamp(32px, 4.6vw, 56px); font-weight: 400; letter-spacing: -0.035em; }
+  .pf-head h2 em { font-style: normal; background: linear-gradient(90deg, #A98BFF, var(--naranja)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .pf-head p { color: var(--gris-2); font-size: 17px; font-weight: 300; }
+  .pf-cards { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; text-align: left; }
+  .pf-card { position: relative; padding: 22px 20px 24px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); display: grid; gap: 10px; align-content: start; min-height: 220px; overflow: hidden; }
+  .pf-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--c); opacity: .9; }
+  .pf-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); margin-bottom: 6px; }
+  .pf-ico svg { width: 22px; height: 22px; }
+  .pf-card h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.015em; }
+  .pf-card p { color: var(--gris-2); font-size: 14.5px; font-weight: 300; }
+  .pf-bonus { display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px 12px 12px; border-radius: 999px; border: 1px solid rgba(169,139,255,.35); background: linear-gradient(90deg, rgba(169,139,255,.14), rgba(232,130,58,.12)); font-size: 18px; }
+  .pf-gift { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #A98BFF, var(--naranja)); font-size: 17px; }
+  .pf-bonus b { font-weight: 600; }
+  .pf-bonus em { font-style: normal; background: linear-gradient(90deg, #C9B6FF, #F2A86B); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+  @media (max-width: 900px) { .pf-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .pf-cards { grid-template-columns: 1fr; } .pf-card { min-height: 0; } }
   [hidden] { display: none !important; }
   /* Detalle / slides */
   .visor { position: fixed; inset: 0; z-index: 20; background: rgba(10,8,7,.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
@@ -440,6 +466,12 @@ const SOP_GRUPOS = [
 ];
 const SOPS = ["Investigación","Operaciones","Funnels","Retención","Oferta","Blackhat","Ads","Landings","Atención al cliente","Logística","Media buying","Copywriting y guiones","Edición y creativos"];
 const CONTACTOS = ["Proveedores","Laboratorios","Contadores especializados","Logística propia","Abogados especializados","Bolsa de trabajo","Contacto de registro: INPI, ANMAT y SENASA"];
+const PF_CARDS = [
+  { color: "#A98BFF", t: "Rail instalado con Puentify", d: "Suscripciones instaladas dentro de tu tienda con el equipo de Puentify.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/></svg>' },
+  { color: "#6FB6E8", t: "Cobros recurrentes con Mercado Pago", d: "Configurado por nuestro equipo para cobrar automáticamente todos los meses.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l3 3-3 3"/><path d="M4 11V9a3 3 0 0 1 3-3h13"/><path d="M7 21l-3-3 3-3"/><path d="M20 13v2a3 3 0 0 1-3 3H4"/></svg>' },
+  { color: "#E8823A", t: "Onboarding prioritario", d: "Prioridad en el onboarding de Puentify.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>' },
+  { color: "#4FD08A", t: "Comisiones más bajas", d: "Menor porcentaje por cada venta, únicamente para clientes de {marca}.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg>' }
+];
 const PUENTIFY = ["Contacto directo con Puentify","1 mes gratis","Onboarding prioritario","Instalación con el equipo de Puentify"];
 
 const OFERTAS = {
@@ -633,9 +665,24 @@ function armarSlides() {
         <div class="tarjetas">${CONTACTOS.map(c => `<div class="tarjeta vidrio">${ok}<h3>${c}</h3></div>`).join("")}</div>
       </div>` });
     if (b === "puentify") S.push({ id: "bonus-puentify", nombre: `Bonus ${n}`, html: `
-      <div class="slide">
-        <div class="slide-head"><span class="k">Bonus ${n}</span><h2>Puentify × Genesis ${lite ? "Lite" : "OS"}</h2><p>Tus cobros recurrentes, instalados con el equipo de Puentify.</p></div>
-        <div class="tarjetas">${PUENTIFY.map(c => `<div class="tarjeta vidrio">${ok}<h3>${c}</h3></div>`).join("")}</div>
+      <div class="slide pf">
+        <div class="pf-logos">
+          <span class="pf-marca">Puentify<i>.</i></span>
+          <span class="pf-x">×</span>
+          <span class="pf-gen"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C70 30 74 55 50 92C26 55 30 30 50 8Z" fill="var(--naranja)"/></svg>GENESIS <b>${lite ? "LITE" : "OS"}</b></span>
+        </div>
+        <div class="pf-head">
+          <span class="k">Bonus ${n}</span>
+          <h2>Tus cobros recurrentes, <em>instalados por nosotros</em></h2>
+          <p>Con Puentify y Mercado Pago, sin que toques nada.</p>
+        </div>
+        <div class="pf-cards">${PF_CARDS.map(c => `
+          <div class="pf-card" style="--c:${c.color}">
+            <span class="pf-ico">${c.icon}</span>
+            <h3>${c.t}</h3>
+            <p>${c.d.replace("{marca}", lite ? "Genesis Lite" : "Genesis OS")}</p>
+          </div>`).join("")}</div>
+        <div class="pf-bonus"><span class="pf-gift">🎁</span><span><b>Bonus:</b> <em>1 mes gratis de Puentify+</em></span></div>
       </div>` });
     if (b === "descuento") S.push({ id: "bonus-descuento", nombre: `Bonus ${n}`, html: `
       <div class="slide">
