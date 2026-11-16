@@ -50,69 +50,113 @@
   .logo svg { width: 26px; height: 26px; }
   .switch { display: inline-flex; padding: 4px; border-radius: 999px; border: 1px solid var(--borde-2); background: rgba(0,0,0,.35); }
   .switch button { border: 0; background: transparent; padding: 8px 18px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--gris-2); transition: background .2s, color .2s; }
-  .switch button[aria-pressed="true"] { background: var(--naranja); color: var(--tinta); }
+  .switch button[aria-pressed="true"] { background: var(--hueso); color: var(--tinta); }
   .acciones { display: flex; justify-content: flex-end; }
   .btn { border: 1px solid var(--borde-2); background: var(--vidrio); padding: 8px 16px; border-radius: 999px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
   .btn:hover { border-color: var(--naranja); }
   .btn.prim { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); font-weight: 600; }
 
-  /* Cabeza compacta */
-  .cabeza { display: grid; justify-items: center; text-align: center; gap: 2px; }
-  .cabeza h1 { font-size: clamp(34px, 7vh, 72px); font-weight: 700; letter-spacing: -0.04em; color: var(--naranja); line-height: .95; }
-  .cabeza .dur { font-size: clamp(14px, 2vh, 19px); font-style: italic; color: var(--gris); font-weight: 500; }
+  /* Cabeza: título a la izquierda, prueba (panel de Manu) a la derecha */
+  .cabeza { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 16px 32px; padding-top: clamp(4px, 1vh, 12px); }
+  .cabeza .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: clamp(4px, .8vh, 10px); }
+  .chip { font-size: 11px; font-weight: 500; letter-spacing: .04em; padding: 4px 11px; border: 1px solid var(--borde-2); border-radius: 999px; color: var(--gris-2); background: rgba(255,255,255,.02); }
+  .chip.n { color: var(--naranja); border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.08); }
+  .cabeza h1 { font-size: clamp(38px, 7.4vh, 76px); font-weight: 300; letter-spacing: -0.055em; line-height: .92; }
+  .cabeza h1 em { font-style: normal; color: var(--naranja); font-weight: 400; }
+  .cabeza .tag { color: var(--gris-2); font-weight: 300; font-size: clamp(13px, 1.8vh, 16px); margin-top: clamp(4px, .9vh, 10px); max-width: 62ch; }
+  .prueba { display: grid; gap: 8px; justify-items: end; }
+  .prueba .stats { display: flex; border: 1px solid var(--borde); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)); }
+  .prueba .stat { padding: clamp(8px, 1.3vh, 14px) clamp(14px, 1.6vw, 22px); display: grid; gap: 2px; }
+  .prueba .stat + .stat { border-left: 1px solid var(--borde); }
+  .prueba .stat b { font-size: clamp(20px, 3.4vh, 32px); font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
+  .prueba .stat b em { font-style: normal; color: var(--naranja); }
+  .prueba .stat small { font-size: 10.5px; color: var(--gris); letter-spacing: .02em; }
 
-  /* Tablero */
-  .tablero { min-height: 0; display: grid; grid-template-columns: 1fr 1.3fr 1fr; grid-template-rows: minmax(0, 1fr) auto; grid-template-areas: "eq info ac" "eq bonus ac"; gap: clamp(8px, 1.4vh, 14px) clamp(12px, 1.6vw, 22px); }
-  .zona { min-height: 0; min-width: 0; display: flex; flex-direction: column; gap: clamp(6px, 1vh, 10px); }
-  .z-eq { grid-area: eq; } .z-info { grid-area: info; } .z-ac { grid-area: ac; } .z-bonus { grid-area: bonus; }
-  .zona > h2 { text-align: center; font-size: clamp(16px, 2.6vh, 26px); font-weight: 700; letter-spacing: .01em; text-transform: uppercase; }
+  /* Tablero en bloques */
+  .tablero { min-height: 0; display: grid; grid-template-columns: 1fr 1.3fr 1.05fr; grid-template-rows: auto minmax(0, 1fr) minmax(0, .95fr) auto;
+    grid-template-areas: "eq info ac" "com info ac" "com res ac" "bon bon bon"; gap: clamp(8px, 1.3vh, 14px); }
+  .a-eq { grid-area: eq; } .a-com { grid-area: com; } .a-info { grid-area: info; } .a-res { grid-area: res; } .a-ac { grid-area: ac; } .a-bon { grid-area: bon; }
 
-  .bloque { text-align: left; border: 1px solid var(--borde); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)); padding: clamp(10px, 1.5vh, 16px); display: flex; flex-direction: column; gap: clamp(6px, 1.1vh, 12px); position: relative; transition: border-color .2s, background .2s; min-width: 0; min-height: 0; width: 100%; }
-  .bloque:hover { border-color: rgba(232,130,58,.65); background: linear-gradient(180deg, rgba(232,130,58,.07), rgba(255,255,255,.012)); }
-  .bloque.crece { flex: 1 1 0; }
-  .bloque .ver { position: absolute; top: 8px; right: 10px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--gris); background: rgba(10,8,7,.7); padding: 2px 7px; border-radius: 999px; z-index: 2; transition: color .2s; }
-  .bloque .ver { opacity: 0; transition: opacity .2s, color .2s; }
-  .bloque:hover .ver, .bloque:focus-visible .ver { opacity: 1; color: var(--naranja); }
-  @media (hover: none) { .bloque .ver { display: none; } }
+  .card { position: relative; text-align: left; width: 100%; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 12px);
+    padding: clamp(12px, 1.7vh, 18px); border-radius: 18px; border: 1px solid var(--borde);
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); transition: border-color .2s, transform .2s, background .2s; overflow: hidden; }
+  .card:hover { border-color: rgba(232,130,58,.55); transform: translateY(-2px); background: linear-gradient(180deg, rgba(232,130,58,.075), rgba(255,255,255,.012)); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+  .card-h { display: flex; align-items: center; gap: 10px; padding-right: 30px; }
+  .card-h .lbl { font-size: 10.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--hueso); display: flex; align-items: center; gap: 8px; }
+  .card-h .lbl::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 10px var(--naranja); }
+  .card-h .mt { margin-left: auto; font-size: 11px; color: var(--gris); white-space: nowrap; }
+  .flecha { position: absolute; top: clamp(10px, 1.5vh, 15px); right: clamp(10px, 1.5vh, 15px); width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--borde-2); display: grid; place-items: center; font-size: 12px; color: var(--gris-2); transition: all .2s; z-index: 2; background: rgba(10,8,7,.5); }
+  .card:hover .flecha { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); }
 
-  .persona { display: grid; grid-template-columns: clamp(34px, 5vh, 46px) 1fr; gap: 10px; align-items: center; }
-  .avatar { width: clamp(34px, 5vh, 46px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; font-weight: 600; background: radial-gradient(circle at 30% 25%, #3a2a20, #15100c); border: 1px solid var(--borde-2); }
-  .persona b { display: block; font-weight: 600; font-size: 13.5px; color: var(--naranja); }
-  .persona small { color: var(--gris-2); font-size: 12px; }
-  .mini-dash { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
-  .mini-dash div { background: var(--papel); color: var(--papel-tx); border-radius: 7px; padding: 5px 7px; display: grid; min-width: 0; }
-  .mini-dash small { font-size: 9px; color: #6b6560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .mini-dash strong { font-size: clamp(12px, 1.9vh, 15px); font-weight: 600; }
+  /* Equipo */
+  .personas { display: grid; gap: clamp(8px, 1.2vh, 12px); }
+  .persona { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+  .avatar { width: clamp(34px, 5.2vh, 44px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; font-weight: 500; font-size: 15px; color: var(--hueso);
+    background: radial-gradient(circle at 30% 25%, #4a3020, #160f0b); box-shadow: 0 0 0 1px rgba(232,130,58,.5), 0 0 0 4px rgba(232,130,58,.08); }
+  .persona b { display: block; font-weight: 500; font-size: 14px; }
+  .persona small { color: var(--gris); font-size: 12px; }
 
-  .foto-dash img { width: 100%; display: block; border-radius: 8px; max-height: clamp(70px, 12vh, 130px); object-fit: cover; object-position: top left; }
-  .resultados-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
-  .galeria-movil { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-  .galeria-movil img { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
-  .hueco { flex: 1 1 0; min-height: 40px; border: 1px dashed var(--borde-2); border-radius: 10px; display: grid; place-items: center; text-align: center; padding: 8px; font-size: 12px; color: var(--gris); background: radial-gradient(70% 80% at 30% 80%, rgba(232,130,58,.18), rgba(232,130,58,0) 70%); }
+  /* Comunidad: foto a sangre */
+  .card.foto { padding: 0; }
+  .card.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card.foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,8,7,.55) 0%, rgba(10,8,7,0) 30%, rgba(10,8,7,0) 50%, rgba(10,8,7,.92) 100%); }
+  .card.foto .card-h, .card.foto .pie { position: relative; z-index: 1; }
+  .card.foto .card-h { padding: clamp(12px, 1.7vh, 18px); padding-right: 46px; }
+  .card.foto .pie { margin-top: auto; padding: clamp(12px, 1.7vh, 18px); display: grid; gap: 2px; }
+  .card.foto .pie b { font-weight: 400; font-size: clamp(15px, 2.2vh, 19px); letter-spacing: -0.02em; }
+  .card.foto .pie small { color: var(--gris-2); font-size: 12px; }
 
-  .checks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2px, .55vh, 6px) 14px; font-size: clamp(10.5px, 1.55vh, 12.5px); font-weight: 600; }
-  .checks li { display: flex; gap: 7px; align-items: baseline; min-width: 0; }
-  .ok { flex: none; width: 13px; height: 13px; border-radius: 3px; background: var(--verde); display: inline-grid; place-items: center; transform: translateY(2px); }
-  .ok::after { content: ""; width: 6px; height: 3.5px; border-left: 2px solid #0b2a17; border-bottom: 2px solid #0b2a17; transform: rotate(-45deg) translate(1px,-1px); }
-  .herr { font-size: clamp(11px, 1.6vh, 13px); font-weight: 600; display: flex; gap: 7px; justify-content: center; }
+  /* Información */
+  .titulo-card { font-size: clamp(16px, 2.4vh, 21px); font-weight: 300; letter-spacing: -0.025em; }
+  .titulo-card em { font-style: normal; color: var(--naranja); }
+  .tags { display: flex; flex-wrap: wrap; gap: clamp(4px, .6vh, 6px); }
+  .tags span { font-size: clamp(10.5px, 1.5vh, 12px); padding: clamp(3px, .45vh, 5px) 10px; border-radius: 999px; border: 1px solid var(--borde); background: rgba(255,255,255,.03); color: var(--gris-2); white-space: nowrap; }
+  .tags span.herr { color: var(--naranja); border-color: rgba(232,130,58,.4); background: rgba(232,130,58,.07); }
+  .campus-mini { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; border: 1px solid var(--borde); display: block; }
+  .sub-lbl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gris); }
 
-  .acomp-item { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
-  .pill { flex: none; background: var(--naranja-fuerte); color: #fff; font-weight: 700; text-align: center; padding: clamp(5px, .9vh, 9px) 12px; border-radius: 8px; font-size: clamp(13px, 1.9vh, 16px); }
-  .pill small { display: block; font-weight: 400; font-size: 11.5px; opacity: .85; }
-  .fotos { flex: 1 1 0; min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
+  /* Resultados */
+  .res { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
+  .res .dato { display: grid; align-content: center; gap: 2px; padding-right: 4px; }
+  .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+  .res .dato b em { font-style: normal; color: var(--naranja); }
+  .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
+  .fotos { min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
   .fotos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); display: block; background: #120d0a; }
   .fotos img.arriba { object-position: top left; }
 
-  .bonus-grid { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 10px; }
-  .bonus-grid .bloque { align-items: center; text-align: center; }
-  .bonus-grid h3 { font-size: clamp(15px, 2.3vh, 22px); font-weight: 700; letter-spacing: 0; }
-  .b-cuerpo { width: 100%; border-radius: 10px; background: #120d0a; border: 1px solid var(--borde); padding: clamp(6px, 1vh, 10px); display: grid; gap: 4px; justify-items: center; min-height: clamp(58px, 9vh, 92px); align-content: center; }
-  .b-cuerpo .t { font-size: 13px; font-weight: 600; }
-  .b-cuerpo .s { font-size: 11px; color: var(--gris-2); }
-  .grande-verde { font-size: clamp(24px, 4.2vh, 38px); font-weight: 700; color: var(--verde); letter-spacing: -0.02em; line-height: 1; }
-  .puentify { font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .puentify i { font-style: normal; color: #A98BFF; font-size: 16px; }
+  /* Acompañamiento */
+  .acomp { flex: 1 1 0; min-height: 0; display: grid; grid-auto-rows: minmax(0, 1fr); gap: clamp(8px, 1.2vh, 12px); }
+  .acomp-item { min-height: 0; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 12px; align-items: stretch; }
+  .acomp-item .fotos { height: 100%; }
+  .acomp-item .tx { display: grid; align-content: center; gap: 4px; min-width: 0; }
+  .acomp-item .tx b { font-weight: 500; font-size: clamp(13.5px, 2vh, 16px); letter-spacing: -0.01em; }
+  .acomp-item .tx small { color: var(--gris); font-size: 12px; }
+  .acomp-item .chip { justify-self: start; margin-top: 2px; }
+  .dwy-nota { font-size: 11.5px; color: var(--gris-2); border-top: 1px solid var(--borde); padding-top: clamp(6px, 1vh, 10px); }
+  .dwy-nota em { font-style: normal; color: var(--naranja); }
 
+  /* Bonus + cierre */
+  .a-bon { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: clamp(8px, 1.3vh, 14px); }
+  .bonus { gap: 4px; }
+  .bonus .k { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--naranja); font-weight: 600; }
+  .bonus b { font-weight: 400; font-size: clamp(15px, 2.3vh, 19px); letter-spacing: -0.02em; }
+  .bonus b.monto { font-weight: 300; font-size: clamp(20px, 3.4vh, 28px); color: var(--naranja); letter-spacing: -0.04em; }
+  .bonus small { color: var(--gris); font-size: 12px; }
+  .card.cierre { background: linear-gradient(135deg, rgba(232,130,58,.28), rgba(232,130,58,.06)); border-color: rgba(232,130,58,.45); }
+  .card.cierre .k { color: var(--hueso); opacity: .8; }
+  .card.cierre .flecha { border-color: rgba(255,255,255,.3); color: var(--hueso); }
+
+  .grande-verde { font-size: clamp(24px, 4.2vh, 38px); font-weight: 300; color: var(--naranja); letter-spacing: -0.04em; line-height: 1; }
+
+  .ok { flex: none; width: 15px; height: 15px; border-radius: 50%; background: rgba(232,130,58,.16); box-shadow: inset 0 0 0 1px rgba(232,130,58,.55); display: inline-grid; place-items: center; transform: translateY(2px); }
+  .ok::after { content: ""; width: 6px; height: 3.5px; border-left: 1.6px solid var(--naranja); border-bottom: 1.6px solid var(--naranja); transform: rotate(-45deg) translate(1px,-1px); }
+  .pill { background: var(--naranja-fuerte); color: #fff; font-weight: 600; text-align: center; padding: 9px 12px; border-radius: 10px; font-size: 16px; }
+  .resultados-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .galeria-movil { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .galeria-movil img { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
 
   /* Campus: réplica navegable de la plataforma, dentro de un marco de navegador */
   .navegador { border: 1px solid var(--borde-2); border-radius: 14px; overflow: hidden; background: #070505; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
@@ -247,19 +291,24 @@
     body { overflow: auto; }
     html, body { height: auto; }
     .app { height: auto; grid-template-rows: auto auto auto; }
-    .tablero { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "eq" "info" "bonus" "ac"; }
-    .bloque.crece { flex: none; }
-    .hueco { flex: none; min-height: 90px; }
-    .acomp-item { flex: none; }
-    .fotos { flex: none; height: 160px; }
+    .cabeza { grid-template-columns: 1fr; }
+    .prueba { justify-items: start; }
+    .tablero { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "eq" "com" "info" "res" "ac" "bon"; }
+    .card.foto { min-height: 260px; }
+    .res { flex: none; height: 150px; }
+    .acomp { flex: none; grid-auto-rows: 150px; }
+    .a-bon { grid-template-columns: 1fr 1fr; }
     .etapas { grid-template-columns: 1fr 1fr; }
     .bloque-ac { grid-template-columns: 1fr; }
   }
   @media (max-width: 560px) {
     .barra { grid-template-columns: 1fr auto; }
     .barra .switch { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
-    .checks { grid-template-columns: 1fr; }
-    .bonus-grid { grid-template-columns: 1fr; }
+    .a-bon { grid-template-columns: 1fr; }
+    .acomp-item { grid-template-columns: 1fr; }
+    .acomp { grid-auto-rows: auto; }
+    .acomp-item .fotos { height: 150px; }
+    .prueba .stats { flex-wrap: wrap; }
     .etapas { grid-template-columns: 1fr; }
     .puntos { display: none; }
   }
@@ -319,30 +368,32 @@ const PUENTIFY = ["Contacto directo con Puentify","1 mes gratis","Onboarding pri
 
 const OFERTAS = {
   os: {
-    nombre: "GENESIS OS",
+    nombre: "GENESIS OS", titulo: "Genesis <em>OS</em>", modo: "Done with you",
     dur: "4 meses",
     tag: "Escalá tu ecomm de consumibles a +$100M al mes con modelo de suscripción, sin depender del CPA ni dejar de vender.",
     acomp: [
-      { t: "Sesiones 1 a 1 ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
-      { t: "Grupales (4 por semana)", s: "Grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
-      { t: "Chat 1 a 1 directo", s: "Con Manu y José", fotos: ["chat"] }
+      { t: "Sesiones 1 a 1 ilimitadas", c: "Sesiones 1 a 1", chip: "Ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
+      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "Grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chat"] }
     ],
     dwy: ["Auditoría de tus números + roadmap","Suscripción instalada","Ofertas","Creación de anuncios","Procesos de retención","Proyección de stock"],
     nucleo: ["Software propio","Acceso para 2 personas de tu equipo","Tablero de suscriptores y bajas"],
     bonus: ["contactos","puentify","descuento"],
+    cierreCorto: { k: "Cupos limitados", t: "10 marcas", s: "Queremos que las 10 terminen siendo casos de éxito" },
     cierre: { k: "Cupos limitados", t: "Tomamos 10 marcas", p: "Queremos que el servicio sea lo más personalizado posible y que las 10 marcas que entren terminen siendo casos de éxito. La inversión la vemos en la llamada, con tus números adelante." }
   },
   lite: {
-    nombre: "GENESIS LITE",
+    nombre: "GENESIS LITE", titulo: "Genesis <em>Lite</em>", modo: "Grupal",
     dur: "3 meses",
     tag: "Arrancá en ecommerce por el lado correcto: un consumible, un proceso paso a paso y alguien al lado que ya lo hizo.",
     acomp: [
-      { t: "Grupales (3 por semana)", s: "1 con Manu y 2 con José", fotos: ["grupal"] },
-      { t: "Chat 1 a 1 directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chat"] }
+      { t: "Grupales (3 por semana)", c: "Clases grupales", chip: "3 por semana", s: "1 con Manu y 2 con José", fotos: ["grupal"] },
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chat"] }
     ],
     dwy: null,
     nucleo: ["Software propio","Tablero de suscriptores y bajas"],
     bonus: ["contactos","puentify"],
+    cierreCorto: { k: "Esta apertura", t: "Última apertura", s: "Cuando termina, cerramos las puertas" },
     cierre: { k: "Esta apertura", t: "Cuando termina, cerramos las puertas", p: "No es un tema de cupos. Después de esta apertura dejamos de tomar gente, y hoy no sabemos cuándo vamos a volver a abrir. La inversión la vemos en la llamada, con tus números adelante." }
   }
 };
@@ -366,60 +417,67 @@ const li = arr => arr.map(x => `<li>${ok}<span>${x}</span></li>`).join("");
 const img = (k, extra = "") => `<img src="${IMG[k].src}" alt="${IMG[k].alt}" class="${IMG[k].cls || ""} ${extra}" loading="lazy">`;
 
 /* ---------- Tablero (vista general) ---------- */
-function bloque(id, inner, extra = "") {
-  return `<button type="button" class="bloque ${extra}" data-ir="${id}" aria-label="Ver ${NOMBRES[id]}"><span class="ver">Ver →</span>${inner}</button>`;
+function card(id, inner, extra = "", lbl = "", mt = "") {
+  const head = lbl ? `<div class="card-h"><span class="lbl">${lbl}</span>${mt ? `<span class="mt">${mt}</span>` : ""}</div>` : "";
+  return `<button type="button" class="card ${extra}" data-ir="${id}" aria-label="Ver ${NOMBRES[id]}"><span class="flecha" aria-hidden="true">↗</span>${head}${inner}</button>`;
 }
 
 function render() {
   const o = OFERTAS[oferta];
   const lite = oferta === "lite";
-  $("#cabeza").innerHTML = `<h1>${o.nombre}</h1><span class="dur">${o.dur}</span>`;
+  $("#cabeza").innerHTML = `
+    <div>
+      <div class="meta"><span class="chip n">${o.dur}</span><span class="chip">${o.modo}</span><span class="chip">Método B.A.S.E.</span></div>
+      <h1>${o.titulo}</h1>
+      <p class="tag">${o.tag}</p>
+    </div>
+    <div class="prueba">
+      <div class="stats num">
+        <div class="stat"><b>3.943</b><small>suscriptores activos</small></div>
+        <div class="stat"><b>$275<em>M</em></b><small>ingresos recurrentes / mes</small></div>
+        <div class="stat"><b>7,2<em>%</em></b><small>cancelaciones</small></div>
+      </div>
+      <span class="sub-lbl">La marca de Manu, con suscripción</span>
+    </div>`;
 
-  const bonusHtml = {
-    contactos: n => bloque("bonus-contactos", `<h3>Bonus ${n}</h3><div class="b-cuerpo"><span class="t">Red de contactos</span><span class="s">Proveedores · laboratorios · contadores · logística · abogados · INPI, ANMAT y SENASA</span></div>`),
-    puentify: n => bloque("bonus-puentify", `<h3>Bonus ${n}</h3><div class="b-cuerpo"><span class="puentify"><i>Puentify</i><span class="s">×</span>GENESIS ${lite ? "LITE" : "OS"}</span><span class="s">Tus cobros recurrentes, instalados con nosotros</span></div>`),
-    descuento: n => bloque("bonus-descuento", `<h3>Bonus ${n}</h3><div class="b-cuerpo"><span class="grande-verde num">-USD 3.000</span><span class="s">Solo para los 10 cupos</span></div>`)
+  const bonus = {
+    contactos: n => card("bonus-contactos", `<span class="k">Bonus ${n}</span><b>Red de contactos</b><small>Proveedores, laboratorios, contadores, logística y registros</small>`, "bonus"),
+    puentify: n => card("bonus-puentify", `<span class="k">Bonus ${n}</span><b>Puentify × Genesis</b><small>Tus cobros recurrentes, instalados con nosotros</small>`, "bonus"),
+    descuento: n => card("bonus-descuento", `<span class="k">Bonus ${n}</span><b class="monto num">−USD 3.000</b><small>Solo para los 10 cupos</small>`, "bonus")
   };
 
   $("#tablero").innerHTML = `
-    <div class="zona z-eq">
-      <h2>Equipo</h2>
-      ${bloque("equipo", `
-        <div class="persona"><span class="avatar">M</span><div><b>Manu · Founder de Genesis</b><small>De 60M a 275M por mes con suscripción</small></div></div>
-        <div class="foto-dash">${img("manu")}</div>
-        <div class="persona"><span class="avatar">J</span><div><b>José · Co-founder de Genesis</b><small>En la entrega de cada marca</small></div></div>
-      `)}
-      ${bloque("comunidad", `
-        <span class="eyebrow">Genesis comunidad</span>
-        <div class="fotos">${img("mesa")}${img("terraza")}</div>
-        <small style="color:var(--gris-2)">Dueños de marca haciendo el mismo camino que vos</small>
-      `, "crece")}
-    </div>
+    ${card("equipo", `
+      <div class="personas">
+        <div class="persona"><span class="avatar">M</span><div><b>Manu Dominguez</b><small>Founder · de 60M a 275M/mes con suscripción</small></div></div>
+        <div class="persona"><span class="avatar">J</span><div><b>José</b><small>Co-founder · en la entrega de cada marca</small></div></div>
+      </div>`, "a-eq", "Equipo")}
 
-    <div class="zona z-info">
-      <h2>Información</h2>
-      ${bloque("informacion", `
-        <ul class="checks">${SOPS.map(s => `<li>${ok}<span>+SOPs ${s.toUpperCase()}</span></li>`).join("")}</ul>
-        <div class="herr">${ok}<span>+Herramientas (agentes, flujos, skills y dashboards)</span></div>
-        <div class="campus-mini">${["ingreso","inicio","progreso","herramientas"].map(k => `<img src="oferta-genesis-img/campus-${k}.webp" alt="Campus Genesis: pantalla de ${k}" loading="lazy">`).join("")}</div>
-      `)}
-      ${bloque("resultados", `
-        <span class="eyebrow">Resultados de clientes · métricas diarias</span>
+    ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>Dueños de marca haciendo el mismo camino · encuentros presenciales</small></div>`, "a-com foto", "Comunidad")}
+
+    ${card("informacion", `
+      <p class="titulo-card">SOPs de <em>13 áreas</em> del negocio + herramientas</p>
+      <div class="tags">${SOPS.map(x => `<span>${x}</span>`).join("")}<span class="herr">+ Agentes, flujos, skills y dashboards</span></div>
+      <div style="display:grid;gap:6px;margin-top:auto"><span class="sub-lbl">Así se ve el campus</span>
+      <div class="campus-mini">${["ingreso","inicio","progreso","herramientas"].map(k => `<img src="oferta-genesis-img/campus-${k}.webp" alt="Campus Genesis: pantalla de ${k}" loading="lazy">`).join("")}</div></div>`, "a-info", "Información", "Campus propio")}
+
+    ${card("resultados", `
+      <div class="res">
+        <div class="dato num"><b>$8.0<em>M</em></b><small>facturados en un día por una marca cliente</small></div>
         <div class="fotos">${RES_DESK.slice(-3).map(r => resImg(r[0], "arriba")).join("")}</div>
-      `, "crece")}
-    </div>
+      </div>`, "a-res", "Resultados", "Métricas diarias")}
 
-    <div class="zona z-bonus">
-      <div class="bonus-grid" style="--n:${o.bonus.length}">${o.bonus.map((b, i) => bonusHtml[b](i + 1)).join("")}</div>
-    </div>
-
-    <div class="zona z-ac">
-      <h2>Acompañamiento</h2>
-      ${bloque("acompanamiento", o.acomp.map(a => `
+    ${card("acompanamiento", `
+      <div class="acomp">${o.acomp.map(a => `
         <div class="acomp-item">
-          <div class="pill">${a.t}<small>${a.s}</small></div>
           <div class="fotos">${a.fotos.map(f => img(f)).join("")}</div>
-        </div>`).join(""), "crece")}
+          <div class="tx"><b>${a.c}</b><small>${a.s}</small><span class="chip n">${a.chip}</span></div>
+        </div>`).join("")}</div>
+      <p class="dwy-nota">${o.dwy ? "<em>Done with you:</em> auditoría, suscripción instalada, ofertas, anuncios, retención y stock, con vos." : "<em>Lo implementás vos,</em> con nosotros al lado todo el tiempo."}</p>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
+
+    <div class="a-bon" style="--n:${o.bonus.length + 1}">
+      ${o.bonus.map((b, i) => bonus[b](i + 1)).join("")}
+      ${card("cierre", `<span class="k">${o.cierreCorto.k}</span><b>${o.cierreCorto.t}</b><small style="color:var(--hueso);opacity:.75">${o.cierreCorto.s}</small>`, "bonus cierre")}
     </div>
   `;
 
