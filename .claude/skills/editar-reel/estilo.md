@@ -78,6 +78,10 @@ Qué es cada cosa:
 (Cada reel que te gusta y QUÉ te gusta de él, con tus palabras. Las medidas completas quedan en
 `estilo/referencias/<nombre>/medidas.md`.)
 
+- **guia-infoproductos** (video de YouTube de 31 min, "Guía definitiva para hacer +$100.000 USD en
+  2026 con Infoproductos"). Le gusta: "los motion graphics y animaciones y estilo". Es horizontal y
+  largo: de acá se copia la estética de los gráficos, no el ritmo ni el formato.
+
 ## Cómo corto
 
 ## Cuándo cambio de plano
@@ -85,6 +89,20 @@ Qué es cada cosa:
 ## Cuándo hago zoom
 
 ## El hook
+
+## Motion graphics
+
+(De guia-infoproductos. Todo a ojo: el motor todavía no dibuja estos gráficos.)
+
+- Paleta negro + rojo con brillo. Blanco solo para puntos y líneas finas. Nada de otros colores,
+  salvo un verde puntual para un logro.
+- Cuando hay un gráfico encima de la cámara, la cámara se desenfoca y se oscurece atrás.
+- Números y cifras en tarjetas rojas con degradé y borde fino.
+- Conceptos en placas sobre fondo negro con viñeta roja: tarjetas con íconos de línea unidas por
+  una línea blanca con nodos, que aparecen de a una.
+- Crecimiento = línea punteada roja que sube, con puntos blancos y una etiqueta con borde rojo.
+- Títulos de sección: mayúsculas, sans muy gruesa, roja con glow.
+- Las animaciones entran suave (deslizan y aparecen); nada rebota.
 
 ## Los subtítulos
 
