@@ -97,7 +97,10 @@
   .persona b { display: block; font-weight: 500; font-size: 14px; }
   .a-eq .persona b { color: var(--naranja); font-size: clamp(13px, 1.9vh, 14.5px); }
   .avatar-foto { width: clamp(38px, 5.6vh, 50px); aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 0 0 1px rgba(232,130,58,.55), 0 0 0 4px rgba(232,130,58,.08); }
-  .a-eq .personas { flex: 1 1 0; min-height: 0; grid-template-rows: repeat(2, minmax(0, auto)); align-content: space-evenly; }
+  .a-eq .personas { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: clamp(10px, 1.6vh, 16px); }
+  .a-eq .miembro:last-child { flex: 1 1 0; min-height: 0; grid-template-rows: auto minmax(0, 1fr); }
+  .a-eq .miembro:last-child .prueba-img { min-height: 0; }
+  .a-eq .miembro:last-child .prueba-img img { height: 100%; max-height: none; object-fit: cover; object-position: left top; border-radius: 10px; background: #000; }
   .miembro { display: grid; gap: clamp(5px, .8vh, 8px); min-height: 0; }
   .prueba-img img { width: 100%; height: auto; max-height: clamp(90px, 24vh, 240px); object-fit: contain; object-position: left center; border-radius: 8px; display: block; }
   .persona small { color: var(--gris); font-size: 12px; }
@@ -445,7 +448,7 @@ const OFERTAS = {
 
 const EQUIPO = [
   { nombre: "Manu · Founder de Genesis OS", dato: "+USD 3M · 3 años", foto: "manuFoto", prueba: "manuPanel", mini: "manuPanelMini" },
-  { nombre: "José · Co-founder de Genesis OS", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentasMini" }
+  { nombre: "José · Co-founder de Genesis OS", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentas" }
 ];
 const ETAPAS = [
   ["Buscar el producto","Un consumible: algo que se termina y tu cliente vuelve a comprar."],
