@@ -84,6 +84,10 @@
   .mini-dash small { font-size: 9px; color: #6b6560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .mini-dash strong { font-size: clamp(12px, 1.9vh, 15px); font-weight: 600; }
 
+  .foto-dash img { width: 100%; display: block; border-radius: 8px; max-height: clamp(70px, 12vh, 130px); object-fit: cover; object-position: top left; }
+  .resultados-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .galeria-movil { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .galeria-movil img { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
   .hueco { flex: 1 1 0; min-height: 40px; border: 1px dashed var(--borde-2); border-radius: 10px; display: grid; place-items: center; text-align: center; padding: 8px; font-size: 12px; color: var(--gris); background: radial-gradient(70% 80% at 30% 80%, rgba(232,130,58,.18), rgba(232,130,58,0) 70%); }
 
   .checks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2px, .55vh, 6px) 14px; font-size: clamp(10.5px, 1.55vh, 12.5px); font-weight: 600; }
@@ -227,8 +231,15 @@ const IMG = {
   tienda: { src: "oferta-genesis-img/sesion-1a1-tienda.webp", alt: "Sesión 1 a 1: Manu revisando la tienda de una marca en vivo" },
   miro: { src: "oferta-genesis-img/sesion-1a1-miro.webp", alt: "Sesión 1 a 1: armando el funnel en Miro con Manu" },
   grupal: { src: "oferta-genesis-img/grupal.webp", alt: "Clase grupal en vivo con Manu" },
-  chat: { src: "oferta-genesis-img/chat.webp", alt: "Chat 1 a 1 directo con Manu", cls: "arriba" }
+  chat: { src: "oferta-genesis-img/chat.webp", alt: "Chat 1 a 1 directo con Manu", cls: "arriba" },
+  manu: { src: "oferta-genesis-img/manu-dashboard.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 275.2M de ingresos recurrentes, 7,2% de cancelaciones", cls: "arriba" },
+  mesa: { src: "oferta-genesis-img/comunidad-mesa.webp", alt: "Encuentro presencial de la comunidad Genesis" },
+  terraza: { src: "oferta-genesis-img/comunidad-terraza.webp", alt: "La comunidad Genesis en el encuentro presencial" }
 };
+/* Métricas diarias de una marca cliente. Las de escritorio van en orden de fecha. */
+const RES_DESK = [["r01","29 jul 2026"],["r07","30 jul 2026"],["r06","31 jul 2026"],["r15","1 ago 2026"],["r05","2 ago 2026"],["r09","3 ago 2026"],["r08","4 ago 2026"]];
+const RES_MOVIL = ["r10","r11","r12","r13","r14","r02","r03","r04"];
+const resImg = (k, extra = "") => `<img src="oferta-genesis-img/resultados/${k}.webp" alt="Métricas diarias de una marca que trabaja con Genesis" class="${extra}" loading="lazy">`;
 const SOPS = ["Investigación","Operaciones","Funnels","Retención","Oferta","Blackhat","Ads","Landings","Atención al cliente","Logística","Media buying","Copywriting y guiones","Edición y creativos"];
 const CONTACTOS = ["Proveedores","Laboratorios","Contadores especializados","Logística propia","Abogados especializados","Bolsa de trabajo","Contacto de registro: INPI, ANMAT y SENASA"];
 const PUENTIFY = ["Contacto directo con Puentify","1 mes gratis","Onboarding prioritario","Instalación con el equipo de Puentify"];
@@ -270,7 +281,7 @@ const ETAPAS = [
   ["Escalarlo","Que venda todos los meses. Subimos pauta y armamos retención."],
   ["Pasarlo a suscripción","Con la marca vendiendo constante, instalamos la suscripción con vos."]
 ];
-const NOMBRES = { equipo: "Equipo", comunidad: "Comunidad", informacion: "Información", acompanamiento: "Acompañamiento", "bonus-contactos": "Contactos", "bonus-puentify": "Puentify", "bonus-descuento": "Descuento", cierre: "Cierre" };
+const NOMBRES = { equipo: "Equipo", resultados: "Resultados", comunidad: "Comunidad", informacion: "Información", acompanamiento: "Acompañamiento", "bonus-contactos": "Contactos", "bonus-puentify": "Puentify", "bonus-descuento": "Descuento", cierre: "Cierre" };
 
 let oferta = "os";
 let idx = 0;
@@ -302,12 +313,12 @@ function render() {
       <h2>Equipo</h2>
       ${bloque("equipo", `
         <div class="persona"><span class="avatar">M</span><div><b>Manu · Founder de Genesis</b><small>De 60M a 275M por mes con suscripción</small></div></div>
-        <div class="mini-dash num"><div><small>Suscripciones activas</small><strong>3943</strong></div><div><small>Ingresos recurrentes</small><strong>275.2M</strong></div><div><small>Cancelaciones</small><strong>7,2%</strong></div></div>
+        <div class="foto-dash">${img("manu")}</div>
         <div class="persona"><span class="avatar">J</span><div><b>José · Co-founder de Genesis</b><small>En la entrega de cada marca</small></div></div>
       `)}
       ${bloque("comunidad", `
         <span class="eyebrow">Genesis comunidad</span>
-        <div class="hueco">Fotos de la comunidad<br>(por cargar)</div>
+        <div class="fotos">${img("mesa")}${img("terraza")}</div>
         <small style="color:var(--gris-2)">Dueños de marca haciendo el mismo camino que vos</small>
       `, "crece")}
     </div>
@@ -317,7 +328,10 @@ function render() {
       ${bloque("informacion", `
         <ul class="checks">${SOPS.map(s => `<li>${ok}<span>+SOPs ${s.toUpperCase()}</span></li>`).join("")}</ul>
         <div class="herr">${ok}<span>+Herramientas (agentes, flujos, skills y dashboards)</span></div>
-        <div class="hueco">Capturas del campus<br>(por cargar)</div>
+      `)}
+      ${bloque("resultados", `
+        <span class="eyebrow">Resultados de clientes · métricas diarias</span>
+        <div class="fotos">${RES_DESK.slice(-3).map(r => resImg(r[0], "arriba")).join("")}</div>
       `, "crece")}
     </div>
 
@@ -351,7 +365,7 @@ function armarSlides() {
       <h2>${o.nombre}</h2>
       <span style="font-size:22px;font-style:italic;color:var(--gris)">${o.dur}</span>
       <p style="color:var(--gris-2);font-weight:300;font-size:19px;max-width:56ch">${o.tag}</p>
-      <div class="indice">${["equipo","comunidad","informacion","acompanamiento",...o.bonus.map(b=>"bonus-"+b),"cierre"].map(id => `<button type="button" data-salto="${id}">${NOMBRES[id]}</button>`).join("")}</div>
+      <div class="indice">${["equipo","resultados","comunidad","informacion","acompanamiento",...o.bonus.map(b=>"bonus-"+b),"cierre"].map(id => `<button type="button" data-salto="${id}">${NOMBRES[id]}</button>`).join("")}</div>
     </div>` });
 
   S.push({ id: "equipo", nombre: "Equipo", html: `
@@ -363,15 +377,30 @@ function armarSlides() {
           <div class="linea-ant num"><span class="a">60M</span><span class="f">→</span><span class="b">275M</span></div>
           <p>Facturación mensual de su marca, en pesos: de compra única a suscripción.</p>
         </div>
+        <div class="tarjeta vidrio" style="grid-column: 1 / -1"><span class="tag-n">El panel de su marca</span>${img("manu")}</div>
         <div class="tarjeta vidrio"><span class="tag-n">Suscriptores activos</span><span class="big num">3.943</span><p>Que se cobran solos todos los meses.</p></div>
         <div class="tarjeta vidrio"><span class="tag-n">Cancelaciones</span><span class="big num">7,2<em>%</em></span><p>Y un LTV mínimo de 3 pedidos por cliente.</p></div>
         <div class="tarjeta vidrio" style="grid-column: span 2"><span class="tag-n">José · Co-founder de Genesis</span><h3>El que está en el día a día con tu marca</h3><p>${lite ? "Da 2 de las 3 clases grupales por semana y te responde por chat cuando te trabás." : "Llamadas 1 a 1, clases grupales y chat directo. Está en la entrega de cada marca."}</p></div>
       </div>
     </div>` });
 
+  S.push({ id: "resultados", nombre: "Resultados", html: `
+    <div class="slide">
+      <div class="slide-head"><span class="k">Resultados de clientes</span><h2>Una marca que trabaja con nosotros, día por día</h2><p>Capturas de su panel de métricas, sin editar. El mejor día de la semana del 29 de julio al 4 de agosto de 2026:</p></div>
+      <div class="resultados-top">
+        <div class="tarjeta vidrio"><span class="tag-n">Facturación del día</span><span class="big num">$8.0<em>M</em></span><p>2 ago 2026 · +99,5%</p></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Ganancia del día</span><span class="big num">$2.9<em>M</em></span><p>2 ago 2026 · +208,5%</p></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Margen de ganancia</span><span class="big num">36,6<em>%</em></span><p>2 ago 2026</p></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Órdenes del día</span><span class="big num">139</span><p>2 ago 2026 · +75,9%</p></div>
+      </div>
+      <div class="galeria">${RES_DESK.map(r => `<figure>${resImg(r[0])}<figcaption>${r[1]}</figcaption></figure>`).join("")}</div>
+      <div class="galeria-movil">${RES_MOVIL.map(k => resImg(k)).join("")}</div>
+    </div>` });
+
   S.push({ id: "comunidad", nombre: "Comunidad", html: `
     <div class="slide">
       <div class="slide-head"><span class="k">Genesis comunidad</span><h2>No hacés este camino solo</h2><p>Entrás a una comunidad de dueños de marca de consumibles que están haciendo lo mismo que vos: comparten números, proveedores y lo que les funciona.</p></div>
+      <div class="galeria">${["mesa","terraza"].map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>
       <div class="tarjetas">
         <div class="tarjeta vidrio"><span class="tag-n">Qué encontrás</span><ul class="lista">${li(["Dueños de marca en el mismo camino","Números reales, sin humo","Encuentros presenciales y online"])}</ul></div>
         <div class="tarjeta vidrio"><span class="tag-n">Para qué sirve</span><p>Cuando una duda ya la resolvió otro, no esperás a la próxima clase: la encontrás en la comunidad.</p></div>
