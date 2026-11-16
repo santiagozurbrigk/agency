@@ -357,7 +357,6 @@
       <button type="button" id="sw-lite" data-o="lite" aria-pressed="false">Genesis Lite</button>
     </div>
     <div class="acciones">
-      <button type="button" class="btn prim" id="presentar"><span aria-hidden="true">▶</span> Presentar</button>
     </div>
   </header>
   <section class="cabeza" id="cabeza"></section>
@@ -790,7 +789,6 @@ document.querySelectorAll(".switch button").forEach(b => b.addEventListener("cli
   setOferta(b.dataset.o);
   if (abierto) abrir(slides.some(s => s.id === actual) ? actual : "portada"); else setHash(oferta);
 }));
-$("#presentar").addEventListener("click", () => abrir("portada"));
 $("#cerrar").addEventListener("click", cerrar);
 $("#ant").addEventListener("click", () => ir(-1));
 $("#sig").addEventListener("click", () => ir(1));
