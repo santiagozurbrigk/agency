@@ -571,9 +571,9 @@ function armarSlides() {
 
   S.push({ id: "informacion", nombre: "Información", html: `
     <div class="slide">
-      <div class="slide-head"><span class="k">Información</span><h2>Todos los SOPs, en el campus</h2><p>13 áreas del negocio documentadas paso a paso, más las herramientas que usamos en nuestras marcas. ${lite ? "Sabés qué hacer hoy, qué hacer mañana y en qué orden." : "Lo que usamos nosotros, listo para copiar y pegar en tu marca."}</p></div>
+      <div class="slide-head"><span class="k">Información</span><h2>Todos los SOPs, en el campus</h2><p>Todas las áreas del negocio documentadas paso a paso, más las herramientas que usamos en nuestras marcas. ${lite ? "Sabés qué hacer hoy, qué hacer mañana y en qué orden." : "Lo que usamos nosotros, listo para copiar y pegar en tu marca."}</p></div>
       <div id="campus">${campusHTML()}</div>
-      <div class="slide-head"><span class="k">Qué hay adentro</span><h3 style="font-size:28px">13 áreas de SOPs</h3></div>
+      <div class="slide-head"><span class="k">Qué hay adentro</span><h3 style="font-size:28px">SOPs de todas las áreas</h3></div>
       <div class="sops">${SOPS.map((s,i) => `<div>${ok}<span>SOPs ${s}</span><small class="num">${String(i+1).padStart(2,"0")}</small></div>`).join("")}</div>
       <div class="tarjetas">
         <div class="tarjeta vidrio"><span class="tag-n">+ Herramientas</span><h3>Agentes, flujos, skills y dashboards</h3><p>Más de 30 agentes de IA: creativos, Meta Ads, operaciones, flujos de email y más.</p></div>
