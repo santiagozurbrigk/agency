@@ -518,7 +518,7 @@ function render() {
       <p class="dwy-nota">${o.dwy ? "<em>Done with you:</em> auditoría, suscripción instalada, ofertas, anuncios, retención y stock, con vos." : "<em>Lo implementás vos,</em> con nosotros al lado todo el tiempo."}</p>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
 
     <div class="a-bon" style="--n:${o.bonus.length + 1}">
-      ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>Encuentros presenciales</small></div>`, "foto", "Comunidad")}
+      ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>1 encuentro presencial por mes</small></div>`, "foto", "Comunidad")}
       ${o.bonus.map((b, i) => bonus[b](i + 1)).join("")}
     </div>
   `;
@@ -562,9 +562,10 @@ function armarSlides() {
   S.push({ id: "comunidad", nombre: "Comunidad", html: `
     <div class="slide">
       <div class="slide-head"><span class="k">Genesis comunidad</span><h2>No hacés este camino solo</h2><p>Entrás a una comunidad de dueños de marca de consumibles que están haciendo lo mismo que vos: comparten números, proveedores y lo que les funciona.</p></div>
-      <div class="galeria">${["mesa","terraza"].map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>
+      <div><span class="chip n" style="font-size:14px;padding:7px 16px">1 encuentro presencial por mes</span></div>
+      <div class="galeria">${["mesa","terraza"].map(f => `<figure>${img(f)}</figure>`).join("")}</div>
       <div class="tarjetas">
-        <div class="tarjeta vidrio"><span class="tag-n">Qué encontrás</span><ul class="lista">${li(["Dueños de marca en el mismo camino","Números reales, sin humo","Encuentros presenciales y online"])}</ul></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Qué encontrás</span><ul class="lista">${li(["Dueños de marca en el mismo camino","Números reales, sin humo","1 encuentro presencial por mes"])}</ul></div>
         <div class="tarjeta vidrio"><span class="tag-n">Para qué sirve</span><p>Cuando una duda ya la resolvió otro, no esperás a la próxima clase: la encontrás en la comunidad.</p></div>
       </div>
     </div>` });
