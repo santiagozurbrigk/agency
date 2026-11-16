@@ -1,0 +1,3 @@
+Esta carpeta es una skill de Claude Code.
+NO la configures a mano: seguí las INSTRUCCIONES que te pasaron
+(abrí Claude Code y pegá el prompt de instalación). Claude hace todo solo.

@@ -1,0 +1,6 @@
+.env
+motor/node_modules/
+motor/package-lock.json
+*.mp4
+*.mov
+*.mp3
