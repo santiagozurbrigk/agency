@@ -265,12 +265,12 @@
   .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(5,4,3,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
   .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
   .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
-  .slide.pf { justify-items: center; text-align: center; gap: clamp(14px, 2.6vh, 26px); margin-top: 8px; padding: clamp(22px, 4vh, 40px) clamp(16px, 3vw, 40px) clamp(24px, 4vh, 40px); border-radius: 24px; border: 1px solid var(--borde);
-    background:
-      radial-gradient(55% 70% at 8% 0%, rgba(124, 92, 255, .32), rgba(124, 92, 255, 0) 70%),
-      radial-gradient(50% 65% at 96% 4%, rgba(232, 110, 40, .30), rgba(232, 110, 40, 0) 70%),
-      radial-gradient(60% 50% at 50% 110%, rgba(124, 92, 255, .10), rgba(124, 92, 255, 0) 70%),
-      #0c0a10; }
+  .slide.pf { justify-items: center; text-align: center; gap: clamp(14px, 2.6vh, 26px); padding-top: clamp(8px, 2vh, 24px); }
+  .visor.pf-fondo { background: #0c0a10; }
+  .visor.pf-fondo::before { background:
+      radial-gradient(45vw 55vh at 6% 0%, rgba(124, 92, 255, .34), rgba(124, 92, 255, 0) 70%),
+      radial-gradient(42vw 50vh at 96% 2%, rgba(232, 110, 40, .32), rgba(232, 110, 40, 0) 70%),
+      radial-gradient(50vw 40vh at 50% 108%, rgba(124, 92, 255, .12), rgba(124, 92, 255, 0) 70%); }
   .pf-logos { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
   .pf-marca { font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -0.03em; color: var(--hueso); }
   .pf-marca i { font-style: normal; color: #A98BFF; }
@@ -837,6 +837,7 @@ function pintar() {
   const s = slides[idx];
   $("#escena").innerHTML = s.html;
   $("#escena").scrollTop = 0;
+  $("#visor").classList.toggle("pf-fondo", s.id === "bonus-puentify");
   $("#que").innerHTML = `<b>${OFERTAS[oferta].nombre}</b> · ${s.nombre}`;
   $("#contador").textContent = `${idx + 1} / ${slides.length}`;
   $("#ant").disabled = idx === 0;
