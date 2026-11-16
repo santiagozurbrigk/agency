@@ -118,6 +118,11 @@
   .tags { display: flex; flex-wrap: wrap; gap: clamp(4px, .6vh, 6px); }
   .tags span { font-size: clamp(10.5px, 1.5vh, 12px); padding: clamp(3px, .45vh, 5px) 10px; border-radius: 999px; border: 1px solid var(--borde); background: rgba(255,255,255,.03); color: var(--gris-2); white-space: nowrap; }
   .tags span.herr { color: var(--naranja); border-color: rgba(232,130,58,.4); background: rgba(232,130,58,.07); }
+  .sop-grupos { display: grid; gap: clamp(6px, 1vh, 10px); }
+  .sop-grupos .grupo { display: grid; grid-template-columns: clamp(96px, 9vw, 130px) minmax(0, 1fr); gap: 10px; align-items: center; }
+  .sop-grupos .sub-lbl { line-height: 1.3; }
+  .herr-fila { display: flex; gap: 8px; align-items: baseline; font-size: clamp(11.5px, 1.65vh, 13px); color: var(--gris-2); padding: 8px 12px; border-radius: 10px; background: rgba(232,130,58,.08); border: 1px solid rgba(232,130,58,.3); }
+  .herr-fila b { color: var(--naranja); font-weight: 600; }
   .campus-mini { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; border: 1px solid var(--borde); display: block; }
   .sub-lbl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gris); }
@@ -128,7 +133,8 @@
   .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
   .res .dato b em { font-style: normal; color: var(--naranja); }
   .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
-  .res-zoom { grid-template-columns: 1fr 1fr; }
+  .res-zoom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .res-zoom figcaption b { color: var(--naranja); font-weight: 600; }
   .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; }
   .res-zoom img { width: 100%; height: 100%; min-height: 0; object-fit: contain; object-position: left top; border-radius: 8px; border: 1px solid var(--borde); display: block; }
   .res-zoom figcaption { font-size: 10.5px; color: var(--gris); }
@@ -387,8 +393,14 @@ const IMG = {
 };
 /* Métricas diarias de una marca cliente. Las de escritorio van en orden de fecha. */
 const RES_DESK = [["r01","29 jul 2026"],["r07","30 jul 2026"],["r06","31 jul 2026"],["r15","1 ago 2026"],["r05","2 ago 2026"],["r09","3 ago 2026"],["r08","4 ago 2026"]];
+const TOP_FACT = [["top1","$8.0M"],["top2","$7.8M"],["top3","$7.4M"]];
 const RES_MOVIL = ["r10","r11","r12","r13","r14","r02","r03","r04"];
 const resImg = (k, extra = "") => `<img src="oferta-genesis-img/resultados/${k}.webp" alt="Métricas diarias de una marca que trabaja con Genesis" class="${extra}" loading="lazy">`;
+const SOP_GRUPOS = [
+  ["Producto y oferta", ["Investigación","Oferta","Blackhat"]],
+  ["Adquisición", ["Ads","Media buying","Funnels","Landings","Copywriting y guiones","Edición y creativos"]],
+  ["Operación y retención", ["Operaciones","Logística","Atención al cliente","Retención"]]
+];
 const SOPS = ["Investigación","Operaciones","Funnels","Retención","Oferta","Blackhat","Ads","Landings","Atención al cliente","Logística","Media buying","Copywriting y guiones","Edición y creativos"];
 const CONTACTOS = ["Proveedores","Laboratorios","Contadores especializados","Logística propia","Abogados especializados","Bolsa de trabajo","Contacto de registro: INPI, ANMAT y SENASA"];
 const PUENTIFY = ["Contacto directo con Puentify","1 mes gratis","Onboarding prioritario","Instalación con el equipo de Puentify"];
@@ -478,15 +490,14 @@ function render() {
 
     ${card("informacion", `
       <p class="titulo-card">SOPs de <em>13 áreas</em> del negocio + herramientas</p>
-      <div class="tags">${SOPS.map(x => `<span>${x}</span>`).join("")}<span class="herr">+ Agentes, flujos, skills y dashboards</span></div>
-      <div style="display:grid;gap:6px;margin-top:auto"><span class="sub-lbl">Así se ve el campus</span>
-      <div class="campus-mini">${["ingreso","inicio","progreso","herramientas"].map(k => `<img src="oferta-genesis-img/campus-${k}.webp" alt="Campus Genesis: pantalla de ${k}" loading="lazy">`).join("")}</div></div>`, "a-info", "Información", "Campus propio")}
+      <div class="sop-grupos">${SOP_GRUPOS.map(g => `<div class="grupo"><span class="sub-lbl">${g[0]}</span><div class="tags">${g[1].map(x => `<span>${x}</span>`).join("")}</div></div>`).join("")}</div>
+      <div class="herr-fila">${ok}<span><b>+ Herramientas:</b> agentes de IA, flujos, skills y dashboards</span></div>
+`, "a-info", "Información", "Tocá para ver el campus")}
 
     ${card("resultados", `
       <div class="res res-zoom">
-        <figure>${resImg("r05-zoom")}<figcaption>2 ago 2026</figcaption></figure>
-        <figure>${resImg("r09-zoom")}<figcaption>3 ago 2026</figcaption></figure>
-      </div>`, "a-res", "Resultados", "Una marca cliente · por día")}
+        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption><b>#${i + 1}</b> · ${t[1]} en un día</figcaption></figure>`).join("")}
+      </div>`, "a-res", "Resultados", "Mejores días de facturación")}
 
     ${card("acompanamiento", `
       <div class="acomp">${o.acomp.map(a => `
