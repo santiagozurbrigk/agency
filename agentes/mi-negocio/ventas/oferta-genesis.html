@@ -486,23 +486,15 @@ function armarSlides() {
       <span class="eyebrow">Manu Dominguez · José</span>
       <h2>${o.nombre}</h2>
       <span style="font-size:22px;font-style:italic;color:var(--gris)">${o.dur}</span>
-      <p style="color:var(--gris-2);font-weight:300;font-size:19px;max-width:56ch">${o.tag}</p>
-      <div class="indice">${["equipo","resultados","comunidad","informacion","acompanamiento",...o.bonus.map(b=>"bonus-"+b),"cierre"].map(id => `<button type="button" data-salto="${id}">${NOMBRES[id]}</button>`).join("")}</div>
+      <div class="indice">${["equipo","resultados","comunidad","informacion","acompanamiento",...o.bonus.map(b=>"bonus-"+b)].map(id => `<button type="button" data-salto="${id}">${NOMBRES[id]}</button>`).join("")}</div>
     </div>` });
 
   S.push({ id: "equipo", nombre: "Equipo", html: `
     <div class="slide">
-      <div class="slide-head"><span class="k">Equipo</span><h2>Lo hacés con los que ya lo hicieron</h2><p>Manu escaló su propia marca con el modelo de suscripción. José es su socio y está en la entrega de cada marca que trabajamos.</p></div>
+      <div class="slide-head"><span class="k">Equipo</span><h2>Con quién lo hacés</h2><p>Manu y José están en la entrega de cada marca del programa.</p></div>
       <div class="tarjetas">
-        <div class="tarjeta vidrio" style="grid-column: span 2">
-          <span class="tag-n">Manu · Founder de Genesis</span>
-          <div class="linea-ant num"><span class="a">60M</span><span class="f">→</span><span class="b">275M</span></div>
-          <p>Facturación mensual de su marca, en pesos: de compra única a suscripción.</p>
-        </div>
-        <div class="tarjeta vidrio" style="grid-column: 1 / -1"><span class="tag-n">El panel de su marca</span>${img("manu")}</div>
-        <div class="tarjeta vidrio"><span class="tag-n">Suscriptores activos</span><span class="big num">3.943</span><p>Que se cobran solos todos los meses.</p></div>
-        <div class="tarjeta vidrio"><span class="tag-n">Cancelaciones</span><span class="big num">7,2<em>%</em></span><p>Y un LTV mínimo de 3 pedidos por cliente.</p></div>
-        <div class="tarjeta vidrio" style="grid-column: span 2"><span class="tag-n">José · Co-founder de Genesis</span><h3>El que está en el día a día con tu marca</h3><p>${lite ? "Da 2 de las 3 clases grupales por semana y te responde por chat cuando te trabás." : "Llamadas 1 a 1, clases grupales y chat directo. Está en la entrega de cada marca."}</p></div>
+        <div class="tarjeta vidrio"><div class="persona"><span class="avatar">M</span><div><b>Manu Dominguez</b><small>Founder de Genesis</small></div></div><p>${lite ? "Da 1 clase grupal por semana." : "Sesiones 1 a 1, clases grupales y chat directo con vos."}</p></div>
+        <div class="tarjeta vidrio"><div class="persona"><span class="avatar">J</span><div><b>José</b><small>Co-founder de Genesis</small></div></div><p>${lite ? "Da 2 clases grupales por semana y te responde por chat cuando te trabás." : "Sesiones 1 a 1, clases grupales y chat directo. Está en el día a día con tu marca."}</p></div>
       </div>
     </div>` });
 
@@ -572,13 +564,6 @@ function armarSlides() {
         <div class="tarjeta vidrio" style="justify-items:center;text-align:center;padding:48px 22px"><span class="grande-verde num" style="font-size:clamp(64px,12vw,128px)">-USD 3.000</span><p>Se descuenta de la inversión de Genesis OS.</p></div>
       </div>` });
   });
-
-  S.push({ id: "cierre", nombre: "Cierre", html: `
-    <div class="slide portada">
-      <span class="eyebrow" style="color:var(--naranja)">${o.cierre.k}</span>
-      <h2 style="font-size:clamp(40px,7vw,80px);font-weight:300;color:var(--hueso)">${o.cierre.t}</h2>
-      <p style="color:var(--gris-2);font-weight:300;font-size:19px;max-width:56ch">${o.cierre.p}</p>
-    </div>` });
 
   return S;
 }
