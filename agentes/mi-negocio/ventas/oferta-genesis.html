@@ -313,6 +313,14 @@
   .bloque-ac.ancho { grid-template-columns: 1fr; gap: 14px; }
   .bloque-ac.ancho .ac-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .bloque-ac.ancho .ac-head .pill { padding-inline: 22px; }
+  .grupal-layout { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 12px; }
+  .foto-ancha { margin: 0; border-radius: 12px; border: 1px solid var(--borde); overflow: hidden; background: #101010; }
+  .foto-ancha img { width: 100%; height: auto; display: block; }
+  .grupal-stats { display: grid; grid-template-rows: repeat(3, 1fr); gap: 12px; }
+  .grupal-stats > div { border-radius: 12px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); padding: 18px 20px; display: grid; align-content: center; gap: 4px; }
+  .grupal-stats b { font-size: clamp(36px, 5vw, 56px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; color: var(--naranja); }
+  .grupal-stats span { color: var(--gris-2); font-size: 15px; }
+  @media (max-width: 700px) { .grupal-layout { grid-template-columns: 1fr; } .grupal-stats { grid-template-rows: none; grid-template-columns: repeat(3, 1fr); } }
   .chat-gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 210px; gap: 10px; }
   .chat-gal figure { margin: 0; min-height: 0; border-radius: 12px; border: 1px solid var(--borde); background: #1b1a1f; overflow: hidden; transition: border-color .2s; }
   .chat-gal figure:hover { border-color: rgba(232,130,58,.55); }
@@ -441,7 +449,7 @@ const OFERTAS = {
     tag: "Escalá tu ecomm de consumibles a +$100M al mes con modelo de suscripción, sin depender del CPA ni dejar de vender.",
     acomp: [
       { t: "Sesiones 1 a 1 ilimitadas", c: "Sesiones 1 a 1", chip: "Ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
-      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "64 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
+      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "64 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"], ancho: true, stats: [["64","clases grupales"],["4","por semana"],["6–8","personas por grupo"]] },
       { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
     ],
     dwy: ["Auditoría de tus números + roadmap","Suscripción instalada","Ofertas","Creación de anuncios","Procesos de retención","Proyección de stock"],
@@ -455,7 +463,7 @@ const OFERTAS = {
     dur: "3 meses",
     tag: "Arrancá en ecommerce por el lado correcto: un consumible, un proceso paso a paso y alguien al lado que ya lo hizo.",
     acomp: [
-      { t: "Grupales (3 por semana)", c: "Clases grupales", chip: "3 por semana", s: "36 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"] },
+      { t: "Grupales (3 por semana)", c: "Clases grupales", chip: "3 por semana", s: "36 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"], ancho: true, stats: [["36","clases grupales"],["3","por semana"],["6–8","personas por grupo"]] },
       { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
     ],
     dwy: null,
@@ -607,10 +615,11 @@ function armarSlides() {
     <div class="slide">
       <div class="slide-head"><span class="k">Acompañamiento</span><h2>${lite ? "Lo implementás vos, con nosotros al lado" : "Lo hacemos con vos, durante 4 meses"}</h2><p>${lite ? "No es «lo hacemos por vos». Es «lo hacés vos, con alguien que ya lo hizo mirando lo que hacés»." : "Done with you: tu marca aplica el método con Manu y el equipo al lado en cada paso."}</p></div>
       ${o.acomp.map(a => `
-        <div class="vidrio bloque-ac ${a.chats ? "ancho" : ""}">
+        <div class="vidrio bloque-ac ${a.chats || a.ancho ? "ancho" : ""}">
           <div class="ac-head"><div class="pill">${a.t}</div><p style="color:var(--gris-2)">${a.s}</p></div>
           ${a.chats
             ? `<div class="chat-gal">${a.fotos.map((f, i) => `<figure class="${i === 0 ? "destacada" : ""}">${img(f)}</figure>`).join("")}</div>`
+            : a.ancho ? `<div class="grupal-layout"><figure class="foto-ancha">${img(a.fotos[0])}</figure><div class="grupal-stats num">${a.stats.map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div></div>`
             : `<div class="galeria">${a.fotos.map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>`}
         </div>`).join("")}
       ${o.dwy ? `<div class="tarjeta vidrio"><span class="tag-n">Done with you · lo hacemos con vos</span><ul class="lista" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">${li(o.dwy)}</ul></div>` : ""}
