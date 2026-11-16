@@ -111,6 +111,7 @@ const TIPOS = {
   pasos: (g) => (g.items?.length >= 2 && g.items.length <= 5 ? null : 'necesita "items" (de 2 a 5), cada uno con "titulo"'),
   titulo: (g) => (g.texto ? null : 'necesita "texto"'),
   rotulo: (g) => (g.texto ? null : 'necesita "texto"'),
+  banda: (g) => (g.texto ? null : 'necesita "texto"'),
 };
 const ICONOS = ["dinero", "caja", "persona", "grafico", "chat", "megafono", "engranaje", "rayo", "check", "estrella", "objetivo", "cruz"];
 const durGrafico = estilo.graficos?.duracion ?? 3.5;
@@ -123,6 +124,8 @@ const graficos = (ed.graficos || []).map((g, n) => {
     if (ic && !ICONOS.includes(ic)) fallar(`${que}: no hay ícono "${ic}". Los que hay: ${ICONOS.join(", ")}`);
   }
   if (!g.por) avisos.push(`${que} no tiene "por": si no se puede escribir el porqué, no va`);
+  // La banda sin "cue" ni "t" va de punta a punta.
+  if (g.tipo === "banda" && g.cue === undefined && g.t === undefined) g = {...g, t: 0, dur: g.dur ?? duracion};
   const {t} = resolver(g, 0, que);
   let t1 = typeof g.dur === "number" ? t + g.dur : g.hasta ? resolver({cue: g.hasta}, t + 0.1, `${que} → hasta`).t : t + durGrafico;
   t1 = Math.min(t1, duracion);
@@ -131,7 +134,7 @@ const graficos = (ed.graficos || []).map((g, n) => {
   return {...resto, t0: +t.toFixed(3), t1: +t1.toFixed(3)};
 });
 graficos.forEach((g, k) => {
-  for (const h of graficos.slice(k + 1)) if (h.t0 < g.t1 && g.t0 < h.t1) avisos.push(`los gráficos ${g.tipo} (${g.t0.toFixed(1)} s) y ${h.tipo} (${h.t0.toFixed(1)} s) se pisan`);
+  for (const h of graficos.slice(k + 1)) if (g.tipo !== "banda" && h.tipo !== "banda" && h.t0 < g.t1 && g.t0 < h.t1) avisos.push(`los gráficos ${g.tipo} (${g.t0.toFixed(1)} s) y ${h.tipo} (${h.t0.toFixed(1)} s) se pisan`);
   for (const z of zooms) if (["pasos", "titulo"].includes(g.tipo) && z.t0 < g.t1 && g.t0 < z.t1) avisos.push(`hay un zoom a los ${z.t0.toFixed(1)} s debajo de una placa a pantalla completa: no se ve`);
 });
 

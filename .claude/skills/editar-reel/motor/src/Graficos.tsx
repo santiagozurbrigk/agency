@@ -8,11 +8,12 @@
 //   pasos       placa a pantalla completa: tarjetas con ícono unidas por una línea
 //   titulo      título de sección a pantalla completa, con brillo
 //   rotulo      cajita con ícono y frase corta sobre la cámara (no la tapa)
+//   banda       placa fija arriba (ej. "MARTES 17 · 18 HS"); solo la tapan las placas completas
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate} from 'remotion';
 
 export type Grafico = {
-  tipo: 'cifra' | 'crecimiento' | 'pasos' | 'titulo' | 'rotulo';
+  tipo: 'cifra' | 'crecimiento' | 'pasos' | 'titulo' | 'rotulo' | 'banda';
   t0: number;
   t1: number;
   valores?: string[];
@@ -50,9 +51,9 @@ export const GRAFICOS_DEFECTO: EstiloGraficos = {
 };
 
 // Los que tapan la cámara entera (y apagan los subtítulos).
-export const TAPA: Record<Grafico['tipo'], boolean> = {cifra: false, crecimiento: false, pasos: true, titulo: true, rotulo: false};
+export const TAPA: Record<Grafico['tipo'], boolean> = {cifra: false, crecimiento: false, pasos: true, titulo: true, rotulo: false, banda: false};
 // Los que desenfocan la cámara atrás.
-export const DESENFOCA: Record<Grafico['tipo'], boolean> = {cifra: true, crecimiento: true, pasos: true, titulo: true, rotulo: false};
+export const DESENFOCA: Record<Grafico['tipo'], boolean> = {cifra: true, crecimiento: true, pasos: true, titulo: true, rotulo: false, banda: false};
 
 export const hexA = (hex: string, a: number) => {
   const h = hex.replace('#', '');
@@ -104,7 +105,8 @@ const largoDe = (pts: [number, number][]) => pts.slice(1).reduce((s, p, i) => s 
 const FondoPlaca: React.FC<{G: EstiloGraficos}> = ({G}) => (
   <AbsoluteFill
     style={{
-      background: `radial-gradient(ellipse 90% 60% at 50% 42%, ${hexA(G.acento, 0.2)} 0%, ${hexA(G.acento, 0.06)} 45%, ${G.fondo} 80%)`,
+      backgroundColor: G.fondo,
+      backgroundImage: `radial-gradient(ellipse 90% 60% at 50% 42%, ${hexA(G.acento, 0.2)} 0%, ${hexA(G.acento, 0.06)} 45%, ${G.fondo} 80%)`,
     }}
   />
 );
@@ -134,7 +136,7 @@ const Cifra: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number; H: n
       }}
     >
       {g.etiqueta && (
-        <div style={{position: 'absolute', top: -70, left: 0, right: 0, textAlign: 'center', fontFamily: G.fuente, fontWeight: 700, fontSize: 34, letterSpacing: '0.18em', textTransform: 'uppercase', color: G.claro}}>
+        <div style={{position: 'absolute', bottom: 'calc(100% + 22px)', left: -220, right: -220, lineHeight: 1.25, textAlign: 'center', fontFamily: G.fuente, fontWeight: 700, fontSize: 34, letterSpacing: '0.18em', textTransform: 'uppercase', color: G.claro}}>
           {g.etiqueta}
         </div>
       )}
@@ -143,7 +145,7 @@ const Cifra: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number; H: n
           position: 'absolute',
           inset: 0,
           border: `3px solid ${hexA(G.acento, 0.95)}`,
-          background: `linear-gradient(180deg, ${hexA(G.acento, 0.05)} 0%, ${hexA(G.acento, 0.28)} 55%, ${hexA(G.acento, 0.7)} 100%)`,
+          background: `linear-gradient(180deg, ${hexA(G.fondo, 0.72)} 0%, ${hexA(G.fondo, 0.45)} 45%, ${hexA(G.acento, 0.7)} 100%)`,
           boxShadow: `0 0 ${80 * G.brillo}px ${hexA(G.acento, 0.55 * G.brillo)}, inset 0 0 60px ${hexA(G.acento, 0.25)}`,
           display: 'flex',
           alignItems: 'center',
@@ -210,8 +212,9 @@ const Crecimiento: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number
             textAlign: 'center',
             fontFamily: G.fuente,
             fontWeight: 900,
-            fontSize: 380,
+            fontSize: Math.min(380, (W - 60) / (g.numeroFondo.length * 0.6)),
             letterSpacing: '-0.05em',
+            whiteSpace: 'nowrap',
             color: hexA(G.acento, 0.2),
             opacity: interpolate(t, [g.t0 + 0.3, g.t0 + 1.2], [0, 1], CLAMP),
             transform: `scale(${interpolate(t, [g.t0, g.t1], [1.04, 1])})`,
@@ -394,7 +397,7 @@ const Titulo: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number; H: 
   const halo = `0 0 ${20 * G.brillo}px ${hexA(G.acento, 0.9)}, 0 0 ${60 * G.brillo}px ${hexA(G.acento, 0.6)}`;
   return (
     <AbsoluteFill style={{opacity: v}}>
-      <AbsoluteFill style={{background: `radial-gradient(ellipse 80% 40% at 50% 46%, ${hexA(G.acento, 0.12)} 0%, ${G.fondo} 70%)`}} />
+      <AbsoluteFill style={{backgroundColor: G.fondo, backgroundImage: `radial-gradient(ellipse 80% 40% at 50% 46%, ${hexA(G.acento, 0.12)} 0%, ${G.fondo} 70%)`}} />
       <div
         style={{
           position: 'absolute',
@@ -448,11 +451,35 @@ const Rotulo: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number; H: 
   );
 };
 
-const POR_TIPO = {cifra: Cifra, crecimiento: Crecimiento, pasos: Pasos, titulo: Titulo, rotulo: Rotulo};
+// ── banda ────────────────────────────────────────────────────────────────────────────────
+const Banda: React.FC<{g: Grafico; t: number; G: EstiloGraficos; W: number; H: number}> = ({g, t, G, H}) => {
+  const v = envolvente(t, g, G.entrada);
+  const pulso = 0.55 + 0.45 * Math.abs(Math.sin((t - g.t0) * Math.PI * 0.8));
+  return (
+    <div style={{position: 'absolute', left: 0, right: 0, top: H * 0.06, display: 'flex', justifyContent: 'center', opacity: v, transform: `translateY(${(1 - v) * -30}px)`}}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 18,
+          padding: '14px 28px',
+          background: hexA(G.fondo, 0.85),
+          border: `2px solid ${G.acento}`,
+          boxShadow: `0 0 ${40 * G.brillo}px ${hexA(G.acento, 0.4 * G.brillo)}`,
+        }}
+      >
+        <div style={{width: 16, height: 16, borderRadius: '50%', background: G.acento, opacity: pulso, boxShadow: `0 0 14px ${G.acento}`}} />
+        <div style={{fontFamily: G.fuente, fontWeight: 800, fontSize: 38, letterSpacing: '0.06em', textTransform: 'uppercase', color: G.claro, whiteSpace: 'nowrap'}}>{g.texto}</div>
+      </div>
+    </div>
+  );
+};
+
+const POR_TIPO = {cifra: Cifra, crecimiento: Crecimiento, pasos: Pasos, titulo: Titulo, rotulo: Rotulo, banda: Banda};
 
 export const Graficos: React.FC<{graficos: Grafico[]; t: number; G: EstiloGraficos; W: number; H: number}> = ({graficos, t, G, W, H}) => (
   <>
-    {graficos
+    {[...graficos.filter((g) => g.tipo === 'banda'), ...graficos.filter((g) => g.tipo !== 'banda')]
       .filter((g) => t >= g.t0 && t < g.t1)
       .map((g, i) => {
         const C = POR_TIPO[g.tipo];

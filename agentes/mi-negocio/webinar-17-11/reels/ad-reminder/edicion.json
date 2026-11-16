@@ -1,0 +1,166 @@
+{
+  "toma": "toma.mp4",
+  "segmentos": [
+    {
+      "n": 1,
+      "in": 0.0,
+      "out": 90.3,
+      "texto": "toma entera: ya viene cortada"
+    }
+  ],
+  "planos": [
+    {
+      "t": 0,
+      "plano": "cam",
+      "por": "selfie a cámara de punta a punta, no hay material para arriba"
+    }
+  ],
+  "zooms": [
+    {
+      "cue": "esta es la primera vez",
+      "por": "giro: lo nuevo de esta clase",
+      "dur": 3.0
+    },
+    {
+      "cue": "no solo es el caso",
+      "por": "giro: de su marca a los clientes",
+      "dur": 2.6
+    },
+    {
+      "cue": "clase es privada",
+      "por": "veredicto: si no te anotás no entrás",
+      "dur": 2.2
+    }
+  ],
+  "graficos": [
+    {
+      "tipo": "banda",
+      "texto": "Martes 17 · 18 hs · Clase privada en vivo",
+      "por": "ads-reminder.md: placa fija durante todo el video"
+    },
+    {
+      "tipo": "cifra",
+      "cue": "más de 100 millones",
+      "hasta": "y sobre todo que",
+      "valores": [
+        "+$100M"
+      ],
+      "etiqueta": "Por mes con suscripción",
+      "por": "prueba: la promesa en número"
+    },
+    {
+      "tipo": "titulo",
+      "cue": "este martes 17",
+      "hasta": "donde solamente",
+      "texto": "Martes 17\n18 hs",
+      "sub": "Clase en vivo · gratis",
+      "por": "el dato del reminder: fecha y hora"
+    },
+    {
+      "tipo": "rotulo",
+      "cue": "solamente van a poder entrar",
+      "hasta": "y es que",
+      "icono": "check",
+      "texto": "Solo entran los registrados ↓",
+      "por": "condición de entrada + link"
+    },
+    {
+      "tipo": "crecimiento",
+      "cue": "un roadmap claro",
+      "hasta": "con márgenes altísimos",
+      "puntos": [
+        1,
+        1.4,
+        2.6,
+        5
+      ],
+      "etiqueta": "Tu marca a $100M/mes",
+      "numeroFondo": "$100M",
+      "por": "muestra la promesa del roadmap como subida"
+    },
+    {
+      "tipo": "pasos",
+      "cue": "de atención al cliente",
+      "hasta": "y eso te lo digo",
+      "texto": "Sistemas de regalo",
+      "items": [
+        {
+          "titulo": "Atención al cliente",
+          "icono": "persona"
+        },
+        {
+          "titulo": "Email",
+          "icono": "chat"
+        },
+        {
+          "titulo": "Creativos",
+          "icono": "rayo"
+        },
+        {
+          "titulo": "Campañas",
+          "icono": "objetivo"
+        },
+        {
+          "titulo": "Media buying",
+          "icono": "dinero"
+        }
+      ],
+      "por": "lista de los sistemas que regala"
+    },
+    {
+      "tipo": "cifra",
+      "cue": "más de 4000 suscriptores",
+      "hasta": "solamente de ingresos",
+      "valores": [
+        "4.000 subs",
+        "$275M/mes"
+      ],
+      "etiqueta": "Su marca hoy",
+      "por": "prueba: sus números"
+    },
+    {
+      "tipo": "rotulo",
+      "cue": "una tasa de cancelaciones",
+      "hasta": "y no solo",
+      "icono": "grafico",
+      "texto": "Cancelaciones: solo 7,2%",
+      "por": "prueba: retención"
+    },
+    {
+      "tipo": "cifra",
+      "cue": "con un 12 de margen",
+      "hasta": "y hoy están en",
+      "valores": [
+        "1,2%"
+      ],
+      "etiqueta": "Margen de Santi y Lucas",
+      "por": "prueba: caso de cliente antes y después"
+    },
+    {
+      "tipo": "cifra",
+      "cue": "están en 40",
+      "hasta": "tenemos un montón",
+      "valores": [
+        "40%"
+      ],
+      "etiqueta": "Margen después de 1 llamada",
+      "por": "prueba: el después del caso"
+    },
+    {
+      "tipo": "titulo",
+      "cue": "la clase es el martes",
+      "hasta": "solamente podés entrar con",
+      "texto": "Martes 17\n18 hs",
+      "sub": "Link abajo ↓",
+      "por": "repetir fecha y hora al cierre"
+    }
+  ],
+  "hook": {
+    "texto": "Falta muy poco",
+    "hasta": 2.03
+  },
+  "cta": {
+    "cue": "solamente podés entrar con",
+    "texto": "REGISTRATE ↓"
+  }
+}

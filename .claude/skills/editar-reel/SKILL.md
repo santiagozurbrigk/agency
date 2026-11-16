@@ -107,6 +107,8 @@ Medir es contar: lo que dice `medidas.md` sale del script. Lo que no se pudo med
     por una línea; `texto` opcional arriba. Tapa la cámara y apaga los subtítulos.
   - `titulo`: título de sección a pantalla completa (`texto`, `sub`). Tapa la cámara.
   - `rotulo`: cajita con `icono` y `texto` corto sobre la cámara, sin taparla.
+  - `banda`: placa fija arriba con `texto` (fecha, hora, oferta). Sin `cue` ni `t` dura todo el
+    video. Solo la tapan las placas a pantalla completa.
   - Íconos: dinero, caja, persona, grafico, chat, megafono, engranaje, rayo, check, estrella,
     objetivo, cruz.
 - Los colores, la fuente, el desenfoque y el brillo salen de `graficos` en `estilo.md`.
