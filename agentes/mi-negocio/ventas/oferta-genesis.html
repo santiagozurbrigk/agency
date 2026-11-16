@@ -133,6 +133,10 @@
   .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
   .res .dato b em { font-style: normal; color: var(--naranja); }
   .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
+  .total { display: flex; align-items: baseline; gap: 12px; }
+  .total b { font-size: clamp(28px, 4.8vh, 44px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+  .total b em { font-style: normal; color: var(--naranja); }
+  .total small { font-size: 11.5px; color: var(--gris); line-height: 1.35; }
   .res-zoom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .res-zoom figcaption b { color: var(--naranja); font-weight: 600; }
   .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 4px; }
@@ -495,9 +499,10 @@ function render() {
 `, "a-info", "Información", "Tocá para ver el campus")}
 
     ${card("resultados", `
+      <div class="total num"><b>$38,9<em>M</em></b><small>facturación total en 7 días<br>29 jul al 4 ago 2026 · una marca cliente</small></div>
       <div class="res res-zoom">
-        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption><b>#${i + 1}</b> · ${t[1]} en un día</figcaption></figure>`).join("")}
-      </div>`, "a-res", "Resultados", "Mejores días de facturación")}
+        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption><b>Mejor día #${i + 1}</b> · ${t[1]}</figcaption></figure>`).join("")}
+      </div>`, "a-res", "Resultados", "Facturación total")}
 
     ${card("acompanamiento", `
       <div class="acomp">${o.acomp.map(a => `
