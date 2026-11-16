@@ -180,6 +180,18 @@
   .pill { background: var(--naranja-fuerte); color: #fff; font-weight: 600; text-align: center; padding: 9px 12px; border-radius: 10px; font-size: 16px; }
   .resultados-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
   .tarjeta .avatar-foto { width: 72px; }
+  .eq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .eq-card { padding: clamp(14px, 2.2vh, 20px); display: grid; gap: clamp(12px, 2vh, 18px); align-content: start; }
+  .eq-top { display: grid; grid-template-columns: clamp(120px, min(16vw, 24vh), 210px) minmax(0, 1fr); gap: 20px; align-items: end; }
+  .eq-foto { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 0 0 1px rgba(232,130,58,.45), 0 20px 50px rgba(0,0,0,.45); }
+  .eq-tx { display: grid; gap: 4px; padding-bottom: 6px; }
+  .eq-handle { font-size: 14px; color: var(--gris-2); }
+  .eq-tx b { font-size: clamp(34px, 4vw, 52px); font-weight: 300; letter-spacing: -0.04em; line-height: 1; color: var(--hueso); }
+  .eq-dato { font-size: 17px; color: var(--naranja); }
+  .eq-prueba { border-radius: 12px; border: 1px solid var(--borde); overflow: hidden; height: clamp(150px, 27vh, 300px); display: grid; place-items: center; }
+  .eq-prueba img { width: 100%; height: 100%; min-height: 0; max-height: 100%; object-fit: contain; display: block; }
+  .eq-prueba { grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 800px) { .eq-grid { grid-template-columns: 1fr; } }
   .prueba-grande { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
   .galeria-movil { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
   .galeria-movil img { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
@@ -512,8 +524,8 @@ const OFERTAS = {
 };
 
 const EQUIPO = [
-  { nombre: "Manu · Founder de Genesis OS", dato: "+USD 3M · 3 años", foto: "manuFoto", prueba: "manuPanel", mini: "manuPanelMini" },
-  { nombre: "José · Co-founder de Genesis OS", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentas" }
+  { nombre: "Manu · Founder de Genesis OS", handle: "@manudomzz", rol: "Founder", dato: "+USD 3M · 3 años", foto: "manuFoto", prueba: "manuPanel", mini: "manuPanelMini", fondo: "#f5f5f5" },
+  { nombre: "José · Co-founder de Genesis OS", handle: "@_josezelaya", rol: "Co-founder", dato: "+USD 2M · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentas", fondo: "#000" }
 ];
 const ETAPAS = [
   ["Buscar el producto","Un consumible: algo que se termina y tu cliente vuelve a comprar."],
@@ -607,11 +619,18 @@ function armarSlides() {
 
   S.push({ id: "equipo", nombre: "Equipo", html: `
     <div class="slide">
-      <div class="slide-head"><span class="k">Equipo</span><h2>Con quién lo hacés</h2><p>Manu y José están en la entrega de cada marca del programa.</p></div>
-      <div class="tarjetas">${EQUIPO.map(e => `
-        <div class="tarjeta vidrio">
-          <div class="persona">${img(e.foto, "avatar-foto")}<div><b style="color:var(--naranja);font-size:18px">${e.nombre}</b><small class="num" style="font-size:14px">${e.dato}</small></div></div>
-          ${img(e.prueba, "prueba-grande")}
+      <div class="slide-head" style="max-width:none"><span class="k">Equipo</span><h2 style="font-size:clamp(30px, min(4.4vw, 7vh), 54px)">Con quiénes vas a escalar tu ecom</h2></div>
+      <div class="eq-grid">${EQUIPO.map(e => `
+        <div class="eq-card vidrio">
+          <div class="eq-top">
+            ${img(e.foto, "eq-foto")}
+            <div class="eq-tx">
+              <span class="eq-handle">${e.handle}</span>
+              <b>${e.rol}</b>
+              <span class="eq-dato num">${e.dato}</span>
+            </div>
+          </div>
+          <div class="eq-prueba" style="background:${e.fondo}">${img(e.prueba)}</div>
         </div>`).join("")}
       </div>
     </div>` });
