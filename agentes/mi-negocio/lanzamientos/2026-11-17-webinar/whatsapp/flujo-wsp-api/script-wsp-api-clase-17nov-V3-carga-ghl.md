@@ -26,14 +26,14 @@ Hecho con el agente `../../../../agentes-propios/creador-flujos-wsp.md` (07/11/2
 - **Prompt 1, pasos 1 y 2: hecho a medias.** Los 17 valores personalizados `cl17_*` están creados (12 con el texto PENDIENTE). Los tags y las smart lists todavía no.
 - **Prompt 2: hecho.** Las 17 plantillas están mandadas a Meta: 16 aprobadas y `cl17_post_mie_repeticion` pendiente.
 - **Cambio de nombre:** la plantilla 15 se llamaba `cl17_post_mie_nopudo`. Meta la recibió, pero GHL no la sincronizó y no aparece en la lista, así que se volvió a crear como `cl17_post_mie_repeticion`. La vieja queda huérfana en Meta y no se usa.
-- **Archivos de muestra:** `muestras/video_test_negro.mp4` y `muestras/foto_test_negro.jpg`. El video y la foto reales se eligen en cada workflow.
+- **Archivos de muestra:** (el video de muestra se borró del repo el 18/11) `muestras/foto_test_negro.jpg`. El video y la foto reales se eligen en cada workflow.
 - **Prompt 3 (W01): armado en borrador.** Sin publicar.
 - **Valores nuevos:** `cl17_video_i1` y `cl17_foto_i2` (los archivos del encabezado de I.1 e I.2) y `cl17_link_agendar` (el link de Google Calendar de los mails). Para poner el video y la foto reales de Manu alcanza con cambiar esos valores.
 
 ### Arranque (11/11/2026, 19:30)
 
 - **Publicados:** W01, W02 (columna), los 12 envíos D1A…D6B y W05. **W03 y W04 (y sus envíos) siguen en borrador:** hay que publicarlos antes del lunes 16/11 a la noche (W02 los llama al final) y cargar `cl17_link_clase`, `cl17_link_aplicacion` y `cl17_link_replay`.
-- **Videos:** `cl17_video_i1` = BIENVENIDA y `cl17_video_r2` = R2 (subidos a Contenido multimedia, comprimidos a 720p y menos de 10 MB). Originales y comprimidos en `../videos/`.
+- **Videos:** `cl17_video_i1` = BIENVENIDA y `cl17_video_r2` = R2 (subidos a Contenido multimedia, comprimidos a 720p y menos de 10 MB). Los archivos de video se borraron del repo el 18/11 (ya no se usan); los cargados en GHL siguen ahí.
 - **Fotos de hoy:** `cl17_foto_i2` = imagen armada de la casilla (Principal / Promociones / Spam con el asunto y la vista previa reales del M-0); `cl17_foto_d1b` = captura del panel de la marca (3943 · 275.2M · 7,2%). **El resto de las `cl17_foto_*` siguen con la foto de prueba negra.**
 - **Mails:** «Clase martes 17/11 · mails» estaba en borrador; se publicó el 11/11 19:25 y los mismos 163 entran a las 19:30 (reciben el M-0; el M-1 de la mañana se saltea porque la espera tiene «omitir comunicaciones si ya pasó»).
 - **Carga masiva:** los 163 contactos con `optin-17-11` entran a W01 el 11/11 a las 19:30 (acción en lote programada «cl17 arranque dia 1 - registrados a W01»).
