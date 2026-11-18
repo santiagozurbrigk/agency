@@ -93,8 +93,8 @@ Derivado de `contexto.md`: los 4 agentes que se comunican tienen que existir ant
 | SIS-06 | GHL: cómo usar embeds para las páginas | 1 | — | | |
 | SIS-07 | GHL: cómo armar un pipeline de leads | 1 | — | | |
 | SIS-08 | GHL: cómo traer agendas a Calendly | 1 | — | | |
-| SIS-09 | Migrar el tracker de opt-in a GENESIS (Campus) | 1 | — | `../../ventas/sistema-de-tracking/` | |
-| SIS-10 | Sistema de roles para closer y SDR | 1 | — | `../../ventas/sistema-de-tracking/` | |
+| SIS-09 | Migrar el tracker de opt-in a GENESIS (Campus) | 1 | — | — (tracker viejo borrado el 18/11) | |
+| SIS-10 | Sistema de roles para closer y SDR | 1 | — | — (tracker viejo borrado el 18/11) | |
 | SIS-11 | API de WhatsApp | 1 | — | `../2026-10-24-repesca/whatsapp/flujo-wsp-api/` | |
 
 ## Equipo

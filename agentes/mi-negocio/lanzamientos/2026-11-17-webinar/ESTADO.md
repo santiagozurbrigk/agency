@@ -77,7 +77,7 @@ Los Docs son copias: si se cambia un .md, hay que volver a subirlo. Todos los an
 | Ads post-clase (2) | `ads/ads-post-webinar.md` · [Google Doc final](https://docs.google.com/document/d/1nCWIuEvMJFTF-9EYR98ZZzUvIHf7OCF1EhGlVLDSdLQ/edit) | **Versión final de Santi (02/11).** Oferta, 10 lugares y cierre el sábado 21/11 cargados en `CONTEXTO.md`. Faltan los links (aplicación y replay). |
 | Emails de nutrición (16) | `mails/emails-nutricion.md` | **Versión final de Santi (31/10).** Confirmación + 6 días + escalera de 9. Antes de programar: regalos repetidos (flujo de retención en mails 0 y 4, simulador en mails 2 y 5), `[LINK CLASE]` en los mails 12 a 15, mail 14 sin terminar y errores de tipeo (lista en el archivo). |
 | Resto (landing, VSL, thank you, B:52) | `tareas.md` | Ver el tracker. |
-| Tracker de ventas y tareas | `../../ventas/sistema-de-tracking/app/` | Funcionando en Vercel. Tests: `node test/flujo.test.js` (tiene que dar «Todo verde ✓»). |
+| Tracker de ventas y tareas | — | **Dado de baja el 18/11:** ahora se trackea todo desde el campus. El código del tracker viejo se borró del repo (queda en el historial de git). |
 
 ## Datos pendientes (no inventar: preguntar)
 
