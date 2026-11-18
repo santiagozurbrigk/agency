@@ -13,7 +13,7 @@ Dos ofertas, dos llamadas distintas. La estructura es parecida; lo que cambia es
 - [`00-analisis-llamadas-fathom.md`](00-analisis-llamadas-fathom.md): las dos llamadas de José (Nico, cerró · Franco, no cerró), qué funcionó, qué no y qué no se vuelve a decir.
 - [`03-banco-de-objeciones.md`](03-banco-de-objeciones.md): la Matriz, las ramas palabra por palabra (con los reframes reescritos para cada avatar), 19 objeciones B2B, 16 B2C y el cheat sheet de una pantalla.
 
-Fuentes: SOPs de Limitless (Llamada B2B, Llamada B2C, Manejo de Objeciones), `../guion-de-llamada-genesis.md`, `../manual-llamada-de-venta-genesis.md`, `../../webinar-17-11/analisis-ventas-calificadas.md`, `../../../CONTEXTO.md` y las transcripciones de Fathom del 26/10 y 28/10.
+Fuentes: SOPs de Limitless (Llamada B2B, Llamada B2C, Manejo de Objeciones), `../guion-de-llamada-genesis.md`, `../manual-llamada-de-venta-genesis.md`, `../../lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`, `../../../CONTEXTO.md` y las transcripciones de Fathom del 26/10 y 28/10.
 
 ## Datos a confirmar antes de usarlos (no se inventó nada)
 

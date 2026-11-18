@@ -520,7 +520,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     ok(r.body.ok&&r.body.tareas.length===0&&r.body.yo==="Santi"&&r.body.estados.includes("Bloqueada"),"tareas: vacío al arrancar; el usuario «santi» es Santi");
     ok(T.personaDe("Matías")==="Mati"&&T.personaDe("Santiago Z")==="Santi"&&T.personaDe("Manuel")==="Manu"&&T.personaDe("Jose")===null,"tareas: el nombre de USERS_JSON decide la persona");
 
-    const md=fs.readFileSync(path.join(APP,"..","..","..","webinar-17-11","tareas.md"),"utf8");
+    const md=fs.readFileSync(path.join(APP,"..","..","..","lanzamientos","2026-11-17-webinar","tareas.md"),"utf8");
     const filas=T.parsearMd(md);
     r=await post({op:"importar",md});
     ok(r.body.ok&&r.body.creadas===filas.length&&filas.length>50&&r.body.existentes===0,"importar: crea todas las tareas de tareas.md ("+filas.length+")");
@@ -532,7 +532,7 @@ function ok(cond,msg){ if(cond){console.log("  ✓",msg);}else{console.log("  �
     const t=id=>ts.find(x=>x.id===id);
     ok(t("ADQ-03").responsable==="Manu"&&t("ADQ-01").responsable==="","importar: lo que graba Manu queda asignado a Manu; el resto sin asignar");
     ok(t("ADQ-01").vence==="2026-11-07"&&t("NUT-01").vence==="2026-11-11"&&t("WEB-01").vence==="2026-11-16"&&t("POST-01").vence==="2026-11-17"&&t("EQ-01").vence==="","importar: fecha límite por fase según el webinar del 17/11");
-    ok(t("ADQ-01").referencia.includes("mi-negocio/lanzamiento-19-10/contenido/03-adquisicion-historias.md")&&t("NUT-06").agente.includes("mi-negocio/agentes/creador-flujos-wsp.md"),"importar: las rutas quedan como rutas del repo");
+    ok(t("ADQ-01").referencia.includes("mi-negocio/lanzamientos/2026-10-19-clase/contenido/03-adquisicion-historias.md")&&t("NUT-06").agente.includes("mi-negocio/agentes-propios/creador-flujos-wsp.md"),"importar: las rutas quedan como rutas del repo");
     ok(t("ADQ-02").cantidad===18&&t("ADQ-02").fase==="Adquisición"&&t("B52-01").fase==="B:52","importar: cantidad y fase");
 
     r=await post({op:"crear",tarea:{titulo:"Video de la biblioteca de agentes",fase:"Bonus"}});

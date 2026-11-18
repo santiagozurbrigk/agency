@@ -1,6 +1,6 @@
 # Banco de objeciones — Génesis (B2B) y Mentoría (B2C)
 
-Construido con el SOP *Manejo de Objeciones — La Matriz* de Limitless, las objeciones reales de las ventas de Génesis (Herbora, Alan, Núñez, Lopo: `../../webinar-17-11/analisis-ventas-calificadas.md`) y las de las dos llamadas de la Mentoría (Nico y Franco: `00-analisis-llamadas-fathom.md`). Las frases entre comillas en «Lo que dice» son textuales de las llamadas cuando dice la fuente.
+Construido con el SOP *Manejo de Objeciones — La Matriz* de Limitless, las objeciones reales de las ventas de Génesis (Herbora, Alan, Núñez, Lopo: `../../lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`) y las de las dos llamadas de la Mentoría (Nico y Franco: `00-analisis-llamadas-fathom.md`). Las frases entre comillas en «Lo que dice» son textuales de las llamadas cuando dice la fuente.
 
 **La regla que gobierna todo:** una objeción es un **problema para resolver**, no una pelea para ganar. Nunca rebatís con datos: hacés preguntas para que el lead llegue solo a la conclusión. Lo logístico (plata, socio) se cierra primero; el miedo, al final.
 

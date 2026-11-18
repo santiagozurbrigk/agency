@@ -1,8 +1,8 @@
 # Contexto de mi negocio — Génesis (Manu Dominguez)
 
-Estado al 26-sep-2026, actualizado el 30-oct-2026 con las llamadas de venta de los clientes que más pagaron (`mi-negocio/webinar-17-11/analisis-ventas-calificadas.md`). `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
-Lanzamiento en curso (clase del martes 17-nov, 18 hs): estado y decisiones en `mi-negocio/webinar-17-11/ESTADO.md`.
-Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido producido y pendientes): `mi-negocio/brief-genesis.md`.
+Estado al 26-sep-2026, actualizado el 30-oct-2026 con las llamadas de venta de los clientes que más pagaron (`mi-negocio/lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`). `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
+Lanzamiento en curso (clase del martes 17-nov, 18 hs): estado y decisiones en `mi-negocio/lanzamientos/2026-11-17-webinar/ESTADO.md`.
+Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido producido y pendientes): `mi-negocio/negocio/brief-genesis.md`.
 
 ## Negocio
 
@@ -154,7 +154,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - "Me cuesta mucho confiar. Está lleno de pirañas."
   - "Iba alumno tras alumno y pensaba 0,1 segundos." (sobre otra mentoría)
 
-  **Creencias limitantes de los que más pagaron (30-oct)** — base obligatoria de toda la nutrición (ads, mails, WhatsApp). Lista completa, con cómo las rompió Manu y los 9 ángulos nuevos, en `mi-negocio/webinar-17-11/analisis-ventas-calificadas.md`:
+  **Creencias limitantes de los que más pagaron (30-oct)** — base obligatoria de toda la nutrición (ads, mails, WhatsApp). Lista completa, con cómo las rompió Manu y los 9 ángulos nuevos, en `mi-negocio/lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`:
   - "En Argentina no se suscribe nadie / el débito automático da desconfianza."
   - "Mi producto no es para suscripción" (tratamientos, afecciones). Alan casi no se anota por esto.
   - "El suscriptor cuesta mucho más que una venta."
