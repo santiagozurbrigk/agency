@@ -2593,7 +2593,7 @@ function renderTareas(v,s){
   let h=encabezado(s,acc);
   if(TMETA.faltan.length) h+=`<div class="demo" style="color:var(--warn)">${ic("i-alerta")}Falta${TMETA.faltan.length>1?"n":""} ${esc(TMETA.faltan.join(" y "))} en USERS_JSON: sin usuario no pueden entrar ni ver «Mis tareas». Sumalo${TMETA.faltan.length>1?"s":""} en Vercel con su email, name («${esc(TMETA.faltan[0])}») y una clave fuerte, y hacé un deploy.</div>`;
   if(!TAREAS.length){
-    v.innerHTML=h+`<div class="vacio"><div class="circ">${ic("i-tareas")}</div><b>Todavía no hay tareas</b>Importá mi-negocio/webinar-17-11/tareas.md para cargar las del webinar, o creá una a mano.<div style="margin-top:16px">${botonImportarTareas(true)}</div></div>`;
+    v.innerHTML=h+`<div class="vacio"><div class="circ">${ic("i-tareas")}</div><b>Todavía no hay tareas</b>Importá mi-negocio/lanzamientos/2026-11-17-webinar/tareas.md para cargar las del webinar, o creá una a mano.<div style="margin-top:16px">${botonImportarTareas(true)}</div></div>`;
     return;
   }
   const vistas=[["tablero","Tablero"],["lista","Lista"],["mias","Mis tareas"],["personas","Por persona"]];
@@ -2727,7 +2727,7 @@ function renderConfig(v,s){
   <div class="tarjeta"><h4>Tareas del webinar</h4><div class="form-g">
     ${inp("cTareasWeb","Fecha del webinar (de acá salen las fechas límite por defecto)",st.tareasWebinar||"","date")}
     <div><label>Carga inicial</label>${botonImportarTareas()}</div></div>
-    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">Elegí <b>mi-negocio/webinar-17-11/tareas.md</b> del repo. Las tareas que ya están (mismo ID) no se pisan, así que se puede volver a importar cuando se suman filas.</p></div>`;
+    <p style="color:var(--tx-3);font-size:12.5px;margin-top:8px">Elegí <b>mi-negocio/lanzamientos/2026-11-17-webinar/tareas.md</b> del repo. Las tareas que ya están (mismo ID) no se pisan, así que se puede volver a importar cuando se suman filas.</p></div>`;
 }
 async function guardarConfig(){
   try{

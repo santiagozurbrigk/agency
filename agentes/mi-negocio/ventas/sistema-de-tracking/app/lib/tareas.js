@@ -257,7 +257,7 @@ function faseDeTitulo(t) {
 }
 
 // Las rutas del .md son relativas a su carpeta: se pasan a rutas del repo, que es lo que
-// se busca en Claude Code («../lanzamiento-19-10/x.md» → «mi-negocio/lanzamiento-19-10/x.md»).
+// se busca en Claude Code («../2026-10-19-clase/x.md» → «mi-negocio/lanzamientos/2026-10-19-clase/x.md»).
 function rutasDelRepo(celda, base) {
   return celda.replace(/`([^`]+)`/g, (_, r) =>
     /^\.{1,2}\/|\.(md|html|js|txt)$|\/$/.test(r) ? path.posix.join(base, r) + (r.endsWith("/") ? "/" : "") : r);
@@ -265,7 +265,7 @@ function rutasDelRepo(celda, base) {
 
 // Devuelve las tareas de las tablas del .md (las columnas son las de tareas.md).
 function parsearMd(md, base) {
-  base = base || "mi-negocio/webinar-17-11";
+  base = base || "mi-negocio/lanzamientos/2026-11-17-webinar";
   const out = [];
   let fase = null;
   for (const linea of String(md || "").split(/\r?\n/)) {
