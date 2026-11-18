@@ -28,7 +28,7 @@ Todo lo del lanzamiento del webinar del martes 17 de noviembre de 2026, 18 hs.
 | [`mails/sincronizacion-mails-whatsapp.md`](mails/sincronizacion-mails-whatsapp.md) | Cómo se conectan los mails y el WhatsApp día por día: qué sale en cada canal y a qué hora, y qué se le pide a la gente. |
 | [`bonus-agentes/agentes-ia-campus.md`](bonus-agentes/agentes-ia-campus.md) | Inventario de los 130 agentes de IA posibles del campus Génesis, por el camino completo del ecommerce, para elegir los bonus y comunicarlos en los scripts. |
 | [`analisis/analisis-ventas-calificadas.md`](analisis/analisis-ventas-calificadas.md) | Dolores, creencias limitantes y ángulos sacados de las llamadas de los clientes que más pagaron (Herbora, Alan, Santi Núñez, Thiago Lopo). |
-| [`ventas-y-tracking/prompt-tracker-tareas.md`](ventas-y-tracking/prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker (`../../ventas/sistema-de-tracking/app/`). Para cargar las tareas: Configuración → Importar tareas.md. |
+| [`ventas-y-tracking/prompt-tracker-tareas.md`](ventas-y-tracking/prompt-tracker-tareas.md) | Prompt con el que se armó la sección **Tareas** del tracker viejo (dado de baja el 18/11; ahora se trackea desde el campus). Para cargar las tareas: Configuración → Importar tareas.md. |
 
 ## Calendario (propuesta, a confirmar)
 

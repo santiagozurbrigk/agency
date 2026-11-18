@@ -9,7 +9,7 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 | [`negocio/`](negocio/) | Lo que no cambia de un lanzamiento a otro: brief de Génesis, marca personal, avatar, onboarding del equipo y recursos del campus. |
 | [`agentes-propios/`](agentes-propios/) | Los agentes que armamos nosotros (los de Limitless están en `../agentes/`). |
 | [`lanzamientos/`](lanzamientos/) | Una carpeta por lanzamiento, con fecha adelante y las mismas subcarpetas. Ver su [README](lanzamientos/README.md). |
-| [`ventas/`](ventas/) | Guiones y manual de llamada, objeciones, proceso de ventas, el sistema de tracking y el proyecto de Claude para recursos personalizados. |
+| [`ventas/`](ventas/) | Guiones y manual de llamada, objeciones, proceso de ventas y el proyecto de Claude para recursos personalizados. |
 | [`evergreen/`](evergreen/) | Piezas que viven fuera de un lanzamiento: VSL de chat, funnel de YouTube, perfil de Instagram. |
 | [`referencias/`](referencias/) | Material de terceros que usamos de modelo (Naza). |
 | [`testimonios/`](testimonios/) | Capturas de resultados de alumnos. |
