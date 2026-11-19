@@ -25,13 +25,19 @@ Rearmadas el 19/11/2026 siguiendo al pie de la letra los 9 SOPs de la formación
 5. **Menos pedidos, más dar.** La audiencia es chica: un pedido fuerte por semana como mucho, CTA por defecto a un recurso, número al final como consecuencia de la historia. (03, 06, 09)
 6. **El precio no se mueve hasta tener datos.** No hay ninguna venta registrada a USD 6.000 y falta el caso de un tercero con suscripción, que es la primera brecha a cerrar. (08)
 
-## Decisiones que tiene que tomar Santi (bloquean varias bases)
+## Cerrado por Santi el 19/11
+
+- **Precio: USD 6.000.** Todo el material que dice 5.000 queda viejo y se alinea.
+- **Duración: 4 meses**, Done With You. `CONTEXTO.md` todavía dice 3 meses.
+- **El carrito del 17/11 cierra el viernes 20/11.** El «sábado 21» de `ESTADO.md` y de los mockups de POST queda viejo.
+
+Tablero visual con los ajustes de las 9 bases y el roadmap para volver al orgánico: https://claude.ai/artifact/MRFxTVab5fvZdo7tZGrnNj
+
+## Decisiones que todavía tiene que tomar Santi (bloquean varias bases)
 
 | Decisión | Qué dicen hoy los archivos | Bases afectadas |
 |---|---|---|
-| **Precio vigente** | USD 6.000 (CONTEXTO) vs USD 5.000 (todo el material de ventas) | 02, 04, 08, 09 |
-| **Duración y modalidad** | 3 meses (CONTEXTO) vs 4 (oferta y proceso de ventas). Done With You vs «lo instalamos nosotros» en ventas, VSL de chat y YouTube | 03, 04, 08, 09 |
-| **Cierre del carrito y lugares** | viernes 20/11 vs sábado 21/11 · 10 vs 6 vs 20 lugares | 04, 07, 09 |
+| **Lugares del carrito** | 10 vs 6 vs 20 lugares (la fecha ya está: viernes 20/11) | 04, 07, 09 |
 | **Palabra clave evergreen** | ADENTRO (lanzamientos), SUSCRIPCIÓN (bio vieja), CUENTA (propuesta de la base 02 y YouTube), FLUJOS/TRATAMIENTO (recursos en la base 06). Propuesta para unificar: **CUENTA** en la bio y una palabra por recurso solo para medir de dónde viene; todas terminan en el WhatsApp de Manu (03). | 02, 03, 06 |
 | **Criterio de «calificado»** | USD 100/día en Meta deja afuera a S3 (Lopo pagó el ticket más alto) | 01, 04 |
 | **Qué se le entrega a S3** | La oferta no tiene nada para «vendo pero no construyo» | 01, 03, 05 |
