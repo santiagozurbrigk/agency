@@ -1,0 +1,925 @@
+<title>Oferta Genesis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* Layout: el lenguaje del campus Genesis. Un tablero de una sola pantalla, como el mapa en Miro:
+     Equipo (izq., alto completo) · Información + Bonus (centro) · Acompañamiento (der., alto completo).
+     Cada bloque abre su detalle, y el detalle se recorre como slides. Look oscuro único, a propósito. */
+  :root {
+    --negro: #0A0807;
+    --vidrio: rgba(255,255,255,.03);
+    --borde: rgba(255,255,255,.08);
+    --borde-2: rgba(255,255,255,.14);
+    --hueso: #F3EEE8;
+    --gris: #7E7873;
+    --gris-2: #B3ACA6;
+    --naranja: #E8823A;
+    --naranja-fuerte: #D9661E;
+    --verde: #4FD08A;
+    --tinta: #170B03;
+    --papel: #F7F5F2;
+    --papel-tx: #1A1612;
+    --f: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  html { background: var(--negro); }
+  body { background: var(--negro); color: var(--hueso); font-family: var(--f); font-size: 15px; line-height: 1.45; overflow: hidden; }
+  body::after { content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(40vw 34vw at 70% 4%, rgba(201,92,24,.34), rgba(201,92,24,0) 70%),
+      radial-gradient(46vw 40vw at -6% 104%, rgba(160,68,18,.2), rgba(160,68,18,0) 70%),
+      linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px) 0 0 / 48px 48px,
+      linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px) 0 0 / 48px 48px; }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--naranja); outline-offset: 3px; }
+  h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -0.03em; font-weight: 300; text-wrap: balance; }
+  p { margin: 0; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  .num { font-variant-numeric: tabular-nums; }
+  .eyebrow { font-size: 10.5px; font-weight: 500; letter-spacing: .26em; text-transform: uppercase; color: var(--gris-2); }
+  .vidrio { background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.012)); border: 1px solid var(--borde); border-radius: 14px; }
+
+  .app { position: relative; z-index: 1; height: 100%; max-width: 1480px; margin: 0 auto; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: clamp(6px, 1.4vh, 14px); padding-block: clamp(10px, 1.8vh, 18px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  /* Barra */
+  .barra { position: fixed; z-index: 15; top: calc(env(safe-area-inset-top, 0px) + 10px); right: max(12px, env(safe-area-inset-right, 0px)); opacity: .45; transition: opacity .2s; }
+  .barra:hover, .barra:focus-within { opacity: 1; }
+  .barra > div:not(.switch) { display: none; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 500; letter-spacing: .3em; font-size: 12px; }
+  .logo svg { width: 26px; height: 26px; }
+  .switch { display: inline-flex; padding: 4px; border-radius: 999px; border: 1px solid var(--borde-2); background: rgba(0,0,0,.35); }
+  .switch button { border: 0; background: transparent; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; color: var(--gris-2); transition: background .2s, color .2s; }
+  .switch button[aria-pressed="true"] { background: var(--hueso); color: var(--tinta); }
+  .acciones { display: flex; justify-content: flex-end; }
+  .btn { border: 1px solid var(--borde-2); background: var(--vidrio); padding: 8px 16px; border-radius: 999px; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; }
+  .btn:hover { border-color: var(--naranja); }
+  .btn.prim { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); font-weight: 600; }
+
+  /* Cabeza: título a la izquierda, prueba (panel de Manu) a la derecha */
+  .cabeza { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px 20px; }
+  .cabeza .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 11px; font-weight: 500; letter-spacing: .04em; padding: 4px 11px; border: 1px solid var(--borde-2); border-radius: 999px; color: var(--gris-2); background: rgba(255,255,255,.02); }
+  .chip.n { color: var(--naranja); border-color: rgba(232,130,58,.45); background: rgba(232,130,58,.08); }
+  .cabeza h1 { font-size: clamp(32px, 6vh, 60px); font-weight: 300; letter-spacing: -0.055em; line-height: .92; }
+  .cabeza h1 em { font-style: normal; color: var(--naranja); font-weight: 400; }
+  .cabeza .tag { color: var(--gris-2); font-weight: 300; font-size: clamp(13px, 1.8vh, 16px); margin-top: clamp(4px, .9vh, 10px); max-width: 62ch; }
+  .prueba { display: grid; gap: 8px; justify-items: end; }
+  .prueba .stats { display: flex; border: 1px solid var(--borde); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)); }
+  .prueba .stat { padding: clamp(8px, 1.3vh, 14px) clamp(14px, 1.6vw, 22px); display: grid; gap: 2px; }
+  .prueba .stat + .stat { border-left: 1px solid var(--borde); }
+  .prueba .stat b { font-size: clamp(20px, 3.4vh, 32px); font-weight: 300; letter-spacing: -0.04em; line-height: 1; }
+  .prueba .stat b em { font-style: normal; color: var(--naranja); }
+  .prueba .stat small { font-size: 10.5px; color: var(--gris); letter-spacing: .02em; }
+
+  /* Tablero en bloques */
+  .tablero { min-height: 0; display: grid; grid-template-columns: 1fr 1.15fr 1fr; grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "eq info ac" "eq res ac" "bon bon bon"; gap: clamp(8px, 1.3vh, 14px); }
+  .a-eq { grid-area: eq; } .a-com { grid-area: com; } .a-info { grid-area: info; } .a-res { grid-area: res; } .a-ac { grid-area: ac; } .a-bon { grid-area: bon; }
+
+  .card { position: relative; text-align: left; width: 100%; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 12px);
+    padding: clamp(12px, 1.7vh, 18px); border-radius: 18px; border: 1px solid var(--borde);
+    background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); transition: border-color .2s, transform .2s, background .2s; overflow: hidden; }
+  .card:hover { border-color: rgba(232,130,58,.55); transform: translateY(-2px); background: linear-gradient(180deg, rgba(232,130,58,.075), rgba(255,255,255,.012)); }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+  .card-h { display: flex; align-items: center; gap: 10px; padding-right: 30px; }
+  .card-h .lbl { font-size: 10.5px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--hueso); display: flex; align-items: center; gap: 8px; }
+  .card-h .lbl::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 10px var(--naranja); }
+  .card-h .mt { margin-left: auto; font-size: 11px; color: var(--gris); white-space: nowrap; }
+  .flecha { position: absolute; top: clamp(10px, 1.5vh, 15px); right: clamp(10px, 1.5vh, 15px); width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--borde-2); display: grid; place-items: center; font-size: 12px; color: var(--gris-2); transition: all .2s; z-index: 2; background: rgba(10,8,7,.5); }
+  .card:hover .flecha { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); }
+
+  /* Equipo */
+  .personas { display: grid; gap: clamp(8px, 1.2vh, 12px); }
+  .persona { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; }
+  .avatar { width: clamp(34px, 5.2vh, 44px); aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; font-weight: 500; font-size: 15px; color: var(--hueso);
+    background: radial-gradient(circle at 30% 25%, #4a3020, #160f0b); box-shadow: 0 0 0 1px rgba(232,130,58,.5), 0 0 0 4px rgba(232,130,58,.08); }
+  .persona b { display: block; font-weight: 500; font-size: 14px; }
+  .a-eq .persona b { color: var(--naranja); font-size: clamp(13px, 1.9vh, 14.5px); }
+  .avatar-foto { width: clamp(38px, 5.6vh, 50px); aspect-ratio: 1; border-radius: 50%; object-fit: cover; display: block; box-shadow: 0 0 0 1px rgba(232,130,58,.55), 0 0 0 4px rgba(232,130,58,.08); }
+  .a-eq .personas { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: clamp(10px, 1.6vh, 16px); }
+  .a-eq .miembro:last-child { flex: 1 1 0; min-height: 0; grid-template-rows: auto minmax(0, 1fr); }
+  .a-eq .miembro:last-child .prueba-img { min-height: 0; }
+  .a-eq .miembro:last-child .prueba-img img { height: 100%; max-height: none; object-fit: cover; object-position: left top; border-radius: 10px; background: #000; }
+  .miembro { display: grid; gap: clamp(5px, .8vh, 8px); min-height: 0; }
+  .prueba-img img { width: 100%; height: auto; max-height: clamp(90px, 24vh, 240px); object-fit: contain; object-position: left center; border-radius: 8px; display: block; }
+  .persona small { color: var(--gris); font-size: 12px; }
+
+  /* Comunidad: foto a sangre */
+  .card.foto { padding: 0; min-height: clamp(90px, 14vh, 130px); }
+  .card.foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .card.foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,8,7,.55) 0%, rgba(10,8,7,0) 30%, rgba(10,8,7,0) 50%, rgba(10,8,7,.92) 100%); }
+  .card.foto .card-h, .card.foto .pie { position: relative; z-index: 1; }
+  .card.foto .card-h { padding: clamp(12px, 1.7vh, 18px); padding-right: 46px; }
+  .card.foto .pie { margin-top: auto; padding: clamp(12px, 1.7vh, 18px); display: grid; gap: 2px; }
+  .card.foto .pie b { font-weight: 400; font-size: clamp(15px, 2.2vh, 19px); letter-spacing: -0.02em; }
+  .card.foto .pie small { color: var(--gris-2); font-size: 12px; }
+
+  /* Información */
+  .titulo-card { font-size: clamp(16px, 2.4vh, 21px); font-weight: 300; letter-spacing: -0.025em; }
+  .titulo-card em { font-style: normal; color: var(--naranja); }
+  .tags { display: flex; flex-wrap: wrap; gap: clamp(4px, .6vh, 6px); }
+  .tags span { font-size: clamp(10.5px, 1.5vh, 12px); padding: clamp(3px, .45vh, 5px) 10px; border-radius: 999px; border: 1px solid var(--borde); background: rgba(255,255,255,.03); color: var(--gris-2); white-space: nowrap; }
+  .tags span.herr { color: var(--naranja); border-color: rgba(232,130,58,.4); background: rgba(232,130,58,.07); }
+  .sop-grupos { display: grid; gap: clamp(6px, 1vh, 10px); }
+  .sop-grupos .grupo { --chip-h: calc(clamp(10.5px, 1.5vh, 12px) * 1.45 + 2 * clamp(3px, .45vh, 5px) + 2px); display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: start; }
+  .sop-grupos .sub-lbl { line-height: var(--chip-h); white-space: nowrap; }
+  .herr-fila .ok { transform: none; }
+  .herr-fila { display: flex; gap: 8px; align-items: center; font-size: clamp(11.5px, 1.65vh, 13px); color: var(--gris-2); padding: 8px 12px; border-radius: 10px; background: rgba(232,130,58,.08); border: 1px solid rgba(232,130,58,.3); }
+  .herr-fila b { color: var(--naranja); font-weight: 600; }
+  .campus-mini { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 7px; border: 1px solid var(--borde); display: block; }
+  .sub-lbl { font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--gris); }
+
+  /* Resultados */
+  .res { flex: 1 1 0; min-height: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
+  .res .dato { display: grid; align-content: center; gap: 2px; padding-right: 4px; }
+  .res .dato b { font-size: clamp(26px, 4.6vh, 42px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+  .res .dato b em { font-style: normal; color: var(--naranja); }
+  .res .dato small { font-size: 11px; color: var(--gris); max-width: 16ch; }
+  .total { display: flex; align-items: center; gap: 12px; }
+  .total b, .total small { display: block; line-height: 1; }
+  .total b { font-size: clamp(28px, 4.8vh, 44px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+  .total b em { font-style: normal; color: var(--naranja); }
+  .total small { font-size: clamp(20px, 3.4vh, 32px); font-weight: 300; letter-spacing: -0.03em; color: var(--hueso); line-height: 1.1; }
+  .res-zoom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .res-zoom figcaption b { color: var(--naranja); font-weight: 600; }
+  .res-zoom figure { margin: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 6px; justify-items: center; }
+  .res-zoom img { max-width: 100%; max-height: 100%; width: auto; height: auto; min-height: 0; border-radius: 8px; border: 1px solid var(--borde); display: block; align-self: center; }
+  .res-zoom figcaption { font-size: 10.5px; color: var(--gris); text-align: center; }
+  .fotos { min-height: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
+  .fotos img { width: 100%; height: 100%; min-height: 0; object-fit: cover; border-radius: 8px; border: 1px solid var(--borde); display: block; background: #120d0a; }
+  .fotos img.arriba { object-position: top left; }
+
+  /* Acompañamiento */
+  .acomp { flex: 1 1 0; min-height: 0; display: grid; grid-auto-rows: minmax(0, 1fr); gap: clamp(8px, 1.2vh, 12px); }
+  .acomp-item { min-height: 0; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 12px; align-items: stretch; }
+  .acomp-item .fotos { height: 100%; }
+  .acomp-item .tx { display: grid; align-content: center; gap: 4px; min-width: 0; }
+  .acomp-item .tx b { font-weight: 500; font-size: clamp(13.5px, 2vh, 16px); letter-spacing: -0.01em; }
+  .acomp-item .tx small { color: var(--gris); font-size: 12px; }
+  .acomp-item .chip { justify-self: start; margin-top: 2px; }
+  .dwy-nota { font-size: 11.5px; color: var(--gris-2); border-top: 1px solid var(--borde); padding-top: clamp(6px, 1vh, 10px); }
+  .dwy-nota em { font-style: normal; color: var(--naranja); }
+
+  /* Bonus + cierre */
+  .a-bon { display: grid; grid-template-columns: repeat(var(--n, 4), minmax(0, 1fr)); gap: clamp(8px, 1.3vh, 14px); }
+  .bonus { gap: 4px; }
+  .bonus .k { font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--naranja); font-weight: 600; }
+  .bonus b { font-weight: 400; font-size: clamp(15px, 2.3vh, 19px); letter-spacing: -0.02em; }
+  .bonus b.monto { font-weight: 300; font-size: clamp(20px, 3.4vh, 28px); color: var(--naranja); letter-spacing: -0.04em; }
+  .bonus small { color: var(--gris); font-size: 12px; }
+  .card.cierre { background: linear-gradient(135deg, rgba(232,130,58,.28), rgba(232,130,58,.06)); border-color: rgba(232,130,58,.45); }
+  .card.cierre .k { color: var(--hueso); opacity: .8; }
+  .card.cierre .flecha { border-color: rgba(255,255,255,.3); color: var(--hueso); }
+
+  .grande-verde { font-size: clamp(24px, 4.2vh, 38px); font-weight: 300; color: var(--naranja); letter-spacing: -0.04em; line-height: 1; }
+
+  .ok { flex: none; width: 15px; height: 15px; border-radius: 50%; background: rgba(232,130,58,.16); box-shadow: inset 0 0 0 1px rgba(232,130,58,.55); display: inline-grid; place-items: center; transform: translateY(2px); }
+  .ok::after { content: ""; width: 6px; height: 3.5px; border-left: 1.6px solid var(--naranja); border-bottom: 1.6px solid var(--naranja); transform: rotate(-45deg) translate(1px,-1px); }
+  .pill { background: var(--naranja-fuerte); color: #fff; font-weight: 600; text-align: center; padding: 9px 12px; border-radius: 10px; font-size: 16px; }
+  .resultados-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .tarjeta .avatar-foto { width: 72px; }
+  .eq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .eq-card { padding: clamp(14px, 2.2vh, 20px); display: grid; gap: clamp(12px, 2vh, 18px); align-content: start; }
+  .eq-top { display: grid; grid-template-columns: clamp(120px, min(16vw, 24vh), 210px) minmax(0, 1fr); gap: 20px; align-items: end; }
+  .eq-foto { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 16px; display: block; box-shadow: 0 0 0 1px rgba(232,130,58,.45), 0 20px 50px rgba(0,0,0,.45); }
+  .eq-tx { display: grid; gap: 4px; padding-bottom: 6px; }
+  .eq-handle { font-size: 14px; color: var(--gris-2); }
+  .eq-tx b { font-size: clamp(34px, 4vw, 52px); font-weight: 300; letter-spacing: -0.04em; line-height: 1; color: var(--hueso); }
+  .eq-dato { font-size: 17px; color: var(--naranja); }
+  .eq-prueba { border-radius: 12px; border: 1px solid var(--borde); overflow: hidden; height: clamp(150px, 27vh, 300px); display: grid; place-items: center; }
+  .eq-prueba img { width: 100%; height: 100%; min-height: 0; max-height: 100%; object-fit: contain; display: block; }
+  .eq-prueba { grid-template-rows: minmax(0, 1fr); grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 800px) { .eq-grid { grid-template-columns: 1fr; } }
+  .prueba-grande { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
+  .galeria-movil { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .galeria-movil img { width: 100%; border-radius: 10px; border: 1px solid var(--borde); display: block; }
+
+  /* Campus: réplica navegable de la plataforma, dentro de un marco de navegador */
+  .navegador { border: 1px solid var(--borde-2); border-radius: 14px; overflow: hidden; background: #070505; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .nav-barra { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #141010; border-bottom: 1px solid var(--borde); }
+  .nav-barra .dots { display: flex; gap: 6px; }
+  .nav-barra .dots i { width: 10px; height: 10px; border-radius: 50%; background: #3a3230; }
+  .nav-barra .url { flex: 1; min-width: 0; text-align: center; font-size: 12px; color: var(--gris); background: #0b0808; border-radius: 6px; padding: 4px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .campus-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .campus-tabs button { border: 1px solid var(--borde-2); background: var(--vidrio); border-radius: 999px; padding: 7px 14px; font-size: 13px; color: var(--gris-2); }
+  .campus-tabs button[aria-pressed="true"] { background: var(--naranja); border-color: var(--naranja); color: var(--tinta); font-weight: 600; }
+  .cp-vp { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #070505; }
+  .cp { position: absolute; left: 0; top: 0; width: 1280px; height: 720px; transform-origin: 0 0; padding: 34px 72px 40px; overflow: hidden; font-size: 14px; color: #EDE6DF; display: flex; flex-direction: column; }
+  .navegador:fullscreen { display: flex; flex-direction: column; border-radius: 0; border: 0; width: 100vw; height: 100vh; }
+  .navegador:fullscreen .cp-vp { flex: 1 1 auto; aspect-ratio: auto; }
+  .nav-barra .full { border: 1px solid var(--borde-2); background: transparent; color: var(--gris-2); border-radius: 6px; font-size: 11.5px; padding: 3px 9px; white-space: nowrap; }
+  .nav-barra .full:hover { color: var(--naranja); border-color: var(--naranja); }
+  .cp::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(42% 55% at 82% 8%, rgba(228,98,20,.55), rgba(228,98,20,0) 70%), radial-gradient(38% 50% at 6% 96%, rgba(228,98,20,.45), rgba(228,98,20,0) 70%); }
+  .cp > * { position: relative; }
+  .cp-k { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); }
+  .cp-k.n { color: var(--naranja); }
+  .cp h4 { margin: 0; font-weight: 300; letter-spacing: -0.035em; font-size: clamp(26px, 3.6vw, 36px); line-height: 1.05; }
+  .cp-card { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07); border-radius: 12px; padding: 14px; min-width: 0; }
+  .cp-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: -12px 0 22px; flex-wrap: wrap; }
+  .cp-top .marca { font-size: 10px; letter-spacing: .34em; color: var(--naranja); font-weight: 600; }
+  .cp-top nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .cp-top nav button { border: 0; background: transparent; color: var(--gris-2); font-size: 11.5px; padding: 5px 10px; border-radius: 999px; }
+  .cp-top nav button.on { background: rgba(232,130,58,.22); color: var(--naranja); border: 1px solid rgba(232,130,58,.4); }
+  .cp-av { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: rgba(232,130,58,.25); color: var(--naranja); font-size: 11px; font-weight: 600; }
+  /* ingreso */
+  .cp-login { flex: 1; display: grid; justify-items: center; align-content: center; gap: 12px; }
+  .cp-login .marca { font-size: 11px; letter-spacing: .36em; color: var(--naranja); font-weight: 600; margin-bottom: 8px; }
+  .cp-login input { width: min(280px, 100%); background: rgba(0,0,0,.45); border: 1px solid rgba(255,255,255,.12); border-radius: 6px; padding: 9px 11px; color: var(--hueso); font: inherit; font-size: 12.5px; }
+  .cp-login .cp-entrar { border: 0; background: transparent; color: var(--naranja); font-size: 20px; margin-top: 6px; }
+  .cp-login .sol { color: var(--naranja); font-size: 12px; font-weight: 500; }
+  /* inicio */
+  .cp-hola { display: grid; justify-items: center; text-align: center; gap: 8px; margin-top: 70px; }
+  .cp-hola h4 { font-size: 44px; }
+  .cp-tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 34px; width: 900px; margin-inline: auto; }
+  .cp-tres .cp-card { display: grid; gap: 8px; text-align: left; min-height: 190px; align-content: start; padding: 18px; }
+  .cp-tres .cp-card .fila { display: flex; justify-content: space-between; color: var(--naranja); font-size: 11px; }
+  .cp-tres .cp-card b { font-weight: 400; font-size: 16px; margin-top: 18px; }
+  .cp-tres .cp-card small { color: var(--gris); font-size: 11px; }
+  .cp-tres .cp-card .bar { height: 2px; background: rgba(255,255,255,.08); border-radius: 2px; }
+  .cp-tres .cp-card .bar i { display: block; height: 100%; width: 83%; background: var(--naranja); border-radius: 2px; }
+  .cp-tres .cp-card button { justify-self: start; margin-top: auto; border: 0; background: transparent; color: var(--gris-2); font-size: 11px; padding: 0; }
+  .cp-tres .cp-card button:hover { color: var(--naranja); }
+  /* progreso */
+  .cp-prog { display: grid; grid-template-columns: 180px 1fr; gap: 10px; margin-top: 16px; }
+  .cp-ring { display: grid; place-items: center; }
+  .cp-ring svg { width: 110px; height: 110px; }
+  .cp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cp-stats .cp-card b { font-weight: 300; font-size: 22px; letter-spacing: -0.03em; }
+  .cp-stats .cp-card b small { font-size: 11px; color: var(--gris); }
+  .cp-cont { grid-column: 1 / -1; }
+  .cp-cont a, .cp-cont span.l { color: var(--naranja); font-size: 13px; }
+  .cp-mods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+  .cp-mod { display: grid; grid-template-columns: 20px 1fr auto; gap: 4px 8px; align-items: center; padding: 10px 12px; }
+  .cp-mod .i { color: var(--naranja); font-size: 10.5px; }
+  .cp-mod .d { font-size: 10px; color: var(--gris); }
+  .cp-mod .b { grid-column: 2 / -1; height: 2px; background: rgba(255,255,255,.08); border-radius: 2px; }
+  .cp-mod .b i { display: block; height: 100%; background: var(--naranja); border-radius: 2px; }
+  /* herramientas */
+  .cp-filtros { display: flex; gap: 6px; flex-wrap: wrap; margin: 16px 0 14px; align-items: center; }
+  .cp-filtros button { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); border-radius: 999px; padding: 5px 11px; font-size: 11px; color: var(--gris-2); }
+  .cp-filtros button.on { background: rgba(232,130,58,.22); border-color: rgba(232,130,58,.5); color: var(--naranja); }
+  .cp-filtros input { margin-left: auto; min-width: 140px; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.1); border-radius: 999px; padding: 6px 12px; color: var(--hueso); font: inherit; font-size: 11.5px; }
+  .cp-herr { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cp-herr .cp-card { display: grid; gap: 6px; align-content: start; }
+  .cp-herr .tg { justify-self: start; font-size: 8.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--gris-2); border: 1px solid rgba(255,255,255,.14); border-radius: 999px; padding: 2px 8px; }
+  .cp-herr b { font-weight: 500; font-size: 14px; }
+  .cp-herr p { color: var(--gris); font-size: 11.5px; }
+  .cp-herr .ft { font-size: 8.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--gris); margin-top: 4px; }
+  .cp-vacio { color: var(--gris); padding: 20px 0; }
+  .campus-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+  .campus-mini img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 5px; border: 1px solid var(--borde); display: block; }
+  @media (max-width: 760px) {
+  }
+  .galeria.grande { grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); }
+  .escena img { cursor: zoom-in; }
+  .lightbox { position: fixed; inset: 0; z-index: 40; background: rgba(5,4,3,.94); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); cursor: zoom-out; }
+  .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 10px; box-shadow: 0 30px 90px rgba(0,0,0,.6); }
+  .lightbox button { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); }
+  .slide.pf { justify-items: center; text-align: center; gap: clamp(14px, 2.6vh, 26px); padding-top: clamp(8px, 2vh, 24px); }
+  .visor.pf-fondo { background: #0c0a10; }
+  .visor.pf-fondo::before { background:
+      radial-gradient(45vw 55vh at 6% 0%, rgba(124, 92, 255, .34), rgba(124, 92, 255, 0) 70%),
+      radial-gradient(42vw 50vh at 96% 2%, rgba(232, 110, 40, .32), rgba(232, 110, 40, 0) 70%),
+      radial-gradient(50vw 40vh at 50% 108%, rgba(124, 92, 255, .12), rgba(124, 92, 255, 0) 70%); }
+  .pf-logos { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .pf-marca { font-size: clamp(26px, 3vw, 34px); font-weight: 700; letter-spacing: -0.03em; color: var(--hueso); }
+  .pf-marca i { font-style: normal; color: #A98BFF; }
+  .pf-x { color: var(--gris); font-size: 20px; }
+  .pf-gen { display: inline-flex; align-items: center; gap: 8px; font-size: clamp(20px, 2.4vw, 26px); letter-spacing: .14em; font-weight: 400; }
+  .pf-gen svg { width: 22px; height: 26px; }
+  .pf-gen b { color: var(--naranja); font-weight: 600; }
+  .pf-head { display: grid; gap: 8px; justify-items: center; max-width: 900px; }
+  .pf-head .k { font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--naranja); }
+  .pf-head h2 { font-size: clamp(30px, min(4.4vw, 7vh), 54px); font-weight: 400; letter-spacing: -0.035em; }
+  .pf-head h2 em { font-style: normal; background: linear-gradient(90deg, #A98BFF, var(--naranja)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .pf-head p { color: var(--gris-2); font-size: 17px; font-weight: 300; }
+  .pf-cards { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; text-align: left; }
+  .pf-card { position: relative; padding: 22px 20px 24px; border-radius: 16px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); display: grid; gap: 8px; align-content: start; min-height: clamp(170px, 26vh, 220px); overflow: hidden; }
+  .pf-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--c); opacity: .9; }
+  .pf-ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: var(--c); background: color-mix(in srgb, var(--c) 16%, transparent); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); margin-bottom: 6px; }
+  .pf-ico svg { width: 22px; height: 22px; }
+  .pf-card h3 { font-size: 19px; font-weight: 500; letter-spacing: -0.015em; }
+  .pf-card p { color: var(--gris-2); font-size: 14.5px; font-weight: 300; }
+  .pf-bonus { display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px 12px 12px; border-radius: 999px; border: 1px solid rgba(169,139,255,.35); background: linear-gradient(90deg, rgba(169,139,255,.14), rgba(232,130,58,.12)); font-size: 18px; }
+  .pf-gift { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #A98BFF, var(--naranja)); font-size: 17px; }
+  .pf-bonus b { font-weight: 600; }
+  .pf-bonus em { font-style: normal; background: linear-gradient(90deg, #C9B6FF, #F2A86B); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 500; }
+  @media (max-width: 900px) { .pf-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .pf-cards { grid-template-columns: 1fr; } .pf-card { min-height: 0; } }
+  [hidden] { display: none !important; }
+  /* Detalle / slides */
+  .visor { position: fixed; inset: 0; z-index: 20; background: rgba(10,8,7,.95); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .visor::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(45vw 40vw at 80% 0%, rgba(201,92,24,.3), rgba(201,92,24,0) 70%); }
+  .visor-top, .visor-pie { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .que { font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--gris-2); }
+  .que b { color: var(--naranja); font-weight: 600; }
+  .pista { font-size: 12px; color: var(--gris); }
+  .escena { position: relative; overflow-y: auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .slide { max-width: 1120px; margin: 0 auto; padding-block: 20px 36px; display: grid; gap: 26px; animation: entra .35s ease both; }
+  @keyframes entra { from { opacity: .3; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .slide { animation: none; } }
+  .slide-head { display: grid; gap: 10px; max-width: 760px; }
+  .slide-head .k { font-size: 12px; font-weight: 600; letter-spacing: .28em; text-transform: uppercase; color: var(--naranja); }
+  .slide-head h2 { font-size: clamp(34px, 5.4vw, 60px); }
+  .slide-head p { font-size: 17px; color: var(--gris-2); font-weight: 300; max-width: 60ch; }
+  .tarjetas { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+  .tarjeta { padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+  .tarjeta h3 { font-size: 21px; font-weight: 400; }
+  .tarjeta p { color: var(--gris-2); font-weight: 300; font-size: 15px; }
+  .tarjeta .big { font-size: 44px; font-weight: 200; letter-spacing: -0.05em; line-height: 1; }
+  .tarjeta .big em { font-style: normal; color: var(--naranja); }
+  .tag-n { font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gris); font-weight: 500; }
+  .lista { display: grid; gap: 8px; }
+  .lista li { display: flex; gap: 10px; align-items: baseline; font-size: 15px; }
+  .sops { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; }
+  .sops div { border: 1px solid var(--borde); border-radius: 12px; padding: 11px 14px; display: flex; gap: 10px; align-items: baseline; font-size: 14px; background: var(--vidrio); min-width: 0; }
+  .sops small { color: var(--gris); font-size: 11px; margin-left: auto; }
+  .etapas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .etapa { padding: 15px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .etapa .n { color: var(--naranja); font-size: 13px; font-weight: 600; }
+  .etapa b { font-weight: 500; }
+  .etapa p { color: var(--gris-2); font-size: 13px; font-weight: 300; }
+  .linea-ant { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+  .linea-ant .a { font-size: clamp(34px, 5vw, 52px); font-weight: 200; color: var(--gris-2); letter-spacing: -0.05em; line-height: 1; }
+  .linea-ant .b { font-size: clamp(56px, 9vw, 96px); font-weight: 200; letter-spacing: -0.06em; line-height: .9; }
+  .linea-ant .f { font-size: 26px; color: var(--naranja); font-weight: 200; padding-bottom: 8px; }
+  .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+  .galeria figure { margin: 0; display: grid; gap: 8px; }
+  .galeria img { width: 100%; border-radius: 12px; border: 1px solid var(--borde); display: block; }
+  .galeria figcaption { font-size: 13px; color: var(--gris-2); }
+  .bloque-ac { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 18px; align-items: start; padding: 18px; }
+  .bloque-ac .pill { font-size: 18px; }
+  .bloque-ac .galeria { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .bloque-ac .ac-head { display: grid; gap: 10px; }
+  .bloque-ac.ancho { grid-template-columns: 1fr; gap: 14px; }
+  .bloque-ac.ancho .ac-head { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .bloque-ac.ancho .ac-head .pill { padding-inline: 22px; }
+  .grupal-layout { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); gap: 12px; }
+  .foto-ancha { margin: 0; border-radius: 12px; border: 1px solid var(--borde); overflow: hidden; background: #101010; }
+  .foto-ancha img { width: 100%; height: auto; display: block; }
+  .grupal-stats { display: grid; grid-template-rows: repeat(3, 1fr); gap: 12px; }
+  .grupal-stats > div { border-radius: 12px; border: 1px solid var(--borde); background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.012)); padding: 18px 20px; display: grid; align-content: center; gap: 4px; }
+  .grupal-stats b { font-size: clamp(36px, 5vw, 56px); font-weight: 200; letter-spacing: -0.05em; line-height: 1; color: var(--naranja); }
+  .grupal-stats span { color: var(--gris-2); font-size: 15px; }
+  @media (max-width: 700px) { .grupal-layout { grid-template-columns: 1fr; } .grupal-stats { grid-template-rows: none; grid-template-columns: repeat(3, 1fr); } }
+  .chat-gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 210px; gap: 10px; }
+  .chat-gal figure { margin: 0; min-height: 0; border-radius: 12px; border: 1px solid var(--borde); background: #1b1a1f; overflow: hidden; transition: border-color .2s; }
+  .chat-gal figure:hover { border-color: rgba(232,130,58,.55); }
+  .chat-gal img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .chat-gal figure.destacada { grid-column: 1 / 3; grid-row: 1 / 3; }
+  .chat-gal figure:not(.destacada) img { object-fit: cover; object-position: left top; }
+  @media (max-width: 700px) {
+    .chat-gal { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 150px; }
+    .chat-gal figure.destacada { grid-column: 1 / -1; grid-row: span 2; }
+  }
+  .bloque-ac .galeria img.chat { width: auto; max-width: 100%; max-height: 560px; object-fit: contain; justify-self: start; }
+  .bloque-ac .galeria figure:has(img.chat) { justify-items: start; }
+  .portada { min-height: 60vh; align-content: center; justify-items: center; text-align: center; }
+  .portada h2 { font-size: clamp(60px, 12vw, 140px); font-weight: 700; color: var(--naranja); letter-spacing: -0.045em; }
+  .indice { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .indice button { border: 1px solid var(--borde-2); background: var(--vidrio); border-radius: 999px; padding: 8px 14px; font-size: 13px; color: var(--gris-2); }
+  .indice button:hover { color: var(--hueso); border-color: var(--naranja); }
+  .puntos { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+  .puntos button { width: 8px; height: 8px; padding: 0; border-radius: 50%; border: 0; background: rgba(255,255,255,.2); }
+  .puntos button[aria-current="true"] { background: var(--naranja); width: 22px; border-radius: 4px; }
+  .nav { display: flex; gap: 8px; }
+  .nav .btn[disabled] { opacity: .35; cursor: default; }
+
+  /* Pantallas chicas o bajas: el tablero pasa a scroll */
+  @media (max-width: 960px), (max-height: 560px) {
+    body { overflow: auto; }
+    html, body { height: auto; }
+    .app { height: auto; grid-template-rows: auto auto auto; }
+    .cabeza { grid-template-columns: 1fr; }
+    .prueba { justify-items: start; }
+    .tablero { grid-template-columns: 1fr; grid-template-rows: none; grid-template-areas: "eq" "info" "res" "ac" "bon"; }
+    .card.foto { min-height: 260px; }
+    .res { flex: none; height: 150px; }
+    .acomp { flex: none; grid-auto-rows: 150px; }
+    .a-bon { grid-template-columns: 1fr 1fr; }
+    .etapas { grid-template-columns: 1fr 1fr; }
+    .bloque-ac { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .barra { opacity: .7; }
+    .a-bon { grid-template-columns: 1fr; }
+    .acomp-item { grid-template-columns: 1fr; }
+    .acomp { grid-auto-rows: auto; }
+    .acomp-item .fotos { height: 150px; }
+    .prueba .stats { flex-wrap: wrap; }
+    .etapas { grid-template-columns: 1fr; }
+    .puntos { display: none; }
+  }
+</style>
+
+<div class="app">
+  <header class="barra">
+    <div aria-hidden="true"></div>
+    <div class="switch" role="group" aria-label="Elegir oferta">
+      <button type="button" id="sw-os" data-o="os" aria-pressed="true">Genesis OS</button>
+      <button type="button" id="sw-lite" data-o="lite" aria-pressed="false">Genesis Lite</button>
+    </div>
+    <div class="acciones">
+    </div>
+  </header>
+  <section class="cabeza" id="cabeza"></section>
+  <main class="tablero" id="tablero"></main>
+</div>
+
+<div class="visor" id="visor" hidden role="dialog" aria-modal="true" aria-label="Detalle de la oferta">
+  <div class="visor-top">
+    <button type="button" class="btn" id="cerrar">← Vista general</button>
+    <span class="que" id="que"></span>
+  </div>
+  <div class="escena" id="escena"></div>
+  <div class="visor-pie">
+    <span class="pista num" id="contador"></span>
+    <div class="puntos" id="puntos"></div>
+    <div class="nav">
+      <button type="button" class="btn" id="ant" aria-label="Anterior">←</button>
+      <button type="button" class="btn prim" id="sig" aria-label="Siguiente">→</button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <img id="lightbox-img" alt="">
+  <button type="button" class="btn" id="lightbox-cerrar">Cerrar ✕</button>
+</div>
+
+<script>
+const IMG = {
+  tienda: { src: "oferta-genesis-img/sesion-1a1-tienda.webp", alt: "Sesión 1 a 1: Manu revisando la tienda de una marca en vivo" },
+  miro: { src: "oferta-genesis-img/sesion-1a1-miro.webp", alt: "Sesión 1 a 1: armando el funnel en Miro con Manu" },
+  grupal: { src: "oferta-genesis-img/grupal.webp", alt: "Clase grupal en vivo con Manu" },
+  chat: { src: "oferta-genesis-img/chat.webp", alt: "Chat 1 a 1 directo con Manu", cls: "arriba" },
+  chatTransfer: { src: "oferta-genesis-img/chat-transferencia.webp", alt: "Chat 1 a 1: José le presta $1.500.000 a un alumno para la pauta", cls: "arriba" },
+  chatProductos: { src: "oferta-genesis-img/chat-productos.webp", alt: "Chat 1 a 1: un alumno comparte sus productos para validar", cls: "arriba" },
+  chatLanding: { src: "oferta-genesis-img/chat-landing.webp", alt: "Chat 1 a 1: José revisa la landing de un alumno", cls: "arriba" },
+  chatSkills: { src: "oferta-genesis-img/chat-skills.webp", alt: "Chat 1 a 1: Manu comparte skills de copy y creativos", cls: "arriba" },
+  chatValidacion: { src: "oferta-genesis-img/chat-validacion.webp", alt: "Chat 1 a 1: Manu responde la validación de productos de un alumno", cls: "arriba" },
+  manuFoto: { src: "oferta-genesis-img/manu-foto.webp", alt: "Manu Dominguez, founder de Genesis OS" },
+  joseFoto: { src: "oferta-genesis-img/jose-foto.webp", alt: "José, co-founder de Genesis OS" },
+  manuPanel: { src: "oferta-genesis-img/manu-panel.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 1626 nuevos, 275.2M de ingresos recurrentes, 7,2% de cancelaciones" },
+  manuPanelMini: { src: "oferta-genesis-img/manu-panel-compacto.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 1626 nuevos, 275.2M de ingresos recurrentes, 7,2% de cancelaciones" },
+  joseVentas: { src: "oferta-genesis-img/jose-ventas.webp", alt: "Ventas de la marca de José: 458,7M en septiembre, +72%" },
+  joseVentasMini: { src: "oferta-genesis-img/jose-ventas-compacto.webp", alt: "Ventas de la marca de José: 458,7M, +72%, 8.361 pedidos" },
+  manu: { src: "oferta-genesis-img/manu-dashboard.webp", alt: "Panel de suscripciones de la marca de Manu: 3943 activas, 275.2M de ingresos recurrentes, 7,2% de cancelaciones", cls: "arriba" },
+  mesa: { src: "oferta-genesis-img/comunidad-mesa.webp", alt: "Encuentro presencial de la comunidad Genesis" },
+  terraza: { src: "oferta-genesis-img/comunidad-terraza.webp", alt: "La comunidad Genesis en el encuentro presencial" }
+};
+/* Métricas diarias de una marca cliente. Las de escritorio van en orden de fecha. */
+const RES_DESK = [["r01","29 jul 2026"],["r07","30 jul 2026"],["r06","31 jul 2026"],["r15","1 ago 2026"],["r05","2 ago 2026"],["r09","3 ago 2026"],["r08","4 ago 2026"]];
+const TOP_FACT = [["top1","$8.0M"],["top2","$7.8M"],["top4","$45.0M"]];
+const RES_MOVIL = ["r10","r11","r12","r13","r14","r02","r03","r04"];
+const resImg = (k, extra = "") => `<img src="oferta-genesis-img/resultados/${k}.webp" alt="Métricas diarias de una marca que trabaja con Genesis" class="${extra}" loading="lazy">`;
+const SOP_GRUPOS = [
+  ["Producto", ["Investigación","Oferta","Blackhat"]],
+  ["Adquisición", ["Ads","Media buying","Funnels","Landings","Copywriting y guiones","Edición y creativos"]],
+  ["Operación", ["Operaciones","Logística","Atención al cliente","Retención"]]
+];
+const SOPS = ["Investigación","Operaciones","Funnels","Retención","Oferta","Blackhat","Ads","Landings","Atención al cliente","Logística","Media buying","Copywriting y guiones","Edición y creativos"];
+const CONTACTOS = ["Proveedores","Laboratorios","Contadores especializados","Logística propia","Abogados especializados","Bolsa de trabajo","Contacto de registro: INPI, ANMAT y SENASA"];
+const PF_CARDS = [
+  { color: "#A98BFF", t: "Rail instalado con Puentify", d: "Suscripciones instaladas dentro de tu tienda con el equipo de Puentify.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16"/></svg>' },
+  { color: "#6FB6E8", t: "Cobros recurrentes con Mercado Pago", d: "Configurado por nuestro equipo para cobrar automáticamente todos los meses.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l3 3-3 3"/><path d="M4 11V9a3 3 0 0 1 3-3h13"/><path d="M7 21l-3-3 3-3"/><path d="M20 13v2a3 3 0 0 1-3 3H4"/></svg>' },
+  { color: "#E8823A", t: "Onboarding prioritario", d: "Prioridad en el onboarding de Puentify.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>' },
+  { color: "#4FD08A", t: "Comisiones más bajas", d: "Menor porcentaje por cada venta, únicamente para clientes de {marca}.", icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></svg>' }
+];
+const PUENTIFY = ["Contacto directo con Puentify","1 mes gratis","Onboarding prioritario","Instalación con el equipo de Puentify"];
+
+const OFERTAS = {
+  os: {
+    nombre: "GENESIS OS", titulo: "Genesis <em>OS</em>", modo: "Done with you",
+    dur: "4 meses",
+    tag: "Escalá tu ecomm de consumibles a +$100M al mes con modelo de suscripción, sin depender del CPA ni dejar de vender.",
+    acomp: [
+      { t: "Sesiones 1 a 1 ilimitadas", c: "Sesiones 1 a 1", chip: "Ilimitadas", s: "Con Manu o José, cuando las necesites", fotos: ["tienda","miro"] },
+      { t: "Grupales (4 por semana)", c: "Clases grupales", chip: "4 por semana", s: "64 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"], ancho: true, stats: [["64","clases grupales"],["4","por semana"],["6–8","personas por grupo"]] },
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Con Manu y José", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
+    ],
+    dwy: ["Auditoría de tus números + roadmap","Suscripción instalada","Ofertas","Creación de anuncios","Procesos de retención","Proyección de stock"],
+    nucleo: ["Software propio","Acceso para 2 personas de tu equipo","Tablero de suscriptores y bajas"],
+    bonus: ["contactos","puentify","descuento"],
+    cierreCorto: { k: "Cupos limitados", t: "10 marcas", s: "Queremos que las 10 terminen siendo casos de éxito" },
+    cierre: { k: "Cupos limitados", t: "Tomamos 10 marcas", p: "Queremos que el servicio sea lo más personalizado posible y que las 10 marcas que entren terminen siendo casos de éxito. La inversión la vemos en la llamada, con tus números adelante." }
+  },
+  lite: {
+    nombre: "GENESIS LITE", titulo: "Genesis <em>Lite</em>", modo: "Grupal",
+    dur: "3 meses",
+    tag: "Arrancá en ecommerce por el lado correcto: un consumible, un proceso paso a paso y alguien al lado que ya lo hizo.",
+    acomp: [
+      { t: "Grupales (3 por semana)", c: "Clases grupales", chip: "3 por semana", s: "36 clases grupales · grupos de 6 a 8 personas en promedio", fotos: ["grupal"], ancho: true, stats: [["36","clases grupales"],["3","por semana"],["6–8","personas por grupo"]] },
+      { t: "Chat 1 a 1 directo", c: "Chat 1 a 1", chip: "Directo", s: "Cuando te trabás, no esperás a la próxima clase", fotos: ["chatTransfer","chat","chatProductos","chatLanding","chatSkills","chatValidacion"], chats: true }
+    ],
+    dwy: null,
+    nucleo: ["Software propio","Tablero de suscriptores y bajas"],
+    bonus: ["contactos","puentify"],
+    cierreCorto: { k: "Esta apertura", t: "Última apertura", s: "Cuando termina, cerramos las puertas" },
+    cierre: { k: "Esta apertura", t: "Cuando termina, cerramos las puertas", p: "No es un tema de cupos. Después de esta apertura dejamos de tomar gente, y hoy no sabemos cuándo vamos a volver a abrir. La inversión la vemos en la llamada, con tus números adelante." }
+  }
+};
+
+const EQUIPO = [
+  { nombre: "Manu · Founder de Genesis OS", handle: "@manudomzz", rol: "Founder", dato: "+$3M USD · 3 años", foto: "manuFoto", prueba: "manuPanel", mini: "manuPanelMini", fondo: "#f5f5f5" },
+  { nombre: "José · Co-founder de Genesis OS", handle: "@_josezelaya", rol: "Co-founder", dato: "+$2M USD · 1 año y medio", foto: "joseFoto", prueba: "joseVentas", mini: "joseVentas", fondo: "#000" }
+];
+const ETAPAS = [
+  ["Buscar el producto","Un consumible: algo que se termina y tu cliente vuelve a comprar."],
+  ["Validarlo","Oferta, landing y primeros anuncios antes de poner plata fuerte."],
+  ["Lanzarlo","Tu tienda funcionando, con atención, logística y creativos atrás."],
+  ["Escalarlo","Que venda todos los meses. Subimos pauta y armamos retención."],
+  ["Pasarlo a suscripción","Con la marca vendiendo constante, instalamos la suscripción con vos."]
+];
+const NOMBRES = { equipo: "Equipo", resultados: "Resultados", comunidad: "Comunidad", informacion: "Información", acompanamiento: "Acompañamiento", "bonus-contactos": "Contactos", "bonus-puentify": "Puentify", "bonus-descuento": "Descuento", cierre: "Cierre" };
+
+let oferta = "os";
+let idx = 0;
+let slides = [];
+
+const $ = s => document.querySelector(s);
+const ok = '<span class="ok" aria-hidden="true"></span>';
+const li = arr => arr.map(x => `<li>${ok}<span>${x}</span></li>`).join("");
+const img = (k, extra = "") => `<img src="${IMG[k].src}" alt="${IMG[k].alt}" class="${IMG[k].cls || ""} ${extra}" loading="lazy">`;
+
+/* ---------- Tablero (vista general) ---------- */
+function card(id, inner, extra = "", lbl = "", mt = "") {
+  const head = lbl ? `<div class="card-h"><span class="lbl">${lbl}</span>${mt ? `<span class="mt">${mt}</span>` : ""}</div>` : "";
+  return `<button type="button" class="card ${extra}" data-ir="${id}" aria-label="Ver ${NOMBRES[id]}"><span class="flecha" aria-hidden="true">↗</span>${head}${inner}</button>`;
+}
+
+function render() {
+  const o = OFERTAS[oferta];
+  const lite = oferta === "lite";
+  $("#cabeza").innerHTML = `
+    <h1>${o.titulo}</h1>
+    <div class="meta"><span class="chip n">${o.dur}</span><span class="chip">${o.modo}</span><span class="chip">Método B.A.S.E.</span></div>`;
+
+  const bonus = {
+    contactos: n => card("bonus-contactos", `<span class="k">Bonus ${n}</span><b>Red de contactos</b><small>Proveedores, laboratorios, contadores, logística y registros</small>`, "bonus"),
+    puentify: n => card("bonus-puentify", `<span class="k">Bonus ${n}</span><b>Puentify × Genesis</b><small>Tus cobros recurrentes, instalados con nosotros</small>`, "bonus"),
+    descuento: n => card("bonus-descuento", `<span class="k">Bonus ${n}</span><b class="monto num">−USD 3.000</b><small>Solo para los 10 cupos</small>`, "bonus")
+  };
+
+  $("#tablero").innerHTML = `
+    ${card("equipo", `
+      <div class="personas">${EQUIPO.map(e => `
+        <div class="miembro">
+          <div class="persona">${img(e.foto, "avatar-foto")}<div><b>${e.nombre}</b><small class="num">${e.dato}</small></div></div>
+          <div class="prueba-img">${img(e.mini)}</div>
+        </div>`).join("")}
+      </div>`, "a-eq", "Equipo")}
+
+
+    ${card("informacion", `
+      <p class="titulo-card">SOPs de <em>todas las áreas</em> del negocio + herramientas</p>
+      <div class="sop-grupos">${SOP_GRUPOS.map(g => `<div class="grupo"><span class="sub-lbl">${g[0]}</span><div class="tags">${g[1].map(x => `<span>${x}</span>`).join("")}</div></div>`).join("")}</div>
+      <div class="herr-fila">${ok}<span><b>+ Herramientas:</b> agentes de IA, flujos, skills y dashboards</span></div>
+`, "a-info", "Información", "Tocá para ver el campus")}
+
+    ${card("resultados", `
+      <div class="total num"><b>+$3<em>B</em></b><small>generados para clientes</small></div>
+      <div class="res res-zoom">
+        ${TOP_FACT.map((t, i) => `<figure>${resImg(t[0])}<figcaption>${t[1]} en un día</figcaption></figure>`).join("")}
+      </div>`, "a-res", "Resultados", "Clientes")}
+
+    ${card("acompanamiento", `
+      <div class="acomp">${o.acomp.map(a => `
+        <div class="acomp-item">
+          <div class="fotos">${a.fotos.slice(0, a.chats ? 1 : 2).map(f => img(f)).join("")}</div>
+          <div class="tx"><b>${a.c}</b><small>${a.s}</small><span class="chip n">${a.chip}</span></div>
+        </div>`).join("")}</div>`, "a-ac", "Acompañamiento", lite ? "3 meses" : "4 meses")}
+
+    <div class="a-bon" style="--n:${o.bonus.length + 1}">
+      ${card("comunidad", `${img("terraza")}<div class="pie"><b>Comunidad Genesis</b><small>1 encuentro presencial por mes</small></div>`, "foto", "Comunidad")}
+      ${o.bonus.map((b, i) => bonus[b](i + 1)).join("")}
+    </div>
+  `;
+
+  document.querySelectorAll("[data-ir]").forEach(b => b.addEventListener("click", () => abrir(b.dataset.ir)));
+  slides = armarSlides();
+}
+
+/* ---------- Slides ---------- */
+function armarSlides() {
+  const o = OFERTAS[oferta];
+  const S = [];
+  const lite = oferta === "lite";
+
+  S.push({ id: "portada", nombre: "Portada", html: `
+    <div class="slide portada">
+      <span class="eyebrow">Manu Dominguez · José</span>
+      <h2>${o.nombre}</h2>
+      <span style="font-size:22px;font-style:italic;color:var(--gris)">${o.dur}</span>
+      <div class="indice">${["equipo","resultados","comunidad","informacion","acompanamiento",...o.bonus.map(b=>"bonus-"+b)].map(id => `<button type="button" data-salto="${id}">${NOMBRES[id]}</button>`).join("")}</div>
+    </div>` });
+
+  S.push({ id: "equipo", nombre: "Equipo", html: `
+    <div class="slide">
+      <div class="slide-head" style="max-width:none"><span class="k">Equipo</span><h2 style="font-size:clamp(30px, min(4.4vw, 7vh), 54px)">Con quiénes vas a escalar tu ecom</h2></div>
+      <div class="eq-grid">${EQUIPO.map(e => `
+        <div class="eq-card vidrio">
+          <div class="eq-top">
+            ${img(e.foto, "eq-foto")}
+            <div class="eq-tx">
+              <span class="eq-handle">${e.handle}</span>
+              <b>${e.rol}</b>
+              <span class="eq-dato num">${e.dato}</span>
+            </div>
+          </div>
+          <div class="eq-prueba" style="background:${e.fondo}">${img(e.prueba)}</div>
+        </div>`).join("")}
+      </div>
+    </div>` });
+
+  S.push({ id: "resultados", nombre: "Resultados", html: `
+    <div class="slide">
+      <div class="slide-head"><h2>Resultados de clientes</h2></div>
+      <div class="galeria grande">${["r16", ...RES_DESK.map(r => r[0])].map(k => resImg(k)).join("")}</div>
+      <div class="galeria-movil">${RES_MOVIL.map(k => resImg(k)).join("")}</div>
+    </div>` });
+
+  S.push({ id: "comunidad", nombre: "Comunidad", html: `
+    <div class="slide">
+      <div class="slide-head"><span class="k">Genesis comunidad</span><h2>No hacés este camino solo</h2><p>Entrás a una comunidad de dueños de marca de consumibles que están haciendo lo mismo que vos: comparten números, proveedores y lo que les funciona.</p></div>
+      <div><span class="chip n" style="font-size:14px;padding:7px 16px">1 encuentro presencial por mes</span></div>
+      <div class="galeria">${["mesa","terraza"].map(f => `<figure>${img(f)}</figure>`).join("")}</div>
+      <div class="tarjetas">
+        <div class="tarjeta vidrio"><span class="tag-n">Qué encontrás</span><ul class="lista">${li(["Dueños de marca en el mismo camino","Números reales, sin humo","1 encuentro presencial por mes"])}</ul></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Para qué sirve</span><p>Cuando una duda ya la resolvió otro, no esperás a la próxima clase: la encontrás en la comunidad.</p></div>
+      </div>
+    </div>` });
+
+  S.push({ id: "informacion", nombre: "Información", html: `
+    <div class="slide">
+      <div class="slide-head"><span class="k">Información</span><h2>Todos los SOPs, en el campus</h2><p>Todas las áreas del negocio documentadas paso a paso, más las herramientas que usamos en nuestras marcas. ${lite ? "Sabés qué hacer hoy, qué hacer mañana y en qué orden." : "Lo que usamos nosotros, listo para copiar y pegar en tu marca."}</p></div>
+      <div id="campus">${campusHTML()}</div>
+      <div class="slide-head"><span class="k">Qué hay adentro</span><h3 style="font-size:28px">SOPs de todas las áreas</h3></div>
+      <div class="sops">${SOPS.map((s,i) => `<div>${ok}<span>SOPs ${s}</span><small class="num">${String(i+1).padStart(2,"0")}</small></div>`).join("")}</div>
+      <div class="tarjetas">
+        <div class="tarjeta vidrio"><span class="tag-n">+ Herramientas</span><h3>Agentes, flujos, skills y dashboards</h3><p>Más de 30 agentes de IA: creativos, Meta Ads, operaciones, flujos de email y más.</p></div>
+        <div class="tarjeta vidrio"><span class="tag-n">Núcleo</span><ul class="lista">${li(o.nucleo)}</ul></div>
+      </div>
+      ${lite ? `<div class="slide-head" style="margin-top:6px"><span class="k">En qué orden</span><h3 style="font-size:28px">Del producto a la suscripción</h3></div>
+      <div class="etapas">${ETAPAS.map((e,i) => `<div class="etapa vidrio"><span class="n num">0${i+1}</span><b>${e[0]}</b><p>${e[1]}</p></div>`).join("")}</div>` : ""}
+    </div>` });
+
+  S.push({ id: "acompanamiento", nombre: "Acompañamiento", html: `
+    <div class="slide">
+      <div class="slide-head"><span class="k">Acompañamiento</span><h2>${lite ? "Lo implementás vos, con nosotros al lado" : "Lo hacemos con vos, durante 4 meses"}</h2><p>${lite ? "No es «lo hacemos por vos». Es «lo hacés vos, con alguien que ya lo hizo mirando lo que hacés»." : "Done with you: tu marca aplica el método con Manu y el equipo al lado en cada paso."}</p></div>
+      ${o.acomp.map(a => `
+        <div class="vidrio bloque-ac ${a.chats || a.ancho ? "ancho" : ""}">
+          <div class="ac-head"><div class="pill">${a.t}</div><p style="color:var(--gris-2)">${a.s}</p></div>
+          ${a.chats
+            ? `<div class="chat-gal">${a.fotos.map((f, i) => `<figure class="${i === 0 ? "destacada" : ""}">${img(f)}</figure>`).join("")}</div>`
+            : a.ancho ? `<div class="grupal-layout"><figure class="foto-ancha">${img(a.fotos[0])}</figure><div class="grupal-stats num">${a.stats.map(x => `<div><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}</div></div>`
+            : `<div class="galeria">${a.fotos.map(f => `<figure>${img(f)}<figcaption>${IMG[f].alt}</figcaption></figure>`).join("")}</div>`}
+        </div>`).join("")}
+      ${o.dwy ? `<div class="tarjeta vidrio"><span class="tag-n">Done with you · lo hacemos con vos</span><ul class="lista" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">${li(o.dwy)}</ul></div>` : ""}
+    </div>` });
+
+  o.bonus.forEach((b, i) => {
+    const n = i + 1;
+    if (b === "contactos") S.push({ id: "bonus-contactos", nombre: `Bonus ${n}`, html: `
+      <div class="slide">
+        <div class="slide-head"><span class="k">Bonus ${n}</span><h2>Red de contactos Genesis</h2><p>La agenda que nos llevó años armar: los contactos que necesitás para fabricar, registrar, vender y despachar.</p></div>
+        <div class="tarjetas">${CONTACTOS.map(c => `<div class="tarjeta vidrio">${ok}<h3>${c}</h3></div>`).join("")}</div>
+      </div>` });
+    if (b === "puentify") S.push({ id: "bonus-puentify", nombre: `Bonus ${n}`, html: `
+      <div class="slide pf">
+        <div class="pf-logos">
+          <span class="pf-marca">Puentify<i>.</i></span>
+          <span class="pf-x">×</span>
+          <span class="pf-gen"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8C70 30 74 55 50 92C26 55 30 30 50 8Z" fill="var(--naranja)"/></svg>GENESIS <b>${lite ? "LITE" : "OS"}</b></span>
+        </div>
+        <div class="pf-head">
+          <span class="k">Bonus ${n}</span>
+          <h2>Tus cobros recurrentes, <em>instalados por nosotros</em></h2>
+          <p>Con Puentify y Mercado Pago, sin que toques nada.</p>
+        </div>
+        <div class="pf-cards">${PF_CARDS.map(c => `
+          <div class="pf-card" style="--c:${c.color}">
+            <span class="pf-ico">${c.icon}</span>
+            <h3>${c.t}</h3>
+            <p>${c.d.replace("{marca}", lite ? "Genesis Lite" : "Genesis OS")}</p>
+          </div>`).join("")}</div>
+        <div class="pf-bonus"><span class="pf-gift">🎁</span><span><b>Bonus:</b> <em>1 mes gratis de Puentify+</em></span></div>
+      </div>` });
+    if (b === "descuento") S.push({ id: "bonus-descuento", nombre: `Bonus ${n}`, html: `
+      <div class="slide">
+        <div class="slide-head"><span class="k">Bonus ${n}</span><h2>USD 3.000 de descuento</h2><p>Solo para las marcas que entren en los 10 cupos.</p></div>
+        <div class="tarjeta vidrio" style="justify-items:center;text-align:center;padding:48px 22px"><span class="grande-verde num" style="font-size:clamp(64px,12vw,128px)">-USD 3.000</span><p>Se descuenta de la inversión de Genesis OS.</p></div>
+      </div>` });
+  });
+
+  return S;
+}
+
+
+/* ---------- Campus (réplica navegable) ---------- */
+const MODULOS = [["Fundamentos",4,4],["Oferta y posicionamiento",6,6],["Adquisición",8,8],["Ventas",7,7],["Operación y escala",9,9],["Suscripción y precios",10,10],["Retención y recompra",9,12],["Logística y stock",0,8]];
+const HERRAMIENTAS = [
+  ["Landing Pages","Landing page","Agente Landing Page","Plantilla de páginas de ventas optimizada para convertir tráfico en clientes."],
+  ["Retención","Retención","Flujo de retención v1","Secuencia de emails y automatizaciones para aumentar la recompra y la vida del cliente."],
+  ["Retención","Retención","Flujo de retención v2","Estrategia avanzada de retención por clientes, contenido y triggers de reactivación."],
+  ["Email Marketing","Email","Flujo de email de onboarding","Secuencia de bienvenida para educar, activar y generar primeras ventas."],
+  ["Automatizaciones","Automatización","Skill: Carrito abandonado","Recuperá ventas perdidas con un flujo inteligente de emails y mensajes."],
+  ["Ecommerce","Landing page","Agente Upsell / Cross-sell","Página y flujo para ofrecer productos complementarios y aumentar el ticket promedio."],
+  ["Analítica","Analítica","Dashboard de métricas","Visualizá ventas, tráfico y LTV en tiempo real."],
+  ["Ecommerce","Ecommerce","Flujo de lanzamiento","Secuencia completa para lanzar un nuevo producto o línea."],
+  ["Automatizaciones","Automatización","Skill: Reabastecimiento","Automatizá avisos y campañas para recuperar stock y maximizar ventas."]
+];
+const FILTROS = ["Todas","Landing Pages","Email Marketing","Automatizaciones","Retención","Ecommerce","Analítica"];
+const VISTAS = [["ingreso","Ingreso"],["inicio","Inicio"],["progreso","Tu progreso"],["herramientas","Herramientas"]];
+let vistaCampus = "inicio", filtroCampus = "Todas", buscaCampus = "";
+
+function cpTop(on) {
+  return `<div class="cp-top"><span class="marca">GENESIS</span><nav>${[["progreso","Tu avance"],["inicio","Módulos"],["herramientas","Baúl de herramientas"]].map(([v,t]) => `<button type="button" data-cp="${v}" class="${on === v ? "on" : ""}">${t}</button>`).join("")}</nav><span class="cp-av">L</span></div>`;
+}
+function vistaHTML(v) {
+  if (v === "ingreso") return `
+    <div class="cp-login">
+      <span class="marca">GENESIS</span>
+      <input type="email" id="cp-email" placeholder="Email" aria-label="Email" autocomplete="off">
+      <input type="password" id="cp-pass" placeholder="Contraseña" aria-label="Contraseña" autocomplete="off">
+      <button type="button" class="cp-entrar" data-cp="inicio" aria-label="Entrar">→</button>
+      <span class="sol">Solicitar acceso</span>
+      <span class="cp-k">Solo miembros de Genesis OS</span>
+    </div>`;
+  if (v === "inicio") return `${cpTop("")}
+    <div class="cp-hola">
+      <span class="cp-k">Bienvenido de nuevo</span>
+      <h4>Hola, Lauty</h4>
+      <span style="color:var(--gris-2)">¿Por dónde querés continuar hoy?</span>
+    </div>
+    <div class="cp-tres">
+      <div class="cp-card"><span class="fila"><span>01</span><span>↗</span></span><b>Tu avance</b><small>83% del programa completado</small><span class="bar"><i></i></span><button type="button" data-cp="progreso">Ingresar →</button></div>
+      <div class="cp-card"><span class="fila"><span>02</span><span>▤</span></span><b>Módulos</b><small>8 módulos de contenido grabado</small><button type="button" data-cp="progreso">Ingresar →</button></div>
+      <div class="cp-card"><span class="fila"><span>03</span><span>▣</span></span><b>Baúl de herramientas</b><small>42 plantillas y recursos</small><button type="button" data-cp="herramientas">Ingresar →</button></div>
+    </div>`;
+  if (v === "progreso") {
+    const r = 46, c = 2 * Math.PI * r;
+    return `${cpTop("progreso")}
+    <span class="cp-k">01 · Tu avance</span><h4 style="margin-top:6px">Tu progreso</h4>
+    <div class="cp-prog">
+      <div class="cp-card cp-ring"><svg viewBox="0 0 110 110" aria-label="83% completado"><circle cx="55" cy="55" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="4"/><circle cx="55" cy="55" r="${r}" fill="none" stroke="var(--naranja)" stroke-width="4" stroke-linecap="round" stroke-dasharray="${c * .83} ${c}" transform="rotate(-90 55 55)"/><text x="55" y="58" text-anchor="middle" fill="var(--hueso)" font-size="22" font-weight="300" font-family="DM Sans, sans-serif">83%</text><text x="55" y="72" text-anchor="middle" fill="var(--gris)" font-size="6" letter-spacing="1.5" font-family="DM Sans, sans-serif">COMPLETADO</text></svg></div>
+      <div style="display:grid;gap:10px;min-width:0">
+        <div class="cp-stats num">
+          <div class="cp-card"><b>53<small>/64</small></b><div class="cp-k">Lecciones</div></div>
+          <div class="cp-card"><b>6<small>/8</small></b><div class="cp-k">Módulos</div></div>
+          <div class="cp-card"><b>38 h 40 min</b><div class="cp-k">Tiempo visto</div></div>
+        </div>
+        <div class="cp-card cp-cont"><div class="cp-k">Continuar · Módulo 7</div><span class="l">▷ Retención y recompra</span></div>
+      </div>
+    </div>
+    <div class="cp-k" style="margin-top:18px">Por módulo</div>
+    <div class="cp-mods num">${MODULOS.map((m, i) => `<div class="cp-card cp-mod"><span class="i">0${i+1}</span><span>${m[0]}</span><span class="d">${m[1]}/${m[2]} · ${Math.round(m[1]/m[2]*100)}%</span><span class="b"><i style="width:${m[1]/m[2]*100}%"></i></span></div>`).join("")}</div>`;
+  }
+  const q = buscaCampus.trim().toLowerCase();
+  const lista = HERRAMIENTAS.filter(h => (filtroCampus === "Todas" || h[0] === filtroCampus) && (!q || (h[2] + " " + h[3]).toLowerCase().includes(q)));
+  return `${cpTop("herramientas")}
+    <span class="cp-k">02 · Baúl de herramientas</span><h4 style="margin-top:6px">Herramientas</h4>
+    <p style="color:var(--gris-2);margin-top:6px">Plantillas, recursos y software para aplicar lo que aprendés.</p>
+    <div class="cp-filtros">${FILTROS.map(f => `<button type="button" data-filtro="${f}" class="${f === filtroCampus ? "on" : ""}">${f}</button>`).join("")}<input type="search" id="cp-busca" placeholder="Buscar..." aria-label="Buscar herramientas" value="${buscaCampus.replace(/"/g, "&quot;")}"></div>
+    <div class="cp-herr" id="cp-herr">${lista.length ? lista.map(h => `<div class="cp-card"><span class="tg">${h[1]}</span><b>${h[2]}</b><p>${h[3]}</p><span class="ft">${h[0]}</span></div>`).join("") : `<p class="cp-vacio">No hay herramientas con ese filtro.</p>`}</div>`;
+}
+function campusHTML() {
+  return `
+    <div style="display:grid;gap:12px">
+      <div class="campus-tabs" role="group" aria-label="Pantallas del campus">${VISTAS.map(([v,t]) => `<button type="button" data-cpv="${v}" aria-pressed="${v === vistaCampus}">${t}</button>`).join("")}</div>
+      <div class="navegador" id="cp-nav">
+        <div class="nav-barra"><span class="dots"><i></i><i></i><i></i></span><span class="url" id="cp-url"></span><button type="button" class="full" id="cp-full">⤢ Pantalla completa</button></div>
+        <div class="cp-vp" id="cp-vp"><div class="cp" id="cp-pantalla"></div></div>
+      </div>
+      <p class="pista">Es una réplica navegable del campus: tocá las pestañas, los filtros y los botones de "Ingresar".</p>
+    </div>`;
+}
+function ajustarCampus(cont) {
+  const vp = cont.querySelector("#cp-vp"), cp = cont.querySelector("#cp-pantalla");
+  if (!vp || !cp) return;
+  const w = vp.clientWidth, h = vp.clientHeight;
+  if (!w || !h) return;
+  const k = Math.min(w / 1280, h / 720);
+  cp.style.transform = `translate(${(w - 1280 * k) / 2}px, ${(h - 720 * k) / 2}px) scale(${k})`;
+}
+function pintarCampus(cont, foco) {
+  cont.querySelectorAll("[data-cpv]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.cpv === vistaCampus)));
+  cont.querySelector("#cp-url").textContent = `campus.genesis · ${VISTAS.find(x => x[0] === vistaCampus)[1]}`;
+  const cp = cont.querySelector("#cp-pantalla");
+  cp.innerHTML = vistaHTML(vistaCampus);
+  cp.querySelectorAll("[data-cp]").forEach(b => b.addEventListener("click", () => { vistaCampus = b.dataset.cp; pintarCampus(cont); }));
+  cp.querySelectorAll("[data-filtro]").forEach(b => b.addEventListener("click", () => { filtroCampus = b.dataset.filtro; pintarCampus(cont); }));
+  const bus = cp.querySelector("#cp-busca");
+  if (bus) bus.addEventListener("input", () => { buscaCampus = bus.value; pintarCampus(cont, "#cp-busca"); });
+  if (foco) { const el = cp.querySelector(foco); if (el) { el.focus(); try { el.setSelectionRange(el.value.length, el.value.length); } catch (e) {} } }
+  ajustarCampus(cont);
+}
+function bindCampus(root) {
+  const cont = root.querySelector("#campus");
+  if (!cont) return;
+  cont.querySelectorAll("[data-cpv]").forEach(b => b.addEventListener("click", () => { vistaCampus = b.dataset.cpv; pintarCampus(cont); }));
+  const nav = cont.querySelector("#cp-nav"), full = cont.querySelector("#cp-full");
+  full.addEventListener("click", () => {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (nav.requestFullscreen) nav.requestFullscreen().catch(() => {});
+    } catch (e) {}
+  });
+  document.addEventListener("fullscreenchange", () => {
+    full.textContent = document.fullscreenElement === nav ? "✕ Salir" : "⤢ Pantalla completa";
+    requestAnimationFrame(() => ajustarCampus(cont));
+  });
+  if (window.ResizeObserver) new ResizeObserver(() => ajustarCampus(cont)).observe(cont.querySelector("#cp-vp"));
+  pintarCampus(cont);
+}
+
+function abrir(id) {
+  const i = slides.findIndex(s => s.id === id);
+  idx = i < 0 ? 0 : i;
+  $("#visor").hidden = false;
+  pintar();
+  $("#sig").focus();
+}
+function cerrar() {
+  $("#visor").hidden = true;
+  setHash(oferta);
+}
+function ir(d) {
+  const n = idx + d;
+  if (n < 0 || n >= slides.length) return;
+  idx = n; pintar();
+}
+function pintar() {
+  const s = slides[idx];
+  $("#escena").innerHTML = s.html;
+  $("#escena").scrollTop = 0;
+  $("#visor").classList.toggle("pf-fondo", s.id === "bonus-puentify");
+  $("#que").innerHTML = `<b>${OFERTAS[oferta].nombre}</b> · ${s.nombre}`;
+  $("#contador").textContent = `${idx + 1} / ${slides.length}`;
+  $("#ant").disabled = idx === 0;
+  $("#sig").disabled = idx === slides.length - 1;
+  $("#puntos").innerHTML = slides.map((x, i) => `<button type="button" aria-label="${x.nombre}" ${i === idx ? 'aria-current="true"' : ""} data-i="${i}"></button>`).join("");
+  $("#puntos").querySelectorAll("button").forEach(b => b.addEventListener("click", () => { idx = +b.dataset.i; pintar(); }));
+  bindCampus($("#escena"));
+  $("#escena").querySelectorAll("[data-salto]").forEach(b => b.addEventListener("click", () => abrir(b.dataset.salto)));
+  setHash(`${oferta}-${s.id}`);
+}
+
+/* ---------- Oferta y hash ---------- */
+function setOferta(o) {
+  oferta = o;
+  document.querySelectorAll(".switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.o === o)));
+  render();
+}
+function setHash(h) {
+  try { if (location.hash !== "#" + h) history.replaceState(null, "", "#" + h); } catch (e) {}
+}
+function leerHash() {
+  const h = (location.hash || "").slice(1);
+  if (!h) { setOferta("os"); return; }
+  const [o, ...rest] = h.split("-");
+  setOferta(OFERTAS[o] ? o : "os");
+  const id = rest.join("-");
+  if (id) abrir(id); else if (!$("#visor").hidden) cerrar();
+}
+
+document.querySelectorAll(".switch button").forEach(b => b.addEventListener("click", () => {
+  const abierto = !$("#visor").hidden;
+  const actual = abierto ? slides[idx].id : null;
+  setOferta(b.dataset.o);
+  if (abierto) abrir(slides.some(s => s.id === actual) ? actual : "portada"); else setHash(oferta);
+}));
+$("#cerrar").addEventListener("click", cerrar);
+$("#ant").addEventListener("click", () => ir(-1));
+$("#sig").addEventListener("click", () => ir(1));
+$("#escena").addEventListener("click", e => {
+  const im = e.target.closest("img");
+  if (!im || e.target.closest(".navegador")) return;
+  $("#lightbox-img").src = im.currentSrc || im.src;
+  $("#lightbox-img").alt = im.alt;
+  $("#lightbox").hidden = false;
+});
+const cerrarLb = () => { $("#lightbox").hidden = true; };
+$("#lightbox").addEventListener("click", cerrarLb);
+document.addEventListener("keydown", e => {
+  if (!$("#lightbox").hidden) { if (e.key === "Escape") cerrarLb(); return; }
+  if ($("#visor").hidden) return;
+  if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); ir(1); }
+  if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); ir(-1); }
+  if (e.key === "Escape") cerrar();
+});
+let tx = null;
+$("#escena").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+$("#escena").addEventListener("touchend", e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 60) ir(dx < 0 ? 1 : -1);
+});
+window.addEventListener("hashchange", leerHash);
+
+leerHash();
+</script>
