@@ -6,6 +6,8 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 
 | Carpeta | Qué va |
 |---|---|
+| [`bases/`](bases/) | **Las bases del negocio rearmadas con los 9 SOPs (19/11):** avatar, perfil, ecosistema de contenido, ventas → marketing, reels, historias, precio y vender sin vender. Empezar por su [README](bases/README.md). |
+| [`teoria-sops/`](teoria-sops/) | La teoría: los 9 SOPs de la formación, transcritos completos. |
 | [`negocio/`](negocio/) | Lo que no cambia de un lanzamiento a otro: brief de Génesis, marca personal, avatar, onboarding del equipo y recursos del campus. |
 | [`agentes-propios/`](agentes-propios/) | Los agentes que armamos nosotros (los de Limitless están en `../agentes/`). |
 | [`lanzamientos/`](lanzamientos/) | Una carpeta por lanzamiento, con fecha adelante y las mismas subcarpetas. Ver su [README](lanzamientos/README.md). |
