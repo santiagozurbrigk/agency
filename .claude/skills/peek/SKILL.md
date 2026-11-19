@@ -60,9 +60,14 @@ Environment variables:
 
 Deepgram runs only on **audio stripped from the video** (mono 16 kHz WAV via `ffmpeg`), never on the raw video file.
 
+## yt-dlp
+
+- If `deno` is not installed, the scripts pass `--js-runtimes node` to `yt-dlp` (needed for YouTube).
+- Optional `YTDLP_COOKIES`: path to a `cookies.txt` file passed to `yt-dlp` with `--cookies`. Never commit it.
+
 ## Transcript order
 
-1. For `http`/`https` sources: English captions via `yt-dlp` when available (no API cost).
+1. For `http`/`https` sources: captions via `yt-dlp` when available (no API cost), Spanish first, then English; one track only.
 2. Deepgram on stripped audio when step 1 yields no transcript and `DEEPGRAM_API_KEY` is set.
 3. Super Data when steps 1–2 yield no transcript and `SUPERDATA_API_KEY` is set.
 

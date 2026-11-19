@@ -7,8 +7,12 @@ import subprocess
 
 from audio import extract_audio_for_transcription
 from common import TranscriptSegment
+from downloader import ytdlp_cmd
 from deepgram import transcribe_wav_with_deepgram
 from superdata import fetch_superdata_transcript
+
+# Caption languages to request (Spanish and English, original track preferred).
+SUB_LANGS = "es-orig,es,es-.*,en-orig,en,en-.*"
 
 
 VTT_TIME_RE = re.compile(
@@ -56,12 +60,12 @@ def _parse_vtt_file(path: Path) -> list[TranscriptSegment]:
 def _download_subtitles(url: str, out_dir: Path) -> list[Path]:
     out_tpl = str(out_dir / "subs")
     cmd = [
-        "yt-dlp",
+        *ytdlp_cmd(),
         "--skip-download",
         "--write-sub",
         "--write-auto-sub",
         "--sub-langs",
-        "en.*",
+        SUB_LANGS,
         "--sub-format",
         "vtt",
         "-o",
@@ -69,7 +73,13 @@ def _download_subtitles(url: str, out_dir: Path) -> list[Path]:
         url,
     ]
     subprocess.run(cmd, check=True)
-    return sorted(out_dir.glob("subs*.vtt"))
+    files = sorted(out_dir.glob("subs*.vtt"))
+    # Use a single track: original-language captions first, then by SUB_LANGS order.
+    for lang in ("es-orig", "es", "en-orig", "en"):
+        for f in files:
+            if f.name == f"subs.{lang}.vtt":
+                return [f]
+    return files[:1]
 
 
 def _transcribe_via_deepgram(video_file: Path, working_dir: Path) -> list[TranscriptSegment]:
