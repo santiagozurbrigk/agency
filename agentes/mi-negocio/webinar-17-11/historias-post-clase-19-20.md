@@ -6,7 +6,7 @@ Ajuste de la v3 (12/11): las historias del miércoles 18 no salieron, así que l
 
 | Antes | Ahora | Por qué |
 | :---- | :---- | :---- |
-| POST-1 · mié 18 · 10 hs | **jue 19 · 10 hs** | Abre la secuencia. Cambia el CTA: «cierra **mañana**, viernes 20». |
+| POST-1 · mié 18 · 10 hs | **jue 19 · 10 hs** | Abre la secuencia. Nuevo ángulo: el concepto es fácil, hacerlo solo no; por eso armé todo esto. CTA: «cierra **mañana**, viernes 20». |
 | Suelta caja · mié 18 · 21 hs | **jue 19 · 13 hs** | Tiene que salir temprano para que lleguen preguntas antes del viernes. |
 | POST-2 · jue 19 · 13 hs | **vie 20 · 10 hs** | Necesita las respuestas de la caja. Van 2 creencias, no 3, y el cierre pasa a «cierra **hoy**». |
 | POST-3 · jue 19 · 19 hs | **jue 19 · 19 hs** | Sin cambios. |
@@ -32,20 +32,23 @@ Ajuste de la v3 (12/11): las historias del miércoles 18 no salieron, así que l
 
 ### POST-1 · 10 hs
 
-**Creencia:** «Ya entendí la idea. Lo hago solo.» **Reencuadre:** la idea ya la tenés. Lo que lleva tiempo es aplicarla en tu marca sin romper lo que ya vende.
+**Creencia:** «Ya entendí la idea. Lo hago solo.» **Reencuadre:** como concepto, la suscripción se entiende en cinco minutos. Hacerla funcionar sola es otra cosa: a mí me llevó [18 meses] y [US$ X]. Por eso armé todo esto, para que te ahorres esa parte.
 
 | # | Bloque | Pantalla | Qué cuenta Manu |
 | :---- | :---- | :---- | :---- |
 | 1 | Creencia | Texto grande entre comillas: «"ya entendí la idea. lo hago solo."» | — |
-| 2 | Por qué tiene sentido | **Foto + texto.** Otro lugar, otra remera. | **Qué cuenta:** que es lo más lógico de pensar después de la clase; que él lo armó solo, y qué fue lo que más le costó (lo que sea verdad). **Algo así:** «Es lo más lógico de pensar. Yo lo armé solo, eh. Y lo que más me costó no fue entender la idea: fue [lo que le costó de verdad].» |
-| 3 | Reencuadre | Texto: «la idea ya la tenés. lo que lleva tiempo es aplicarla en tu marca sin romper lo que ya vende.» | — |
-| 4 | Loop | La pregunta que más se repitió en el chat de la clase, tapada, con la respuesta corta de Manu en texto. [CARGAR: captura real] | — |
-| 5 | Repetición | Texto: «si no llegaste, la clase entera está acá. queda arriba hasta el [FECHA REAL].» + sticker de link a [LINK REPLAY]. | — |
-| 6 | CTA | Texto: «génesis está abierto. son 6 lugares y cierra mañana, viernes 20. aplicás en la misma página.» + sticker de link a [LINK REPLAY]. | — |
+| 2 | Por qué tiene sentido | **Foto + texto.** Otro lugar, otra remera. | **Qué cuenta:** que tiene razón: como concepto es simple. **Algo así:** «Y tenés razón: la idea es simple. El cliente que te compró te vuelve a comprar solo, todos los meses. Se entiende en cinco minutos.» |
+| 3 | Lo que no se ve | **Foto + texto**, la misma toma, más cerca. | **Qué cuenta:** que hacerlo solo es otra cosa, cuánto le llevó a él y cuánta plata puso hasta que empezó a funcionar solo. **Algo así:** «Hacerlo solo es otra cosa. A mí me llevó [18 meses] y [US$ X] hasta que empezó a funcionar solo.» |
+| 4 | En qué se fue ese tiempo | Texto, una línea por cosa, como lista: «armar la oferta sin canibalizar la compra única · que los cobros no fallen · los flujos para que no se den de baja · saber cuánto podés pagar por cliente». | — |
+| 5 | Por eso armé esto | Captura de la biblioteca de agentes y herramientas (biblioteca-agentes-lista-alta.png), sin que se lea el detalle. Texto: «por eso armé todo esto.» | — |
+| 6 | Por eso armé esto | Captura del campus con los módulos y las clases. [CARGAR: captura del campus] Texto: «los sistemas, los agentes y las clases que me hubiesen ahorrado esos [18 meses].» | — |
+| 7 | Remate | Texto: «vos no arrancás de cero. arrancás desde lo que a mí ya me funciona.» | — |
+| 8 | CTA | Texto: «génesis está abierto. son 6 lugares y cierra mañana, viernes 20. si no viste la clase, está entera acá, y aplicás en la misma página.» + sticker de link a [LINK REPLAY]. | — |
 
-**Al terminar tiene que pensar:** «Solo me va a llevar el doble.»
-Lo que Manu dice en la historia 2 tiene que ser verdad. Si no hay algo concreto que le costó, la historia queda solo con la validación y pasa directo al reencuadre.
-En la historia 4, como no hubo caja el 18, va la pregunta del chat de la clase. Si no hay captura, se saca la historia.
+**Al terminar tiene que pensar:** «Solo me va a llevar el doble. Con esto me ahorro el camino.»
+Los números de la historia 3 tienen que ser los reales de Manu. En los anuncios del 17/11 se usó «18 meses» para armar el sistema; confirmarlo y poner la plata real (o sacar la plata si no la quiere decir: «me llevó 18 meses» solo también funciona).
+La lista de la historia 4 sale de los sistemas que se mostraron en la clase (oferta, cobros, retención, CAC). Si Manu quiere cambiar alguno por lo que más le costó de verdad, mejor.
+Las capturas de las historias 5 y 6 son las mismas que usa POST-3 a la noche. Para no repetir, en POST-3 se puede usar otra parte del campus (CRM o automatizaciones).
 
 ### Suelta · caja de preguntas · 13 hs
 
@@ -132,7 +135,8 @@ Si el cierre es antes de las 21, la tanda de las 21 hs se adelanta a 2 horas ant
 ## Qué hay que conseguir
 
 - **Para hoy, jueves 19:**
-  - La captura de la pregunta más repetida en el chat de la clase (POST-1, historia 4).
+  - La captura del campus con los módulos y las clases (POST-1, historia 6).
+  - Los meses y la plata reales que le llevó a Manu (POST-1, historia 3).
   - La foto del escritorio y la captura del campus por dentro (POST-3).
   - Los lugares reales que quedan (POST-3, historia 5).
 - **Ya está:**
