@@ -1,16 +1,20 @@
 # Setting post-clase · Grupo 3: se registraron y no entraron a la clase del 17/11
 
-Sale del SOP «Setting para Webinar High Ticket» (Limitless), Grupo 3. Se manda **desde el WhatsApp de Manu**, por privado, a cada registrado que no entró a la clase del martes 17/11. Actualizado 19/11/2026.
+Sale del SOP «Setting para Webinar High Ticket» (Limitless), Grupo 3. Lo manda **Santiago, del equipo de Manu**, por privado (decisión de Santi del 19/11; el SOP pide escribir desde la cuenta del creador), a cada registrado que no entró a la clase del martes 17/11. Actualizado 19/11/2026.
 
 **La idea del SOP:** contarle lo mejor que se perdió y ofrecerle la grabación, para que sienta que le hacés un favor y no que le estás vendiendo. **No se manda el link en el primer mensaje:** primero se pregunta «¿te la mando?» y se espera el sí.
 
+## Mensaje 0 · Presentación
+
+> [Nombre], ¿cómo estás?? Te habla Santiago, del equipo de Manuel Dominguez
+
 ## Mensaje 1 · Apertura
 
-Tres mensajes cortos, con unos segundos entre cada uno para que se lean como una charla.
+Tres mensajes cortos, con unos segundos entre cada uno para que se lean como una charla. Los manda Santiago, así que Manu va en tercera persona.
 
-> [Nombre]! Te anotaste a la clase del martes pero vi que no llegaste a entrar
+> Te anotaste a la clase del martes pero vimos que no llegaste a entrar
 
-> Y estuvo muy buena, en serio. Mostré el roadmap con el que pasé mi marca de 60 a más de 270 millones por mes, por qué cada venta te cuesta lo mismo que la anterior, y cómo pasar tu marca a suscripción sin tocar lo que hoy ya te vende
+> Y estuvo muy buena, en serio. Manu mostró el roadmap con el que pasó su marca de 60 a más de 270 millones por mes, por qué cada venta te cuesta lo mismo que la anterior, y cómo pasar tu marca a suscripción sin tocar lo que hoy ya te vende
 
 > Si querés te paso la grabación así la ves con tus números al lado. ¿Te la mando?
 
@@ -31,7 +35,7 @@ Lo que sigue (la respuesta a lo que diga y llevarlo a **aplicar**) es el setting
 
 ## Reglas
 
-- **Siempre desde el WhatsApp de Manu**, nunca desde la cuenta del setter.
+- **Lo manda Santiago y se presenta como del equipo de Manuel Dominguez.** El SOP pide escribir desde la cuenta del creador porque la gente confía en él y no en un desconocido. Si la tasa de respuesta es baja, probar mandarlo desde el WhatsApp de Manu.
 - **Los tres puntos del mensaje 1** son los tres bloques de la clase, tal como los presenta la página de la repetición: «El roadmap que seguí, paso a paso», «Por qué cada venta te cuesta lo mismo» y «Cómo pasar tu marca a suscripción».
 - El número es el confirmado: «de 60 a más de 270 millones por mes». No se usa el «sin pautar un solo peso en Meta» de la página de la repetición: todavía no está confirmado (Base 05).
 - **Ni precio ni «programa» ni «webinar».** Es «la clase» y «la grabación».
