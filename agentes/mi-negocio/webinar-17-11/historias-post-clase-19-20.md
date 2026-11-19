@@ -6,21 +6,19 @@ Ajuste de la v3 (12/11): las historias del miércoles 18 no salieron, así que l
 
 | Antes | Ahora | Por qué |
 | :---- | :---- | :---- |
-| POST-1 · mié 18 · 10 hs | **jue 19 · 10 hs** | Abre la secuencia. Nuevo ángulo: el concepto es fácil, hacerlo solo no; por eso armé todo esto. CTA: «cierra **mañana**, viernes 20». |
-| Suelta caja · mié 18 · 21 hs | **jue 19 · 13 hs** | Tiene que salir temprano para que lleguen preguntas antes del viernes. |
-| POST-2 · jue 19 · 13 hs | **vie 20 · 10 hs** | Necesita las respuestas de la caja. Van 2 creencias, no 3, y el cierre pasa a «cierra **hoy**». |
-| POST-3 · jue 19 · 19 hs | **jue 19 · 19 hs** | Sin cambios. |
-| «Ya están adentro» · vie 20 · 10 hs | **vie 20 · 12:30 hs** | Se corre para no pisar a POST-2. Sale solo si ya entró gente. |
-| POST-4 · vie 20 · 12 hs y 21 hs | **vie 20 · 16 hs y 21 hs** | El bloque de la mañana pasa a la tarde para no juntarse con POST-2. |
+| POST-1 · mié 18 · 10 hs | **jue 19 · 10 hs** | Es la única secuencia del jueves. Nuevo ángulo: el concepto es fácil, hacerlo solo no; por eso armé todo esto. |
+| Suelta caja · mié 18 · 21 hs | **Sale** | Sin un día entre la caja y las respuestas, no llegan preguntas a tiempo. |
+| POST-2 · jue 19 · 13 hs | **Sale** | Dependía de la caja. |
+| POST-3 · jue 19 · 19 hs | **vie 20 · 10 hs** | Abre el día de cierre. El CTA pasa a «cierra **hoy**». |
+| «Ya están adentro» · vie 20 · 10 hs | **vie 20 · 12:30 hs** | Se corre para no pisar a POST-3. Sale solo si ya entró gente. |
+| POST-4 · vie 20 · 12 hs y 21 hs | **vie 20 · 16 hs y 21 hs** | El bloque de la mañana pasa a la tarde. |
 
 **Grilla final**
 
 | Día | Hora | Pieza | Creencia |
 | :---- | :---- | :---- | :---- |
 | Jue 19 | 10 hs | POST-1 | «Ya entendí la idea. Lo hago solo.» |
-| Jue 19 | 13 hs | Suelta · caja | «¿Qué te frena para aplicar?» |
-| Jue 19 | 19 hs | POST-3 | «Me van a dar videos y me van a dejar solo.» |
-| Vie 20 | 10 hs | POST-2 | Las que lleguen a la caja |
+| Vie 20 | 10 hs | POST-3 | «Me van a dar videos y me van a dejar solo.» |
 | Vie 20 | 12:30 hs | Suelta · «Ya están adentro» | — |
 | Vie 20 | 16 hs | POST-4 (1 a 5) | «Si no entro ahora, entro la próxima.» |
 | Vie 20 | 21 hs | POST-4 (6 y 7) | Último llamado |
@@ -48,18 +46,13 @@ Ajuste de la v3 (12/11): las historias del miércoles 18 no salieron, así que l
 **Al terminar tiene que pensar:** «Solo me va a llevar el doble. Con esto me ahorro el camino.»
 Los números de la historia 3 tienen que ser los reales de Manu. En los anuncios del 17/11 se usó «18 meses» para armar el sistema; confirmarlo y poner la plata real (o sacar la plata si no la quiere decir: «me llevó 18 meses» solo también funciona).
 La lista de la historia 4 sale de los sistemas que se mostraron en la clase (oferta, cobros, retención, CAC). Si Manu quiere cambiar alguno por lo que más le costó de verdad, mejor.
-Las capturas de las historias 5 y 6 son las mismas que usa POST-3 a la noche. Para no repetir, en POST-3 se puede usar otra parte del campus (CRM o automatizaciones).
+Las capturas de las historias 5 y 6 no se repiten en POST-3 del viernes: ahí va otra parte del campus (CRM o automatizaciones).
 
-### Suelta · caja de preguntas · 13 hs
+---
 
-| # | Pantalla | Qué cuenta Manu |
-| :---- | :---- | :---- |
-| 1 | **Foto + texto**, 10 segundos. | **Algo así:** «Te pregunto en serio: ¿qué te frena? Mandámelo y mañana te contesto, sin vueltas.» |
-| 2 | Sticker de preguntas: «¿qué te frena para aplicar?» | — |
+## Viernes 20/11 · día de cierre
 
-Sale a las 13 y no a la noche: si sale tarde, no llegan preguntas para POST-2 del viernes.
-
-### POST-3 · 19 hs
+### POST-3 · 10 hs
 
 **Creencia:** «Me van a dar videos y me van a dejar solo.» **Reencuadre:** no es un curso para mirar. Lo aplicás vos en tu marca, conmigo al lado. **Tipo:** producto por dentro.
 
@@ -70,31 +63,11 @@ Sale a las 13 y no a la noche: si sale tarde, no llegan preguntas para POST-2 de
 | 3 | Reencuadre | Captura del campus con las automatizaciones, los flujos, los agentes y el CRM, sin que se lean. Texto: «esto es génesis por dentro.» [CARGAR: captura del campus] | — |
 | 4 | Reencuadre | **Foto + texto**, la misma toma. | **Qué cuenta:** las llamadas 1 a 1 con él y con José, su socio; las 4 grupales por semana; el chat 1 a 1; que lo aplicás vos en tu marca, con él al lado. **Algo así:** «Hablás conmigo y con José uno a uno, hay cuatro llamadas grupales por semana y me escribís por chat cuando te trabás. Lo aplicás vos en tu marca, conmigo al lado.» |
 | 5 | Por qué son pocos | Texto: «son 6 lugares porque lo trabajo con cada marca. quedan [N].» [CARGAR: número real] | — |
-| 6 | CTA | Texto: «cierra mañana, viernes 20, a las [HORA]. aplicá acá» + sticker de link a [LINK REPLAY]. | — |
+| 6 | CTA | Texto: «cierra hoy a las [HORA]. aplicá acá» + sticker de link a [LINK REPLAY]. | — |
 
 **Al terminar tiene que pensar:** «No me van a dejar solo.»
 Si no se sabe cuántos lugares quedan, en la historia 5 va solo la primera frase.
-
----
-
-## Viernes 20/11 · día de cierre
-
-### POST-2 · 10 hs
-
-Las creencias son las que llegaron a la caja del jueves. Cada una es un par: la captura de la pregunta, tapada, y Manu reencuadrándola. Van **2** (el viernes hay más piezas, no da para 3).
-**Reencuadres listos para las que más se esperan** (salen de las llamadas de los que pagaron). Se usan solo si alguien las mandó:
-
-| Si llega esta creencia | El reencuadre | Algo así |
-| :---- | :---- | :---- |
-| «Si toco el modelo, rompo lo que hoy vende.» | No tocás nada: va al lado de la compra única. | «Tiene sentido tenerle miedo. Pero no tocás nada de lo que hoy te vende: esto va al lado.» |
-| «Mi producto no es para suscripción.» | Si se le termina, te puede volver a comprar. Y si le resuelve algo, no se queda un mes. | «Alan casi no se anota por eso mismo. Si a tu cliente se le termina, te puede volver a comprar. Y si le resuelve algo, no se queda un mes: se queda un año.» (Solo si Alan autoriza el nombre; si no, «uno de mis clientes».) |
-| «En Argentina no se suscribe nadie.» | En mis marcas: 3.943 activos y 7,2% de cancelaciones, con la captura. | «Yo también lo pensaba. Tengo 3.943 activos. En Argentina. Se me va el 7,2%.» |
-| «Ya pagué una mentoría y no me sirvió.» | No te pido que me creas: mirá la clase y fijate si me meto en tus números. | «Te entiendo, muchos llegaron así. No te pido que me creas: mirá la clase y fijate si te digo "venís bien" o me meto en tus números.» |
-| «Primero tengo que facturar más, y después.» | Es al revés: lo que te deja crecer es que el que te compró vuelva. | «Yo pensaba lo mismo. Pero es al revés: lo que me hizo crecer fue que el que ya me compraba volviera.» |
-
-**Cierre de la secuencia:** texto: «si tenés otra, escribime. y si ya lo tenés claro, aplicá. cierra hoy a las [HORA].» + sticker de link a [LINK REPLAY].
-**Al terminar tiene que pensar:** «Lo que me frenaba tenía respuesta.»
-Si la caja llegó vacía, no se inventan preguntas. Manu lo dice como es: «lo que más escucho en las llamadas es…», y reencuadra una sola.
+Para no repetir las capturas de POST-1, en la historia 3 conviene mostrar otra parte del campus (CRM o automatizaciones).
 
 ### Suelta · «Ya están adentro» · 12:30 hs
 
@@ -134,24 +107,21 @@ Si el cierre es antes de las 21, la tanda de las 21 hs se adelanta a 2 horas ant
 
 ## Qué hay que conseguir
 
-- **Para hoy, jueves 19:**
-  - La captura del campus con los módulos y las clases (POST-1, historia 6).
-  - Los meses y la plata reales que le llevó a Manu (POST-1, historia 3).
-  - La foto del escritorio y la captura del campus por dentro (POST-3).
-  - Los lugares reales que quedan (POST-3, historia 5).
+- **Para hoy, jueves 19 (POST-1):**
+  - Los meses y la plata reales que le llevó a Manu (historia 3).
+  - La captura del campus con los módulos y las clases (historia 6).
 - **Ya está:**
   - La biblioteca de agentes (biblioteca-agentes-lista-alta.png).
   - El panel de 3.943 y el 7,2%.
 - **Para el viernes 20:**
-  - Las preguntas de la caja del jueves (POST-2).
+  - La foto del escritorio y otra captura del campus (CRM o automatizaciones) para POST-3.
   - Capturas de los que entraron (12:30 hs).
   - Los lugares reales, en cada tanda.
 
 ## Para confirmar antes de subir
 
-1. **La hora del cierre** del viernes 20. Sin ese dato no salen POST-3 (6), POST-2 ni POST-4.
+1. **La hora del cierre** del viernes 20. Sin ese dato no salen POST-3 ni POST-4.
 2. **Hasta cuándo está arriba la repetición** (POST-1, historia 5).
 3. **¿José es el socio?** Si el José de POST-3 es el de los 810 pedidos, hay que cambiar el caso de ADQ-2 (ver historias-v3-adquisicion.md).
-4. **Nombre de Alan** en POST-2: hace falta su permiso.
-5. **Quién sube las historias** el jueves y el viernes.
-6. **¿Hay palabra clave por DM?** Por ejemplo, REPLAY, si la automatización de Instagram lo permite.
+4. **Quién sube las historias** el jueves y el viernes.
+5. **¿Hay palabra clave por DM?** Por ejemplo, REPLAY, si la automatización de Instagram lo permite.
