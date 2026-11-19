@@ -168,7 +168,7 @@ SCRIPT: "Si armaras cada una de estas piezas por separado, con distintos proveed
 ## SLIDE 140
 
 TEXTO EN PANTALLA: Regalo #3 · La IA que arma los flujos de email
-VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (optin/bonus/bonus-3.webp)]
+VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (mi-negocio/landing/bonus/bonus-3.webp)]
 SCRIPT: "Se abre la tercera caja. El tercer regalo es la IA que arma los flujos de email de tu suscripción: te escribe los diez flows con tu marca y te dice cómo cargarlos. Es para todos los que se quedan hasta el final, entren o no a Génesis."
 
 ## SLIDE 141
@@ -400,7 +400,7 @@ SCRIPT: "Última llamada. Agendá tu llamada o dejá tus datos y te escribimos. 
 ## SLIDE 177
 
 TEXTO EN PANTALLA: Tus 3 regalos: · El simulador de suscripción · El roadmap para migrar tu marca · La IA que arma los flujos de email
-VISUAL: Fondo blanco. Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (optin/bonus/)]
+VISUAL: Fondo blanco. Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (mi-negocio/landing/bonus/)]
 SCRIPT: "Te quedaste hasta el final, así que los tres regalos son tuyos: el simulador de suscripción, el roadmap para migrar tu marca y la IA que arma los flujos de email. Te explico cómo recibirlos."
 
 ## SLIDE 178

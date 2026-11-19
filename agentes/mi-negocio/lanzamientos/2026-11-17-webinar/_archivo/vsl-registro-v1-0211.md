@@ -2,7 +2,7 @@
 
 Versión 1, 02/11/2026. Hecho con el agente **VSL Lanzamiento** (`agentes/M5-webinar-pago/agente-vsl-registro.md`, skill `limitless-agente-vsl-registro`), tomando como base el VSL que funcionó en la clase del 19/10 (`../../2026-10-19-clase/vsl/vsl-registro.md`, v4). Se mantienen la misma estructura de 7 bloques, el mismo orden y casi las mismas frases. Cambian la promesa, los números, la fecha y el regalo, y se aplica el tono de amigo de los guiones a cámara (01/11).
 
-Insumos: `CONTEXTO.md`, `../contexto.md` (narrativa del 17/11), `../ESTADO.md`, `../../2026-10-19-clase/analisis/conclusiones.md`, la landing actual (`../../../lanzamiento-19-10/optin/index.html`) y la thank you actual (`../../../lanzamiento-19-10/optin/thank-you.html`).
+Insumos: `CONTEXTO.md`, `../contexto.md` (narrativa del 17/11), `../ESTADO.md`, `../../2026-10-19-clase/analisis/conclusiones.md`, la landing actual (`../../../landing/index.html`) y la thank you actual (`../../../landing/thank-you.html`).
 
 Es el video que ve el que llega a la landing desde un ad, un reel o la bio. Tiene un solo trabajo: que se anote a la clase del martes 17/11. No vende Génesis ni explica el método.
 

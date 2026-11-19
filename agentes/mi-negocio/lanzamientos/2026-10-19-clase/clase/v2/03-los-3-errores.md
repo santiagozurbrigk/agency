@@ -85,7 +85,7 @@ SCRIPT: "No es que en Argentina no se suscriban. Es que nadie les ofreció algo 
 ## SLIDE 34
 
 TEXTO EN PANTALLA: Regalo #1 · El simulador de suscripción
-VISUAL: Fondo blanco. La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (optin/bonus/bonus-2.webp)]
+VISUAL: Fondo blanco. La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (mi-negocio/landing/bonus/bonus-2.webp)]
 SCRIPT: "El primer regalo es el simulador de suscripción. Cargás los números de tu marca, tu margen, tu ciclo de reposición, y te dice cuánto podrías pagar por cada cliente con suscripción y cómo se vería tu marca en el mes 12. Es el que uso yo. Te lo mando al final, si estás en vivo. Y ahora vamos con el segundo error, que es el que más plata te está costando."
 
 ## SLIDE 35
@@ -261,7 +261,7 @@ SCRIPT: "Uno: no es que en Argentina no se suscriban, es que nadie les ofreció 
 ## SLIDE 63
 
 TEXTO EN PANTALLA: Regalo #2 · El roadmap para migrar tu marca con lo que ya tenés
-VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (optin/bonus/bonus-1.webp)]
+VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (mi-negocio/landing/bonus/bonus-1.webp)]
 SCRIPT: "El segundo regalo es el roadmap para migrar tu marca con lo que ya tenés. Las cuatro semanas, paso a paso, para arrancar con suscriptores desde el primer mes, sin tocar tu compra única. Te lo mando al final, si estás en vivo hasta el cierre."
 
 ## SLIDE 64

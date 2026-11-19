@@ -93,7 +93,7 @@ SCRIPT: "Si armaras cada una de estas piezas por separado, con distintos proveed
 ## SLIDE 140
 
 TEXTO EN PANTALLA: Regalo #3 · La IA que arma los flujos de email
-VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (optin/bonus/bonus-3.webp)]
+VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (mi-negocio/landing/bonus/bonus-3.webp)]
 SCRIPT: "Se abre la tercera caja. El tercer regalo es la IA que arma los flujos de email de tu suscripción: te escribe los diez flows con tu marca y te dice cómo cargarlos. Es para todos los que se quedan hasta el final, entren o no a Génesis."
 
 ## SLIDE 141

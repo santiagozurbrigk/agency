@@ -180,7 +180,7 @@ Texto debajo:
 
 ### 15:00 · Imagen + texto · Los regalos
 
-Imagen: los 3 regalos (`../lanzamiento-19-10/optin/bonus/bonus-1/2/3.webp` en una sola imagen).
+Imagen: los 3 regalos (`mi-negocio/landing/bonus/bonus-1/2/3.webp` en una sola imagen).
 
 > Faltan 3 horas.
 >

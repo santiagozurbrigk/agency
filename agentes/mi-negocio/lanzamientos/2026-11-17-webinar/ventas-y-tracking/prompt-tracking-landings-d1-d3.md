@@ -2,7 +2,7 @@ En el sistema de tracking (`agentes/mi-negocio/ventas/sistema-de-tracking/app`) 
 
 ## Contexto
 
-- La landing (`agentes/mi-negocio/lanzamiento-19-10/optin/index.html`, publicada en applygenesis.com) manda la versión en `tracking.ab`, tanto en la visita (`/api/public/visita`) como en el registro (`/api/public/optin`). El tracking ya acepta cualquier valor alfanumérico, así que `"d1"` y `"d3"` se guardan sin tocar nada.
+- La landing (`agentes/mi-negocio/landing/index.html`, publicada en applygenesis.com) manda la versión en `tracking.ab`, tanto en la visita (`/api/public/visita`) como en el registro (`/api/public/optin`). El tracking ya acepta cualquier valor alfanumérico, así que `"d1"` y `"d3"` se guardan sin tocar nada.
 - Desde el **12/11 a las 19:59 (hora Argentina)**, el link de los anuncios (`/clase`) reparte 50/50 **solo entre d1 y d3**. Los 4 anuncios activos de adquisición (D3_V1, D3_V2, D3_V4, D4_V1) apuntan a `/clase`.
   - **d1:** titular nuevo + bajada + VSL + formulario.
   - **d3:** titular nuevo + bajada + formulario, sin video.

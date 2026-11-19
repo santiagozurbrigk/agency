@@ -1,8 +1,8 @@
 # Video de la thank you page
 
-Versión 2, 6-oct-2026. Se rehace sobre la thank you ya armada (`../../../lanzamiento-19-10/optin/thank-you.html`) y el proceso de ventas (`../../../ventas/proceso-de-ventas-clase-19-10.md`): **no hay mails**, así que se elimina el paso de confirmar el mail y el mail de confirmación. Queda un solo paso: entrar al grupo de WhatsApp. Se suman los 3 regalos con el nombre de la página, el botón de Google Calendar y el aviso de que alguien del equipo escribe por WhatsApp.
+Versión 2, 6-oct-2026. Se rehace sobre la thank you ya armada (`../../../landing/thank-you.html`) y el proceso de ventas (`../../../ventas/proceso-de-ventas-clase-19-10.md`): **no hay mails**, así que se elimina el paso de confirmar el mail y el mail de confirmación. Queda un solo paso: entrar al grupo de WhatsApp. Se suman los 3 regalos con el nombre de la página, el botón de Google Calendar y el aviso de que alguien del equipo escribe por WhatsApp.
 Versión 1, 1-oct-2026. Hecho con el agente **Video thank you page** (`agentes/M5-webinar-pago/guionista-typ.md`).
-Insumos: `CONTEXTO.md`, `negocio/marca-personal.md`, `vsl-registro.md` (v4), `../../../lanzamiento-19-10/optin/thank-you.html`, `../contenido/05-nutricion-whatsapp.md`, `../contenido/07-dia-del-vivo.md` y el proceso de ventas.
+Insumos: `CONTEXTO.md`, `negocio/marca-personal.md`, `vsl-registro.md` (v4), `../../../landing/thank-you.html`, `../contenido/05-nutricion-whatsapp.md`, `../contenido/07-dia-del-vivo.md` y el proceso de ventas.
 
 Es el video que ve el registrado en el segundo en que completa el formulario de la landing. Un solo trabajo: que entre al grupo de WhatsApp. No se vende nada.
 
@@ -76,7 +76,7 @@ La página ya tiene titular ("Tengo 3 regalos para vos") y la alerta de arriba (
 
 ## Antes de publicar
 
-- [ ] **`WHATSAPP_URL` cargado** en el CONFIG de `../../../lanzamiento-19-10/optin/thank-you.html`. Con `#` los botones del grupo se ocultan y el video manda a un botón que no existe.
+- [ ] **`WHATSAPP_URL` cargado** en el CONFIG de `../../../landing/thank-you.html`. Con `#` los botones del grupo se ocultan y el video manda a un botón que no existe.
 - [ ] El video embebido en el lugar de "Acá va el video de la thank you".
 - [ ] Probar el botón de Google Calendar con un registro real (fecha, hora y descripción).
 - [ ] Los 2 números a medir desde el primer día:

@@ -97,7 +97,7 @@ Recomendación: la **C** para el que viene de ads (frena con algo que contradice
 ### SLIDE 7 · Los 3 regalos por estar en vivo
 ⏱ 45 s
 - **TEXTO EN PANTALLA:** Para los que están en vivo: · El roadmap para migrar tu marca con lo que ya tenés · El simulador de suscripción · La IA que arma los flujos de email
-- **VISUAL:** Las capturas de los 3 regalos, de a una (`optin/bonus/`).
+- **VISUAL:** Las capturas de los 3 regalos, de a una (`mi-negocio/landing/bonus/`).
 - **SCRIPT:** "Los que están en vivo se llevan tres regalos, que te mando apenas termina la clase. Uno: el roadmap para migrar tu marca con lo que ya tenés, paso a paso. Dos: el simulador de suscripción. Cargás tus números y ves cuánto podés pagar por cada cliente. Tres: la IA que arma los flujos de email de tu suscripción: te escribe los 10 flows con tu marca y te dice cómo cargarlos. No son PDFs para leer y olvidar: son las herramientas que uso en mis marcas. Te digo por dónde vamos a ir."
 
 ### SLIDE 8 · La agenda

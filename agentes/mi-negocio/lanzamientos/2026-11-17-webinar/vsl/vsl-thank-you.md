@@ -2,7 +2,7 @@
 
 Versión 1, 02/11/2026. Hecho con el agente **Video thank you page** (`agentes/M5-webinar-pago/guionista-typ.md`, skill `limitless-guionista-typ`), tomando como base el video que funcionó en la clase del 19/10 (`../../2026-10-19-clase/vsl/vsl-thank-you.md`, v2). Se mantienen los mismos bloques, el mismo orden y casi las mismas frases. Cambian la fecha y el regalo, se suma la Cuenta del CPA como gancho del grupo y se aplica el tono de amigo de los guiones a cámara (01/11).
 
-Insumos: `CONTEXTO.md`, `../ESTADO.md`, `vsl-registro.md` (este lanzamiento), la thank you actual (`../../../lanzamiento-19-10/optin/thank-you.html`) y el calendario del grupo (`../whatsapp/calendario-nutricion-whatsapp.md`).
+Insumos: `CONTEXTO.md`, `../ESTADO.md`, `vsl-registro.md` (este lanzamiento), la thank you actual (`../../../landing/thank-you.html`) y el calendario del grupo (`../whatsapp/calendario-nutricion-whatsapp.md`).
 
 Es el video que ve el registrado en el segundo en que completa el formulario de la landing. Tiene un solo trabajo: que entre al grupo de WhatsApp. No se vende nada.
 
@@ -88,7 +88,7 @@ Si se quiere testear otro, estas dos abren el loop sin «¡Gracias!»:
 
 ## Antes de publicar
 
-- [ ] **`WHATSAPP_URL` del grupo nuevo** en el CONFIG de `../../../lanzamiento-19-10/optin/thank-you.html`. Hoy sigue el link del grupo viejo (`../ESTADO.md`). Con `#` los botones del grupo se ocultan y el video manda a un botón que no existe.
+- [ ] **`WHATSAPP_URL` del grupo nuevo** en el CONFIG de `../../../landing/thank-you.html`. Hoy sigue el link del grupo viejo (`../ESTADO.md`). Con `#` los botones del grupo se ocultan y el video manda a un botón que no existe.
 - [ ] El video embebido en la página.
 - [ ] Probar el botón de Google Calendar con un registro real: martes 17/11, 18 hs de Argentina, y el texto de la descripción.
 - [ ] Sin «masterclass», «webinar» ni «lanzamiento» en la página (igual que ads y landing).

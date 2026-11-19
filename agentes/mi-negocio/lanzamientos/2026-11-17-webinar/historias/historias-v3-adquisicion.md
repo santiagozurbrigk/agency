@@ -47,7 +47,7 @@ Las creencias salen de las llamadas de los que pagaron (`../analisis/analisis-ve
 | 1 | Creencia | Fondo negro, texto grande entre comillas: «"cuando encuentre la campaña que se estabilice, ya está."» | — |
 | 2 | Por qué tiene sentido | **Foto + texto.** De noche, en el auto estacionado o sentado afuera. | **Qué cuenta:** que es lo que más escucha en las llamadas; que tiene lógica, porque a veces una campaña anda dos semanas; que él también la buscó. **Algo así:** «Es lo que más me dicen en las llamadas. Y tiene lógica, eh: a veces una campaña te anda dos semanas y decís "es esta". Yo también la busqué un montón. Y a las 48 horas se caía.» |
 | 3 | Reencuadre | Texto: «no hay campaña que se estabilice si el 1 del mes arrancás en cero.» | — |
-| 4 | Prueba | La captura del panel de su marca: 3.943 suscripciones activas (`../../../lanzamiento-19-10/optin/ventas/marca-panel.webp`). Texto: «en mis marcas lo estable no es la campaña. son ellos.» | — |
+| 4 | Prueba | La captura del panel de su marca: 3.943 suscripciones activas (`../../../landing/ventas/marca-panel.webp`). Texto: «en mis marcas lo estable no es la campaña. son ellos.» | — |
 | 5 | CTA | Texto: «el martes 17 a las 18 doy una clase privada y gratis. te muestro cómo lo armé. mandame **ADENTRO** y te paso el link» + sticker de link. | — |
 
 **Al terminar tiene que pensar:** «Estoy buscando estabilidad en el lugar equivocado.»
@@ -86,8 +86,8 @@ Las creencias salen de las llamadas de los que pagaron (`../analisis/analisis-ve
 | 1 | Creencia | Texto entre comillas, grande: «"otro mentor más. son todos iguales."» | — |
 | 2 | Por qué tiene sentido | **Foto + texto.** De noche, en el escritorio, con la luz de la pantalla. | **Qué cuenta:** que si lo pensás, tenés razón en desconfiar; que muchos de los que trabajan con él llegaron así, después de pagar una mentoría donde les decían «venís bien» mientras perdían plata. **Algo así:** «Si pensás eso, te entiendo. Muchos de los que trabajan conmigo llegaron así: pagaron una mentoría y todas las semanas les decían venís bien, venís bien… mientras perdían plata.» |
 | 3 | Reencuadre | Texto: «no te pido que me creas. fijate si te dicen "venís bien" o se meten en tus números.» | — |
-| 4 | Prueba | La captura de Lionel, ya tapada (`../../../lanzamiento-19-10/optin/wins/n-lionel.webp`). Texto: «Lionel. 161 millones en el mes.» | — |
-| 5 | Prueba | La captura de Nico, ya tapada (`../../../lanzamiento-19-10/optin/wins/n-nicolas-1.webp`). Texto: «Nico. duplicó las ventas.» | — |
+| 4 | Prueba | La captura de Lionel, ya tapada (`../../../landing/wins/n-lionel.webp`). Texto: «Lionel. 161 millones en el mes.» | — |
+| 5 | Prueba | La captura de Nico, ya tapada (`../../../landing/wins/n-nicolas-1.webp`). Texto: «Nico. duplicó las ventas.» | — |
 | 6 | Reencuadre | **Foto + texto**, la misma toma. | **Algo así:** «A ninguno le dije venís bien. Nos metimos en sus números, en la tienda, en todo.» |
 | 7 | CTA | Texto: «el martes 17 a las 18. clase privada y gratis. venís, mirás y decidís. mandame **ADENTRO**» + sticker de link. | — |
 

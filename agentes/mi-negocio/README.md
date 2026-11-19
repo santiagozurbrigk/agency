@@ -14,7 +14,7 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 | [`referencias/`](referencias/) | Material de terceros que usamos de modelo (Naza). |
 | [`testimonios/`](testimonios/) | Capturas de resultados de alumnos. |
 | [`herramientas/`](herramientas/) | Skills y utilidades propias (Miro lector). |
-| [`lanzamiento-19-10/optin/`](lanzamiento-19-10/optin/) | **La landing en producción (applygenesis.com).** Sigue en su ruta vieja porque Vercel despliega desde ahí; no moverla sin cambiar el Root Directory en Vercel. |
+| [`landing/`](landing/) | **La landing en producción (applygenesis.com):** registro, thank you, aplicación, replay y `/data`. Vercel la despliega desde esta carpeta (Root Directory `agentes/mi-negocio/landing`): no moverla sin cambiar eso en Vercel. Todo lo que está acá adentro es público; las notas van en el lanzamiento. |
 
 ## Agentes propios
 

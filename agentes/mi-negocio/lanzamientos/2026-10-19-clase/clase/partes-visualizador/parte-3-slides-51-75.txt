@@ -82,7 +82,7 @@ SCRIPT: "Uno: no es que en Argentina no se suscriban, es que nadie les ofreció 
 ## SLIDE 63
 
 TEXTO EN PANTALLA: Regalo #2 · El roadmap para migrar tu marca con lo que ya tenés
-VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (optin/bonus/bonus-1.webp)]
+VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (mi-negocio/landing/bonus/bonus-1.webp)]
 SCRIPT: "El segundo regalo es el roadmap para migrar tu marca con lo que ya tenés. Las cuatro semanas, paso a paso, para arrancar con suscriptores desde el primer mes, sin tocar tu compra única. Te lo mando al final, si estás en vivo hasta el cierre."
 
 ## SLIDE 64

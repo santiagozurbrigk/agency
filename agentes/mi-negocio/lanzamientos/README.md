@@ -27,4 +27,4 @@ Para uno nuevo, crear la carpeta con estas subcarpetas (solo las que hagan falta
 
 El 19/10 conserva además `contenido/`, el plan numerado por fase (00 a 09) que mezcla historias, WhatsApp y mails en un mismo archivo.
 
-La landing no vive acá: está en `../lanzamiento-19-10/optin/` (ver el README de `mi-negocio/`).
+La landing no vive acá: está en [`../landing/`](../landing/). Las notas de la landing (headlines, análisis de referencia) están en `2026-10-19-clase/landing-notas/`, fuera de la carpeta publicada.

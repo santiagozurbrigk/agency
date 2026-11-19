@@ -52,7 +52,7 @@ Grupo de avisos → tocá el nombre:
 
 ### 5 · Link de invitación
 1. Comunidad → **Invitar miembros** → **Copiar link**. Ese es el `[LINK GRUPO]`.
-2. Pegalo en `lanzamiento-19-10/optin/thank-you.html`, en `CONFIG.WHATSAPP_URL` (hoy está en `"#"`, que oculta los botones del grupo).
+2. Pegalo en `landing/thank-you.html`, en `CONFIG.WHATSAPP_URL` (hoy está en `"#"`, que oculta los botones del grupo).
 3. Pegalo también donde dice `[LINK GRUPO]` en la slide de regalos de la clase (`clase/v2/05-pitch-qa-cierre.md`) y armá el QR de esa slide con el mismo link.
 4. **No restablezcas el link** después de publicarlo: el viejo deja de funcionar y la thank you queda rota.
 

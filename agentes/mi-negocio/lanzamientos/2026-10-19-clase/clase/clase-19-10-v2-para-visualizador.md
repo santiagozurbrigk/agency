@@ -229,7 +229,7 @@ SCRIPT: "No es que en Argentina no se suscriban. Es que nadie les ofreció algo 
 ## SLIDE 34
 
 TEXTO EN PANTALLA: Regalo #1 · El simulador de suscripción
-VISUAL: Fondo blanco. La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (optin/bonus/bonus-2.webp)]
+VISUAL: Fondo blanco. La primera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del simulador (mi-negocio/landing/bonus/bonus-2.webp)]
 SCRIPT: "El primer regalo es el simulador de suscripción. Cargás los números de tu marca, tu margen, tu ciclo de reposición, y te dice cuánto podrías pagar por cada cliente con suscripción y cómo se vería tu marca en el mes 12. Es el que uso yo. Te lo mando al final, si estás en vivo. Y ahora vamos con el segundo error, que es el que más plata te está costando."
 
 ## SLIDE 35
@@ -405,7 +405,7 @@ SCRIPT: "Uno: no es que en Argentina no se suscriban, es que nadie les ofreció 
 ## SLIDE 63
 
 TEXTO EN PANTALLA: Regalo #2 · El roadmap para migrar tu marca con lo que ya tenés
-VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (optin/bonus/bonus-1.webp)]
+VISUAL: Fondo blanco. La segunda caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura del roadmap (mi-negocio/landing/bonus/bonus-1.webp)]
 SCRIPT: "El segundo regalo es el roadmap para migrar tu marca con lo que ya tenés. Las cuatro semanas, paso a paso, para arrancar con suscriptores desde el primer mes, sin tocar tu compra única. Te lo mando al final, si estás en vivo hasta el cierre."
 
 ## SLIDE 64
@@ -871,7 +871,7 @@ SCRIPT: "Si armaras cada una de estas piezas por separado, con distintos proveed
 ## SLIDE 140
 
 TEXTO EN PANTALLA: Regalo #3 · La IA que arma los flujos de email
-VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (optin/bonus/bonus-3.webp)]
+VISUAL: Fondo blanco. La tercera caja se abre. [IMAGEN PENDIENTE · gris #D9D9D9 · captura de la IA de flujos (mi-negocio/landing/bonus/bonus-3.webp)]
 SCRIPT: "Se abre la tercera caja. El tercer regalo es la IA que arma los flujos de email de tu suscripción: te escribe los diez flows con tu marca y te dice cómo cargarlos. Es para todos los que se quedan hasta el final, entren o no a Génesis."
 
 ## SLIDE 141
@@ -1103,7 +1103,7 @@ SCRIPT: "Última llamada. Agendá tu llamada o dejá tus datos y te escribimos. 
 ## SLIDE 177
 
 TEXTO EN PANTALLA: Tus 3 regalos: · El simulador de suscripción · El roadmap para migrar tu marca · La IA que arma los flujos de email
-VISUAL: Fondo blanco. Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (optin/bonus/)]
+VISUAL: Fondo blanco. Las tres cajas abiertas. [IMAGEN PENDIENTE · gris #D9D9D9 · capturas de los 3 regalos (mi-negocio/landing/bonus/)]
 SCRIPT: "Te quedaste hasta el final, así que los tres regalos son tuyos: el simulador de suscripción, el roadmap para migrar tu marca y la IA que arma los flujos de email. Te explico cómo recibirlos."
 
 ## SLIDE 178

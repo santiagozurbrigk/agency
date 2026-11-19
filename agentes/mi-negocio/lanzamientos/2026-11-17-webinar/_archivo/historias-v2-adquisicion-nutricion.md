@@ -36,7 +36,7 @@ Hecha con el agente `limitless-agente-secuencias-historias`, sobre la voz del gr
 - **Un dolor por secuencia.** El QUÉ sí, el CÓMO nunca: el Método B.A.S.E. no se explica.
 - **Números de Manu:** $275.225.343 por mes («más de 270 millones»), 3.943 suscriptores activos y 7,2% de cancelaciones. Todo número va con su captura.
 - **Casos de terceros:** José, Lucas y Santi, Lionel y Nico prueban «nos metimos en la marca y los números se movieron». **Al lado de un tercero no van nunca** «suscripción», «suscriptores», «recompra», «el 1 del mes» ni «Método B.A.S.E.». La suscripción es lo de Manu: «en mis marcas».
-- **Se muestran los nombres, nunca las marcas** (permiso del 08/11). En cada captura se tapan la marca, el producto y el nombre de la tienda. Las de Lionel y Nico ya están tapadas en `../../../lanzamiento-19-10/optin/wins/`.
+- **Se muestran los nombres, nunca las marcas** (permiso del 08/11). En cada captura se tapan la marca, el producto y el nombre de la tienda. Las de Lionel y Nico ya están tapadas en `../../../landing/wins/`.
 - **Sin precio** y sin hablar de Génesis.
 
 ## Calendario
@@ -69,7 +69,7 @@ Rotación de los que cierran con CTA: venta (ADQ-1) → valor con CTA suave (NUT
 | 1 | Hook | Fondo negro y sticker de encuesta: «hace cuánto que no tenés un día bueno?» · «esta semana» / «ni me acuerdo». | — |
 | 2 | Problema | **Crudo.** De noche, en el auto estacionado o sentado afuera. | **Qué cuenta:** que es la frase que más escucha en las llamadas, textual; la escena de las 48 horas y de abrir el Ads Manager a la mañana; que él vivía así. **Algo así:** «Es lo que más me dicen en las llamadas, textual: hace mucho que no tenemos un día bueno. Prendés una campaña, esperás 48 horas, un día vendés y al otro no. Y lo primero que abrís a la mañana es el Ads Manager. Yo estaba igual, eh.» |
 | 3 | Problema | Texto solo, grande: «el 1 del mes arrancás en cero.» | — |
-| 4 | La idea | La captura del panel de su marca: 3.943 suscripciones activas (`../../../lanzamiento-19-10/optin/ventas/marca-panel.webp`). Texto: «en mis marcas el mes ya arranca con esto.» | — |
+| 4 | La idea | La captura del panel de su marca: 3.943 suscripciones activas (`../../../landing/ventas/marca-panel.webp`). Texto: «en mis marcas el mes ya arranca con esto.» | — |
 | 5 | CTA | Texto: «el martes 17 a las 18 doy una clase privada y gratis. te muestro cómo lo armé. mandame **ADENTRO** y te paso el link» + sticker de link. | — |
 
 **Al terminar tiene que pensar:** «Yo vivo pendiente del Ads Manager.»
@@ -189,8 +189,8 @@ Ese día en el grupo se regalan los flujos de retención. **Tipo:** producto por
 | --- | --- | --- | --- |
 | 1 | Hook | Texto entre comillas, grande: «"venís bien, venís bien."» | — |
 | 2 | Problema | **Crudo.** De noche, en el escritorio, con la luz de la pantalla. | **Qué cuenta:** si pagaste una mentoría y te decían eso todas las semanas mientras perdías plata, que lo entiende; que muchos de los que trabajan con él llegaron así. **Algo así:** «Si pagaste una mentoría y todas las semanas te decían venís bien mientras perdías plata… te entiendo. Muchos de los que trabajan conmigo llegaron así. Y llegaron desconfiando, con razón.» |
-| 3 | Prueba | La captura de Lionel, ya tapada (`../../../lanzamiento-19-10/optin/wins/n-lionel.webp`). Texto: «Lionel. 161 millones en el mes.» | — |
-| 4 | Prueba | La captura de Nico, ya tapada (`../../../lanzamiento-19-10/optin/wins/n-nicolas-1.webp`). Texto: «Nico. duplicó las ventas.» | — |
+| 3 | Prueba | La captura de Lionel, ya tapada (`../../../landing/wins/n-lionel.webp`). Texto: «Lionel. 161 millones en el mes.» | — |
+| 4 | Prueba | La captura de Nico, ya tapada (`../../../landing/wins/n-nicolas-1.webp`). Texto: «Nico. duplicó las ventas.» | — |
 | 5 | La idea | **Crudo**, la misma toma. | **Qué cuenta:** que a ninguno le dijo «venís bien»: se metieron en sus números. **Algo así:** «A ninguno le dije venís bien. Nos metimos en sus números, en la tienda, en todo.» |
 | 6 | CTA | Texto: «el martes 17 a las 18. clase privada y gratis. mandame **ADENTRO**» + sticker de link. | — |
 
@@ -227,7 +227,7 @@ Va a la misma hora que el video de la competencia en el grupo. **Tipo:** venta. 
 
 | # | Bloque | Pantalla | Qué cuenta Manu |
 | --- | --- | --- | --- |
-| 1 | Hook | Las slides de la clase pixeladas, pasando rápido (las de `../../../lanzamiento-19-10/optin/slides/`). Texto: «spoiler.» | — |
+| 1 | Hook | Las slides de la clase pixeladas, pasando rápido (las de `../../../landing/slides/`). Texto: «spoiler.» | — |
 | 2 | Detrás de escena | **Crudo.** En el escritorio, armando la clase, con la pantalla de fondo. | **Qué cuenta:** que está terminando de armar todo; que no es otro curso de testear productos ni de pegar un winner; que muestra sus sistemas y sus números. **Algo así:** «Estoy terminando de armar lo de mañana. No es otro curso de cómo pegar un winner, eh. Te muestro mis sistemas, mis números, todo lo que hago en mis marcas.» |
 | 3 | Qué tenés que tener | Texto: «para mañana: una hora sin interrupciones. compu, no celular. y tus números a mano: cuánto vendés y cuánto te cuesta cada venta.» | — |
 | 4 | Contador | Sticker de cuenta regresiva: «clase privada · mar 17 · 18 hs». Texto: «tocá el contador y te aviso.» | — |
@@ -265,9 +265,9 @@ Solo lo hablado, por día. Selfie, una toma, sin leer, en otro lugar cada vez.
 
 **Ya está en el repo:**
 - Las capturas de José en `../../../testimonios/alumnos/jose/`.
-- Lionel y Nico, ya tapadas, en `../../../lanzamiento-19-10/optin/wins/`.
-- El panel de la marca de Manu en `../../../lanzamiento-19-10/optin/ventas/marca-panel.webp`.
-- Las slides pixeladas en `../../../lanzamiento-19-10/optin/slides/`.
+- Lionel y Nico, ya tapadas, en `../../../landing/wins/`.
+- El panel de la marca de Manu en `../../../landing/ventas/marca-panel.webp`.
+- Las slides pixeladas en `../../../landing/slides/`.
 
 **Que tiene que grabar o capturar Manu:**
 - **iPad:** «1 cliente → todos los meses» (11/11), la cuenta del máximo por cliente (13/11) y la de 30.000 contra 90.000 (15/11).

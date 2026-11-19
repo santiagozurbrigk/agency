@@ -1,6 +1,6 @@
 # VSL de registro — Landing de opt-in
 
-Versión 4, 6-oct-2026. Se alinea con la thank you y la landing ya hechas (`../../../lanzamiento-19-10/optin/thank-you.html`, `../../../lanzamiento-19-10/optin/index.html`) y con el proceso de ventas (`../../../ventas/proceso-de-ventas-clase-19-10.md`): los 3 regalos con el nombre y la descripción de la landing, regalos solo para los que están en vivo, el formulario en menos de 30 segundos con el WhatsApp como dato clave, el aviso de que alguien del equipo escribe por WhatsApp y la thank you con un solo paso (entrar al grupo, donde llegan los SOPs y el link de la clase; nada por mail).
+Versión 4, 6-oct-2026. Se alinea con la thank you y la landing ya hechas (`../../../landing/thank-you.html`, `../../../landing/index.html`) y con el proceso de ventas (`../../../ventas/proceso-de-ventas-clase-19-10.md`): los 3 regalos con el nombre y la descripción de la landing, regalos solo para los que están en vivo, el formulario en menos de 30 segundos con el WhatsApp como dato clave, el aviso de que alguien del equipo escribe por WhatsApp y la thank you con un solo paso (entrar al grupo, donde llegan los SOPs y el link de la clase; nada por mail).
 Versión 3, 1-oct-2026. Se separan los dos roadmaps: en la clase Manu muestra el que siguió él; el regalo es "tu roadmap" para pasar tu marca.
 Versión 2, 1-oct-2026. La promesa principal pasa a ser "te muestro el roadmap con el que pasé mi marca de 60 a 156.798.062 por mes" (antes: "la cuenta con tus números").
 Versión 1, 1-oct-2026. Hecho con el agente **VSL Lanzamiento** (`agentes/M5-webinar-pago/agente-vsl-registro.md`).
@@ -133,7 +133,7 @@ Huecos marcados:
   2. **El link de la clase 15 min antes por el grupo:** sale de `../contenido/07-dia-del-vivo.md`. La thank you dice "el lunes, el link para entrar a la clase" sin hora; si cambia, se ajusta acá.
   3. **"Cinco días de preparación" (14 al 18/10):** se sacó del video porque la thank you ya no lo promete; el grupo se vende por los SOPs y el link. Si Manu lo quiere de vuelta, va al final del Bloque 7, antes de "Es privada".
   4. Las capturas de los Bloques 1 y 2 (panel de suscriptores y reporte 60M → 156.798.062) y la de la marca con la pauta apagada (Bloque 5). Sin captura no se dice el número.
-  5. Las capturas de los 3 regalos para el Bloque 6: son las mismas de la landing (`../../../lanzamiento-19-10/optin/bonus/`).
+  5. Las capturas de los 3 regalos para el Bloque 6: son las mismas de la landing (`../../../landing/bonus/`).
 
 ## Chequeo final
 

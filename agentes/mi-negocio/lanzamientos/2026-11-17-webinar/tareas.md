@@ -19,12 +19,12 @@ Agentes de Limitless: `../../../agentes/`. Agentes propios: `../../agentes-propi
 | ADQ-04 | Editar AD Reels de adquisición | 18 | — | | |
 | ADQ-05 | Configurar campañas de adquisición en Meta | 1 | Ads de adquisición — Configuración (`limitless-configurador-ads`) | `../2026-10-19-clase/ads/ads-adquisicion-notas.md` | |
 | ADQ-06 | Reels orgánicos (salen de los videos de YouTube) | 3 | Reels (`limitless-agente-guiones-reels`) | `../../evergreen/youtube/funnel-youtube.md`, `../2026-10-19-clase/contenido/02-adquisicion-reels.md` | |
-| ADQ-07 | Landing con test A/B/C | 3 | Crear una página de registro (`limitless-constructor-optin`) | `../../lanzamiento-19-10/optin/`, `../../lanzamiento-19-10/optin/headlines-por-dolor.md` | |
+| ADQ-07 | Landing con test A/B/C | 3 | Crear una página de registro (`limitless-constructor-optin`) | `mi-negocio/landing/`, `../2026-10-19-clase/landing-notas/headlines-por-dolor.md` | |
 | ADQ-08 | Guiones de VSL de la landing (5 min) | 2 | VSL Lanzamiento (`limitless-agente-vsl-registro`) | `../2026-10-19-clase/vsl/vsl-registro.md` | |
 | ADQ-09 | Grabar VSL de la landing | 2 | — | | Manu |
 | ADQ-10 | Guion del video de thank you page (3 min) | 1 | Video thank you page (`limitless-guionista-typ`) | `../2026-10-19-clase/vsl/vsl-thank-you.md` | |
 | ADQ-11 | Grabar video de thank you page | 1 | — | | Manu |
-| ADQ-12 | Armar thank you page | 1 | Crear una thank you page (`limitless-constructor-thank-you`) | `../../lanzamiento-19-10/optin/thank-you.html` | |
+| ADQ-12 | Armar thank you page | 1 | Crear una thank you page (`limitless-constructor-thank-you`) | `../../landing/thank-you.html` | |
 | ADQ-13 | Optimización de perfil | 1 | Optimización de perfil (`limitless-agente-optimizacion-perfil`) | `../../evergreen/perfil-ig/optimizacion-perfil.md` | |
 | ADQ-14 | Funnel de YouTube: videos pre-webinar | 2 | — | `../../evergreen/youtube/funnel-youtube.md` (YT-1 y YT-9 guionados) | Manu |
 
@@ -61,7 +61,7 @@ Agentes de Limitless: `../../../agentes/`. Agentes propios: `../../agentes-propi
 | POST-02 | Historias post-webinar | 3 | Historias (`limitless-agente-secuencias-historias`) | `../2026-10-19-clase/contenido/08-post-vivo.md` | |
 | POST-03 | Guiones de ads post-webinar (1 a agenda directa, 1 a replay) | 2 | Mastering Copy (`limitless-agente-copy`) | | |
 | POST-04 | Grabar ads post-webinar | 2 | — | | Manu |
-| POST-05 | Landing de replay | 1 | — | `../../lanzamiento-19-10/optin/replay.html` | |
+| POST-05 | Landing de replay | 1 | — | `../../landing/replay.html` | |
 
 ## B:52 emails pre-call (3 días)
 

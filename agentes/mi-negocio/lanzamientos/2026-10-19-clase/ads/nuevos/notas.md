@@ -56,7 +56,7 @@ Todo lo demás del criterio sigue igual: vende la clase y no el método, sin pre
 ## Configuración sugerida en Meta
 
 - Un conjunto de anuncios propio para los 3 (no mezclarlos con los 9 anteriores), así se ve si bajan el % de descalificados y no se pisan en el aprendizaje.
-- Optimizar al **Lead calificado**, que ya existe: la landing solo dispara el Lead a Meta si la facturación es de 30M para arriba (`optin/index.html`, `FACTURACION_LEAD`). Eso enseña al algoritmo a buscar al que califica; combinado con estos creativos, debería corregir el sesgo hacia locales.
+- Optimizar al **Lead calificado**, que ya existe: la landing solo dispara el Lead a Meta si la facturación es de 30M para arriba (`mi-negocio/landing/index.html`, `FACTURACION_LEAD`). Eso enseña al algoritmo a buscar al que califica; combinado con estos creativos, debería corregir el sesgo hacia locales.
 - Métrica para decidir: **% de registros calificados** (30M+ y ecommerce) por anuncio, no costo por registro. Un registro más caro y calificado vale más que dos baratos de un local.
 
 ## Chequeo v7

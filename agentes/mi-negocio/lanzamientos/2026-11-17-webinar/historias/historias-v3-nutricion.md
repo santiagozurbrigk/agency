@@ -166,7 +166,7 @@ Las creencias salen de las llamadas de los que pagaron (`../analisis/analisis-ve
 | --- | --- | --- | --- |
 | 1 | Creencia | Texto grande entre comillas: «"otra clase gratis para venderme algo."» | — |
 | 2 | Por qué tiene sentido | **Foto + texto.** En el escritorio, armando la clase. | **Qué cuenta:** que lo entiende, porque hay mil clases gratis y casi todas son de cómo pegar un winner; que esta es otra cosa: muestra sus sistemas y sus números reales. **Algo así:** «Te entiendo, hay mil. Y casi todas son de cómo pegar un winner. Mañana no: te muestro mis sistemas y mis números de este mes, en pantalla.» |
-| 3 | Reencuadre | Las slides de la clase pixeladas, pasando rápido (`../../../lanzamiento-19-10/optin/slides/`). Texto: «spoiler.» | — |
+| 3 | Reencuadre | Las slides de la clase pixeladas, pasando rápido (`../../../landing/slides/`). Texto: «spoiler.» | — |
 | 4 | Qué tener listo | Texto: «para mañana: una hora y media sin interrupciones. compu, no celular. y tus números a mano.» | — |
 | 5 | Contador | Sticker de cuenta regresiva: «clase privada · mar 17 · 18 hs». | — |
 

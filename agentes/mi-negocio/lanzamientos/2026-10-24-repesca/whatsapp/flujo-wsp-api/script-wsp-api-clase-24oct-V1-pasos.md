@@ -199,10 +199,10 @@ El llamado a la acción es **agendar la llamada** (como en el carrito del 19), n
 |---|---|---|---|---|
 | V1 | Video selfie de bienvenida (30-45 s): este chat es solo tuyo, el grupo es para todos, tocá los botones | I.1 | Registro | **Falta grabar** |
 | F1 | Foto de Manu en el estudio con la pizarra | Sábado 10:00 | Sáb 24 | Falta (o reusar del 19) |
-| F2 | Foto de los 3 regalos | Sábado 15:00 y 18:10 | Sáb 24 | Listo: `lanzamiento-19-10/optin/bonus/bonus-1/2/3.webp` (hay que unirlas en una imagen) |
+| F2 | Foto de los 3 regalos | Sábado 15:00 y 18:10 | Sáb 24 | Listo: `mi-negocio/landing/bonus/bonus-1/2/3.webp` (hay que unirlas en una imagen) |
 | F3 | Setup armándose | Sábado 17:00 | Sáb 24 | Se saca en el momento |
 | F4 | Frente a la cámara | Sábado 17:45 | Sáb 24 | Se saca en el momento |
-| F5 | Captura del vivo y del chat | Sábado 18:00 y 18:20 | Sáb 24 | Se saca en el momento (o reusar `optin/replay-assets/`) |
+| F5 | Captura del vivo y del chat | Sábado 18:00 y 18:20 | Sáb 24 | Se saca en el momento (o reusar `mi-negocio/landing/replay-assets/`) |
 | F6 | Pizarra con la cuenta | Sábado 18:30 | Sáb 24 | Se saca en el momento |
 
 ### Links y datos

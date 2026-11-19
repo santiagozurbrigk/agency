@@ -2,7 +2,7 @@
 
 Para pegar en "Descripción del grupo". Cumple las reglas de `00-narrativa-y-mapa.md`: sin "webinar"/"masterclass", números canónicos, el método se nombra pero no se explica, y el link de la clase llega por el grupo.
 
-El link de calendario sale de la misma config que la página de gracias (`optin/thank-you.html`): lunes 19/10, 19:00 a 20:30 (Argentina). Si cambia la fecha, hay que regenerarlo.
+El link de calendario sale de la misma config que la página de gracias (`mi-negocio/landing/thank-you.html`): lunes 19/10, 19:00 a 20:30 (Argentina). Si cambia la fecha, hay que regenerarlo.
 
 ---
 
