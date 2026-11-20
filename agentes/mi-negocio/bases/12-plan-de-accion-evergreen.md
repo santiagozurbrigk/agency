@@ -257,6 +257,8 @@ Responsables: **Manu** (graba los jueves, escribe y sube historias, define el do
 
 ## 5. Calendario evergreen · lun 23/11 a dom 06/12
 
+> **Actualización 20/11:** Manu no está del 21 al 28/11. La semana 1 de este calendario la reemplaza la semana puente (`13-semana-puente-21-28.md`), armada con los dos videos ya grabados. La semana 2 (30/11–6/12) sigue igual y se graba el domingo 29 o el lunes 30.
+
 Reglas para todas las piezas: un dolor por semana y un subavatar por pieza · el hook con palabras del avatar · el número al final y con captura · ningún producto ni marca de cliente en cámara · Herbora sin suscripción · nunca Lite, «webinar», «programa», «funnel», «lead» ni «agendá» · historias en minúscula, sin ¿ ni ¡, con la palabra en naranja más grande · un pedido de conversación por semana (sábado). Horarios `[HIP]`: YouTube 10 hs, historias 13 hs, reels 20 hs, TikTok 12 y 19 hs.
 
 ### Semana 1 · 23–29/11 · S1 · Dolor 1 «hace mucho que no tenemos un día bueno»
