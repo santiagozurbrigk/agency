@@ -17,6 +17,7 @@ Rearmadas el 19/11/2026 siguiendo al pie de la letra los 9 SOPs de la formación
 | 09 | [Vender sin vender](09-vender-sin-vender.md) | [SOP 09](../teoria-sops/sop-09-vender-sin-vender.md) | Auditoría del detector, máscaras, rampa de 3 tramos, chat y llamada, ritmo del pedido. |
 | 10 | [Roadmap orgánico](10-roadmap-organico.md) | — | Las 6 fases paso a paso y el calendario de contenido del 23/11 al 20/12. |
 | 11 | [Avatar definido y comunicación](11-avatar-y-comunicacion.md) | SOP 01 | **El avatar vigente (opción A, 20/11)**, los 3 subavatares y cómo se le habla en cada formato. Manda sobre la 01 donde choquen. |
+| 12 | [Plan de acción evergreen](12-plan-de-accion-evergreen.md) | SOPs 02–09 | Cómo cambiar la comunicación al avatar A y reactivar el orgánico: decisiones del 21/11, acciones por fase, calendario 23/11–6/12, correcciones y métricas. Página para el equipo: https://claude.ai/artifact/NuKmBjgkfKA76hwL8s1ykW |
 
 ## Lo que dicen las 9 bases juntas
 

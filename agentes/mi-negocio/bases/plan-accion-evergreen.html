@@ -1,0 +1,351 @@
+<title>Plan de acción evergreen</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+<style>
+/* Layout: una columna de lectura con tablas anchas; las 3 opciones lado a lado en escritorio, apiladas en el teléfono */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700}
+h2{font-size:24px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stack{display:grid;gap:14px}
+.status{display:inline-flex;gap:8px;align-items:center;background:var(--ok-soft);color:var(--ok);font-weight:600;font-size:13px;padding:4px 12px;border-radius:999px;width:max-content}
+.lead{font-size:17px;color:var(--fg)}
+.muted{color:var(--muted)}
+.fixed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.fixed div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.fixed b{display:block;font-family:var(--display);font-size:16px}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start;min-width:0}
+.opt .tag{font-family:var(--display);font-weight:700;color:var(--accent);font-size:14px}
+.opt ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.opt .k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:4px}
+.pro{color:var(--ok)} .con{color:var(--warn)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:600;background:var(--bg);font-size:13px}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.fit{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px}
+.fit.y{background:var(--ok-soft);color:var(--ok)} .fit.n{background:var(--warn-soft);color:var(--warn)} .fit.p{background:var(--accent-soft);color:var(--accent)}
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.figures div{border-top:2px solid var(--line);padding-top:10px}
+.figures .n{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.figures .n.hl{color:var(--accent)}
+.note{background:var(--accent-soft);border-radius:10px;padding:16px 18px}
+ol.qs{margin:0;padding-left:20px;display:grid;gap:10px;max-width:72ch}
+.src{font-size:13px;color:var(--muted)}
+code{font-size:13px;background:var(--bg);padding:1px 5px;border-radius:4px}
+.subs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+dl{margin:0;display:grid;gap:8px}
+dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+dd{margin:0}
+.rules{margin:0;padding-left:20px;display:grid;gap:8px;max-width:76ch}
+.quote{font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:600;line-height:1.3;border-left:3px solid var(--accent);padding-left:16px;max-width:40ch}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+details>summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:18px}
+details[open]>summary{margin-bottom:16px}
+
+nav.toc{display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{font-size:13px;color:var(--fg);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--surface)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);outline:none}
+.summary{margin:0;padding-left:20px;display:grid;gap:8px;max-width:78ch;font-size:16px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:8px;align-content:start;min-width:0}
+.card .ex{background:var(--bg);border-radius:8px;padding:10px 12px;font-size:14px}
+.phase{display:grid;gap:12px}
+.phase-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+@media (max-width:900px){.week{grid-template-columns:1fr}}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;display:grid;gap:10px;align-content:start;min-width:0}
+.day h4{margin:0;font-family:var(--display);font-size:15px}
+.piece{display:grid;gap:4px;border-top:1px solid var(--line);padding-top:8px;font-size:13.5px}
+.piece .f{font-weight:600}
+.piece .cta{color:var(--accent);font-size:12.5px}
+.sub{font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;background:var(--ok-soft);color:var(--ok);margin-right:6px}
+section{scroll-margin-top:16px}
+</style>
+<div class="wrap">
+<header class="stack"><span class="eyebrow">Génesis · Manu Dominguez · 20/11/2026</span><h1>Plan de acción evergreen</h1>
+<p class="lead">Cómo cambiar la comunicación al avatar definido y reactivar el orgánico fuera de lanzamiento, con los SOPs 02 a 09 aplicados al sistema de contenido del equipo. Arranca el sábado 21/11.</p>
+<nav class="toc" aria-label="Secciones"><a href="#resumen">Resumen</a><a href="#decisiones">Decisiones del sábado</a><a href="#comunicacion">Comunicación por SOP</a><a href="#fases">Fases y acciones</a><a href="#calendario">Calendario 23/11–6/12</a><a href="#correcciones">Correcciones</a><a href="#metricas">Métricas</a><a href="#escalar">Cuándo escalar</a><a href="#pendientes">Pendientes</a></nav></header>
+<section class="stack" id="resumen"><h2>Resumen</h2><ol class="summary"><li>Se le habla al dueño de e-commerce que ya vende y está cansado de que nada dure; la suscripción es el mecanismo, no la entrada.</li><li>Una pieza = un dolor + un subavatar; el hook con sus palabras y el número al final, con captura.</li><li>Afuera ya: +$100M como promesa, SUSCRIPCIÓN, Gonza 30–80M, «lo hacemos nosotros», números viejos, −USD 3.000 y Lite.</li><li>Genesis OS USD 5.000, 4 meses, hecho con vos; Lite USD 2.000 solo en la llamada, después de la objeción de capital.</li><li>Semana tipo: videos mar y vie al flywheel, reel diario con ManyChat, TikTok 2 crudos, historias con hype y un pedido el sábado.</li><li>Palabras: CUENTA fija (bio, flywheel, sábado) + una por video; destino único el WhatsApp de Manu, setter califica y lleva a aplicar.</li><li>Validación SOP 01: S1 → S2 → S1 CPA → S3 o dolor 7; se elige subavatar el 21/12 por plata, interés y quién entra.</li><li>Bloquea: quién atiende el WhatsApp, plan de pagos único, grabación del 17/11 para el flywheel, umbral de capital y S3.</li></ol>
+<div class="fixed"><div><b>Avatar</b><span class="muted">El dueño de un e-commerce que ya vende y está cansado de que nada dure. S1 → S2 → S3.</span></div><div><b>Oferta</b><span class="muted">Genesis OS USD 5.000 · 4 meses. Lite USD 2.000 solo en la llamada.</span></div><div><b>Mensaje</b><span class="muted">«No te falta vender más: te falta que el que ya te compró te vuelva a comprar.»</span></div><div><b>Referencias</b><span class="muted"><a href="https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG">Avatar de Génesis</a> · <a href="https://claude.ai/artifact/MRFxTVab5fvZdo7tZGrnNj">Tablero del equipo</a></span></div></div></section>
+<section class="stack" id="decisiones"><h2>Decisiones para el pre-weekly del sábado 21/11</h2><p class="muted">Propuestas del plan. Se confirman o se cambian el sábado; hasta entonces se trabaja con esto.</p><div class="tbl"><table><thead><tr><th>#</th><th>Tema</th><th>Propuesta</th><th>Decide</th></tr></thead><tbody>
+<tr><td class="num">D1</td><td><b>Volumen de YouTube</b></td><td>2 por semana desde el arranque; el video B de las semanas 1–4 sale de material existente o del mismo jueves. Si un jueves no se llega, 1 (el martes) y nunca 0 (mínimo del SOP 03)</td><td>Santi</td></tr>
+<tr><td class="num">D2</td><td><b>Quién sube TikTok</b></td><td>Clipping <code>[HIP]</code>, con los crudos que Manu graba en el celular</td><td>Santi</td></tr>
+<tr><td class="num">D3</td><td><b>Palabras</b></td><td>CUENTA fija + una por video (PISO, CICLO, TRATAMIENTO, CPA, MARCA/BASE). SUSCRIPCIÓN y FLUJOS dejan de ser palabras</td><td>Santi</td></tr>
+<tr><td class="num">D4</td><td><b>Quién contesta fuera de lanzamiento</b></td><td>ManyChat responde la palabra; el setter toma el WhatsApp de Manu el mismo día; Manu solo si le escriben a él</td><td>Santi</td></tr>
+<tr><td class="num">D5</td><td><b>Plan de pagos de OS</b></td><td>Uno solo, escrito, que el closer no cambia</td><td>Santi</td></tr>
+<tr><td class="num">D6</td><td><b>Cupo en evergreen</b></td><td>No se dice cupo si no hay un número real</td><td>Santi, Manu</td></tr>
+<tr><td class="num">D7</td><td><b>«−USD 3.000» y «+$3B»</b></td><td>Afuera de todas las piezas</td><td>Santi</td></tr>
+<tr><td class="num">D8</td><td><b>Fuente del flywheel v1</b></td><td>La grabación del 17/11 sin la oferta. Si no es usable: el mar 24/11 sale el VSL-01 y el flywheel se graba el jue 26/11 para el mar 01/12</td><td>Santi, Manu</td></tr>
+<tr><td class="num">D9</td><td><b>Qué hace el setter con el que vende y tiene menos capital que OS</b></td><td>Pasa a llamada y el closer decide OS o Lite <code>[HIP]</code></td><td>Santi</td></tr>
+<tr><td class="num">D10</td><td><b>Qué se le entrega a S3</b></td><td>Fecha tope jue 10/12; sin decisión, semana 4 plan B</td><td>Manu</td></tr>
+<tr><td class="num">D11</td><td><b>Grupo de WhatsApp del 17/11</b></td><td>Se mantiene sin mensajes automáticos hasta reescribirlos; un mensaje por video <code>[HIP]</code></td><td>Santi</td></tr>
+<tr><td class="num">D12</td><td><b>Quién toma las llamadas de S1</b></td><td>Manu o José hasta que el closer pase el role play de leer una tienda</td><td>Santi, Manu</td></tr>
+<tr><td class="num">D13</td><td><b>Horarios fijos</b></td><td>YouTube 10, historias 13, reels 20, TikTok 12 y 19 <code>[HIP]</code> hasta ver Insights</td><td>Santi</td></tr>
+</tbody></table></div></section>
+<section class="stack" id="comunicacion"><h2>Qué cambia en la comunicación, SOP por SOP</h2><div class="cards">
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 02 · Perfil</span><p>Bio sin +$100M ni SUSCRIPCIÓN: habla al que ya vende y nada le dura, mete «con vos, en tu tienda» y pide solo CUENTA. Link al flywheel. Destacadas: Empezá acá, La cuenta, Por dentro, Resultados, Quién soy.</p><div class="ex"><span class="muted">Ejemplo · </span>3.943 suscriptores activos en Argentina, 7,2% de bajas / Tu ecommerce vende y nada le dura: lo armamos con vos, en tu tienda / DM CUENTA y te paso la mía</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 02 · Destacadas</span><p>Empezá acá arranca por el día bueno y cierra en CUENTA; Por dentro muestra OS (4 meses, hecho con vos, 1 a 1 con Manu y José, grupales, chat). Sin precio y sin Lite.</p><div class="ex"><span class="muted">Ejemplo · </span>Slide 1: «¿Hace cuánto que no tenés un día bueno?» · Slide 11: «Es para el que ya vende. No es para buscar producto ganador.» · Slide 12: «Mandame CUENTA».</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 03 · Ecosistema</span><p>Fin del contenido por fecha de evento: un dolor y un subavatar por semana, video A mar y B vie que mandan al flywheel, reels llevan al video con su palabra, todo termina en el WhatsApp de Manu.</p><div class="ex"><span class="muted">Ejemplo · </span>Descripción YT: «¿Querés ver esto con los números de tu tienda? Escribime PISO al WhatsApp → wa.link/ouqu06 · Génesis: consultoría 1 a 1 de 4 meses, hecha con vos.»</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 04 · Ventas arma marketing</span><p>El dolor de la semana lo eligen Manu y José el sábado con frases del setter y del closer. Reporte por fases suma subavatar, video que lo trajo y carril (OS, Lite o ninguno).</p><div class="ex"><span class="muted">Ejemplo · </span>Setter S1: «¿Te llegó el video? Una sola pregunta mientras lo mirás: ¿cuándo fue tu último día bueno en la tienda?» Después: qué vendés y por dónde, ciclo, capital, para cuándo.</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 04 · Setter S2/S3</span><p>Apertura por subavatar [HIP]; con vende hoy + capital lleva a aplicar; sin capital, video y sin llamada; nunca nombra Lite; un solo seguimiento a 48 h.</p><div class="ex"><span class="muted">Ejemplo · </span>S2: «¿Cada cuánto se le termina el producto a tu cliente? Y si es un tratamiento, ¿cuánto tarda en hacer efecto?» · S3: «¿Qué pasa con tus ventas cuando se te termina el stock?»</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 05 · Reels</span><p>Cada reel elige subavatar y abre con su frase textual en 3 s; número al final con captura; cierre con la palabra del video por ManyChat; trials con una sola variable e hipótesis escrita.</p><div class="ex"><span class="muted">Ejemplo · </span>S1 «¿Hace cuánto no tenés un día bueno?» · S2 «Todos prometen resultados en 7 días. Nadie te los cree.» · S3 «Tu ecommerce vende, pero cada stock que se termina es volver a cero.»</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 06 · Historias</span><p>Una secuencia diaria, mismo dolor toda la semana; 3 días de hype por video pidiendo un recurso; un solo pedido de conversación el sábado; dom objeción, lun prueba. Las escribe Manu.</p><div class="ex"><span class="muted">Ejemplo · </span>Sábado: «VENDÉS HOY Y NADA TE DURA?» → «si querés ver tus números conmigo, con tu tienda abierta» → «respondé CUENTA».</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 07 · Jerarquía visual</span><p>Columna 1º/2º/3º en cada ficha; la palabra en naranja #F26A1B más grande que todo; número en N1 fuera de la captura; una idea por pantalla; fotos sin viajes ni lujo.</p><div class="ex"><span class="muted">Ejemplo · </span>Prueba: 1º «3.943» enorme arriba · 2º captura del tablero al medio · 3º «activos. en argentina.» chico, fuera de la franja de respuesta.</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 08 · Precio</span><p>Un solo precio en ventas: OS USD 5.000; afuera no se dice. Total, silencio, pago completo; cuotas solo en la objeción; Lite después, como otro nivel. Sin −USD 3.000.</p><div class="ex"><span class="muted">Ejemplo · </span>«Te paso la inversión: Genesis OS son USD 5.000.» (silencio) … si no llega: «Hay otra forma: Genesis Lite. 3 meses, grupal, lo implementás vos con José al lado. Son USD 2.000.»</div></article>
+<article class="card"><span class="tag" style="font-family:var(--display);font-weight:700;color:var(--accent)">SOP 09 · Vender sin vender</span><p>Número al final, pedido como pregunta y en lenguaje de regalo; el closer abre la tienda del lead y ayuda antes de presentar; un solo seguimiento después de la llamada.</p><div class="ex"><span class="muted">Ejemplo · </span>Closer: «¿Abrís tu tienda y el administrador de anuncios? Quiero ver lo mismo que ves vos. Al final te digo qué haría yo, entres o no.»</div></article>
+</div></section>
+<section class="stack" id="fases"><h2>Fases y acciones</h2>
+<div class="phase"><div class="phase-head"><h3>S0 · Semana 0 · cerrar el lanzamiento y alinear la casa</h3><span class="pill">vie 20/11 (noche) – dom 22/11</span></div>
+<p><b>Objetivo:</b> Carrito cerrado y registrado, decisiones bloqueantes tomadas y todo lo que toca a un lead desde el lunes con OS 5.000, 4 meses, hecho con vos, números de hoy y sin Lite afuera.<br><b>Pasa de fase cuando:</b> Ads y automatizaciones apagados; reportes cargados; acta D1–D13; perfil base y ManyChat probados; guion del setter nuevo; correcciones prioridad 1; fichas de la semana 1 en manos de Manu.</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>Acción</th><th>Quién</th><th>Cuándo</th><th>Está hecho cuando</th><th>SOP</th></tr></thead><tbody>
+<tr><td class="num">S0.1</td><td>Mensaje «cerró», apagar ads post-clase y automatizaciones del post-clase (quedan 6, sábado 21)</td><td>Mati</td><td>vie 20/11 al cierre</td><td>Ads en pausa con gasto final en el campus; ningún flujo del 17/11 envía después del cierre</td><td class="num">03</td></tr>
+<tr><td class="num">S0.2</td><td>Reporte por fases de cada llamada del 17/11</td><td>Closer, Manu, José</td><td>sáb 21/11 10:00</td><td>1 reporte por lead con subavatar, pieza que lo trajo, carril y objeciones textuales</td><td class="num">04</td></tr>
+<tr><td class="num">S0.3</td><td>Clasificar aplicaciones del 17/11 por subavatar y carril; semáforo bloque 17/11-1</td><td>Santi, Mati</td><td>sáb 21/11</td><td>Tabla de aplicaciones, llamadas con precio, ventas OS y Lite, PIF/pagos por S1/S2/S3</td><td class="num">08</td></tr>
+<tr><td class="num">S0.4</td><td>Historia «cerró, no se reabre»</td><td>Manu</td><td>sáb 21/11</td><td>1–2 historias sin pedido ni link</td><td class="num">09</td></tr>
+<tr><td class="num">S0.5</td><td>Pre-weekly + checkpoint de la base 11 y del plan: decisiones D1–D13</td><td>Santi conduce; Manu y José deciden</td><td>sáb 21/11 11:00</td><td>Acta escrita con cada decisión</td><td class="num">04</td></tr>
+<tr><td class="num">S0.6</td><td>Test SOP 01: Manu lee hooks y líneas de la semana 1 pensando en S1, S2 y S3</td><td>Manu</td><td>sáb 21/11</td><td>Hooks aprobados o reescritos; frases [CONFIRMAR MANU] resueltas</td><td class="num">05</td></tr>
+<tr><td class="num">S0.7</td><td>Perfil base: nombre, bio nueva, link a WhatsApp, archivar destacadas del lanzamiento, Empezá acá</td><td>Santi, Mati, Manu aprueba</td><td>dom 22/11 20:00</td><td>Capturas del perfil; test de 5 segundos con 2 personas que encajen en S1 [HIP]</td><td class="num">02</td></tr>
+<tr><td class="num">S0.8</td><td>ManyChat: CUENTA, PISO, CICLO, TRATAMIENTO con texto, link y WhatsApp</td><td>Mati</td><td>dom 22/11</td><td>Cada palabra probada desde una cuenta ajena devuelve el mensaje</td><td class="num">03</td></tr>
+<tr><td class="num">S0.9</td><td>Guion del setter evergreen + registro del setter</td><td>Mati; setter prueba; Santi revisa</td><td>dom 22/11</td><td>Aperturas por subavatar, 4 preguntas, salidas, 1 seguimiento; planilla con palabra, video, subavatar, frase, carril</td><td class="num">04</td></tr>
+<tr><td class="num">S0.10</td><td>Formulario de aplicación con las 4 preguntas nuevas de la base 11</td><td>Mati</td><td>dom 22/11</td><td>Formulario publicado y probado con un envío</td><td class="num">04</td></tr>
+<tr><td class="num">S0.11</td><td>Correcciones prioridad 1: VSL de chat, oferta-genesis.html, manual y guion de llamada, genesis-contexto.md</td><td>Mati; Manu regraba VSL de chat</td><td>dom 22/11 (VSL chat 29/11)</td><td>Sin 156.798.062, 2.200, 1,28%, «lo hacemos nosotros» ni −USD 3.000 en ventas/ y evergreen/</td><td class="num">08</td></tr>
+<tr><td class="num">S0.12</td><td>Flywheel v1: clase del 17/11 sin oferta, precio ni lugares; CTA a CUENTA</td><td>Editor; Santi revisa</td><td>lun 23/11 18:00</td><td>Programado para mar 24/11 10:00; números de hoy; Herbora sin suscripción</td><td class="num">03</td></tr>
+<tr><td class="num">S0.13</td><td>Fichas de historias y guiones de reels de la semana 1; escaleta VSL-01</td><td>Santi, Mati</td><td>dom 22/11</td><td>Fichas con 1º/2º/3º; guiones con doble check y filtro de 4 preguntas</td><td class="num">06</td></tr>
+<tr><td class="num">S0.14</td><td>Planillas: historias, reels y trials, registro del setter, reporte por fases, semáforo</td><td>Santi</td><td>dom 22/11</td><td>Links pegados en el §9 de la base 12</td><td class="num">05</td></tr>
+<tr><td class="num">S0.15</td><td>Banco de fotos limpio y capturas [CARGAR] de la semana 1</td><td>Santi lista, Manu saca</td><td>dom 22/11</td><td>Carpeta sin viajes, lujo ni marcas; capturas en Drive</td><td class="num">07</td></tr>
+<tr><td class="num">S0.16</td><td>Hype 1 del flywheel en historias</td><td>Manu</td><td>dom 22/11</td><td>2 historias con «respondé CUENTA y te la mando»; respuestas anotadas</td><td class="num">06</td></tr>
+<tr><td class="num">S0.17</td><td>Formulario de onboarding a cada comprador del 17/11</td><td>José</td><td>el día del pago</td><td>Enviado; sin respuesta no hay primera sesión</td><td class="num">04</td></tr>
+</tbody></table></div></div>
+<div class="phase"><div class="phase-head"><h3>S1 · Semanas 1–2 · montar el sistema y primeras piezas</h3><span class="pill">lun 23/11 – dom 06/12</span></div>
+<p><b>Objetivo:</b> Correr el loop semanal completo dos veces (S1 y S2), con cada conversación atribuida a una palabra, un video y un subavatar.<br><b>Pasa de fase cuando:</b> ≥12/14 secuencias y reels, flywheel + 3 videos, 2 pedidos de sábado; palabras contestadas en el día; registro ≥90%; KPI fijado el 01/12; volumen confirmado el 07/12.</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>Acción</th><th>Quién</th><th>Cuándo</th><th>Está hecho cuando</th><th>SOP</th></tr></thead><tbody>
+<tr><td class="num">S1.1</td><td>Grabación extraordinaria: VSL-01, 4 reels, trial 1.2 y fotos</td><td>Manu; editor asiste</td><td>lun 23/11 9–12</td><td>Crudo en Drive</td><td class="num">03</td></tr>
+<tr><td class="num">S1.2</td><td>Publicar y fijar el flywheel; bio y CUENTA apuntan a él</td><td>Editor; Santi</td><td>mar 24/11 10:00</td><td>Video fijado, bio con el link, CUENTA probado</td><td class="num">02</td></tr>
+<tr><td class="num">S1.3</td><td>Plantilla de descripción de YouTube y descripción del canal</td><td>Santi</td><td>lun 23/11</td><td>Plantilla aplicada al flywheel</td><td class="num">03</td></tr>
+<tr><td class="num">S1.4</td><td>Edición semana 1: reels diarios, VSL-01 del vie 27, clips</td><td>Editor, clipping</td><td>lun 23 – jue 26/11</td><td>Cada pieza lista 24 h antes de salir</td><td class="num">05</td></tr>
+<tr><td class="num">S1.5</td><td>Revisión antes de publicar con ficha 05, checklist 07 y reglas de la base 11</td><td>Santi</td><td>antes de cada pieza</td><td>Nada sale sin la ficha</td><td class="num">07</td></tr>
+<tr><td class="num">S1.6</td><td>TikTok: 2 crudos por día sin CTA</td><td>Manu graba; sube quien defina D2</td><td>diario</td><td>14 por semana con el dolor anotado</td><td class="num">03</td></tr>
+<tr><td class="num">S1.7</td><td>Ritual de los martes</td><td>Manu, José, Santi, Mati</td><td>mar 24/11 y 01/12 10:00</td><td>1 a 3 ajustes anotados</td><td class="num">04</td></tr>
+<tr><td class="num">S1.8</td><td>Guiones de la semana 2: VSL-09, video B, 7 reels, 3 ganchos de historias</td><td>Santi, Mati</td><td>mié 25/11</td><td>Aprobados por Manu</td><td class="num">05</td></tr>
+<tr><td class="num">S1.9</td><td>Estudio: semana 2</td><td>Manu</td><td>jue 26/11</td><td>Crudo en Drive</td><td class="num">03</td></tr>
+<tr><td class="num">S1.10</td><td>Ritual del sábado: dolor de la semana siguiente con frases del setter y del closer</td><td>Manu y José; Santi y Mati guionan</td><td>sáb 28/11 y 05/12 11:00</td><td>Dolor elegido con 3 frases textuales</td><td class="num">04</td></tr>
+<tr><td class="num">S1.11</td><td>Lectura de historias a 24 h y reels a 48 h y 7 días</td><td>Santi</td><td>continuo</td><td>Planillas al día</td><td class="num">05</td></tr>
+<tr><td class="num">S1.12</td><td>Hipótesis de ángulo desde frases del setter → 1 trial de una variable</td><td>Santi; clipping</td><td>vie 27/11 y 04/12</td><td>Trial con hipótesis escrita</td><td class="num">05</td></tr>
+<tr><td class="num">S1.13</td><td>Estándares cruzados: matemática inversa y KPI semanal</td><td>Manu, Santi, José, Mati</td><td>mar 01/12 10:40</td><td>KPI escrito en el §7</td><td class="num">04</td></tr>
+<tr><td class="num">S1.14</td><td>Resto del perfil: La cuenta, Por dentro, Resultados, Quién soy y 3 fijados</td><td>Santi, Mati</td><td>dom 29/11</td><td>5 destacadas en orden; Por dentro sin Lite</td><td class="num">02</td></tr>
+<tr><td class="num">S1.15</td><td>Correcciones prioridad 2</td><td>Mati</td><td>dom 29/11</td><td>Ningún archivo en uso con datos viejos</td><td class="num">09</td></tr>
+<tr><td class="num">S1.16</td><td>Insights desde el 01/10 → la vara</td><td>Santi, Mati</td><td>dom 29/11</td><td>Promedio provisorio cargado</td><td class="num">06</td></tr>
+<tr><td class="num">S1.17</td><td>Onboarding retroactivo y reporte del molde (Lopo, Núñez, Herbora)</td><td>José, Manu</td><td>sáb 28/11</td><td>3 reportes con primer y último contacto</td><td class="num">04</td></tr>
+<tr><td class="num">S1.18</td><td>Role play del closer leyendo una tienda; si no puede, S1 lo toman Manu o José</td><td>Santi, Mati</td><td>sáb 28/11</td><td>Decisión escrita</td><td class="num">09</td></tr>
+<tr><td class="num">S1.19</td><td>Estudio: semana 3 (VSL-02 con palabra CPA)</td><td>Manu</td><td>jue 03/12</td><td>Crudo en Drive</td><td class="num">03</td></tr>
+<tr><td class="num">S1.20</td><td>Revisión de 2 semanas: S1 contra S2 y volumen de videos</td><td>Santi con Manu</td><td>lun 07/12</td><td>Una página con lectura y decisión</td><td class="num">03</td></tr>
+</tbody></table></div></div>
+<div class="phase"><div class="phase-head"><h3>S2 · Semanas 3–8 · operar el loop, validar subavatares, leer datos</h3><span class="pill">lun 07/12 – dom 17/01</span></div>
+<p><b>Objetivo:</b> Elegir subavatar con datos (plata, interés, quién entra) y encontrar un ángulo que traiga conversaciones calificadas varias semanas seguidas.<br><b>Pasa de fase cuando:</b> Se cumplen todos los criterios de escalar (§8), revisados el lunes 18/01.</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>Acción</th><th>Quién</th><th>Cuándo</th><th>Está hecho cuando</th><th>SOP</th></tr></thead><tbody>
+<tr><td class="num">S2.1</td><td>Link de la Cuenta del CPA y palabra CPA en ManyChat</td><td>Santi, Mati</td><td>dom 06/12</td><td>CPA devuelve video y recurso</td><td class="num">03</td></tr>
+<tr><td class="num">S2.2</td><td>Semana 3: S1 · dolor 2 CPA con el loop completo</td><td>Equipo</td><td>07–13/12</td><td>2 videos, 7 reels, 7 secuencias, 1 pedido, 14 TikTok</td><td class="num">03</td></tr>
+<tr><td class="num">S2.3</td><td>Decisión S3: qué se le entrega dentro de OS</td><td>Manu</td><td>jue 10/12</td><td>Semana 4 grabada en plan A (MARCA) o B (dolor 7, BASE)</td><td class="num">04</td></tr>
+<tr><td class="num">S2.4</td><td>Plan B: confirmar o armar el recurso BASE</td><td>Santi</td><td>jue 10/12</td><td>Recurso que llega, o la palabra no se usa</td><td class="num">03</td></tr>
+<tr><td class="num">S2.5</td><td>Semana 4 publicada (plan A o B)</td><td>Equipo</td><td>14–20/12</td><td>Loop completo</td><td class="num">03</td></tr>
+<tr><td class="num">S2.6</td><td>Revisión de la ronda 1 por subavatar con 7 días de desfase</td><td>Santi, Manu, José</td><td>lun 21/12</td><td>Una página y orden de la ronda 2</td><td class="num">04</td></tr>
+<tr><td class="num">S2.7</td><td>Banco para fiestas: 2 videos, 14 reels y fichas; historias diarias igual</td><td>Santi, Manu</td><td>jue 17/12</td><td>Banco en Drive; semanas 5–6 no cuentan para validar</td><td class="num">06</td></tr>
+<tr><td class="num">S2.8</td><td>Testeo de ángulos: trial → gana el que trae calificados → feed, título y flywheel</td><td>Santi; clipping</td><td>cada viernes</td><td>Ganador por semana en la planilla</td><td class="num">05</td></tr>
+<tr><td class="num">S2.9</td><td>Flywheel v2 para el subavatar ganador</td><td>Manu, editor</td><td>sale vie 09/01 [HIP]</td><td>Video fijado nuevo; el v1 queda en lista</td><td class="num">03</td></tr>
+<tr><td class="num">S2.10</td><td>Biblioteca: VSL-03 margen, VSL-04 pauta apagada, VSL-06 auditoría</td><td>Manu, Santi</td><td>jueves desde 17/12</td><td>Videos publicados con datos confirmados</td><td class="num">03</td></tr>
+<tr><td class="num">S2.11</td><td>Situación de la cuenta (alcance 30 días)</td><td>Santi</td><td>lun 07/12 y 04/01</td><td>Situación confirmada o cambiada</td><td class="num">03</td></tr>
+<tr><td class="num">S2.12</td><td>Semáforo cada 5–10 ventas y feedback del día 30</td><td>Mati, Santi, José</td><td>según ventas</td><td>Fila y decisión; respuestas textuales</td><td class="num">08</td></tr>
+<tr><td class="num">S2.13</td><td>Primer cliente de OS con primer cobro recurrente → Resultados</td><td>Manu, Santi</td><td>cuando ocurra</td><td>Caso con captura y permiso</td><td class="num">02</td></tr>
+<tr><td class="num">S2.14</td><td>Revisión de 8 semanas contra los criterios de escalar</td><td>Santi con Manu</td><td>lun 18/01</td><td>Decisión: escalar o una ronda más</td><td class="num">03</td></tr>
+</tbody></table></div></div>
+<div class="phase"><div class="phase-head"><h3>E · Escalar · solo con los criterios cumplidos</h3><span class="pill">no antes de fines de enero [HIP]</span></div>
+<p><b>Objetivo:</b> Llevar lo que funcionó en orgánico a la versión chica y recién después a pauta y lanzamiento.<br><b>Pasa de fase cuando:</b> La mini clase vendió o dejó clara la objeción que frena; hay reels con comentarios calificados como creativos.</p>
+<div class="tbl"><table><thead><tr><th>#</th><th>Acción</th><th>Quién</th><th>Cuándo</th><th>Está hecho cuando</th><th>SOP</th></tr></thead><tbody>
+<tr><td class="num">E.1</td><td>Mini clase de 30–45 min en el grupo de WhatsApp sobre el dolor ganador</td><td>Manu, Santi, setter, closer</td><td>al cumplir §8</td><td>Aplicaciones y reportes de la mini clase</td><td class="num">03</td></tr>
+<tr><td class="num">E.2</td><td>El ángulo ganador pasa a clase o lead magnet propio</td><td>Santi, Manu</td><td>después de E.1</td><td>Recurso o clase publicada</td><td class="num">05</td></tr>
+<tr><td class="num">E.3</td><td>Pauta con reels orgánicos ganadores como creativos</td><td>Mati</td><td>después de E.2</td><td>Creativos validados en orgánico</td><td class="num">09</td></tr>
+<tr><td class="num">E.4</td><td>Próximo lanzamiento con datos de la versión chica</td><td>Santi</td><td>después de E.3</td><td>Calendario con los 3 pedidos grandes primero</td><td class="num">06</td></tr>
+<tr><td class="num">E.5</td><td>Precio quieto hasta caso de tercero con suscripción y semáforo verde</td><td>Santi, Manu</td><td>—</td><td>Decisión con datos</td><td class="num">08</td></tr>
+</tbody></table></div></div>
+</section>
+<section class="stack" id="calendario"><h2>Calendario evergreen · 23/11 al 6/12</h2><p class="muted">Semana 1 para S1 (dolor 1, «hace mucho que no tenemos un día bueno»); semana 2 para S2 (dolor 9, «mi producto no es para suscripción»). Detalle completo de cada pieza en <code>mi-negocio/bases/12-plan-de-accion-evergreen.md</code>.</p>
+<h3>Semana 1</h3><div class="week">
+<div class="day"><h4>Lun 23/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (4) · conexión + hype 2 flywheel</span><span>«lunes. lo primero que miro ya no es el ads manager.» → panel del finde → «mañana subo la clase entera, sin la parte de la oferta.»</span><span class="cta">→ respondé CUENTA y te la mando apenas sale</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel R-01</span><span>«¿Hace cuánto no tenés un día bueno?»</span><span class="cta">→ Comentá CUENTA (ManyChat: sale mañana 10 hs)</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«el lunes abrís el ads manager y el finde se cayó todo» · «facturás todos los días y no sabés cuánto entra el mes que viene»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Mar 24/11</h4>
+<div class="piece"><span class="f"><span class="sub">Raíz</span>YouTube · flywheel v1</span><span>«La clase privada entera: por qué tu ecommerce vende y nada le dura» [HIP]</span><span class="cta">→ CUENTA · fijado · link de la bio</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (6) · nutrición + sale el video</span><span>«“hace mucho que no tenemos un día bueno.”» → «lo estable no es la campaña. es el cliente que vuelve» → test del piso → «subí la clase entera.»</span><span class="cta">→ Sticker de link al flywheel</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel</span><span>«Tirás una CBO, esperás 48 horas y nunca se estabiliza.»</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Clip</span><span>Corte 1 del flywheel: la cuenta 30.000 → 90.000</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«la campaña que se estabiliza no existe» · «cada venta la volvés a comprar»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Mié 25/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (2) · atracción + hype 1 VSL-01</span><span>«pov: 25 de noviembre y ya sabés cuánto entra en diciembre.» [CONFIRMAR MANU] → «el viernes subo cómo arranco cada mes.»</span><span class="cta">→ respondé PISO y te lo paso</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel</span><span>«Vender todos los días no es lo mismo que tener una marca estable.»</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Trial 1.1</span><span>R-01 con otro hook: «Un día cerrás arriba y al otro 600 lucas abajo.»</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«7 lucas de ganancia, facturando bien» · «el 1 del mes arrancás en cero»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Jue 26/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (4) · nutrición + hype 2</span><span>«el que te compró en octubre. qué recibió de vos desde entonces?» → «por eso la semana buena no dura.» → «mañana subo cómo arranco cada mes.»</span><span class="cta">→ respondé PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel</span><span>«¿Sabés cuánto entra el mes que viene?» (cierre: 3.943 suscriptores, 7,2% de cancelaciones, con captura)</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Trial 1.2</span><span>R-01 con un solo cambio: look de noche con auriculares</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«renovás creativos todos los días» · «si mañana te tiran el ban, qué te queda» (solo atracción)</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Vie 27/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>YouTube · VSL-01</span><span>«así arranco cada mes con $X ya cobrados (te muestro mis números)»; sin $X: «…lo que ya entró antes de prender un anuncio»</span><span class="cta">→ PISO en la descripción</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (3) · sale el video + cadena día 1</span><span>«subí el video: así arranco cada mes.» → una idea → «mañana abro el chat para los que ya venden y quieren ver esto con su tienda.»</span><span class="cta">→ Link al VSL-01</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel · corte VSL-01</span><span>Frase del VSL-01 sobre «el 1 del mes»</span><span class="cta">→ Comentá PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Clip</span><span>Corte 2 del flywheel</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«cuántos de tus clientes te compraron dos veces sin que les escribas» · «la semana buena te dura dos días»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Sáb 28/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (3) · pedido de la semana</span><span>«VENDÉS HOY Y NADA TE DURA?» → «si querés ver tus números conmigo, con tu tienda abierta» → palabra en naranja</span><span class="cta">→ respondé CUENTA → setter</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel</span><span>«Renovás creativos todos los días y la semana buena te dura dos.»</span><span class="cta">→ Comentá PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Trial</span><span>Reel CBO con otro hook: «Anda dos días y se cae.»</span><span class="cta">→ Comentá PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«en argentina no se suscribe nadie: lo que pensaba yo» · «buscás la compra, no al cliente»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Dom 29/11</h4>
+<div class="piece"><span class="f"><span class="sub">S1</span>Historias (5) · objeción + hype 1 VSL-09</span><span>«“está bueno, pero en argentina no se suscribe nadie.”» → «3.943 activos. en argentina.» → «el martes: “mi producto no es para eso”.»</span><span class="cta">→ si me escribiste CUENTA y quedó ahí, contame qué te frenó</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Reel · corte 2 VSL-01</span><span>Frase de cierre del VSL-01</span><span class="cta">→ Comentá PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Clip</span><span>Corte 3 del flywheel</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>TikTok ×2</span><span>«un día cerrás arriba y al otro 600 lucas abajo» · «no es tu creativo, es tu modelo»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+</div>
+<h3>Semana 2</h3><div class="week">
+<div class="day"><h4>Lun 30/11</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (5) · prueba + hype 2 VSL-09</span><span>«1,3M por día. 2,4% de margen.» → «nos metimos en la marca y ordenamos los números.» → «hoy: 2,8M por día. 40% de margen.»</span><span class="cta">→ respondé CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel R-04</span><span>«Le tenés fe a tu producto, pero nunca lo pudiste mantener.»</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Trial 2.1</span><span>R-04 con otro hook: «Nunca lo pudiste mantener, y no es el producto.»</span><span class="cta">→ Comentá CUENTA</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«le tenés fe a tu producto y nunca lo pudiste mantener» · «tu competencia promete resultados en 7 días»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Mar 01/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>YouTube · VSL-09</span><span>«“mi producto no es para suscripción”: así decido si un producto se vende todos los meses (con el mío)» [HIP]</span><span class="cta">→ CICLO en la descripción</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (6) · nutrición + sale el video</span><span>«“te lo curamos en 7 días.”» → «si tarda 3 meses en hacer efecto, cuántas unidades necesita?» → «3.» → iPad en dos columnas → «subí el video.»</span><span class="cta">→ Sticker de link al VSL-09</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel</span><span>«Todos prometen resultados en 7 días. Nadie te los cree.»</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S1</span>Clip</span><span>Corte del VSL-01 reciclado</span><span class="cta">→ Comentá PISO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«si tarda 3 meses, cuántas unidades necesita tu cliente» · «vendele lo que de verdad tarda»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Mié 02/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (4) · conexión + hype 1 video B</span><span>«mi fórmula costaba 12.000 el pote; la competencia vendía a 4.500.» [CONFIRMAR MANU] → encuesta «te dijeron “capaz tu producto no es bueno”?»</span><span class="cta">→ respondé TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel · corte VSL-09</span><span>Frase sobre «¿cada cuánto se termina?»</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Trial</span><span>Reel «7 días» con otro hook: «“Es totalmente mentira, porque es imposible.”»</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«tu cliente terminó el pote y nadie le escribió» · «“capaz tu producto no es bueno”: lo que te dicen»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Jue 03/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (4) · nutrición + hype 2</span><span>«el miércoles te pregunté. mirá.» (resultado real) → «compró una unidad de algo que tarda 3 meses: no vio el resultado. y no vuelve.»</span><span class="cta">→ respondé TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel</span><span>«Lo que decide si tu producto se vende todos los meses no es el producto.»</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Clip</span><span>Corte 2 del VSL-09</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«si no arranca en el test, no quiere decir que el producto sea malo» · «el tratamiento a la mitad no muestra resultado»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Vie 04/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>YouTube · video B</span><span>«Tu tratamiento dura 3 meses y lo vendés de a una unidad (la cuenta)» [HIP]</span><span class="cta">→ TRATAMIENTO en la descripción</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (3) · sale el video + cadena día 1</span><span>«subí la cuenta de las 3 unidades.» → una idea → «mañana abro el chat solo para los que venden un tratamiento.»</span><span class="cta">→ Link al video B</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel · corte video B</span><span>El momento de «3 unidades»</span><span class="cta">→ Comentá TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Trial</span><span>Variante del reel que mejor leyó a las 48 h (una variable)</span><span class="cta">→ La del reel original</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«lo que manda es cada cuánto se termina» · «prometer más rápido no te hace vender más»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Sáb 05/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (3) · pedido de la semana</span><span>«VENDÉS UN TRATAMIENTO?» → «contame qué vendés, cuánto tarda en hacer efecto y cada cuánto se termina.» → palabra en naranja</span><span class="cta">→ respondé CUENTA y lo vemos con tu tienda abierta</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel</span><span>«Al que tu producto le resuelve el problema no se va a los tres meses.» (opinión de Manu)</span><span class="cta">→ Comentá TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Clip</span><span>Corte 2 del video B</span><span class="cta">→ Comentá TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«“si lo cambio, rompo lo que me vende”» · «al lado de la compra única, sin tocarla»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+<div class="day"><h4>Dom 06/12</h4>
+<div class="piece"><span class="f"><span class="sub">S2</span>Historias (5) · objeción + hype 1 VSL-02</span><span>«“si lo cambio, rompo lo que hoy me vende.”» → «no tocás nada. va al lado de la compra única.» → «el martes: “salieron 7 a pautar lo mismo”.»</span><span class="cta">→ si me escribiste CUENTA y quedó ahí, contame qué te frenó</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Reel · corte 3 video B</span><span>Frase de cierre del video B</span><span class="cta">→ Comentá TRATAMIENTO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>Clip</span><span>Corte 3 del VSL-09</span><span class="cta">→ Comentá CICLO</span></div>
+<div class="piece"><span class="f"><span class="sub">S2</span>TikTok ×2</span><span>«al que le resolvés el problema no se va a los 3 meses» · «vendés, pero no es rentable»</span><span class="cta">→ Sin CTA</span></div>
+</div>
+</div>
+</section>
+<section class="stack" id="correcciones"><h2>Correcciones en materiales existentes</h2><p class="muted">Para que todo diga lo mismo antes del lunes 23/11.</p><div class="tbl"><table><thead><tr><th>Archivo</th><th>Qué cambiar</th></tr></thead><tbody>
+<tr><td><code>evergreen/vsl-chat/vsl-chat-genesis.md</code></td><td>P1: «hecha/instalamos por nosotros» → con vos; 156.798.062/2.200/1,28% → 275.225.343/3.943/7,2%; «factura +30M» → vende hoy + capital; agenda → aplica; ban → renovar creativos; cierre como pregunta</td></tr>
+<tr><td><code>evergreen/vsl-chat/pantalla-genesis.html</code></td><td>P1: sacar el bonus «USD 3.000 de descuento»</td></tr>
+<tr><td><code>ventas/oferta-genesis.html</code></td><td>P1: sacar −USD 3.000; selector Lite nunca de entrada (versión solo OS para compartir); «sesiones ilimitadas» → lo de CONTEXTO; +$3M/+$2M con fuente o afuera</td></tr>
+<tr><td><code>ventas/manual-llamada-de-venta-genesis.md</code></td><td>P1: DFY → hecho con vos; lead 19/10 y +30M → vende hoy + capital; cuotas → plan único D5; Mentoría → Lite tras objeción de capital; números viejos; sin Billetera Abierta ni agendá; guion de precio</td></tr>
+<tr><td><code>ventas/guion-de-llamada-genesis.md</code></td><td>P1: lo mismo que el manual (líneas 19, 21, 29, 51, 59, 174, 261); apertura con la tienda del lead abierta</td></tr>
+<tr><td><code>ventas/claude-recursos/conocimiento/genesis-contexto.md</code></td><td>P1: números viejos y «50% con pauta apagada» sin confirmar (l.17); avatar Gonza (l.81) → avatar A y subavatares; si no, cada recurso sale con datos viejos</td></tr>
+<tr><td><code>ventas/guion-sdr-clase-19-10.md</code></td><td>P1: reemplazar por el guion del setter evergreen: aperturas por subavatar, 4 preguntas, un seguimiento, sin llamada en frío doble</td></tr>
+<tr><td><code>lanzamientos/2026-11-17-webinar/whatsapp/flujo-wsp-api/ (GHL)</code></td><td>P1: apagar post-clase («quedan 6 lugares», «hasta el sábado 21»); nada automático en el grupo hasta reescribirlo</td></tr>
+<tr><td><code>evergreen/perfil-ig/optimizacion-perfil.md</code></td><td>P2: bio con +$100M y SUSCRIPCIÓN, Gonza, «Programa no va», 3 destacadas → bio y destacadas de la base 12 y la 02</td></tr>
+<tr><td><code>evergreen/perfil-ig/post-mecanismo.html</code></td><td>P2: slides 1, 7 y 9 (día bueno, el mes arranca cobrado, Mandame CUENTA) + slide «lo armamos con vos, adentro de tu tienda»</td></tr>
+<tr><td><code>evergreen/youtube/vsl-oculto-yt1.md</code></td><td>P2: no listado → publicado; done for you y 3 meses → con vos, 4 meses; «se agenda» → WhatsApp con la palabra; CUENTA → CPA</td></tr>
+<tr><td><code>evergreen/youtube/funnel-youtube.md</code></td><td>P2: Gonza 30–80M y USD 6.000 → avatar A sin precio; done for you, 3 meses; ADENTRO → palabra por video; ordenar por dolor y flywheel</td></tr>
+<tr><td><code>evergreen/vsl-chat/vsl-chat-genesis-lite.md</code></td><td>P2: 2.200 → 3.943; «programa» afuera; solo lo manda el closer después de vender Lite</td></tr>
+<tr><td><code>ventas/llamadas-b2b-b2c/ (01, 03, README)</code></td><td>P2: DFY y «lo instalamos nosotros» (B2B-16); números viejos; cuotas → D5; B2B-01 con 5.000 ≈ 7,5M ARS ÷ 45.000 = ~167 clientes; objeciones como pregunta</td></tr>
+<tr><td><code>ventas/proceso-de-ventas-clase-19-10.md y ventas/mapa-de-ventas.html</code></td><td>P2: calificado «químico + 30M» → vende hoy + capital; 6.000 → 5.000; números viejos; agendá → aplicá; DFY → DWY</td></tr>
+<tr><td><code>lanzamientos/2026-11-17-webinar/ventas-y-tracking/formulario-closer.md</code></td><td>P2: +280M → más de 270 millones; role play leyendo una tienda y haciendo la cuenta del techo</td></tr>
+<tr><td><code>lanzamientos/2026-11-17-webinar/mails/emails-nutricion.md</code></td><td>P2 si se reusa: «cambió el modelo» sobre Lucas (l.134, 194) sin suscripción; +280M/+3.500 → números de hoy; +$100M como promesa afuera</td></tr>
+<tr><td><code>lanzamientos/2026-11-17-webinar/whatsapp/whatsapp-nutricion.md y contenido-nutricion-dias-1-6.md</code></td><td>P2: «relanzaron con suscripción» (l.93) y «cambió el modelo» (l.236) → «nos metimos en la marca y los números se movieron»; 278 suscriptores sin fuente afuera</td></tr>
+<tr><td><code>lanzamientos/2026-11-17-webinar/ads/ (adquisición y nutrición)</code></td><td>Antes de volver a pautar: N9 sin el caso de los 400 de Lucas; N1 retirado; O5 fuera del avatar; cada ad con subavatar; calificado del píxel = vende hoy + capital</td></tr>
+</tbody></table></div></section>
+<section class="stack" id="metricas"><h2>Métricas semanales</h2><div class="tbl"><table><thead><tr><th>Qué</th><th>Sano</th><th>Alarma</th></tr></thead><tbody>
+<tr><td>Piezas publicadas contra el plan</td><td>≥90%</td><td>&lt;80% en una semana o el pedido del sábado sin salir</td></tr>
+<tr><td>Conversaciones por palabra (CUENTA + la del video)</td><td>Se sostienen o suben vs promedio de 4 semanas</td><td>Caen 2 semanas seguidas</td></tr>
+<tr><td>Palabras contestadas el mismo día</td><td>100%</td><td>Alguna con más de 24 h sin respuesta</td></tr>
+<tr><td>Conversaciones calificadas (vende hoy + capital)</td><td>≥ KPI semanal [PENDIENTE: 01/12]</td><td>Debajo del KPI 2 semanas seguidas</td></tr>
+<tr><td>Aplicaciones por semana</td><td>≥ KPI</td><td>Debajo del KPI 2 semanas seguidas</td></tr>
+<tr><td>Registro del setter completo</td><td>≥90% de conversaciones</td><td>&lt;80%</td></tr>
+<tr><td>Semáforo de precio OS (cada 5–10 ventas)</td><td>50–75%</td><td>&lt;50%: no se toca el precio, orden base 08 §17</td></tr>
+<tr><td>Carril de cierre por bloque</td><td>Mayoría OS [HIP]</td><td>Lite ≥ OS: el contenido trae al que no califica</td></tr>
+<tr><td>Caída entre historias</td><td>~5%</td><td>≥10% en una historia</td></tr>
+<tr><td>Respuestas ÷ visitas (historia 1)</td><td>1–5% (7–10% muy bueno)</td><td>Debajo del promedio de las últimas 10</td></tr>
+<tr><td>Respuestas al pedido del sábado</td><td>≥ promedio de los sábados</td><td>0 respuestas 2 sábados seguidos</td></tr>
+<tr><td>Calidad de seguidores por reel (muestra de 20)</td><td>Mayoría S1/S2/S3</td><td>Mayoría nivel 0 u otros rubros</td></tr>
+<tr><td>Conversaciones por video de YouTube en 7 días</td><td>≥1 por video [HIP]</td><td>0 en 2 videos seguidos del mismo subavatar</td></tr>
+<tr><td>Visitas al flywheel desde otros videos</td><td>Suben sobre la línea de base de semanas 1–2</td><td>Caen 2 semanas seguidas</td></tr>
+<tr><td>Preguntas básicas en el primer mensaje</td><td>Bajan</td><td>La misma pregunta en 5 chats</td></tr>
+<tr><td>Duración de la llamada</td><td>Base 23/48/73/91 min</td><td>&gt;60 min convenciendo o &gt;3 objeciones [HIP]</td></tr>
+</tbody></table></div></section>
+<section class="stack" id="escalar"><h2>Cuándo se pasa a escalar</h2><ol class="qs"><li>4 semanas seguidas con el loop completo: videos (2 o el mínimo de D1), 7 reels, 7 secuencias, pedido y ritual del sábado.</li><li>Aplicaciones calificadas todas las semanas durante 4 semanas, por encima del KPI fijado el 01/12.</li><li>Un ángulo que gana 3 semanas o más en conversaciones calificadas (no vistas) y ya pasó a feed, título y flywheel.</li><li>Subavatar elegido con datos de las rondas 1 y 2 (plata, interés, quién entra), sin contar las semanas de fiestas.</li><li>Semáforo de precio en amarillo o verde sobre 5–10 llamadas con precio de OS, y Lite por debajo de OS.</li><li>Atribución: registro del setter ≥90% y un reporte por fases por cada lead durante 4 semanas.</li><li>Para pauta: reels orgánicos con comentarios calificados como creativos y, en lo posible, primer cobro recurrente de un cliente OS.</li></ol></section>
+<section class="stack" id="pendientes"><h2>Pendientes</h2><div class="tbl"><table><thead><tr><th>Qué falta</th><th>Quién</th></tr></thead><tbody>
+<tr><td>D1 volumen de YouTube (propuesta: 2/semana con video B de material existente)</td><td>Santi</td></tr>
+<tr><td>D2 quién sube TikTok (propuesta: clipping)</td><td>Santi</td></tr>
+<tr><td>D4 quién atiende WhatsApp de Manu y DMs fuera de lanzamiento; ManyChat activo</td><td>Santi</td></tr>
+<tr><td>D5 plan de pagos único de OS</td><td>Santi</td></tr>
+<tr><td>D6 cupo en evergreen (no se dice si no hay número real)</td><td>Santi, Manu</td></tr>
+<tr><td>D7 −USD 3.000 y +$3B afuera</td><td>Santi</td></tr>
+<tr><td>D8 grabación del 17/11 usable para el flywheel</td><td>Santi, Manu</td></tr>
+<tr><td>D9 qué hace el setter con el que vende y tiene menos capital que OS</td><td>Santi</td></tr>
+<tr><td>D10 qué se le entrega a S3 dentro de OS (tope jue 10/12)</td><td>Manu</td></tr>
+<tr><td>D11 grupo de WhatsApp del 17/11</td><td>Santi</td></tr>
+<tr><td>D12 quién toma las llamadas de S1 hasta que el closer lea tiendas</td><td>Santi, Manu</td></tr>
+<tr><td>$X que se cobra el 1 de cada mes (VSL-01)</td><td>Manu</td></tr>
+<tr><td>Período y capturas de Herbora antes y después</td><td>Manu</td></tr>
+<tr><td>Frases [CONFIRMAR MANU] y capturas [CARGAR] de cada semana</td><td>Manu</td></tr>
+<tr><td>Link de la Cuenta del CPA y recurso BASE</td><td>Santi</td></tr>
+<tr><td>KPI semanal y objetivo de ventas de diciembre</td><td>Manu, Santi</td></tr>
+<tr><td>% de cierre y de agendamiento reales del 17/11</td><td>Mati, Santi</td></tr>
+<tr><td>Día 1 y semanas por fase para Por dentro</td><td>Manu, José</td></tr>
+<tr><td>¿Trial Reels habilitado en IG?</td><td>Santi</td></tr>
+<tr><td>Margen real X% y captura de pauta apagada</td><td>Manu</td></tr>
+<tr><td>Pedidos del sábado 26/12 y 02/01</td><td>Santi</td></tr>
+<tr><td>Primer cliente OS con primer cobro recurrente</td><td>Manu</td></tr>
+<tr><td>Actualizar CONTEXTO.md con plan de pagos, cupo y link de la bio</td><td>Santi</td></tr>
+</tbody></table></div></section>
+<footer class="src">Fuente: <code>mi-negocio/bases/12-plan-de-accion-evergreen.md</code>, sobre las bases 02 a 11 y la teoría de los SOPs en <code>mi-negocio/teoria-sops/</code>.</footer></div>
