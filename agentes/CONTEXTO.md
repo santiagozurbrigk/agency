@@ -1,35 +1,38 @@
 # Contexto de mi negocio — Génesis (Manu Dominguez)
 
-Estado al 26-sep-2026, actualizado el 30-oct-2026 con las llamadas de venta de los clientes que más pagaron (`mi-negocio/lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`). `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
+Estado al 26-sep-2026, actualizado el 30-oct-2026 con las llamadas de venta de los clientes que más pagaron (`mi-negocio/lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md`). Actualizado el 20-nov-2026 con las bases rearmadas con los 9 SOPs (`mi-negocio/bases/`): precio de Genesis OS y Lite, avatar definido (opción A) y sistema de contenido. `[PENDIENTE]` = no hay data o no está confirmado; no inventar.
 Lanzamiento en curso (clase del martes 17-nov, 18 hs): estado y decisiones en `mi-negocio/lanzamientos/2026-11-17-webinar/ESTADO.md`.
 Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido producido y pendientes): `mi-negocio/negocio/brief-genesis.md`.
 
 ## Negocio
 
-- **Nicho:** consultoría 1a1 para dueños de ecommerce de consumibles (químicos de limpieza y cuidado personal, suplementos, cosmética) en Argentina que ya facturan 30 a 80 millones ARS/mes con Meta Ads y están en breakeven. Los pasa de compra única a modelo de suscripción.
-  - No es para: el que arranca de cero (sin ventas) ni el que busca producto ganador.
-  - **Sí entra (cambio del 30-oct):** el que ya tiene un e-commerce que vende en otro nicho (importación, Mercado Libre) y quiere armar su marca de consumibles. Dos de los cuatro clientes que más pagaron venían de ahí, y uno pagó el ticket más alto en un pago. Antes se lo excluía.
+- **Nicho:** consultoría 1a1 para dueños de e-commerce que **ya venden** un producto de recompra (químicos de limpieza y cuidado personal, suplementos, cosmética, tratamientos) en Argentina, o que venden en otro nicho y van a armar su marca de consumibles. Los pasa de compra única a modelo de suscripción. Avatar completo en la sección Avatar y en `mi-negocio/bases/11-avatar-y-comunicacion.md`.
+  - No es para: el que todavía no vende, el que busca producto ganador, el que vende algo que no se termina ni el que quiere seguir solo en Mercado Libre sin tienda propia.
+  - El criterio ya no es facturar 30 a 80M/mes con Meta: es **vender hoy y tener capital para Genesis OS** (cambio del 20-nov).
 
-- **Qué vendo (oferta principal y precio):** **Génesis — Método B.A.S.E.** Consultoría 1:1 · 3 meses · **Done With You (DWY)**: la marca lo aplica con Manu y el equipo al lado; no se hace por el cliente. Es 1 a 1, con llamadas grupales semanales de apoyo (ver la oferta del 17/11). *(Corregido el 02/11/2026: antes decía Done For You.)*
+- **Qué vendo (oferta principal y precio):** **Genesis OS — Método B.A.S.E.** Consultoría 1:1 · **4 meses** · **USD 5.000** · **Done With You (DWY)**: la marca lo aplica con Manu y el equipo al lado; no se hace por el cliente. Es 1 a 1, con llamadas grupales semanales de apoyo (ver la oferta del 17/11). *(Corregido el 02/11/2026: antes decía Done For You.)*
   - **La oferta tal como se comunica en el webinar del 17/11** (ad post-webinar final, 02/11/2026). Es la versión vigente para el copy; donde choque con los 12 renglones de abajo, manda esta:
     - Llamadas 1 a 1 con Manu y con José, su socio.
     - 4 llamadas grupales semanales y chat 1 a 1 con Manu.
     - Acceso al campus: toda la información y herramientas propias (automatizaciones, flujos, agentes de IA y CRM).
     - Bonus que se nombran en la clase: Puentify y acceso a la Red Génesis.
     - **10 lugares.** El carrito del 17/11 cierra el **viernes 20/11**.
+  - **Genesis Lite · USD 2.000 (decidido el 20/11): no se comunica.** Solo la ofrece el closer en la llamada si el lead no califica para OS (no vende todavía o no llega con el capital). Nunca en bio, contenido, historias, anuncios ni mensajes del setter. Es la ex Mentoría: 3 meses, grupal, implementa el alumno con José al lado (`mi-negocio/evergreen/vsl-chat/vsl-chat-genesis-lite.md`).
   - **Cómo se entra:** en el webinar y en el post-webinar no se agenda una llamada: se **aplica** completando un formulario, y después el equipo contacta a los que aplicaron. Todos los CTA de venta dicen «aplicá», nunca «agendá».
   - Frase de la oferta (cerrada 6-sep): *"Escalo tu ecomm de consumibles a +$100M al mes convirtiéndolo a modelo de suscripción, sin depender del CPA ni dejar de vender."*
 
-  | | Validación (piloto, ya cerrada) | Webinar (vigente desde el lanzamiento) |
-  |---|---|---|
-  | Contado | USD 4.000 (anclado a lista 6.000) | USD 6.000 |
-  | 2 cuotas | 2 × 2.250 = 4.500 | 2 × 3.375 = 6.750 |
-  | 3 cuotas | 3 × 1.700 = 5.100 | 3 × 2.550 = 7.650 |
-  | Cupo | 5 marcas | 20 lugares ("por ahora") |
+  | | Validación (piloto, cerrada) | Clase del 17/11 (ya no vigente) | **Vigente desde el 20/11** |
+  |---|---|---|---|
+  | Genesis OS contado | USD 4.000 | USD 6.000 | **USD 5.000** |
+  | En pagos | 2 × 2.250 · 3 × 1.700 | 2 × 3.375 · 3 × 2.550 | `[PENDIENTE: Santi]` Lo que se cobró de verdad fueron 2 pagos sin recargo (2.000 + 3.000, 2.500 + 2.500). El banco de objeciones dice 2 × 2.850 y 3 × 2.000 |
+  | Duración | 3 meses | 3 meses | **4 meses** |
+  | Cupo | 5 marcas | 10 lugares | `[PENDIENTE]` |
+  | Genesis Lite | — | — | **USD 2.000, solo en la llamada** |
 
-  - Validación 1 cerrada: los 3 del piloto cerraron. El webinar sale.
-  - No se baja de precio en ningún momento. El entregable 3 (tienda con suscripción) no arranca hasta pagar la cuota 2.
-  - Cuenta que justifica el precio: USD 6.000 ≈ 9.000.000 ARS ÷ 45.000 de capacidad extra de compra por cliente = se paga con ~200 clientes adquiridos al techo nuevo.
+  - Validación 1 cerrada: los 3 del piloto cerraron.
+  - No se baja de precio en ningún momento. En la llamada: total primero, silencio, pago completo; las cuotas solo al final (base 08). Lite aparece recién después de que el lead no califica para OS, nunca al lado.
+  - El entregable 3 (tienda con suscripción) no arranca hasta pagar la cuota 2.
+  - Cuenta que justifica el precio: USD 5.000 ≈ 7.500.000 ARS (al mismo tipo de cambio que usaba la cuenta anterior, 1.500) ÷ 45.000 de capacidad extra de compra por cliente = se paga con ~167 clientes adquiridos al techo nuevo.
 
   **Qué incluye (12 renglones, todo DWY):**
   1. Roadmap de conversión con auditoría de tus números: margen real por pedido, CPA actual y techo de pauta con LTV.
@@ -88,20 +91,33 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 
 ## Avatar
 
-- **Quién es — "Gonza":**
-  - Edad: 23–32 [HIP]. Mayoritariamente hombre.
-  - Dueño y operador de una marca de consumibles con tienda propia. Hace o supervisa las campañas. Sabe operar: creativos, campañas, proveedor, logística.
-  - Factura 30 a 80 millones ARS/mes (≈ USD 20–53K), margen neto bajo o en breakeven. Monotributo o informal.
-  - Argentina (Buenos Aires, Córdoba, Mar del Plata, interior).
-  - Capacidad de inversión demostrada: USD 2.000–5.000 en formación.
-  - Descubre en TikTok, decide en YouTube largo. Consume backend, retención, contenido "sin humo".
-  - Compra por: la cuenta + un número de retención que nadie más muestra + acceso directo a quien lo hizo.
-  - Lo frena: que le rompan lo que funciona; que sea otro curso de producto ganador; que el precio cambie según quién lo atienda.
-  - Síntesis: Gonza tiene 27, vive en Córdoba, arrancó con dropshipping, pasó a un químico propio y factura 60M/mes con Meta Ads. Abre el Excel: el CPM le subió todo el año, cada venta le deja casi lo mismo que le cuesta, y el contador le dijo que si pasa a RI no cierra. Ya pagó dos mentorías de producto ganador que no le sirvieron porque él ya tiene producto. Lo que quiere no es facturar más: es que el 1 del mes ya haya facturación.
-  - Cliente real que es el ideal: Manu mismo antes de la suscripción (60M/mes en compra única). En el piloto: el cliente de la mentoría con marca de químicos y buenos márgenes, "el avatar calcado". Referencia de dolores reales: Lucas Ceria y Santi Blachman (Herbora), call del 21-sep.
-  - Avatar secundario (Nivel 2): ecommerce sin marca propia estable, hasta 30M/mes, saltando de mentoría en mentoría. Borrador 100% [HIP], sin oferta propia. **No se usa en oferta ni contenido.**
-  - **Avatar ampliado (30-oct, de las ventas reales):** el que ya vende en otro nicho (importa de China con Shopify + Meta, o vende en Mercado Libre) y quiere su marca de consumibles. Dolor: «estoy al pedo y no me quería estancar», «renegué tanto con los testeos que me cansé», cada stock que se termina es volver a cero. Tiene capital y paga rápido. Entra a la oferta principal (no al Nivel 2). Ángulo para hablarle: «tu e-commerce vende, pero no construye nada».
-  - **Lo que más pesó en la compra (llamadas de ventas):** que Manu se meta en la tienda y en los números (contra el mentor que dice «venís bien»), la financiación flexible, el baúl de agentes de IA. Tres de los cuatro que más pagaron venían quemados por otra mentoría.
+**Definido por Santi el 20-nov-2026: opción A.** Versión completa, con la guía de comunicación por formato y por subavatar: `mi-negocio/bases/11-avatar-y-comunicacion.md` y la página [Avatar de Génesis](https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG). Research y mapa de 10 dolores: `mi-negocio/bases/01-avatar.md`. Reemplaza a «Gonza» (30–80M ARS/mes) y a `mi-negocio/negocio/avatar-genesis.docx`.
+
+- **Avatar raíz:** el dueño de un e-commerce que **ya vende y está cansado de que nada dure**. Cada venta la tiene que volver a comprar, cada semana buena se cae en dos días, cada stock que se termina es volver a cero. Le tiene fe a lo que vende, pero no puede hacer que se sostenga, y ya le pagó a alguien que no se metió en sus números. No quiere facturar más: quiere saber cuánto entra el mes que viene.
+  - Lo comparten los 4 que más pagaron: inestabilidad (4), fatiga creativa (4), copias (3), un mentor que no sirvió (3), margen que no queda (3).
+  - Lo que cree que necesita (se nombra en el contenido): más creativos, bajar el CPA, una landing mejor, ser experto en Meta. Lo que necesita en el fondo (lo entrega OS): cambiar la unidad de venta de la compra al cliente, y alguien que se meta en su tienda y decida con él. **La suscripción es el mecanismo, nunca la puerta de entrada.**
+  - Lo que más pesó en la compra: que Manu se meta en la tienda y en los números (contra el mentor que dice «venís bien»), la financiación flexible, el baúl de agentes de IA.
+
+- **Subavatares (en orden de prioridad):**
+
+  | | S1 · La marca en breakeven | S2 · El fundador del tratamiento | S3 · El que vende pero no construye |
+  |---|---|---|---|
+  | Prioridad | 1: Manu le da resultado más rápido; de acá sale el primer caso con suscripción | 2 | 3, por decisión consciente: deja más plata pero tarda más |
+  | Quién es (real) | Herbora; Manu antes de la suscripción («Gonza» es la síntesis de S1) | Alan; Herbora; Lucas | Santi Núñez (importación); Thiago Lopo (Mercado Libre) |
+  | Situación | Marca propia de consumible, Meta, breakeven o pérdida | Producto para una afección, ticket alto, vende pero no es rentable | Vende con margen, sin marca propia de recompra; tiene capital |
+  | Cómo habla | «Hace mucho que no tenemos un día bueno» · «7 lucas de ganancia» · «salieron 7 a pautar lo mismo» | «Le tengo mucha fe al producto» · «nunca lo podía mantener» | «Me cansé» · «estoy al pedo» · «si no arranca, no arranca» |
+  | Creencia a romper | «En Argentina no se suscribe nadie» | «Mi producto no es para suscripción» | «Primero me capitalizo y después armo la marca» |
+  | Ángulos (`analisis-ventas-calificadas.md`) | A, B, C, I | G, H | E, F |
+  | Pago real | USD 4.000 contado | USD 5.000 en 2 pagos | USD 5.000 en 2 pagos y USD 5.000 contado |
+
+  - El quemado por otra mentoría no es un subavatar: atraviesa a los tres (3 de 4).
+  - `[PENDIENTE: Manu]` Qué se le entrega a S3 dentro de OS: la oferta no tiene un renglón para armar la marca y buscar producto está fuera de alcance. Hasta definirlo, S3 recibe atracción pero no secuencia de calificación propia.
+
+- **Cliente ideal (compra OS):** vende hoy (en cualquier canal), tiene un producto de recompra o va a armar su marca de consumibles, tiene capital para USD 5.000 (contado o en 2 pagos) y quiere hacerlo con Manu y José al lado.
+- **Calificado (cambio del 20-nov):** vende hoy + capital para OS. Deja de ser criterio invertir USD 100/día en Meta, que dejaba afuera a S3. Preguntas del setter: qué vendés hoy y por dónde · cada cuánto se le termina el producto a tu cliente · con cuánto capital contás para la marca · para cuándo lo querés.
+- **Seguidor ideal (a quién le habla la atracción):** el mismo tipo de persona en otra situación: opera o está armando un e-commerce de producto de recompra, con capital, aunque crea que su problema es de creativos o de CPA. Recibe reels, TikTok y videos de atracción; si llega a la llamada y no califica para OS, recibe Lite.
+- **Afuera:** sin capital (recurso y YouTube, sin llamada) · busca producto ganador · vende algo que no se termina · solo quiere Mercado Libre · operador top de una marca grande (no se le apunta).
+- **Datos de contexto que se mantienen:** mayoritariamente hombres de 23 a 32 años [HIP], Argentina (Buenos Aires, Córdoba, Mar del Plata, interior). Descubre en TikTok, decide en YouTube largo. Compra por la cuenta, un número de retención que nadie más muestra y acceso directo a quien lo hizo. Lo frena que le rompan lo que funciona, otro curso de producto ganador y que el precio cambie según quién lo atienda.
 
 - **Nivel de consciencia:**
   - Del problema: siente el síntoma (CPA, breakeven, miedo a Meta). Cree que su problema es de creativos, pauta o producto — no sabe que es del modelo (la unidad de venta es la compra, no el cliente).
@@ -116,7 +132,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 
   | Punto A | Punto B |
   |---|---|
-  | Compra única, 30–80M/mes, en breakeven | Base de suscriptores activos |
+  | Vende con compra única y nada le dura | Base de suscriptores activos |
   | Cada venta cuesta lo mismo que la anterior | La 2ª, 3ª y 4ª compra entran sin costo de adquisición |
   | Techo de pauta: 30.000 por cliente | Techo 90.000, operando en 75.000 |
   | El 1 del mes arranca en cero | El mes arranca cobrado |
@@ -170,6 +186,15 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
 
 ## Voz y marca
 
+- **Comunicación con el avatar definido (20-nov):** detalle por formato y por subavatar en `mi-negocio/bases/11-avatar-y-comunicacion.md`.
+  - Mensaje central: «No te falta vender más: te falta que el que ya te compró te vuelva a comprar.»
+  - Lo que decide la compra, en todas las piezas: «Me meto en tu tienda y en tus números, y lo armamos juntos.»
+  - Una pieza = un dolor + un subavatar. El hook usa las palabras del avatar y nombra lo que cree que necesita; la suscripción aparece después, como el mecanismo.
+  - La metadependencia se dice «renovar creativos todos los días»; el ban queda solo como hook de atracción.
+  - El número va al final, como consecuencia, y con captura. El único caso con suscripción es el de Manu.
+  - Genesis Lite no existe afuera de la llamada. Pedido de llamada como mucho una vez por semana; los días de hype piden un recurso.
+  - Sistema de contenido: reels con ManyChat, 2 videos de YouTube por semana que mandan al flywheel, historias con 3 días de hype por video, TikTok crudo; destino: el WhatsApp de Manu, donde el setter califica y lleva a aplicar. Está en el tablero del equipo.
+
 - **Cómo hablo (tono, muletillas, palabras que uso y que nunca digo):**
   - Tono: directo, técnico y coloquial argentino. Un operador hablándole a otro operador. Explica con cuentas, no con motivación.
   - Persona: voseo estricto ("largás, escalás, tenés, pagás"). Nunca tú, nunca usted, nunca "ustedes".
@@ -201,7 +226,7 @@ Detalle ampliado (caso, competencia, webinar, calendario, funnel, contenido prod
   - Look y escenarios: remera/camisa lisa negra o hueso, sin logos · pizarra con fibrón rojo · tablero de Scalify en pantalla. Estudio en Mar del Plata (video largo y webinar), talking head (TikTok e historias), pantalla compartida haciendo la cuenta (la pieza que convierte).
   - Handle: Manu Domzz (IG y TikTok).
 
-- **Personaje / apodo del avatar:** "Gonza" (la síntesis del avatar). Apodo público tipo "el emprendedor quemado": [PENDIENTE], no existe todavía.
+- **Personaje / apodo del avatar:** "Gonza" es la síntesis de S1 (la marca en breakeven); el avatar raíz es el de la sección Avatar. Apodo público tipo "el emprendedor quemado": [PENDIENTE], no existe todavía.
 
 ## Links
 
