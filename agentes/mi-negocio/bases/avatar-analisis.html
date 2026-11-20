@@ -1,0 +1,196 @@
+<title>Avatar de Génesis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: una columna de lectura con tablas anchas; las 3 opciones lado a lado en escritorio, apiladas en el teléfono */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:48px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700}
+h2{font-size:24px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:68ch}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stack{display:grid;gap:14px}
+.status{display:inline-flex;gap:8px;align-items:center;background:var(--warn-soft);color:var(--warn);font-weight:600;font-size:13px;padding:4px 12px;border-radius:999px;width:max-content}
+.lead{font-size:17px;color:var(--fg)}
+.muted{color:var(--muted)}
+.fixed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.fixed div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.fixed b{display:block;font-family:var(--display);font-size:16px}
+.options{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start;min-width:0}
+.opt .tag{font-family:var(--display);font-weight:700;color:var(--accent);font-size:14px}
+.opt ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.opt .k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:4px}
+.pro{color:var(--ok)} .con{color:var(--warn)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:600;background:var(--bg);font-size:13px}
+tr:last-child td{border-bottom:none}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.fit{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px}
+.fit.y{background:var(--ok-soft);color:var(--ok)} .fit.n{background:var(--warn-soft);color:var(--warn)} .fit.p{background:var(--accent-soft);color:var(--accent)}
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.figures div{border-top:2px solid var(--line);padding-top:10px}
+.figures .n{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums}
+.figures .n.hl{color:var(--accent)}
+.note{background:var(--accent-soft);border-radius:10px;padding:16px 18px}
+ol.qs{margin:0;padding-left:20px;display:grid;gap:10px;max-width:72ch}
+.src{font-size:13px;color:var(--muted)}
+code{font-size:13px;background:var(--bg);padding:1px 5px;border-radius:4px}
+</style>
+
+<div class="wrap">
+
+<header class="stack">
+  <span class="eyebrow">Génesis · Manu Dominguez · 20/11/2026</span>
+  <h1>Avatar de Génesis</h1>
+  <span class="status">Sin definir · lo decide Santi</span>
+  <p class="lead">Hay dos lecturas del avatar sobre la mesa: la de las bases (el que ya vende y nada le dura) y la del plan de contenido del 20/11 (el que quiere hacer una marca bien desde el día uno). Esta página junta las dos, los datos que hay y lo que cambia según cuál se elija.</p>
+</header>
+
+<section class="stack">
+  <h2>Lo que ya está cerrado y no depende del avatar</h2>
+  <div class="fixed">
+    <div><b>Genesis OS · USD 5.000</b><span class="muted">La oferta principal. Se vende en la llamada.</span></div>
+    <div><b>Genesis Lite · USD 2.000</b><span class="muted">No se comunica. Solo la ofrece el closer en la llamada si el lead no califica para OS.</span></div>
+    <div><b>El sistema de contenido</b><span class="muted">Reels con ManyChat, YouTube, flywheel, historias, setter y closer. Está en el tablero.</span></div>
+    <div><b>Una pieza, un subavatar</b><span class="muted">Sea cual sea el avatar, cada video, reel o secuencia le habla a una sola persona.</span></div>
+  </div>
+</section>
+
+<section class="stack">
+  <h2>Las opciones</h2>
+  <p class="muted">A y B no se excluyen del todo: el plan del 20/11 propone que A sea el centro de las historias y B el centro del canal. Por eso hay una opción C.</p>
+  <div class="options">
+    <article class="opt">
+      <span class="tag">Opción A · bases</span>
+      <h3>El dueño de un e-commerce que ya vende y está cansado de que nada dure</h3>
+      <p>Cada venta la vuelve a comprar, cada semana buena se cae en dos días. Tres subavatares: S1 marca en breakeven, S2 fundador del tratamiento, S3 el que vende pero no construye.</p>
+      <span class="k">A favor</span>
+      <ul class="pro"><li>Los 4 que más pagaron vendían algo cuando llamaron.</li><li>La inestabilidad aparece en los 4 llamados.</li><li>Es Manu antes de la suscripción: el filtro de congruencia da completo para S1.</li><li>D4_V3 (recompra y margen) calificó el 30 %.</li></ul>
+      <span class="k">En contra</span>
+      <ul class="con"><li>S1 dejó menos plata que S3 (USD 4.000 contra USD 10.000).</li><li>El rango de 30–80M ARS/mes no lo cumple ningún comprador documentado.</li></ul>
+      <span class="k">Va a</span>
+      <p>OS. Lite solo si en la llamada no califica.</p>
+    </article>
+    <article class="opt">
+      <span class="tag">Opción B · plan del 20/11</span>
+      <h3>Quiere hacer una marca bien desde el día uno, y tiene con qué</h3>
+      <p>Arranca o testeó productos sin pegar. Quiere a alguien técnico, sin lifestyle. El filtro es el capital, no lo que gasta hoy en Meta.</p>
+      <span class="k">A favor</span>
+      <ul class="pro"><li>Según Santi, es el que siempre pagó, y «hacer una buena marca desde el día uno» fue su ángulo ganador.</li><li>Núñez y Lopo (S3) querían armar su marca y pusieron USD 10.000 entre los dos.</li><li>Calificar por capital deja entrar a Lopo, que el criterio de USD 100/día en Meta dejaba afuera.</li></ul>
+      <span class="k">En contra</span>
+      <ul class="con"><li>151 de 336 leads del 19/10 (44 %) dijeron «todavía no tengo marca» y ninguno compró Génesis.</li><li>Manu tarda más en darle el primer resultado: primero producto y marca, después recompra.</li><li>Choca con el alcance: buscar producto está fuera de Génesis.</li></ul>
+      <span class="k">Va a</span>
+      <p>OS si ya tiene un e-commerce que vende y capital (como S3). Lite si arranca de cero.</p>
+    </article>
+    <article class="opt">
+      <span class="tag">Opción C · los dos</span>
+      <h3>B en el canal de YouTube, A en las historias</h3>
+      <p>Es la propuesta del plan: los dos buscan una marca que dure, así que la tesis de la suscripción les sirve a ambos. Un flywheel para cada uno, el segundo 6 a 8 semanas después del primero.</p>
+      <span class="k">A favor</span>
+      <ul class="pro"><li>No apuesta todo a una lectura con 4 ventas de muestra.</li><li>Se valida con datos a las 8 semanas: qué video trajo al lead, qué subavatar y en qué carril cerró.</li></ul>
+      <span class="k">En contra</span>
+      <ul class="con"><li>Dos públicos con una cuenta chica: riesgo de hablarle a un punto medio, que es lo que le pasó a la clase del 17/11 según el plan.</li><li>Si el canal atrae a B sin capital, el setter recibe volumen que no compra OS y Lite no se puede ofrecer afuera.</li></ul>
+      <span class="k">Va a</span>
+      <p>Los dos carriles, con la calificación por capital decidiendo OS o Lite en la llamada.</p>
+    </article>
+  </div>
+</section>
+
+<section class="stack">
+  <h2>Los que pagaron, uno por uno</h2>
+  <p class="muted">Las cuatro llamadas de Génesis con transcripción. La de Andy Kette falta: el link que se pasó era el de Herbora.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Cliente</th><th>Situación cuando llamó</th><th>Pago</th><th>Llamada</th><th>Opción A</th><th>Opción B</th></tr></thead>
+    <tbody>
+      <tr><td>Herbora</td><td>Shampoo para dermatitis. Breakeven o pérdida. «Hace mucho que no tenemos un día bueno.»</td><td class="num">USD 4.000 contado</td><td class="num">91 min</td><td><span class="fit y">S1</span></td><td><span class="fit n">no</span></td></tr>
+      <tr><td>Alan Gallucci</td><td>Crema para hongos de uñas lanzada en julio. Vende pero no es rentable; pidió plata prestada.</td><td class="num">USD 2.000 + 3.000</td><td class="num">73 min</td><td><span class="fit y">S2</span></td><td><span class="fit p">en parte</span></td></tr>
+      <tr><td>Santi Núñez</td><td>Importa de China, Shopify + Meta, 30–40 % de margen. Quiere pasarse a consumibles. Todavía no largó.</td><td class="num">USD 2.500 + 2.500</td><td class="num">23 min</td><td><span class="fit y">S3</span></td><td><span class="fit y">sí</span></td></tr>
+      <tr><td>Thiago Lopo</td><td>Vende en Mercado Libre, todo automatizado. Sin marca propia; quiere armar una.</td><td class="num">USD 5.000 contado</td><td class="num">48 min</td><td><span class="fit y">S3</span></td><td><span class="fit y">sí</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Fuente: <code>lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md</code>. Los dos que más rápido cerraron (Núñez y Lopo) ya tenían un e-commerce que vendía y capital: encajan en las dos lecturas. Lo que separa A de B es el que todavía no vende.</p>
+</section>
+
+<section class="stack">
+  <h2>Lo que dijeron los leads de la clase del 19/10</h2>
+  <div class="figures">
+    <div><div class="n">336</div><span class="muted">leads de anuncios</span></div>
+    <div><div class="n hl">151</div><span class="muted">«todavía no tengo marca» (44 %)</span></div>
+    <div><div class="n">69</div><span class="muted">calificados, 20,2 % (USD 100/día en Meta)</span></div>
+    <div><div class="n">7</div><span class="muted">aplicaron</span></div>
+    <div><div class="n">0</div><span class="muted">compraron desde anuncios</span></div>
+  </div>
+  <p>Los 151 «sin marca» mezclan dos personas distintas: el que ya vende otra cosa y quiere su marca (S3, que sí compró) y el que todavía no vende nada (que no compró Génesis). El formulario de ese lanzamiento no los separaba.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Anuncio</th><th>Ángulo</th><th>Calificados</th><th>% que califica</th><th>Qué trae</th></tr></thead>
+    <tbody>
+      <tr><td>D3_V6</td><td>Miedo a Meta, facturación de Manu</td><td class="num">21 a USD 31,10</td><td class="num">16,3 %</td><td>Volumen: el seguidor ideal</td></tr>
+      <tr><td>D4_V3</td><td>Recompra y margen</td><td class="num">13 a USD 27,01</td><td class="num">30 %</td><td>El que ya vende: el cliente ideal de A</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Fuente: <code>lanzamientos/2026-10-19-clase/analisis/conclusiones.md</code>.</p>
+</section>
+
+<section class="stack">
+  <h2>Qué cambia según la decisión</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Opción A</th><th>Opción B</th><th>Opción C</th></tr></thead>
+    <tbody>
+      <tr><td>Dolor central</td><td>Inestabilidad: «nada me dura»</td><td>Arrancar bien: «quiero una marca que dure desde el día uno»</td><td>Los dos, uno por formato</td></tr>
+      <tr><td>Primer flywheel</td><td>«Ya vendo y nada me dura»</td><td>«Cómo vender el mismo producto todos los meses a la misma persona»</td><td>B primero, A 6 a 8 semanas después</td></tr>
+      <tr><td>Calificación del setter</td><td>Que ya venda un producto de recompra; capital para OS</td><td>Capital disponible para la marca, venda o no</td><td>Capital disponible, con la etapa del negocio anotada</td></tr>
+      <tr><td>Quién entra a OS</td><td>S1, S2 y S3 con capital</td><td>El que tiene capital y un e-commerce que vende</td><td>Igual que B</td></tr>
+      <tr><td>Quién recibe Lite en la llamada</td><td>El que llega sin vender o sin plata para OS</td><td>El que arranca de cero con capital</td><td>Igual que B</td></tr>
+      <tr><td>Calendario del tablero (4 semanas)</td><td>Queda como está: S1 → S2 → S1 → S3</td><td>Se rehace: el canal arranca por B</td><td>Historias como están; YouTube se rehace para B</td></tr>
+      <tr><td>Lo que más hay que cuidar</td><td>Que el contenido no se cierre solo en S1</td><td>No llenar el WhatsApp de gente sin capital ni marca</td><td>No hablarle a un punto medio</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="stack">
+  <h2>Fuera de las tres opciones</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Perfil</th><th>Por qué no</th><th>Qué se hace</th></tr></thead>
+    <tbody>
+      <tr><td>Pegó un producto y recién escala</td><td>Cuida la liquidez: la plata va a stock y pauta. OS de una no le entra.</td><td>Lite en la llamada, o nutrición hasta que tenga capital.</td></tr>
+      <tr><td>Operador top de una marca grande</td><td>Mercado chico. No entra a una clase; elige a alguien con mucha prueba.</td><td>No se le apunta. Se lo gana la autoridad de los videos largos.</td></tr>
+      <tr><td>Busca producto ganador</td><td>Fuera de alcance de Génesis.</td><td>Nada.</td></tr>
+      <tr><td>Vende algo que no se termina</td><td>Sin reposición no hay suscripción.</td><td>Nada.</td></tr>
+      <tr><td>Sin capital</td><td>No puede comprar ni OS ni Lite.</td><td>Recurso y YouTube, sin llamada.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="stack">
+  <h2>Cómo decidirlo con datos</h2>
+  <div class="note"><p>La muestra son 4 ventas de Génesis. Ninguna lectura está probada todavía. Lo que más rápido aclara la decisión son las aplicaciones del 17/11 clasificadas por perfil.</p></div>
+  <ol class="qs">
+    <li><b>Aplicaciones del 17/11:</b> cuántas son del que ya vende (A) y cuántas del que arranca (B), y cuáles de cada grupo cerraron. Lo tiene el campus.</li>
+    <li><b>Separar a los «sin marca»:</b> sumar al formulario «¿vendés hoy algo online, aunque no sea tu marca?» y «¿con cuánto capital contás para la marca?».</li>
+    <li><b>Lo que dijo Santi:</b> que el que siempre pagó es el que quiere hacer una marca bien desde el día uno. ¿Viene de las ventas de Génesis, de la Mentoría o del 1 a 1 viejo de USD 1.800–2.100? Cambia mucho la lectura.</li>
+    <li><b>Primer cobro recurrente:</b> cuántos días tardó cada cliente desde que entró. Si S3 tarda mucho más que S1, el caso de éxito que falta sale más rápido de A.</li>
+    <li><b>La prueba de 8 semanas:</b> qué video trajo a cada lead (pregunta del formulario), qué subavatar anota el setter y en qué carril cerró. El que cierra más pasa a ser el avatar del próximo flywheel.</li>
+  </ol>
+</section>
+
+<footer class="src">
+  Fuentes: <code>mi-negocio/bases/01-avatar.md</code>, el plan «Sistema de contenido Genesis» del 20/11, <code>analisis-ventas-calificadas.md</code> y <code>conclusiones.md</code> del 19/10. Tablero del equipo: <a href="https://claude.ai/artifact/MRFxTVab5fvZdo7tZGrnNj">Génesis — Bases y roadmap orgánico</a>.
+</footer>
+</div>

@@ -25,9 +25,16 @@ Rearmadas el 19/11/2026 siguiendo al pie de la letra los 9 SOPs de la formación
 5. **Menos pedidos, más dar.** La audiencia es chica: un pedido fuerte por semana como mucho, CTA por defecto a un recurso, número al final como consecuencia de la historia. (03, 06, 09)
 6. **El precio no se mueve hasta tener datos.** No hay ninguna venta registrada a USD 6.000 y falta el caso de un tercero con suscripción, que es la primera brecha a cerrar. (08)
 
+## Cerrado por Santi el 20/11 (reemplaza el precio del 19/11)
+
+- **Genesis OS: USD 5.000**, 4 meses, Done With You. Reemplaza los USD 6.000 del 19/11: donde una base o el roadmap dice 6.000, vale OS 5.000.
+- **Genesis Lite: USD 2.000. No se comunica:** solo la ofrece el closer en la llamada, si el lead no califica para OS. Nunca en bio, contenido, historias ni anuncios.
+- **El sistema de contenido se unificó** con el plan «Sistema de contenido Genesis» del 20/11: reels con ManyChat, 2 videos de YouTube por semana que mandan al flywheel (video fijado), historias con 3 días de hype por video, TikTok crudo, loop semanal y testeo de ángulos. Destino: el WhatsApp de Manu; el setter lleva a aplicar. Está en el tablero, sección «Sistema de contenido unificado».
+- **El avatar queda sin definir.** Las opciones y los datos están en [Avatar de Génesis](https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG) (fuente: `avatar-analisis.html`).
+
 ## Cerrado por Santi el 19/11
 
-- **Precio: USD 6.000.** Todo el material que dice 5.000 queda viejo y se alinea.
+- ~~**Precio: USD 6.000.**~~ Reemplazado el 20/11 por OS USD 5.000.
 - **Duración: 4 meses**, Done With You. `CONTEXTO.md` todavía dice 3 meses.
 - **El carrito del 17/11 cierra el viernes 20/11.** El «sábado 21» de `ESTADO.md` y de los mockups de POST queda viejo.
 

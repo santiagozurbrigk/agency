@@ -1,5 +1,7 @@
 # Base 08 — Precio y valor percibido
 
+> **Actualización 20/11:** el precio vigente es **Genesis OS USD 5.000** (4 meses) y **Genesis Lite USD 2.000**, que no se comunica y solo ofrece el closer en la llamada si el lead no califica para OS. Donde este archivo dice USD 6.000, vale OS 5.000.
+
 Aplicación a Génesis del SOP 08 (`../teoria-sops/sop-08-subir-precio.md`). Actualizado 19/11/2026.
 
 > Cómo leer este archivo. Lo que va entre comillas « » es textual de un archivo del repo o de una llamada y lleva su fuente (ruta relativa a `mi-negocio/`, o `CONTEXTO.md`). `[HIP]` = hipótesis sin validar. `[PENDIENTE: …]` = dato que no está en el repo y alguien lo tiene que dar. Los términos del SOP se usan tal cual los dice el autor (las 3 variables, fricción sana, valor percibido, arriba/abajo, congruencia, ROI de la transformación, condición innegociable, ticket bajo/medio/alto, gaps de mercado, PIF, ancla, semáforo, checkpoint). "Transformación" es palabra prohibida en el copy de Manu (`CONTEXTO.md` → Voz y marca): acá aparece solo como término del SOP, nunca en una pieza. Se apoya en la base 01 (`01-avatar.md`): S1 "Gonza" (marca en breakeven), S2 (fundador del tratamiento), S3 (vende pero no construye).

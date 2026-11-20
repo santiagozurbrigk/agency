@@ -1,5 +1,7 @@
 # Base 01 — Avatar
 
+> **Actualización 20/11:** el precio vigente es **Genesis OS USD 5.000** (4 meses) y **Genesis Lite USD 2.000**, que no se comunica y solo ofrece el closer en la llamada si el lead no califica para OS. Donde este archivo dice USD 6.000, vale OS 5.000. **El avatar quedó sin definir:** las opciones están en `avatar-analisis.html` (https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG).
+
 Aplicación a Génesis del SOP 01 (`../teoria-sops/sop-01-avatar.md`). Actualizado 19/11/2026.
 
 > Cómo leer este archivo. Todo lo que está entre comillas « » es textual de una llamada, un formulario o un archivo del repo, y lleva su fuente (ruta relativa a `mi-negocio/`, o `CONTEXTO.md`). `[HIP]` = hipótesis que todavía no se validó. `[PENDIENTE: …]` = dato que no está en el repo y alguien lo tiene que dar. Los términos del SOP se usan tal cual los dice el autor (avatar raíz, subavatar, seguidor ideal, mapa de dolores, filtro de congruencia, checkpoint…). Es la base de las bases 02 a 09: perfil, contenido, ventas y precio salen de acá.
