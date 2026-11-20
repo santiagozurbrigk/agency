@@ -24,7 +24,7 @@ h3{font-size:17px;font-weight:600}
 p{margin:0;max-width:68ch}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .stack{display:grid;gap:14px}
-.status{display:inline-flex;gap:8px;align-items:center;background:var(--warn-soft);color:var(--warn);font-weight:600;font-size:13px;padding:4px 12px;border-radius:999px;width:max-content}
+.status{display:inline-flex;gap:8px;align-items:center;background:var(--ok-soft);color:var(--ok);font-weight:600;font-size:13px;padding:4px 12px;border-radius:999px;width:max-content}
 .lead{font-size:17px;color:var(--fg)}
 .muted{color:var(--muted)}
 .fixed{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
@@ -52,6 +52,15 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 ol.qs{margin:0;padding-left:20px;display:grid;gap:10px;max-width:72ch}
 .src{font-size:13px;color:var(--muted)}
 code{font-size:13px;background:var(--bg);padding:1px 5px;border-radius:4px}
+.subs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+dl{margin:0;display:grid;gap:8px}
+dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+dd{margin:0}
+.rules{margin:0;padding-left:20px;display:grid;gap:8px;max-width:76ch}
+.quote{font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:600;line-height:1.3;border-left:3px solid var(--accent);padding-left:16px;max-width:40ch}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+details>summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:18px}
+details[open]>summary{margin-bottom:16px}
 </style>
 
 <div class="wrap">
@@ -59,60 +68,169 @@ code{font-size:13px;background:var(--bg);padding:1px 5px;border-radius:4px}
 <header class="stack">
   <span class="eyebrow">Génesis · Manu Dominguez · 20/11/2026</span>
   <h1>Avatar de Génesis</h1>
-  <span class="status">Sin definir · lo decide Santi</span>
-  <p class="lead">Hay dos lecturas del avatar sobre la mesa: la de las bases (el que ya vende y nada le dura) y la del plan de contenido del 20/11 (el que quiere hacer una marca bien desde el día uno). Esta página junta las dos, los datos que hay y lo que cambia según cuál se elija.</p>
+  <span class="status">Definido · opción A · 20/11</span>
+  <p class="lead">El dueño de un e-commerce que ya vende y está cansado de que nada dure. Con tres subavatares, a quién se le vende Genesis OS, y cómo se le habla de ahora en más en cada formato.</p>
 </header>
 
 <section class="stack">
-  <h2>Lo que ya está cerrado y no depende del avatar</h2>
+  <h2>La decisión en una pantalla</h2>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><td><b>Avatar raíz</b></td><td>El dueño de un e-commerce que ya vende y está cansado de que nada dure.</td></tr>
+      <tr><td><b>Subavatares</b></td><td>S1 La marca en breakeven · S2 El fundador del tratamiento · S3 El que vende pero no construye.</td></tr>
+      <tr><td><b>Prioridad</b></td><td>S1 primero: es al que Manu le da resultado más rápido, y de ahí sale el primer caso con suscripción. S2 segundo. S3 por decisión consciente: deja más plata pero tarda más.</td></tr>
+      <tr><td><b>Cliente ideal (compra OS)</b></td><td>Vende hoy, tiene un producto de recompra (o va a armar su marca de consumibles) y tiene capital para Genesis OS USD 5.000.</td></tr>
+      <tr><td><b>Seguidor ideal</b></td><td>El mismo tipo de persona en otra situación: opera o está armando un e-commerce de producto de recompra, con capital, aunque todavía no sepa que su problema es el modelo.</td></tr>
+      <tr><td><b>Calificado</b></td><td>Vende hoy + capital para OS. Deja de ser criterio el gasto en Meta (USD 100 por día), que dejaba afuera a S3.</td></tr>
+      <tr><td><b>Genesis Lite · USD 2.000</b></td><td>No se comunica. Solo la ofrece el closer en la llamada si el lead no califica para OS.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="stack">
+  <h2>Avatar raíz</h2>
+  <p class="quote">Cada venta la tiene que volver a comprar, cada semana buena se cae en dos días, cada stock que se termina es volver a cero.</p>
+  <p>Le tiene fe a lo que vende, pero no puede hacer que se sostenga, y ya le pagó a alguien que no se metió en sus números. Lo que quiere no es facturar más: es saber cuánto entra el mes que viene.</p>
   <div class="fixed">
-    <div><b>Genesis OS · USD 5.000</b><span class="muted">La oferta principal. Se vende en la llamada.</span></div>
-    <div><b>Genesis Lite · USD 2.000</b><span class="muted">No se comunica. Solo la ofrece el closer en la llamada si el lead no califica para OS.</span></div>
-    <div><b>El sistema de contenido</b><span class="muted">Reels con ManyChat, YouTube, flywheel, historias, setter y closer. Está en el tablero.</span></div>
-    <div><b>Una pieza, un subavatar</b><span class="muted">Sea cual sea el avatar, cada video, reel o secuencia le habla a una sola persona.</span></div>
+    <div><b>Lo que cree que necesita</b><span class="muted">Más creativos, bajar el CPA, una landing mejor, ser experto en Meta, que le dejen de copiar. Esto se nombra en el contenido.</span></div>
+    <div><b>Lo que necesita en el fondo</b><span class="muted">Cambiar la unidad de venta de la compra al cliente, y alguien que se meta en su tienda y decida con él. Esto lo entrega OS.</span></div>
+    <div><b>Lo que comparten los 4 que pagaron</b><span class="muted">Inestabilidad (4), fatiga creativa (4), copias (3), un mentor que no sirvió (3), margen que no queda (3).</span></div>
   </div>
 </section>
 
 <section class="stack">
-  <h2>Las opciones</h2>
-  <p class="muted">A y B no se excluyen del todo: el plan del 20/11 propone que A sea el centro de las historias y B el centro del canal. Por eso hay una opción C.</p>
-  <div class="options">
+  <h2>Los tres subavatares</h2>
+  <div class="subs">
     <article class="opt">
-      <span class="tag">Opción A · bases</span>
-      <h3>El dueño de un e-commerce que ya vende y está cansado de que nada dure</h3>
-      <p>Cada venta la vuelve a comprar, cada semana buena se cae en dos días. Tres subavatares: S1 marca en breakeven, S2 fundador del tratamiento, S3 el que vende pero no construye.</p>
-      <span class="k">A favor</span>
-      <ul class="pro"><li>Los 4 que más pagaron vendían algo cuando llamaron.</li><li>La inestabilidad aparece en los 4 llamados.</li><li>Es Manu antes de la suscripción: el filtro de congruencia da completo para S1.</li><li>D4_V3 (recompra y margen) calificó el 30 %.</li></ul>
-      <span class="k">En contra</span>
-      <ul class="con"><li>S1 dejó menos plata que S3 (USD 4.000 contra USD 10.000).</li><li>El rango de 30–80M ARS/mes no lo cumple ningún comprador documentado.</li></ul>
-      <span class="k">Va a</span>
-      <p>OS. Lite solo si en la llamada no califica.</p>
+      <span class="tag">S1 · prioridad 1</span>
+      <h3>La marca en breakeven</h3>
+      <dl>
+        <dt>Quién es</dt><dd>Herbora (shampoo para dermatitis). Manu antes de la suscripción.</dd>
+        <dt>Situación</dt><dd>Marca propia de consumible, vende con Meta, en breakeven o pérdida.</dd>
+        <dt>Cómo habla</dt><dd>«Hace mucho que no tenemos un día bueno» · «7 lucas de ganancia. Sobreviviendo» · «salieron 7 personas a pautar un producto muy parecido».</dd>
+        <dt>Creencia a romper</dt><dd>«En Argentina no se suscribe nadie.»</dd>
+        <dt>Ángulos</dt><dd>A días buenos · B 7 marcas vendiendo lo mismo, la cuenta del CPA · C clientes que ya te recompraron · I pasar a responsable inscripto.</dd>
+        <dt>Lo que necesita ver</dt><dd>La cuenta con sus números: techo 30.000 → 90.000, operando en 75.000. El tablero de Manu.</dd>
+        <dt>Objeción típica</dt><dd>«No quiero romper lo que hoy me vende.» La suscripción va al lado, sin tocarla.</dd>
+      </dl>
     </article>
     <article class="opt">
-      <span class="tag">Opción B · plan del 20/11</span>
-      <h3>Quiere hacer una marca bien desde el día uno, y tiene con qué</h3>
-      <p>Arranca o testeó productos sin pegar. Quiere a alguien técnico, sin lifestyle. El filtro es el capital, no lo que gasta hoy en Meta.</p>
-      <span class="k">A favor</span>
-      <ul class="pro"><li>Según Santi, es el que siempre pagó, y «hacer una buena marca desde el día uno» fue su ángulo ganador.</li><li>Núñez y Lopo (S3) querían armar su marca y pusieron USD 10.000 entre los dos.</li><li>Calificar por capital deja entrar a Lopo, que el criterio de USD 100/día en Meta dejaba afuera.</li></ul>
-      <span class="k">En contra</span>
-      <ul class="con"><li>151 de 336 leads del 19/10 (44 %) dijeron «todavía no tengo marca» y ninguno compró Génesis.</li><li>Manu tarda más en darle el primer resultado: primero producto y marca, después recompra.</li><li>Choca con el alcance: buscar producto está fuera de Génesis.</li></ul>
-      <span class="k">Va a</span>
-      <p>OS si ya tiene un e-commerce que vende y capital (como S3). Lite si arranca de cero.</p>
+      <span class="tag">S2 · prioridad 2</span>
+      <h3>El fundador del tratamiento</h3>
+      <dl>
+        <dt>Quién es</dt><dd>Alan (crema para hongos de uñas). También Herbora y Lucas (crema para eczema).</dd>
+        <dt>Situación</dt><dd>Producto para una afección, ticket alto, vende pero no es rentable.</dd>
+        <dt>Cómo habla</dt><dd>«Le tengo mucha fe al producto» · «nunca lo podía mantener» · «es totalmente mentira, porque es imposible».</dd>
+        <dt>Creencia a romper</dt><dd>«Mi producto no es para suscripción.» Alan casi no se anota a la clase por eso.</dd>
+        <dt>Ángulos</dt><dd>G todos prometen resultados en 7 días; nadie te los cree · H le tenés fe a tu producto, pero te dicen que capaz no es bueno.</dd>
+        <dt>Lo que necesita ver</dt><dd>Que un tratamiento de 3 meses ya es un producto de recompra. La cuenta de las 3 unidades.</dd>
+        <dt>Objeción típica</dt><dd>«Si a alguno no le funciona, se da de baja.» El mensaje va antes de la llamada, no en el pitch.</dd>
+      </dl>
     </article>
     <article class="opt">
-      <span class="tag">Opción C · los dos</span>
-      <h3>B en el canal de YouTube, A en las historias</h3>
-      <p>Es la propuesta del plan: los dos buscan una marca que dure, así que la tesis de la suscripción les sirve a ambos. Un flywheel para cada uno, el segundo 6 a 8 semanas después del primero.</p>
-      <span class="k">A favor</span>
-      <ul class="pro"><li>No apuesta todo a una lectura con 4 ventas de muestra.</li><li>Se valida con datos a las 8 semanas: qué video trajo al lead, qué subavatar y en qué carril cerró.</li></ul>
-      <span class="k">En contra</span>
-      <ul class="con"><li>Dos públicos con una cuenta chica: riesgo de hablarle a un punto medio, que es lo que le pasó a la clase del 17/11 según el plan.</li><li>Si el canal atrae a B sin capital, el setter recibe volumen que no compra OS y Lite no se puede ofrecer afuera.</li></ul>
-      <span class="k">Va a</span>
-      <p>Los dos carriles, con la calificación por capital decidiendo OS o Lite en la llamada.</p>
+      <span class="tag">S3 · prioridad 3</span>
+      <h3>El que vende pero no construye</h3>
+      <dl>
+        <dt>Quién es</dt><dd>Santi Núñez (importa de China, Shopify + Meta). Thiago Lopo (Mercado Libre, automatizado).</dd>
+        <dt>Situación</dt><dd>Vende con margen, sin marca propia de recompra. Tiene capital y paga rápido.</dd>
+        <dt>Cómo habla</dt><dd>«Me cansé» · «estoy al pedo» · «no me quería estancar» · «si no arranca, no arranca».</dd>
+        <dt>Creencia a romper</dt><dd>«Primero me capitalizo con un producto y después armo la marca.»</dd>
+        <dt>Ángulos</dt><dd>E réplica, audio por arriba, y si no arranca, no arranca · F tu e-commerce vende, pero no construye nada.</dd>
+        <dt>Lo que necesita ver</dt><dd>Lo de afuera le suma («lo vimos mucho en Estados Unidos») y la operación con agentes de IA.</dd>
+        <dt>Pendiente</dt><dd>Qué se le entrega dentro de OS: lo define Manu. Hasta entonces recibe atracción, no una secuencia de calificación propia.</dd>
+      </dl>
     </article>
   </div>
+  <p class="muted">El quemado por otra mentoría no es un subavatar: atraviesa a los tres. Es lo que inclina la compra: «me meto en tu tienda».</p>
 </section>
 
+<section class="stack">
+  <h2>A quién se le vende y a quién se le habla</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Quién</th><th>Qué recibe</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cliente ideal</b></td><td>S1, S2 y S3 que venden hoy y tienen capital para USD 5.000, contado o en dos pagos.</td><td>Llamada de Genesis OS.</td></tr>
+      <tr><td><b>Seguidor ideal</b></td><td>Operador de e-commerce de producto de recompra, con capital, que todavía cree que su problema es de creativos o de CPA, o que está armando su marca desde el día uno.</td><td>Reels, TikTok y videos de atracción. Si llega a la llamada y no califica para OS: Lite.</td></tr>
+      <tr><td><b>Sin capital</b></td><td>Cualquiera de los anteriores sin plata para invertir en la marca.</td><td>Recurso y YouTube, sin llamada.</td></tr>
+      <tr><td><b>Afuera</b></td><td>Busca producto ganador · vende algo que no se termina · solo quiere Mercado Libre · operador top de una marca grande.</td><td>Nada. Al operador top lo gana la autoridad de los videos largos.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="stack">
+  <h2>Cómo se comunica de ahora en más</h2>
+  <p class="quote">No te falta vender más: te falta que el que ya te compró te vuelva a comprar.</p>
+  <div class="fixed">
+    <div><b>Creencia central</b><span class="muted">La plata de un consumible está en la segunda, la tercera y la cuarta compra. Todos compiten por el producto y el ángulo; nadie compite por el modelo.</span></div>
+    <div><b>Enemigo</b><span class="muted">El mentor que te dice «venís bien» sin meterse en tus números. Nunca se nombra a nadie.</span></div>
+    <div><b>Lo que decide la compra</b><span class="muted">«Me meto en tu tienda y en tus números, y lo armamos juntos.» Va en el perfil, los videos, el setter y la llamada.</span></div>
+  </div>
+  <h3>Las reglas</h3>
+  <ol class="rules">
+    <li><b>Una pieza, un dolor y un subavatar.</b> La semana gira sobre un solo dolor.</li>
+    <li><b>El hook usa las palabras del avatar</b> y nombra lo que cree que necesita. La suscripción aparece después, como el mecanismo.</li>
+    <li><b>La metadependencia se dice «renovar creativos todos los días».</b> El ban queda solo como hook de atracción.</li>
+    <li><b>El número va al final, como consecuencia, y con captura.</b> $275.225.343 por mes, 3.943 suscriptores, 7,2% de cancelaciones.</li>
+    <li><b>El único caso con suscripción es el de Manu.</b> Herbora y los alumnos nunca van al lado de «suscripción».</li>
+    <li><b>No se nombra un producto ni la marca de un cliente</b> en los guiones a cámara.</li>
+    <li><b>Lite no existe afuera de la llamada.</b></li>
+    <li><b>Nunca «webinar», «programa», «funnel», «lead» ni «agendá».</b> El CTA de venta es «aplicá».</li>
+    <li><b>La voz de Manu:</b> voseo, la cadena causal con el número entre guiones, remates secos. Amigo que ya pasó por ahí; nada de gurú ni lifestyle.</li>
+    <li><b>Menos pedidos, más dar.</b> Pedido de llamada como mucho una vez por semana; los días de hype piden un recurso.</li>
+  </ol>
+  <h3>Por formato</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Formato</th><th>Le habla a</th><th>Qué hace</th><th>Regla de avatar</th></tr></thead>
+    <tbody>
+      <tr><td>Perfil de IG</td><td>Cliente ideal</td><td>Autoridad → solución → DM CUENTA. Destacadas: Empezá acá · La cuenta · Por dentro · Resultados · Quién soy.</td><td>La bio responde «¿esto me sirve a mí, con mi producto y acá en Argentina?».</td></tr>
+      <tr><td>YouTube · 2 por semana</td><td>Cliente ideal, sobre todo S1</td><td>Martes pizarra o Miro; viernes desglose, caso o flywheel nuevo. Todos mandan al flywheel.</td><td>El primer flywheel es para el avatar raíz: «ya vendo y nada me dura».</td></tr>
+      <tr><td>Flywheel</td><td>Cliente ideal</td><td>La clase filtrada, fijada. Ángulo nuevo cada 6 a 8 semanas.</td><td>Una versión por subavatar a medida que haya datos: S1, después S2, después S3.</td></tr>
+      <tr><td>Reels + ManyChat</td><td>Seguidor ideal</td><td>1 por día, cada uno con su palabra y el link al video.</td><td>Un subavatar por reel, con su frase textual en el hook.</td></tr>
+      <tr><td>TikTok · 2 por día</td><td>Seguidor ideal</td><td>Crudo a cámara, sin CTA.</td><td>Crudo no es medio hecho: igual toca un dolor del mapa.</td></tr>
+      <tr><td>Historias · 1 secuencia por día</td><td>Los que ya siguen</td><td>3 días de hype antes de cada video; conversión los sábados.</td><td>El hilo de la semana es el mismo dolor que los videos.</td></tr>
+      <tr><td>Setter · WhatsApp de Manu</td><td>El que escribió</td><td>Pregunta, califica por «vende hoy + capital» y lleva a aplicar.</td><td>Anota palabra, dolor, frase textual, subavatar y qué video lo trajo.</td></tr>
+      <tr><td>Closer · llamada</td><td>El que aplicó</td><td>Entiende la marca, abre la tienda, hace la cuenta con sus números y presenta OS.</td><td>Lite solo si no califica para OS, después de la objeción de capital.</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Setter y closer, por subavatar</h3>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>S1 · breakeven</th><th>S2 · tratamiento</th><th>S3 · vende pero no construye</th></tr></thead>
+    <tbody>
+      <tr><td>Cómo lo reconoce el setter</td><td>Marca propia de consumible, pauta en Meta, habla de CPA o de días malos.</td><td>Producto para una afección; duda si «es para suscripción».</td><td>Vende otra cosa (importación, Mercado Libre) y quiere su marca.</td></tr>
+      <tr><td>Pregunta de apertura (hipótesis)</td><td>«¿Cuándo fue tu último día bueno?»</td><td>«¿Cada cuánto se le termina el producto a tu cliente?»</td><td>«¿Qué pasa con tus ventas cuando se te termina el stock?»</td></tr>
+      <tr><td>Qué le manda</td><td>La Cuenta del CPA; el video del dolor 1 o 2.</td><td>El video del dolor 9; la cuenta de las 3 unidades.</td><td>El video del dolor 8 (falta grabarlo).</td></tr>
+      <tr><td>Qué confirma el closer</td><td>El dolor 1 y cuánto puso de su bolsillo.</td><td>Que el tratamiento dura más de un mes y cuántos recompran.</td><td>Cuánto le dura cada stock y si decidió armar su marca.</td></tr>
+      <tr><td>Con qué presenta OS</td><td>La cuenta con sus números, la conversión de la base, el tablero semanal.</td><td>La variante de suscripción contra su ciclo real, el plan de 90 días.</td><td>Falta: qué se le entrega (Manu).</td></tr>
+      <tr><td>Objeción esperada</td><td>«No quiero romper lo que funciona.»</td><td>«Si no le funciona a alguno, se da de baja.»</td><td>«Todavía no tengo el producto.»</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Preguntas de calificación del setter:</b> qué vendés hoy y por dónde · cada cuánto se le termina el producto a tu cliente · con cuánto capital contás para la marca · para cuándo lo querés.</p>
+</section>
+
+<section class="stack">
+  <h2>Qué cambia y qué falta</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Dónde</th><th>Qué cambia</th></tr></thead>
+    <tbody>
+      <tr><td>Formulario de aplicación</td><td>Suma: ¿vendés hoy algo online, aunque no sea tu marca? · ¿cada cuánto se termina tu producto? · ¿con cuánto capital contás para la marca? · ¿qué video te trajo?</td></tr>
+      <tr><td>Criterio de calificado (tracker, píxel, ads)</td><td>Vende hoy + capital para OS.</td></tr>
+      <tr><td>Reporte de ventas</td><td>Suma el subavatar, el video que lo trajo y el carril en el que cerró: OS, Lite o ninguno.</td></tr>
+      <tr><td>Calendario de 4 semanas</td><td>Se mantiene: S1 inestabilidad → S2 tratamiento → S1 CPA → S3 si Manu define qué se le entrega (si no, el dolor 7).</td></tr>
+      <tr><td><code>CONTEXTO.md</code> y <code>avatar-genesis.docx</code></td><td>Quedan viejos. <code>CONTEXTO.md</code> lo actualiza Santi.</td></tr>
+    </tbody>
+  </table></div>
+  <ol class="qs">
+    <li><b>Manu:</b> qué se le entrega a S3 dentro de OS. Bloquea la semana 4.</li>
+    <li><b>Manu:</b> el test real del SOP 01, imaginarse a cada subavatar leyendo su último post.</li>
+    <li><b>Manu:</b> nombre de marketing para «me meto en tu tienda» y para el dolor de S3.</li>
+    <li><b>Santi:</b> las aplicaciones del 17/11 clasificadas por subavatar y carril.</li>
+    <li><b>Validación:</b> una semana por subavatar, midiendo plata, interés y quién aplica. Si S3 deja más plata y los casos no tardan, sube de prioridad.</li>
+  </ol>
+</section>
+
+<details>
+  <summary>Por qué A: el SOP 01 y los datos</summary>
+  <div class="stack">
 <section class="stack">
   <h2>Qué dice el SOP 01, criterio por criterio</h2>
   <p class="muted">Los criterios de la clase de Avatar (<code>teoria-sops/sop-01-avatar.md</code>), aplicados a las opciones con los datos que hay. Las citas son textuales del SOP.</p>
@@ -174,49 +292,11 @@ code{font-size:13px;background:var(--bg);padding:1px 5px;border-radius:4px}
   <p class="src">Fuente: <code>lanzamientos/2026-10-19-clase/analisis/conclusiones.md</code>.</p>
 </section>
 
-<section class="stack">
-  <h2>Qué cambia según la decisión</h2>
-  <div class="tbl"><table>
-    <thead><tr><th></th><th>Opción A</th><th>Opción B</th><th>Opción C</th></tr></thead>
-    <tbody>
-      <tr><td>Dolor central</td><td>Inestabilidad: «nada me dura»</td><td>Arrancar bien: «quiero una marca que dure desde el día uno»</td><td>Los dos, uno por formato</td></tr>
-      <tr><td>Primer flywheel</td><td>«Ya vendo y nada me dura»</td><td>«Cómo vender el mismo producto todos los meses a la misma persona»</td><td>B primero, A 6 a 8 semanas después</td></tr>
-      <tr><td>Calificación del setter</td><td>Que ya venda un producto de recompra; capital para OS</td><td>Capital disponible para la marca, venda o no</td><td>Capital disponible, con la etapa del negocio anotada</td></tr>
-      <tr><td>Quién entra a OS</td><td>S1, S2 y S3 con capital</td><td>El que tiene capital y un e-commerce que vende</td><td>Igual que B</td></tr>
-      <tr><td>Quién recibe Lite en la llamada</td><td>El que llega sin vender o sin plata para OS</td><td>El que arranca de cero con capital</td><td>Igual que B</td></tr>
-      <tr><td>Calendario del tablero (4 semanas)</td><td>Queda como está: S1 → S2 → S1 → S3</td><td>Se rehace: el canal arranca por B</td><td>Historias como están; YouTube se rehace para B</td></tr>
-      <tr><td>Lo que más hay que cuidar</td><td>Que el contenido no se cierre solo en S1</td><td>No llenar el WhatsApp de gente sin capital ni marca</td><td>No hablarle a un punto medio</td></tr>
-    </tbody>
-  </table></div>
-</section>
 
-<section class="stack">
-  <h2>Fuera de las tres opciones</h2>
-  <div class="tbl"><table>
-    <thead><tr><th>Perfil</th><th>Por qué no</th><th>Qué se hace</th></tr></thead>
-    <tbody>
-      <tr><td>Pegó un producto y recién escala</td><td>Cuida la liquidez: la plata va a stock y pauta. OS de una no le entra.</td><td>Lite en la llamada, o nutrición hasta que tenga capital.</td></tr>
-      <tr><td>Operador top de una marca grande</td><td>Mercado chico. No entra a una clase; elige a alguien con mucha prueba.</td><td>No se le apunta. Se lo gana la autoridad de los videos largos.</td></tr>
-      <tr><td>Busca producto ganador</td><td>Fuera de alcance de Génesis.</td><td>Nada.</td></tr>
-      <tr><td>Vende algo que no se termina</td><td>Sin reposición no hay suscripción.</td><td>Nada.</td></tr>
-      <tr><td>Sin capital</td><td>No puede comprar ni OS ni Lite.</td><td>Recurso y YouTube, sin llamada.</td></tr>
-    </tbody>
-  </table></div>
-</section>
-
-<section class="stack">
-  <h2>Cómo decidirlo con datos</h2>
-  <div class="note"><p>La muestra son 4 ventas de Génesis. Ninguna lectura está probada todavía. Lo que más rápido aclara la decisión son las aplicaciones del 17/11 clasificadas por perfil.</p></div>
-  <ol class="qs">
-    <li><b>Aplicaciones del 17/11:</b> cuántas son del que ya vende (A) y cuántas del que arranca (B), y cuáles de cada grupo cerraron. Lo tiene el campus.</li>
-    <li><b>Separar a los «sin marca»:</b> sumar al formulario «¿vendés hoy algo online, aunque no sea tu marca?» y «¿con cuánto capital contás para la marca?».</li>
-    <li><b>Lo que dijo Santi:</b> que el que siempre pagó es el que quiere hacer una marca bien desde el día uno. ¿Viene de las ventas de Génesis, de la Mentoría o del 1 a 1 viejo de USD 1.800–2.100? Cambia mucho la lectura.</li>
-    <li><b>Primer cobro recurrente:</b> cuántos días tardó cada cliente desde que entró. Si S3 tarda mucho más que S1, el caso de éxito que falta sale más rápido de A.</li>
-    <li><b>La prueba de 8 semanas:</b> qué video trajo a cada lead (pregunta del formulario), qué subavatar anota el setter y en qué carril cerró. El que cierra más pasa a ser el avatar del próximo flywheel.</li>
-  </ol>
-</section>
+  </div>
+</details>
 
 <footer class="src">
-  Fuentes: <code>mi-negocio/bases/01-avatar.md</code>, el plan «Sistema de contenido Genesis» del 20/11, <code>analisis-ventas-calificadas.md</code> y <code>conclusiones.md</code> del 19/10. Tablero del equipo: <a href="https://claude.ai/artifact/MRFxTVab5fvZdo7tZGrnNj">Génesis — Bases y roadmap orgánico</a>.
+  Texto completo para el equipo y los agentes: <code>mi-negocio/bases/11-avatar-y-comunicacion.md</code>. Research y mapa de 10 dolores: <code>mi-negocio/bases/01-avatar.md</code>. Tablero del equipo: <a href="https://claude.ai/artifact/MRFxTVab5fvZdo7tZGrnNj">Génesis — Bases y roadmap orgánico</a>.
 </footer>
 </div>

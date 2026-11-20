@@ -1,6 +1,6 @@
 # Base 01 — Avatar
 
-> **Actualización 20/11:** el precio vigente es **Genesis OS USD 5.000** (4 meses) y **Genesis Lite USD 2.000**, que no se comunica y solo ofrece el closer en la llamada si el lead no califica para OS. Donde este archivo dice USD 6.000, vale OS 5.000. **El avatar quedó sin definir:** las opciones están en `avatar-analisis.html` (https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG).
+> **Actualización 20/11:** el precio vigente es **Genesis OS USD 5.000** (4 meses) y **Genesis Lite USD 2.000**, que no se comunica y solo ofrece el closer en la llamada si el lead no califica para OS. Donde este archivo dice USD 6.000, vale OS 5.000. **Avatar definido el 20/11: opción A** (este avatar raíz con S1, S2 y S3). La versión vigente y la guía de comunicación están en `11-avatar-y-comunicacion.md`; esta base queda como research y mapa de dolores.
 
 Aplicación a Génesis del SOP 01 (`../teoria-sops/sop-01-avatar.md`). Actualizado 19/11/2026.
 

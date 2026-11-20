@@ -15,6 +15,8 @@ Rearmadas el 19/11/2026 siguiendo al pie de la letra los 9 SOPs de la formación
 | 07 | [Historias: jerarquía visual](07-historias-jerarquia-visual.md) | [SOP 07](../teoria-sops/sop-07-historias-jerarquia-visual.md) | Sistema visual, 6 layouts, checklist antes de publicar, auditoría de las historias del 17/11. |
 | 08 | [Precio y valor percibido](08-precio.md) | [SOP 08](../teoria-sops/sop-08-subir-precio.md) | Diagnóstico de precio, cálculo de ROI, escalera de ofertas, guion de presentación del precio. |
 | 09 | [Vender sin vender](09-vender-sin-vender.md) | [SOP 09](../teoria-sops/sop-09-vender-sin-vender.md) | Auditoría del detector, máscaras, rampa de 3 tramos, chat y llamada, ritmo del pedido. |
+| 10 | [Roadmap orgánico](10-roadmap-organico.md) | — | Las 6 fases paso a paso y el calendario de contenido del 23/11 al 20/12. |
+| 11 | [Avatar definido y comunicación](11-avatar-y-comunicacion.md) | SOP 01 | **El avatar vigente (opción A, 20/11)**, los 3 subavatares y cómo se le habla en cada formato. Manda sobre la 01 donde choquen. |
 
 ## Lo que dicen las 9 bases juntas
 
@@ -30,7 +32,7 @@ Rearmadas el 19/11/2026 siguiendo al pie de la letra los 9 SOPs de la formación
 - **Genesis OS: USD 5.000**, 4 meses, Done With You. Reemplaza los USD 6.000 del 19/11: donde una base o el roadmap dice 6.000, vale OS 5.000.
 - **Genesis Lite: USD 2.000. No se comunica:** solo la ofrece el closer en la llamada, si el lead no califica para OS. Nunca en bio, contenido, historias ni anuncios.
 - **El sistema de contenido se unificó** con el plan «Sistema de contenido Genesis» del 20/11: reels con ManyChat, 2 videos de YouTube por semana que mandan al flywheel (video fijado), historias con 3 días de hype por video, TikTok crudo, loop semanal y testeo de ángulos. Destino: el WhatsApp de Manu; el setter lleva a aplicar. Está en el tablero, sección «Sistema de contenido unificado».
-- **El avatar queda sin definir.** Las opciones y los datos están en [Avatar de Génesis](https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG) (fuente: `avatar-analisis.html`).
+- **Avatar definido: opción A.** El dueño de un e-commerce que ya vende y está cansado de que nada dure, con tres subavatares (S1 la marca en breakeven, S2 el fundador del tratamiento, S3 el que vende pero no construye), en ese orden de prioridad. **Calificado** = vende hoy + capital para OS. La guía de comunicación está en [`11-avatar-y-comunicacion.md`](11-avatar-y-comunicacion.md) y en la página [Avatar de Génesis](https://claude.ai/artifact/SDY3VohUFkd9Q9yHoBHdyG).
 
 ## Cerrado por Santi el 19/11
 
