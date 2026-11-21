@@ -1,6 +1,6 @@
 # Tareas del funnel Evergreen orgánico para el módulo de Tareas del campus
 
-121 tareas en 8 fases. `funnel_id` de todas: `evergreen-organico`. Estado inicial: «Por hacer». Cómo cargarlas: `14-campus-funnels.md`, sección 6. La misma carga en formato de datos: `campus-tareas-evergreen.json`.
+123 tareas en 8 fases. `funnel_id` de todas: `evergreen-organico`. Estado inicial: «Por hacer». Cómo cargarlas: `14-campus-funnels.md`, sección 6. La misma carga en formato de datos: `campus-tareas-evergreen.json`.
 
 ## Fases
 
@@ -19,16 +19,18 @@
 
 | Id | Tarea | Responsable | Fecha | Notas | Referencia |
 |---|---|---|---|---|---|
-| PTE-01 | Transcripción de V1 y V2 (YouTube, Descript o el editor), para marcar los minutos `[MIN]` y escribir cada pieza con las palabras de Manu | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-02 | Confirmar si V1 o V2 ya están publicados | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-03 | Cortes de R1 a R3 (sábado a lunes) | Sin asignar (Editor) | 2026-11-21 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-04 | Edición de V2 para YouTube y cortes R4–R5 | Sin asignar (Editor) | 2026-11-23 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-05 | Edición de V1 para YouTube y cortes R6–R8 | Sin asignar (Editor) | 2026-11-26 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-06 | ManyChat con CUENTA y PISO probado | Santi | 2026-11-23 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-07 | Recurso que se manda con CUENTA (hoy: el video; la Cuenta del CPA cuando tenga link) | Santi | 2026-11-23 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-08 | Aprobación de Manu del texto en pantalla de la semana | Manu | 2026-11-20 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-09 | Quién toma las llamadas de la semana | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
-| PTE-10 | Grabación de la semana del 30/11 (S2): domingo 29 o lunes 30 | Manu | Antes de irse, confirmar el día | Semana sin Manu: todo sale del video de pizarra y del de Miro. | mi-negocio/bases/13-semana-puente-21-28.md §5 |
+| PTE-01 | Actualizar descripción, capítulos y comentario fijado del video de operaciones | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-02 | Confirmar el handle real de Instagram de Manu (@manudoms o Manu Domzz) | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-03 | ManyChat: OPERACIONES en comentarios y DMs, con respuesta que manda el link del video | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-04 | Cortes verticales R1 a R3 (V1-a, V1-b, V1-c), con subtítulos revisados | Sin asignar (Editor) | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-05 | Cortes R4 a R8 y los trial reels | Sin asignar (Editor) | 2026-11-23 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-06 | Chequear en la transcripción los textos en pantalla marcados VERIFICAR | Mati | 2026-11-22 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-07 | Aprobación de Manu por WhatsApp de los textos en pantalla y de la historia del sábado 21 | Manu | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-08 | Definir quién toma las llamadas de la semana y qué se hace con «la llamada gratuita» que ofrece el video | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-09 | Guion del setter para OPERACIONES cargado | Mati | 2026-11-22 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-10 | Planilla de la semana: por reel, conversaciones con OPERACIONES y cuántas califican | Santi | 2026-11-23 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-11 | Decidir si TikTok sube los cortes o se pausa hasta el 30/11 | Santi | 2026-11-21 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
+| PTE-12 | Confirmar con Manu el día de grabación de la semana del 30/11 (domingo 29 o lunes 30) | Santi | 2026-11-23 | Semana sin Manu: todo sale del video de operaciones (YouTube, 18/11). Palabra: OPERACIONES. | mi-negocio/bases/13-semana-puente-21-28.md §6 |
 
 ## Evergreen · Decisiones
 

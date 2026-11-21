@@ -40,7 +40,7 @@ Decisiones de diseño:
 5. **«Actual» deja de ser global.** `launches.is_current` pasa a ser «el ciclo actual **de ese funnel**» (un actual por funnel).
 6. **El panel tiene un selector de funnel arriba** (Todos · Webinars · Evergreen orgánico). Todas las vistas de leads, llamadas, métricas y tareas se filtran por ese selector. «Todos» muestra el consolidado de caja y ventas.
 7. **Tres cosas nuevas para el evergreen**, que el webinar no tenía: el **registro de contenido** (cada pieza con su subavatar, dolor, palabra y métricas), el **reporte de ventas por fases** (SOP 04) y los **campos de calificación nuevos** (subavatar, palabra, video que lo trajo, capital, carril OS/Lite).
-8. **Tareas con funnel.** `tasks` y `task_phases` ganan `funnel_id`. Las 67 actuales quedan en `webinar`; las 121 del plan evergreen entran en `evergreen-organico` (carga en `campus-tareas-evergreen.json`).
+8. **Tareas con funnel.** `tasks` y `task_phases` ganan `funnel_id`. Las 67 actuales quedan en `webinar`; las 123 del plan evergreen entran en `evergreen-organico` (carga en `campus-tareas-evergreen.json`).
 
 ---
 
@@ -269,7 +269,7 @@ Cada paso deja el campus funcionando. No avanzar al siguiente sin verificar el a
 
 **Paso 3 · Selector de funnel en el panel.** Agregar el selector y filtrar Tareas por funnel. Es el primer cambio visible y el que destraba el trabajo del equipo.
 
-**Paso 4 · Cargar las tareas del evergreen.** Insertar las 8 fases y las 121 tareas de `mi-negocio/bases/campus-tareas-evergreen.json` con `funnel_id = 'evergreen-organico'` (detalle en la sección 6). Verificar: 121 tareas en el funnel evergreen, ninguna del webinar tocada.
+**Paso 4 · Cargar las tareas del evergreen.** Insertar las 8 fases y las 123 tareas de `mi-negocio/bases/campus-tareas-evergreen.json` con `funnel_id = 'evergreen-organico'` (detalle en la sección 6). Verificar: 123 tareas en el funnel evergreen, ninguna del webinar tocada.
 
 **Paso 5 · Filtrar leads, llamadas y métricas por funnel.** Pasar `p_funnel` / `p_launch` a las vistas y funciones del CRM. Con el funnel Webinars elegido, los números tienen que ser idénticos a los de hoy (comparar antes y después: 404 leads, 4 llamadas).
 
@@ -299,11 +299,11 @@ Cada paso deja el campus funcionando. No avanzar al siguiente sin verificar el a
 
 ## 6. Carga de tareas del evergreen
 
-Archivo: `mi-negocio/bases/campus-tareas-evergreen.json`. Trae `funnel`, 8 `phases` y 121 `tasks`.
+Archivo: `mi-negocio/bases/campus-tareas-evergreen.json`. Trae `funnel`, 8 `phases` y 123 `tasks`.
 
 | Fase | Prefijo | Tareas | De dónde sale |
 |---|---|---|---|
-| Evergreen · Semana puente 21-28/11 | PTE | 10 | `13-semana-puente-21-28.md` §5 |
+| Evergreen · Semana puente 21-28/11 | PTE | 12 | `13-semana-puente-21-28.md` §6 |
 | Evergreen · Decisiones | DEC | 13 | Decisiones D1–D13 del plan |
 | Evergreen · Semana 0 · Alinear | EV0 | 17 | Fase S0 del plan |
 | Evergreen · Correcciones de materiales | COR | 19 | §6 del plan |
@@ -317,7 +317,7 @@ Cómo cargarlas:
 1. Insertar las fases en `task_phases` (`name`, `prefix`, `sort`, `funnel_id`, `offset_days` nulo).
 2. Por cada tarea, llamar a `task_create` (o insertar con el mismo formato) con: `id`, `title`, `phase`, `funnel_id`, `status` «Por hacer», `quantity` 1, `due_date` (puede venir nulo), `notes`, `reference`, y `agent` y `link` vacíos.
 3. **Responsable:** `responsible_name` trae Santi, Mati, Manu o José cuando el plan nombra a uno; resolver `responsible_id` con `task_people`. Cuando el plan nombra a varios o a un rol (setter, closer, editor), viene vacío y el texto original queda en `quien_texto`: copiarlo al principio de `notes` («Quién: …»).
-4. **Fecha:** `due_date` viene en 85 de las 121. Para el resto, `cuando_texto` trae lo que decía el plan («diario», «cada sábado»…): copiarlo a `notes` («Cuándo: …»). Las diarias y semanales son candidatas a tarea recurrente (paso 11).
+4. **Fecha:** `due_date` viene en 88 de las 123. Para el resto, `cuando_texto` trae lo que decía el plan («diario», «cada sábado»…): copiarlo a `notes` («Cuándo: …»). Las diarias y semanales son candidatas a tarea recurrente (paso 11).
 5. `quien_texto` y `cuando_texto` no son columnas de `tasks`: no insertarlas como tales.
 6. Si un id ya existe, no pisarlo.
 7. Las 19 correcciones (COR) vienen asignadas a Mati con fecha 22/11 como propuesta `[HIP]`: Santi las reasigna en el pre-weekly del sábado.
