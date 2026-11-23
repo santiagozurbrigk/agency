@@ -29,7 +29,13 @@ type Palabra = {w: string; s: number; e: number; k?: boolean};
 type Tramo = {t0: number; t1: number};
 type Encabezado = Tramo & {texto: string; caja: string};
 type Tarjeta = Tramo & {
-  tipo: 'video' | 'formula' | 'barras' | 'contador' | 'veredicto';
+  tipo: 'video' | 'formula' | 'barras' | 'contador' | 'veredicto' | 'flujo' | 'aviso';
+  // flujo: nodos de izquierda a derecha unidos por flechas; cada uno aparece en su t
+  nodos?: {icono: 'carrito' | 'rayo' | 'telefono' | 'campana'; titulo: string; t: number}[];
+  // aviso: una notificación con su título y campos que se van tildando
+  campos?: {texto: string; t: number}[];
+  tituloAviso?: string;
+  tAviso?: number;
   etiqueta?: string;
   src?: string;
   // fórmula
@@ -50,8 +56,8 @@ type Tarjeta = Tramo & {
 export type PropsMG = {
   duracion: number;
   cam: string;
-  colores: {acento: string; fondo: string; claro: string; tarjeta: string};
-  modos: (Tramo & {modo: 'split' | 'cam'})[];
+  colores: {acento: string; fondo: string; claro: string; tarjeta: string; tinta?: string};
+  modos: (Tramo & {modo: 'split' | 'cam' | 'placa'})[];
   encabezados: Encabezado[];
   tarjetas: Tarjeta[];
   palabras: Palabra[];
@@ -66,12 +72,35 @@ const ent = (f: number, t: number, fps: number, d = 0.35) =>
   interpolate(f / fps, [t, t + d], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)});
 
 const enTramo = (t: number, x: Tramo) => t >= x.t0 && t < x.t1;
+// Color del texto sobre el fondo y las tarjetas: oscuro en el tema claro, hueso en el oscuro.
+const tinta = (p: PropsMG) => p.colores.tinta || p.colores.claro;
+const claroTema = (p: PropsMG) => !!p.colores.tinta;
 
 // ------------------------------------------------------------------ cámara
 const Camara: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, split}) => {
   const z = p.zooms.find((x) => enTramo(t, x));
   const esc = (split ? p.camSplit.escala : 1) * (z && !split ? z.z : 1);
   const top = split ? p.camSplit.y : 0;
+  if (split && claroTema(p)) {
+    // Tema claro: la cara va en un recuadro redondeado abajo, como una tarjeta más.
+    return (
+      <div
+        style={{
+          position: 'absolute',
+          left: 60,
+          top: 1060,
+          width: 960,
+          height: 820,
+          borderRadius: 40,
+          overflow: 'hidden',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.25)',
+          border: `3px solid ${p.colores.acento}`,
+        }}
+      >
+        <OffthreadVideo src={staticFile(p.cam)} style={{position: 'absolute', left: 0, top: -250, width: 960, height: 1707, objectFit: 'cover'}} />
+      </div>
+    );
+  }
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <div
@@ -100,7 +129,7 @@ const Encab: React.FC<{e: Encabezado; t: number; p: PropsMG; fps: number; f: num
   const pal = ent(f, e.t0 + 0.5, fps, 0.3);
   return (
     <div style={{position: 'absolute', top: 120, left: 0, width: 1080, textAlign: 'center'}}>
-      <div style={{fontFamily: sans, fontWeight: 700, fontSize: 56, color: p.colores.claro, letterSpacing: -0.5, height: 68}}>
+      <div style={{fontFamily: sans, fontWeight: 700, fontSize: 56, color: tinta(p), letterSpacing: -0.5, height: 68}}>
         {e.texto.slice(0, letras)}
       </div>
       <div style={{display: 'inline-block', marginTop: 10, position: 'relative'}}>
@@ -123,8 +152,8 @@ const Encab: React.FC<{e: Encabezado; t: number; p: PropsMG; fps: number; f: num
 };
 
 // ------------------------------------------------------------------ tarjeta
-const TOP_TARJETA = 400;
-const ALTO_TARJETA = 620;
+const TOP_TARJETA = 360;
+const ALTO_TARJETA = 570;
 const Marco: React.FC<{p: PropsMG; etiqueta?: string; children: React.ReactNode; a: number}> = ({p, etiqueta, children, a}) => (
   <div
     style={{
@@ -137,15 +166,15 @@ const Marco: React.FC<{p: PropsMG; etiqueta?: string; children: React.ReactNode;
       borderRadius: 30,
       background: p.colores.tarjeta,
       border: `3px solid ${p.colores.acento}`,
-      boxShadow: `0 0 60px ${p.colores.acento}55, inset 0 0 0 1px #ffffff10`,
+      boxShadow: `0 0 60px ${p.colores.acento}55, inset 0 0 0 1px ${tinta(p)}10`,
       overflow: 'hidden',
     }}
   >
-    <div style={{height: 54, display: 'flex', alignItems: 'center', padding: '0 22px', gap: 10, borderBottom: '1px solid #ffffff14'}}>
+    <div style={{height: 54, display: 'flex', alignItems: 'center', padding: '0 22px', gap: 10, borderBottom: `1px solid ${tinta(p)}14`}}>
       {['#ff5f57', '#febc2e', '#28c840'].map((c) => (
         <div key={c} style={{width: 15, height: 15, borderRadius: 8, background: c}} />
       ))}
-      <div style={{flex: 1, textAlign: 'center', fontFamily: sans, fontWeight: 600, fontSize: 22, color: '#ffffff80', marginRight: 60}}>{etiqueta}</div>
+      <div style={{flex: 1, textAlign: 'center', fontFamily: sans, fontWeight: 600, fontSize: 22, color: `${tinta(p)}80`, marginRight: 60}}>{etiqueta}</div>
     </div>
     <div style={{position: 'absolute', top: 54, left: 0, right: 0, bottom: 0}}>{children}</div>
   </div>
@@ -159,14 +188,14 @@ const Chip: React.FC<{texto: string; a: number; p: PropsMG; fuerte?: boolean; gr
       transform: `translateY(${(1 - a) * 24}px) scale(${0.9 + 0.1 * a})`,
       padding: grande ? '10px 34px 16px' : '10px 26px',
       borderRadius: 16,
-      background: fuerte ? p.colores.acento : '#ffffff0d',
-      border: `2px solid ${fuerte ? p.colores.acento : '#ffffff30'}`,
+      background: fuerte ? p.colores.acento : `${tinta(p)}0d`,
+      border: `2px solid ${fuerte ? p.colores.acento : tinta(p) + '30'}`,
       boxShadow: fuerte ? `0 0 50px ${p.colores.acento}88` : undefined,
       fontFamily: fuerte ? serif : sans,
       fontStyle: fuerte ? 'italic' : 'normal',
       fontWeight: fuerte ? 800 : 700,
       fontSize: grande ? 92 : 54,
-      color: p.colores.claro,
+      color: fuerte ? p.colores.claro : tinta(p),
       whiteSpace: 'nowrap',
     }}
   >
@@ -189,12 +218,12 @@ const Formula: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c,
             <span style={{fontFamily: sans, fontWeight: 800, fontSize: 56, color: p.colores.acento, opacity: at('mas')}}>+</span>
             <Chip texto="Costo del equipo" a={at('costo')} p={p} />
           </div>
-          <div style={{height: 6, width: 560 * linea, borderRadius: 3, background: p.colores.claro, boxShadow: `0 0 18px ${p.colores.claro}88`}} />
+          <div style={{height: 6, width: 560 * linea, borderRadius: 3, background: tinta(p), boxShadow: `0 0 18px ${tinta(p)}55`}} />
           <Chip texto="Clientes nuevos" a={at('clientes')} p={p} />
         </div>
       </div>
       <div style={{marginTop: 46, display: 'flex', alignItems: 'center', gap: 22}}>
-        <span style={{fontFamily: sans, fontWeight: 800, fontSize: 64, color: p.colores.claro, opacity: at('igual')}}>=</span>
+        <span style={{fontFamily: sans, fontWeight: 800, fontSize: 64, color: tinta(p), opacity: at('igual')}}>=</span>
         <Chip texto="CAC real" a={at('cac')} p={p} fuerte grande />
       </div>
     </AbsoluteFill>
@@ -203,7 +232,7 @@ const Formula: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c,
 
 const Barras: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p, f, fps}) => (
   <AbsoluteFill style={{padding: '34px 70px 40px'}}>
-    <div style={{fontFamily: sans, fontWeight: 700, fontSize: 34, color: '#ffffffaa', textAlign: 'center'}}>{c.titulo}</div>
+    <div style={{fontFamily: sans, fontWeight: 700, fontSize: 34, color: `${tinta(p)}aa`, textAlign: 'center'}}>{c.titulo}</div>
     <div style={{flex: 1, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', marginTop: 20}}>
       {c.barras!.map((b, i) => {
         const a = ent(f, b.t, fps, 0.6);
@@ -216,12 +245,12 @@ const Barras: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, 
                 width: 150,
                 height: alto,
                 borderRadius: 18,
-                background: top ? `linear-gradient(180deg, ${p.colores.acento}, ${p.colores.acento}99)` : '#ffffff26',
-                border: `2px solid ${top ? p.colores.acento : '#ffffff40'}`,
+                background: top ? `linear-gradient(180deg, ${p.colores.acento}, ${p.colores.acento}99)` : `${tinta(p)}26`,
+                border: `2px solid ${top ? p.colores.acento : tinta(p) + '40'}`,
                 boxShadow: top ? `0 0 40px ${p.colores.acento}77` : undefined,
               }}
             />
-            <div style={{fontFamily: sans, fontWeight: 800, fontSize: 36, color: p.colores.claro}}>{b.nombre}</div>
+            <div style={{fontFamily: sans, fontWeight: 800, fontSize: 36, color: tinta(p)}}>{b.nombre}</div>
           </div>
         );
       })}
@@ -254,7 +283,131 @@ const Contador: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c
         >
           {n}
         </span>
-        <span style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: 80, color: p.colores.claro}}>{c.unidad}</span>
+        <span style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: 80, color: tinta(p)}}>{c.unidad}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Íconos de línea (SVG), para no depender de emojis.
+const ICONOS: Record<string, string> = {
+  carrito: 'M3 4h2l2.4 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2M10 20.5a1 1 0 1 0 0-.01M17 20.5a1 1 0 1 0 0-.01',
+  rayo: 'M13 2 4 14h7l-1 8 9-12h-7l1-8z',
+  telefono: 'M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z',
+  campana: 'M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0',
+};
+const Icono: React.FC<{n: string; color: string; size: number}> = ({n, color, size}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth={1.9} strokeLinecap="round" strokeLinejoin="round">
+    <path d={ICONOS[n]} />
+  </svg>
+);
+
+const Flujo: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p, f, fps}) => {
+  const ns = c.nodos!;
+  return (
+    <AbsoluteFill style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 0, padding: '0 40px'}}>
+      {ns.map((n, i) => {
+        const a = ent(f, n.t, fps, 0.4);
+        const flecha = i < ns.length - 1 ? ent(f, Math.max(n.t, ns[i + 1].t) + 0.15, fps, 0.4) : 0;
+        const fuerte = i === ns.length - 1;
+        return (
+          <React.Fragment key={i}>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, width: 220, opacity: a, transform: `translateY(${(1 - a) * 30}px) scale(${0.85 + 0.15 * a})`}}>
+              <div
+                style={{
+                  width: 150,
+                  height: 150,
+                  borderRadius: 40,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: fuerte ? p.colores.acento : `${tinta(p)}0a`,
+                  border: `3px solid ${fuerte ? p.colores.acento : tinta(p) + '26'}`,
+                  boxShadow: fuerte ? `0 0 50px ${p.colores.acento}77` : undefined,
+                }}
+              >
+                <Icono n={n.icono} color={fuerte ? p.colores.claro : p.colores.acento} size={84} />
+              </div>
+              <div style={{fontFamily: sans, fontWeight: 800, fontSize: 34, color: tinta(p), textAlign: 'center', lineHeight: 1.1}}>{n.titulo}</div>
+            </div>
+            {i < ns.length - 1 ? (
+              <div style={{width: 70, height: 6, marginBottom: 60, position: 'relative'}}>
+                <div style={{position: 'absolute', left: 0, top: 0, height: 6, width: 70 * flecha, borderRadius: 3, background: p.colores.acento}} />
+                <div
+                  style={{
+                    position: 'absolute',
+                    right: -4,
+                    top: -9,
+                    width: 0,
+                    height: 0,
+                    borderTop: '12px solid transparent',
+                    borderBottom: '12px solid transparent',
+                    borderLeft: `16px solid ${p.colores.acento}`,
+                    opacity: flecha > 0.95 ? 1 : 0,
+                  }}
+                />
+              </div>
+            ) : null}
+          </React.Fragment>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+const Aviso: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p, f, fps}) => {
+  const a = ent(f, c.tAviso ?? c.t0, fps, 0.4);
+  return (
+    <AbsoluteFill style={{padding: '36px 60px', justifyContent: 'center', gap: 22}}>
+      <div
+        style={{
+          opacity: a,
+          transform: `translateY(${(1 - a) * -50}px)`,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 24,
+          padding: '22px 28px',
+          borderRadius: 28,
+          background: `${p.colores.acento}18`,
+          border: `2px solid ${p.colores.acento}`,
+          boxShadow: `0 0 40px ${p.colores.acento}44`,
+        }}
+      >
+        <div style={{width: 84, height: 84, borderRadius: 22, background: p.colores.acento, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <Icono n="campana" color={p.colores.claro} size={50} />
+        </div>
+        <div>
+          <div style={{fontFamily: sans, fontWeight: 900, fontSize: 46, color: tinta(p)}}>{c.tituloAviso}</div>
+          <div style={{fontFamily: sans, fontWeight: 600, fontSize: 28, color: `${tinta(p)}99`}}>ahora · pedido abandonado</div>
+        </div>
+      </div>
+      <div style={{display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap'}}>
+        {c.campos!.map((x, i) => {
+          const b = ent(f, x.t, fps);
+          return (
+            <div
+              key={i}
+              style={{
+                opacity: b,
+                transform: `scale(${0.85 + 0.15 * b})`,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 12,
+                padding: '12px 22px',
+                borderRadius: 16,
+                background: `${tinta(p)}0a`,
+                border: `2px solid ${tinta(p)}26`,
+                fontFamily: sans,
+                fontWeight: 800,
+                fontSize: 36,
+                color: tinta(p),
+              }}
+            >
+              <span style={{color: p.colores.acento, fontWeight: 900}}>✓</span>
+              {x.texto}
+            </div>
+          );
+        })}
       </div>
     </AbsoluteFill>
   );
@@ -279,8 +432,8 @@ const Veredicto: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({
             height: 132,
             padding: '0 30px',
             borderRadius: 22,
-            background: ok ? `${p.colores.acento}22` : '#ffffff0a',
-            border: `2px solid ${ok ? p.colores.acento : '#ffffff26'}`,
+            background: ok ? `${p.colores.acento}22` : `${tinta(p)}0a`,
+            border: `2px solid ${ok ? p.colores.acento : tinta(p) + '26'}`,
             boxShadow: ok ? `0 0 40px ${p.colores.acento}55` : undefined,
           }}
         >
@@ -295,16 +448,16 @@ const Veredicto: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({
               fontFamily: sans,
               fontWeight: 900,
               fontSize: 44,
-              background: ok ? p.colores.acento : '#ffffff1a',
-              color: p.colores.claro,
+              background: ok ? p.colores.acento : `${tinta(p)}1a`,
+              color: ok ? p.colores.claro : tinta(p),
             }}
           >
             {MARCAS[r.marca]}
           </div>
-          <div style={{fontFamily: sans, fontWeight: 800, fontSize: 46, color: p.colores.claro, flex: 1, textDecoration: no ? 'line-through' : undefined, opacity: no ? 0.55 : 1}}>
+          <div style={{fontFamily: sans, fontWeight: 800, fontSize: 46, color: tinta(p), flex: 1, textDecoration: no ? 'line-through' : undefined, opacity: no ? 0.55 : 1}}>
             {r.nombre}
           </div>
-          <div style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: 50, color: ok ? p.colores.acento : p.colores.claro, opacity: no ? 0.7 : 1}}>
+          <div style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: 50, color: ok ? p.colores.acento : tinta(p), opacity: no ? 0.7 : 1}}>
             {r.texto}
           </div>
         </div>
@@ -328,6 +481,8 @@ const TarjetaV: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c
   if (c.tipo === 'barras') dentro = <Barras c={c} p={p} f={f} fps={fps} />;
   if (c.tipo === 'contador') dentro = <Contador c={c} p={p} f={f} fps={fps} />;
   if (c.tipo === 'veredicto') dentro = <Veredicto c={c} p={p} f={f} fps={fps} />;
+  if (c.tipo === 'flujo') dentro = <Flujo c={c} p={p} f={f} fps={fps} />;
+  if (c.tipo === 'aviso') dentro = <Aviso c={c} p={p} f={f} fps={fps} />;
   return (
     <Marco p={p} etiqueta={c.etiqueta} a={a}>
       {dentro}
@@ -357,7 +512,7 @@ const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, sp
         position: 'absolute',
         left: 40,
         right: 40,
-        top: split ? 1060 : 1420,
+        top: split ? 948 : 1420,
         textAlign: 'center',
         lineHeight: 1.1,
       }}
@@ -377,8 +532,8 @@ const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, sp
               fontStyle: w.k ? 'italic' : 'normal',
               fontWeight: w.k ? 800 : 800,
               fontSize: w.k ? 84 : 70,
-              color: w.k ? p.colores.acento : p.colores.claro,
-              textShadow: '0 4px 24px rgba(0,0,0,0.75), 0 0 2px rgba(0,0,0,0.9)',
+              color: w.k ? p.colores.acento : split ? tinta(p) : p.colores.claro,
+              textShadow: split && claroTema(p) ? 'none' : '0 4px 24px rgba(0,0,0,0.75), 0 0 2px rgba(0,0,0,0.9)',
               letterSpacing: w.k ? 0 : -1,
             }}
           >
@@ -391,14 +546,14 @@ const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, sp
 };
 
 // ------------------------------------------------------------------ CTA
-const CTA: React.FC<{p: PropsMG; t: number; f: number; fps: number}> = ({p, t, f, fps}) => {
+const CTA: React.FC<{p: PropsMG; t: number; f: number; fps: number; placa?: boolean}> = ({p, t, f, fps, placa}) => {
   const c = p.cta;
   if (!c || !enTramo(t, c)) return null;
   const a = ent(f, c.t0, fps, 0.3);
   const b = ent(f, c.t0 + 0.25, fps, 0.35);
   return (
-    <div style={{position: 'absolute', top: 1180, left: 0, width: 1080, textAlign: 'center'}}>
-      <div style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: 72, color: p.colores.claro, opacity: a, textShadow: '0 4px 24px #000a'}}>
+    <div style={{position: 'absolute', top: placa ? 760 : 1180, left: 0, width: 1080, textAlign: 'center'}}>
+      <div style={{fontFamily: serif, fontStyle: 'italic', fontWeight: 800, fontSize: placa ? 90 : 72, color: placa ? tinta(p) : p.colores.claro, opacity: a, textShadow: placa ? 'none' : '0 4px 24px #000a'}}>
         {c.arriba}
       </div>
       <div
@@ -408,14 +563,17 @@ const CTA: React.FC<{p: PropsMG; t: number; f: number; fps: number}> = ({p, t, f
           fontWeight: 900,
           fontSize: 118,
           letterSpacing: -2,
-          color: '#FFD2B0',
+          color: placa ? p.colores.acento : '#FFD2B0',
           opacity: b,
           transform: `scale(${0.85 + 0.15 * b})`,
-          textShadow: `0 0 30px ${p.colores.acento}, 0 0 70px ${p.colores.acento}aa, 0 4px 10px #000`,
+          textShadow: placa ? `0 0 40px ${p.colores.acento}66` : `0 0 30px ${p.colores.acento}, 0 0 70px ${p.colores.acento}aa, 0 4px 10px #000`,
         }}
       >
         “{c.abajo}”
       </div>
+      {placa ? (
+        <div style={{marginTop: 18, fontFamily: sans, fontWeight: 700, fontSize: 46, color: `${tinta(p)}bb`, opacity: ent(f, c.t0 + 0.5, fps)}}>y te paso el video entero</div>
+      ) : null}
     </div>
   );
 };
@@ -433,18 +591,20 @@ export const ReelMG: React.FC<PropsMG> = (p) => {
   const enCta = p.cta && enTramo(t, p.cta);
   return (
     <AbsoluteFill style={{background: p.colores.fondo}}>
-      {split ? (
+      {split || modo === 'placa' ? (
         <AbsoluteFill
           style={{
-            background: `radial-gradient(120% 60% at 50% 18%, ${p.colores.acento}2e 0%, ${p.colores.fondo} 60%)`,
+            background: claroTema(p)
+              ? `radial-gradient(110% 55% at 50% 12%, #FFFFFF 0%, ${p.colores.fondo} 70%)`
+              : `radial-gradient(120% 60% at 50% 18%, ${p.colores.acento}2e 0%, ${p.colores.fondo} 60%)`,
           }}
         />
       ) : null}
-      <Camara p={p} t={t} split={split} />
+      {modo === 'placa' ? null : <Camara p={p} t={t} split={split} />}
       {split && enc ? <Encab e={enc} t={t} p={p} fps={fps} f={f} /> : null}
       {split && tar ? <TarjetaV c={tar} p={p} f={f} fps={fps} /> : null}
       {!enCta ? <Subtitulos p={p} t={t} split={split} /> : null}
-      <CTA p={p} t={t} f={f} fps={fps} />
+      <CTA p={p} t={t} f={f} fps={fps} placa={modo === 'placa'} />
     </AbsoluteFill>
   );
 };

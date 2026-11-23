@@ -1,0 +1,982 @@
+{
+ "duracion": 45.3,
+ "cam": "cam.mp4",
+ "colores": {
+  "acento": "#F26A1B",
+  "fondo": "#EEEAE3",
+  "claro": "#F2EDE4",
+  "tarjeta": "#FFFFFF",
+  "tinta": "#0B0B0C"
+ },
+ "modos": [
+  {
+   "t0": 0,
+   "t1": 21.9,
+   "modo": "split"
+  },
+  {
+   "t0": 21.9,
+   "t1": 23.95,
+   "modo": "cam"
+  },
+  {
+   "t0": 23.95,
+   "t1": 28.95,
+   "modo": "split"
+  },
+  {
+   "t0": 28.95,
+   "t1": 35.0,
+   "modo": "cam"
+  },
+  {
+   "t0": 35.0,
+   "t1": 42.5,
+   "modo": "split"
+  },
+  {
+   "t0": 42.5,
+   "t1": 43.75,
+   "modo": "cam"
+  },
+  {
+   "t0": 43.75,
+   "t1": 45.3,
+   "modo": "placa"
+  }
+ ],
+ "encabezados": [
+  {
+   "t0": 0,
+   "t1": 5.55,
+   "texto": "El vendedor que",
+   "caja": "recupera carritos"
+  },
+  {
+   "t0": 5.55,
+   "t1": 11.1,
+   "texto": "A cada",
+   "caja": "carrito abandonado"
+  },
+  {
+   "t0": 11.1,
+   "t1": 21.9,
+   "texto": "Le llega",
+   "caja": "una alerta"
+  },
+  {
+   "t0": 23.95,
+   "t1": 28.95,
+   "texto": "Lo llama en",
+   "caja": "menos de 5 min"
+  },
+  {
+   "t0": 35.0,
+   "t1": 38.1,
+   "texto": "Cobra solo",
+   "caja": "si vende"
+  },
+  {
+   "t0": 38.1,
+   "t1": 42.5,
+   "texto": "El sistema",
+   "caja": "completo"
+  }
+ ],
+ "tarjetas": [
+  {
+   "t0": 0,
+   "t1": 11.1,
+   "tipo": "flujo",
+   "etiqueta": "automatización · webhook",
+   "nodos": [
+    {
+     "icono": "carrito",
+     "titulo": "Carrito abandonado",
+     "t": 5.92
+    },
+    {
+     "icono": "rayo",
+     "titulo": "Webhook",
+     "t": 0.64
+    },
+    {
+     "icono": "telefono",
+     "titulo": "Vendedor",
+     "t": 3.58
+    }
+   ]
+  },
+  {
+   "t0": 11.1,
+   "t1": 21.9,
+   "tipo": "aviso",
+   "etiqueta": "notificación interna",
+   "tituloAviso": "Nuevo lead",
+   "tAviso": 11.5,
+   "campos": [
+    {
+     "texto": "Contacto",
+     "t": 17.68
+    },
+    {
+     "texto": "Producto",
+     "t": 19.68
+    },
+    {
+     "texto": "Ticket",
+     "t": 20.98
+    }
+   ]
+  },
+  {
+   "t0": 23.95,
+   "t1": 28.95,
+   "tipo": "contador",
+   "etiqueta": "tiempo de respuesta",
+   "chip": "Lo llama en menos de",
+   "desde": 0,
+   "hasta": 5,
+   "tc0": 26.5,
+   "tc1": 27.3,
+   "unidad": "min"
+  },
+  {
+   "t0": 35.0,
+   "t1": 38.1,
+   "tipo": "contador",
+   "etiqueta": "comisión",
+   "chip": "Por cada venta que cierra",
+   "desde": 0,
+   "hasta": 10,
+   "tc0": 36.4,
+   "tc1": 37.5,
+   "unidad": "%"
+  },
+  {
+   "t0": 38.1,
+   "t1": 42.5,
+   "tipo": "veredicto",
+   "etiqueta": "recuperación de pedidos",
+   "filas": [
+    {
+     "nombre": "Alerta",
+     "texto": "al instante",
+     "marca": "ok",
+     "t": 38.62
+    },
+    {
+     "nombre": "Llamada",
+     "texto": "menos de 5 min",
+     "marca": "ok",
+     "t": 39.84
+    },
+    {
+     "nombre": "Comisión",
+     "texto": "10% por venta",
+     "marca": "ok",
+     "t": 40.82
+    }
+   ]
+  }
+ ],
+ "palabras": [
+  {
+   "w": "tenemos",
+   "s": 0.0,
+   "e": 0.32
+  },
+  {
+   "w": "con",
+   "s": 0.32,
+   "e": 0.52
+  },
+  {
+   "w": "un",
+   "s": 0.52,
+   "e": 0.64
+  },
+  {
+   "w": "webhook",
+   "s": 0.64,
+   "e": 1.08,
+   "k": true
+  },
+  {
+   "w": "un",
+   "s": 1.26,
+   "e": 1.44
+  },
+  {
+   "w": "disparador",
+   "s": 1.44,
+   "e": 1.86,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 1.86,
+   "e": 2.06
+  },
+  {
+   "w": "le",
+   "s": 2.06,
+   "e": 2.3
+  },
+  {
+   "w": "notifica",
+   "s": 2.3,
+   "e": 2.8
+  },
+  {
+   "w": "a",
+   "s": 2.8,
+   "e": 3.44
+  },
+  {
+   "w": "un",
+   "s": 3.44,
+   "e": 3.58
+  },
+  {
+   "w": "vendedor",
+   "s": 3.58,
+   "e": 4.08,
+   "k": true
+  },
+  {
+   "w": "en",
+   "s": 4.08,
+   "e": 4.44
+  },
+  {
+   "w": "una",
+   "s": 4.44,
+   "e": 4.56
+  },
+  {
+   "w": "de",
+   "s": 4.56,
+   "e": 4.62
+  },
+  {
+   "w": "las",
+   "s": 4.62,
+   "e": 4.7
+  },
+  {
+   "w": "marcas",
+   "s": 4.7,
+   "e": 4.9
+  },
+  {
+   "w": "tenemos",
+   "s": 4.9,
+   "e": 5.1
+  },
+  {
+   "w": "este",
+   "s": 5.1,
+   "e": 5.28
+  },
+  {
+   "w": "sistema",
+   "s": 5.28,
+   "e": 5.5
+  },
+  {
+   "w": "a",
+   "s": 5.62,
+   "e": 5.74
+  },
+  {
+   "w": "cada",
+   "s": 5.74,
+   "e": 5.92
+  },
+  {
+   "w": "pedido",
+   "s": 5.92,
+   "e": 6.36
+  },
+  {
+   "w": "abandonado",
+   "s": 6.36,
+   "e": 6.92,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 6.92,
+   "e": 7.3
+  },
+  {
+   "w": "nos",
+   "s": 7.3,
+   "e": 7.4
+  },
+  {
+   "w": "llega",
+   "s": 7.4,
+   "e": 7.68
+  },
+  {
+   "w": "se",
+   "s": 7.68,
+   "e": 8.84
+  },
+  {
+   "w": "automatiza",
+   "s": 8.84,
+   "e": 10.32,
+   "k": true
+  },
+  {
+   "w": "con",
+   "s": 10.32,
+   "e": 10.48
+  },
+  {
+   "w": "un",
+   "s": 10.48,
+   "e": 10.58
+  },
+  {
+   "w": "webhook",
+   "s": 10.58,
+   "e": 11.04
+  },
+  {
+   "w": "a",
+   "s": 11.24,
+   "e": 11.32
+  },
+  {
+   "w": "nuestro",
+   "s": 11.32,
+   "e": 11.66
+  },
+  {
+   "w": "vendedor",
+   "s": 11.66,
+   "e": 12.08
+  },
+  {
+   "w": "le",
+   "s": 12.08,
+   "e": 12.2
+  },
+  {
+   "w": "llega",
+   "s": 12.2,
+   "e": 12.34
+  },
+  {
+   "w": "como",
+   "s": 12.34,
+   "e": 12.6
+  },
+  {
+   "w": "una",
+   "s": 12.6,
+   "e": 13.34
+  },
+  {
+   "w": "notificación",
+   "s": 13.34,
+   "e": 13.74,
+   "k": true
+  },
+  {
+   "w": "interna",
+   "s": 13.74,
+   "e": 14.28
+  },
+  {
+   "w": "que",
+   "s": 14.28,
+   "e": 14.52
+  },
+  {
+   "w": "le",
+   "s": 14.52,
+   "e": 14.62
+  },
+  {
+   "w": "dice",
+   "s": 14.62,
+   "e": 14.82
+  },
+  {
+   "w": "nuevo",
+   "s": 14.82,
+   "e": 15.51
+  },
+  {
+   "w": "lead",
+   "s": 15.51,
+   "e": 16.2,
+   "k": true
+  },
+  {
+   "w": "con",
+   "s": 16.2,
+   "e": 16.94
+  },
+  {
+   "w": "justamente",
+   "s": 16.94,
+   "e": 17.26
+  },
+  {
+   "w": "los",
+   "s": 17.26,
+   "e": 17.42
+  },
+  {
+   "w": "datos",
+   "s": 17.42,
+   "e": 17.6
+  },
+  {
+   "w": "de",
+   "s": 17.6,
+   "e": 17.68
+  },
+  {
+   "w": "contacto",
+   "s": 17.68,
+   "e": 18.26,
+   "k": true
+  },
+  {
+   "w": "y",
+   "s": 18.26,
+   "e": 18.72
+  },
+  {
+   "w": "el",
+   "s": 18.72,
+   "e": 19.68
+  },
+  {
+   "w": "producto",
+   "s": 19.68,
+   "e": 19.94,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 19.94,
+   "e": 20.16
+  },
+  {
+   "w": "quería",
+   "s": 20.16,
+   "e": 20.48
+  },
+  {
+   "w": "comprar",
+   "s": 20.48,
+   "e": 20.68
+  },
+  {
+   "w": "el",
+   "s": 20.96,
+   "e": 20.98
+  },
+  {
+   "w": "ticket",
+   "s": 20.98,
+   "e": 21.12,
+   "k": true
+  },
+  {
+   "w": "etcétera",
+   "s": 21.26,
+   "e": 21.64
+  },
+  {
+   "w": "entonces",
+   "s": 21.98,
+   "e": 22.08
+  },
+  {
+   "w": "qué",
+   "s": 22.08,
+   "e": 22.24
+  },
+  {
+   "w": "hace",
+   "s": 22.24,
+   "e": 22.38
+  },
+  {
+   "w": "ese",
+   "s": 22.38,
+   "e": 23.1
+  },
+  {
+   "w": "vendedor",
+   "s": 23.1,
+   "e": 23.74
+  },
+  {
+   "w": "apenas",
+   "s": 24.02,
+   "e": 24.36
+  },
+  {
+   "w": "salta",
+   "s": 24.36,
+   "e": 24.54
+  },
+  {
+   "w": "la",
+   "s": 24.54,
+   "e": 24.64
+  },
+  {
+   "w": "notificación",
+   "s": 24.64,
+   "e": 25.08,
+   "k": true
+  },
+  {
+   "w": "de",
+   "s": 25.08,
+   "e": 25.4
+  },
+  {
+   "w": "un",
+   "s": 25.4,
+   "e": 25.5
+  },
+  {
+   "w": "pedido",
+   "s": 25.5,
+   "e": 25.68
+  },
+  {
+   "w": "abandonado",
+   "s": 25.68,
+   "e": 26.04
+  },
+  {
+   "w": "que",
+   "s": 26.04,
+   "e": 26.2
+  },
+  {
+   "w": "suele",
+   "s": 26.2,
+   "e": 26.64
+  },
+  {
+   "w": "ser",
+   "s": 26.64,
+   "e": 26.74
+  },
+  {
+   "w": "menos",
+   "s": 26.74,
+   "e": 26.9
+  },
+  {
+   "w": "de",
+   "s": 26.9,
+   "e": 27.06
+  },
+  {
+   "w": "5",
+   "s": 27.06,
+   "e": 27.22,
+   "k": true
+  },
+  {
+   "w": "minutos",
+   "s": 27.22,
+   "e": 27.54,
+   "k": true
+  },
+  {
+   "w": "se",
+   "s": 28.04,
+   "e": 28.18
+  },
+  {
+   "w": "encarga",
+   "s": 28.18,
+   "e": 28.46
+  },
+  {
+   "w": "de",
+   "s": 28.46,
+   "e": 28.54
+  },
+  {
+   "w": "llamarlo",
+   "s": 28.54,
+   "e": 29.0,
+   "k": true
+  },
+  {
+   "w": "y",
+   "s": 29.0,
+   "e": 29.2
+  },
+  {
+   "w": "justamente",
+   "s": 29.2,
+   "e": 29.42
+  },
+  {
+   "w": "ese",
+   "s": 29.42,
+   "e": 29.88
+  },
+  {
+   "w": "vendedor",
+   "s": 29.88,
+   "e": 30.26
+  },
+  {
+   "w": "trabaja",
+   "s": 30.26,
+   "e": 31.02
+  },
+  {
+   "w": "por",
+   "s": 31.02,
+   "e": 31.32
+  },
+  {
+   "w": "comisión",
+   "s": 31.32,
+   "e": 31.78,
+   "k": true
+  },
+  {
+   "w": "por",
+   "s": 31.78,
+   "e": 31.96
+  },
+  {
+   "w": "venta",
+   "s": 31.96,
+   "e": 32.28
+  },
+  {
+   "w": "por",
+   "s": 32.46,
+   "e": 32.9
+  },
+  {
+   "w": "cada",
+   "s": 32.9,
+   "e": 33.04
+  },
+  {
+   "w": "venta",
+   "s": 33.04,
+   "e": 33.24
+  },
+  {
+   "w": "que",
+   "s": 33.24,
+   "e": 33.32
+  },
+  {
+   "w": "cierra",
+   "s": 33.32,
+   "e": 33.52
+  },
+  {
+   "w": "por",
+   "s": 33.52,
+   "e": 33.74
+  },
+  {
+   "w": "el",
+   "s": 33.74,
+   "e": 33.86
+  },
+  {
+   "w": "teléfono",
+   "s": 33.86,
+   "e": 34.2,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 34.2,
+   "e": 34.46
+  },
+  {
+   "w": "llama",
+   "s": 34.46,
+   "e": 34.72
+  },
+  {
+   "w": "y",
+   "s": 34.72,
+   "e": 35.0
+  },
+  {
+   "w": "le",
+   "s": 35.0,
+   "e": 35.16
+  },
+  {
+   "w": "resuelve",
+   "s": 35.16,
+   "e": 35.5
+  },
+  {
+   "w": "dudas",
+   "s": 35.54,
+   "e": 35.78
+  },
+  {
+   "w": "objeciones",
+   "s": 35.88,
+   "e": 36.16
+  },
+  {
+   "w": "al",
+   "s": 36.16,
+   "e": 36.32
+  },
+  {
+   "w": "cliente",
+   "s": 36.32,
+   "e": 37.1
+  },
+  {
+   "w": "se",
+   "s": 37.1,
+   "e": 37.24
+  },
+  {
+   "w": "lleva",
+   "s": 37.24,
+   "e": 37.4
+  },
+  {
+   "w": "un",
+   "s": 37.4,
+   "e": 37.48
+  },
+  {
+   "w": "10%",
+   "s": 37.48,
+   "e": 37.92,
+   "k": true
+  },
+  {
+   "w": "pero",
+   "s": 38.18,
+   "e": 38.62
+  },
+  {
+   "w": "el",
+   "s": 38.62,
+   "e": 39.24
+  },
+  {
+   "w": "vendedor",
+   "s": 39.24,
+   "e": 39.54
+  },
+  {
+   "w": "tiene",
+   "s": 39.54,
+   "e": 39.66
+  },
+  {
+   "w": "una",
+   "s": 39.66,
+   "e": 39.84
+  },
+  {
+   "w": "muy",
+   "s": 39.84,
+   "e": 40.64
+  },
+  {
+   "w": "buena",
+   "s": 40.64,
+   "e": 40.82
+  },
+  {
+   "w": "tasa",
+   "s": 40.82,
+   "e": 41.12
+  },
+  {
+   "w": "de",
+   "s": 41.12,
+   "e": 41.26
+  },
+  {
+   "w": "recuperación",
+   "s": 41.26,
+   "e": 42.12,
+   "k": true
+  },
+  {
+   "w": "de",
+   "s": 42.12,
+   "e": 42.22
+  },
+  {
+   "w": "pedidos",
+   "s": 42.22,
+   "e": 42.56
+  },
+  {
+   "w": "y",
+   "s": 42.56,
+   "e": 42.96
+  },
+  {
+   "w": "está",
+   "s": 42.96,
+   "e": 43.06
+  },
+  {
+   "w": "buenísimo",
+   "s": 43.06,
+   "e": 43.46,
+   "k": true
+  }
+ ],
+ "cortes": [],
+ "zooms": [
+  {
+   "t0": 21.9,
+   "t1": 23.95,
+   "z": 1.12
+  },
+  {
+   "t0": 32.4,
+   "t1": 35.0,
+   "z": 1.1
+  },
+  {
+   "t0": 42.5,
+   "t1": 45.3,
+   "z": 1.08
+  }
+ ],
+ "cta": {
+  "t0": 43.75,
+  "t1": 45.3,
+  "arriba": "comentá",
+  "abajo": "OPERACIONES"
+ },
+ "camSplit": {
+  "y": 900,
+  "escala": 1
+ },
+ "fuentes": [
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  }
+ ]
+}

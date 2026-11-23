@@ -3,9 +3,10 @@
  "cam": "cam.mp4",
  "colores": {
   "acento": "#F26A1B",
-  "fondo": "#0B0B0C",
+  "fondo": "#EEEAE3",
   "claro": "#F2EDE4",
-  "tarjeta": "#141416"
+  "tarjeta": "#FFFFFF",
+  "tinta": "#0B0B0C"
  },
  "modos": [
   {
@@ -980,7 +981,7 @@
   "abajo": "OPERACIONES"
  },
  "camSplit": {
-  "y": 700,
+  "y": 860,
   "escala": 1
  },
  "fuentes": [

@@ -16,7 +16,7 @@ for w in out:
     if w['w']=='costo' and w['s']>19: w.pop('k',None)
     if w['w']=='sacar' and w['s']<5: w.pop('k',None)
 P={"duracion":50.0,"cam":"cam.mp4",
- "colores":{"acento":"#F26A1B","fondo":"#0B0B0C","claro":"#F2EDE4","tarjeta":"#141416"},
+ "colores":{"acento":"#F26A1B","fondo":"#EEEAE3","claro":"#F2EDE4","tarjeta":"#FFFFFF","tinta":"#0B0B0C"},
  "modos":[{"t0":0,"t1":21.35,"modo":"split"},{"t0":21.35,"t1":25.1,"modo":"cam"},{"t0":25.1,"t1":34.65,"modo":"split"},
           {"t0":34.65,"t1":42.6,"modo":"cam"},{"t0":42.6,"t1":48.6,"modo":"split"},{"t0":48.6,"t1":50,"modo":"cam"}],
  "encabezados":[{"t0":0,"t1":6.6,"texto":"Cómo medir","caja":"cada equipo"},
@@ -39,7 +39,7 @@ P={"duracion":50.0,"cam":"cam.mp4",
  "palabras":out,"cortes":[],
  "zooms":[{"t0":21.55,"t1":25.1,"z":1.12},{"t0":39.55,"t1":42.6,"z":1.15},{"t0":48.6,"t1":50,"z":1.08}],
  "cta":{"t0":48.6,"t1":50,"arriba":"comentá","abajo":"OPERACIONES"},
- "camSplit":{"y":700,"escala":1}}
+ "camSplit":{"y":860,"escala":1}}
 P['fuentes']=json.load(open('fonts/fonts.json'))
 json.dump(P,open('props.json','w'),ensure_ascii=False,indent=1)
 print(" ".join(w['w'].upper() if w.get('k') else w['w'] for w in out))

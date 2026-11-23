@@ -104,9 +104,10 @@ Qué es cada cosa:
 
 - **reel-ig-mg** (reel de Instagram De4XVvXPTWY, 35 s). Pidió "editá así, en este estilo de
   motion graphics" (23/11/2026). Se copia el armado: encabezado con caja + tarjeta-ventana arriba,
-  cara abajo, subtítulos de 1 a 3 palabras con la clave en itálica serif. **Con la paleta de
-  Genesis** (naranja en vez del azul de la referencia) y **fondo oscuro**, porque las tomas de Manu
-  son con fondo negro. Se edita con la composición `ReelMG` del motor (props a mano por reel).
+  cara abajo, subtítulos de 1 a 3 palabras con la clave en itálica serif. **Con el naranja de
+  Genesis** (en vez del azul de la referencia) y **fondo claro como la referencia** (hueso
+  #EEEAE3, tarjetas blancas, texto negro). Como las tomas de Manu tienen fondo negro, en mitad y
+  mitad la cara va en un recuadro redondeado con borde naranja. Se edita con la composición `ReelMG` del motor (props a mano por reel).
 
 ## Cómo corto
 
@@ -131,7 +132,7 @@ Qué es cada cosa:
 - Las animaciones entran suave (deslizan y aparecen); nada rebota.
 - (De reel-ig-mg) Formato por defecto: arriba encabezado (línea chica que se tipea + caja naranja
   con una palabra en itálica serif) y una tarjeta tipo ventana con borde naranja que brilla; abajo
-  la cara. Lo que se dice se arma adentro de la tarjeta a medida que se dice (una fórmula pieza por
+  la cara (fondo claro, la cara en un recuadro redondeado con borde naranja). Lo que se dice se arma adentro de la tarjeta a medida que se dice (una fórmula pieza por
   pieza, barras, un contador, filas con ✓ ~ ✕). Alternar con la cara a pantalla completa en los
   momentos a cámara.
 - Un gráfico va donde la frase dice algo que se puede VER: una cifra, un crecimiento, una lista
@@ -150,3 +151,7 @@ Qué es cada cosa:
 
 (Una línea por corrección, la más nueva arriba: fecha · qué no te gustó · qué regla quedó escrita
 y en qué sección.)
+
+- 23/11/2026 · "mantené el naranja pero usá el fondo claro como la referencia" · Motion graphics:
+  fondo claro, tarjetas blancas, cara en recuadro redondeado; el CTA puede ir en una placa clara si
+  la última toma no mira a cámara (Mis referencias / Motion graphics).
