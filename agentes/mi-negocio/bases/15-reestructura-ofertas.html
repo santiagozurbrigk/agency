@@ -1,0 +1,345 @@
+<title>Escalera de ofertas y webinar 15/12</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+<style>
+/* Layout: una columna de lectura; escalera de 3 ofertas lado a lado en escritorio, línea de tiempo vertical con fechas */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7; --no:#a3352b; --no-soft:#f6e1de;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:52px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700}
+h2{font-size:24px;font-weight:600}
+h3{font-size:17px;font-weight:600}
+p{margin:0;max-width:68ch}
+ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stack{display:grid;gap:14px}
+.lead{font-size:17px}
+.muted{color:var(--muted)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.tbd{background:var(--warn-soft);color:var(--warn)}
+.pill.no{background:var(--no-soft);color:var(--no)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.facts div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.facts b{display:block;font-family:var(--display);font-size:22px;font-variant-numeric:tabular-nums}
+.facts span{font-size:13px;color:var(--muted)}
+
+.ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;align-items:start}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px;min-width:0}
+.step.main{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.step .role{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.step.main .role{color:var(--accent)}
+.step .price{font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.step .price small{font-size:14px;font-weight:500;color:var(--muted)}
+.step .k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.flow{font-size:14px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:12px 16px;max-width:none}
+.flow b{color:var(--fg)}
+
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.block{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;display:grid;gap:12px;align-content:start;min-width:0}
+.rows{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none;padding-bottom:0}
+.row p{font-size:14px}
+.row b{font-weight:600}
+
+.calc{font-family:var(--display);font-variant-numeric:tabular-nums;background:var(--accent-soft);border-radius:10px;padding:12px 16px;font-size:15px}
+
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:600;background:var(--bg);font-size:13px}
+tr:last-child td{border-bottom:none}
+
+.timeline{display:grid;gap:0;position:relative}
+.phase{display:grid;grid-template-columns:132px 1fr;gap:20px;position:relative;padding-bottom:28px}
+.phase:last-child{padding-bottom:0}
+.phase .when{font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums;font-size:15px;padding-top:2px}
+.phase .when small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--muted)}
+.phase .body{border-left:2px solid var(--line);padding-left:20px;display:grid;gap:10px;min-width:0;position:relative}
+.phase .body::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.phase.key .body::before{background:var(--accent)}
+.checks{list-style:none;padding:0;display:grid;gap:6px}
+.checks li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:14px}
+.checks li::before{content:"";width:12px;height:12px;border:1.5px solid var(--muted);border-radius:3px;margin-top:5px}
+.checks .who{color:var(--muted);font-size:13px}
+.note{font-size:13px;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:8px 12px;max-width:none}
+
+@media (max-width:560px){
+  .phase{grid-template-columns:1fr;gap:6px}
+  .phase .when{padding-left:22px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="stack">
+  <div class="eyebrow">Plan de trabajo · Santi y Manu · bajado de la llamada del 23/11</div>
+  <h1>Escalera de ofertas y webinar 15/12</h1>
+  <p class="lead">Pasamos de 2 ofertas a 3 para tener algo que venderle a cada lead que entra. Las 3 se llevan a un solo webinar el 15 de diciembre, con ads para los 3 avatares.</p>
+  <p class="muted">El problema que resuelve: hoy no le vendemos a nadie en frío. El lead que no califica para OS se iba sin comprar, porque la Lite como downsell escondido no le interesaba a nadie.</p>
+  <div class="legend">
+    <span class="pill ok">Definido</span>
+    <span class="pill tbd">Falta pulir</span>
+    <span class="pill no">Descartado</span>
+  </div>
+</header>
+
+<section class="facts" aria-label="Números clave">
+  <div><b>3</b><span>ofertas, una por avatar</span></div>
+  <div><b>15/12</b><span>webinar para los 3 avatares</span></div>
+  <div><b>10 días</b><span>de captación, del 5 al 14/12</span></div>
+  <div><b>USD 2–3k</b><span>de inversión en ads</span></div>
+  <div><b>~36–44</b><span>ads (2 dolores × 3 ángulos × 2 formatos)</span></div>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">1 · La escalera</div>
+  <h2>Tres ofertas, todas comunicadas como suscripción</h2>
+  <p>Genesis Lite pasa a ser la oferta que se comunica. La nueva de USD 800 queda como downsell y Genesis OS como upsell para el lead muy calificado.</p>
+
+  <div class="ladder">
+    <article class="step">
+      <div class="role">Downsell · nueva</div>
+      <h3>Nombre a definir con Manu</h3>
+      <div class="price">USD 800 <small>pago único</small></div>
+      <div class="k">Avatar</div>
+      <p>El que quiere iniciarse en ecommerce. B2C puro. <span class="pill tbd">Avatar a definir</span></p>
+      <div class="k">Qué recibe</div>
+      <p><span class="pill tbd">Oferta completa a armar</span> Hay que definir contenido, formato y si incluye campus o llamadas.</p>
+      <div class="k">Mensaje</div>
+      <p>Arrancá tu ecom ya con el modelo de suscripción.</p>
+    </article>
+
+    <article class="step main">
+      <div class="role">Oferta principal · la que se comunica</div>
+      <h3>Genesis Lite</h3>
+      <div class="price">USD 2.000</div>
+      <div class="k">Avatar</div>
+      <p>Ya está en ecom, viene testeando y no le pega a nada. <span class="pill tbd">Avatar a definir</span></p>
+      <div class="k">Qué cambia</div>
+      <p><span class="pill tbd">Cambios a definir</span> Deja de ser un downsell que solo ofrece el closer en la llamada.</p>
+      <div class="k">Ángulo confirmado</div>
+      <p>«El producto winner no existe»: el que mejor le funcionó a Manu.</p>
+    </article>
+
+    <article class="step">
+      <div class="role">Upsell · lead muy calificado</div>
+      <h3>Genesis OS</h3>
+      <div class="price">USD 5.000</div>
+      <div class="k">Avatar</div>
+      <p>Ya factura y quiere escalar con suscripción. <span class="pill tbd">Avatar a definir</span></p>
+      <div class="k">Cuándo se ofrece</div>
+      <p>Cuando en la llamada el lead califica alto. <span class="pill tbd">Criterio a definir</span></p>
+    </article>
+  </div>
+
+  <p class="flow"><b>Así se mueve el lead en la llamada:</b> se presenta Genesis Lite → si no puede o no le da → downsell de USD 800 → si está muy calificado → upsell a Genesis OS.</p>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">2 · Comunicación</div>
+  <h2>Todo es suscripción, a distintos niveles de consciencia</h2>
+  <div class="grid2">
+    <div class="block">
+      <h3>Qué quedó definido</h3>
+      <div class="rows">
+        <div class="row"><p>Las 3 ofertas se comunican como suscripción. Cambia el nivel de consciencia al que se le habla, no el mensaje de fondo.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p>Ángulo «el producto winner no existe» para los primeros niveles.</p><span class="pill ok">Definido</span></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Qué falta pulir</h3>
+      <div class="rows">
+        <div class="row"><p>El resto de los ángulos de venta para cada nivel de consciencia.</p><span class="pill tbd">Falta</span></div>
+        <div class="row"><p>Los 2 dolores de cada avatar.</p><span class="pill tbd">Falta</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">3 · Webinar 15/12</div>
+  <h2>Un webinar, tres avatares, ads para todos</h2>
+  <div class="grid2">
+    <div class="block">
+      <h3>Captación y pauta</h3>
+      <div class="rows">
+        <div class="row"><p><b>10 días de captación</b>, del 5 al 14/12.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Primeros 2–3 días de testeo</b> con USD 10–30 por ad. Después se escala lo que funciona.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Inversión de USD 2.000 a 3.000.</b></p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Estructura de campañas.</b> La idea de la llamada era una CBO por avatar.</p><span class="pill tbd">Falta</span></div>
+        <div class="row"><p><b>Winners por avatar</b>, cada uno con sus propios criterios. El avatar que arranca va a tener el costo por lead más barato, y eso no lo hace mejor.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Modelo financiero</b> con 3 escenarios (peor, promedio y mejor): costo por lead y por lead calificado aceptables. A NASA le rindió más el webinar en el que pagó leads de USD 40 en vez de 20.</p><span class="pill ok">Definido</span></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Volumen de ads (referencia)</h3>
+      <p class="calc">2 dolores × 3 ángulos × 2 formatos = 12 ads por avatar<br>12 × 3 avatares = 36 + recordatorios ≈ 40–44 ads</p>
+      <p class="muted">Es la versión que quedó en la llamada. La de NASA (3 formatos) daba unos 60 ads y era demasiado. Se ajusta cuando sepamos cuánto tarda Manu en grabar cada formato.</p>
+      <div class="rows">
+        <div class="row"><p><b>Contenido del webinar:</b> cómo armarlo para que les hable a los 3 avatares a la vez.</p><span class="pill tbd">Falta</span></div>
+        <div class="row"><p>Ad «pegándole palos a los mentores de ecommerce».</p><span class="pill no">Descartado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">4 · Producción y equipo</div>
+  <h2>Estudio, orgánico y ventas</h2>
+  <div class="grid2">
+    <div class="block">
+      <h3>Producción</h3>
+      <div class="rows">
+        <div class="row"><p><b>Estudio:</b> en 2 días de unas 4 horas se graban los ads, el webinar, el campus y el orgánico. Los videos tienen que ser lo más distintos posible: sillón, mesa, pizarra, fondos y luces.</p><span class="pill tbd">Tiempo a calcular</span></div>
+        <div class="row"><p><b>Formatos:</b> mucha pizarra e iPad, y full cámara con el iPad.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Orgánico casi automático:</b> un formato fácil de grabar que Claude edita y sube solo, sin depender de un editor. Más los clips del YouTube de operaciones.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>TikTok:</b> Manu sube 2 o 3 por día y desde ahí se lleva la gente a Instagram.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Equipo de creativos:</b> delegar la edición de los creativos para no depender de Manu.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Herramienta para scrapear funnels y ads</b> (plan Pro o Business).</p><span class="pill tbd">Hablar con Manu</span></div>
+      </div>
+    </div>
+    <div class="block">
+      <h3>Ventas</h3>
+      <div class="rows">
+        <div class="row"><p><b>Feli como setter y closer.</b> Se le propone para este webinar. Si no acepta, se busca un setter.</p><span class="pill tbd">Proponer a Feli</span></div>
+        <div class="row"><p><b>Reporte diario de leads</b> que manda el setter.</p><span class="pill ok">Definido</span></div>
+        <div class="row"><p><b>Volumen de llamadas:</b> la prioridad es tomar la mayor cantidad posible.</p><span class="pill ok">Definido</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">5 · Pendientes</div>
+  <h2>Lo que falta definir y de qué depende</h2>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Pendiente</th><th>Quién</th><th>Lo necesita</th></tr></thead>
+      <tbody>
+        <tr><td>Definir los 3 avatares</td><td>Santi + Manu</td><td>Dolores, ángulos, ads y la oferta de USD 800</td></tr>
+        <tr><td>Nombre de la oferta de USD 800</td><td>Santi + Manu</td><td>Página de oferta, webinar y guion de llamada</td></tr>
+        <tr><td>Oferta completa de USD 800: qué recibe y cómo se entrega</td><td>Santi + Manu</td><td>Contenido de campus a grabar en el estudio</td></tr>
+        <tr><td>Cambios a Genesis Lite para comunicarla</td><td>Santi + Manu</td><td>Webinar, página y guion de llamada</td></tr>
+        <tr><td>Criterio en la llamada: cuándo downsell y cuándo upsell a OS</td><td>Santi + Manu</td><td>Guion de llamada y capacitación de Feli</td></tr>
+        <tr><td>2 dolores por avatar</td><td>Santi + Manu</td><td>Ángulos y lista de ads</td></tr>
+        <tr><td>Ángulos de venta por nivel de consciencia</td><td>Santi + Manu</td><td>Guiones de ads y del webinar</td></tr>
+        <tr><td>Formatos de ads y tiempo de grabación de Manu</td><td>Manu</td><td>Reservar el estudio</td></tr>
+        <tr><td>Estructura de campañas</td><td>Santi</td><td>Lanzar la captación el 5/12</td></tr>
+        <tr><td>Contenido del webinar para los 3 avatares</td><td>Santi + Manu</td><td>Grabación en el estudio</td></tr>
+        <tr><td>Herramienta de scraping: si se paga y qué plan</td><td>Manu</td><td>Investigación de formatos</td></tr>
+        <tr><td>Respuesta de Feli</td><td>Santi</td><td>Plan de ventas del webinar</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="stack">
+  <div class="eyebrow">6 · Paso a paso</div>
+  <h2>De hoy al webinar</h2>
+  <p class="muted">Las fechas se calculan hacia atrás desde el 15/12. Todo lo que se graba tiene que estar listo antes del 5/12, cuando arranca la captación.</p>
+
+  <div class="timeline">
+    <div class="phase">
+      <div class="when">24 – 28/11<small>Semana 1 · Oferta</small></div>
+      <div class="body">
+        <h3>Cerrar la escalera</h3>
+        <ul class="checks">
+          <li><span>Definir los 3 avatares <span class="who">· Santi + Manu</span></span></li>
+          <li><span>Nombre de la oferta de USD 800 y qué incluye <span class="who">· Santi + Manu</span></span></li>
+          <li><span>Cambios a Genesis Lite para comunicarla <span class="who">· Santi + Manu</span></span></li>
+          <li><span>Criterio de downsell y de upsell a OS en la llamada <span class="who">· Santi + Manu</span></span></li>
+          <li><span>Proponerle a Feli ser setter y closer; si no acepta, empezar a buscar setter <span class="who">· Santi</span></span></li>
+          <li><span>Hablar con Manu sobre la herramienta de scraping <span class="who">· Santi</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">28/11 – 1/12<small>Mensaje y plan</small></div>
+      <div class="body">
+        <h3>Dolores, ángulos y formatos</h3>
+        <ul class="checks">
+          <li><span>2 dolores por avatar <span class="who">· Manu se los pasa a Santi</span></span></li>
+          <li><span>3 ángulos por dolor, por nivel de consciencia, con «el producto winner no existe» como base</span></li>
+          <li><span>Elegir 2 formatos por ángulo y armar la lista final de ads</span></li>
+          <li><span>Calcular cuánto tarda Manu en grabarlo y ajustar la cantidad de ads</span></li>
+          <li><span>Estructura del webinar para los 3 avatares</span></li>
+          <li><span>Modelo financiero en 3 escenarios y estructura de campañas</span></li>
+          <li><span>Reservar el estudio <span class="who">· Manu</span></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase key">
+      <div class="when">~2 – 3/12<small>Estudio</small></div>
+      <div class="body">
+        <h3>Grabar todo en 2 días</h3>
+        <ul class="checks">
+          <li><span>Ads del webinar en distintos sets (sillón, mesa, pizarra, iPad)</span></li>
+          <li><span>Contenido del webinar</span></li>
+          <li><span>Campus de la oferta de USD 800</span></li>
+          <li><span>Banco de orgánico para TikTok e Instagram</span></li>
+        </ul>
+        <p class="note">Esta es la fecha más ajustada: para grabar el campus, la oferta de USD 800 ya tiene que estar cerrada.</p>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="when">3 – 4/12<small>Armado</small></div>
+      <div class="body">
+        <h3>Dejar todo listo para lanzar</h3>
+        <ul class="checks">
+          <li><span>Edición de los ads, con el equipo de creativos</span></li>
+          <li><span>Campañas cargadas, una por avatar</span></li>
+          <li><span>Registro al webinar y flujo de nutrición</span></li>
+          <li><span>Guion de llamada con la escalera (Lite → USD 800 → OS) y capacitación del setter</span></li>
+          <li><span>Plantilla del reporte diario de leads</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase key">
+      <div class="when">5 – 14/12<small>Captación · 10 días</small></div>
+      <div class="body">
+        <h3>Testear y escalar</h3>
+        <ul class="checks">
+          <li><span>5 al 7/12: testeo con USD 10–30 por ad</span></li>
+          <li><span>8 al 14/12: escalar los winners de cada avatar dentro de los USD 2–3k</span></li>
+          <li><span>TikTok todos los días (2 o 3 videos) llevando a Instagram</span></li>
+          <li><span>Reporte diario de leads del setter</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase key">
+      <div class="when">15/12<small>Webinar</small></div>
+      <div class="body">
+        <h3>Webinar y después</h3>
+        <ul class="checks">
+          <li><span>Webinar en vivo para los 3 avatares</span></li>
+          <li><span>Desde el 16/12: tomar la mayor cantidad posible de llamadas y hacer seguimiento</span></li>
+          <li><span>Revisar los resultados contra el modelo financiero</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
