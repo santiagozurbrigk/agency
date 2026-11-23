@@ -1,0 +1,1086 @@
+{
+ "duracion": 50.0,
+ "cam": "cam.mp4",
+ "colores": {
+  "acento": "#F26A1B",
+  "fondo": "#0B0B0C",
+  "claro": "#F2EDE4",
+  "tarjeta": "#141416"
+ },
+ "modos": [
+  {
+   "t0": 0,
+   "t1": 21.35,
+   "modo": "split"
+  },
+  {
+   "t0": 21.35,
+   "t1": 25.1,
+   "modo": "cam"
+  },
+  {
+   "t0": 25.1,
+   "t1": 34.65,
+   "modo": "split"
+  },
+  {
+   "t0": 34.65,
+   "t1": 42.6,
+   "modo": "cam"
+  },
+  {
+   "t0": 42.6,
+   "t1": 48.6,
+   "modo": "split"
+  },
+  {
+   "t0": 48.6,
+   "t1": 50,
+   "modo": "cam"
+  }
+ ],
+ "encabezados": [
+  {
+   "t0": 0,
+   "t1": 6.6,
+   "texto": "Cómo medir",
+   "caja": "cada equipo"
+  },
+  {
+   "t0": 6.6,
+   "t1": 21.35,
+   "texto": "La fórmula del",
+   "caja": "CAC real"
+  },
+  {
+   "t0": 25.1,
+   "t1": 28.4,
+   "texto": "Lo que deja",
+   "caja": "cada equipo"
+  },
+  {
+   "t0": 28.4,
+   "t1": 34.65,
+   "texto": "Cada cuánto",
+   "caja": "se mide"
+  },
+  {
+   "t0": 42.6,
+   "t1": 48.6,
+   "texto": "Cómo queda",
+   "caja": "el trimestre"
+  }
+ ],
+ "tarjetas": [
+  {
+   "t0": 0,
+   "t1": 6.6,
+   "tipo": "video",
+   "src": "board.mp4",
+   "etiqueta": "pizarra · 3 equipos creativos"
+  },
+  {
+   "t0": 6.6,
+   "t1": 21.35,
+   "tipo": "formula",
+   "etiqueta": "costo de adquisición real",
+   "pasos": [
+    {
+     "t": 6.72,
+     "que": "pauta"
+    },
+    {
+     "t": 10.72,
+     "que": "mas"
+    },
+    {
+     "t": 12.68,
+     "que": "costo"
+    },
+    {
+     "t": 14.96,
+     "que": "linea"
+    },
+    {
+     "t": 16.44,
+     "que": "clientes"
+    },
+    {
+     "t": 18.7,
+     "que": "igual"
+    },
+    {
+     "t": 19.92,
+     "que": "cac"
+    }
+   ]
+  },
+  {
+   "t0": 25.1,
+   "t1": 28.4,
+   "tipo": "barras",
+   "etiqueta": "rendimiento por equipo",
+   "titulo": "Contribución marginal",
+   "barras": [
+    {
+     "nombre": "Equipo A",
+     "valor": 0.92,
+     "t": 26.46
+    },
+    {
+     "nombre": "Equipo B",
+     "valor": 0.5,
+     "t": 26.7
+    },
+    {
+     "nombre": "Equipo C",
+     "valor": 0.16,
+     "t": 26.94
+    }
+   ]
+  },
+  {
+   "t0": 28.4,
+   "t1": 34.65,
+   "tipo": "contador",
+   "etiqueta": "cada cuánto se hace la cuenta",
+   "chip": "Análisis de performance",
+   "desde": 0,
+   "hasta": 90,
+   "tc0": 32.6,
+   "tc1": 34.1,
+   "unidad": "días"
+  },
+  {
+   "t0": 42.6,
+   "t1": 48.6,
+   "tipo": "veredicto",
+   "etiqueta": "resultado del trimestre",
+   "filas": [
+    {
+     "nombre": "Equipo A",
+     "texto": "buenísimo",
+     "marca": "ok",
+     "t": 43.38
+    },
+    {
+     "nombre": "Equipo B",
+     "texto": "más o menos",
+     "marca": "medio",
+     "t": 45.42
+    },
+    {
+     "nombre": "Equipo C",
+     "texto": "chau",
+     "marca": "no",
+     "t": 47.76
+    }
+   ]
+  }
+ ],
+ "palabras": [
+  {
+   "w": "La",
+   "s": 0.0,
+   "e": 0.7
+  },
+  {
+   "w": "fórmula",
+   "s": 0.7,
+   "e": 1.56,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 1.56,
+   "e": 1.68
+  },
+  {
+   "w": "vamos",
+   "s": 1.68,
+   "e": 1.76
+  },
+  {
+   "w": "a",
+   "s": 1.76,
+   "e": 1.86
+  },
+  {
+   "w": "sacar",
+   "s": 1.86,
+   "e": 2.02
+  },
+  {
+   "w": "para",
+   "s": 2.02,
+   "e": 2.28
+  },
+  {
+   "w": "medir",
+   "s": 2.28,
+   "e": 2.68
+  },
+  {
+   "w": "justamente",
+   "s": 2.68,
+   "e": 3.12
+  },
+  {
+   "w": "estos",
+   "s": 3.12,
+   "e": 3.56
+  },
+  {
+   "w": "tres",
+   "s": 3.56,
+   "e": 3.78,
+   "k": true
+  },
+  {
+   "w": "pods",
+   "s": 3.78,
+   "e": 4.02
+  },
+  {
+   "w": "es",
+   "s": 4.02,
+   "e": 4.42
+  },
+  {
+   "w": "lo",
+   "s": 5.24,
+   "e": 5.72
+  },
+  {
+   "w": "que",
+   "s": 5.72,
+   "e": 5.86
+  },
+  {
+   "w": "sería",
+   "s": 5.86,
+   "e": 6.14
+  },
+  {
+   "w": "la",
+   "s": 6.14,
+   "e": 6.72
+  },
+  {
+   "w": "pauta",
+   "s": 6.72,
+   "e": 7.02,
+   "k": true
+  },
+  {
+   "w": "publicitaria",
+   "s": 7.02,
+   "e": 7.9
+  },
+  {
+   "w": "es",
+   "s": 7.9,
+   "e": 8.14
+  },
+  {
+   "w": "decir",
+   "s": 8.14,
+   "e": 8.36
+  },
+  {
+   "w": "lo",
+   "s": 8.64,
+   "e": 8.78
+  },
+  {
+   "w": "que",
+   "s": 8.78,
+   "e": 8.84
+  },
+  {
+   "w": "nosotros",
+   "s": 8.84,
+   "e": 9.02
+  },
+  {
+   "w": "gastamos",
+   "s": 9.02,
+   "e": 9.46
+  },
+  {
+   "w": "en",
+   "s": 9.46,
+   "e": 10.2
+  },
+  {
+   "w": "pauta",
+   "s": 10.2,
+   "e": 10.72,
+   "k": true
+  },
+  {
+   "w": "más",
+   "s": 10.72,
+   "e": 11.46
+  },
+  {
+   "w": "lo",
+   "s": 11.46,
+   "e": 12.18
+  },
+  {
+   "w": "que",
+   "s": 12.18,
+   "e": 12.3
+  },
+  {
+   "w": "nos",
+   "s": 12.3,
+   "e": 12.4
+  },
+  {
+   "w": "sale",
+   "s": 12.4,
+   "e": 12.56
+  },
+  {
+   "w": "de",
+   "s": 12.56,
+   "e": 12.68
+  },
+  {
+   "w": "costo",
+   "s": 12.68,
+   "e": 12.9,
+   "k": true
+  },
+  {
+   "w": "operativo",
+   "s": 12.9,
+   "e": 13.26
+  },
+  {
+   "w": "el",
+   "s": 13.26,
+   "e": 13.42
+  },
+  {
+   "w": "pod",
+   "s": 13.42,
+   "e": 13.6
+  },
+  {
+   "w": "todo",
+   "s": 14.3,
+   "e": 14.78
+  },
+  {
+   "w": "esto",
+   "s": 14.78,
+   "e": 14.96
+  },
+  {
+   "w": "dividido",
+   "s": 14.96,
+   "e": 15.56,
+   "k": true
+  },
+  {
+   "w": "cantidad",
+   "s": 15.68,
+   "e": 15.9
+  },
+  {
+   "w": "de",
+   "s": 15.9,
+   "e": 16.44
+  },
+  {
+   "w": "clientes",
+   "s": 16.44,
+   "e": 17.0,
+   "k": true
+  },
+  {
+   "w": "adquiridos",
+   "s": 17.0,
+   "e": 17.72,
+   "k": true
+  },
+  {
+   "w": "y",
+   "s": 17.72,
+   "e": 18.16
+  },
+  {
+   "w": "esto",
+   "s": 18.16,
+   "e": 18.34
+  },
+  {
+   "w": "nos",
+   "s": 18.34,
+   "e": 18.48
+  },
+  {
+   "w": "va",
+   "s": 18.48,
+   "e": 18.64
+  },
+  {
+   "w": "a",
+   "s": 18.64,
+   "e": 18.7
+  },
+  {
+   "w": "dar",
+   "s": 18.7,
+   "e": 18.82
+  },
+  {
+   "w": "justamente",
+   "s": 18.82,
+   "e": 19.14
+  },
+  {
+   "w": "cuánto",
+   "s": 19.14,
+   "e": 19.64
+  },
+  {
+   "w": "es",
+   "s": 19.64,
+   "e": 19.76
+  },
+  {
+   "w": "nuestro",
+   "s": 19.76,
+   "e": 19.92
+  },
+  {
+   "w": "costo",
+   "s": 19.92,
+   "e": 20.32
+  },
+  {
+   "w": "de",
+   "s": 20.32,
+   "e": 20.42
+  },
+  {
+   "w": "adquisición",
+   "s": 20.42,
+   "e": 20.82,
+   "k": true
+  },
+  {
+   "w": "de",
+   "s": 20.82,
+   "e": 20.96
+  },
+  {
+   "w": "clientes",
+   "s": 20.96,
+   "e": 21.4
+  },
+  {
+   "w": "la",
+   "s": 21.4,
+   "e": 21.6
+  },
+  {
+   "w": "métrica",
+   "s": 21.6,
+   "e": 22.28
+  },
+  {
+   "w": "real",
+   "s": 22.28,
+   "e": 22.82,
+   "k": true
+  },
+  {
+   "w": "que",
+   "s": 22.82,
+   "e": 23.0
+  },
+  {
+   "w": "es",
+   "s": 23.0,
+   "e": 23.08
+  },
+  {
+   "w": "el",
+   "s": 23.08,
+   "e": 23.18
+  },
+  {
+   "w": "CAC",
+   "s": 23.18,
+   "e": 23.38,
+   "k": true
+  },
+  {
+   "w": "vamos",
+   "s": 25.2,
+   "e": 25.68
+  },
+  {
+   "w": "a",
+   "s": 25.68,
+   "e": 25.82
+  },
+  {
+   "w": "buscar",
+   "s": 25.82,
+   "e": 25.94
+  },
+  {
+   "w": "como",
+   "s": 25.94,
+   "e": 26.24
+  },
+  {
+   "w": "qué",
+   "s": 26.24,
+   "e": 26.46
+  },
+  {
+   "w": "contribución",
+   "s": 26.46,
+   "e": 26.92,
+   "k": true
+  },
+  {
+   "w": "marginal",
+   "s": 26.92,
+   "e": 27.24,
+   "k": true
+  },
+  {
+   "w": "nos",
+   "s": 27.24,
+   "e": 27.4
+  },
+  {
+   "w": "deja",
+   "s": 27.4,
+   "e": 27.62
+  },
+  {
+   "w": "cada",
+   "s": 27.62,
+   "e": 27.92
+  },
+  {
+   "w": "pod",
+   "s": 27.92,
+   "e": 28.48
+  },
+  {
+   "w": "yo",
+   "s": 28.68,
+   "e": 28.8
+  },
+  {
+   "w": "recomiendo",
+   "s": 28.8,
+   "e": 29.18
+  },
+  {
+   "w": "llevar",
+   "s": 29.18,
+   "e": 29.34
+  },
+  {
+   "w": "los",
+   "s": 29.34,
+   "e": 29.56
+  },
+  {
+   "w": "pods",
+   "s": 29.56,
+   "e": 29.7
+  },
+  {
+   "w": "es",
+   "s": 29.7,
+   "e": 30.12
+  },
+  {
+   "w": "hacer",
+   "s": 30.12,
+   "e": 30.52
+  },
+  {
+   "w": "un",
+   "s": 30.52,
+   "e": 30.96
+  },
+  {
+   "w": "análisis",
+   "s": 30.96,
+   "e": 31.34
+  },
+  {
+   "w": "de",
+   "s": 31.34,
+   "e": 31.48
+  },
+  {
+   "w": "performance",
+   "s": 31.48,
+   "e": 31.94,
+   "k": true
+  },
+  {
+   "w": "es",
+   "s": 31.94,
+   "e": 32.34
+  },
+  {
+   "w": "decir",
+   "s": 32.34,
+   "e": 32.62
+  },
+  {
+   "w": "hacer",
+   "s": 32.74,
+   "e": 32.92
+  },
+  {
+   "w": "esta",
+   "s": 32.92,
+   "e": 33.14
+  },
+  {
+   "w": "cuenta",
+   "s": 33.14,
+   "e": 33.42
+  },
+  {
+   "w": "de",
+   "s": 33.42,
+   "e": 33.86
+  },
+  {
+   "w": "manera",
+   "s": 33.86,
+   "e": 34.06
+  },
+  {
+   "w": "trimestral",
+   "s": 34.06,
+   "e": 34.74,
+   "k": true
+  },
+  {
+   "w": "por",
+   "s": 34.74,
+   "e": 35.04
+  },
+  {
+   "w": "ejemplo",
+   "s": 35.04,
+   "e": 35.26
+  },
+  {
+   "w": "si",
+   "s": 35.36,
+   "e": 35.44
+  },
+  {
+   "w": "tenemos",
+   "s": 35.44,
+   "e": 35.6
+  },
+  {
+   "w": "el",
+   "s": 35.6,
+   "e": 35.76
+  },
+  {
+   "w": "pod",
+   "s": 35.76,
+   "e": 35.86
+  },
+  {
+   "w": "que",
+   "s": 35.86,
+   "e": 36.0
+  },
+  {
+   "w": "nos",
+   "s": 36.0,
+   "e": 36.14
+  },
+  {
+   "w": "está",
+   "s": 36.14,
+   "e": 36.22
+  },
+  {
+   "w": "haciendo",
+   "s": 36.22,
+   "e": 36.34
+  },
+  {
+   "w": "súper",
+   "s": 36.34,
+   "e": 36.52
+  },
+  {
+   "w": "rentable",
+   "s": 36.52,
+   "e": 36.94,
+   "k": true
+  },
+  {
+   "w": "y",
+   "s": 36.94,
+   "e": 37.44
+  },
+  {
+   "w": "el",
+   "s": 37.44,
+   "e": 37.52
+  },
+  {
+   "w": "pod",
+   "s": 37.52,
+   "e": 37.62
+  },
+  {
+   "w": "B",
+   "s": 37.62,
+   "e": 37.78
+  },
+  {
+   "w": "y",
+   "s": 37.78,
+   "e": 37.88
+  },
+  {
+   "w": "el",
+   "s": 37.88,
+   "e": 37.92
+  },
+  {
+   "w": "pod",
+   "s": 37.92,
+   "e": 38.06
+  },
+  {
+   "w": "C",
+   "s": 38.06,
+   "e": 38.24
+  },
+  {
+   "w": "no",
+   "s": 38.24,
+   "e": 38.46
+  },
+  {
+   "w": "nos",
+   "s": 38.46,
+   "e": 38.58
+  },
+  {
+   "w": "funcionan",
+   "s": 38.58,
+   "e": 39.58
+  },
+  {
+   "w": "listo",
+   "s": 39.58,
+   "e": 40.04
+  },
+  {
+   "w": "esto",
+   "s": 40.04,
+   "e": 40.26
+  },
+  {
+   "w": "lo",
+   "s": 40.26,
+   "e": 40.34
+  },
+  {
+   "w": "vamos",
+   "s": 40.34,
+   "e": 40.46
+  },
+  {
+   "w": "a",
+   "s": 40.46,
+   "e": 40.52
+  },
+  {
+   "w": "sacar",
+   "s": 40.52,
+   "e": 40.7,
+   "k": true
+  },
+  {
+   "w": "o",
+   "s": 40.7,
+   "e": 40.92
+  },
+  {
+   "w": "vamos",
+   "s": 40.92,
+   "e": 41.08
+  },
+  {
+   "w": "a",
+   "s": 41.08,
+   "e": 41.24
+  },
+  {
+   "w": "hacer",
+   "s": 41.24,
+   "e": 41.42
+  },
+  {
+   "w": "algunos",
+   "s": 41.42,
+   "e": 41.7
+  },
+  {
+   "w": "ajustes",
+   "s": 41.7,
+   "e": 42.72,
+   "k": true
+  },
+  {
+   "w": "capaz",
+   "s": 42.72,
+   "e": 42.96
+  },
+  {
+   "w": "que",
+   "s": 42.96,
+   "e": 43.06
+  },
+  {
+   "w": "tenemos",
+   "s": 43.06,
+   "e": 43.2
+  },
+  {
+   "w": "el",
+   "s": 43.2,
+   "e": 43.38
+  },
+  {
+   "w": "pod",
+   "s": 43.38,
+   "e": 43.54
+  },
+  {
+   "w": "A",
+   "s": 43.54,
+   "e": 43.64
+  },
+  {
+   "w": "que",
+   "s": 43.64,
+   "e": 43.72
+  },
+  {
+   "w": "es",
+   "s": 43.72,
+   "e": 43.8
+  },
+  {
+   "w": "buenísimo",
+   "s": 43.8,
+   "e": 44.18,
+   "k": true
+  },
+  {
+   "w": "el",
+   "s": 45.06,
+   "e": 45.42
+  },
+  {
+   "w": "pod",
+   "s": 45.42,
+   "e": 45.78
+  },
+  {
+   "w": "B",
+   "s": 45.78,
+   "e": 46.08
+  },
+  {
+   "w": "más",
+   "s": 46.08,
+   "e": 46.72
+  },
+  {
+   "w": "o",
+   "s": 46.72,
+   "e": 46.88
+  },
+  {
+   "w": "menos",
+   "s": 46.88,
+   "e": 47.08
+  },
+  {
+   "w": "y",
+   "s": 47.08,
+   "e": 47.66
+  },
+  {
+   "w": "el",
+   "s": 47.66,
+   "e": 47.76
+  },
+  {
+   "w": "pod",
+   "s": 47.76,
+   "e": 47.94
+  },
+  {
+   "w": "C",
+   "s": 47.94,
+   "e": 48.2
+  },
+  {
+   "w": "chau",
+   "s": 48.02,
+   "e": 48.45,
+   "k": true
+  }
+ ],
+ "cortes": [],
+ "zooms": [
+  {
+   "t0": 21.55,
+   "t1": 25.1,
+   "z": 1.12
+  },
+  {
+   "t0": 39.55,
+   "t1": 42.6,
+   "z": 1.15
+  },
+  {
+   "t0": 48.6,
+   "t1": 50,
+   "z": 1.08
+  }
+ ],
+ "cta": {
+  "t0": 48.6,
+  "t1": 50,
+  "arriba": "comentá",
+  "abajo": "OPERACIONES"
+ },
+ "camSplit": {
+  "y": 700,
+  "escala": 1
+ },
+ "fuentes": [
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  }
+ ]
+}

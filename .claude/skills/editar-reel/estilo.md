@@ -102,6 +102,12 @@ Qué es cada cosa:
   roja y negra, pero **se usa con la paleta de Genesis**: naranja #F26A1B, negro #0B0B0C y hueso
   #F2EDE4, con Inter Tight (la guía de estilo de la marca).
 
+- **reel-ig-mg** (reel de Instagram De4XVvXPTWY, 35 s). Pidió "editá así, en este estilo de
+  motion graphics" (23/11/2026). Se copia el armado: encabezado con caja + tarjeta-ventana arriba,
+  cara abajo, subtítulos de 1 a 3 palabras con la clave en itálica serif. **Con la paleta de
+  Genesis** (naranja en vez del azul de la referencia) y **fondo oscuro**, porque las tomas de Manu
+  son con fondo negro. Se edita con la composición `ReelMG` del motor (props a mano por reel).
+
 ## Cómo corto
 
 ## Cuándo cambio de plano
@@ -123,6 +129,11 @@ Qué es cada cosa:
 - Crecimiento = línea punteada roja que sube, con puntos blancos y una etiqueta con borde rojo.
 - Títulos de sección: mayúsculas, sans muy gruesa, roja con glow.
 - Las animaciones entran suave (deslizan y aparecen); nada rebota.
+- (De reel-ig-mg) Formato por defecto: arriba encabezado (línea chica que se tipea + caja naranja
+  con una palabra en itálica serif) y una tarjeta tipo ventana con borde naranja que brilla; abajo
+  la cara. Lo que se dice se arma adentro de la tarjeta a medida que se dice (una fórmula pieza por
+  pieza, barras, un contador, filas con ✓ ~ ✕). Alternar con la cara a pantalla completa en los
+  momentos a cámara.
 - Un gráfico va donde la frase dice algo que se puede VER: una cifra, un crecimiento, una lista
   de pasos, el arranque de una sección. Si no se puede escribir el porqué, no va.
 
@@ -130,6 +141,8 @@ Qué es cada cosa:
 
 - Inter Tight, blancos hueso con borde negro, la palabra que se está diciendo en naranja Genesis.
 - Se apagan mientras hay una placa a pantalla completa (pasos, título).
+- (De reel-ig-mg) En los reels con motion graphics: 1 a 3 palabras, aparecen al decirse; las
+  palabras clave van solas, en itálica serif naranja (Playfair Display) y más grandes.
 
 ## Lo que no quiero nunca
 

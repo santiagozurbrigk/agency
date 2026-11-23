@@ -1,0 +1,6 @@
+# Los videos y las fotos de revisión pesan mucho: quedan solo en local
+*.mp4
+*.mov
+fotos/
+hoja*.jpg
+.render/
