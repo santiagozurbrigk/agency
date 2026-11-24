@@ -1,0 +1,219 @@
+<title>Dolores y ángulos de Genesis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: documento de una columna para el equipo; contexto de Genesis arriba en bloques, después el mapa y los ángulos en tablas */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7;
+  --os:#36577a; --os-soft:#e2eaf3;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812;
+  --os:#8fb3d9; --os-soft:#1d2a38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812;
+  --os:#8fb3d9; --os-soft:#1d2a38; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding-block:36px 90px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:56px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(30px,5vw,46px);font-weight:700}
+h2{font-size:26px;font-weight:600}
+h3{font-size:19px;font-weight:600}
+h4{font-size:16px;font-weight:600}
+p{margin:0;max-width:72ch}
+ul,ol{margin:0;padding-left:20px;display:grid;gap:6px;max-width:75ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stack{display:grid;gap:16px}
+.lead{font-size:18px;max-width:68ch}
+.part{display:grid;gap:8px;padding-bottom:12px;border-bottom:2px solid var(--fg)}
+.part .eyebrow{color:var(--accent)}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px}
+nav.toc a{font-size:13px;font-weight:600;text-decoration:none;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 12px}
+nav.toc a:hover{border-color:var(--accent)}
+.thesis{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:grid;gap:10px}
+.thesis blockquote{margin:0;font-family:var(--display);font-size:clamp(20px,3vw,26px);font-weight:600;line-height:1.25;max-width:32ch}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:10px;align-content:start;min-width:0}
+.card.main{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.card .role{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--muted)}
+.card.main .role{color:var(--accent)}
+.price{font-family:var(--display);font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.price small{font-size:14px;font-weight:500;color:var(--muted)}
+.k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.facts div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0}
+.facts b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums;line-height:1.1}
+.facts span{font-size:13px;color:var(--muted)}
+.calc{font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:1px 9px;border-radius:999px}
+.pill.lite{background:var(--accent-soft);color:var(--accent)}
+.pill.os{background:var(--os-soft);color:var(--os)}
+.pill.both{background:var(--ok-soft);color:var(--ok)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--line)}
+th{font-weight:600;background:var(--bg);font-size:13px}
+tr:last-child td{border-bottom:none}
+td.id{font-family:var(--display);font-weight:700;white-space:nowrap}
+td.hook{font-weight:500}
+td.bridge{color:var(--ok)}
+.pain{display:grid;gap:10px}
+.pain-title{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pain-title .pid{font-family:var(--display);font-weight:700;color:var(--accent)}
+.os-sec .pain-title .pid{color:var(--os)}
+.note{font-size:14px;background:var(--warn-soft);color:var(--warn);border-radius:10px;padding:12px 14px;max-width:none}
+.rules li{max-width:none}
+</style>
+<div class="wrap">
+<header class="stack">
+  <div class="eyebrow">Genesis · Para el equipo · 24/11/2026</div>
+  <h1>Dolores y ángulos hacia la suscripción</h1>
+  <p class="lead">Cada dolor de esta lista termina en la misma respuesta: un consumible con suscripción, porque el winner no existe y lo único que dura es el cliente que vuelve. Sale del análisis de 70 reels de 7 mentores y 8 videos de Lauty Cardozo. Nadie del mercado habla de suscripción; el único que la menciona, Lauty, dice que «está medio verde» y que todavía no la hizo.</p>
+  <p class="muted">Cada ángulo trae un hook de ejemplo y el puente: la frase que conecta el dolor con la suscripción. Todos respetan el personaje: realidad técnica, pantallas y números, nada de lujo.</p>
+  <nav class="toc" aria-label="Secciones"><a href="#contexto">Contexto de Genesis</a><a href="#mapa-de-dolores">Mapa de dolores</a><a href="#lite-producto-y-testeo">Lite · Producto y testeo</a><a href="#lite-plata-margen-y-vivir-en-alerta">Lite · Plata, margen y vivir en alerta</a><a href="#lite-meta-creativos-escalado-y-la-mentor">Lite · Meta, creativos, escalado y la mentoría quemada</a><a href="#os-dueo-de-marca-cansado-de-que-nada-dur">OS · Dueño de marca cansado de que nada dure</a><a href="#objeciones-a-la-suscripcin-y-cmo-darlas">Objeciones a la suscripción y cómo darlas vuelta</a><a href="#por-dnde-empezar">Por dónde empezar</a></nav>
+</header>
+<div class="part" id="contexto"><div class="eyebrow">Parte 1</div><h2>Contexto de Genesis</h2><p class="muted">Lo que hay que tener en la cabeza antes de escribir un hook. Sale de <code>CONTEXTO.md</code>, de la base del avatar (<code>bases/11-avatar-y-comunicacion.md</code>) y de las decisiones de la llamada del 23/11.</p></div>
+
+<section class="stack" aria-labelledby="c-que">
+  <h3 id="c-que">Qué es Genesis</h3>
+  <p>Genesis es el negocio de Manu Dominguez con José: ayudan a dueños de e-commerce de productos consumibles a dejar de depender de la primera venta, pasando a un modelo de suscripción. No es un curso de producto ganador ni de Meta: Manu y José se meten en la tienda y en los números de cada cliente y lo arman con él.</p>
+  <div class="thesis">
+    <div class="eyebrow">La tesis</div>
+    <blockquote>No te falta vender más: te falta que el que ya te compró te vuelva a comprar.</blockquote>
+    <p class="muted">La plata de un consumible no está en la primera venta: está en la segunda, la tercera y la cuarta. Todos compiten por el producto y por el ángulo. Nadie compite por el modelo.</p>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="c-cuenta">
+  <h3 id="c-cuenta">La cuenta y la prueba</h3>
+  <p>Es la única cuenta que se usa en cámara, en la pizarra y en la calculadora. El techo y el punto operativo se muestran siempre juntos.</p>
+  <div class="facts calc">
+    <div><b>30.000</b><span>ARS de margen por pedido</span></div>
+    <div><b>30.000</b><span>techo por cliente con compra única (breakeven en la primera venta)</span></div>
+    <div><b>90.000</b><span>techo con suscripción, con 3 pedidos por cliente</span></div>
+    <div><b>75.000</b><span>punto operativo recomendado: quedan 15.000 vivos por cliente</span></div>
+  </div>
+  <p>Por eso el que tiene suscripción puede pagar más por cada cliente que su competencia y le gana la subasta en Meta.</p>
+  <h4>El único caso con suscripción: la marca de Manu</h4>
+  <div class="facts calc">
+    <div><b>60M → 275M</b><span>ARS por mes: de compra única a $275.225.343</span></div>
+    <div><b>3.943</b><span>suscriptores activos</span></div>
+    <div><b>7,2%</b><span>de cancelaciones</span></div>
+  </div>
+  <p class="muted">Son los únicos números de suscripción que se pueden mostrar, siempre con captura. Herbora y los alumnos prueban que «nos metemos en tu marca y los números se mueven», pero nunca al lado de la palabra «suscripción».</p>
+</section>
+
+<section class="stack" aria-labelledby="c-escalera">
+  <h3 id="c-escalera">La escalera de ofertas</h3>
+  <div class="grid3">
+    <article class="card main">
+      <div class="role">Principal · se comunica</div>
+      <h4>Genesis Lite</h4>
+      <div class="price">USD 2.000 <small>3 meses</small></div>
+      <p>Grupales con Manu y José, chat 1 a 1, semáforo de producto, contactos, depósito propio y comunidad chica. La suscripción se suma cuando la marca tiene margen y volumen.</p>
+    </article>
+    <article class="card">
+      <div class="role">Upsell · lead muy calificado</div>
+      <h4>Genesis OS</h4>
+      <div class="price">USD 5.000 <small>4 meses</small></div>
+      <p>Para el que ya vende con su marca: diagnóstico de números, plan de suscripción, migración sin frenar lo que vende y backend de retención.</p>
+    </article>
+    <article class="card">
+      <div class="role">Downsell · no se comunica</div>
+      <h4>Oferta de USD 800</h4>
+      <div class="price">USD 800 <small>pago único</small></div>
+      <p>Para el que todavía no arrancó. <b>Ni él ni sus dolores aparecen en el marketing:</b> solo se ofrece en la llamada, cuando Lite no le da.</p>
+    </article>
+  </div>
+  <p class="muted">En la llamada: se presenta Lite → si no puede o no le da, la oferta de USD 800 → si está muy calificado, Genesis OS. Todo se comunica como suscripción, a distintos niveles de consciencia.</p>
+</section>
+
+<section class="stack" aria-labelledby="c-avatares">
+  <h3 id="c-avatares">A quién le hablamos</h3>
+  <div class="grid2">
+    <article class="card main">
+      <div class="role">Avatar principal · Lite</div>
+      <h4>El que ya arrancó en e-commerce, testea y no le pega</h4>
+      <p>Lleva meses probando productos y puso plata de su bolsillo. Si validó algo, vende con un margen que no le deja nada y vive en alerta. Viene de otra mentoría que le decía «renová» y «subí la pauta».</p>
+      <div class="k">Cómo habla</div>
+      <ul>
+        <li>«Ya testeé 40 productos y no me pegó ninguno»</li>
+        <li>«Es cuestión de que pase un día y irme a pérdida»</li>
+        <li>«Necesito que me digas: estoy en esta situación, ¿qué decisión tomarías?»</li>
+        <li>«No me interesa pegar un bombazo, irme a Dubái y sacarme una foto»</li>
+      </ul>
+      <p class="muted">Caso real: Nico, que vendía 25 a 30 pedidos por día con 6,59% de margen. Sus 4 cuellos de botella: producto y testeo, estructura de campañas, escalado y estabilidad.</p>
+    </article>
+    <article class="card">
+      <div class="role">Avatar secundario · OS</div>
+      <h4>El dueño de una marca que ya vende y está cansado de que nada dure</h4>
+      <p>Cada venta la tiene que volver a comprar, cada semana buena se cae en dos días. Le tiene fe a lo que vende, pero no puede hacer que se sostenga. No quiere facturar más: quiere saber cuánto entra el mes que viene.</p>
+      <div class="k">Cómo habla</div>
+      <ul>
+        <li>«Hace mucho que no tenemos un día bueno»</li>
+        <li>«7 lucas de ganancia. Sobreviviendo»</li>
+        <li>«Salieron 7 personas a pautar un producto muy parecido»</li>
+        <li>«Cuando no renovamos nos suben los CPA»</li>
+      </ul>
+      <p class="muted">Casos reales: Herbora, Alan, Santi Núñez y Thiago Lopo, los 4 que más pagaron.</p>
+    </article>
+  </div>
+</section>
+
+<section class="stack" aria-labelledby="c-mercado">
+  <h3 id="c-mercado">Qué encontró la investigación de competencia</h3>
+  <p>Se analizaron los últimos 10 reels de 7 mentores de e-commerce (andrescaminos_, juanchyecom, matelezama, ecomm_esa, juan_trim, tomas.mingo y agustinnbulacio; duartesanti_ no tiene reels) y 8 videos de Lauty Cardozo.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="k">Lo que hace todo el mercado</div>
+      <ul>
+        <li>«Mirá cuánto facturé»: 6 de 7. Siempre facturación, nunca ganancia neta.</li>
+        <li>Lujo como prueba: autos, deptos y viajes.</li>
+        <li>Mindset, sacrificio y proceso.</li>
+        <li>El producto ganador existe y se valida: «100% existen».</li>
+        <li>La solución es más creativos (+500 por mes).</li>
+        <li>Le habla sobre todo al que todavía no arrancó.</li>
+      </ul>
+    </div>
+    <div class="card main">
+      <div class="k">El terreno libre para Genesis</div>
+      <ul>
+        <li><b>«El producto winner no existe»:</b> nadie lo dice; dos mentores dicen lo contrario.</li>
+        <li><b>Suscripción:</b> cero menciones en 70 reels. El único que la nombra dice que «está medio verde».</li>
+        <li><b>Estabilidad:</b> nadie habla de que nada dure ni de vivir en alerta.</li>
+        <li><b>Ganancia neta:</b> nadie la muestra.</li>
+        <li><b>El que testea y no le pega:</b> el avatar de Lite casi no tiene quién le hable.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Ventana de tiempo: Lauty dijo en septiembre que a la suscripción «hay que encontrarle la vuelta sí o sí». Ser los primeros exige empezar a publicar ya.</p>
+</section>
+
+<section class="stack" aria-labelledby="c-reglas">
+  <h3 id="c-reglas">Reglas de comunicación</h3>
+  <ul>
+    <li><b>Una pieza, un dolor, un avatar.</b> La mayoría le habla a Lite.</li>
+    <li><b>El hook usa las palabras del avatar</b> y nombra lo que cree que necesita (el winner, más creativos, subir la pauta). La suscripción entra como el mecanismo y es siempre el cierre.</li>
+    <li><b>Ganancia neta antes que facturación.</b> El número va al final, como consecuencia, y siempre con captura.</li>
+    <li><b>Pantalla y pizarra, nunca lujo.</b> Nada de autos, deptos ni viajes en cámara.</li>
+    <li><b>No se nombra a ningún competidor</b>: se responde a sus ideas, no a las personas. El enemigo es el modelo de la primera venta y el mentor que dice «renová» sin meterse en tus números.</li>
+    <li><b>La oferta de USD 800 y su avatar no se nombran</b> en ningún lado del marketing.</li>
+    <li><b>Herbora nunca va al lado de «suscripción»</b>: no la usa. El único caso con suscripción es el de Manu.</li>
+    <li><b>Voz de Manu:</b> voseo, tono de operador a operador, cadena causal con el número y remate seco. Nada de gurú.</li>
+    <li><b>Palabras que no se usan:</b> secreto, hack, mindset, libertad financiera, «te garantizo», «producto ganador» como promesa (solo para decir que no existe).</li>
+  </ul>
+  <p class="muted">Webinar del 15/12: la captación va del 6 al 15/12 y los ads le hablan solo a Lite y a OS.</p>
+</section>
+
+<div class="part" id="angulos"><div class="eyebrow">Parte 2</div><h2>Dolores y ángulos</h2><p class="muted">El mapa completo y los ángulos por dolor, tal como salieron de la investigación. Para los ads del webinar se eligieron 24 de acá: están en la página <a href="https://claude.ai/artifact/JgY8BMYJ3hXMUeK3aEAo1H" target="_blank" rel="noopener">Ads del webinar 15/12</a>, para revisar.</p></div>
+<section class="stack" id="mapa-de-dolores"><h2>Mapa de dolores</h2><div class="tbl"><table><thead><tr><th>#</th><th>Dolor, como lo dice el avatar</th><th>Avatar</th><th>Cuello de botella</th><th>Quién de la competencia lo toca y cómo</th><th>Hueco para Genesis</th></tr></thead><tbody><tr><td class="id"><a href="#l1">L1</a></td><td class="hook">«Testeo y testeo y no le pego a ninguno»</td><td><span class="pill lite">Lite</span></td><td>Producto y testeo</td><td>juanchyecom (checklist), Lauty («el producto es lo más fácil»)</td><td>Nadie dice que el problema es buscar un winner</td></tr><tr><td class="id"><a href="#l2">L2</a></td><td class="hook">«Validé uno y a las tres semanas se murió»</td><td><span class="pill lite">Lite</span></td><td>Producto y testeo</td><td>ecomm_esa («5-6 meses mínimo para sostener un producto»)</td><td>Nadie lo explica como modelo roto</td></tr><tr><td class="id"><a href="#l3">L3</a></td><td class="hook">«Cada mes arranco de cero»</td><td><span class="pill lite">Lite</span></td><td>Producto y testeo</td><td>Nadie</td><td>Ingreso que arranca con los suscriptores del mes anterior</td></tr><tr><td class="id"><a href="#l4">L4</a></td><td class="hook">«Facturo un montón y no me queda nada»</td><td><span class="pill lite">Lite</span></td><td>Escalado</td><td>ecomm_esa (la caja, costos 80/20)</td><td>Todos muestran facturación, nadie la ganancia neta</td></tr><tr><td class="id"><a href="#l5">L5</a></td><td class="hook">«En un día me voy a pérdida»</td><td><span class="pill lite">Lite</span></td><td>Estabilidad</td><td>juan_trim («esto te puede hundir los CPA», agosto)</td><td>Nadie habla de vivir en alerta</td></tr><tr><td class="id"><a href="#l6">L6</a></td><td class="hook">«No sé cuánto voy a ganar el mes que viene»</td><td><span class="pill both">Lite y OS</span></td><td>Estabilidad</td><td>Nadie</td><td>Previsibilidad: el MRR</td></tr><tr><td class="id"><a href="#l7">L7</a></td><td class="hook">«Tengo que renovar creativos todos los días»</td><td><span class="pill lite">Lite</span></td><td>Estructura de campañas</td><td>Lauty (+500 creativos por mes, «diversidad creativa»)</td><td>Todos venden más creativos como solución</td></tr><tr><td class="id"><a href="#l8">L8</a></td><td class="hook">«Cuando subo la pauta, se rompe todo»</td><td><span class="pill lite">Lite</span></td><td>Escalado</td><td>Lauty (CBO madre, financiación), tomas.mingo (operación)</td><td>Escalar sobre clientes recurrentes, no sobre clientes nuevos</td></tr><tr><td class="id"><a href="#l9">L9</a></td><td class="hook">«Mis campañas son un quilombo y no sé qué apagar»</td><td><span class="pill lite">Lite</span></td><td>Estructura de campañas</td><td>Lauty («no hay estrategia secreta»), juan_trim</td><td>Una estructura pensada para captar suscriptores, no compras sueltas</td></tr><tr><td class="id"><a href="#l10">L10</a></td><td class="hook">«Mi mentoría me decía renová y subí la pauta»</td><td><span class="pill lite">Lite</span></td><td>Todos</td><td>ecomm_esa («otras mentorías son verso»)</td><td>Atacar el modelo que te enseñaron, no al mentor</td></tr><tr><td class="id"><a href="#os1">OS1</a></td><td class="hook">«Nada dura»</td><td><span class="pill os">OS</span></td><td>Estabilidad</td><td>Nadie</td><td>Toda la tesis de Genesis</td></tr><tr><td class="id"><a href="#os2">OS2</a></td><td class="hook">«El CPA sube todos los meses»</td><td><span class="pill os">OS</span></td><td>Estabilidad</td><td>juan_trim (técnico)</td><td>El LTV te deja pagar un CPA más alto</td></tr><tr><td class="id"><a href="#os3">OS3</a></td><td class="hook">«Me compran una vez y no vuelven»</td><td><span class="pill os">OS</span></td><td>Escalado</td><td>matelezama (LTV, recompra, packs de 3 meses)</td><td>Él llega a recompra; nadie llega a suscripción</td></tr><tr><td class="id"><a href="#os4">OS4</a></td><td class="hook">«Dependo del ROAS de cada día»</td><td><span class="pill os">OS</span></td><td>Estabilidad</td><td>matelezama (fijado: «no depender de la primera venta y el ROAS diario»)</td><td>Medir el negocio por mes y por cohorte, no por día</td></tr><tr><td class="id"><a href="#os5">OS5</a></td><td class="hook">«No puedo planificar stock ni equipo»</td><td><span class="pill os">OS</span></td><td>Escalado</td><td>Lauty (stock justo, financiación)</td><td>Con suscripción sabés cuántas unidades salís el mes que viene</td></tr><tr><td class="id"><a href="#os6">OS6</a></td><td class="hook">«Si apago la pauta, mi marca no vale nada»</td><td><span class="pill os">OS</span></td><td>Escalado</td><td>Lauty y agustinnbulacio (exit, patrimonio)</td><td>Una base de suscriptores es un activo que se puede valuar</td></tr></tbody></table></div></section><section class="stack" id="lite-producto-y-testeo"><h2>Lite · Producto y testeo</h2><p class="muted">Acá vive el ángulo madre, «el producto winner no existe». Es contracorriente: ecomm_esa dice que los winners existen «100%» y Lauty, que encontrar el producto es «lo más fácil».</p><div class="pain" id="l1"><div class="pain-title"><span class="pid">L1</span><h3>«Testeo y testeo y no le pego a ninguno»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>El winner no existe</b></td><td class="hook">«No le pegás porque estás buscando algo que no existe»</td><td class="bridge">Lo que buscabas no era un producto: era un cliente que vuelva solo cada mes</td><td>A cámara con título fijo</td></tr><tr><td><b>Estás midiendo mal</b></td><td class="hook">«Tu producto no fracasó en el testeo: fracasó porque lo mediste por la primera venta»</td><td class="bridge">Con suscripción, un CPA «caro» puede ser rentable al segundo mes</td><td>Pantalla: el mismo testeo medido por venta y por LTV</td></tr><tr><td><b>Respuesta directa al mercado</b></td><td class="hook">«¿Existen los productos winners? Te contesto con números»</td><td class="bridge">Lo que dura no es el producto, es la recompra automática de un consumible</td><td>Placas con números sobre cámara</td></tr><tr><td><b>El cementerio de productos</b></td><td class="hook">«Estos son los 14 productos que testeamos este año. Ninguno era un winner»</td><td class="bridge">El único que sigue vendiendo es el que tiene suscriptores</td><td>Pantalla del Ads Manager, uno por uno</td></tr></tbody></table></div></div><div class="pain" id="l2"><div class="pain-title"><span class="pid">L2</span><h3>«Validé uno y a las tres semanas se murió»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Autopsia de un «winner»</b></td><td class="hook">«Este producto vendió 300 unidades en 10 días. Mirá cómo murió»</td><td class="bridge">Vendía una vez a cada cliente: cuando se acabó el público, se acabó el producto</td><td>Gráfico de ventas diarias, subida y caída</td></tr><tr><td><b>El producto no se quemó, se terminó el público</b></td><td class="hook">«Tu producto no se quemó. Le vendiste a todos los que lo iban a comprar»</td><td class="bridge">Un consumible por suscripción le vuelve a vender al mismo cliente todos los meses</td><td>Pizarra</td></tr><tr><td><b>Muerte anunciada</b></td><td class="hook">«Si tu producto se compra una sola vez, ya sabés cuándo se va a morir»</td><td class="bridge">Elegí productos que se terminan: el cliente los necesita de nuevo</td><td>A cámara</td></tr></tbody></table></div></div><div class="pain" id="l3"><div class="pain-title"><span class="pid">L3</span><h3>«Cada mes arranco de cero»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>El día 1 del mes</b></td><td class="hook">«El 1 de cada mes tu e-commerce vale cero. El nuestro arranca con 400 pedidos ya cobrados»</td><td class="bridge">La suscripción hace que cada mes empiece con la base del anterior</td><td>Pantalla: el calendario de cobros recurrentes</td></tr><tr><td><b>La cinta de correr</b></td><td class="hook">«Si tu negocio para cuando vos parás de testear, no tenés un negocio: tenés una cinta de correr»</td><td class="bridge">Los suscriptores siguen pagando aunque esta semana no testees nada</td><td>Animación IA de una historia</td></tr><tr><td><b>Antes y después</b></td><td class="hook">«Así se veía mi mes cuando vendía winners. Así se ve ahora»</td><td class="bridge">Dos gráficos: picos y caídas contra una línea que sube de a poco</td><td>Captura doble de tableros</td></tr></tbody></table></div></div></section><section class="stack" id="lite-plata-margen-y-vivir-en-alerta"><h2>Lite · Plata, margen y vivir en alerta</h2><p class="muted">El mercado muestra facturación (270M, 100M/mes, «250 mil dólares») y autos; acá mostramos lo que queda. Solo ecomm_esa habla de margen, y nadie habla de la ansiedad de abrir el Ads Manager.</p><div class="pain" id="l4"><div class="pain-title"><span class="pid">L4</span><h3>«Facturo un montón y no me queda nada»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Facturación contra ganancia</b></td><td class="hook">«Este mes facturamos menos que el anterior y ganamos más. Te explico por qué»</td><td class="bridge">El suscriptor del segundo mes no te cuesta pauta: es casi todo margen</td><td>Placas con números: mes 1 contra mes 2</td></tr><tr><td><b>La primera venta no deja plata</b></td><td class="hook">«Tu primera venta casi nunca te deja plata. La tercera sí»</td><td class="bridge">Con suscripción, la tercera venta está garantizada en la mayoría de los clientes</td><td>Pizarra con la cuenta por cliente</td></tr><tr><td><b>Contra el 2x1</b></td><td class="hook">«Si tenés que vender 2x1 para que te compren, el problema no es el precio»</td><td class="bridge">Un suscriptor paga precio lleno todos los meses, sin promociones para empujar</td><td>A cámara</td></tr><tr><td><b>No te muestro el auto</b></td><td class="hook">«No te voy a mostrar mi auto. Te voy a mostrar mi ganancia neta por pedido»</td><td class="bridge">En la suscripción la ganancia por pedido sube cada mes que el cliente se queda</td><td>Pantalla, sin lifestyle</td></tr></tbody></table></div></div><div class="pain" id="l5"><div class="pain-title"><span class="pid">L5</span><h3>«En un día me voy a pérdida»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>La ansiedad del Ads Manager</b></td><td class="hook">«¿Abrís el Ads Manager con miedo? No es Meta, es tu modelo»</td><td class="bridge">Si la mitad de tus pedidos del mes ya están cobrados, un mal día de pauta no te hunde</td><td>A cámara + captura</td></tr><tr><td><b>El colchón</b></td><td class="hook">«Un día malo en Meta te deja en pérdida porque no tenés colchón»</td><td class="bridge">Los cobros recurrentes son el colchón que absorbe los días malos</td><td>Pizarra</td></tr><tr><td><b>Un día en pérdida real</b></td><td class="hook">«Ayer perdimos plata en pauta. Igual cerramos el día en ganancia»</td><td class="bridge">Mostrar el día: pauta en rojo, cobros de suscriptores en verde</td><td>Pantalla del día real</td></tr></tbody></table></div></div><div class="pain" id="l6"><div class="pain-title"><span class="pid">L6</span><h3>«No sé cuánto voy a ganar el mes que viene»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Previsibilidad</b></td><td class="hook">«Ya sé cuánto voy a facturar en enero. ¿Vos?»</td><td class="bridge">El MRR te dice el piso del mes que viene</td><td>Pantalla: proyección por cohortes</td></tr><tr><td><b>Cohortes simples</b></td><td class="hook">«De 100 personas que se suscribieron en octubre, 62 siguen. Esto vale más que cualquier winner»</td><td class="bridge">La retención es el número que tiene que mirar un e-commerce de consumibles</td><td>Planilla de cohortes en pantalla</td></tr><tr><td><b>Planificar la vida</b></td><td class="hook">«No podés planificar tu vida con un negocio que no sabés si existe el mes que viene»</td><td class="bridge">La suscripción te deja planificar stock, sueldo y vacaciones</td><td>A cámara, tono calmo</td></tr></tbody></table></div></div></section><section class="stack" id="lite-meta-creativos-escalado-y-la-mentor"><h2>Lite · Meta, creativos, escalado y la mentoría quemada</h2><p class="muted">El mercado responde con más creativos: Lauty sostiene que «no hay estrategia secreta, son los creativos» y que Meta es «lo más estable que hay». Genesis responde con el modelo: si cada cliente vale más, necesitás menos creativos y aguantás un CPA más alto.</p><div class="pain" id="l7"><div class="pain-title"><span class="pid">L7</span><h3>«Tengo que renovar creativos todos los días»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>La cinta de creativos</b></td><td class="hook">«Si tenés que renovar creativos todos los días, no tenés un negocio: tenés una cinta de correr»</td><td class="bridge">Cada suscriptor que conseguiste no necesita un creativo nuevo el mes que viene</td><td>Cartel de alerta + a cámara</td></tr><tr><td><b>500 creativos por mes</b></td><td class="hook">«Hay mentorías que te venden 500 creativos por mes como solución. Nosotros necesitamos 40»</td><td class="bridge">Con LTV alto, un creativo que dura dos semanas alcanza para llenar la base</td><td>Pantalla de la biblioteca propia</td></tr><tr><td><b>Menos creativos, más ganancia</b></td><td class="hook">«Este mes sacamos la mitad de creativos y ganamos más»</td><td class="bridge">La ganancia sale de los que ya están suscriptos, no del creativo de hoy</td><td>Placas con números</td></tr></tbody></table></div></div><div class="pain" id="l8"><div class="pain-title"><span class="pid">L8</span><h3>«Cuando subo la pauta, se rompe todo»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Escalar sobre lo que ya tenés</b></td><td class="hook">«No escales la pauta. Escalá la base de clientes»</td><td class="bridge">Con suscripción, escalar es sumar suscriptores a una base que ya paga sola</td><td>Pizarra</td></tr><tr><td><b>El CPA máximo real</b></td><td class="hook">«Tu CPA máximo está mal calculado: lo calculaste para una sola venta»</td><td class="bridge">Si el cliente se queda 4 meses, podés pagar el doble por él (la cuenta que Lauty explica y no aplica)</td><td>Pizarra con la cuenta</td></tr><tr><td><b>Stock sin adivinar</b></td><td class="hook">«Escalar sin saber cuánto vas a vender es apostar el stock»</td><td class="bridge">Los suscriptores te dicen cuántas unidades salen el mes que viene</td><td>Pantalla de pedidos programados</td></tr></tbody></table></div></div><div class="pain" id="l9"><div class="pain-title"><span class="pid">L9</span><h3>«Mis campañas son un quilombo y no sé qué apagar»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Optimizás para lo equivocado</b></td><td class="hook">«Tu campaña está optimizada para la compra. La nuestra, para el suscriptor»</td><td class="bridge">Estructura pensada para captar clientes que se quedan, no compras sueltas</td><td>Pantalla del Ads Manager</td></tr><tr><td><b>Mirás la métrica equivocada</b></td><td class="hook">«Dejá de mirar el ROAS del día. Mirá el ROAS a 90 días»</td><td class="bridge">El ROAS de una suscripción se mide por cohorte, no por día</td><td>Pizarra + planilla</td></tr><tr><td><b>Lo técnico sin humo</b></td><td class="hook">«Así está armada la estructura de una marca de suscripción, sin secretos»</td><td class="bridge">Mostrar la estructura real refuerza el personaje técnico</td><td>Pantalla, paso a paso</td></tr></tbody></table></div></div><div class="pain" id="l10"><div class="pain-title"><span class="pid">L10</span><h3>«Mi mentoría me decía renová y subí la pauta»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>No era tu culpa</b></td><td class="hook">«Si en tu mentoría la respuesta siempre era ‘renová’ o ‘subí la pauta’, el problema no eras vos»</td><td class="bridge">Te enseñaron un modelo de una sola venta; ese modelo exige renovar y pautar sin fin</td><td>A cámara, tono empático</td></tr><tr><td><b>Le pagás para que te digan lo de siempre</b></td><td class="hook">«Le pagás a una mentoría para que te diga que subas la pauta»</td><td class="bridge">La salida no es otra táctica de Meta: es cambiar a un modelo con recompra</td><td>Gancho provocador en segunda persona</td></tr><tr><td><b>Lo que nadie te mostró</b></td><td class="hook">«Te enseñaron a encontrar winners. Nadie te enseñó a que el cliente vuelva»</td><td class="bridge">Suscripción como lo que faltó en la mentoría anterior</td><td>A cámara + placas</td></tr></tbody></table></div></div></section><section class="stack os-sec" id="os-dueo-de-marca-cansado-de-que-nada-dur"><h2>OS · Dueño de marca cansado de que nada dure</h2><p class="muted">El dueño de marca ya vende, así que no le sirve «encontrá un producto»: le sirve estabilidad. matelezama es el único que le habla desde el LTV y la recompra, sin llegar a la suscripción. Lauty y agustinnbulacio hablan de exit y patrimonio, pero no del activo que lo sostiene.</p><div class="pain" id="os1"><div class="pain-title"><span class="pid">OS1</span><h3>«Nada dura»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Tu marca no es inestable, tu modelo sí</b></td><td class="hook">«Tu marca no tiene un problema de creativos. Tiene un problema de modelo»</td><td class="bridge">Una marca de consumibles sin suscripción le vende de cero a cada cliente cada vez</td><td>A cámara, tono técnico</td></tr><tr><td><b>Lo que sí dura</b></td><td class="hook">«En 2026 nos duró una sola cosa: los clientes suscriptos»</td><td class="bridge">La base de suscriptores es lo único que no se quema</td><td>Gráfico de la base acumulada</td></tr><tr><td><b>Podcast con un dueño</b></td><td class="hook">«Hablamos con un dueño de marca que pasó de vivir del winner a vivir de la suscripción»</td><td class="bridge">Caso real, con números</td><td>Podcast con motion graphics</td></tr></tbody></table></div></div><div class="pain" id="os2"><div class="pain-title"><span class="pid">OS2</span><h3>«El CPA sube todos los meses»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>El CPA va a subir igual</b></td><td class="hook">«El CPA va a seguir subiendo. La pregunta es si tu cliente vale lo suficiente para pagarlo»</td><td class="bridge">Con el LTV de un suscriptor, un CPA más alto sigue siendo rentable</td><td>Pizarra con la cuenta</td></tr><tr><td><b>Te gano por LTV, no por costos</b></td><td class="hook">«No te gano porque pague menos por cliente. Te gano porque mi cliente me paga 5 veces»</td><td class="bridge">La competencia por CPA se pierde; la de LTV se gana</td><td>Placas con números (estilo comparativo)</td></tr></tbody></table></div></div><div class="pain" id="os3"><div class="pain-title"><span class="pid">OS3</span><h3>«Me compran una vez y no vuelven»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>De la recompra a la suscripción</b></td><td class="hook">«La recompra depende de que el cliente se acuerde. La suscripción, no»</td><td class="bridge">Ir un paso más allá de los packs de 3 meses y el email de recompra (el terreno de matelezama)</td><td>Pizarra comparativa</td></tr><tr><td><b>Tu email de recompra no alcanza</b></td><td class="hook">«Mandás el mail de recompra y vuelve el 8%. Con suscripción, se queda el 60%»</td><td class="bridge">Automatizar la segunda compra en vez de pedirla</td><td>Pantalla de métricas (con datos reales)</td></tr><tr><td><b>El cliente que se olvida</b></td><td class="hook">«Tu cliente no te abandonó. Se olvidó de vos»</td><td class="bridge">La suscripción resuelve el olvido, no la satisfacción</td><td>A cámara</td></tr></tbody></table></div></div><div class="pain" id="os4"><div class="pain-title"><span class="pid">OS4</span><h3>«Dependo del ROAS de cada día»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>El negocio se mide por mes</b></td><td class="hook">«Si tu humor depende del ROAS de hoy, tu negocio también»</td><td class="bridge">La suscripción mueve el número importante del día al mes (MRR)</td><td>A cámara, tono calmo</td></tr><tr><td><b>Independencia de Meta</b></td><td class="hook">«Si Meta te bloquea la cuenta mañana, ¿cuánto facturás este mes?»</td><td class="bridge">Los suscriptores cobran aunque la cuenta publicitaria esté caída</td><td>Cartel de alerta</td></tr></tbody></table></div></div><div class="pain" id="os5"><div class="pain-title"><span class="pid">OS5</span><h3>«No puedo planificar stock ni equipo»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>Stock previsible</b></td><td class="hook">«Sabemos cuántas unidades vamos a despachar en marzo. Hoy»</td><td class="bridge">Los pedidos recurrentes hacen previsible el stock y la compra al fabricante</td><td>Pantalla de pedidos programados</td></tr><tr><td><b>Contratar con certeza</b></td><td class="hook">«No contratás porque no sabés si el mes que viene vas a vender»</td><td class="bridge">Con MRR podés sumar equipo sin apostar</td><td>A cámara</td></tr></tbody></table></div></div><div class="pain" id="os6"><div class="pain-title"><span class="pid">OS6</span><h3>«Si apago la pauta, mi marca no vale nada»</h3></div><div class="tbl"><table><thead><tr><th>Ángulo</th><th>Hook de ejemplo</th><th>Puente a la suscripción</th><th>Formato sugerido</th></tr></thead><tbody><tr><td><b>El activo que se puede vender</b></td><td class="hook">«Una tienda que vive de la pauta no se vende. Una base de suscriptores, sí»</td><td class="bridge">El MRR es lo que valora un comprador o un inversor</td><td>Pizarra</td></tr><tr><td><b>Apagar la pauta una semana</b></td><td class="hook">«Apagamos la pauta una semana. Esto es lo que facturó la marca igual»</td><td class="bridge">Demostración en vivo del ingreso recurrente</td><td>Detrás de escena con tablero real</td></tr></tbody></table></div></div></section><section class="stack" id="objeciones-a-la-suscripcin-y-cmo-darlas"><h2>Objeciones a la suscripción y cómo darlas vuelta</h2><p class="muted">Ser los primeros implica educar: el avatar va a traer objeciones que hoy refuerza el propio mercado. Lauty dice que la suscripción «está medio verde», que «hay que educar» a la gente y que «va a salir un CPA más caro». Cada objeción es también un ángulo.</p><div class="tbl"><table><thead><tr><th>Objeción</th><th>De dónde viene</th><th>Ángulo</th><th>Hook de ejemplo</th></tr></thead><tbody><tr><td class="hook">«En Argentina la gente no se suscribe»</td><td>Creencia instalada; Lauty: «está medio verde»</td><td><b>No está verde, está sin explotar</b></td><td>«Te dijeron que en Argentina nadie se suscribe. Este es el tablero de una marca que lo hace»</td></tr><tr><td class="hook">«La suscripción tiene un CPA más caro»</td><td>Lauty: «va a salir un CPA más caro»</td><td><b>El CPA es más caro y no importa</b></td><td>«Sí, conseguir un suscriptor cuesta más. Y vale cuatro veces más»</td></tr><tr><td class="hook">«Con la inflación no podés fijar precio»</td><td>Contexto argentino</td><td><b>Precio actualizable y comunicado</b></td><td>«¿Cómo cobrás una suscripción en pesos sin perder margen? Así»</td></tr><tr><td class="hook">«La gente cancela al segundo mes»</td><td>Miedo a la baja</td><td><b>La retención se trabaja: producto, onboarding, WhatsApp</b></td><td>«El 40% cancela al segundo mes. Esto es lo que hacemos para que no» (con dato real)</td></tr><tr><td class="hook">«Mi producto no sirve para suscripción»</td><td>Viene de vender gadgets y winners</td><td><b>Elegí productos que se terminan</b></td><td>«Si tu producto no se termina, no tiene futuro en Meta»</td></tr><tr><td class="hook">«Es muy complicado de armar técnicamente»</td><td>Miedo a la plataforma de cobro</td><td><b>Mostrar el armado real, sin humo</b></td><td>«Así se configura el cobro recurrente en una tienda argentina, paso a paso»</td></tr><tr><td class="hook">«Ya lo intenté y no funcionó»</td><td>Alguna prueba fallida</td><td><b>Lo que falla es el producto o la oferta, no el modelo</b></td><td>«Tu suscripción no falló. Le pusiste suscripción a un producto que nadie necesita todos los meses»</td></tr></tbody></table></div></section><section class="stack" id="por-dnde-empezar"><h2>Por dónde empezar</h2><p>Primero hay que instalar la idea madre y después la prueba: «el winner no existe» y, en paralelo, números reales de suscripción. Una propuesta de orden, por impacto y por cuán vacío está el terreno:</p><ol><li>L1 y L2: «el winner no existe». Es el ángulo más contracorriente y nadie más lo ocupa. Empezar con la respuesta directa («¿Existen los productos winners?») y la autopsia de un winner que murió.</li><li>L4: ganancia neta contra facturación. Todo el mercado muestra facturación y lujo; mostrar lo que queda construye el personaje técnico desde el primer reel.</li><li>L5 y L6: vivir en alerta y previsibilidad. Es el dolor emocional de nuestro avatar principal y nadie le habla.</li><li>Objeción «en Argentina nadie se suscribe». Ganarle la discusión a Lauty antes de que él la lance, ya que dijo que a la suscripción «hay que encontrarle la vuelta sí o sí».</li><li>L10: la mentoría quemada. Para el que viene de otra mentoría; funciona mejor cuando los pilares anteriores ya están instalados.</li><li>OS1 a OS6. Para el dueño de marca, en formato más largo (podcast o pizarra), con casos reales.</li></ol><h3>Reglas para todos los ángulos</h3><ul class="rules"><li>Los números de los hooks (400 pedidos, 62 de 100, 14 productos, 8% y 60%) son de ejemplo. Antes de publicar, hay que reemplazarlos por datos reales de Genesis o de alumnos, o sacarlos.</li><li>Siempre pantalla o pizarra, nunca lifestyle. El cierre lleva al mismo lugar: suscripción en un consumible.</li><li>No nombrar competidores: responder a sus ideas («los winners existen», «renová creativos»), no a las personas.</li></ul></section>
+</div>
