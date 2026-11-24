@@ -1,0 +1,279 @@
+<title>Ads del webinar 15/12</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+<style>
+/* Layout: hoja de revisión en una columna; formatos arriba como leyenda, después dolor → 3 ángulos con su revisión, al final las decisiones abiertas */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7; --no:#a3352b; --no-soft:#f6e1de;
+  --os:#36577a; --os-soft:#e2eaf3;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a;
+  --os:#8fb3d9; --os-soft:#1d2a38; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a;
+  --os:#8fb3d9; --os-soft:#1d2a38; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+.wrap{max-width:1000px;margin:0 auto;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:44px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,42px);font-weight:700}
+h2{font-size:24px;font-weight:600}
+h3{font-size:18px;font-weight:600}
+p{margin:0;max-width:70ch}
+a{color:var(--accent)}
+button,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stack{display:grid;gap:14px}
+.note{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:8px 12px;max-width:none}
+
+.tally{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tally span{font-size:13px;font-weight:600;padding:3px 12px;border-radius:999px;font-variant-numeric:tabular-nums}
+.t-ok{background:var(--ok-soft);color:var(--ok)} .t-ch{background:var(--warn-soft);color:var(--warn)} .t-no{background:var(--no-soft);color:var(--no)} .t-pend{background:var(--surface);color:var(--muted);border:1px solid var(--line)}
+
+.formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.fmt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px;min-width:0}
+.fmt b{font-family:var(--display);font-size:15px}
+.fmt .src{font-size:12px;color:var(--muted)}
+.code{display:inline-block;font-family:var(--display);font-weight:700;font-size:12px;padding:1px 8px;border-radius:6px;background:var(--fg);color:var(--bg);margin-right:6px;font-variant-numeric:tabular-nums}
+
+.avatar-head{display:grid;gap:8px;padding-bottom:10px;border-bottom:2px solid var(--accent)}
+.avatar-head.os{border-bottom-color:var(--os)}
+.badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:6px;background:var(--accent-soft);color:var(--accent);width:max-content}
+.os .badge{background:var(--os-soft);color:var(--os)}
+
+.pain{display:grid;gap:12px}
+.pain-head{display:grid;gap:4px}
+.quote{font-size:15px;color:var(--muted);max-width:none}
+.quote q{color:var(--fg);font-weight:500}
+.angles{display:grid;gap:10px}
+.angle{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;min-width:0}
+.angle[data-state="ok"]{border-color:var(--ok)}
+.angle[data-state="ch"]{border-color:var(--warn)}
+.angle[data-state="no"]{border-color:var(--no);opacity:.75}
+.aid{font-family:var(--display);font-weight:700;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums;grid-row:span 4}
+.os .aid{color:var(--os)}
+.hook{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.25;min-width:0}
+.why{font-size:14px;color:var(--muted);min-width:0}
+.fchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.fchip{font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.flag{font-size:12px;font-weight:600;color:var(--warn)}
+
+.review{display:grid;gap:8px;grid-column:2;min-width:0;padding-top:6px;border-top:1px dashed var(--line);margin-top:4px}
+.choices{display:flex;flex-wrap:wrap;gap:6px}
+.choice{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:5px 14px;font-size:13px;font-weight:600}
+.choice[aria-pressed="true"][data-v="ok"]{background:var(--ok);border-color:var(--ok);color:var(--surface)}
+.choice[aria-pressed="true"][data-v="ch"]{background:var(--warn);border-color:var(--warn);color:var(--surface)}
+.choice[aria-pressed="true"][data-v="no"]{background:var(--no);border-color:var(--no);color:var(--surface)}
+.choice:disabled{opacity:.5;cursor:default}
+textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;font-size:14px;width:100%;box-sizing:border-box;resize:vertical;min-height:40px}
+.saved{font-size:12px;color:var(--muted);min-height:1em}
+
+.decisions{display:grid;gap:10px}
+.decision{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:8px}
+.decision .review{grid-column:auto}
+
+.studio{display:flex;flex-wrap:wrap;gap:10px}
+.studio div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:120px}
+.studio b{display:block;font-family:var(--display);font-size:22px;font-variant-numeric:tabular-nums}
+.studio span{font-size:12px;color:var(--muted)}
+@media (max-width:520px){.angle{grid-template-columns:1fr}.aid{grid-row:auto}.review{grid-column:1}}
+</style>
+
+<div class="wrap">
+  <header class="stack">
+    <div class="eyebrow">Webinar 15/12 · Propuesta para revisar</div>
+    <h1>Dolores, ángulos y formatos de los ads</h1>
+    <p>2 dolores por avatar, 3 ángulos por dolor y 2 formatos por ángulo: 12 ads para Genesis Lite (principal) y 12 para Genesis OS (secundario). Todo sale de frases reales de clientes y de los ángulos que ya están en el repo. El avatar de la oferta de USD 800 no tiene ads.</p>
+    <p class="muted">Marcá cada ángulo con Sí, Cambiar o No y dejá una nota si hace falta. Se guarda solo y lo leo desde acá para pasarlo a la página de la escalera y al documento del avatar.</p>
+    <div class="tally" id="tally"><span class="t-pend">Cargando revisión…</span></div>
+    <p class="note" id="statusNote" hidden></p>
+  </header>
+
+  <section class="stack" aria-labelledby="fmtTitle">
+    <h2 id="fmtTitle">Los 4 formatos</h2>
+    <p class="muted">Todos se pueden grabar en los 2 días de estudio.</p>
+    <div class="formats" id="formats"></div>
+    <div class="studio" id="studio"></div>
+  </section>
+
+  <section class="stack" id="lite"></section>
+  <section class="stack os" id="os"></section>
+
+  <section class="stack" aria-labelledby="decTitle">
+    <h2 id="decTitle">Decisiones abiertas</h2>
+    <div class="decisions" id="decisions"></div>
+  </section>
+
+  <p class="muted">Fuentes: <code>ventas/llamadas-b2b-b2c/00-analisis-llamadas-fathom.md</code> (Nico, 26/10) · <code>lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md</code> (30/10) · <code>bases/05-criterio-reels.md</code> (winners D3_V6 y D4_V3) · llamada del 23/11.</p>
+</div>
+
+<script>
+const FORMATS = {
+  F1:{name:"Pizarra", desc:"Manu explica la idea o hace la cuenta a mano.", src:"Se pidió en la llamada del 23/11: «mucha pizarra»."},
+  F2:{name:"iPad + cámara", desc:"El tablero, las campañas o los números reales en el primer cuadro.", src:"D4_V3 abre con el tablero: fue el winner con leads más calificados (30% calificó)."},
+  F3:{name:"A cámara en un set", desc:"Sillón o mesa, hook directo, sin apoyo visual.", src:"D3_V6, el winner con mejor CTR (2,2%), fue a cámara."},
+  F4:{name:"Detrás de escena", desc:"Lo graba otra persona: Manu trabajando con José o en una llamada.", src:"Ya se usó en N1, N4 y N8."},
+};
+const AVATARS = [
+  {key:"lite", badge:"Principal", title:"Genesis Lite · 12 ads", who:"El que ya arrancó en e-commerce, testea y no le pega.", pains:[
+    {title:"Producto y testeo", quote:"Ya testeé 40 productos y no me pegó ninguno", by:"Nico", angles:[
+      {id:"L1", hook:"«El producto winner no existe.»", why:"Los 40 testeos no son mala suerte: estás buscando algo que no existe. Ángulo confirmado el 23/11.", f:["F3","F1"]},
+      {id:"L2", hook:"«Testeaste 40 productos. ¿Cuántos te ahorrabas si alguien te decía antes cuál sí y cuál no?»", why:"El semáforo de producto que da José antes de testear.", f:["F4","F2"]},
+      {id:"L3", hook:"«Te dijeron que no pegaba porque eras vos.»", why:"El problema fue cómo te enseñaron a decidir.", f:["F3","F4"], flag:"Hot button: ver la decisión 1"},
+    ]},
+    {title:"Estabilidad y margen", quote:"Es cuestión de que pase un día y irme a pérdida", by:"Nico, que vendía con 6,59% de margen", angles:[
+      {id:"L4", hook:"«Vendés todos los días y no te queda nada.»", why:"Ganancia neta, no facturación, con el día malo incluido.", f:["F2","F1"]},
+      {id:"L5", hook:"«Estás todo el día al palo porque en un día te vas a pérdida.»", why:"Una marca donde el cliente vuelve es lo que te saca de la alerta. Es la suscripción, a su nivel de consciencia.", f:["F3","F1"]},
+      {id:"L6", hook:"«Tu mentor te dice "renová" y "subí la pauta".»", why:"Manu muestra cómo arma sus campañas, incluido el día que le sale mal.", f:["F2","F4"]},
+    ]},
+  ]},
+  {key:"os", badge:"Secundario", title:"Genesis OS · 12 ads", who:"El dueño de un e-commerce que ya vende con su marca y está cansado de que nada dure.", pains:[
+    {title:"Inestabilidad", quote:"Hace mucho que no tenemos un día bueno", by:"Herbora. Lo tenían los 4 clientes que más pagaron", angles:[
+      {id:"O1", hook:"«Hace mucho que no tenés un día bueno.»", why:"Saber cuánto entra el mes que viene.", f:["F3","F2"]},
+      {id:"O2", hook:"«Tenés 400 clientes que ya te recompraron y no les mandaste ni un mail.»", why:"La plata sentada en tu base.", f:["F2","F1"], flag:"Sale del caso Herbora: ver la decisión 3"},
+      {id:"O3", hook:"«El 1 del mes arrancás en cero.»", why:"El piso de facturación.", f:["F1","F3"]},
+    ]},
+    {title:"Renovar creativos y CPA", quote:"Cuando no renovamos nos suben los CPA", by:"Los 4 clientes que más pagaron renovaban todo el tiempo", angles:[
+      {id:"O4", hook:"«Salieron 7 marcas a vender lo mismo que vos.»", why:"El suscriptor no le compra al que te copió.", f:["F3","F4"]},
+      {id:"O5", hook:"«Renovás creativos todos los días y la semana buena te dura dos.»", why:"La metadependencia dicha como la viven: renovar, no el ban.", f:["F4","F3"]},
+      {id:"O6", hook:"«No ganás bajando el CPA: ganás pudiendo pagar más.»", why:"La cuenta: techo de 30.000 → 90.000, operando en 75.000.", f:["F1","F2"]},
+    ]},
+  ]},
+];
+const DECISIONS = [
+  {id:"D1", title:"¿El ángulo L3 («te dijeron que eras vos») va en un ad?", body:"Pega fuerte, pero el banco de objeciones lo marca como hot button (B2C-10). La alternativa es dejarlo para la llamada y reemplazarlo por otro ángulo de producto.", opts:[["ok","Va en un ad"],["no","Solo en la llamada"],["ch","Otra cosa"]]},
+  {id:"D2", title:"¿Lite suma un dolor de escalado o de estructura de campañas?", body:"Elegí producto y estabilidad porque son los únicos con frases textuales del avatar. Las campañas aparecen como ángulo en L6. Si Manu tiene una frase de clientes sobre escalar, se puede cambiar uno de los dos dolores.", opts:[["ok","Quedan producto y estabilidad"],["ch","Cambiar un dolor"]]},
+  {id:"D3", title:"¿El ángulo O2 (los 400 clientes) va?", body:"Sale del caso Herbora. En el ad no se nombra la marca ni aparece al lado de «suscripción», como pide la regla del 01/11.", opts:[["ok","Va así"],["no","Sacarlo"],["ch","Cambiarlo"]]},
+];
+const LABELS = {ok:"Sí", ch:"Cambiar", no:"No"};
+
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs={}, ...kids){ const n=document.createElement(tag); for(const [k,v] of Object.entries(attrs)){ if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else if(k.startsWith("on")) n.addEventListener(k.slice(2),v); else if(v!==false&&v!=null) n.setAttribute(k,v===true?"":v); } for(const k of kids) if(k) n.append(typeof k==="string"?document.createTextNode(k):k); return n; }
+function note(msg){ const n=$("statusNote"); n.textContent=msg||""; n.hidden=!msg; }
+
+let db=null, canWrite=true, reviews={};
+const controls={}; // id -> {setState, setNote, card}
+const noteTimers={};
+
+function renderFormats(){
+  for(const [code,f] of Object.entries(FORMATS)){
+    $("formats").append(el("div",{class:"fmt"}, el("b",{}, el("span",{class:"code",text:code}), f.name), el("span",{text:f.desc}), el("span",{class:"src",text:f.src})));
+  }
+  const count={F1:0,F2:0,F3:0,F4:0};
+  for(const a of AVATARS) for(const p of a.pains) for(const g of p.angles) for(const f of g.f) count[f]++;
+  for(const [code,n] of Object.entries(count)) $("studio").append(el("div",{}, el("b",{text:String(n)}), el("span",{text:FORMATS[code].name})));
+}
+
+function reviewBox(id, opts){
+  const box=el("div",{class:"review"});
+  const choices=el("div",{class:"choices",role:"group","aria-label":"Revisión de "+id});
+  const btns={};
+  for(const [v,label] of opts){
+    const b=el("button",{class:"choice",type:"button","data-v":v,"aria-pressed":"false",text:label,onclick:()=>choose(id,v)});
+    btns[v]=b; choices.append(b);
+  }
+  const ta=el("textarea",{id:"nota-"+id,rows:"1",placeholder:"Nota (opcional): qué cambiarías"});
+  ta.addEventListener("input",()=>{ clearTimeout(noteTimers[id]); noteTimers[id]=setTimeout(()=>saveNote(id,ta.value),900); });
+  ta.addEventListener("blur",()=>{ clearTimeout(noteTimers[id]); saveNote(id,ta.value); });
+  const saved=el("div",{class:"saved"});
+  box.append(choices,ta,saved);
+  controls[id]={btns,ta,saved};
+  return box;
+}
+
+function renderAvatars(){
+  for(const a of AVATARS){
+    const sec=$(a.key);
+    sec.append(el("div",{class:"avatar-head"+(a.key==="os"?" os":"")}, el("span",{class:"badge",text:a.badge}), el("h2",{text:a.title}), el("p",{class:"muted",text:a.who})));
+    a.pains.forEach((p,i)=>{
+      const pain=el("div",{class:"pain"});
+      pain.append(el("div",{class:"pain-head"}, el("div",{class:"eyebrow",text:"Dolor "+(i+1)}), el("h3",{text:p.title}),
+        el("p",{class:"quote"}, el("q",{text:p.quote}), " · "+p.by)));
+      const list=el("div",{class:"angles"});
+      for(const g of p.angles){
+        const card=el("article",{class:"angle",id:"card-"+g.id});
+        const chips=el("div",{class:"fchips"});
+        for(const f of g.f) chips.append(el("span",{class:"fchip",text:f+" · "+FORMATS[f].name}));
+        card.append(el("div",{class:"aid",text:g.id}), el("div",{class:"hook",text:g.hook}), el("div",{class:"why",text:g.why}), chips);
+        if(g.flag) card.append(el("div",{class:"flag",text:g.flag}));
+        card.append(reviewBox(g.id,[["ok","Sí"],["ch","Cambiar"],["no","No"]]));
+        controls[g.id].card=card;
+        list.append(card);
+      }
+      pain.append(list); sec.append(pain);
+    });
+  }
+}
+
+function renderDecisions(){
+  for(const d of DECISIONS){
+    const box=el("div",{class:"decision"}, el("h3",{text:d.id+" · "+d.title}), el("p",{class:"muted",text:d.body}));
+    box.append(reviewBox(d.id,d.opts));
+    $("decisions").append(box);
+  }
+}
+
+function applyReviews(){
+  const angleIds=[]; for(const a of AVATARS) for(const p of a.pains) for(const g of p.angles) angleIds.push(g.id);
+  let t={ok:0,ch:0,no:0};
+  for(const [id,c] of Object.entries(controls)){
+    const r=reviews[id]||{};
+    for(const [v,b] of Object.entries(c.btns)){ b.setAttribute("aria-pressed",String(r.estado===v)); b.disabled=!canWrite; }
+    if(document.activeElement!==c.ta && (r.nota||"")!==c.ta.value) c.ta.value=r.nota||"";
+    c.ta.disabled=!canWrite;
+    if(c.card) c.card.dataset.state=r.estado||"";
+    if(angleIds.includes(id) && r.estado) t[r.estado]++;
+  }
+  const pend=angleIds.length-t.ok-t.ch-t.no;
+  $("tally").replaceChildren(
+    el("span",{class:"t-ok",text:t.ok+" Sí"}), el("span",{class:"t-ch",text:t.ch+" Cambiar"}),
+    el("span",{class:"t-no",text:t.no+" No"}), el("span",{class:"t-pend",text:pend+" sin revisar"}));
+}
+
+async function write(id, patch){
+  if(!db||!canWrite) return;
+  const c=controls[id];
+  const body={...(reviews[id]||{}), ...patch, id, actualizado:new Date().toISOString()};
+  try{ await db.collection("revision").doc(id).set(body); c.saved.textContent="Guardado"; note(""); }
+  catch(e){
+    if(e&&e.code==="invalid_argument"){ canWrite=false; applyReviews(); note("No tenés permiso para guardar la revisión. Pedí acceso de Contributor o Editor."); }
+    else { c.saved.textContent="No se pudo guardar. Probá de nuevo."; }
+  }
+}
+function choose(id,v){
+  const cur=(reviews[id]||{}).estado;
+  const next = cur===v ? "" : v;
+  reviews[id]={...(reviews[id]||{}), estado:next}; applyReviews();
+  write(id,{estado:next});
+}
+function saveNote(id,val){
+  if(((reviews[id]||{}).nota||"")===val) return;
+  reviews[id]={...(reviews[id]||{}), nota:val};
+  write(id,{nota:val});
+}
+
+async function start(){
+  renderFormats(); renderAvatars(); renderDecisions(); applyReviews();
+  db=await claude.use("db");
+  if(!db){ canWrite=false; applyReviews(); note("Para guardar la revisión, abrí esta página en claude.ai con tu cuenta."); return; }
+  try{ const user=await claude.use("user"); const c=user?await user.can("data.write"):null; if(c===false) canWrite=false; }catch(_){}
+  applyReviews();
+  const timer=setTimeout(()=>note("La revisión guardada tarda en cargar. Lo que ves puede no estar actualizado."),10000);
+  db.collection("revision").onSnapshot(snap=>{
+    const next={}; for(const d of snap.docs) next[d.id]=d.data();
+    reviews=next;
+    if(!snap.metadata.fromCache){ clearTimeout(timer); note(""); }
+    applyReviews();
+  }, ()=>{ clearTimeout(timer); note("No se pudo cargar la revisión guardada. Recargá la página."); });
+}
+start();
+</script>
