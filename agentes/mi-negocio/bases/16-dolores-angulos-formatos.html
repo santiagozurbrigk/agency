@@ -59,10 +59,13 @@ button{cursor:pointer}
 .angle[data-state="ok"]{border-color:var(--ok)}
 .angle[data-state="ch"]{border-color:var(--warn)}
 .angle[data-state="no"]{border-color:var(--no);opacity:.75}
-.aid{font-family:var(--display);font-weight:700;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums;grid-row:span 4}
+.aid{font-family:var(--display);font-weight:700;font-size:18px;color:var(--accent);font-variant-numeric:tabular-nums;grid-row:span 5}
 .os .aid{color:var(--os)}
 .hook{font-family:var(--display);font-size:19px;font-weight:600;line-height:1.25;min-width:0}
 .why{font-size:14px;color:var(--muted);min-width:0}
+.bridge{font-size:14px;background:var(--ok-soft);color:var(--fg);border-radius:8px;padding:6px 10px;min-width:0}
+.bridge b{color:var(--ok)}
+.reserve{margin:0;padding-left:20px;display:grid;gap:6px;max-width:75ch}
 .fchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
 .fchip{font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
 .flag{font-size:12px;font-weight:600;color:var(--warn)}
@@ -90,9 +93,9 @@ textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;pad
 
 <div class="wrap">
   <header class="stack">
-    <div class="eyebrow">Webinar 15/12 · Propuesta para revisar</div>
+    <div class="eyebrow">Webinar 15/12 · Propuesta v2, con la investigación de competencia</div>
     <h1>Dolores, ángulos y formatos de los ads</h1>
-    <p>2 dolores por avatar, 3 ángulos por dolor y 2 formatos por ángulo: 12 ads para Genesis Lite (principal) y 12 para Genesis OS (secundario). Todo sale de frases reales de clientes y de los ángulos que ya están en el repo. El avatar de la oferta de USD 800 no tiene ads.</p>
+    <p>2 dolores por avatar, 3 ángulos por dolor y 2 formatos por ángulo: 12 ads para Genesis Lite (principal) y 12 para Genesis OS (secundario). <strong>Todos cierran en la suscripción:</strong> cada ángulo trae su puente, la frase que lleva del dolor al cliente que vuelve. Sale de las frases reales de clientes y de los dos documentos de investigación (70 reels de 7 mentores y los videos de Lauty Cardozo): nadie del mercado habla de suscripción, de ganancia neta ni de estabilidad. El avatar de la oferta de USD 800 no tiene ads.</p>
     <p class="muted">Marcá cada ángulo con Sí, Cambiar o No y dejá una nota si hace falta. Se guarda solo y lo leo desde acá para pasarlo a la página de la escalera y al documento del avatar.</p>
     <div class="tally" id="tally"><span class="t-pend">Cargando revisión…</span></div>
     <p class="note" id="statusNote" hidden></p>
@@ -100,7 +103,7 @@ textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;pad
 
   <section class="stack" aria-labelledby="fmtTitle">
     <h2 id="fmtTitle">Los 4 formatos</h2>
-    <p class="muted">Todos se pueden grabar en los 2 días de estudio.</p>
+    <p class="muted">Todos menos la animación se graban en los 2 días de estudio. La cantidad de abajo es cuántas veces aparece cada uno en los 24 ads.</p>
     <div class="formats" id="formats"></div>
     <div class="studio" id="studio"></div>
   </section>
@@ -108,51 +111,70 @@ textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;pad
   <section class="stack" id="lite"></section>
   <section class="stack os" id="os"></section>
 
+  <section class="stack" aria-labelledby="resTitle">
+    <h2 id="resTitle">Ángulos en reserva</h2>
+    <p class="muted">Salen de la investigación y quedaron afuera de los 24. Sirven para reemplazar un ángulo que se caiga o para el orgánico.</p>
+    <ul class="reserve" id="reserve"></ul>
+  </section>
+
   <section class="stack" aria-labelledby="decTitle">
     <h2 id="decTitle">Decisiones abiertas</h2>
     <div class="decisions" id="decisions"></div>
   </section>
 
-  <p class="muted">Fuentes: <code>ventas/llamadas-b2b-b2c/00-analisis-llamadas-fathom.md</code> (Nico, 26/10) · <code>lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md</code> (30/10) · <code>bases/05-criterio-reels.md</code> (winners D3_V6 y D4_V3) · llamada del 23/11.</p>
+  <p class="muted">Fuentes: los documentos «Análisis de competencia: 8 mentores de e-commerce» y «Dolores y ángulos hacia la suscripción» (24/11) · <code>ventas/llamadas-b2b-b2c/00-analisis-llamadas-fathom.md</code> (Nico, 26/10) · <code>lanzamientos/2026-11-17-webinar/analisis/analisis-ventas-calificadas.md</code> (30/10) · <code>bases/05-criterio-reels.md</code> (winners D3_V6 y D4_V3) · llamada del 23/11.</p>
 </div>
 
 <script>
 const FORMATS = {
-  F1:{name:"Pizarra", desc:"Manu explica la idea o hace la cuenta a mano.", src:"Se pidió en la llamada del 23/11: «mucha pizarra»."},
-  F2:{name:"iPad + cámara", desc:"El tablero, las campañas o los números reales en el primer cuadro.", src:"D4_V3 abre con el tablero: fue el winner con leads más calificados (30% calificó)."},
-  F3:{name:"A cámara en un set", desc:"Sillón o mesa, hook directo, sin apoyo visual.", src:"D3_V6, el winner con mejor CTR (2,2%), fue a cámara."},
-  F4:{name:"Detrás de escena", desc:"Lo graba otra persona: Manu trabajando con José o en una llamada.", src:"Ya se usó en N1, N4 y N8."},
+  F1:{name:"Pizarra", desc:"Manu hace la cuenta a mano: CPA, LTV, la primera venta contra la tercera.", src:"Pedido en la llamada del 23/11. Nadie del mercado la usa para la cuenta de la suscripción."},
+  F2:{name:"Pantalla real", desc:"Ads Manager, Shopify o Tiendanube, el tablero de suscriptores o la planilla de cohortes en el primer cuadro.", src:"D4_V3 abría con el tablero (30% calificó). Hueco del mercado: nadie muestra un tablero de suscriptores."},
+  F3:{name:"A cámara con título fijo", desc:"Sillón o mesa, hook directo, título arriba y subtítulo palabra por palabra.", src:"D3_V6 (CTR 2,2%). El título fijo es el estándar de los 8 mentores: es higiene, no diferencial."},
+  F4:{name:"Detrás de escena", desc:"Lo graba otra persona: Manu con José, una llamada o un día real de la marca.", src:"Ya se usó en N1, N4 y N8."},
+  F5:{name:"Placas con números", desc:"Números grandes sobre la cámara: facturación igual, ganancia distinta.", src:"Estilo que usa ecomm_esa para costos y margen."},
+  F6:{name:"Cartel de alerta", desc:"Cartel rojo arriba («OJO SI…») y Manu a cámara.", src:"«OJO A TODOS LOS QUE CORREN META» de juan_trim: 12,7 mil vistas."},
+  F7:{name:"Animación IA de una historia", desc:"Una historia corta animada: el que festeja el winner y a la semana se le duplica el CPA.", src:"La usan matelezama y andrescaminos_. Se arma en edición, no en el estudio."},
 };
 const AVATARS = [
-  {key:"lite", badge:"Principal", title:"Genesis Lite · 12 ads", who:"El que ya arrancó en e-commerce, testea y no le pega.", pains:[
-    {title:"Producto y testeo", quote:"Ya testeé 40 productos y no me pegó ninguno", by:"Nico", angles:[
-      {id:"L1", hook:"«El producto winner no existe.»", why:"Los 40 testeos no son mala suerte: estás buscando algo que no existe. Ángulo confirmado el 23/11.", f:["F3","F1"]},
-      {id:"L2", hook:"«Testeaste 40 productos. ¿Cuántos te ahorrabas si alguien te decía antes cuál sí y cuál no?»", why:"El semáforo de producto que da José antes de testear.", f:["F4","F2"]},
-      {id:"L3", hook:"«Te dijeron que no pegaba porque eras vos.»", why:"El problema fue cómo te enseñaron a decidir.", f:["F3","F4"], flag:"Hot button: ver la decisión 1"},
+  {key:"lite", badge:"Principal", title:"Genesis Lite · 12 ads", who:"El que ya arrancó en e-commerce, testea y no le pega. Cada ángulo cierra en lo mismo: lo que dura es un consumible con suscripción.", pains:[
+    {title:"Producto y testeo: el winner no existe", quote:"Testeo y testeo y no le pego a ninguno", by:"Nico, 40 testeos. Hueco: dos mentores dicen que los winners «100% existen»", angles:[
+      {id:"L1", hook:"«No le pegás porque estás buscando algo que no existe.»", why:"El producto winner no existe. Ángulo madre, confirmado el 23/11.", bridge:"Lo que buscabas no era un producto: era un cliente que vuelva solo cada mes.", f:["F3","F1"]},
+      {id:"L2", hook:"«Este producto vendió [DATO] en 10 días. Mirá cómo murió.»", why:"Autopsia de un winner: tus winners no se queman, se termina el público.", bridge:"Vendía una vez a cada cliente. Un consumible por suscripción le vuelve a vender al mismo cliente todos los meses.", f:["F2","F7"], flag:"Necesita un winner real que haya muerto, con sus números"},
+      {id:"L3", hook:"«Tu producto no fracasó en el testeo: fracasó porque lo mediste por la primera venta.»", why:"Estás midiendo mal: el mercado mide el testeo por ROAS del día.", bridge:"Con suscripción, un CPA «caro» puede ser rentable al segundo mes.", f:["F1","F2"]},
     ]},
-    {title:"Estabilidad y margen", quote:"Es cuestión de que pase un día y irme a pérdida", by:"Nico, que vendía con 6,59% de margen", angles:[
-      {id:"L4", hook:"«Vendés todos los días y no te queda nada.»", why:"Ganancia neta, no facturación, con el día malo incluido.", f:["F2","F1"]},
-      {id:"L5", hook:"«Estás todo el día al palo porque en un día te vas a pérdida.»", why:"Una marca donde el cliente vuelve es lo que te saca de la alerta. Es la suscripción, a su nivel de consciencia.", f:["F3","F1"]},
-      {id:"L6", hook:"«Tu mentor te dice “renová” y “subí la pauta”.»", why:"Manu muestra cómo arma sus campañas, incluido el día que le sale mal.", f:["F2","F4"]},
+    {title:"Estabilidad y margen: vivir en alerta", quote:"Es cuestión de que pase un día y irme a pérdida", by:"Nico, que vendía con 6,59% de margen. Hueco: nadie habla de la estabilidad ni de la ganancia neta", angles:[
+      {id:"L4", hook:"«Este mes facturamos menos que el anterior y ganamos más. Te explico por qué.»", why:"Ganancia neta contra facturación: todo el mercado muestra facturación y autos.", bridge:"El suscriptor del segundo mes no te cuesta pauta: es casi todo margen.", f:["F5","F2"], flag:"Necesita los números reales de un mes de Manu"},
+      {id:"L5", hook:"«¿Abrís el Ads Manager con miedo? No es Meta, es tu modelo.»", why:"La ansiedad del que se va a pérdida en un día.", bridge:"Si parte de los pedidos del mes ya están cobrados, un mal día de pauta no te hunde.", f:["F6","F3"]},
+      {id:"L6", hook:"«Si tenés que renovar creativos todos los días, no tenés un negocio: tenés una cinta de correr.»", why:"Estructura de campañas: el mercado vende más creativos como solución (+500 por mes).", bridge:"Cada suscriptor que conseguiste no necesita un creativo nuevo el mes que viene.", f:["F6","F4"]},
     ]},
   ]},
   {key:"os", badge:"Secundario", title:"Genesis OS · 12 ads", who:"El dueño de un e-commerce que ya vende con su marca y está cansado de que nada dure.", pains:[
-    {title:"Inestabilidad", quote:"Hace mucho que no tenemos un día bueno", by:"Herbora. Lo tenían los 4 clientes que más pagaron", angles:[
-      {id:"O1", hook:"«Hace mucho que no tenés un día bueno.»", why:"Saber cuánto entra el mes que viene.", f:["F3","F2"]},
-      {id:"O2", hook:"«Tenés 400 clientes que ya te recompraron y no les mandaste ni un mail.»", why:"La plata sentada en tu base.", f:["F2","F1"], flag:"Sale del caso Herbora: ver la decisión 3"},
-      {id:"O3", hook:"«El 1 del mes arrancás en cero.»", why:"El piso de facturación.", f:["F1","F3"]},
+    {title:"Nada dura: no sé cuánto entra el mes que viene", quote:"Hace mucho que no tenemos un día bueno", by:"Herbora. Hueco: nadie del mercado toca la estabilidad", angles:[
+      {id:"O1", hook:"«Tu marca no tiene un problema de creativos. Tiene un problema de modelo.»", why:"Tu marca no es inestable: tu modelo sí.", bridge:"Una marca de consumibles sin suscripción le vende de cero a cada cliente, cada vez.", f:["F3","F1"]},
+      {id:"O2", hook:"«Ya sé cuánto voy a facturar en enero. ¿Vos?»", why:"Previsibilidad: el piso del mes que viene.", bridge:"Los suscriptores te dicen el piso de cada mes antes de que empiece.", f:["F2","F3"], flag:"Necesita la proyección real de enero de la marca de Manu"},
+      {id:"O3", hook:"«Te dijeron que en Argentina nadie se suscribe. Este es el tablero de una marca que lo hace.»", why:"La objeción madre, antes de que el mercado la instale: el único que habla de suscripción dice que «está medio verde».", bridge:"3.943 suscriptores activos y 7,2% de cancelaciones, en Argentina.", f:["F2","F4"]},
     ]},
-    {title:"Renovar creativos y CPA", quote:"Cuando no renovamos nos suben los CPA", by:"Los 4 clientes que más pagaron renovaban todo el tiempo", angles:[
-      {id:"O4", hook:"«Salieron 7 marcas a vender lo mismo que vos.»", why:"El suscriptor no le compra al que te copió.", f:["F3","F4"]},
-      {id:"O5", hook:"«Renovás creativos todos los días y la semana buena te dura dos.»", why:"La metadependencia dicha como la viven: renovar, no el ban.", f:["F4","F3"]},
-      {id:"O6", hook:"«No ganás bajando el CPA: ganás pudiendo pagar más.»", why:"La cuenta: techo de 30.000 → 90.000, operando en 75.000.", f:["F1","F2"]},
+    {title:"El CPA sube y el cliente no vuelve", quote:"Cuando no renovamos nos suben los CPA", by:"Los 4 clientes que más pagaron. matelezama llega a la recompra, nadie llega a la suscripción", angles:[
+      {id:"O4", hook:"«El CPA va a seguir subiendo. La pregunta es si tu cliente vale lo suficiente para pagarlo.»", why:"No ganás bajando el CPA: ganás pudiendo pagar más.", bridge:"La cuenta: techo de 30.000 por cliente con compra única, 90.000 con suscripción, operando en 75.000.", f:["F1","F5"]},
+      {id:"O5", hook:"«La recompra depende de que el cliente se acuerde. La suscripción, no.»", why:"Un paso más allá de los packs y el mail de recompra.", bridge:"Tu cliente no te abandonó: se olvidó de vos. La suscripción resuelve el olvido.", f:["F1","F3"]},
+      {id:"O6", hook:"«Si Meta te bloquea la cuenta mañana, ¿cuánto facturás este mes?»", why:"Independencia de Meta.", bridge:"Los suscriptores se siguen cobrando aunque la cuenta publicitaria esté caída.", f:["F6","F2"], flag:"Usa el ban: ver la decisión 2"},
     ]},
   ]},
 ];
+const RESERVE = [
+  "Cada mes arranco de cero: «Si tu negocio para cuando vos parás de testear, tenés una cinta de correr» (Lite)",
+  "Contra el 2x1: «Si tenés que vender 2x1 para que te compren, el problema no es el precio» (Lite)",
+  "Escalar la base: «No escales la pauta. Escalá la base de clientes» (Lite)",
+  "ROAS a 90 días: «Dejá de mirar el ROAS del día. Mirá el ROAS a 90 días» (Lite)",
+  "La mentoría quemada: «Te enseñaron a encontrar winners. Nadie te enseñó a que el cliente vuelva» (Lite)",
+  "Stock previsible: «Sabemos cuántas unidades vamos a despachar en marzo. Hoy» (OS)",
+  "El activo que se vende: «Una tienda que vive de la pauta no se vende. Una base de suscriptores, sí» (OS)",
+  "Objeciones: «la suscripción tiene un CPA más caro», «la gente cancela al segundo mes», «con la inflación no podés fijar precio», «mi producto no sirve para suscripción»",
+];
 const DECISIONS = [
-  {id:"D1", title:"¿El ángulo L3 («te dijeron que eras vos») va en un ad?", body:"Pega fuerte, pero el banco de objeciones lo marca como hot button (B2C-10). La alternativa es dejarlo para la llamada y reemplazarlo por otro ángulo de producto.", opts:[["ok","Va en un ad"],["no","Solo en la llamada"],["ch","Otra cosa"]]},
-  {id:"D2", title:"¿Lite suma un dolor de escalado o de estructura de campañas?", body:"Elegí producto y estabilidad porque son los únicos con frases textuales del avatar. Las campañas aparecen como ángulo en L6. Si Manu tiene una frase de clientes sobre escalar, se puede cambiar uno de los dos dolores.", opts:[["ok","Quedan producto y estabilidad"],["ch","Cambiar un dolor"]]},
-  {id:"D3", title:"¿El ángulo O2 (los 400 clientes) va?", body:"Sale del caso Herbora. En el ad no se nombra la marca ni aparece al lado de «suscripción», como pide la regla del 01/11.", opts:[["ok","Va así"],["no","Sacarlo"],["ch","Cambiarlo"]]},
+  {id:"D1", title:"¿Quién consigue los números reales de L2, L4 y O2?", body:"Los hooks de la investigación traían números de ejemplo (300 unidades, 400 pedidos, 62 de 100). Acá solo quedan los reales de Manu (3.943 suscriptores, 7,2% de cancelaciones, la cuenta de 30.000 → 90.000). L2, L4 y O2 necesitan datos que hoy no están en el repo: si no aparecen, esos ángulos se cambian por uno de la reserva.", opts:[["ok","Los consigue Manu"],["ch","Cambiarlos por la reserva"]]},
+  {id:"D2", title:"¿El ángulo O6 (el bloqueo de la cuenta) va?", body:"La regla de comunicación dice que el ban queda solo como hook de atracción, porque ninguno de los clientes que pagaron habló de eso. Los ads del webinar son atracción, así que entraría, pero pega menos que «renovar creativos todos los días».", opts:[["ok","Va"],["no","Sacarlo"],["ch","Cambiarlo"]]},
+  {id:"D3", title:"¿La palabra suscripción aparece en el hook o recién en el cierre?", body:"La regla del 20/11 dice que la suscripción aparece después, como el mecanismo. La investigación dice que el terreno está libre y que hay que ocuparlo antes que Lauty. Propuesta: en Lite va en el cierre del ad; en OS puede ir en el hook (O3, O5).", opts:[["ok","Como la propuesta"],["ch","Otra cosa"]]},
 ];
 const LABELS = {ok:"Sí", ch:"Cambiar", no:"No"};
 
@@ -168,7 +190,7 @@ function renderFormats(){
   for(const [code,f] of Object.entries(FORMATS)){
     $("formats").append(el("div",{class:"fmt"}, el("b",{}, el("span",{class:"code",text:code}), f.name), el("span",{text:f.desc}), el("span",{class:"src",text:f.src})));
   }
-  const count={F1:0,F2:0,F3:0,F4:0};
+  const count={}; for(const k of Object.keys(FORMATS)) count[k]=0;
   for(const a of AVATARS) for(const p of a.pains) for(const g of p.angles) for(const f of g.f) count[f]++;
   for(const [code,n] of Object.entries(count)) $("studio").append(el("div",{}, el("b",{text:String(n)}), el("span",{text:FORMATS[code].name})));
 }
@@ -203,7 +225,7 @@ function renderAvatars(){
         const card=el("article",{class:"angle",id:"card-"+g.id});
         const chips=el("div",{class:"fchips"});
         for(const f of g.f) chips.append(el("span",{class:"fchip",text:f+" · "+FORMATS[f].name}));
-        card.append(el("div",{class:"aid",text:g.id}), el("div",{class:"hook",text:g.hook}), el("div",{class:"why",text:g.why}), chips);
+        card.append(el("div",{class:"aid",text:g.id}), el("div",{class:"hook",text:g.hook}), el("div",{class:"why",text:g.why}), el("div",{class:"bridge"}, el("b",{text:"Puente a la suscripción: "}), g.bridge), chips);
         if(g.flag) card.append(el("div",{class:"flag",text:g.flag}));
         card.append(reviewBox(g.id,[["ok","Sí"],["ch","Cambiar"],["no","No"]]));
         controls[g.id].card=card;
@@ -213,6 +235,8 @@ function renderAvatars(){
     });
   }
 }
+
+function renderReserve(){ for(const r of RESERVE) $("reserve").append(el("li",{text:r})); }
 
 function renderDecisions(){
   for(const d of DECISIONS){
@@ -262,7 +286,7 @@ function saveNote(id,val){
 }
 
 async function start(){
-  renderFormats(); renderAvatars(); renderDecisions(); applyReviews();
+  renderFormats(); renderAvatars(); renderReserve(); renderDecisions(); applyReviews();
   db=await claude.use("db");
   if(!db){ canWrite=false; applyReviews(); note("Para guardar la revisión, abrí esta página en claude.ai con tu cuenta."); return; }
   try{ const user=await claude.use("user"); const c=user?await user.can("data.write"):null; if(c===false) canWrite=false; }catch(_){}
