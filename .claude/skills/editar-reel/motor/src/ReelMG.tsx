@@ -5,6 +5,7 @@
 // Todo lo que pasa en el reel viene en las props (un JSON por reel).
 import React from 'react';
 import {AbsoluteFill, OffthreadVideo, Easing, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Energia, FondoVivo, Progreso, Destellos, Rafagas, Stickers, pop, pulso, golpe} from './Energia';
 
 // Las fuentes van como archivos dentro de la carpeta del reel (fonts/), así el render no depende
 // de bajar nada de internet.
@@ -66,6 +67,7 @@ export type PropsMG = {
   cta: (Tramo & {arriba: string; abajo: string}) | null;
   camSplit: {y: number; escala: number};
   fuentes?: Fuente[];
+  energia?: Energia;
 };
 
 const ent = (f: number, t: number, fps: number, d = 0.35) =>
@@ -77,9 +79,10 @@ const tinta = (p: PropsMG) => p.colores.tinta || p.colores.claro;
 const claroTema = (p: PropsMG) => !!p.colores.tinta;
 
 // ------------------------------------------------------------------ cámara
-const Camara: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, split}) => {
+const Camara: React.FC<{p: PropsMG; t: number; split: boolean; kick?: {s: number; dx: number; dy: number; entra: number}}> = ({p, t, split, kick}) => {
   const z = p.zooms.find((x) => enTramo(t, x));
-  const esc = (split ? p.camSplit.escala : 1) * (z && !split ? z.z : 1);
+  const k = kick || {s: 1, dx: 0, dy: 0, entra: 1};
+  const esc = (split ? p.camSplit.escala : 1) * (z && !split ? z.z : 1) * (split ? 1 : k.s);
   const top = split ? p.camSplit.y : 0;
   if (split && claroTema(p)) {
     // Tema claro: la cara va en un recuadro redondeado abajo, como una tarjeta más.
@@ -95,6 +98,7 @@ const Camara: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, split}
           overflow: 'hidden',
           boxShadow: '0 30px 60px rgba(0,0,0,0.25)',
           border: `3px solid ${p.colores.acento}`,
+          transform: `translateY(${(1 - k.entra) * 120}px) scale(${0.86 + 0.14 * k.entra})`,
         }}
       >
         <OffthreadVideo src={staticFile(p.cam)} style={{position: 'absolute', left: 0, top: -250, width: 960, height: 1707, objectFit: 'cover'}} />
@@ -110,7 +114,7 @@ const Camara: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, split}
           top,
           width: 1080,
           height: 1920,
-          transform: `scale(${esc})`,
+          transform: `translate(${k.dx}px, ${k.dy}px) scale(${esc})`,
           transformOrigin: split ? '50% 30%' : '50% 38%',
           WebkitMaskImage: split ? 'linear-gradient(to bottom, transparent 0px, black 240px)' : undefined,
         }}
@@ -127,12 +131,14 @@ const Encab: React.FC<{e: Encabezado; t: number; p: PropsMG; fps: number; f: num
   const letras = Math.floor(interpolate(dt, [0, 0.45], [0, e.texto.length], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
   const caja = ent(f, e.t0 + 0.3, fps, 0.3);
   const pal = ent(f, e.t0 + 0.5, fps, 0.3);
+  const en = p.energia;
+  const sc = en ? (0.6 + 0.4 * pop(t, e.t0 + 0.3, fps)) * (1 + pulso(t, en) * 0.025) : 1;
   return (
     <div style={{position: 'absolute', top: 120, left: 0, width: 1080, textAlign: 'center'}}>
       <div style={{fontFamily: sans, fontWeight: 700, fontSize: 56, color: tinta(p), letterSpacing: -0.5, height: 68}}>
         {e.texto.slice(0, letras)}
       </div>
-      <div style={{display: 'inline-block', marginTop: 10, position: 'relative'}}>
+      <div style={{display: 'inline-block', marginTop: 10, position: 'relative', transform: `scale(${sc}) rotate(${en ? -2 : 0}deg)`}}>
         <div
           style={{
             background: p.colores.acento,
@@ -154,19 +160,20 @@ const Encab: React.FC<{e: Encabezado; t: number; p: PropsMG; fps: number; f: num
 // ------------------------------------------------------------------ tarjeta
 const TOP_TARJETA = 360;
 const ALTO_TARJETA = 570;
-const Marco: React.FC<{p: PropsMG; etiqueta?: string; children: React.ReactNode; a: number}> = ({p, etiqueta, children, a}) => (
+const Marco: React.FC<{p: PropsMG; etiqueta?: string; children: React.ReactNode; a: number; sc?: number; brillo?: number; giro?: number}> = ({p, etiqueta, children, a, sc = 1, brillo = 0, giro = 0}) => (
   <div
     style={{
       position: 'absolute',
       left: 90,
       top: TOP_TARJETA + (1 - a) * 40,
+      transform: `scale(${sc}) rotate(${giro}deg)`,
       width: 900,
       height: ALTO_TARJETA,
       opacity: a,
       borderRadius: 30,
       background: p.colores.tarjeta,
       border: `3px solid ${p.colores.acento}`,
-      boxShadow: `0 0 60px ${p.colores.acento}55, inset 0 0 0 1px ${tinta(p)}10`,
+      boxShadow: `0 0 ${60 + brillo * 50}px ${p.colores.acento}${brillo ? '77' : '55'}, inset 0 0 0 1px ${tinta(p)}10`,
       overflow: 'hidden',
     }}
   >
@@ -264,10 +271,17 @@ const Contador: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c
     interpolate(t, [c.tc0!, c.tc1!], [c.desde!, c.hasta!], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}),
   );
   const a = ent(f, c.tc0!, fps);
+  // cuándo cambió el número por última vez (para que lata)
+  let ult = c.tc0!;
+  for (let x = t; x > c.tc0! && x > t - 0.5; x -= 1 / fps) {
+    const m = Math.round(interpolate(x, [c.tc0!, c.tc1!], [c.desde!, c.hasta!], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.out(Easing.cubic)}));
+    if (m !== n) { ult = x + 1 / fps; break; }
+  }
+  const late = p.energia ? 1 + golpe(t, ult, 0.08) * 0.1 + golpe(t, c.tc1!, 0.15) * 0.18 : 1;
   return (
     <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', gap: 10}}>
       {c.chip ? <Chip texto={c.chip} a={ent(f, c.t0 + 0.1, fps)} p={p} /> : null}
-      <div style={{opacity: a, display: 'flex', alignItems: 'baseline', gap: 18, marginTop: 20}}>
+      <div style={{opacity: a, display: 'flex', alignItems: 'baseline', gap: 18, marginTop: 20, transform: `scale(${late})`}}>
         <span
           style={{
             fontFamily: sans,
@@ -312,7 +326,7 @@ const Flujo: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p
         const fuerte = i === ns.length - 1;
         return (
           <React.Fragment key={i}>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, width: 220, opacity: a, transform: `translateY(${(1 - a) * 30}px) scale(${0.85 + 0.15 * a})`}}>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18, width: 220, opacity: a, transform: `translateY(${(1 - a) * 30}px) scale(${p.energia ? 0.4 + 0.6 * pop(f / fps, n.t, fps) : 0.85 + 0.15 * a})`}}>
               <div
                 style={{
                   width: 150,
@@ -373,8 +387,19 @@ const Aviso: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p
           boxShadow: `0 0 40px ${p.colores.acento}44`,
         }}
       >
-        <div style={{width: 84, height: 84, borderRadius: 22, background: p.colores.acento, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div style={{position: 'relative', width: 84, height: 84, borderRadius: 22, background: p.colores.acento, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
           <Icono n="campana" color={p.colores.claro} size={50} />
+          {p.energia ? (
+            <div
+              style={{
+                position: 'absolute', right: -14, top: -14, width: 40, height: 40, borderRadius: 20, background: tinta(p),
+                color: '#fff', fontFamily: sans, fontWeight: 900, fontSize: 26, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transform: `scale(${pop(f / fps, (c.tAviso ?? c.t0) + 0.3, fps)})`,
+              }}
+            >
+              1
+            </div>
+          ) : null}
         </div>
         <div>
           <div style={{fontFamily: sans, fontWeight: 900, fontSize: 46, color: tinta(p)}}>{c.tituloAviso}</div>
@@ -389,7 +414,7 @@ const Aviso: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c, p
               key={i}
               style={{
                 opacity: b,
-                transform: `scale(${0.85 + 0.15 * b})`,
+                transform: `scale(${p.energia ? 0.5 + 0.5 * pop(f / fps, x.t, fps) : 0.85 + 0.15 * b})`,
                 display: 'flex',
                 alignItems: 'center',
                 gap: 12,
@@ -425,7 +450,7 @@ const Veredicto: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({
           key={r.nombre}
           style={{
             opacity: a,
-            transform: `translateX(${(1 - a) * -60}px)`,
+            transform: `translateX(${(1 - a) * -60}px) scale(${p.energia ? 0.9 + 0.1 * pop(f / fps, r.t, fps) : 1})`,
             display: 'flex',
             alignItems: 'center',
             gap: 26,
@@ -483,15 +508,20 @@ const TarjetaV: React.FC<{c: Tarjeta; p: PropsMG; f: number; fps: number}> = ({c
   if (c.tipo === 'veredicto') dentro = <Veredicto c={c} p={p} f={f} fps={fps} />;
   if (c.tipo === 'flujo') dentro = <Flujo c={c} p={p} f={f} fps={fps} />;
   if (c.tipo === 'aviso') dentro = <Aviso c={c} p={p} f={f} fps={fps} />;
+  const en = p.energia;
+  const t = f / fps;
+  const sc = en ? 0.82 + 0.18 * pop(t, c.t0, fps) : 1;
+  // la notificación se sacude cuando "suena"
+  const giro = en && c.tipo === 'aviso' ? (en.timbres || []).reduce((g, x) => g + golpe(t, x, 0.18) * Math.sin((t - x) * 45) * 2.2, 0) : 0;
   return (
-    <Marco p={p} etiqueta={c.etiqueta} a={a}>
+    <Marco p={p} etiqueta={c.etiqueta} a={en ? Math.min(1, a * 2) : a} sc={sc} brillo={en ? pulso(t, en) : 0} giro={giro}>
       {dentro}
     </Marco>
   );
 };
 
 // ------------------------------------------------------------------ subtítulos
-const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, split}) => {
+const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean; fps: number}> = ({p, t, split, fps}) => {
   // bloques: se corta en las pausas > 0,3 s, cada 3 palabras, o donde diga "cortes"
   const bloques: Palabra[][] = [];
   let cur: Palabra[] = [];
@@ -527,7 +557,9 @@ const Subtitulos: React.FC<{p: PropsMG; t: number; split: boolean}> = ({p, t, sp
               display: 'inline-block',
               marginRight: 18,
               opacity: visible ? a : 0,
-              transform: `translateY(${(1 - a) * 10}px)`,
+              transform: p.energia
+                ? `translateY(${(1 - a) * 18}px) scale(${0.55 + 0.45 * pop(t, w.s - 0.04, fps)}) rotate(${w.k ? -3 : 0}deg)`
+                : `translateY(${(1 - a) * 10}px)`,
               fontFamily: w.k ? serif : sans,
               fontStyle: w.k ? 'italic' : 'normal',
               fontWeight: w.k ? 800 : 800,
@@ -565,7 +597,7 @@ const CTA: React.FC<{p: PropsMG; t: number; f: number; fps: number; placa?: bool
           letterSpacing: -2,
           color: placa ? p.colores.acento : '#FFD2B0',
           opacity: b,
-          transform: `scale(${0.85 + 0.15 * b})`,
+          transform: `scale(${(0.85 + 0.15 * b) * (1 + pulso(t, p.energia) * 0.04)})`,
           textShadow: placa ? `0 0 40px ${p.colores.acento}66` : `0 0 30px ${p.colores.acento}, 0 0 70px ${p.colores.acento}aa, 0 4px 10px #000`,
         }}
       >
@@ -589,6 +621,22 @@ export const ReelMG: React.FC<PropsMG> = (p) => {
   const enc = p.encabezados.find((e) => enTramo(t, e));
   const tar = p.tarjetas.find((c) => enTramo(t, c));
   const enCta = p.cta && enTramo(t, p.cta);
+  const en = p.energia;
+  const col = {acento: p.colores.acento, tinta: tinta(p), claro: p.colores.claro, tarjeta: p.colores.tarjeta};
+  const m = p.modos.find((x) => enTramo(t, x));
+  const cortes = p.modos.map((x) => x.t0);
+  // golpe de zoom al entrar a un plano, empuje lento durante el plano, y un golpe en cada palabra clave
+  let kick = {s: 1, dx: 0, dy: 0, entra: 1};
+  if (en && m) {
+    const dentro = (t - m.t0) / Math.max(0.5, m.t1 - m.t0);
+    const g = p.palabras.filter((w) => w.k && w.s >= m.t0 && w.s <= t).reduce((acc, w) => Math.max(acc, golpe(t, w.s, 0.14)), 0);
+    kick = {
+      s: 1 + 0.14 * golpe(t, m.t0, 0.12) + 0.05 * dentro + 0.05 * g,
+      dx: Math.sin(t * 70) * 7 * g,
+      dy: Math.cos(t * 60) * 5 * g,
+      entra: 0.0 + pop(t, m.t0, fps) * (m.t0 === 0 ? 1 : 1),
+    };
+  }
   return (
     <AbsoluteFill style={{background: p.colores.fondo}}>
       {split || modo === 'placa' ? (
@@ -600,11 +648,16 @@ export const ReelMG: React.FC<PropsMG> = (p) => {
           }}
         />
       ) : null}
-      {modo === 'placa' ? null : <Camara p={p} t={t} split={split} />}
+      {en && (split || modo === 'placa') ? <FondoVivo t={t} c={col} e={en} /> : null}
+      {modo === 'placa' ? null : <Camara p={p} t={t} split={split} kick={kick} />}
       {split && enc ? <Encab e={enc} t={t} p={p} fps={fps} f={f} /> : null}
       {split && tar ? <TarjetaV c={tar} p={p} f={f} fps={fps} /> : null}
-      {!enCta ? <Subtitulos p={p} t={t} split={split} /> : null}
+      {en ? <Stickers t={t} fps={fps} c={col} e={en} /> : null}
+      {en ? <Rafagas t={t} c={col} rs={en.rafagas || []} /> : null}
+      {!enCta ? <Subtitulos p={p} t={t} split={split} fps={fps} /> : null}
       <CTA p={p} t={t} f={f} fps={fps} placa={modo === 'placa'} />
+      {en ? <Progreso t={t} dur={p.duracion} c={col} /> : null}
+      {en ? <Destellos t={t} tiempos={cortes} /> : null}
     </AbsoluteFill>
   );
 };

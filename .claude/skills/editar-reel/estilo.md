@@ -129,7 +129,13 @@ Qué es cada cosa:
   una línea blanca con nodos, que aparecen de a una.
 - Crecimiento = línea punteada roja que sube, con puntos blancos y una etiqueta con borde rojo.
 - Títulos de sección: mayúsculas, sans muy gruesa, roja con glow.
-- Las animaciones entran suave (deslizan y aparecen); nada rebota.
+- Las animaciones entran suave (deslizan y aparecen); nada rebota. **Excepción (24/11/2026): en
+  los reels con motion graphics para retención va "más dopamínico":** algo se mueve siempre
+  (fondo vivo con puntos y manchas naranjas que derivan, barra de progreso arriba), cada cambio de
+  plano entra con destello + golpe de zoom, las palabras entran con un pop chico, los números
+  terminan en una explosión de partículas, y en los tramos a cámara de más de 2 s aparece algo
+  encima (una pastilla, un sticker, un contador) para que nunca haya más de ~2 s sin una
+  animación nueva. Todo con la paleta Genesis; el pop es corto (exceso de escala ≤ 15 %).
 - (De reel-ig-mg) Formato por defecto: arriba encabezado (línea chica que se tipea + caja naranja
   con una palabra en itálica serif) y una tarjeta tipo ventana con borde naranja que brilla; abajo
   la cara (fondo claro, la cara en un recuadro redondeado con borde naranja). Lo que se dice se arma adentro de la tarjeta a medida que se dice (una fórmula pieza por
@@ -145,12 +151,27 @@ Qué es cada cosa:
 - (De reel-ig-mg) En los reels con motion graphics: 1 a 3 palabras, aparecen al decirse; las
   palabras clave van solas, en itálica serif naranja (Playfair Display) y más grandes.
 
+## Música y sonidos
+
+- (24/11/2026) Los reels con motion graphics llevan música: base electrónica/pop de ~120 BPM,
+  bajita debajo de la voz (se agacha sola cuando Manu habla; la voz siempre manda). La música
+  corta un instante antes de la cifra fuerte y vuelve con un golpe.
+- Sonidos cortos sincronizados con lo que aparece: whoosh en cada cambio de plano, pop en cada
+  pieza que entra, campanita en las notificaciones, tic en los contadores, caja registradora en
+  la plata. Siempre por debajo de la voz.
+- La música es generada para el reel (sin derechos de terceros). Si el usuario quiere un tema de
+  tendencia, se lo pone él en Instagram al subir.
+
 ## Lo que no quiero nunca
 
 ## Correcciones
 
 (Una línea por corrección, la más nueva arriba: fecha · qué no te gustó · qué regla quedó escrita
 y en qué sección.)
+
+- 24/11/2026 · "más animaciones y motion graphics así queda más dopamínico, mejora la retención y
+  el espectador no se aburre, y metele música" · Motion graphics: excepción de ritmo para reels de
+  retención (algo nuevo cada ~2 s, destellos, pops, partículas) · Música y sonidos: sección nueva.
 
 - 23/11/2026 · "mantené el naranja pero usá el fondo claro como la referencia" · Motion graphics:
   fondo claro, tarjetas blancas, cara en recuadro redondeado; el CTA puede ir en una placa clara si
