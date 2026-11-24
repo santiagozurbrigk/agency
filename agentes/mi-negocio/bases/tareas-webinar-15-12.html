@@ -1,0 +1,281 @@
+<title>Tareas del webinar 15/12</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+<style>
+/* Layout: lista de trabajo en una columna; resumen arriba, formulario plegable, fases con sus tareas en filas */
+:root{
+  --bg:#f7f6f4; --surface:#ffffff; --fg:#1d1b19; --muted:#6b655f; --line:#e4e0db;
+  --accent:#e2601a; --accent-soft:#fbe9de; --ok:#2f7a4f; --ok-soft:#e3f1e8; --warn:#9a5b00; --warn-soft:#f7ecd7; --no:#a3352b; --no-soft:#f6e1de;
+  --display:"Space Grotesk",ui-sans-serif,system-ui,sans-serif; --body:"Inter",ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#201d1a; --fg:#efebe6; --muted:#a39b92; --line:#36312c;
+  --accent:#f47a36; --accent-soft:#3a2417; --ok:#6cc391; --ok-soft:#1c3126; --warn:#e0a54a; --warn-soft:#352812; --no:#ec8a7f; --no-soft:#3a1e1a; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:15px/1.55 var(--body)}
+.wrap{max-width:980px;margin:0 auto;padding-block:36px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,5vw,40px);font-weight:700}
+h2{font-size:19px;font-weight:600}
+p{margin:0;max-width:68ch}
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.head{display:grid;gap:10px}
+.summary{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center}
+.bar{flex:1 1 220px;height:8px;border-radius:99px;background:var(--line);overflow:hidden;min-width:160px}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.count{font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums}
+.note{font-size:13px;background:var(--warn-soft);color:var(--warn);border-radius:8px;padding:8px 12px;max-width:none}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:500}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.toggle{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted)}
+.spacer{flex:1}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 14px;font-weight:600;font-size:14px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.danger{background:var(--no);border-color:var(--no);color:#fff}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--muted);font-weight:500}
+
+form.new{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+label{display:grid;gap:4px;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+input,select,textarea{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px;font-size:14px;min-width:0;width:100%;box-sizing:border-box}
+textarea{resize:vertical;min-height:60px}
+.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.err{color:var(--no);font-size:13px}
+
+.phase{display:grid;gap:8px}
+.phase-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.phase-head .range{font-size:13px;color:var(--muted)}
+.phase-head .pc{margin-left:auto;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.list{display:grid;gap:6px}
+.task{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.task.done{opacity:.6}
+.task.done .title{text-decoration:line-through}
+.task input[type=checkbox]{width:18px;height:18px;margin-top:2px;accent-color:var(--ok)}
+.body{min-width:0;display:grid;gap:4px}
+.title{font-weight:500}
+.meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--muted)}
+.tid{font-family:var(--display);font-weight:600;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.date{font-variant-numeric:tabular-nums}
+.date.late{color:var(--no);font-weight:600}
+.notes{font-size:13px;color:var(--muted);max-width:none}
+.right{display:flex;gap:6px;align-items:center}
+.del{border:none;background:transparent;color:var(--muted);font-size:13px;padding:4px 6px;border-radius:6px}
+.del:hover{color:var(--no);background:var(--no-soft)}
+.confirm{display:flex;gap:6px;align-items:center;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+@media (max-width:560px){.task{grid-template-columns:auto 1fr}.right{grid-column:2;justify-content:flex-start}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="eyebrow">Escalera de ofertas · Santi y Manu</div>
+    <h1>Tareas del webinar 15/12</h1>
+    <p class="muted">Todo lo que hay que hacer para lanzar la escalera (USD 800 → Genesis Lite → Genesis OS) y llegar al webinar del 15/12. Sale de la página <a href="https://claude.ai/artifact/4db43CP2SQDvWDgojPFLXR" target="_blank" rel="noopener">Escalera de ofertas y webinar 15/12</a>. Las fechas son propuestas, calculadas hacia atrás desde el 15/12.</p>
+    <div class="summary">
+      <span class="count" id="countText">Cargando tareas…</span>
+      <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+    </div>
+    <p class="note" id="statusNote" hidden></p>
+  </header>
+
+  <div class="toolbar">
+    <div class="chips" id="whoChips" role="group" aria-label="Filtrar por responsable"></div>
+    <label class="toggle"><input type="checkbox" id="showDone" checked> Mostrar hechas</label>
+    <span class="spacer"></span>
+    <button class="btn primary" id="openNew" type="button" hidden>+ Nueva tarea</button>
+  </div>
+
+  <form class="new" id="newForm" hidden>
+    <h2>Nueva tarea</h2>
+    <label for="fTitle">Tarea
+      <input id="fTitle" required maxlength="240" placeholder="Qué hay que hacer">
+    </label>
+    <div class="grid">
+      <label for="fPhase">Fase <select id="fPhase"></select></label>
+      <label for="fWho">Quién
+        <input id="fWho" list="whoList" placeholder="Santi, Manu, Setter…">
+        <datalist id="whoList"><option value="Santi"><option value="Manu"><option value="Santi + Manu"><option value="Setter"><option value="Setter y closer"><option value="Editor"></datalist>
+      </label>
+      <label for="fDate">Fecha <input id="fDate" type="date"></label>
+    </div>
+    <label for="fNotes">Notas <textarea id="fNotes" maxlength="1000" placeholder="Opcional"></textarea></label>
+    <p class="err" id="formErr" hidden></p>
+    <div class="actions">
+      <button class="btn ghost" type="button" id="cancelNew">Cancelar</button>
+      <button class="btn primary" type="submit" id="saveNew">Crear tarea</button>
+    </div>
+  </form>
+
+  <main id="phases" aria-live="polite">
+    <div class="empty">Cargando las tareas del webinar…</div>
+  </main>
+</div>
+
+<script>
+const PHASES = [
+  {p:"OFE", name:"Cerrar la escalera", range:"24 al 28/11"},
+  {p:"MSJ", name:"Mensaje y plan", range:"28/11 al 1/12"},
+  {p:"EST", name:"Estudio", range:"2 y 3/12"},
+  {p:"ARM", name:"Armado", range:"3 al 5/12"},
+  {p:"CAP", name:"Captación", range:"6 al 15/12"},
+  {p:"WEB", name:"Webinar y cierre", range:"15/12 en adelante"},
+  {p:"ORG", name:"Orgánico y equipo", range:"en paralelo"},
+];
+const WHO_FILTERS = ["Todos","Santi","Manu","Santi + Manu","Otros"];
+const $ = (id) => document.getElementById(id);
+let tasks = [];            // [{key, ...data}]
+let db = null, canWrite = true;
+let whoFilter = "Todos";
+let pendingDelete = null;
+const busy = new Set();
+
+const today = (() => { const d = new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); })();
+function fmtDate(s){ if(!s) return ""; const [y,m,d]=s.split("-"); return Number(d)+"/"+Number(m); }
+function el(tag, attrs={}, ...kids){ const n=document.createElement(tag); for(const [k,v] of Object.entries(attrs)){ if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else if(k.startsWith("on")) n.addEventListener(k.slice(2),v); else if(v!==false&&v!=null) n.setAttribute(k,v===true?"":v); } for(const k of kids) if(k) n.append(k); return n; }
+function note(msg){ const n=$("statusNote"); n.textContent=msg||""; n.hidden=!msg; }
+
+function matchesWho(t){
+  if(whoFilter==="Todos") return true;
+  const q = String(t.quien||"");
+  if(whoFilter==="Otros") return !["Santi","Manu","Santi + Manu"].includes(q);
+  if(whoFilter==="Santi"||whoFilter==="Manu") return q===whoFilter || q==="Santi + Manu";
+  return q===whoFilter;
+}
+
+function renderChips(){
+  const box=$("whoChips"); box.replaceChildren();
+  for(const w of WHO_FILTERS){
+    box.append(el("button",{class:"chip",type:"button","aria-pressed":String(w===whoFilter),text:w,onclick:()=>{whoFilter=w;renderChips();render();}}));
+  }
+}
+
+function render(){
+  const total=tasks.length, done=tasks.filter(t=>t.estado==="Hecha").length;
+  $("countText").textContent = total ? `${done} de ${total} hechas` : "Sin tareas todavía";
+  $("barFill").style.width = total ? (done/total*100).toFixed(1)+"%" : "0";
+  const showDone=$("showDone").checked;
+  const main=$("phases"); main.replaceChildren();
+  if(!total){ main.append(el("div",{class:"empty",text: canWrite ? "No hay tareas. Creá la primera con «+ Nueva tarea»." : "No hay tareas cargadas."})); return; }
+  let shown=0;
+  const known=new Set(PHASES.map(x=>x.p));
+  const phases=[...PHASES];
+  for(const t of tasks) if(!known.has(t.fase)){ known.add(t.fase); phases.push({p:t.fase,name:t.fase,range:""}); }
+  for(const ph of phases){
+    const all=tasks.filter(t=>t.fase===ph.p);
+    const list=all.filter(t=>matchesWho(t) && (showDone || t.estado!=="Hecha"))
+      .sort((a,b)=>(a.orden??999)-(b.orden??999) || String(a.id).localeCompare(String(b.id)));
+    if(!list.length) continue;
+    shown+=list.length;
+    const sec=el("section",{class:"phase"});
+    sec.append(el("div",{class:"phase-head"}, el("h2",{text:ph.name}), el("span",{class:"range",text:ph.range}), el("span",{class:"pc",text:`${all.filter(t=>t.estado==="Hecha").length}/${all.length}`})));
+    const ul=el("div",{class:"list"});
+    for(const t of list) ul.append(row(t));
+    sec.append(ul); main.append(sec);
+  }
+  if(!shown) main.append(el("div",{class:"empty",text:"No hay tareas con este filtro."}));
+}
+
+function row(t){
+  const isDone=t.estado==="Hecha";
+  const late=!isDone && t.fecha && t.fecha<today;
+  const cb=el("input",{type:"checkbox",id:"cb-"+t.key,"aria-label":"Marcar como hecha: "+t.titulo});
+  cb.checked=isDone; cb.disabled=!canWrite||busy.has(t.key);
+  cb.addEventListener("change",()=>toggle(t,cb.checked));
+  const meta=el("div",{class:"meta"}, el("span",{class:"tid",text:t.id||""}));
+  if(t.quien) meta.append(el("span",{class:"pill",text:t.quien}));
+  if(t.fecha) meta.append(el("span",{class:"date"+(late?" late":""),text:(late?"Vencida · ":"")+fmtDate(t.fecha)}));
+  else if(t.cuando) meta.append(el("span",{class:"date",text:t.cuando}));
+  const body=el("div",{class:"body"}, el("div",{class:"title",text:t.titulo||""}), meta);
+  if(t.notas) body.append(el("p",{class:"notes",text:t.notas}));
+  const right=el("div",{class:"right"});
+  if(canWrite){
+    if(pendingDelete===t.key){
+      right.append(el("div",{class:"confirm"}, el("span",{text:"Eliminar esta tarea"}),
+        el("button",{class:"btn danger",type:"button",text:"Eliminar",onclick:()=>remove(t)}),
+        el("button",{class:"btn ghost",type:"button",text:"Cancelar",onclick:()=>{pendingDelete=null;render();}})));
+    } else {
+      right.append(el("button",{class:"del",type:"button",text:"Eliminar","aria-label":"Eliminar: "+t.titulo,onclick:()=>{pendingDelete=t.key;render();}}));
+    }
+  }
+  return el("article",{class:"task"+(isDone?" done":"")}, cb, body, right);
+}
+
+async function toggle(t,checked){
+  if(busy.has(t.key)) return;
+  busy.add(t.key);
+  try{ await db.collection("tareas").doc(t.key).update({estado: checked?"Hecha":"Por hacer"}); note(""); }
+  catch(e){ handleWriteError(e); render(); }
+  finally{ busy.delete(t.key); }
+}
+async function remove(t){
+  pendingDelete=null;
+  try{ await db.collection("tareas").doc(t.key).delete(); note(""); }
+  catch(e){ handleWriteError(e); }
+  render();
+}
+function handleWriteError(e){
+  if(e&&e.code==="invalid_argument"&&!canWrite) return;
+  if(e&&e.code==="invalid_argument"){ canWrite=false; applyWriteUI(); note("No tenés permiso para cambiar estas tareas. Pedile al dueño de la página que te comparta como Contributor o Editor."); return; }
+  if(e&&e.code==="quota_exceeded"){ note("Se llenó el espacio de tareas. Eliminá algunas y volvé a intentar."); return; }
+  note("No se pudo guardar el cambio. Revisá la conexión y probá de nuevo.");
+}
+
+function nextId(prefix){
+  let max=0;
+  for(const t of tasks){ const m=String(t.id||"").match(/^([A-Z]+)-(\d+)$/); if(m&&m[1]===prefix) max=Math.max(max,Number(m[2])); }
+  return prefix+"-"+String(max+1).padStart(2,"0");
+}
+
+function applyWriteUI(){ $("openNew").hidden=!canWrite; if(!canWrite) $("newForm").hidden=true; render(); }
+
+function setupForm(){
+  const sel=$("fPhase");
+  for(const ph of PHASES) sel.append(el("option",{value:ph.p,text:ph.name+" · "+ph.range}));
+  $("openNew").addEventListener("click",()=>{ $("newForm").hidden=false; $("fTitle").focus(); });
+  $("cancelNew").addEventListener("click",()=>{ $("newForm").reset(); $("formErr").hidden=true; $("newForm").hidden=true; });
+  $("newForm").addEventListener("submit",async(ev)=>{
+    ev.preventDefault();
+    const titulo=$("fTitle").value.trim();
+    if(!titulo){ $("formErr").textContent="Escribí qué hay que hacer."; $("formErr").hidden=false; return; }
+    const fase=sel.value, id=nextId(fase);
+    const inPhase=tasks.filter(t=>t.fase===fase);
+    const orden=inPhase.reduce((m,t)=>Math.max(m,t.orden??0),0)+1;
+    const data={id,titulo,fase,quien:$("fWho").value.trim(),fecha:$("fDate").value||"",cuando:"",notas:$("fNotes").value.trim(),estado:"Por hacer",orden,creada:new Date().toISOString()};
+    $("saveNew").disabled=true;
+    try{ await db.collection("tareas").doc(id).set(data); $("newForm").reset(); $("formErr").hidden=true; $("newForm").hidden=true; note(""); }
+    catch(e){ handleWriteError(e); $("formErr").textContent="No se pudo crear la tarea."; $("formErr").hidden=false; }
+    finally{ $("saveNew").disabled=false; }
+  });
+}
+
+async function start(){
+  renderChips(); setupForm();
+  $("showDone").addEventListener("change",render);
+  db = await claude.use("db");
+  if(!db){ $("countText").textContent="Sin conexión a las tareas"; $("phases").replaceChildren(el("div",{class:"empty",text:"Para ver y editar las tareas, abrí esta página en claude.ai con tu cuenta."})); return; }
+  try{ const user=await claude.use("user"); const c=user?await user.can("data.write"):null; if(c===false) canWrite=false; }catch(_){}
+  applyWriteUI();
+  let timer=setTimeout(()=>note("Las tareas tardan en cargar. Puede que lo que ves no esté actualizado."),10000);
+  db.collection("tareas").onSnapshot(snap=>{
+    tasks=snap.docs.map(d=>({key:d.id,...d.data()}));
+    if(!snap.metadata.fromCache){ clearTimeout(timer); note(""); }
+    render();
+  }, err=>{ clearTimeout(timer); note("No se pudieron cargar las tareas. Recargá la página para intentar de nuevo."); });
+}
+start();
+</script>
