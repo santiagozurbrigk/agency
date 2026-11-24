@@ -109,6 +109,17 @@ Qué es cada cosa:
   #EEEAE3, tarjetas blancas, texto negro). Como las tomas de Manu tienen fondo negro, en mitad y
   mitad la cara va en un recuadro redondeado con borde naranja. Se edita con la composición `ReelMG` del motor (props a mano por reel).
 
+- **reel-ig-minimal** (reel de Instagram DgGV39AsjpF, 7 s, "Minimal and premium"). Pidió
+  (24/11/2026): "aplicale este formato y que muestre con motion graphics lo que está hablando el
+  video, incluso alejá el zoom, que Manu quede más chico y utilizás todo el espacio para aplicar
+  motion graphics de este estilo". Se copia: fondo negro con foco de luz, **Manu chico abajo al
+  centro (plano general, no primer plano)**, casi monocromo, y arriba todo el espacio para
+  gráficos: una palabra/número enorme en mono (Geist Mono) que se arma con píxeles, con una
+  línea chica arriba, ventanas mínimas con borde gris fino y tarjetitas ✓/✕ a los costados.
+  **Lo bueno va en naranja Genesis** (en vez del verde de la referencia) y lo malo en
+  blanco/gris tachado (en vez del rojo): no se suman colores. Se edita con la composición
+  `ReelMin` del motor. Es un formato aparte: el fondo claro sigue siendo el de `ReelMG`.
+
 ## Cómo corto
 
 ## Cuándo cambio de plano

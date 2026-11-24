@@ -1,0 +1,1045 @@
+{
+ "duracion": 32.0,
+ "cam": "cam.mp4",
+ "acento": "#F26A1B",
+ "camara": {
+  "escala": 0.78,
+  "top": 1040,
+  "zoomFinal": 1.08
+ },
+ "bpm": 100,
+ "cortes": [
+  1.6,
+  2.96,
+  3.76,
+  6.2,
+  8.52,
+  11.52,
+  20.6,
+  21.04,
+  22.4,
+  23.92,
+  25.16,
+  26.48
+ ],
+ "palabras": [
+  {
+   "w": "de",
+   "s": 0.0,
+   "e": 0.26
+  },
+  {
+   "w": "cada",
+   "s": 0.26,
+   "e": 0.4
+  },
+  {
+   "w": "100",
+   "s": 0.4,
+   "e": 0.74
+  },
+  {
+   "w": "personas",
+   "s": 0.74,
+   "e": 1.26
+  },
+  {
+   "w": "3",
+   "s": 1.52,
+   "e": 2.02
+  },
+  {
+   "w": "a",
+   "s": 2.02,
+   "e": 2.26
+  },
+  {
+   "w": "8",
+   "s": 2.26,
+   "e": 2.52
+  },
+  {
+   "w": "tickets",
+   "s": 2.52,
+   "e": 3.06
+  },
+  {
+   "w": "de",
+   "s": 3.06,
+   "e": 3.2
+  },
+  {
+   "w": "contacto",
+   "s": 3.2,
+   "e": 4.08
+  },
+  {
+   "w": "3",
+   "s": 4.08,
+   "e": 4.62
+  },
+  {
+   "w": "es",
+   "s": 4.62,
+   "e": 4.88
+  },
+  {
+   "w": "vamos",
+   "s": 4.88,
+   "e": 5.12
+  },
+  {
+   "w": "a",
+   "s": 5.12,
+   "e": 5.28
+  },
+  {
+   "w": "decirle",
+   "s": 5.28,
+   "e": 5.58
+  },
+  {
+   "w": "élite",
+   "s": 5.58,
+   "e": 6.0
+  },
+  {
+   "w": "y",
+   "s": 6.0,
+   "e": 6.32
+  },
+  {
+   "w": "8",
+   "s": 6.32,
+   "e": 6.76
+  },
+  {
+   "w": "vamos",
+   "s": 6.76,
+   "e": 7.36
+  },
+  {
+   "w": "a",
+   "s": 7.36,
+   "e": 7.52
+  },
+  {
+   "w": "decirle",
+   "s": 7.52,
+   "e": 7.94
+  },
+  {
+   "w": "que",
+   "s": 7.94,
+   "e": 8.1
+  },
+  {
+   "w": "es",
+   "s": 8.1,
+   "e": 8.34
+  },
+  {
+   "w": "mucho",
+   "s": 9.44,
+   "e": 10.0
+  },
+  {
+   "w": "o",
+   "s": 10.34,
+   "e": 10.34
+  },
+  {
+   "w": "sea",
+   "s": 10.34,
+   "e": 10.48
+  },
+  {
+   "w": "que",
+   "s": 10.48,
+   "e": 10.6
+  },
+  {
+   "w": "es",
+   "s": 10.6,
+   "e": 10.8
+  },
+  {
+   "w": "como",
+   "s": 10.8,
+   "e": 11.08
+  },
+  {
+   "w": "pobre",
+   "s": 10.98,
+   "e": 11.45
+  },
+  {
+   "w": "si",
+   "s": 11.62,
+   "e": 12.2
+  },
+  {
+   "w": "tenemos",
+   "s": 12.22,
+   "e": 12.68
+  },
+  {
+   "w": "de",
+   "s": 12.68,
+   "e": 13.02
+  },
+  {
+   "w": "cada",
+   "s": 13.02,
+   "e": 13.2
+  },
+  {
+   "w": "100",
+   "s": 13.2,
+   "e": 13.48
+  },
+  {
+   "w": "pedidos",
+   "s": 13.48,
+   "e": 13.88
+  },
+  {
+   "w": "tenemos",
+   "s": 13.92,
+   "e": 13.98
+  },
+  {
+   "w": "más",
+   "s": 14.0,
+   "e": 14.4
+  },
+  {
+   "w": "de",
+   "s": 14.4,
+   "e": 14.56
+  },
+  {
+   "w": "8",
+   "s": 14.56,
+   "e": 14.8
+  },
+  {
+   "w": "personas",
+   "s": 14.8,
+   "e": 15.16
+  },
+  {
+   "w": "que",
+   "s": 15.16,
+   "e": 15.42
+  },
+  {
+   "w": "nos",
+   "s": 15.42,
+   "e": 15.52
+  },
+  {
+   "w": "están",
+   "s": 15.52,
+   "e": 15.74
+  },
+  {
+   "w": "preguntando",
+   "s": 15.74,
+   "e": 16.54
+  },
+  {
+   "w": "cosas",
+   "s": 16.54,
+   "e": 16.86
+  },
+  {
+   "w": "porque",
+   "s": 16.86,
+   "e": 17.34
+  },
+  {
+   "w": "no",
+   "s": 17.34,
+   "e": 17.72
+  },
+  {
+   "w": "tienen",
+   "s": 17.72,
+   "e": 17.9
+  },
+  {
+   "w": "la",
+   "s": 17.9,
+   "e": 18.1
+  },
+  {
+   "w": "información",
+   "s": 18.1,
+   "e": 18.42
+  },
+  {
+   "w": "suficiente",
+   "s": 18.42,
+   "e": 18.9
+  },
+  {
+   "w": "bueno",
+   "s": 19.0,
+   "e": 19.26
+  },
+  {
+   "w": "ahí",
+   "s": 19.26,
+   "e": 19.42
+  },
+  {
+   "w": "tenés",
+   "s": 19.42,
+   "e": 19.64
+  },
+  {
+   "w": "un",
+   "s": 19.64,
+   "e": 19.76
+  },
+  {
+   "w": "cuello",
+   "s": 19.76,
+   "e": 20.04
+  },
+  {
+   "w": "de",
+   "s": 20.04,
+   "e": 20.14
+  },
+  {
+   "w": "botella",
+   "s": 20.14,
+   "e": 20.44
+  },
+  {
+   "w": "la",
+   "s": 20.64,
+   "e": 20.76
+  },
+  {
+   "w": "mitad",
+   "s": 20.76,
+   "e": 20.92
+  },
+  {
+   "w": "nos",
+   "s": 20.92,
+   "e": 21.14
+  },
+  {
+   "w": "va",
+   "s": 21.14,
+   "e": 21.24
+  },
+  {
+   "w": "a",
+   "s": 21.24,
+   "e": 21.24
+  },
+  {
+   "w": "preguntar",
+   "s": 21.24,
+   "e": 21.58
+  },
+  {
+   "w": "dónde",
+   "s": 21.58,
+   "e": 21.68
+  },
+  {
+   "w": "está",
+   "s": 21.68,
+   "e": 21.84
+  },
+  {
+   "w": "nuestro",
+   "s": 21.84,
+   "e": 22.02
+  },
+  {
+   "w": "pedido",
+   "s": 22.02,
+   "e": 22.44
+  },
+  {
+   "w": "dónde",
+   "s": 22.52,
+   "e": 22.64
+  },
+  {
+   "w": "está",
+   "s": 22.64,
+   "e": 22.84
+  },
+  {
+   "w": "mi",
+   "s": 22.84,
+   "e": 22.96
+  },
+  {
+   "w": "código",
+   "s": 22.96,
+   "e": 23.14
+  },
+  {
+   "w": "de",
+   "s": 23.14,
+   "e": 23.32
+  },
+  {
+   "w": "seguimiento",
+   "s": 23.32,
+   "e": 23.78
+  },
+  {
+   "w": "es",
+   "s": 24.22,
+   "e": 24.72
+  },
+  {
+   "w": "importante",
+   "s": 24.72,
+   "e": 26.08
+  },
+  {
+   "w": "tener",
+   "s": 26.08,
+   "e": 26.72
+  },
+  {
+   "w": "un",
+   "s": 26.72,
+   "e": 26.92
+  },
+  {
+   "w": "buen",
+   "s": 26.92,
+   "e": 27.14
+  },
+  {
+   "w": "sistema",
+   "s": 27.14,
+   "e": 27.7
+  },
+  {
+   "w": "de",
+   "s": 27.7,
+   "e": 28.04
+  },
+  {
+   "w": "post",
+   "s": 28.04,
+   "e": 28.5
+  },
+  {
+   "w": "venta",
+   "s": 28.5,
+   "e": 28.8
+  },
+  {
+   "w": "o",
+   "s": 28.8,
+   "e": 28.84
+  },
+  {
+   "w": "atención",
+   "s": 28.84,
+   "e": 29.08
+  },
+  {
+   "w": "al",
+   "s": 29.08,
+   "e": 29.3
+  },
+  {
+   "w": "cliente",
+   "s": 29.3,
+   "e": 29.6
+  }
+ ],
+ "grandes": [
+  {
+   "t0": 0.0,
+   "t1": 1.5,
+   "chica": "de cada",
+   "grande": "100"
+  },
+  {
+   "t0": 1.5,
+   "t1": 4.0,
+   "chica": "tickets de contacto",
+   "grande": "3 a 8",
+   "tam": 175
+  },
+  {
+   "t0": 4.05,
+   "t1": 6.25,
+   "chica": "3 tickets es",
+   "grande": "élite",
+   "bueno": true
+  },
+  {
+   "t0": 6.25,
+   "t1": 11.5,
+   "chica": "8 tickets es",
+   "grande": "pobre",
+   "malo": true
+  },
+  {
+   "t0": 11.55,
+   "t1": 15.7,
+   "chica": "de cada 100 pedidos",
+   "grande": "+8"
+  },
+  {
+   "t0": 15.7,
+   "t1": 19.7,
+   "chica": "preguntan porque les falta",
+   "grande": "info"
+  },
+  {
+   "t0": 19.7,
+   "t1": 20.6,
+   "chica": "cuello de",
+   "grande": "botella"
+  },
+  {
+   "t0": 20.6,
+   "t1": 24.1,
+   "chica": "la mitad pregunta",
+   "grande": "50%"
+  },
+  {
+   "t0": 24.1,
+   "t1": 29.8,
+   "chica": "un buen sistema de",
+   "grande": "postventa",
+   "tam": 165,
+   "bueno": true
+  }
+ ],
+ "escenas": [
+  {
+   "t0": 0.0,
+   "t1": 4.0,
+   "tipo": "grilla",
+   "titulo": "100 personas",
+   "pasos": [
+    {
+     "t": 1.52,
+     "desde": 0,
+     "hasta": 3,
+     "color": "acento"
+    },
+    {
+     "t": 2.26,
+     "desde": 3,
+     "hasta": 8,
+     "color": "blanco"
+    }
+   ]
+  },
+  {
+   "t0": 4.0,
+   "t1": 11.5,
+   "tipo": "escala",
+   "titulo": "tickets cada 100 pedidos",
+   "marcas": [
+    {
+     "t": 4.1,
+     "v": 3,
+     "texto": "élite",
+     "bueno": true
+    },
+    {
+     "t": 6.35,
+     "v": 8,
+     "texto": "pobre",
+     "bueno": false
+    }
+   ]
+  },
+  {
+   "t0": 11.55,
+   "t1": 20.6,
+   "tipo": "grilla",
+   "titulo": "100 pedidos",
+   "pasos": [
+    {
+     "t": 14.0,
+     "desde": 0,
+     "hasta": 9,
+     "color": "blanco"
+    }
+   ],
+   "dudas": {
+    "t": 15.74,
+    "n": 9
+   },
+   "alerta": {
+    "t": 19.76,
+    "texto": "! cuello de botella"
+   }
+  },
+  {
+   "t0": 20.6,
+   "t1": 24.1,
+   "tipo": "chat",
+   "titulo": "bandeja · consultas",
+   "barra": {
+    "t": 20.68,
+    "n": 5,
+    "texto": "50% · la mitad"
+   },
+   "mensajes": [
+    {
+     "t": 21.58,
+     "texto": "¿Dónde está mi pedido?"
+    },
+    {
+     "t": 22.52,
+     "texto": "¿Y mi código de seguimiento?"
+    }
+   ]
+  },
+  {
+   "t0": 24.1,
+   "t1": 29.8,
+   "tipo": "bandeja",
+   "titulo": "postventa · sistema",
+   "filas": [
+    {
+     "texto": "¿Dónde está mi pedido?",
+     "t": 24.3,
+     "tOk": 26.9
+    },
+    {
+     "texto": "Código de seguimiento",
+     "t": 24.5,
+     "tOk": 27.6
+    },
+    {
+     "texto": "Otra consulta",
+     "t": 24.7,
+     "tOk": 28.5
+    }
+   ]
+  }
+ ],
+ "laterales": [
+  {
+   "t0": 4.05,
+   "t1": 6.25,
+   "lado": "izq",
+   "icono": "sube"
+  },
+  {
+   "t0": 4.15,
+   "t1": 6.25,
+   "lado": "der",
+   "icono": "ok"
+  },
+  {
+   "t0": 6.3,
+   "t1": 11.5,
+   "lado": "izq",
+   "icono": "baja"
+  },
+  {
+   "t0": 6.4,
+   "t1": 11.5,
+   "lado": "der",
+   "icono": "no"
+  },
+  {
+   "t0": 14.0,
+   "t1": 20.6,
+   "lado": "der",
+   "icono": "no"
+  },
+  {
+   "t0": 19.7,
+   "t1": 20.6,
+   "lado": "izq",
+   "icono": "baja"
+  },
+  {
+   "t0": 24.3,
+   "t1": 29.8,
+   "lado": "izq",
+   "icono": "sube"
+  },
+  {
+   "t0": 26.9,
+   "t1": 29.8,
+   "lado": "der",
+   "icono": "ok"
+  }
+ ],
+ "cta": {
+  "t0": 29.8,
+  "t1": 32.0,
+  "chica": "comentá",
+  "grande": "OPERACIONES",
+  "abajo": "y te paso el video entero"
+ },
+ "sonidos": [
+  {
+   "t": 0,
+   "tipo": "impacto"
+  },
+  {
+   "t": 1.5,
+   "tipo": "glitch"
+  },
+  {
+   "t": 1.52,
+   "tipo": "tic"
+  },
+  {
+   "t": 1.58,
+   "tipo": "tic"
+  },
+  {
+   "t": 1.64,
+   "tipo": "tic"
+  },
+  {
+   "t": 2.26,
+   "tipo": "tic"
+  },
+  {
+   "t": 2.32,
+   "tipo": "tic"
+  },
+  {
+   "t": 2.38,
+   "tipo": "tic"
+  },
+  {
+   "t": 2.44,
+   "tipo": "tic"
+  },
+  {
+   "t": 2.5,
+   "tipo": "tic"
+  },
+  {
+   "t": 3.88,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 4.05,
+   "tipo": "glitch"
+  },
+  {
+   "t": 4.05,
+   "tipo": "pop"
+  },
+  {
+   "t": 4.1,
+   "tipo": "pop"
+  },
+  {
+   "t": 4.15,
+   "tipo": "pop"
+  },
+  {
+   "t": 6.25,
+   "tipo": "glitch"
+  },
+  {
+   "t": 6.3,
+   "tipo": "pop"
+  },
+  {
+   "t": 6.35,
+   "tipo": "pop"
+  },
+  {
+   "t": 6.4,
+   "tipo": "pop"
+  },
+  {
+   "t": 11.430000000000001,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 11.55,
+   "tipo": "glitch"
+  },
+  {
+   "t": 14.0,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.0,
+   "tipo": "pop"
+  },
+  {
+   "t": 14.06,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.12,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.18,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.24,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.3,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.36,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.42,
+   "tipo": "tic"
+  },
+  {
+   "t": 14.48,
+   "tipo": "tic"
+  },
+  {
+   "t": 15.7,
+   "tipo": "glitch"
+  },
+  {
+   "t": 15.74,
+   "tipo": "tic"
+  },
+  {
+   "t": 15.86,
+   "tipo": "tic"
+  },
+  {
+   "t": 15.98,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.1,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.22,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.34,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.46,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.58,
+   "tipo": "tic"
+  },
+  {
+   "t": 16.7,
+   "tipo": "tic"
+  },
+  {
+   "t": 19.7,
+   "tipo": "glitch"
+  },
+  {
+   "t": 19.7,
+   "tipo": "pop"
+  },
+  {
+   "t": 19.76,
+   "tipo": "impacto"
+  },
+  {
+   "t": 20.48,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 20.6,
+   "tipo": "glitch"
+  },
+  {
+   "t": 21.58,
+   "tipo": "pop"
+  },
+  {
+   "t": 22.52,
+   "tipo": "pop"
+  },
+  {
+   "t": 23.98,
+   "tipo": "whoosh"
+  },
+  {
+   "t": 24.1,
+   "tipo": "glitch"
+  },
+  {
+   "t": 24.3,
+   "tipo": "pop"
+  },
+  {
+   "t": 26.9,
+   "tipo": "pop"
+  },
+  {
+   "t": 26.9,
+   "tipo": "pop"
+  },
+  {
+   "t": 27.6,
+   "tipo": "pop"
+  },
+  {
+   "t": 28.5,
+   "tipo": "pop"
+  },
+  {
+   "t": 28.5,
+   "tipo": "riser"
+  },
+  {
+   "t": 29.8,
+   "tipo": "impacto"
+  },
+  {
+   "t": 30.05,
+   "tipo": "glitch"
+  }
+ ],
+ "musica": {
+  "bpm": 100,
+  "corte": [
+   19.45,
+   19.76
+  ],
+  "riser": [
+   28.5,
+   29.8
+  ]
+ },
+ "fuentes": [
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "600",
+   "file": "fonts/InterTight-normal-600-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "700",
+   "file": "fonts/InterTight-normal-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "800",
+   "file": "fonts/InterTight-normal-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Inter Tight",
+   "style": "normal",
+   "weight": "900",
+   "file": "fonts/InterTight-normal-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "700",
+   "file": "fonts/PlayfairDisplay-italic-700-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "800",
+   "file": "fonts/PlayfairDisplay-italic-800-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin-ext.woff2",
+   "range": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF"
+  },
+  {
+   "fam": "Playfair Display",
+   "style": "italic",
+   "weight": "900",
+   "file": "fonts/PlayfairDisplay-italic-900-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  },
+  {
+   "fam": "Geist Mono",
+   "style": "normal",
+   "weight": "100 900",
+   "file": "fonts/GeistMono-latin.woff2",
+   "range": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+  }
+ ]
+}
