@@ -219,7 +219,7 @@ Recorrido decidido el 23/11: **se presenta Genesis Lite → si no puede o no le 
 | **YouTube** | Lite y OS | Sumar videos de los 4 cuellos de botella de Lite (producto, campañas, escalado, estabilidad) |
 | **Reels y TikTok** | Seguidor ideal, sobre todo Lite | Hook con frases de Lite: los 40 testeos, «renová y subí la pauta», vivir en alerta |
 | **Historias** | Los que ya siguen | Un cuello de botella por semana. Casos de su nivel (Nicolás, Andrés) |
-| **Ads del webinar 15/12** | Lite y OS | `[DEFINIR]` Si los ads le hablan también al avatar de USD 800: la llamada del 23/11 decía «ads para los 3 avatares», pero la regla del 24/11 dice que ese avatar no se comunica |
+| **Ads del webinar 15/12** | Lite y OS | Solo Lite y OS (decidido el 24/11). El avatar de USD 800 no tiene ads: se le ofrece en la llamada |
 | **Setter** | El que escribió | Califica con las preguntas de la sección 5 y anota el avatar (Lite, OS u 800) |
 | **Closer** | El que aplicó | Presenta Lite; baja a USD 800 o sube a OS según el criterio |
 
@@ -253,7 +253,6 @@ Recorrido decidido el 23/11: **se presenta Genesis Lite → si no puede o no le 
 - `[PENDIENTE: Manu]` Qué parte de Lite ataca el escalado, y una frase textual del avatar sobre escalar.
 - `[PENDIENTE: Manu]` La frase de instalación de «el producto winner no existe», con su voz.
 - `[PENDIENTE]` El número fijo de capital para testear además de Lite (objeción B2C-04).
-- `[DEFINIR]` Si los ads del webinar le hablan al avatar de USD 800.
 - `[PENDIENTE: Santi]` Cómo se llama al webinar del 15/12 en la comunicación.
 - `[PENDIENTE: Santi]` Bio y destacadas de Instagram para Lite.
 - **Validación:** el avatar de Lite se apoya en una sola llamada. Con las aplicaciones y llamadas del 15/12, revisar quién aplica, en qué cuello de botella está y qué oferta compra.
