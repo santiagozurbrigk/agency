@@ -138,9 +138,9 @@ const FORMATS = {
 const AVATARS = [
   {key:"lite", badge:"Principal", title:"Genesis Lite · 12 ads", who:"El que ya arrancó en e-commerce, testea y no le pega. Cada ángulo cierra en lo mismo: lo que dura es un consumible con suscripción.", pains:[
     {title:"Producto y testeo: el winner no existe", quote:"Testeo y testeo y no le pego a ninguno", by:"Nico, 40 testeos. Hueco: dos mentores dicen que los winners «100% existen»", angles:[
-      {id:"L1", hook:"«No le pegás porque estás buscando algo que no existe.»", why:"El producto winner no existe. Ángulo madre, confirmado el 23/11.", bridge:"Lo que buscabas no era un producto: era un cliente que vuelva solo cada mes.", f:["F3","F1"]},
-      {id:"L2", hook:"«Este producto vendió [DATO] en 10 días. Mirá cómo murió.»", why:"Autopsia de un winner: tus winners no se queman, se termina el público.", bridge:"Vendía una vez a cada cliente. Un consumible por suscripción le vuelve a vender al mismo cliente todos los meses.", f:["F2","F7"], flag:"Necesita un winner real que haya muerto, con sus números"},
-      {id:"L3", hook:"«Tu producto no fracasó en el testeo: fracasó porque lo mediste por la primera venta.»", why:"Estás midiendo mal: el mercado mide el testeo por ROAS del día.", bridge:"Con suscripción, un CPA «caro» puede ser rentable al segundo mes.", f:["F1","F2"]},
+      {id:"L1", hook:"«No le pegás porque estás buscando algo que no existe: el winner.»", why:"El producto winner no existe. Ángulo madre, confirmado el 23/11 y ajustado el 25/11.", bridge:"Lo que tenés que buscar no es un winner: es un producto consumible con recurrencia. Y sobre ese producto, armar una marca desde cero para que tus clientes lo vuelvan a comprar cada mes.", f:["F3","F1"]},
+      {id:"L2", hook:"«El público que te va a comprar ese producto es finito. ¿Qué hacés cuando se termina?»", why:"Mercado finito: si tu plan es venderle cada vez a más gente nueva, en algún momento el público se acaba.", bridge:"El foco tiene que estar en revenderle mes a mes a los que ya te compraron. Y si llevás las dos cosas de la mano, el foco igual es la suscripción.", f:["F1","F7"]},
+      {id:"L3", hook:"«Te dicen que si al tercer día tu producto dejó de vender, se murió y busques otro. No se murió: falló otra cosa.»", why:"Estás midiendo mal: si deja de vender al tercer o cuarto día, el problema son los creativos o la estrategia de campañas, no el producto.", bridge:"Con un consumible apto para suscripción armás una marca a largo plazo: no te importa pagar un CPA caro al principio, porque lo recuperás al segundo mes con el profit de la recurrencia.", f:["F1","F2"]},
     ]},
     {title:"Estabilidad y margen: vivir en alerta", quote:"Es cuestión de que pase un día y irme a pérdida", by:"Nico, que vendía con 6,59% de margen. Hueco: nadie habla de la estabilidad ni de la ganancia neta", angles:[
       {id:"L4", hook:"«Este mes facturamos menos que el anterior y ganamos más. Te explico por qué.»", why:"Ganancia neta contra facturación: todo el mercado muestra facturación y autos.", bridge:"El suscriptor del segundo mes no te cuesta pauta: es casi todo margen.", f:["F5","F2"], flag:"Necesita los números reales de un mes de Manu"},
@@ -163,16 +163,18 @@ const AVATARS = [
 ];
 const RESERVE = [
   "Cada mes arranco de cero: «Si tu negocio para cuando vos parás de testear, tenés una cinta de correr» (Lite)",
-  "Contra el 2x1: «Si tenés que vender 2x1 para que te compren, el problema no es el precio» (Lite)",
+  "Aportar valor, no bajar el precio: «Si tenés que vender 2x1 para que te compren, el problema no es el precio». Mantener el precio y sumar valor desde la marca (Lite)",
+  "Contento de perder un día: «Hoy fuimos a pérdida. Y estoy contento». La recurrencia lo recupera y la competencia no puede pagar ese CPA (Lite)",
+  "Tus clientes no se quemaron: «Dicen que tu producto se quemó. ¿Y los que ya te lo compraron?» (Lite)",
   "Escalar la base: «No escales la pauta. Escalá la base de clientes» (Lite)",
   "ROAS a 90 días: «Dejá de mirar el ROAS del día. Mirá el ROAS a 90 días» (Lite)",
   "La mentoría quemada: «Te enseñaron a encontrar winners. Nadie te enseñó a que el cliente vuelva» (Lite)",
   "Stock previsible: «Sabemos cuántas unidades vamos a despachar en marzo. Hoy» (OS)",
   "El activo que se vende: «Una tienda que vive de la pauta no se vende. Una base de suscriptores, sí» (OS)",
-  "Objeciones: «la suscripción tiene un CPA más caro», «la gente cancela al segundo mes», «con la inflación no podés fijar precio», «mi producto no sirve para suscripción»",
+  "Objeciones: «la suscripción tiene un CPA más caro», «la gente cancela al segundo mes», «mi producto no sirve para suscripción»",
 ];
 const DECISIONS = [
-  {id:"D1", title:"¿Quién consigue los números reales de L2, L4 y O2?", body:"Los hooks de la investigación traían números de ejemplo (300 unidades, 400 pedidos, 62 de 100). Acá solo quedan los reales de Manu (3.943 suscriptores, 7,2% de cancelaciones, la cuenta de 30.000 → 90.000). L2, L4 y O2 necesitan datos que hoy no están en el repo: si no aparecen, esos ángulos se cambian por uno de la reserva.", opts:[["ok","Los consigue Manu"],["ch","Cambiarlos por la reserva"]]},
+  {id:"D1", title:"¿Quién consigue los números reales de L4 y O2?", body:"Los hooks de la investigación traían números de ejemplo (300 unidades, 400 pedidos, 62 de 100). Acá solo quedan los reales de Manu (3.943 suscriptores, 7,2% de cancelaciones, la cuenta de 30.000 → 90.000). L4 y O2 necesitan datos que hoy no están en el repo: si no aparecen, esos ángulos se cambian por uno de la reserva.", opts:[["ok","Los consigue Manu"],["ch","Cambiarlos por la reserva"]]},
   {id:"D2", title:"¿El ángulo O6 (el bloqueo de la cuenta) va?", body:"La regla de comunicación dice que el ban queda solo como hook de atracción, porque ninguno de los clientes que pagaron habló de eso. Los ads del webinar son atracción, así que entraría, pero pega menos que «renovar creativos todos los días».", opts:[["ok","Va"],["no","Sacarlo"],["ch","Cambiarlo"]]},
   {id:"D3", title:"¿La palabra suscripción aparece en el hook o recién en el cierre?", body:"La regla del 20/11 dice que la suscripción aparece después, como el mecanismo. La investigación dice que el terreno está libre y que hay que ocuparlo antes que Lauty. Propuesta: en Lite va en el cierre del ad; en OS puede ir en el hook (O3, O5).", opts:[["ok","Como la propuesta"],["ch","Otra cosa"]]},
 ];

@@ -21,7 +21,7 @@ Convención: `[PENDIENTE]` = falta un dato o una decisión; `[HIP]` = hipótesis
 | **Caso real** | Nico Escudero (cerró la Mentoría el 26/10) | Herbora, Alan, Núñez, Lopo | Franco y su socio (no cerraron la Mentoría el 28/10) |
 | **Estado** | Este documento lo define `[HIP]` | Definido el 20/11 | `[PENDIENTE: Santi + Manu]` oferta completa |
 
-**Mensaje para Lite** (ángulo confirmado el 23/11): **«El producto winner no existe.»** El que más le funcionó a Manu, porque «se nota que no vendés humo».
+**Mensaje para Lite** (ángulo confirmado el 23/11, ajustado el 25/11): **«No le pegás porque estás buscando algo que no existe: el winner.»** Lo que tiene que buscar es un producto consumible con recurrencia, y sobre ese producto armar una marca desde cero para que sus clientes lo vuelvan a comprar cada mes. Es el ángulo que más le funcionó a Manu, porque «se nota que no vendés humo».
 **Mensaje de fondo para las tres:** todo es suscripción, a distintos niveles de consciencia. Para Lite, la suscripción es la forma de armar la marca desde el principio; para OS, es convertir la base que ya tiene.
 **Diferencial que decide la compra (sigue igual):** «Me meto en tu tienda y en tus números, y lo armamos juntos.» Nico: «es el acercamiento que busco… que vos te metas en la marca».
 
@@ -60,8 +60,8 @@ Los cuatro que marcó el equipo el 24/11 como los más comunes en los clientes. 
 
 | Creencia a romper | Quién la dijo | Creencia a instalar |
 |---|---|---|
-| «El winner existe y lo tengo que encontrar» | Implícita en los 40 testeos (Nico) | **El producto winner no existe.** `[HIP: Manu]` frase de instalación, a escribir con su voz |
-| «Si no arranca en el test, el producto es malo» | Lista de creencias del 30/10 | Un producto que ya te vende vale más que diez nuevos (B2C-11) |
+| «El winner existe y lo tengo que encontrar» | Implícita en los 40 testeos (Nico) | **El winner no existe.** Lo que hay que buscar es un producto consumible con recurrencia y armar sobre él una marca desde cero, para que el cliente vuelva cada mes (definido el 25/11) |
+| «Si no arranca en el test, el producto es malo» / «si al tercer día deja de vender, se murió y hay que buscar otro» | Lista de creencias del 30/10; lo que dice el mercado | No se murió: fallaron los creativos o la estrategia de campañas. Con un consumible apto para suscripción se arma una marca a largo plazo, y un CPA caro al principio se recupera al segundo mes con el profit de la recurrencia (definido el 25/11) |
 | «El problema era yo» | «Me dijeron que era yo, que no pegaba porque era la persona» (Nico) | El problema fue cómo te enseñaron a decidir (B2C-10). **Hot button: con cuidado** |
 | «La solución es más creativos / más pauta» | Lo que le decía su mentor (Nico); también S1 | Primero entender los números: ganancia neta, no facturación |
 | «Todos los mentores son humo» | «Pagué una mentoría y no era nada que ver… los casos de éxito son del año pasado» (Nico) | Se muestra, no se dice: tablero en vivo con el día malo y casos con captura actual (B2C-07) |
@@ -192,7 +192,9 @@ Recorrido decidido el 23/11: **se presenta Genesis Lite → si no puede o no le 
 
 ### 6.1 El mensaje
 
-- **Ángulo principal (Lite):** «El producto winner no existe.»
+- **Ángulo principal (Lite):** «No le pegás porque estás buscando algo que no existe: el winner.» El puente: buscá un consumible con recurrencia y armá una marca para que el cliente vuelva cada mes.
+- **Sumar valor, no bajar el precio:** nada de 2x1 ni descuentos que bajen el valor percibido; se suma valor desde la marca (si vendés proteína, el scoop y el shaker).
+- **Ángulos de venta, no de marketing:** el «cementerio de productos» (los productos testeados que no duraron) queda para el pitch del closer y el seteo. Se revisa con Manu.
 - **Idea de fondo (todas):** todo es suscripción. Para Lite, armá la marca pensando en que el cliente vuelva desde el primer día; para OS, «no te falta vender más: te falta que el que ya te compró te vuelva a comprar».
 - **Enemigo:** el mentor que te dice «venís bien», «renová» o «subí la pauta» sin meterse en tus números, y la mentoría de testeo infinito y réplica. **Nunca se nombra a nadie.**
 - **Diferencial:** «Me meto en tu tienda y en tus números, y lo armamos juntos.»
