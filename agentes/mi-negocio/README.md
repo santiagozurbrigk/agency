@@ -36,4 +36,5 @@ Para usarlo en Claude Code: *"usá el agente de `mi-negocio/agentes-propios/crea
 
 | Archivo | Qué es |
 |---|---|
+| [`referencias/funnel-hacking-mrbrandowner/`](referencias/funnel-hacking-mrbrandowner/) | Funnel hacking de Brandon van Mierlo (@mrbrandowner, MRR para ecom): 50 ads con guion, landing, VSL, aplicación, quiz oculto, webinar, productos y qué nos llevamos para Génesis. Board: https://claude.ai/artifact/NdwaEKFKYqvDr9evMSDfLR |
 | [`referencias/naza-grupo-whatsapp.md`](referencias/naza-grupo-whatsapp.md) | Cómo maneja Naza Gamero su grupo de WhatsApp de lanzamiento: cómo escribe, la forma de cada tanda, la escalera del día de la clase, lo que enseña Limitless (7 toques del día del vivo) y qué tomar para Manu. Leerlo antes de armar cualquier nutrición de WhatsApp. |

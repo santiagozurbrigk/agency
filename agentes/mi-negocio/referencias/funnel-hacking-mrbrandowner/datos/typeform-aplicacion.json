@@ -1,0 +1,562 @@
+{
+ "id": "ebgLeVaz",
+ "type": "quiz",
+ "title": "Brandon & Remo Ecom Mentorship (copy)",
+ "workspace": {
+  "href": "https://api.typeform.com/workspaces/nY9Rps"
+ },
+ "theme": {
+  "id": "akuUMHcK",
+  "font": "Karla",
+  "name": "Smart Ash (Copy)",
+  "created_at": "2026-05-13T00:03:37.293026Z",
+  "updated_at": "2026-05-13T00:03:37.293026Z",
+  "has_transparent_button": false,
+  "colors": {
+   "question": "#F1ECE2",
+   "answer": "#F1ECE2",
+   "button": "#F1ECE2",
+   "background": "#262626"
+  },
+  "visibility": "private",
+  "screens": {
+   "font_size": "x-small",
+   "alignment": "center"
+  },
+  "fields": {
+   "font_size": "medium",
+   "alignment": "left"
+  },
+  "rounded_corners": "small",
+  "source_theme_id": "rqYVKG",
+  "origin": "duplicate"
+ },
+ "settings": {
+  "language": "en",
+  "progress_bar": "proportion",
+  "meta": {
+   "title": "Mr BrandOwner",
+   "allow_indexing": false
+  },
+  "hide_navigation": false,
+  "is_public": true,
+  "is_trial": false,
+  "show_progress_bar": true,
+  "show_typeform_branding": false,
+  "are_uploads_public": false,
+  "show_time_to_complete": true,
+  "show_number_of_submissions": false,
+  "show_cookie_consent": false,
+  "show_question_number": true,
+  "hide_required_indicator": false,
+  "show_key_hint_on_choices": true,
+  "autosave_progress": true,
+  "free_form_navigation": false,
+  "use_lead_qualification": false,
+  "pro_subdomain_enabled": false,
+  "email_consent_notifications_config": {
+   "send_email_copy": true
+  },
+  "auto_translate": true,
+  "partial_responses_to_all_integrations": true,
+  "webmcp_enabled": false,
+  "webmcp_submit_hitl_enabled": true
+ },
+ "thankyou_screens": [
+  {
+   "id": "eMBYmRhIQkEd",
+   "ref": "3787a0fc-73e0-4468-9675-acacbb0dbad4",
+   "title": "https://calendly.com/d/cx4s-wk8-8wf/ecom-mrr-mastery",
+   "type": "url_redirect",
+   "properties": {
+    "redirect_url": "https://calendly.com/d/cx4s-wk8-8wf/ecom-mrr-mastery"
+   }
+  },
+  {
+   "id": "TLorRvxkez59",
+   "ref": "ddc3c814-015f-4d22-935e-270f9313b22c",
+   "title": "https://whop.com/e-com-mrr-mastery/mrbrandowner/",
+   "type": "url_redirect",
+   "properties": {
+    "redirect_url": "https://whop.com/e-com-mrr-mastery/mrbrandowner/"
+   }
+  },
+  {
+   "id": "DefaultTyScreen",
+   "ref": "default_tys",
+   "title": "All done! Thanks for your time.",
+   "type": "thankyou_screen",
+   "properties": {
+    "show_button": false,
+    "share_icons": false
+   }
+  }
+ ],
+ "fields": [
+  {
+   "id": "YFSG0bqgEkgI",
+   "title": "Please fill in your details",
+   "ref": "39a2b405-4329-4d5c-b426-1010da53b4cd",
+   "properties": {
+    "fields": [
+     {
+      "id": "sEmf5LXd5tlw",
+      "title": "First name",
+      "ref": "21e7950f-6098-4475-866e-78eb7bd1e073",
+      "subfield_key": "first_name",
+      "properties": {},
+      "validations": {
+       "required": true
+      },
+      "type": "short_text"
+     },
+     {
+      "id": "qMtfPxtEryjL",
+      "title": "Last name",
+      "ref": "3353e5f0-04e3-48b0-a80f-2d1683d42390",
+      "subfield_key": "last_name",
+      "properties": {},
+      "validations": {
+       "required": true
+      },
+      "type": "short_text"
+     },
+     {
+      "id": "rMLHXqgNOvNd",
+      "title": "Phone number",
+      "ref": "fc298fc6-0d4c-4394-bdb0-bc97fdf043c4",
+      "subfield_key": "phone_number",
+      "properties": {
+       "default_country_code": "US"
+      },
+      "validations": {
+       "required": true
+      },
+      "type": "phone_number"
+     },
+     {
+      "id": "eMZiq5tBWucS",
+      "title": "Email",
+      "ref": "7a4dc907-b61f-4ddc-9af4-d103c02cd9f2",
+      "subfield_key": "email",
+      "properties": {},
+      "validations": {
+       "required": true
+      },
+      "type": "email"
+     }
+    ]
+   },
+   "type": "contact_info"
+  },
+  {
+   "id": "g1To0GZcWIiJ",
+   "title": "What is your Instagram handle?",
+   "ref": "eb7609d0-75ff-43cc-b085-aa9b829e8e05",
+   "properties": {},
+   "validations": {
+    "required": true
+   },
+   "type": "short_text"
+  },
+  {
+   "id": "WpTEQnBKeU6z",
+   "title": "Where are you currently based?",
+   "ref": "58991533-9cab-4516-99bc-7e8f1a46b948",
+   "properties": {},
+   "validations": {
+    "required": true
+   },
+   "type": "short_text"
+  },
+  {
+   "id": "bbjKutGiZoWo",
+   "title": "How long have you been active in e-commerce?",
+   "ref": "86ec5d9d-79a1-40a9-bcf1-03ea26d5dadb",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "iTVh4q5T1OyU",
+      "ref": "289249d8-a05e-43f5-ba8a-ba3f786b33f0",
+      "label": "Less than 6 months"
+     },
+     {
+      "id": "kIdYkfm2xlRd",
+      "ref": "f7db7254-44fe-4f71-bec4-cb95a48f88ec",
+      "label": "6 to 12 months"
+     },
+     {
+      "id": "qlbTWzIbkBut",
+      "ref": "ef5448b9-6a43-4453-8bde-221eddfe4699",
+      "label": "1 to 2 years"
+     },
+     {
+      "id": "s5OJXevWPIel",
+      "ref": "54fb68c9-b783-405f-8251-046064b35daa",
+      "label": "2 to 4 years"
+     },
+     {
+      "id": "GaQVmtymZ6PM",
+      "ref": "030d632e-2720-4ab4-bf6c-e7370a66873a",
+      "label": "4 years or more"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  },
+  {
+   "id": "tovPbmK7Mre1",
+   "title": "What type of e-commerce business are you running?",
+   "ref": "8a73c3b7-3851-4dd4-8e1a-1e9d7e0b6c1d",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "BVGDBaRVNc7B",
+      "ref": "8ad2849c-1aba-48dd-8120-0c3ce2d98656",
+      "label": "Fashion brand"
+     },
+     {
+      "id": "33LpEgxyEdCw",
+      "ref": "7cfd4c87-f77f-4a03-a8b5-7c36c2a0e34d",
+      "label": "Branded product"
+     },
+     {
+      "id": "v3d14s3bvApq",
+      "ref": "67ea3d42-4301-41a3-81c9-990d89fdacd5",
+      "label": "Supplements"
+     },
+     {
+      "id": "ZMyLXVSZqZEp",
+      "ref": "f4f5e4f8-2a2f-4252-946b-0b6261427002",
+      "label": "General store"
+     },
+     {
+      "id": "Xr82hHraY4Pg",
+      "ref": "fafb7f2c-8125-4d48-b61c-6082b9ba5d8e",
+      "label": "Other"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  },
+  {
+   "id": "osqC2jgIu5fZ",
+   "title": "If you have done e-commerce before, what was your best month in revenue?",
+   "ref": "193802c0-3e4e-40b8-9d23-861c8d123de4",
+   "properties": {
+    "description": "Rough numbers are fine"
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "short_text"
+  },
+  {
+   "id": "V6Ogsh7FLB7T",
+   "title": "How much are you currently generating per month with your business? (Revenue)",
+   "ref": "a52c6ee5-9ae2-4637-8098-b4fcee7b6659",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "L0iyyQqGcpEE",
+      "ref": "ced1d4cc-167a-4e5a-863b-31d49085d752",
+      "label": "Less than $10k per month"
+     },
+     {
+      "id": "rDU4sfUrRwyM",
+      "ref": "8039e00d-f411-4b9c-afc5-5929c510a538",
+      "label": "$10k to $20k per month"
+     },
+     {
+      "id": "MmCCfO9WVbpH",
+      "ref": "a71382e6-aca6-4006-ba82-4c733e14400c",
+      "label": "$20k to $50k per month"
+     },
+     {
+      "id": "BVGZ9sJEzVIz",
+      "ref": "89041bce-bab4-4607-abf3-5a03f7bb05ad",
+      "label": "$50k to $100k per month"
+     },
+     {
+      "id": "9N4fDJUPJZva",
+      "ref": "08d4b63a-8301-4381-bde7-68ac6461da5b",
+      "label": "100k per month or more"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  },
+  {
+   "id": "ziAiOEZO2EYh",
+   "title": "Working with Brandon is a multi four figure investment. \n\nWe have helped multiple brands scale to six and seven figures. \n\nBecause of this, we only work with founders who are financially and mentally ready to execute. \n\nPayment is expected in full. Payment plans may be discussed on the call if relevant.",
+   "ref": "88e63d65-1ebe-4a4e-ab2c-ad51e065ee39",
+   "properties": {
+    "button_text": "Continue",
+    "hide_marks": false
+   },
+   "type": "statement"
+  },
+  {
+   "id": "AwsM6sivV98S",
+   "title": "Which option best describes your current situation",
+   "ref": "6f8b4cfb-297f-46fb-9851-59f135a03e69",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "Wvpff5GmVzfl",
+      "ref": "5565800b-64a1-442f-b210-99ae051773ad",
+      "label": "I have five figures available to invest right now"
+     },
+     {
+      "id": "ea89gg37OvYe",
+      "ref": "26fff342-9075-4525-96ba-d5a19ff60e98",
+      "label": "I have five figures available but would need to split the investment"
+     },
+     {
+      "id": "32D0DPlOXNcS",
+      "ref": "f78edf0a-496b-444c-878e-84df3f5b6a93",
+      "label": "I have between $2,000 and $5,000 available"
+     },
+     {
+      "id": "XeqYGsYrNOk8",
+      "ref": "2f2331dc-48f2-41e8-b562-f4f98e5444d7",
+      "label": "I have less than $2,000 available and do not have the financial capacity to work with Brandon"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  },
+  {
+   "id": "Z4vFiKV4af3W",
+   "title": "How committed are you to working with Brandon and the team?",
+   "ref": "00496aba-99e7-425b-892a-4933dc60505d",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "dyjN2SkRFVst",
+      "ref": "a5922c93-9c99-4120-9fd6-01832866a59c",
+      "label": "100 percent confident. I am booking because I am ready to invest and move forward if it is the right fit"
+     },
+     {
+      "id": "EMMRNj4qM6LX",
+      "ref": "533ba341-688b-4ab5-ab9a-c9a13d9be38c",
+      "label": "80 percent confident. I am mostly ready but want to clarify a few details on the call"
+     },
+     {
+      "id": "klGCYNkv6Bqx",
+      "ref": "7d63d8bf-7646-4bbe-9a69-285806586977",
+      "label": "40 percent confident. I mainly want to gather information and think about it"
+     },
+     {
+      "id": "PVy5vSSpFS54",
+      "ref": "6fa8610e-d9fd-425e-b84c-15774269d4b4",
+      "label": "0 percent confident. I am not ready to invest"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  },
+  {
+   "id": "RF9gZuFhadZM",
+   "title": "What do you want to get out of this?",
+   "ref": "122c409e-a8f5-4c30-a874-acaa559e1350",
+   "properties": {
+    "description": "Be specific. Revenue goals, systems, mindset, freedom, scaling, etc"
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "long_text"
+  },
+  {
+   "id": "Hse6yxJmzP0C",
+   "title": "Who will be attending the call if you are invited?",
+   "ref": "f5a18dd2-c477-4f25-a412-36e520f9c3e4",
+   "properties": {
+    "randomize": false,
+    "allow_multiple_selection": false,
+    "allow_other_choice": false,
+    "none_of_the_above": false,
+    "vertical_alignment": true,
+    "choices": [
+     {
+      "id": "U1LoykjsUlKh",
+      "ref": "596193ea-1e81-4e77-b3cd-15211ddba462",
+      "label": "I will attend alone and will be on time"
+     },
+     {
+      "id": "wNnAFvJrUede",
+      "ref": "2021c894-a0f7-4b88-9df3-11423ef93412",
+      "label": "I will attend with my business partner or partners and all decision makers will be present"
+     }
+    ]
+   },
+   "validations": {
+    "required": true
+   },
+   "type": "multiple_choice"
+  }
+ ],
+ "logic": [
+  {
+   "type": "field",
+   "ref": "a52c6ee5-9ae2-4637-8098-b4fcee7b6659",
+   "actions": [
+    {
+     "action": "jump",
+     "details": {
+      "to": {
+       "type": "thankyou",
+       "value": "ddc3c814-015f-4d22-935e-270f9313b22c"
+      }
+     },
+     "condition": {
+      "op": "or",
+      "vars": [
+       {
+        "op": "is",
+        "vars": [
+         {
+          "type": "field",
+          "value": "a52c6ee5-9ae2-4637-8098-b4fcee7b6659"
+         },
+         {
+          "type": "choice",
+          "value": "ced1d4cc-167a-4e5a-863b-31d49085d752"
+         }
+        ]
+       },
+       {
+        "op": "is",
+        "vars": [
+         {
+          "type": "field",
+          "value": "a52c6ee5-9ae2-4637-8098-b4fcee7b6659"
+         },
+         {
+          "type": "choice",
+          "value": "8039e00d-f411-4b9c-afc5-5929c510a538"
+         }
+        ]
+       },
+       {
+        "op": "is",
+        "vars": [
+         {
+          "type": "field",
+          "value": "a52c6ee5-9ae2-4637-8098-b4fcee7b6659"
+         },
+         {
+          "type": "choice",
+          "value": "a71382e6-aca6-4006-ba82-4c733e14400c"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    {
+     "action": "jump",
+     "details": {
+      "to": {
+       "type": "field",
+       "value": "88e63d65-1ebe-4a4e-ab2c-ad51e065ee39"
+      }
+     },
+     "condition": {
+      "op": "always",
+      "vars": []
+     }
+    }
+   ]
+  },
+  {
+   "type": "field",
+   "ref": "6f8b4cfb-297f-46fb-9851-59f135a03e69",
+   "actions": [
+    {
+     "action": "jump",
+     "details": {
+      "to": {
+       "type": "thankyou",
+       "value": "ddc3c814-015f-4d22-935e-270f9313b22c"
+      }
+     },
+     "condition": {
+      "op": "is",
+      "vars": [
+       {
+        "type": "field",
+        "value": "6f8b4cfb-297f-46fb-9851-59f135a03e69"
+       },
+       {
+        "type": "choice",
+        "value": "2f2331dc-48f2-41e8-b562-f4f98e5444d7"
+       }
+      ]
+     }
+    },
+    {
+     "action": "jump",
+     "details": {
+      "to": {
+       "type": "field",
+       "value": "00496aba-99e7-425b-892a-4933dc60505d"
+      }
+     },
+     "condition": {
+      "op": "always",
+      "vars": []
+     }
+    }
+   ]
+  }
+ ],
+ "created_at": "2026-05-12T23:57:10+00:00",
+ "last_updated_at": "2026-06-03T18:17:04+00:00",
+ "published_at": "2026-05-13T00:37:21+00:00",
+ "_links": {
+  "display": "https://ultimapeak.typeform.com/to/ebgLeVaz",
+  "responses": "https://api.typeform.com/forms/ebgLeVaz/responses"
+ }
+}

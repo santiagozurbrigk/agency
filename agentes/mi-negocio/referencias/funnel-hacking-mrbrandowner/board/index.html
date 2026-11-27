@@ -1,0 +1,610 @@
+<meta charset="utf-8">
+<title>Funnel Hacking MrBrandOwner</title>
+<link rel="artifact-thumbnail" href="thumb.jpg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one infinite "world" canvas (Miro-like) panned/zoomed with CSS transform; sections are tinted frames in flow order, analysis cards below. Single light look on purpose (a whiteboard). */
+:root{
+  color-scheme: light;
+  --canvas:#eeeeec; --ink:#151515; --paper:#ffffff; --muted:#5d5d63; --line:#d6d6d2;
+  --hl:#ffe14d; --red:#e0332b; --sticky:#fff3a3; --sticky2:#fbd3d0; --sticky3:#d6f0d2;
+  --s1:#dfe8fb; --s2:#e4f3df; --s3:#fbf1c6; --s4:#fde4cf; --s5:#ebe3f8; --sB:#d9f0ee; --sC:#ffe0d1; --sD:#f9dceb; --sE:#fbdcdc;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif; --f-mono:"JetBrains Mono",ui-monospace,monospace;
+}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--f-body);overflow:hidden;touch-action:none}
+#viewport{position:fixed;inset:0;overflow:hidden;cursor:grab;
+  background-image:radial-gradient(#c9c9c4 1px,transparent 1px);background-size:22px 22px}
+#viewport.drag{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0;width:7400px;padding:60px;will-change:transform}
+.hint{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;background:#2b2b2b;color:#fff;
+  font:500 13px var(--f-body);padding:8px 16px;border-radius:999px;white-space:nowrap;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis;box-shadow:0 4px 14px #0003}
+/* header band */
+.band{background:var(--ink);color:#fff;padding:26px 40px 22px;text-align:center}
+.band h1{font:900 54px/1 var(--f-display);letter-spacing:.01em;margin:0;text-transform:uppercase}
+.band .sub{font:600 13px var(--f-mono);letter-spacing:.12em;color:#bdbdbd;margin-top:10px;text-transform:uppercase}
+.band .flow{margin-top:14px;font:800 22px var(--f-display);color:var(--hl);text-transform:uppercase;letter-spacing:.02em}
+.band .flow b{color:#fff;font-weight:800}
+.row{display:flex;align-items:flex-start;gap:26px;margin-top:46px}
+.col{display:flex;flex-direction:column;gap:14px}
+/* sticky + cards */
+.sticky{background:var(--sticky);padding:16px 18px;box-shadow:2px 3px 0 #0000001a;font-size:15px;line-height:1.45}
+.sticky.pink{background:var(--sticky2)} .sticky.green{background:var(--sticky3)}
+.sticky h4{margin:0 0 6px;font:800 16px var(--f-display)}
+.sticky p{margin:0 0 8px} .sticky p:last-child{margin:0}
+.lbl{display:inline-block;font:700 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;border:1.5px solid var(--ink);padding:3px 7px;background:#fff}
+.mark{background:var(--hl);padding:0 3px}
+.red{color:var(--red)}
+.thesis{font:800 26px/1.22 var(--f-display);width:460px}
+.bignum{background:#d4f0f5;border:2px solid var(--ink);text-align:center;padding:12px 18px;width:440px}
+.bignum .n{font:900 96px/1 var(--f-display);display:inline-block;position:relative;padding:0 18px}
+.bignum .n::after{content:"";position:absolute;inset:-6px -4px;border:4px solid var(--red);border-radius:50%;transform:rotate(-4deg)}
+.bignum small{display:block;font:500 12px var(--f-body);color:var(--muted);margin-top:6px}
+.proof{display:flex;gap:14px;align-items:flex-start}
+.proof figure{margin:0;width:190px;background:#fff;border:1px solid var(--line);padding:8px;cursor:pointer}
+.proof figcaption{font:800 13px/1.2 var(--f-display);margin-bottom:6px;text-align:center}
+.proof img{display:block;width:100%;max-height:300px;object-fit:cover;object-position:top}
+.legend{background:#fff;border:1px solid var(--line);padding:12px 14px;font-size:13px;width:300px}
+.legend div{display:flex;gap:8px;align-items:center;margin-top:5px}
+.legend i{width:22px;height:12px;display:inline-block;border:1px solid #0002}
+/* sections */
+.sec{border-radius:4px;padding:22px 24px 26px;position:relative}
+.sec>header{display:flex;align-items:flex-end;gap:12px;margin-bottom:6px}
+.sec>header .num{font:900 64px/0.85 var(--f-display)}
+.sec>header h2{margin:0;font:900 26px/1 var(--f-display);text-transform:uppercase}
+.sec>header .q{font:500 13px var(--f-body);color:var(--muted);margin-top:5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 16px}
+.chip{font:700 11px var(--f-mono);text-transform:uppercase;letter-spacing:.04em;background:#fff;border:1px solid #0003;padding:4px 7px}
+.chip.g{background:#c8f0c0}.chip.y{background:var(--hl)}.chip.r{background:#ffc9c4}
+.sub-h{font:800 15px var(--f-display);text-transform:uppercase;background:var(--ink);color:#fff;display:inline-block;padding:4px 9px;margin:18px 0 10px}
+.sub-h.alt{background:#fff;color:var(--ink);border:1.5px solid var(--ink)}
+.arrow{align-self:center;font:900 40px var(--f-display);color:#777}
+/* ad cards */
+.adgrid{display:grid;grid-template-columns:repeat(7,150px);gap:14px}
+.ad{background:#fff;border:1px solid var(--line);cursor:pointer;position:relative;display:flex;flex-direction:column}
+.ad:hover,.ad:focus-visible{outline:3px solid var(--ink)}
+.ad .thumb{position:relative;aspect-ratio:9/16;background:#222 center/cover no-repeat}
+.ad .thumb .play{position:absolute;left:8px;bottom:8px;background:#000b;color:#fff;font:700 11px var(--f-mono);padding:3px 6px}
+.ad .thumb .days{position:absolute;right:6px;top:6px;background:var(--hl);font:800 11px var(--f-mono);padding:3px 5px}
+.ad .thumb .days.win{background:var(--red);color:#fff}
+.ad .thumb .rep{position:absolute;left:6px;top:6px;background:#fff;font:700 10px var(--f-mono);padding:2px 5px}
+.ad .meta{padding:7px 8px 9px;font-size:11.5px;line-height:1.35}
+.ad .meta .hook{font-weight:600;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.ad .meta .cta{margin-top:6px;font:700 10px var(--f-mono);text-transform:uppercase;color:#fff;background:#3b6fd8;display:inline-block;padding:2px 5px}
+.ad .meta .cta.none{background:#999}
+.ad .meta .cta.pb{background:#1f9d55}
+.ad .meta .cta.hl{background:#b4488f}
+.ad.removed .thumb{background:#f3f3f3;display:flex;align-items:center;justify-content:center;text-align:center;font:600 12px var(--f-body);color:var(--muted);padding:10px}
+.car{display:flex;gap:6px;overflow:hidden}
+.car img{width:150px;height:auto;border:1px solid var(--line)}
+/* page columns */
+.pages{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.pg{width:230px;background:#fff;border:1px solid var(--line);cursor:pointer}
+.pg:hover,.pg:focus-visible{outline:3px solid var(--ink)}
+.pg .t{font:800 12px/1.2 var(--f-display);padding:7px 8px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:6px}
+.pg .t span{font:500 10px var(--f-mono);color:var(--muted)}
+.pg .imgs{max-height:900px;overflow:hidden;position:relative}
+.pg .imgs img{display:block;width:100%}
+.pg .imgs::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(transparent,#fff)}
+.pg.mob{width:150px}
+/* vsl / videos */
+.vid{width:230px;background:#fff;border:1px solid var(--line);cursor:pointer}
+.vid:hover,.vid:focus-visible{outline:3px solid var(--ink)}
+.vid .thumb{aspect-ratio:16/9;background:#222 center/cover;position:relative}
+.vid .thumb span{position:absolute;left:8px;bottom:8px;background:#000b;color:#fff;font:700 11px var(--f-mono);padding:3px 6px}
+.vid p{margin:0;padding:7px 8px;font-size:12px;line-height:1.35}
+.frames{display:grid;grid-template-columns:repeat(6,120px);gap:6px}
+.frames img{width:120px;display:block;border:1px solid var(--line)}
+.sec .col>.sticky{max-width:440px}
+.copy{background:#fff;border:1px solid var(--line);padding:14px 16px;font-size:13.5px;line-height:1.5;width:420px}
+.copy h5{margin:0 0 6px;font:800 14px var(--f-display);text-transform:uppercase}
+.copy ol,.copy ul{margin:0;padding-left:18px}
+.copy li{margin:3px 0}
+.copy q{font-style:italic}
+/* form */
+.q-list{display:flex;flex-direction:column;gap:8px;width:430px}
+.qq{background:#fff;border:1px solid var(--line);padding:9px 11px;font-size:13px}
+.qq b{font:800 13px var(--f-display);display:block;margin-bottom:4px}
+.qq .opts{color:var(--muted);font-size:12px;line-height:1.45}
+.qq .opts span{display:block}
+.qq .opts span.k{color:var(--red);font-weight:600}
+.qq .n{font:700 10px var(--f-mono);color:var(--muted)}
+.route{display:flex;flex-direction:column;gap:8px}
+.rt{border:2px solid var(--ink);background:#fff;padding:10px 12px;font-size:13px;width:300px}
+.rt b{font:900 15px var(--f-display);display:block}
+.rt.kill{border-color:var(--red)}
+.shots{display:flex;gap:10px;flex-wrap:wrap}
+.shots img{width:260px;border:1px solid var(--line);cursor:pointer;display:block}
+/* products */
+.prod{display:grid;grid-template-columns:repeat(3,200px);gap:12px}
+.pr{background:#fff;border:2px solid var(--ink);padding:12px}
+.pr .p{font:900 30px var(--f-display)}
+.pr .p s{font-size:15px;color:var(--muted);font-weight:600}
+.pr b{display:block;font:800 14px var(--f-display);margin-bottom:6px}
+.pr small{display:block;font-size:12px;color:var(--muted);margin-top:6px;line-height:1.4}
+/* yt */
+.ytgrid{display:grid;grid-template-columns:repeat(6,190px);gap:12px}
+.yt{background:#fff;border:1px solid var(--line);font-size:11.5px;line-height:1.3}
+.yt img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.yt div{padding:6px 7px}
+.yt .v{font:700 10px var(--f-mono);color:var(--muted);margin-top:3px}
+.shgrid{display:grid;grid-template-columns:repeat(12,92px);gap:8px}
+.sh{font-size:10px;line-height:1.25;background:#fff;border:1px solid var(--line)}
+.sh img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover}
+.sh div{padding:4px 5px}
+/* analysis row */
+.an{background:#fff;border:1px solid var(--line);padding:0 0 14px;width:520px}
+.an>h3{margin:0 0 12px;background:#e9e3f7;font:900 16px var(--f-display);text-transform:uppercase;text-align:center;padding:10px}
+.an .in{padding:0 16px;font-size:13.5px;line-height:1.5}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+td,th{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:top}
+th{font:700 10px var(--f-mono);text-transform:uppercase;color:var(--muted)}
+td.num{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.ladder{display:flex;align-items:flex-end;gap:8px;height:330px;padding:10px 4px 0}
+.ladder div{flex:1;background:#d9ecd3;border:1.5px solid var(--ink);padding:6px;font-size:11.5px;line-height:1.25;display:flex;flex-direction:column;justify-content:flex-end}
+.ladder div b{font:900 15px var(--f-display);display:block}
+.ladder div.call{background:#fff6c4}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.keep{background:#e2f6dc;padding:10px 12px;font-size:13px;line-height:1.45}
+.avoid{background:#fde0dd;padding:10px 12px;font-size:13px;line-height:1.45}
+.keep h5,.avoid h5{margin:0 0 6px;font:800 13px var(--f-display);text-transform:uppercase}
+.keep ol,.avoid ol{margin:0;padding-left:18px}
+.keep li,.avoid li{margin:4px 0}
+/* bottom nav */
+.nav{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;display:flex;flex-direction:column;align-items:center;gap:8px;max-width:calc(100vw - 32px)}
+.nav .zoom,.nav .secs{background:#fff;border-radius:14px;box-shadow:0 6px 24px #0002;display:flex;align-items:center;gap:2px;padding:6px}
+.nav .secs{flex-wrap:wrap;justify-content:center;max-width:1180px}
+.nav button{font:600 14px var(--f-body);border:0;background:transparent;padding:8px 11px;border-radius:9px;cursor:pointer;color:var(--ink)}
+.nav button:hover,.nav button:focus-visible{background:#efefef}
+.nav .pct{font:600 14px var(--f-mono);min-width:56px;text-align:center}
+@media (max-width:700px){.nav .secs{display:none}.band h1{font-size:40px}}
+/* modal */
+#modal{position:fixed;inset:0;z-index:50;background:#000a;display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#modal .box{background:#fff;max-width:1100px;width:100%;max-height:100%;display:flex;flex-direction:column;border-radius:6px;overflow:hidden}
+#modal .top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+#modal .top h3{margin:0;font:900 18px var(--f-display);min-width:0}
+#modal .top button{font:700 14px var(--f-body);border:1.5px solid var(--ink);background:#fff;padding:6px 12px;cursor:pointer;flex-shrink:0}
+#modal .body{display:flex;gap:18px;padding:16px;overflow:auto;min-height:0;flex-wrap:wrap}
+#modal video{max-height:70vh;max-width:100%;background:#000;display:block}
+#modal .side{flex:1;min-width:260px;font-size:14px;line-height:1.5}
+#modal .seg{display:block;padding:3px 6px;border-radius:4px;cursor:pointer}
+#modal .seg:hover{background:#f0f0f0}
+#modal .seg.on{background:var(--hl)}
+#modal .seg i{font:500 11px var(--f-mono);color:var(--muted);font-style:normal;margin-right:6px}
+#modal .facts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+#modal .longpage{max-width:760px;margin:0 auto}
+#modal .longpage img{width:100%;display:block}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<div class="hint">Arrastrá para moverte · rueda o pellizco para zoom · clic en un ad o video para verlo con su guion</div>
+<div id="viewport"><div id="world">
+
+<!-- HEADER -->
+<div class="band" id="s-top">
+  <h1>Funnel Hacking · Brandon van Mierlo</h1>
+  <div class="sub">@mrbrandowner · MRR Mastery · Everkind · relevado el 27/11/2026</div>
+  <div class="flow">50 ads <b>→</b> perfil de IG + DM "MRR" <b>→</b> aplicación <b>→</b> llamada <b>→</b> MRR Mastery $6.999 · 1:1 · cohorte $25.000</div>
+</div>
+
+<!-- THESIS ROW -->
+<div class="row" id="s-tesis" style="justify-content:center">
+  <div class="col">
+    <div class="sticky" style="width:330px">
+      <h4>El conflicto</h4>
+      <p>Todos creen que vende un curso de ecom de $7.000 en Whop.</p>
+      <p>En realidad vende <span class="mark">MRR</span>: su propia marca de suplementos (<b>$10,5M en 2025, $1,7M neto</b>) es la vidriera, y el curso es la puerta de entrada a un 1:1, a una cohorte de $25.000 y a un mastermind en Bali.</p>
+      <p>Sus ads no venden nada: compran <b>visitas al perfil</b>. El perfil y el DM hacen el resto.</p>
+    </div>
+    <div class="legend">
+      <span class="lbl">Cómo leer este board</span>
+      <div><i style="background:var(--s1)"></i>paso del embudo (en orden)</div>
+      <div><i style="background:var(--sB)"></i>funnel nuevo, en construcción</div>
+      <div><i style="background:var(--sticky)"></i>nota nuestra</div>
+      <div><i style="background:var(--sticky2)"></i>pendiente / no se pudo capturar</div>
+      <div><i style="background:var(--hl)"></i>lo que hay que mirar</div>
+      <div><span class="chip" style="background:var(--red);color:#fff;padding:1px 5px">85 d</span>días que estuvo corriendo (rojo = ganador, 30+ días)</div>
+      <div>▶ clic = video con guion sincronizado</div>
+    </div>
+  </div>
+  <div class="col">
+    <span class="lbl">La tesis</span>
+    <div class="thesis">Usa su marca de suplementos como prueba. Compra <span class="mark">visitas al perfil</span> con reels de fundador, convierte por DM con la palabra <span class="mark">"MRR"</span>, y un formulario manda a los chicos a <span class="mark">Whop ($6.999)</span> y a los grandes a una <span class="mark">llamada</span>. Ahora está armando un segundo motor: <span class="mark">quiz + webinar</span>.</div>
+    <div class="bignum"><span class="lbl">Ads en la biblioteca de Meta</span><br><span class="n">50</span><small>31 creativos distintos · 3 olas (may–oct 2026) · todos inactivos hoy: el último terminó el 27/10</small></div>
+  </div>
+  <div class="col">
+    <span class="lbl">La prueba</span>
+    <div class="proof" id="proof"></div>
+  </div>
+</div>
+
+<!-- FLOW ROW 1 -->
+<div class="row" id="flow1">
+
+<section class="sec" id="s-01" style="background:var(--s1)">
+  <header><span class="num">01</span><div><h2>Tráfico · Meta Ads</h2><div class="q">¿Cómo consigue la atención? 50 ads, 31 creativos, todos van al perfil de Instagram.</div></div></header>
+  <div class="chips"><span class="chip y">Objetivo: visitas al perfil de IG</span><span class="chip">0 ads con landing</span><span class="chip">talking head 35–98 s</span><span class="chip">inglés · subtitulado</span><span class="chip">USD</span><span class="chip">mismo creativo resubido 2–4 veces</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="col" style="width:280px">
+      <div class="sticky"><h4>Cómo pauta</h4><p>No hay un solo ad a landing: todos dicen "Visit Instagram profile". Compra seguidores calificados y deja que el perfil, las destacadas y el DM conviertan.</p><p>Cuando un creativo funciona, lo <b>resube</b> como ad nuevo (hasta 4 veces). Así se ve en la biblioteca: 50 ads, 31 guiones.</p></div>
+      <div class="sticky"><h4>Las 3 olas</h4><p><b>Ola 1 · may–jun (21):</b> clips de podcast y sit-downs, rants de Shopify, y los hooks de prueba ("This is Benjamin, $1M en 30 días"). CTA: seguime / mirá mis destacadas.</p><p><b>Ola 2 · ago (3):</b> "Comentá PLAYBOOK" y la historia de la marca perdida.</p><p><b>Ola 3 · sep–oct (7):</b> "skill issue", "si te cierran la cuenta volvés a cero". CTA: <span class="mark">DM "MRR"</span> para ver si sos fit en MRR Mastery.</p></div>
+      <div class="sticky"><h4>Ganadores (30+ días vivos)</h4><p>1. "Si hacés ecom sin suscripciones en 2026, jugás en modo difícil" · 85 d · 4 resubidas.</p><p>2. "Estás trabado en 50k/mes y no sabés por qué" · 86 d.</p><p>3. "This is Jordan, $600k en 30 días" · 78 d.</p><p>4. "Skill issue" · 42 d.</p></div>
+      <div class="sticky pink"><h4>12 de 31 sin CTA</h4><p>Los clips de podcast de la ola 1 no piden nada. En la ola 3 todos cierran con una palabra clave: aprendió.</p></div>
+    </div>
+    <div class="col" id="adwaves"></div>
+  </div>
+</section>
+<div class="arrow">→</div>
+
+<section class="sec" id="s-02" style="background:var(--s2);width:520px">
+  <header><span class="num">02</span><div><h2>Perfil de IG + DM</h2><div class="q">¿Dónde convierte? En el perfil y por mensaje directo.</div></div></header>
+  <div class="chips"><span class="chip y">DM "MRR"</span><span class="chip y">Comentá "PLAYBOOK"</span><span class="chip">"check my highlights"</span></div>
+  <div class="col">
+    <div class="copy" style="width:auto"><h5>Lo que dice el perfil (según buscadores)</h5>
+      <ul><li><b>Brandon (@mrbrandowner)</b> · bio: "€10M+ E-com Brands Owner".</li><li>~230 posts. Los seguidores que muestra Google (~2.8k) están desactualizados.</li><li>Link en bio → mrbrandowner.com (aplicación con VSL).</li><li>Destacadas con resultados de alumnos: los ads de prueba mandan ahí.</li></ul></div>
+    <div class="copy" style="width:auto"><h5>Las 3 palabras clave que usan los ads</h5>
+      <table><tr><th>CTA</th><th>Promesa en el ad</th><th>Creativos</th></tr>
+      <tr><td><b>DM "MRR"</b></td><td>"te mando un video para empezar una marca MRR" / "veo si sos fit"</td><td class="num">5</td></tr>
+      <tr><td><b>Comentá PLAYBOOK</b></td><td>"mi sistema de escalado 2026 completo"</td><td class="num">4</td></tr>
+      <tr><td><b>Seguime + DM</b></td><td>"te digo si sos fit para trabajar 1:1"</td><td class="num">4</td></tr>
+      <tr><td><b>Mirá mis destacadas</b></td><td>resultados de alumnos</td><td class="num">3</td></tr></table></div>
+    <div class="sticky pink"><h4>Pendiente de captura</h4><p>Instagram pide login para ver el perfil, las destacadas y las respuestas automáticas del DM. No escribimos "MRR" ni "PLAYBOOK" para no dejar tus datos. Para completarlo: mandale "MRR" desde una cuenta de prueba y pasame las capturas.</p></div>
+    <div class="sticky"><h4>Hipótesis</h4><p>El DM devuelve un video + el link a mrbrandowner.com. El quiz nuevo pide el <b>Instagram</b> de cada lead (campo <code>store_or_ig</code>): sugiere que cruzan el lead con la conversación del DM.</p></div>
+  </div>
+</section>
+<div class="arrow">→</div>
+
+<section class="sec" id="s-03" style="background:var(--s3)">
+  <header><span class="num">03</span><div><h2>Landing + VSL</h2><div class="q">¿Qué ve antes de aplicar? mrbrandowner.com (= /application = /apply)</div></div></header>
+  <div class="chips"><span class="chip y">"Private intake · 4 brands per month"</span><span class="chip">VSL 5:09 en Vidalytics</span><span class="chip">6 testimonios en video</span><span class="chip">Typeform embebido</span><span class="chip">"$30K–$300K+/mo"</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="pages" id="p-home"></div>
+    <div class="col">
+      <div class="sub-h">El VSL (5:09)</div>
+      <div id="vslbox"></div>
+      <div class="frames" id="frames"></div>
+      <div class="sub-h">Testimonios en la landing</div>
+      <div style="display:grid;grid-template-columns:repeat(3,230px);gap:12px" id="testis"></div>
+    </div>
+    <div class="col">
+      <div class="copy"><h5>Estructura del VSL</h5><ol>
+        <li><b>Calificar:</b> "si estás viendo esto ya ganás plata en ecom: 10k, 30k, 6 cifras".</li>
+        <li><b>La pregunta:</b> "¿cuánto vas a facturar el mes que viene? No sabés. Es un problema de <u>modelo</u>".</li>
+        <li><b>La cinta:</b> ads → ventas → cliente que nunca vuelve → más ads.</li>
+        <li><b>El otro lado:</b> "el 1 del mes ya sabés cuánto entra sin gastar un dólar".</li>
+        <li><b>Prueba:</b> Max y Emile de 50k a 600k/mes en 90 días; otros de 0 a 100k en 45 días.</li>
+        <li><b>Enemigo:</b> los gurús que hablan de MRR y nunca armaron una.</li>
+        <li><b>3 avatares:</b> dropshipper, marca trabada, el que arranca.</li>
+        <li><b>Mecanismo:</b> avatar primero, suscripción encima.</li>
+        <li><b>Urgencia:</b> "los que pasen a MRR en 12 meses tendrán un negocio vendible en 3 años".</li>
+        <li><b>CTA:</b> agendá una llamada → MRR Mastery o 1:1.</li></ol></div>
+      <div class="copy"><h5>Bloques de la landing</h5><ul>
+        <li><b>Hero:</b> "Stop Gambling on Ads. Scale Your Brand to $100K Days and $1M Months."</li>
+        <li><b>4 números:</b> $10.6M en 2025 · 42 alumnos +$100K/mes · $20M+ total · $2.5M+/mes.</li>
+        <li><b>"This is not another course"</b>: acceso directo a Brandon y Remo, sin account managers.</li>
+        <li><b>Diagnóstico, 4 fugas:</b> AOV bajo, creativo quemado, sin retención, margen que sangra.</li>
+        <li><b>Para quién sí / no:</b> $30K–$300K/mes, producto real.</li>
+        <li><b>Historia:</b> TravX, $8M, el proveedor los estafó y lo perdieron todo.</li>
+        <li><b>FAQ:</b> "¿cuánto cuesta?" → "no publicamos precios, en 15 minutos te decimos".</li></ul></div>
+      <div class="sticky"><h4>Lo que hay que mirar</h4><p>La landing no tiene precio ni producto: solo la llamada. El precio aparece recién en Whop, y solo si el formulario te descalifica.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow">→</div>
+
+<section class="sec" id="s-04" style="background:var(--s4)">
+  <header><span class="num">04</span><div><h2>Aplicación · Typeform</h2><div class="q">¿Cómo filtra? 11 preguntas y 2 cortes que mandan a Whop.</div></div></header>
+  <div class="chips"><span class="chip">"Brandon & Remo Ecom Mentorship"</span><span class="chip y">2 minutos</span><span class="chip r">&lt; $50k/mes → Whop</span><span class="chip r">&lt; $2.000 disponibles → Whop</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="q-list" id="qlist"></div>
+    <div class="col">
+      <div class="sub-h">Ruteo (lógica del form)</div>
+      <div class="route">
+        <div class="rt kill"><b>Factura &lt; $10k, $10–20k o $20–50k</b>→ salta al final y lo redirige al <b>checkout de Whop</b> del curso ($6.999).</div>
+        <div class="rt kill"><b>"Tengo menos de $2.000 disponibles"</b>→ mismo destino: <b>Whop</b>.</div>
+        <div class="rt"><b>Todo lo demás</b>→ <b>Calendly</b> "Ecom MRR Mastery", 30 min.</div>
+      </div>
+      <div class="sticky"><h4>La contradicción</h4><p>La landing dice "para marcas de $30K a $300K+/mes", pero el form manda a Whop a todo el que factura menos de $50k. Entre 30k y 50k te invitan a aplicar y te venden el curso sin llamada.</p></div>
+      <div class="sticky"><h4>El "statement" antes del dinero</h4><p><q>Working with Brandon is a multi four figure investment… Payment is expected in full. Payment plans may be discussed on the call if relevant.</q></p><p>Después pregunta capital disponible y "¿qué tan comprometido estás? 100% / 80% / 40% / 0%".</p></div>
+    </div>
+    <div class="col">
+      <div class="sub-h alt">Capturas del Typeform</div>
+      <div class="shots" id="tfshots" style="width:540px"></div>
+    </div>
+  </div>
+</section>
+<div class="arrow">→</div>
+
+<section class="sec" id="s-05" style="background:var(--s5)">
+  <header><span class="num">05</span><div><h2>Llamada + Productos</h2><div class="q">¿Qué vende y a cuánto? Llamada de 30 min y la tienda de Whop.</div></div></header>
+  <div class="chips"><span class="chip">3 calendarios de Calendly</span><span class="chip">Whop: 947 miembros</span><span class="chip">5.0 ★ · 42 reseñas</span><span class="chip">Discord</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="col">
+      <div class="prod">
+        <div class="pr"><b>Ecom MRR Mastery Course</b><div class="p">$6.999 <s>$8.748</s></div><small>Whop. 8 módulos: producto, margen, suscripciones, creativos, retención, data, backend y equipo. Incluye Discord, chat y 2 masterclasses (E-com Mastery y Payment Processing).</small></div>
+        <div class="pr"><b>MRR Mastery Programme</b><div class="p">en llamada</div><small>"Para marcas desde la primera venta hasta 6 cifras/mes". Curso + llamadas semanales en vivo + comunidad privada.</small></div>
+        <div class="pr"><b>Private 1:1 con Brandon</b><div class="p">en llamada</div><small>"Para marcas de $50K+/mes". Acceso directo a Brandon y Remo, números revisados cada semana. Etiqueta LIMITED.</small></div>
+        <div class="pr"><b>MRR Mastery Q4 Cohort</b><div class="p">$25.000</div><small>Whop. "Scaling during Q4-Q5". Producto de temporada.</small></div>
+        <div class="pr"><b>Bali Mastermind</b><div class="p">aplicación</div><small>6–8 oct 2026, Canggu. 75 operadores, sin grabación. Ver sección D.</small></div>
+        <div class="pr"><b>Llamada / consultoría</b><div class="p">pago</div><small>Testimonio de la landing: "una llamada de 90 minutos" para estructura fiscal (Dubái, LLC, Amex). Vende consultoría suelta.</small></div>
+      </div>
+      <div class="copy" style="width:auto"><h5>Los 3 calendarios que aparecen</h5><ul>
+        <li><b>ecom-mrr-mastery</b> (30 min): destino del Typeform.</li>
+        <li><b>ecom-mrr-mastery-meeting</b>: destino del quiz nuevo (1:1, Programme y Course).</li>
+        <li><b>b-mierlo1999 / ecom-strategy-call</b>: calendario personal de Brandon, en el código.</li></ul></div>
+      <div class="sticky"><h4>Quién atiende</h4><p>"Vas a hablar con alguien de mi equipo que ya leyó tus respuestas" (FAQ del quiz). Primero el setter, después Brandon.</p></div>
+    </div>
+    <div class="pages" id="p-whop"></div>
+  </div>
+</section>
+</div>
+
+<!-- FLOW ROW 2 -->
+<div class="row" id="flow2">
+<section class="sec" id="s-B" style="background:var(--sB)">
+  <header><span class="num">B</span><div><h2>Funnel nuevo · quiz de 7 preguntas</h2><div class="q">¿Qué está construyendo? Páginas ocultas en su web (no enlazadas desde ningún lado).</div></div></header>
+  <div class="chips"><span class="chip y">/application-v2</span><span class="chip y">/application-v3</span><span class="chip">/quiz</span><span class="chip">/stories/benjamin · faiz · andrei</span><span class="chip">Supabase + Meta Pixel (Lead, Schedule)</span><span class="chip">/quiz-leads (panel interno)</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="pages" id="p-quiz"></div>
+    <div class="col">
+      <div class="copy"><h5>El quiz (preguntas según la respuesta)</h5><ol>
+        <li><b>¿Dónde está la marca?</b> No vendo · &lt;$10K · $10–50K · $50–250K · $250K–1M · $1M+</li>
+        <li><b>¿Cómo gana plata?</b> One-time · mayormente one-time · mix · mayormente suscripción · no decidí</li>
+        <li><b>¿Qué vendés?</b> suplementos · belleza · mascotas · salud · ropa · otro</li>
+        <li><b>% recurrente</b> (solo si ya tiene suscripciones)</li>
+        <li><b>¿Qué te frena para lanzar?</b> (solo si no vende) / <b>¿Qué frena la marca?</b> creativo · AOV y margen · retención · churn · backend · equipo</li>
+        <li><b>¿Quién corre tus ads?</b> yo · in-house · agencia · nadie</li>
+        <li><b>¿Cuánto vas a invertir en 90 días, aparte de ads?</b> &lt;$1K · $1–5K · $5–15K · $15–50K · $50K+</li>
+        <li><b>¿Cuándo querés arrancar?</b> ya · 30 días · solo mirando</li></ol></div>
+      <div class="copy"><h5>Las 4 rutas (código real)</h5>
+        <table><tr><th>Ruta</th><th>Condición</th><th>Destino</th></tr>
+        <tr><td><b>1:1 privado</b></td><td>factura $250K+ y invierte $50K+</td><td>Calendly</td></tr>
+        <tr><td><b>Programme</b></td><td>el resto que califica</td><td>Calendly</td></tr>
+        <tr><td><b>Curso</b></td><td>invierte $1–5K, o no vende y no arranca ya</td><td>Calendly / checkout</td></tr>
+        <tr><td><b>Nurture</b></td><td>invierte &lt;$1K, o es chico y "solo mirando"</td><td>YouTube "If I Started Over"</td></tr></table>
+        <p style="margin:8px 0 0">"Prioridad" = quiere arrancar <b>ya</b> y cae en 1:1 o Programme. Cada lead tiene un <b>score 0–100</b> (etapa ×8, modelo, inversión ×5, timing).</p></div>
+      <div class="sticky"><h4>Por qué importa</h4><p>Reemplaza el Typeform de "sí/no" por un quiz que <b>no descarta a nadie</b>: todos reciben una ruta. Los que no califican van a YouTube en vez de a un checkout de $7.000.</p></div>
+      <div class="sticky"><h4>Las story pages</h4><p>Una página por alumno con números, la captura de Shopify y el video: <b>Benjamin</b> de $0 a $20M en 7 meses · <b>Faiz</b> de 150K a 1,3M MRR en 4 meses (Pakistán) · <b>Andrei</b>, 17 años, récord de $400K/mes.</p></div>
+    </div>
+    <div class="pages" id="p-stories"></div>
+  </div>
+</section>
+<div class="arrow">·</div>
+<section class="sec" id="s-C" style="background:var(--sC)">
+  <header><span class="num">C</span><div><h2>Webinar · $100k MRR Live Masterclass</h2><div class="q">¿Hay webinar? Hubo uno el 4/11. El de "este sábado" es una página falsa.</div></div></header>
+  <div class="chips"><span class="chip y">/webinar · mié 4 nov · 19:00 CET · 90 min</span><span class="chip">registro: email → teléfono</span><span class="chip">"vale $7.000, hoy $0"</span><span class="chip r">/masterclass: fecha y cupos simulados</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="pages" id="p-web"></div>
+    <div class="col">
+      <div class="copy"><h5>El temario (5 partes)</h5><ol>
+        <li><b>El problema real:</b> por qué las marcas vuelven a cero cada mes.</li>
+        <li><b>El producto:</b> "¿el cliente lo termina?" Consumible o recargable; ~$15 de costo tiene que venderse a $45+.</li>
+        <li><b>La oferta:</b> el 2x1 en suscripción sobrecarga al cliente y cancela en el mes 2. Value stack en su lugar.</li>
+        <li><b>Los ads (Remo):</b> breakeven ROAS 1,3; escalan ganadores a 1,0 y hasta 0,8 a propósito, por el LTV.</li>
+        <li><b>El camino a $100k MRR:</b> retention manager, analista de datos de suscripción, cohortes por SKU y plan B de procesador de pagos.</li></ol></div>
+      <div class="copy"><h5>Ganchos de la página</h5><ul>
+        <li>El momento emocional: <q>Subscription renewed · Order #10482 · Month 4</q>, "They came back".</li>
+        <li>Un juego: "¿podés llevar esta marca a $100k MRR? 600 suscriptores a $40, 6 meses, una jugada por mes".</li>
+        <li>Lo que <b>no</b> enseña: producto ganador, viralizar en TikTok, catálogo de 50 SKUs, rediseñar Shopify.</li>
+        <li>Antes / después, P.S. al pie, FAQ de 9 preguntas.</li></ul></div>
+      <div class="sticky pink"><h4>El webinar "de hoy" no existe</h4><p><b>/masterclass</b> dice "sábado 28 de noviembre, 19:00", pero el código calcula siempre <b>el próximo sábado a las 19:00</b> de quien la mira, los asientos suben solos de 67 a 96 durante la semana y el botón "Reserve my seat" no envía nada: solo muestra "Seat reserved". El VSL es un placeholder.</p><p>El real (/webinar) fue el <b>4/11</b> y guardaba email y teléfono en su base. Su página todavía tiene textos sin completar: "[support email]", "[Company name]".</p></div>
+      <div class="sticky pink"><h4>Slides: pendiente</h4><p>No hubo vivo para grabar. Si anuncian otra fecha real, se registra con un email de prueba y se graba.</p></div>
+    </div>
+  </div>
+</section>
+<div class="arrow">·</div>
+<section class="sec" id="s-D" style="background:var(--sD)">
+  <header><span class="num">D</span><div><h2>Bali Mastermind</h2><div class="q">¿Cuál es el techo? Un evento presencial por aplicación.</div></div></header>
+  <div class="chips"><span class="chip">6–8 oct 2026 · Canggu</span><span class="chip">75 operadores</span><span class="chip">"22/75 claimed"</span><span class="chip">sin grabación</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="pages" id="p-bali"></div>
+    <div class="col" style="width:300px">
+      <div class="sticky"><h4>Cómo lo vende</h4><p>"Tres días en una villa con 75 dueños de marca que se cansaron de arrancar cada mes en cero." Anfitriones: Brandon (backend) y Remo (creativos), "co-founders of Everkind".</p><p>4 ejes: arquitectura de suscripción, LTV, paid social y retención. Cierre en Finns Beach Club.</p></div>
+      <div class="sticky"><h4>Ya pasó</h4><p>Fue en octubre. En YouTube está el video "I Hosted The Largest Ecom Mastermind in Bali" (7.700 vistas): el evento se recicla como contenido.</p></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="row" id="flow3">
+<section class="sec" id="s-E" style="background:var(--sE)">
+  <header><span class="num">E</span><div><h2>YouTube · @mrbrandowner</h2><div class="q">¿Cómo nutre? 31 videos largos (~243K vistas) y 431 shorts (~230K vistas).</div></div></header>
+  <div class="chips"><span class="chip">5.860 suscriptores</span><span class="chip y">ruta "nurture" del quiz → "If I Started Over" (7.300 vistas)</span><span class="chip">vlogs · sit-downs · auditorías en vivo · playbooks de 1 h+</span></div>
+  <div style="display:flex;gap:18px;align-items:flex-start">
+    <div class="col" style="width:290px">
+      <div class="sticky"><h4>4 formatos</h4><p><b>Vlog de estilo de vida:</b> Bali, Dubái, Nueva York, China, Saint Tropez, Ciudad del Cabo.</p><p><b>Sit-down con alumno:</b> "He Built a $100k/Day Supplement Brand From Pakistan" (23K, el más visto) · "17 Year Old Student Does $400K MRR".</p><p><b>Auditoría en vivo:</b> "We Audited His $200K/Month E-com Brand Live" (episodios 1 y 2).</p><p><b>Playbook largo (60–80 min):</b> "How I Hit $2.4M/Month with MRR", "The 2026 E-com Blueprint".</p></div>
+      <div class="sticky"><h4>El embudo de YouTube</h4><p>YouTube no vende directo: es donde manda a los que no califican ("START WITH THE FREE PLAYBOOK") y la prueba social que citan los alumnos: "te seguí unos meses, vi que no se guardaba nada".</p></div>
+      <div class="sticky pink"><h4>Pendiente</h4><p>YouTube bloquea las descripciones desde nuestro servidor: no pudimos ver qué links ponen en cada video.</p></div>
+    </div>
+    <div class="col">
+      <div class="sub-h">Videos largos (más recientes primero)</div>
+      <div class="ytgrid" id="ytgrid"></div>
+      <div class="sub-h">Top 24 shorts por vistas</div>
+      <div class="shgrid" id="shgrid"></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ANALYSIS ROW -->
+<div class="row" id="s-an" style="flex-wrap:wrap;width:7200px">
+  <div class="an" id="s-num"><h3>Números que declara</h3><div class="in">
+    <table><tr><th>Dato</th><th>Dónde</th></tr>
+    <tr><td><b>$10,6M</b> facturados en 2025 · <b>$1,7M</b> neto</td><td>landing, webinar</td></tr>
+    <tr><td><b>$2,5M/mes</b> "ahora"</td><td>landing, ads de jun–ago</td></tr>
+    <tr><td><b>$3M/mes</b> · <b>$3,2M/mes</b></td><td>ad de ago · /masterclass</td></tr>
+    <tr><td><b>$5M/mes</b>, "pronto $10M"</td><td>ad de sep, webinar, Bali</td></tr>
+    <tr><td><b>$1,4M MRR → $350K</b> cuando Shopify Payments los cortó (Q4 2025)</td><td>webinar, v2</td></tr>
+    <tr><td><b>42</b> alumnos +$100K/mes · <b>20+</b> +$1M/mes · <b>27+</b> operadores</td><td>landing · v2 · carrusel</td></tr>
+    <tr><td><b>42,9%</b> clientes que vuelven · <b>8,4x</b> ROAS · <b>$182</b> LTV</td><td>webinar, /masterclass</td></tr>
+    <tr><td><b>947</b> en Whop · <b>255+</b> en la comunidad (sep) · <b>300</b> (X)</td><td>Whop · ad · X</td></tr>
+    <tr><td>Marca perdida: <b>$8M</b> "beauty" / "hair tool, €8M" / "7 cifras"</td><td>carrusel · ad · ad</td></tr></table>
+    <div class="sticky pink" style="margin-top:10px"><p>Los números cambian según la pieza. Para un comprador atento, la facturación mensual va de $2M a $5M en el mismo trimestre.</p></div>
+  </div></div>
+  <div class="an" id="s-esc"><h3>Escalera de precios</h3><div class="in">
+    <div class="ladder">
+      <div style="height:16%"><b>$0</b>YouTube, IG, DM "PLAYBOOK"</div>
+      <div style="height:24%"><b>$0</b>Webinar $100k MRR</div>
+      <div style="height:48%"><b>$6.999</b>Curso en Whop (descalificados)</div>
+      <div class="call" style="height:62%"><b>en llamada</b>MRR Mastery Programme</div>
+      <div class="call" style="height:78%"><b>en llamada</b>1:1 con Brandon y Remo</div>
+      <div style="height:90%"><b>$25.000</b>Cohorte Q4</div>
+      <div class="call" style="height:100%"><b>aplicación</b>Bali Mastermind</div>
+    </div>
+    <p style="margin:10px 0 0;font-size:12.5px;color:var(--muted)">Amarillo = precio que no se publica. El único precio visible es el del curso, y solo lo ve el que no califica.</p>
+  </div></div>
+  <div class="an" id="s-rep"><h3>Reputación</h3><div class="in">
+    <p><b>Whop: 5.0 ★ con 42 reseñas</b> (41 de 5, 1 de 4). Lo que repiten: "Brandon y Remo contestan en persona", "actualizan el curso cada dos semanas", "el precio es demasiado bajo".</p>
+    <p><q>I joined MRR Mastery at the end of July… my orders have grown massively.</q> (Quin) · <q>insane value the price is way to low</q> (laurensbuurstede)</p>
+    <p>En el muro de Whop hay spam de terceros ("escribime por Telegram") sin moderar.</p>
+    <p><b>El curso está pirateado</b>: al menos 5 sitios lo revenden a ~$399 ("Brandon van Mierlo – Ecom MRR Mastery"). Señal de demanda, y de que el curso solo no es el negocio.</p>
+    <p>No encontramos reseñas independientes, Trustpilot ni quejas públicas.</p>
+  </div></div>
+  <div class="an" id="s-quien"><h3>Quién está detrás</h3><div class="in">
+    <p><b>Brandon van Mierlo</b>, 26 años (@mrbrandowner, Whop @bmierlo). Probablemente de Países Bajos (vende en euros, alumnos neerlandeses); se mudó a Dubái y opera con su equipo desde Bali. Arrancó "con menos de €1.000 haciendo turnos de noche". Primera marca: <b>TravX</b> (herramienta de pelo, ~€8M, la perdió cuando el proveedor los estafó).</p>
+    <p><b>Remo</b> ("The Facebook Wizard", @der_remo): socio, corre adquisición y creativos. "Nueve cifras en ad spend".</p>
+    <p><b>Everkind</b>: la marca de suplementos de ambos, la prueba de todo el funnel.</p>
+    <p><b>Pierre Koutani</b>: tercer miembro del equipo en Whop.</p>
+    <p><b>Grayson</b>: da el módulo de retención · <b>More Than Scaling</b>: agencia que aporta el módulo de Google Ads.</p>
+  </div></div>
+  <div class="an" id="s-herr"><h3>Herramientas</h3><div class="in">
+    <table><tr><th>Para qué</th><th>Qué usa</th></tr>
+    <tr><td>Web y páginas ocultas</td><td>React (app de una sola página), con indicios de Lovable</td></tr>
+    <tr><td>VSL</td><td>Vidalytics</td></tr>
+    <tr><td>Aplicación</td><td>Typeform (con lógica de saltos)</td></tr>
+    <tr><td>Quiz y registros del webinar</td><td>Supabase (tablas propias + panel /quiz-leads)</td></tr>
+    <tr><td>Tracking</td><td>Meta Pixel: PageView, Lead, Schedule + UTMs y fbclid guardados por lead</td></tr>
+    <tr><td>Agenda</td><td>Calendly (3 calendarios)</td></tr>
+    <tr><td>Cobro, curso y comunidad</td><td>Whop + Discord</td></tr>
+    <tr><td>DM por palabra clave</td><td>automatización de IG (probablemente ManyChat, sin confirmar)</td></tr>
+    <tr><td>Afiliados de su marca</td><td>Social Snowball (lo recomienda en un ad)</td></tr></table>
+  </div></div>
+  <div class="an" id="s-pend" style="width:400px"><h3>Lo que falta</h3><div class="in">
+    <div class="sticky pink"><p><b>Slides del webinar:</b> no hubo vivo hoy (ver C).</p><p><b>Emails:</b> no nos registramos (lo decidiste vos). Para verlos: registrarse en /webinar con un email de prueba.</p><p><b>Perfil, destacadas y respuesta del DM:</b> Instagram pide login.</p><p><b>20 ads más viejos:</b> la biblioteca dice 70; Meta solo devuelve los 50 más recientes.</p><p><b>Descripciones de YouTube:</b> bloqueadas desde el servidor.</p></div>
+  </div></div>
+  <div class="an" id="s-take" style="width:1080px"><h3>Qué nos llevamos para Génesis</h3><div class="in">
+    <div class="cols2">
+      <div class="keep"><h5>Copiar</h5><ol>
+        <li><b>La prueba es la marca propia con el P&amp;L abierto.</b> $10,5M y $1,7M neto, y la caída de Shopify Payments contada como historia. Génesis necesita su caso de tercero con suscripción: es la brecha que ya marcamos en la base 08.</li>
+        <li><b>Ads a visita de perfil + palabra clave por DM.</b> Sin landing, con CTA "DM MRR". Encaja directo con reels + ManyChat → WhatsApp de Manu.</li>
+        <li><b>Resubir al ganador</b> como ad nuevo en vez de escalar presupuesto: 4 resubidas del mismo guion durante 85 días.</li>
+        <li><b>Quiz con rutas en vez de form de sí/no.</b> Nadie queda afuera: el que no califica va a YouTube. Sirve para la aplicación de applygenesis.</li>
+        <li><b>Una página por caso de alumno</b> con números, captura y video. Mucho más fuerte que una pared de testimonios.</li>
+        <li><b>El momento del "primer rebill"</b> como clímax emocional del webinar ("Subscription renewed · Month 4").</li></ol></div>
+      <div class="avoid"><h5>Evitar</h5><ol>
+        <li><b>Números distintos en cada pieza</b> ($2M, $2,5M, $3,2M, $5M/mes). Fijar 3 cifras y repetirlas siempre.</li>
+        <li><b>Escasez falsa:</b> fechas que se recalculan, cupos simulados, páginas con "[support email]". Si alguien lo nota, se cae la confianza.</li>
+        <li><b>Mandar al checkout de $7.000 al que no califica</b> desde un form. Santi ya decidió que Lite se ofrece solo en llamada: lo de Brandon confirma por qué (el quiz nuevo de él también corrige eso).</li>
+        <li><b>Clips sin CTA:</b> 12 de sus 31 creativos no piden nada.</li></ol></div>
+    </div>
+  </div></div>
+</div>
+
+</div></div>
+
+<div class="nav" aria-label="Navegación del board">
+  <div class="zoom"><button id="zo" aria-label="Alejar">−</button><span class="pct" id="pct">10%</span><button id="zi" aria-label="Acercar">+</button><button id="fit">Ver todo</button></div>
+  <div class="secs" id="secs"></div>
+</div>
+<div id="modal" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="mt"><div class="top"><h3 id="mt"></h3><button id="mclose">Cerrar</button></div><div class="body" id="mbody"></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtT=s=>{s=Math.floor(s);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const fmtN=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1).replace('.',',')+'K':String(n);
+let D=null;
+
+/* ---------- pan & zoom ---------- */
+const vp=$('#viewport'),world=$('#world');
+let S={x:0,y:0,k:.1};
+function apply(){world.style.transform=`translate(${S.x}px,${S.y}px) scale(${S.k})`;$('#pct').textContent=Math.round(S.k*100)+'%'}
+function zoomAt(cx,cy,f){const k=Math.min(2.5,Math.max(.03,S.k*f));S.x=cx-(cx-S.x)*k/S.k;S.y=cy-(cy-S.y)*k/S.k;S.k=k;apply()}
+function fitRect(x,y,w,h,pad=40){const W=innerWidth,H=innerHeight-150;const k=Math.min((W-pad*2)/w,(H-pad*2)/h,1.2);S.k=k;S.x=(W-w*k)/2-x*k;S.y=Math.max(50,(H-h*k)/2+40)-y*k;apply()}
+function fitAll(){fitRect(0,0,world.offsetWidth,world.offsetHeight,20)}
+function goto(id){const el=document.getElementById(id);if(!el)return;let x=0,y=0,n=el;while(n&&n!==world){x+=n.offsetLeft;y+=n.offsetTop;n=n.offsetParent}fitRect(x,y,el.offsetWidth,el.offsetHeight)}
+vp.addEventListener('wheel',e=>{if(e.target.closest('#modal'))return;e.preventDefault();if(e.shiftKey){S.x-=e.deltaY;apply();return}zoomAt(e.clientX,e.clientY,Math.exp(-e.deltaY*(e.ctrlKey?0.01:0.0015)))},{passive:false});
+let ptrs=new Map(),last=null,pinch=null,moved=0;
+vp.addEventListener('pointerdown',e=>{if(e.target.closest('video,button'))return;vp.setPointerCapture(e.pointerId);ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=0;if(ptrs.size===1){last={x:e.clientX,y:e.clientY};vp.classList.add('drag')}else if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
+vp.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY});if(ptrs.size===2&&pinch){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.x-b.x,a.y-b.y);zoomAt((a.x+b.x)/2,(a.y+b.y)/2,d/pinch.d);pinch.d=d;moved+=10}else if(last){const dx=e.clientX-last.x,dy=e.clientY-last.y;moved+=Math.abs(dx)+Math.abs(dy);S.x+=dx;S.y+=dy;last={x:e.clientX,y:e.clientY};apply()}});
+const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(ptrs.size===0){last=null;vp.classList.remove('drag')}else{const p=[...ptrs.values()][0];last={x:p.x,y:p.y}}};
+vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
+vp.addEventListener('click',e=>{if(moved>6){e.stopPropagation();e.preventDefault()}},true);
+$('#zi').onclick=()=>zoomAt(innerWidth/2,innerHeight/2,1.25);$('#zo').onclick=()=>zoomAt(innerWidth/2,innerHeight/2,.8);$('#fit').onclick=fitAll;
+const SECS=[['s-tesis','Tesis'],['s-01','01 Tráfico'],['s-02','02 Perfil y DM'],['s-03','03 Landing y VSL'],['s-04','04 Aplicación'],['s-05','05 Llamada y productos'],['s-B','B Quiz nuevo'],['s-C','C Webinar'],['s-D','D Bali'],['s-E','E YouTube'],['s-num','Números'],['s-esc','Escalera'],['s-rep','Reputación'],['s-take','Qué nos llevamos']];
+$('#secs').innerHTML=SECS.map(([id,t])=>`<button data-go="${id}">${t}</button>`).join('');
+$('#secs').onclick=e=>{const b=e.target.closest('button');if(b)goto(b.dataset.go)};
+
+/* ---------- modal ---------- */
+const modal=$('#modal');
+function openModal(title,html,after){$('#mt').textContent=title;$('#mbody').innerHTML=html;modal.hidden=false;after&&after();$('#mclose').focus()}
+function closeModal(){modal.hidden=true;$('#mbody').innerHTML=''}
+$('#mclose').onclick=closeModal;modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function syncScript(){const v=$('#mbody video');if(!v)return;const segs=[...document.querySelectorAll('#mbody .seg')];
+  segs.forEach(s=>s.onclick=()=>{v.currentTime=+s.dataset.s;v.play()});
+  v.ontimeupdate=()=>{const t=v.currentTime;let on=null;segs.forEach(s=>{const a=+s.dataset.s<=t&&t<+s.dataset.e;s.classList.toggle('on',a);if(a)on=s});}}
+const segHtml=segs=>segs.map(s=>`<span class="seg" data-s="${s.s}" data-e="${s.e}"><i>${fmtT(s.s)}</i>${esc(s.t)}</span>`).join('');
+
+function openAd(c){
+  const media=c.video?`<video src="ads2/${c.id}.mp4" controls playsinline autoplay poster="${c.poster||''}"></video>`:(c.imgs.length?`<div class="car" style="flex-direction:column;max-height:70vh;overflow:auto">${c.imgs.slice(1).map(i=>`<img src="${i}" alt="">`).join('')}</div>`:'');
+  const lib=c.ids.map(i=>`<a href="https://www.facebook.com/ads/library/?id=${i}" target="_blank" rel="noopener">${i}</a>`).join(' · ');
+  const body=c.segs&&c.segs.length?segHtml(c.segs):`<p style="white-space:pre-wrap">${esc(c.caption)}</p>`;
+  openModal(c.hook.slice(0,90)+(c.hook.length>90?'…':''),`${media}<div class="side"><div class="facts"><span class="chip y">${esc(c.start)} → ${esc(c.end)} · ${c.days} días</span><span class="chip">${c.n} ${c.n>1?'subidas':'subida'}</span><span class="chip">${esc(c.dur||'carrusel')}</span><span class="chip g">CTA: ${esc(c.cta)}</span></div>${c.caption&&c.segs.length?`<p><b>Copy del ad:</b> ${esc(c.caption)}</p>`:''}<p><b>Guion</b> (clic en una línea para saltar ahí):</p>${body}<p style="font-size:12px;color:var(--muted);margin-top:12px">Biblioteca de anuncios: ${lib}</p></div>`,syncScript);
+}
+function openVid(src,title,segs,poster){openModal(title,`<video src="${src}" controls playsinline autoplay ${poster?`poster="${poster}"`:''}></video><div class="side"><p><b>Transcripción</b> (clic en una línea para saltar ahí):</p>${segHtml(segs)}</div>`,syncScript)}
+function openPage(name,title){const p=D.pages[name];openModal(title,`<div class="longpage">${p.parts.map(x=>`<img src="${x}" alt="">`).join('')}</div>`)}
+
+/* ---------- render ---------- */
+function ctaCls(c){return c==='Comentá PLAYBOOK'?'pb':c==='Mirá mis destacadas'?'hl':c.startsWith('Sin')?'none':''}
+function adCard(c){
+  if(c.removed)return `<div class="ad removed" tabindex="0"><div class="thumb">Meta lo dio de baja: "didn't follow our Advertising Standards"<br>${esc(c.start)} → ${esc(c.end)}</div><div class="meta"><div class="hook">Removido por Meta</div></div></div>`;
+  const img=c.poster||(c.imgs[1]||c.imgs[0]||'');
+  return `<div class="ad" tabindex="0" data-ad="${c.id}"><div class="thumb" style="background-image:url('${img}')">${c.n>1?`<span class="rep">×${c.n}</span>`:''}<span class="days ${c.days>=30?'win':''}">${c.days} d</span><span class="play">${c.video?'▶ '+esc(c.dur):'carrusel'}</span></div><div class="meta"><div class="hook">${esc(c.hook)}</div><span class="cta ${ctaCls(c.cta)}">${esc(c.cta)}</span></div></div>`;
+}
+function pageCol(name,title,mob){const p=D.pages[name];if(!p)return'';return `<div class="pg ${mob?'mob':''}" tabindex="0" data-page="${name}" data-title="${esc(title)}"><div class="t">${esc(title)}<span>clic</span></div><div class="imgs">${p.parts.slice(0,mob?4:3).map(x=>`<img src="${x}" alt="" loading="lazy">`).join('')}</div></div>`}
+
+async function init(){
+  D=await (await fetch('data.json')).json();
+  const W={w3:['Ola 3 · sep–oct 2026 · "DM MRR"',''],w2:['Ola 2 · ago 2026 · "Comentá PLAYBOOK"',''],w1:['Ola 1 · may–jun 2026 · clips, prueba y "seguime"','']};
+  $('#adwaves').innerHTML=['w3','w2','w1'].map(w=>{const cs=D.creatives.filter(c=>c.wave===w);return `<div><div class="sub-h">${W[w][0]} · ${cs.length} creativos</div><div class="adgrid">${cs.map(adCard).join('')}</div></div>`}).join('');
+  const car=D.creatives.find(c=>c.imgs.length>2);
+  if(car)$('#adwaves').insertAdjacentHTML('beforeend',`<div><div class="sub-h alt">Los 2 carruseles: copy largo + "Comment PLAYBOOK"</div><div class="copy" style="width:1130px;display:flex;gap:14px"><div class="car">${car.imgs.slice(1,6).map(i=>`<img src="${i}" alt="">`).join('')}</div><p style="white-space:pre-wrap;margin:0;font-size:12.5px;max-height:330px;overflow:auto">${esc(car.caption)}</p></div></div>`);
+  document.addEventListener('click',e=>{const a=e.target.closest('[data-ad]');if(a){openAd(D.creatives.find(c=>c.id===a.dataset.ad));return}
+    const p=e.target.closest('[data-page]');if(p){openPage(p.dataset.page,p.dataset.title);return}
+    const v=e.target.closest('[data-vid]');if(v){const k=v.dataset.vid;openVid(`vsl/${k}.mp4`,v.dataset.title,D.vsl[k].segs,v.dataset.poster);return}
+    const im=e.target.closest('[data-img]');if(im){openModal(im.dataset.title||'Captura',`<div class="longpage"><img src="${im.dataset.img}" alt=""></div>`)}});
+  document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.activeElement&&document.activeElement.matches('[data-ad],[data-page],[data-vid]'))document.activeElement.click()});
+  // proof
+  const win=D.creatives.find(c=>c.hook.startsWith("Guys, if you're doing e-com without"));
+  $('#proof').innerHTML=[
+    [win?win.poster:'', 'Ad ganador · 85 días', win?`data-ad="${win.id}"`:''],
+    [D.pages['home-full'].parts[0],'Landing con VSL','data-page="home-full" data-title="mrbrandowner.com"'],
+    [D.pages['whop'].parts[0],'Curso $6.999 en Whop','data-page="whop" data-title="Whop · Ecom MRR Mastery Course"'],
+    [D.pages['application-v3'].parts[0],'Quiz nuevo (oculto)','data-page="application-v3" data-title="/application-v3"'],
+    [D.pages['webinar'].parts[0],'Webinar 4/11','data-page="webinar" data-title="/webinar"'],
+    [D.pages['bali'].parts[0],'Bali Mastermind','data-page="bali" data-title="/bali"']
+  ].map(([src,t,attr])=>`<figure ${attr} tabindex="0"><figcaption>${t}</figcaption><img src="${src}" alt=""></figure>`).join('');
+  $('#p-home').innerHTML=pageCol('home-full','mrbrandowner.com · desktop')+pageCol('home-mobile','mobile',true);
+  $('#vslbox').innerHTML=`<div class="vid" style="width:480px" data-vid="home-vsl" data-title="VSL de la landing (5:09)" data-poster="vsl/f02.jpg" tabindex="0"><div class="thumb" style="background-image:url('vsl/f02.jpg')"><span>▶ 5:09 · VSL con guion</span></div><p>"If I asked you right now how much revenue you're going to be doing next month, what would you say? You don't know. And that's the problem."</p></div>`;
+  $('#frames').innerHTML=D.frames.map(f=>`<img src="vsl/${f}" alt="" loading="lazy" data-img="vsl/${f}" data-title="VSL · cuadro cada 12 s">`).join('');
+  const TT=['15k → 370k/mes en marzo','150k → 300k/mes','De fashion a 2–3k/día','Llamada de estructura fiscal (Dubái)','Marca de belleza de 40k/día','70.000 US/mes'];
+  $('#testis').innerHTML=TT.map((t,i)=>`<div class="vid" data-vid="testimonial-${i+1}" data-title="Testimonio ${i+1}: ${t}" data-poster="vsl/testimonial-${i+1}.jpg" tabindex="0"><div class="thumb" style="background-image:url('vsl/testimonial-${i+1}.jpg')"><span>▶ ${fmtT(D.vsl['testimonial-'+(i+1)].dur)}</span></div><p><b>${t}</b><br>${esc(D.vsl['testimonial-'+(i+1)].text.slice(0,110))}…</p></div>`).join('');
+  // form
+  const Q=[['Datos de contacto','nombre, apellido, teléfono, email'],['¿Cuál es tu Instagram?',''],['¿Dónde vivís?',''],['¿Hace cuánto hacés ecommerce?','<6 meses · 6–12 meses · 1–2 años · 2–4 años · 4+ años'],['¿Qué tipo de ecommerce tenés?','marca de ropa · producto de marca · suplementos · tienda general · otro'],['¿Cuál fue tu mejor mes de facturación?','texto libre, "números aproximados"'],['¿Cuánto facturás por mes hoy?','<$10k · $10–20k · $20–50k <span class="k">→ Whop</span> · $50–100k · $100k+'],['(statement) "Trabajar con Brandon es una inversión de cuatro cifras altas. Pago completo."',''],['¿Cuál es tu situación?','5 cifras para invertir ya · 5 cifras en cuotas · $2–5k · <span class="k">&lt;$2k → Whop</span>'],['¿Qué tan comprometido estás?','100% · 80% · 40% · 0%'],['¿Qué querés lograr?','texto largo: metas de facturación, sistemas, libertad'],['¿Quién viene a la llamada?','solo y puntual · con mis socios (todos los que deciden)']];
+  $('#qlist').innerHTML=Q.map((q,i)=>`<div class="qq"><span class="n">${i===7?'—':String(i<7?i+1:i).padStart(2,'0')}</span><b>${q[0]}</b>${q[1]?`<div class="opts">${q[1]}</div>`:''}</div>`).join('');
+  $('#tfshots').innerHTML=['tf-00','tf-02','tf-04'].map(n=>`<img src="site/${n}.jpg" alt="" data-img="site/${n}.jpg" data-title="Typeform">`).join('');
+  $('#p-whop').innerHTML=pageCol('whop','Whop · curso $6.999')+pageCol('whop-store','Whop · comunidad')+pageCol('whop-about','Whop · equipo y reseñas')+pageCol('calendly','Calendly · 30 min');
+  $('#p-quiz').innerHTML=pageCol('application-v2','/application-v2')+pageCol('application-v2-m','v2 mobile',true)+pageCol('application-v3','/application-v3')+pageCol('quiz','/quiz');
+  $('#p-stories').innerHTML=pageCol('story-benjamin','Story · Benjamin')+pageCol('story-faiz','Story · Faiz')+pageCol('story-andrei','Story · Andrei');
+  $('#p-web').innerHTML=pageCol('webinar','/webinar · 4 nov')+pageCol('webinar-m','mobile',true)+pageCol('masterclass','/masterclass (simulada)');
+  $('#p-bali').innerHTML=pageCol('bali','/bali')+pageCol('bali-mastermind','/bali-mastermind');
+  $('#ytgrid').innerHTML=D.yt.map(v=>`<a class="yt" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener"><img src="yt/${v.id}.jpg" alt="" loading="lazy"><div>${esc(v.t)}<div class="v">${fmtN(v.v)} vistas · ${Math.round(v.dur/60)} min</div></div></a>`).join('');
+  $('#shgrid').innerHTML=D.shorts.map(v=>`<a class="sh" href="https://www.youtube.com/shorts/${v.id}" target="_blank" rel="noopener"><img src="shorts/${v.id}.jpg" alt="" loading="lazy"><div>${esc(v.t)}<br><b>${fmtN(v.v)}</b></div></a>`).join('');
+  requestAnimationFrame(()=>requestAnimationFrame(fitAll));
+}
+apply();init();
+
+</script>
