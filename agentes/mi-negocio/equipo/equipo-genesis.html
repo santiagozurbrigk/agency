@@ -1,0 +1,2085 @@
+<title>Equipo Génesis OS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: barra de pestañas fija arriba (una por documento), un documento a la vez en una columna de lectura */
+:root{
+  --bg:#f3f6f5; --surface:#ffffff; --ink:#15211e; --muted:#5a6b66; --line:#d7e0dd;
+  --accent:#1d6b57; --accent-soft:#e1efea;
+  --pend-bg:#fdf0d5; --pend-fg:#7a4b00; --conf-bg:#e2ecfb; --conf-fg:#1d4a8a; --prop-bg:#ede6fa; --prop-fg:#55308f;
+  --ok:#1d6b57; --mid:#9a6a00; --no:#7d8a86;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f1715; --surface:#16211e; --ink:#e3ece9; --muted:#97a8a3; --line:#2a3834;
+  --accent:#5fc4a5; --accent-soft:#1c3530;
+  --pend-bg:#3a2c0e; --pend-fg:#f3c873; --conf-bg:#172a45; --conf-fg:#9ec2f5; --prop-bg:#2a1f42; --prop-fg:#c9b2f2;
+  --ok:#5fc4a5; --mid:#e0b04f; --no:#8a9893; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1715; --surface:#16211e; --ink:#e3ece9; --muted:#97a8a3; --line:#2a3834;
+  --accent:#5fc4a5; --accent-soft:#1c3530;
+  --pend-bg:#3a2c0e; --pend-fg:#f3c873; --conf-bg:#172a45; --conf-fg:#9ec2f5; --prop-bg:#2a1f42; --prop-fg:#c9b2f2;
+  --ok:#5fc4a5; --mid:#e0b04f; --no:#8a9893; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.hwrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 0}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+.brand span{color:var(--muted);font-size:.85rem}
+.legend{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin-top:8px}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;padding:10px 12px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.92rem;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs a:hover{color:var(--ink)}
+nav.tabs a.on{color:var(--accent);border-bottom-color:var(--accent)}
+nav.tabs a:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+main{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 64px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,4vw,44px)}
+.doc>*{max-width:76ch}
+.doc .tw,.doc pre,.doc .toc{max-width:none}
+h1,h2,h3{font-family:var(--f-display);line-height:1.2;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:800;margin:0 0 .4em}
+h2{font-size:1.3rem;font-weight:700;margin:2em 0 .6em;padding-top:1.2em;border-top:1px solid var(--line)}
+h3{font-size:1.05rem;font-weight:700;margin:1.6em 0 .5em}
+.doc h1 + p em,.doc>p:first-of-type em{color:var(--muted);font-style:normal;font-size:.88rem}
+p,li{margin:.5em 0}
+ul,ol{padding-left:1.3em}
+a{color:var(--accent);text-underline-offset:2px}
+hr{border:0;border-top:1px solid var(--line);margin:2em 0}
+blockquote{margin:1.2em 0;padding:12px 16px;background:var(--accent-soft);border-radius:8px;color:var(--ink)}
+blockquote p{margin:0}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--accent-soft);padding:.1em .35em;border-radius:4px}
+pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:16px;overflow-x:auto;font-size:.85rem;line-height:1.55}
+pre code{background:none;padding:0;font-size:inherit}
+.tw{overflow-x:auto;margin:1em 0;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.92rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line);min-width:120px}
+th{font-weight:600;background:var(--bg);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.chip{display:inline;font-family:var(--f-mono);font-size:.78em;font-weight:500;padding:.12em .45em;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.chip.pend{background:var(--pend-bg);color:var(--pend-fg)}
+.chip.conf{background:var(--conf-bg);color:var(--conf-fg)}
+.chip.prop{background:var(--prop-bg);color:var(--prop-fg)}
+.st{display:inline-block;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.15em .5em;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.st.ok{color:var(--ok)} .st.mid{color:var(--mid)} .st.no{color:var(--no)}
+.ext{border-bottom:1px dotted var(--muted);cursor:help}
+.lead{color:var(--muted)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:1em 0 2em}
+.toc a{font-size:.85rem;padding:6px 10px;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink)}
+.toc a:hover{border-color:var(--accent);color:var(--accent)}
+.tpl{scroll-margin-top:130px}
+.tpl h1{font-size:1.35rem;margin-top:1.6em;padding-top:1.2em;border-top:2px solid var(--line)}
+.legend .chip{font-size:.72rem}
+@media (max-width:640px){.legend{margin-left:0}th,td{min-width:110px}}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+<header><div class="hwrap">
+  <div class="brand"><b>Equipo Génesis OS</b><span>Procesos internos por rol · 28/11/2026</span>
+    <div class="legend"><span class="chip pend">[PENDIENTE]</span><span class="chip conf">[CONFIRMAR]</span><span class="chip prop">[PROPUESTA]</span></div></div>
+  <nav class="tabs" aria-label="Documentos"><a href="#inicio" data-s="inicio">Inicio</a><a href="#sistema" data-s="sistema">Sistema común</a><a href="#sdr" data-s="sdr">SDR</a><a href="#setter" data-s="setter">Setter</a><a href="#closer" data-s="closer">Closer</a><a href="#sops" data-s="sops">Índice de SOPs</a><a href="#templates" data-s="templates">Templates</a><a href="#generador" data-s="generador">Generador de SOPs</a><a href="#pendientes" data-s="pendientes">Pendientes</a></nav>
+</div></header>
+<main><article class="doc" id="s-inicio" data-sec="inicio"><h1>Equipo · Génesis OS</h1>
+<p><em>Última actualización: 28/11/2026 · Responsable: Santiago [CONFIRMAR]</em></p>
+<p>Acá vive <strong>la parte interna del equipo comercial</strong>: cómo entra alguien, cómo se lo evalúa, cómo se lo sigue y cómo se lo corrige. <strong>No</strong> está cómo se vende (eso está en <span class="ext" title="Archivo del repo: ventas"><code>../ventas/</code></span>: proceso, guion del SDR, guion y manual de la llamada).</p>
+<p>Sale de las 4 clases del Módulo 8 de Limitless (transcriptas en <span class="ext" title="Archivo del repo: teoria-sops/equipo"><code>../teoria-sops/equipo/</code></span>) bajadas a Génesis con lo que ya está en el repo. La regla madre sigue siendo <strong>todo verdad</strong>: lo que no está definido figura como <span class="chip pend">[PENDIENTE]</span>, lo que hay que validar como <span class="chip conf">[CONFIRMAR]</span> y lo que es una propuesta nuestra (no un dato) como <span class="chip prop">[PROPUESTA]</span>.</p>
+<h2>Cómo está armada la carpeta</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Qué es</th>
+<th>Para quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#sistema"><code>00-sistema-del-equipo.md</code></a></td>
+<td>Las reglas comunes a los 3 roles: onboarding, período de prueba, control (canales, tracker, reportes, reuniones), feedback, consecuencias y SOPs</td>
+<td>Dirección y responsables de ventas</td>
+</tr>
+<tr>
+<td><a href="#sdr"><code>roles/sdr.md</code></a></td>
+<td>El SDR: qué es acá, estándares, período de prueba, reportes, reunión del día cero, plan de 30 días y SOPs</td>
+<td>El que contrata y evalúa al SDR</td>
+</tr>
+<tr>
+<td><a href="#setter"><code>roles/setter.md</code></a></td>
+<td>El setter: lo mismo, para el rol de setteo</td>
+<td>El que contrata y evalúa al setter</td>
+</tr>
+<tr>
+<td><a href="#closer"><code>roles/closer.md</code></a></td>
+<td>El closer: lo mismo, para la llamada de venta</td>
+<td>El que contrata y evalúa al closer</td>
+</tr>
+<tr>
+<td><a href="#sops"><code>indice-sops.md</code></a></td>
+<td>Índice único de SOPs de ventas por área: cuál existe, cuál falta, dueño y fecha</td>
+<td>Todos</td>
+</tr>
+<tr>
+<td><a href="#templates"><code>templates/</code></a></td>
+<td>Evaluación del período de prueba, reportes (SDR, setter, closer, semanal), agendas de reuniones, agenda del día cero y template de SOP</td>
+<td>Todos</td>
+</tr>
+<tr>
+<td><a href="#pendientes"><code>pendientes.md</code></a></td>
+<td>Lo que falta definir para que esto quede operativo</td>
+<td>Santi, Mati y Manu</td>
+</tr>
+</tbody>
+</table></div>
+<p>Agente relacionado: <a href="#generador"><code>../agentes-propios/generador-sops.md</code></a> (convierte la transcripción de una grabación de pantalla en un SOP con nuestro formato).</p>
+<h2>El sistema en una página</h2>
+<ol>
+<li><strong>Antes de que entre:</strong> existe el documento de negocio (<span class="ext" title="Archivo del repo: negocio/onboarding-equipo-genesis-os.docx"><code>../negocio/onboarding-equipo-genesis-os.docx</code></span>), el anexo de ventas (<span class="ext" title="Archivo del repo: ventas"><code>../ventas/</code></span>), los números del rol escritos y los 2-3 SOPs con los que arranca.</li>
+<li><strong>Día cero:</strong> reunión de 60-90 min en 3 bloques (repaso del documento, visión y misión, su rol). Se le comunica el período de prueba por escrito.</li>
+<li><strong>Primera semana:</strong> yo lo hago → lo hacemos → lo hacés, con 3-5 tareas.</li>
+<li><strong>Período de prueba:</strong> se mide en ejecuciones, con tope de 15-30 días. Check semanal, revisión formal a la mitad, decisión al cierre con el flujo (actitud → muestra → proceso → resultado).</li>
+<li><strong>Después:</strong> daily, weekly de ventas, monthly (cierre de lanzamiento) y uno a uno. Reportes que hace el que ejecuta y que van a marketing.</li>
+</ol>
+<h2>Qué rol hace qué (resumen)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Entra en</th>
+<th>Recibe de</th>
+<th>Entrega a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SDR</strong></td>
+<td>Apenas el lead completa el opt-in o la aplicación</td>
+<td>Formulario (reparto 50/50)</td>
+<td>Closer: lead calificado, agendado y con el traspaso escrito en el grupo</td>
+</tr>
+<tr>
+<td><strong>Setter</strong></td>
+<td>Después de que hay agenda, y en las conversaciones que entran por las cuentas de Manu <span class="chip conf">[CONFIRMAR alcance]</span></td>
+<td>SDR / mensajes entrantes a Manu</td>
+<td>Closer: lead confirmado, con las 3 piezas y presentado con el audio de Manu</td>
+</tr>
+<tr>
+<td><strong>Closer</strong></td>
+<td>En la llamada de venta</td>
+<td>El grupo de WhatsApp con el traspaso</td>
+<td>Equipo: venta cargada en el tracker con seña y Fathom, o "no se cerró" con la razón y el seguimiento</td>
+</tr>
+</tbody>
+</table></div></article>
+<article class="doc" id="s-sistema" data-sec="sistema"><h1>El sistema del equipo · Génesis OS</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Santiago y Matías (responsables de ventas) · Aprueba: Manu</em></p>
+<p>Las reglas que valen igual para SDR, setter y closer. Lo específico de cada rol está en <a href="#sdr"><code>roles/</code></a>. Teoría completa en <span class="ext" title="Archivo del repo: teoria-sops/equipo"><code>../teoria-sops/equipo/</code></span>.</p>
+<blockquote>
+<p>Gestionar no es controlar: es poner las reglas del juego, dar la visión y correrse del medio. Este sistema es el esqueleto; lo que lo mueve es que el equipo compre la visión de Génesis.</p>
+</blockquote>
+<hr />
+<h2>1. Lo que tiene que existir antes de que entre alguien</h2>
+<p>No se contrata a nadie si falta una de estas cosas:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qué</th>
+<th>Dónde está</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Documento de negocio</strong> (igual para todos, 6 bloques)</td>
+<td><span class="ext" title="Archivo del repo: negocio/onboarding-equipo-genesis-os.docx"><code>../negocio/onboarding-equipo-genesis-os.docx</code></span></td>
+<td>Armado el 29/10. Tiene <span class="chip pend">[PENDIENTE]</span> en 5.4 (métricas esperadas), 6.2 (canales internos, reuniones), 6.4 (feedback)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Anexo de ventas</strong> (lo lee cualquiera que entre a ventas)</td>
+<td><span class="ext" title="Archivo del repo: ventas"><code>../ventas/</code></span>: proceso, guion del SDR, guion y manual de llamada, objeciones</td>
+<td>Armado para la clase del 19/10. Falta actualizarlo al mapa de ventas (<span class="ext" title="Archivo del repo: ventas/pendientes.md"><code>../ventas/pendientes.md</code></span>)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Los números del rol, por escrito</strong></td>
+<td>En cada archivo de <a href="#sdr"><code>roles/</code></a></td>
+<td><span class="chip pend">[PENDIENTE]</span>: hay propuestas, faltan validar</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Los 2-3 SOPs con los que arranca</strong></td>
+<td><a href="#sops"><code>indice-sops.md</code></a></td>
+<td>Parcial</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Contrato firmado y accesos creados</strong></td>
+<td>Fuera del repo. Las contraseñas van por el gestor de contraseñas <span class="chip pend">[PENDIENTE: cuál]</span>, nunca por chat ni por documento</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regla:</strong> un estándar definido después de ver el resultado no es un estándar, es una justificación. Los números van escritos antes del día cero.</p>
+<p><strong>Qué NO va en el documento de negocio:</strong> nada de una persona (responsabilidades, métricas individuales, plan de 30 días). Eso va en la reunión del día cero y en el archivo del rol.</p>
+<hr />
+<h2>2. Onboarding</h2>
+<h3>El objetivo</h3>
+<p>Que la persona <strong>compre la visión de Génesis y entienda el negocio al 100%</strong>. Aprender las tareas es la consecuencia.</p>
+<h3>Orden</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Cuándo</th>
+<th>Qué</th>
+<th>Quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antes del día cero</td>
+<td>Contrato firmado, accesos creados, documento de negocio enviado</td>
+<td>Santi / Mati</td>
+</tr>
+<tr>
+<td>Antes del día cero</td>
+<td>La persona lee el documento entero y el anexo de ventas, y trae dudas anotadas</td>
+<td>La persona</td>
+</tr>
+<tr>
+<td>Día cero</td>
+<td>Reunión de 60-90 min (<a href="#tpl-agenda-dia-cero">agenda</a>)</td>
+<td>Manu (bloque 2) + responsable de ventas (bloques 1 y 3) <span class="chip conf">[CONFIRMAR]</span></td>
+</tr>
+<tr>
+<td>Semana 1</td>
+<td>3-5 tareas con <strong>yo lo hago → lo hacemos → lo hacés</strong></td>
+<td>Responsable de ventas</td>
+</tr>
+<tr>
+<td>Semanas 2-4</td>
+<td>Se suman tareas a medida que suelta las primeras</td>
+<td>Responsable de ventas</td>
+</tr>
+</tbody>
+</table></div>
+<h3>La reunión del día cero, en 3 bloques</h3>
+<ol>
+<li><strong>Repaso del documento (20-30 min).</strong> Por arriba, sin leerlo. Se suma lo que no está escrito (por qué el precio es ese, qué se probó y falló) y se chequea comprensión:
+   - "¿Cómo le explicarías a un amigo qué hace Génesis?"
+   - "¿Quién es nuestro cliente ideal y a quién no le vendemos?"
+   - "¿Por qué alguien nos elegiría en vez de a otra agencia o curso?"</li>
+<li><strong>Visión y misión (15-20 min).</strong> Lo cuenta Manu en primera persona: por qué existe Génesis, a dónde va en 2-3 años, por qué eligió a esta persona. No se delega a un archivo.</li>
+<li><strong>Su rol y sus primeras tareas (25-35 min).</strong> Responsabilidades (2-3), cómo se mide (1-2 métricas), plan de 30 días, visión del rol con números reales, los primeros SOPs abiertos y explicados en la call. Sale del archivo de su rol.</li>
+</ol>
+<p>En esta misma reunión se comunica <strong>por escrito</strong> el período de prueba (sección 3).</p>
+<h3>Yo lo hago, lo hacemos, lo hacés</h3>
+<ol>
+<li><strong>Yo lo hago:</strong> el responsable hace la tarea compartiendo pantalla y explica en voz alta cada decisión y por qué.</li>
+<li><strong>Lo hacemos:</strong> la hace la persona compartiendo pantalla, y el responsable corrige en vivo.</li>
+<li><strong>Lo hacés:</strong> la hace sola; al terminar se revisa y se da feedback. Se repite hasta que deja de fallar. Ahí se suelta y no se revisa más.</li>
+</ol>
+<p><strong>Para ventas, la versión concreta:</strong> el nuevo escucha llamadas grabadas en Fathom y llamadas en vivo (yo lo hago) → hace llamadas con el responsable escuchando y corrigiendo por chat interno (lo hacemos) → hace sus llamadas solo y se revisan las grabaciones (lo hacés).</p>
+<p><strong>Métrica de éxito del onboarding:</strong> a los 30 días se lo pudo soltar en sus tareas principales. Autonomía, no perfección.</p>
+<hr />
+<h2>3. Período de prueba</h2>
+<h3>Las reglas</h3>
+<ul>
+<li><strong>La decisión por defecto es que NO se queda.</strong> Se queda si demostró que sí.</li>
+<li><strong>Se mide en ejecuciones, no en días.</strong> Tope de calendario de 15 a 30 días. El tope es un máximo: si en el día 8 es evidente que no va, no se espera.</li>
+<li><strong>No se mide el resultado estadístico, se mide cómo trabaja.</strong> Con 10 llamadas no sabés el close rate; sí sabés si sigue la estructura.</li>
+<li><strong>Tres dimensiones, siempre:</strong> resultado, proceso, encaje y actitud. <strong>Proceso y actitud pesan más que el resultado.</strong> Buen resultado sin proceso es suerte con fecha de vencimiento.</li>
+</ul>
+<h3>Ejecuciones y tope por rol <span class="chip prop">[PROPUESTA: validar con Manu y Mati]</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Una ejecución es</th>
+<th>Cuántas</th>
+<th>Tope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SDR</td>
+<td>Un lead trabajado de punta a punta en la primera llamada (apertura → calificación → agenda o ruta a la clase)</td>
+<td>30 primeras llamadas, y un día de clase con sus 3 grupos</td>
+<td>30 días</td>
+</tr>
+<tr>
+<td>Setter</td>
+<td>Un día completo de setteo con reporte</td>
+<td>2 semanas de setteo (10 días hábiles)</td>
+<td>15-21 días</td>
+</tr>
+<tr>
+<td>Closer</td>
+<td>Una llamada de venta tomada, con seguimiento</td>
+<td>10-15 llamadas</td>
+<td>30 días</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>El problema propio de Génesis:</strong> el volumen llega por lanzamientos. Si la persona entra en una semana sin ventana de venta, no va a tener muestra. Por eso el ingreso se planifica <strong>para que el período de prueba cruce una ventana de venta</strong> (de la clase al cierre). Si igual no hubo volumen, es falta de muestra y se extiende (ver abajo).</p>
+<h3>Los hitos</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Hito</th>
+<th>Qué pasa</th>
+<th>Formato</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Día cero</td>
+<td>Se comunica: que hay período de prueba, cuánto dura, qué se evalúa (con los números de su rol), cada cuánto se habla y qué pasa al final</td>
+<td>Por escrito, en la reunión del día cero</td>
+</tr>
+<tr>
+<td>Cierre de cada semana</td>
+<td>Check de 15-30 min: cómo viene, qué costó, qué se corrige</td>
+<td>Uno a uno con el responsable</td>
+</tr>
+<tr>
+<td>Mitad de las ejecuciones</td>
+<td>Revisión formal de las 3 dimensiones, por escrito. Se le dice exactamente dónde está parado</td>
+<td><a href="#tpl-evaluacion-periodo-prueba">Evaluación</a> parcial</td>
+</tr>
+<tr>
+<td>Cierre</td>
+<td>La decisión</td>
+<td><a href="#tpl-evaluacion-periodo-prueba">Evaluación</a> completa</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>La revisión de la mitad no se saltea.</strong> Si en la llamada 5 le decís qué falla, tiene otras 5 para corregirlo.</p>
+<h3>Las señales de las primeras dos semanas</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Buenas</th>
+<th>Malas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pregunta cuando no entiende</td>
+<td>Pregunta cosas que están en el documento o en el guion</td>
+</tr>
+<tr>
+<td>El mismo error no aparece dos veces</td>
+<td>Repite el error corregido</td>
+</tr>
+<tr>
+<td>Propone mejoras al proceso</td>
+<td>Discute o justifica cada corrección</td>
+</tr>
+<tr>
+<td>Lee lo que se le manda sin recordatorio</td>
+<td>Aparece y desaparece: hay que buscarlo</td>
+</tr>
+<tr>
+<td>Avisa en el momento cuando algo se traba</td>
+<td>Entrega tarde sin avisar</td>
+</tr>
+<tr>
+<td></td>
+<td>Habla mal de trabajos anteriores o de compañeros</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tres o cuatro malas en la semana 2: se habla ya, no se espera al cierre.</p>
+<h3>La decisión: el flujo</h3>
+<p>Se responde en orden. La primera que frena define la salida.</p>
+<ol>
+<li><strong>¿Actitud y encaje son buenos?</strong> No → <strong>se va</strong> (la actitud no se enseña). Sí → seguí.</li>
+<li><strong>¿Hubo muestra suficiente?</strong> No, por causa ajena (no hubo lanzamiento, enfermedad) → <strong>se extiende</strong>. No, porque no produjo → <strong>se va</strong>. Sí → seguí.</li>
+<li><strong>¿Sigue el proceso?</strong> No → <strong>se va</strong>, aunque el resultado sea bueno. Sí → seguí.</li>
+<li><strong>¿Cumplió el resultado?</strong> Sí → <strong>se queda</strong>. No, pero proceso y actitud sólidos y el bajón se explica por el plazo corto → <strong>se queda</strong>. No y sin señal de que vaya a rendir → <strong>se va</strong>.</li>
+</ol>
+<p>Validación final: <strong>sabiendo lo que sé hoy, ¿la volvería a contratar?</strong> y <strong>¿sube o baja el promedio del equipo?</strong></p>
+<h3>Extender</h3>
+<p>Solo por falta de muestra. <strong>Una sola vez, plazo fijo (máximo 30 días), con lo que falta escrito</strong> ("necesito ver X, Y y Z"). Nunca para no tener la conversación.</p>
+<h3>Las tres salidas</h3>
+<ul>
+<li><strong>Se queda:</strong> se le dice de forma explícita, no por omisión. Se definen objetivos del próximo trimestre y hacia dónde crece el rol.</li>
+<li><strong>Se va:</strong> se ejecuta la salida. <span class="chip pend">[PENDIENTE: proceso de offboarding — accesos de GHL, WhatsApp, tracker, grupos de leads abiertos y su reasignación]</span>.</li>
+<li><strong>Se extiende:</strong> con las tres condiciones de arriba.</li>
+</ul>
+<hr />
+<h2>4. Control y seguimiento: las tres capas</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Te dice</th>
+<th>En Génesis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Ambiente</td>
+<td>Si la persona está</td>
+<td>Oficina virtual + canales</td>
+</tr>
+<tr>
+<td>2 · Registro</td>
+<td>Si hizo</td>
+<td>Tracker (tareas) + reportes</td>
+</tr>
+<tr>
+<td>3 · Conversación</td>
+<td>Por qué pasó y qué se hace</td>
+<td>Daily, weekly, monthly, uno a uno</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Capa 1 · Oficina virtual y canales</h3>
+<ul>
+<li><strong>Oficina virtual:</strong> el equipo conectado en una sala de voz durante su horario. No es para vigilar: es para resolver en 30 segundos lo que por chat lleva dos horas y para tener una lectura del pulso del equipo. <span class="chip pend">[PENDIENTE: herramienta (Discord, Meet, otra) y horario]</span>.</li>
+<li><strong>Canales mínimos</strong> <span class="chip prop">[PROPUESTA]</span>:</li>
+<li><code>#general</code>: comunicados a todo el equipo.</li>
+<li><code>#ventas</code>: el día a día del área (SDR, setter, closer, Santi, Mati).</li>
+<li><code>#reportes-ventas</code>: el reporte diario del SDR y del setter, y el reporte por llamada del closer. Lo lee marketing.</li>
+<li><code>#ventas-cerradas</code>: cada venta con su comprobante de seña y el link de Fathom.</li>
+<li>Con leads y clientes: WhatsApp, un grupo por lead con el closer (ya definido en el proceso).</li>
+<li><strong>Urgente</strong> <span class="chip prop">[PROPUESTA]</span>: un lead caliente que no se puede atender, un problema con el formulario, el Calendly o el link de pago, una seña que no se acredita. Eso va por llamada o mención directa, no por mensaje suelto.</li>
+</ul>
+<h3>Capa 2 · El tracker</h3>
+<p>Ya existe: todas las tareas viven en el tracker (sección Tareas). <strong>Si no está en el tracker, no existe.</strong></p>
+<ul>
+<li>Cada tarea lleva: responsable, área, fecha límite, qué se espera (entregable) y estado.</li>
+<li><strong>Estados:</strong> Pendiente / En curso / Entregada / Aprobada / Trabada.</li>
+<li><strong>Toda tarea lleva fecha límite.</strong></li>
+<li>El tracker se revisa en las reuniones, no cada dos horas.</li>
+</ul>
+<h3>Capa 2 · Los reportes</h3>
+<p>Un reporte <strong>no es un parte de actividad</strong>: es información que cambia una decisión. Tres reglas:</p>
+<ol>
+<li><strong>Tiene lector definido.</strong> Si nadie lo lee, se elimina.</li>
+<li><strong>Lo hace el que ejecuta</strong>, no Santi ni Mati yendo a buscar números a GHL.</li>
+<li><strong>Trae señal, no solo números:</strong> qué vio, qué le llamó la atención, qué cree que está pasando.</li>
+</ol>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Reporte</th>
+<th>Cuándo</th>
+<th>Lector</th>
+<th>Template</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SDR</td>
+<td>Diario</td>
+<td>Al cierre del día</td>
+<td>Responsable de ventas + marketing</td>
+<td><a href="#tpl-reporte-diario-sdr">reporte-diario-sdr.md</a></td>
+</tr>
+<tr>
+<td>Setter</td>
+<td>Diario</td>
+<td>Al cierre del día</td>
+<td>Responsable de ventas + marketing</td>
+<td><a href="#tpl-reporte-diario-setter">reporte-diario-setter.md</a></td>
+</tr>
+<tr>
+<td>Closer</td>
+<td>Por llamada</td>
+<td>Apenas corta</td>
+<td>Responsable de ventas + marketing</td>
+<td><a href="#tpl-reporte-llamada-closer">reporte-llamada-closer.md</a></td>
+</tr>
+<tr>
+<td>Closer</td>
+<td>Semanal</td>
+<td>Antes de la weekly</td>
+<td>Responsable de ventas</td>
+<td><a href="#tpl-reporte-semanal-closer">reporte-semanal-closer.md</a></td>
+</tr>
+<tr>
+<td>Responsable de ventas</td>
+<td>Semanal de área</td>
+<td>Antes de la weekly</td>
+<td>Manu</td>
+<td><a href="#tpl-reporte-semanal-ventas">reporte-semanal-ventas.md</a></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Los reportes de ventas son materia prima de marketing.</strong> Los dolores con palabras textuales del lead y las objeciones reales van a los anuncios, las historias, los mails y la próxima clase. Si se archivan sin cruzarlos, se tira la mejor investigación de mercado que tenemos. <span class="chip prop">[PROPUESTA: quién de marketing los lee y cada cuánto se vuelcan a la base del avatar.]</span></p>
+<h3>Capa 3 · Las reuniones</h3>
+<p>Una reunión existe si tiene <strong>objetivo, resultado esperado, conclusión y roadmap</strong>. Si falta una, era un mensaje. Toda reunión: agenda previa (la manda el que convoca), un líder, el objetivo repetido al empezar y los últimos 5 minutos para "quién hace qué, para cuándo".</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Reunión</th>
+<th>Cuándo</th>
+<th>Quién</th>
+<th>Duración</th>
+<th>Agenda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Daily de ventas</strong></td>
+<td>Todos los días a primera hora durante la ventana de venta; <span class="chip prop">[PROPUESTA: fuera de ventana, lunes, miércoles y viernes]</span></td>
+<td>SDR, setter, closer, Santi, Mati</td>
+<td>15-30 min</td>
+<td><a href="#tpl-agenda-daily">agenda-daily.md</a></td>
+</tr>
+<tr>
+<td><strong>Weekly de ventas</strong></td>
+<td><span class="chip pend">[PENDIENTE: día y hora]</span></td>
+<td>Equipo de ventas. Presenta Santi o Mati</td>
+<td>45-60 min</td>
+<td><a href="#tpl-agenda-weekly">agenda-weekly.md</a></td>
+</tr>
+<tr>
+<td><strong>Monthly / cierre de lanzamiento</strong></td>
+<td><span class="chip prop">[PROPUESTA]</span> Al cerrar cada ventana de venta, y una por mes si no hubo lanzamiento</td>
+<td>Todo el equipo</td>
+<td>60-90 min</td>
+<td><a href="#tpl-agenda-monthly">agenda-monthly.md</a></td>
+</tr>
+<tr>
+<td><strong>Uno a uno</strong></td>
+<td>Semanal durante el período de prueba; después quincenal</td>
+<td>Responsable + una persona</td>
+<td>20-30 min</td>
+<td>Sin agenda de tareas</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>La daily:</strong> cada uno responde qué tiene hoy, cómo viene con la semana y <strong>qué lo está trabando</strong>. Lo complejo se agenda aparte con los involucrados.</li>
+<li><strong>La weekly:</strong> el responsable llega con los números, su hipótesis de por qué dieron así y 3-5 prioridades propuestas. Si llega sin eso, se reagenda.</li>
+<li><strong>La monthly:</strong> la única donde se discute estrategia. ¿Qué fue el cuello de botella del lanzamiento? ¿Qué fue el motor? ¿Qué aprendimos?</li>
+<li><strong>El uno a uno:</strong> cómo está la persona, qué la motiva, qué le cuesta, cómo ve su crecimiento. Si termina en revisión de pendientes, fracasó.</li>
+</ul>
+<p><strong>Cuándo no hacer una reunión:</strong> si es para informar (mensaje o Loom), si no hay agenda, si faltan los números o si lleva un mes sin producir una decisión.</p>
+<h3>Qué mira cada uno</h3>
+<ul>
+<li><strong>Santi y Mati (responsables de ventas):</strong> el detalle del área. Números diarios, reportes individuales, grabaciones, corrección del trabajo de SDR, setter y closer.</li>
+<li><strong>Manu (dirección):</strong> los números de salida de ventas (agendas, show, cierres, caja), las trabas que cruzan áreas (lo que ventas necesita de contenido o de ads) y a los responsables de ventas. Su uno a uno es con Santi y Mati.</li>
+</ul>
+<p><span class="chip conf">[CONFIRMAR]</span> Santi y Mati hoy también hacen de SDR. Mientras sea así, la evaluación de un SDR nuevo la hace el que no comparte la tarea con él ese ciclo, o Manu.</p>
+<hr />
+<h2>5. Feedback</h2>
+<p>Se da <strong>en el momento</strong>, no en la evaluación de fin de mes. Cinco pasos, para positivo y negativo:</p>
+<ol>
+<li><strong>Reconocé lo bueno.</strong> Algo concreto que hizo bien.</li>
+<li><strong>Preguntá, no acuses.</strong> "¿Qué pasó con esta llamada? Contame tu lectura." Muchas veces el problema era otro: un acceso, un guion desactualizado, una prioridad contradictoria.</li>
+<li><strong>Dale el feedback.</strong> Claro y concreto, con el minuto de la grabación o el mensaje puntual.</li>
+<li><strong>Recordá el porqué.</strong> Conectalo con la regla del documento o del guion que aplica y con lo que le cuesta al negocio.</li>
+<li><strong>Poné fecha de revisión.</strong> "Lo miramos de nuevo en las llamadas del jueves."</li>
+</ol>
+<p><strong>Dónde queda:</strong> <span class="chip prop">[PROPUESTA, viene del documento de negocio 6.4]</span> las correcciones de llamadas y mensajes se dejan como comentario en el tracker (o en el reporte de esa llamada) con qué cambiar y por qué, así queda el historial para la evaluación del período de prueba.</p>
+<p><strong>Cómo se le avisa al que entra:</strong> desde el día cero sabe que se le va a corregir el trabajo y que es normal. La corrección es entrenamiento, no una amenaza.</p>
+<hr />
+<h2>6. Consecuencias</h2>
+<p>Un sistema de control sin consecuencias es teatro.</p>
+<ul>
+<li><strong>Si supera sus objetivos:</strong> premio. No siempre plata: reconocimiento frente al equipo, más autonomía, tomar las llamadas de los leads más calificados, entrenar al próximo. <span class="chip pend">[PENDIENTE: esquema de comisiones y bonos por rol]</span>.</li>
+<li><strong>Si no cumple de forma consistente:</strong> conversación, plan de mejora con plazo, ajuste de rol y, si no cambia, la salida.</li>
+<li><strong>Para todos igual:</strong> nadie tiene inmunidad por antigüedad ni queda exento por ser nuevo. Y aplica también para la dirección.</li>
+</ul>
+<p>El nivel del equipo tiende a igualarse con el de su integrante más débil, y también sube hasta el nivel del mejor.</p>
+<hr />
+<h2>7. SOPs</h2>
+<ul>
+<li><strong>Un solo lugar:</strong> <a href="#sops"><code>indice-sops.md</code></a> lista todos con link, dueño y fecha. Organizados por área, no por persona.</li>
+<li><strong>Seis partes:</strong> encabezado (fecha, dueño, ejecuta), objetivo, qué necesitás antes, paso a paso (una acción por paso, variantes donde ocurren), errores comunes ("si pasa X → Y"), resultado esperado (verificable con sí o no). <a href="#tpl-template-sop">Template</a>.</li>
+<li><strong>Cómo se escriben rápido:</strong> grabarse haciendo la tarea narrando (10-15 min) → transcribir → pasarlo por el <a href="#generador">generador de SOPs</a> → corregir el borrador → adjuntar el video.</li>
+<li><strong>Lo escribe el experto en la tarea, unos días antes de delegarla.</strong> Nunca el que recién entra.</li>
+<li><strong>Se delega la tarea, no la responsabilidad:</strong> el dueño del SOP controla que se haga bien y lo actualiza.</li>
+<li><strong>El test:</strong> se lo das a alguien que nunca hizo la tarea y lo mirás ejecutar sin hablar. Cada duda es un agujero.</li>
+<li><strong>Mantenimiento:</strong> se toca el mismo día que cambia el proceso, cuando aparece una pregunta que no responde y cuando algo sale mal. Revisión completa cada 3 meses. El que ejecuta propone cambios, el dueño aprueba.</li>
+</ul>
+<hr />
+<h2>8. La semana completa</h2>
+<p><strong>Todos los días:</strong> equipo en la oficina virtual en su horario · daily a primera hora · el SDR y el setter mandan su reporte al cierre · el closer manda el reporte apenas corta cada llamada · el tracker se actualiza a medida que se completa algo.</p>
+<p><strong>Una vez por semana:</strong> Santi o Mati preparan números, análisis y prioridades · weekly de ventas · reporte semanal del closer · uno a uno con quien corresponda.</p>
+<p><strong>Al cerrar cada lanzamiento (o una vez por mes):</strong> monthly con todo el equipo · se revisan los objetivos del trimestre · se actualizan el documento de negocio y el anexo de ventas con lo aprendido.</p></article>
+<article class="doc" id="s-sdr" data-sec="sdr"><h1>Rol · SDR</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Santiago y Matías · Evalúa al SDR nuevo: <span class="chip conf">[CONFIRMAR]</span></em></p>
+<p>La parte interna del rol: qué se espera, cómo se mide, cómo entra y cómo se lo evalúa. <strong>Cómo hace su trabajo</strong> con el lead está en el <span class="ext" title="Archivo del repo: ventas/proceso-de-ventas-clase-19-10.md">Proceso de ventas</span> y el <span class="ext" title="Archivo del repo: ventas/guion-sdr-clase-19-10.md">Guion del SDR</span>. Las reglas comunes están en <a href="#sistema"><code>00-sistema-del-equipo.md</code></a>.</p>
+<hr />
+<h2>1. El rol en Génesis</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entra en</strong></td>
+<td>Apenas el lead completa el opt-in o la aplicación (reparto 50/50 entre SDR)</td>
+</tr>
+<tr>
+<td><strong>Recibe de</strong></td>
+<td>El formulario en GHL</td>
+</tr>
+<tr>
+<td><strong>Entrega a</strong></td>
+<td>El closer: lead calificado, agendado con el formulario y Calendly, y presentado en el grupo de WhatsApp con el traspaso escrito</td>
+</tr>
+<tr>
+<td><strong>Hoy lo hacen</strong></td>
+<td>Mati y Santi. Búsqueda de SDR nuevo abierta (tarea EXT-03)</td>
+</tr>
+<tr>
+<td><strong>Reporta a</strong></td>
+<td>El responsable de ventas que no comparta el ciclo con él <span class="chip conf">[CONFIRMAR]</span></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Responsabilidades principales (las 3 que se dicen en el día cero)</h3>
+<ol>
+<li><strong>Contactar rápido y calificar hablando:</strong> primer mensaje apenas entra el lead, llamada si no contesta en 5 minutos, y la decisión de si califica (consumible químico + más de 30 millones de pesos por mes) la toma él en la llamada.</li>
+<li><strong>Agendar en la misma llamada y traspasar completo:</strong> formulario con el lead en el teléfono, grupo de WhatsApp con el closer y el traspaso con los 7 datos.</li>
+<li><strong>Sostener al lead hasta la llamada de venta:</strong> cadencia, día de la clase, los 3 grupos, las 3 piezas y los recordatorios, con las etiquetas de GHL al día.</li>
+</ol>
+<p><strong>De qué NO es responsable:</strong> no habla de precios, cuotas ni de la Mentoría; no cierra; no manda links de pago.</p>
+<hr />
+<h2>2. Los estándares (se escriben antes de que arranque)</h2>
+<p><span class="chip prop">[PROPUESTA]</span> Los que tienen número salen del proceso de ventas o de la referencia de Limitless; los que dicen <span class="chip pend">[PENDIENTE]</span> se definen con los datos del próximo lanzamiento.</p>
+<h3>Resultado</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Estándar</th>
+<th>De dónde sale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leads contactados (primer mensaje)</td>
+<td>100% de los asignados, en menos de 5 minutos en horario laboral</td>
+<td>Regla del proceso</td>
+</tr>
+<tr>
+<td>Leads que atendieron la primera llamada</td>
+<td><span class="chip pend">[PENDIENTE: base del 17/11]</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Agendas sobre leads calificados hablados</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Show rate de sus agendas</td>
+<td>Mínimo 80%</td>
+<td>Referencia Limitless (setter). Por debajo: confirma mal o agenda gente sin interés</td>
+</tr>
+<tr>
+<td>Asistencia a la clase de los que confirmó</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Proceso (pesa más que el resultado)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Doble llamada si no contesta en 5 min</td>
+<td>Siempre</td>
+</tr>
+<tr>
+<td>Formulario mandado con el lead en el teléfono</td>
+<td>Siempre. Nunca "después te lo paso", nunca el Calendly suelto</td>
+</tr>
+<tr>
+<td>Traspaso escrito en el grupo</td>
+<td>100% de las agendas, con los 7 datos: situación, cuello de botella, dolor con palabras textuales, objetivo, plazo, presupuesto declarado, recurso enviado</td>
+</tr>
+<tr>
+<td>Recurso prometido</td>
+<td>Sale el mismo día</td>
+</tr>
+<tr>
+<td>Etiquetas de GHL</td>
+<td>Al día al cierre de cada jornada (califica, confirmó clase, señal de compra, grupo, piezas, agendada)</td>
+</tr>
+<tr>
+<td>Los 3 grupos después de la clase</td>
+<td>Armados la misma noche de la clase</td>
+</tr>
+<tr>
+<td>Reporte diario</td>
+<td>Todos los días que trabajó, al cierre</td>
+</tr>
+<tr>
+<td>No dice precio, cuotas ni Mentoría</td>
+<td>Nunca</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>3. Período de prueba</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una ejecución</strong></td>
+<td>Una primera llamada completa (apertura → dos razones → situación → dolor → compromiso → califica o no → agenda o ruta a la clase)</td>
+</tr>
+<tr>
+<td><strong>Cuántas</strong></td>
+<td>30 primeras llamadas <strong>y</strong> un día de clase completo con sus 3 grupos <span class="chip prop">[PROPUESTA]</span></td>
+</tr>
+<tr>
+<td><strong>Tope</strong></td>
+<td>30 días. El ingreso se planifica para que cruce una ventana de venta</td>
+</tr>
+<tr>
+<td><strong>Revisión de la mitad</strong></td>
+<td>A las 15 primeras llamadas</td>
+</tr>
+<tr>
+<td><strong>Cómo se observa</strong></td>
+<td>Escuchando sus llamadas <span class="chip conf">[CONFIRMAR: si las llamadas del SDR se graban, y con qué]</span>, leyendo sus traspasos en los grupos, revisando etiquetas en GHL y su reporte diario</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Qué mirar en concreto, por dimensión</h3>
+<ul>
+<li><strong>Resultado:</strong> contactados en 5 min, agendas, show rate de lo que agendó.</li>
+<li><strong>Proceso:</strong> ¿respeta el orden de las dos razones o abre por el cupo? ¿Pregunta lo que el lead ya contestó en el formulario? ¿Cava en un solo dolor o hace un interrogatorio? ¿Muestra el agujero o se pone a explicar la solución completa? ¿El traspaso tiene los 7 datos o dice "es un buen lead"? ¿Etiqueta?</li>
+<li><strong>Encaje y actitud:</strong> ¿lo corregido en la llamada 3 aparece bien en la 4? ¿Avisa cuando un formulario o un link no anda? ¿Su reporte trae señal o solo números?</li>
+</ul>
+<h3>Señales de alarma propias del rol</h3>
+<ul>
+<li>Pone al lead en la ruta pre-venta sin haber confirmado facturación y tipo de producto hablando.</li>
+<li>Deja leads de su reparto sin tocar al cierre del día.</li>
+<li>Traspasos vacíos: el closer tiene que volver a preguntar todo.</li>
+<li>Dice precio o habla de la Mentoría en el chat o en la llamada.</li>
+</ul>
+<hr />
+<h2>4. Su reporte</h2>
+<p>Diario, al cierre, en <code>#reportes-ventas</code>. Lo lee el responsable de ventas y marketing. Template: <a href="#tpl-reporte-diario-sdr"><code>../templates/reporte-diario-sdr.md</code></a>.</p>
+<hr />
+<h2>5. Reuniones en las que está</h2>
+<p>Daily de ventas · weekly de ventas · monthly / cierre de lanzamiento · uno a uno (semanal en el período de prueba). Ver <a href="#sistema"><code>00-sistema-del-equipo.md</code></a>.</p>
+<hr />
+<h2>6. La reunión del día cero · Bloque 3 (su rol)</h2>
+<p>Se usa con la <a href="#tpl-agenda-dia-cero">agenda del día cero</a>.</p>
+<ul>
+<li><strong>Responsabilidades:</strong> las 3 de la sección 1.</li>
+<li><strong>Cómo se mide:</strong> contactados en 5 minutos y show rate de sus agendas.</li>
+<li><strong>Período de prueba:</strong> 30 primeras llamadas + un día de clase, tope 30 días, revisión a las 15. Las 3 dimensiones y los estándares de la sección 2, por escrito.</li>
+<li><strong>Visión del rol:</strong> <span class="chip pend">[PENDIENTE con Manu: el camino real con números. Ejemplo de forma, no de contenido: "empezás con el 50% de los leads; cuando sostengas X de show rate pasás a tomar también las llamadas de la Mentoría / a closer / a entrenar al próximo SDR", con lo que cobra en cada paso]</span>. Solo si es verdad.</li>
+<li><strong>Primeros 3 SOPs (se abren y se explican en la call):</strong>
+  1. <span class="ext" title="Archivo del repo: ventas/proceso-de-ventas-clase-19-10.md">Proceso de ventas</span>: el mapa de punta a punta.
+  2. <span class="ext" title="Archivo del repo: ventas/guion-sdr-clase-19-10.md">Guion del SDR</span>: primer contacto, primera llamada y calificación.
+  3. Traspaso al closer y etiquetas en GHL <span class="chip pend">[A ESCRIBIR: ver índice de SOPs]</span>.</li>
+</ul>
+<h3>Plan de los primeros 30 días <span class="chip prop">[PROPUESTA]</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Qué hace</th>
+<th>Cómo se lo supervisa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Lee el documento de negocio y el anexo de ventas. <strong>Yo lo hago:</strong> escucha 5 primeras llamadas del responsable y lee 10 traspasos reales. <strong>Lo hacemos:</strong> hace sus primeras llamadas con el responsable escuchando</td>
+<td>Feedback después de cada llamada</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Lo hacés:</strong> toma su 50% de los leads solo. Manda reporte diario</td>
+<td>Revisión diaria de traspasos y etiquetas. Check semanal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Llega a las 15 llamadas. Si cae un lanzamiento: día de la clase (moderación, señales de compra, 3 grupos)</td>
+<td><strong>Revisión formal de la mitad</strong>, por escrito</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Completa las 30 llamadas. Llama a los grupos 2 y 3</td>
+<td>Evaluación de cierre y decisión</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. SOPs del rol</h2>
+<p>Ver <a href="#sops"><code>../indice-sops.md</code></a>.</p></article>
+<article class="doc" id="s-setter" data-sec="setter"><h1>Rol · Setter</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Santiago y Matías · Evalúa: <span class="chip conf">[CONFIRMAR]</span></em></p>
+<p>La parte interna del rol. Las reglas comunes están en <a href="#sistema"><code>00-sistema-del-equipo.md</code></a>.</p>
+<blockquote>
+<p><strong><span class="chip conf">[CONFIRMAR]</span> el alcance del rol.</strong> En el documento de negocio el setteo aparece como el paso entre el SDR y el closer: "setteo desde la cuenta de Manu (confirmación, grupo de WhatsApp y 3 recursos) → handoff al closer", y hoy lo hace Manu. En la referencia de Limitless el setter es además el que convierte conversaciones en agendas (DM y WhatsApp). Este archivo arma el rol con <strong>las dos partes</strong>: (A) conversaciones entrantes por las cuentas de Manu y (B) setteo de las agendas hasta la llamada. Si el setter de Génesis es solo una de las dos, se borra la otra.</p>
+</blockquote>
+<hr />
+<h2>1. El rol en Génesis</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entra en</strong></td>
+<td>(A) Cuando alguien escribe a las cuentas de Manu (respuesta a historias, DM de Instagram o TikTok, WhatsApp de Manu desde el funnel orgánico). (B) Apenas hay una llamada agendada</td>
+</tr>
+<tr>
+<td><strong>Recibe de</strong></td>
+<td>(A) El orgánico: reels, historias, link en bio, video largo de YouTube. (B) El SDR, con el traspaso escrito</td>
+</tr>
+<tr>
+<td><strong>Entrega a</strong></td>
+<td>El closer: lead confirmado, con las 3 piezas consumidas (o se sabe cuáles no) y presentado con el audio de Manu</td>
+</tr>
+<tr>
+<td><strong>Hoy lo hace</strong></td>
+<td>Manu (setteo) <span class="chip conf">[CONFIRMAR]</span></td>
+</tr>
+<tr>
+<td><strong>Reporta a</strong></td>
+<td>Responsable de ventas</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Responsabilidades principales</h3>
+<ol>
+<li><strong>Convertir conversaciones en agendas</strong> (A): responder rápido, llevar la charla a descubrimiento y mandar el formulario con el Calendly adentro al que tiene fit.</li>
+<li><strong>Que el lead llegue a la llamada</strong> (B): confirmación, las 3 piezas en orden (video de la oferta → recurso → testimonio), recordatorios del día anterior y 2 horas antes con un ok cada vez, y el audio de Manu presentando al closer.</li>
+<li><strong>Reportar la voz del mercado todos los días:</strong> dolores y objeciones con palabras textuales, para marketing.</li>
+</ol>
+<p><strong>De qué NO es responsable:</strong> no califica en lugar del SDR en el funnel pago <span class="chip conf">[CONFIRMAR]</span>, no da precio, no cierra. Todo lo que sale con la cara o el nombre de Manu sigue las plantillas aprobadas: no se improvisa en nombre de Manu.</p>
+<hr />
+<h2>2. Los estándares</h2>
+<p><span class="chip prop">[PROPUESTA]</span> Referencia de Limitless para setter; los números finales van con el volumen real de Génesis.</p>
+<h3>Resultado</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Estándar</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agendas por semana</td>
+<td><span class="chip pend">[PENDIENTE]</span> (referencia Limitless: 25 por semana, 100 por mes)</td>
+<td>Depende del volumen del orgánico y de cada lanzamiento</td>
+</tr>
+<tr>
+<td>Tasa de agendamiento (agendas / conversaciones iniciadas)</td>
+<td>8% a 12%</td>
+<td>Por debajo: problema de conversación o de proceso</td>
+</tr>
+<tr>
+<td>Show rate de las llamadas que setteó</td>
+<td>Mínimo 80%</td>
+<td>Por debajo: confirma mal o agenda gente sin interés real</td>
+</tr>
+<tr>
+<td>Piezas consumidas antes de la llamada</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+<td>Se mide con la etiqueta "piezas consumidas" de GHL</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Proceso</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiempo de respuesta a una conversación entrante</td>
+<td><span class="chip pend">[PENDIENTE: ventana]</span> en horario laboral</td>
+</tr>
+<tr>
+<td>Seguimientos diarios por etapa</td>
+<td>Un número por etapa: recibieron el video, en descubrimiento, con link de agenda enviado <span class="chip pend">[PENDIENTE: cuántos]</span></td>
+</tr>
+<tr>
+<td>Las 3 piezas</td>
+<td>En orden y elegidas por las respuestas del formulario, no el paquete genérico</td>
+</tr>
+<tr>
+<td>Recordatorios</td>
+<td>Día anterior y 2 h antes, pidiendo ok, en el 100% de las llamadas</td>
+</tr>
+<tr>
+<td>Si el lead no consumió nada</td>
+<td>El closer lo sabe antes de entrar</td>
+</tr>
+<tr>
+<td>Agenda</td>
+<td>Siempre por el formulario con el Calendly adentro</td>
+</tr>
+<tr>
+<td>Reporte diario a marketing</td>
+<td>Todos los días. No negociable</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>3. Período de prueba</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una ejecución</strong></td>
+<td>Un día completo de setteo con su reporte</td>
+</tr>
+<tr>
+<td><strong>Cuántas</strong></td>
+<td>2 semanas de setteo (10 días hábiles), referencia de Limitless</td>
+</tr>
+<tr>
+<td><strong>Tope</strong></td>
+<td>15 a 21 días <span class="chip prop">[PROPUESTA]</span></td>
+</tr>
+<tr>
+<td><strong>Revisión de la mitad</strong></td>
+<td>Al día 5</td>
+</tr>
+<tr>
+<td><strong>Cómo se observa</strong></td>
+<td>Leyendo sus conversaciones en DM y WhatsApp, su reporte diario, las etiquetas en GHL y el show rate de lo que setteó</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Qué mirar en concreto</h3>
+<ul>
+<li><strong>Resultado:</strong> agendas, tasa de agendamiento, show rate.</li>
+<li><strong>Proceso:</strong> ¿manda el formulario o el Calendly suelto? ¿Hace descubrimiento o tira el link de agenda en el segundo mensaje? ¿Elige las piezas por lo que respondió el lead? ¿Pide el ok en cada recordatorio? ¿Respeta las plantillas aprobadas en nombre de Manu?</li>
+<li><strong>Encaje y actitud:</strong> ¿el reporte trae señal (qué dolor se repitió, qué notó distinto) o solo números? ¿Avisa cuando un lead caliente no tiene horario disponible?</li>
+</ul>
+<h3>Señales de alarma propias del rol</h3>
+<ul>
+<li>Buen número de agendas con show rate bajo: está agendando gente sin interés.</li>
+<li>Escribe como Manu cosas que Manu no aprobó (promesas, bonuses, números).</li>
+<li>Seguimientos en cero: deja morir las conversaciones que no contestaron.</li>
+<li>Reporte que es un parte: "hablé con 40 personas".</li>
+</ul>
+<hr />
+<h2>4. Su reporte</h2>
+<p>Diario, al cierre, en <code>#reportes-ventas</code>. Template: <a href="#tpl-reporte-diario-setter"><code>../templates/reporte-diario-setter.md</code></a>.</p>
+<hr />
+<h2>5. Reuniones</h2>
+<p>Daily de ventas · weekly de ventas · monthly / cierre de lanzamiento · uno a uno.</p>
+<hr />
+<h2>6. La reunión del día cero · Bloque 3</h2>
+<ul>
+<li><strong>Responsabilidades:</strong> las 3 de la sección 1.</li>
+<li><strong>Cómo se mide:</strong> agendas por semana y show rate.</li>
+<li><strong>Período de prueba:</strong> 2 semanas de setteo, tope 21 días, revisión al día 5, por escrito.</li>
+<li><strong>Visión del rol:</strong> <span class="chip pend">[PENDIENTE con Manu: camino real con números (por ejemplo, de setter a SDR o a closer) y lo que cobra en cada paso]</span>.</li>
+<li><strong>Primeros 3 SOPs:</strong>
+  1. <span class="ext" title="Archivo del repo: ventas/proceso-de-ventas-clase-19-10.md">Proceso de ventas</span>, sección "El núcleo".
+  2. Responder conversaciones entrantes en las cuentas de Manu <span class="chip pend">[A ESCRIBIR]</span>.
+  3. Setteo de una llamada agendada: confirmación, 3 piezas, recordatorios y audio de Manu <span class="chip pend">[A ESCRIBIR]</span>.</li>
+</ul>
+<h3>Plan de los primeros 30 días <span class="chip prop">[PROPUESTA]</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Qué hace</th>
+<th>Supervisión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Yo lo hago:</strong> mira cómo se responden 20 conversaciones y cómo se settea una llamada. <strong>Lo hacemos:</strong> responde con el responsable revisando antes de mandar</td>
+<td>Revisión mensaje a mensaje</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Lo hacés:</strong> responde solo y settea las llamadas del día. Reporte diario. Día 5: revisión de la mitad</td>
+<td>Revisión al cierre del día</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Cierre del período de prueba (día 10 hábil) y decisión</td>
+<td>Evaluación</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Si se queda: objetivos del trimestre y se le suma la siguiente tarea</td>
+<td>Check semanal</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. SOPs del rol</h2>
+<p>Ver <a href="#sops"><code>../indice-sops.md</code></a>.</p></article>
+<article class="doc" id="s-closer" data-sec="closer"><h1>Rol · Closer</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Santiago y Matías · Evalúa: <span class="chip conf">[CONFIRMAR]</span></em></p>
+<p>La parte interna del rol. <strong>Cómo se hace la llamada</strong> está en el <span class="ext" title="Archivo del repo: ventas/guion-de-llamada-genesis.md">Guion de llamada</span> y el <span class="ext" title="Archivo del repo: ventas/manual-llamada-de-venta-genesis.md">Manual de la llamada de venta</span>. La búsqueda tiene su <span class="ext" title="Archivo del repo: lanzamientos/2026-11-17-webinar/ventas-y-tracking/formulario-closer.md">formulario de postulación</span>. Reglas comunes en <a href="#sistema"><code>00-sistema-del-equipo.md</code></a>.</p>
+<hr />
+<h2>1. El rol en Génesis</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Entra en</strong></td>
+<td>La llamada de venta</td>
+</tr>
+<tr>
+<td><strong>Recibe de</strong></td>
+<td>El grupo de WhatsApp con el traspaso del SDR y el setteo</td>
+</tr>
+<tr>
+<td><strong>Entrega a</strong></td>
+<td>El equipo: venta cargada en el tracker con seña y link de Fathom, o "no se cerró" con la razón y el seguimiento</td>
+</tr>
+<tr>
+<td><strong>Hoy</strong></td>
+<td>En el 19/10 fue Diego (también SDR). Manu toma las llamadas de los leads más calificados <span class="chip conf">[CONFIRMAR el equipo vigente]</span></td>
+</tr>
+<tr>
+<td><strong>Reporta a</strong></td>
+<td>Responsable de ventas</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Responsabilidades principales</h3>
+<ol>
+<li><strong>Tomar las llamadas con la estructura:</strong> las 7 fases, Génesis al que califica y la Mentoría al que no, el precio que no se baja nunca.</li>
+<li><strong>Hacer seguimiento del 100% de lo que no cerró</strong> dentro de la ventana, sobre la objeción que quedó viva.</li>
+<li><strong>Cargar y reportar:</strong> cada llamada en el tracker el mismo día, con Fathom, y el reporte de llamada para ventas y marketing.</li>
+</ol>
+<p><strong>De qué NO es responsable:</strong> no promete garantía ni facturación, no nombra bonuses que Manu no confirmó, no regala el diagnóstico (es el entregable 1), no agenda fuera de la ventana.</p>
+<hr />
+<h2>2. Los estándares</h2>
+<h3>Resultado</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Estándar</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llamadas presentadas por ventana</td>
+<td><span class="chip pend">[PENDIENTE: según volumen y cuántas llamadas por día puede tomar]</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Close rate</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+<td>No hay histórico: el piloto fue 3 de 3. Referencia Limitless: 30-50% según el negocio. Si está por debajo, primero se lo ayuda desde la dirección</td>
+</tr>
+<tr>
+<td>Ventas con seña cobrada</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Proceso</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Llamadas grabadas en Fathom</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Lee el traspaso antes de entrar</td>
+<td>100%. No pregunta lo que ya está en el grupo</td>
+</tr>
+<tr>
+<td>Seguimiento post-call de los que no cerraron</td>
+<td>100%, sin excepción, hasta el cierre de la ventana</td>
+</tr>
+<tr>
+<td>Carga en el tracker</td>
+<td>El mismo día: venta con seña y Fathom, o "no se cerró" con la razón</td>
+</tr>
+<tr>
+<td>Link de pago</td>
+<td>Recién después del "sí"</td>
+</tr>
+<tr>
+<td>Reporte de llamada</td>
+<td>Apenas corta</td>
+</tr>
+<tr>
+<td>Reporte semanal</td>
+<td>Antes de la weekly</td>
+</tr>
+<tr>
+<td>Reglas que no se rompen</td>
+<td>Precio, garantía, bonuses, Génesis solo al que califica: cero excepciones</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>3. Período de prueba</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Una ejecución</strong></td>
+<td>Una llamada de venta tomada, con su carga, su reporte y su seguimiento</td>
+</tr>
+<tr>
+<td><strong>Cuántas</strong></td>
+<td>10 a 15 llamadas (referencia Limitless)</td>
+</tr>
+<tr>
+<td><strong>Tope</strong></td>
+<td>30 días. El ingreso se planifica para que cruce una ventana de venta</td>
+</tr>
+<tr>
+<td><strong>Revisión de la mitad</strong></td>
+<td>A la llamada 5-7</td>
+</tr>
+<tr>
+<td><strong>Cómo se observa</strong></td>
+<td>Las grabaciones de Fathom (todas en la primera semana, después muestreo <span class="chip prop">[PROPUESTA]</span>), el tracker y los reportes</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Qué mirar en concreto</h3>
+<ul>
+<li><strong>Resultado:</strong> cierres y señas, sabiendo que en 10 llamadas tiene mucho ruido.</li>
+<li><strong>Proceso:</strong> ¿sigue las 7 fases o va directo al precio? ¿Hace descubrimiento y encuentra el gap? ¿Ramifica la Situación con las métricas del negocio (B2B)? ¿Aclara la objeción antes de responderla? ¿Manda el seguimiento de todas las que no cerró? ¿Carga el mismo día?</li>
+<li><strong>Encaje y actitud:</strong> ¿lo que se le marcó en la llamada 3 aparece corregido en la 4? ¿Su reporte dice qué escuchó y qué cree que pasa, o solo "no tenía plata"?</li>
+</ul>
+<h3>Señales de alarma propias del rol</h3>
+<ul>
+<li>Cierra bien pero sin estructura: improvisa la presentación o el precio. Es suerte con fecha de vencimiento.</li>
+<li>Ofrece descuentos, garantías o bonuses no confirmados para cerrar.</li>
+<li>Le presenta Génesis a quien no califica.</li>
+<li>Llamadas sin Fathom o sin carga en el tracker.</li>
+<li>Culpa siempre a la calidad del lead sin traer la evidencia en el reporte.</li>
+</ul>
+<hr />
+<h2>4. Sus reportes</h2>
+<ul>
+<li><strong>Por llamada</strong>, apenas corta: <a href="#tpl-reporte-llamada-closer"><code>../templates/reporte-llamada-closer.md</code></a>.</li>
+<li><strong>Semanal</strong>, antes de la weekly: <a href="#tpl-reporte-semanal-closer"><code>../templates/reporte-semanal-closer.md</code></a>.</li>
+</ul>
+<p>Las objeciones y el perfil de los leads van a marketing: son lo que corrige los anuncios, la clase y el filtro del formulario.</p>
+<hr />
+<h2>5. Reuniones</h2>
+<p>Daily de ventas · weekly de ventas · monthly / cierre de lanzamiento · uno a uno.</p>
+<hr />
+<h2>6. La reunión del día cero · Bloque 3</h2>
+<ul>
+<li><strong>Responsabilidades:</strong> las 3 de la sección 1.</li>
+<li><strong>Cómo se mide:</strong> close rate y seguimiento del 100%.</li>
+<li><strong>Período de prueba:</strong> 10-15 llamadas, tope 30 días, revisión a la mitad, por escrito.</li>
+<li><strong>Visión del rol:</strong> <span class="chip pend">[PENDIENTE con Manu: el camino real con números. La forma que propone Limitless: "empezás con estas llamadas; en X meses tomás el Y% de las llamadas; el negocio está en A y va a B; te llevás el Z%; y el que entrena al próximo closer podés ser vos". Solo con números reales de comisión y volumen]</span>.</li>
+<li><strong>Primeros 3 SOPs:</strong>
+  1. <span class="ext" title="Archivo del repo: ventas/manual-llamada-de-venta-genesis.md">Manual de la llamada de venta</span>.
+  2. <span class="ext" title="Archivo del repo: ventas/guion-de-llamada-genesis.md">Guion de llamada</span>.
+  3. Después de la llamada: carga en el tracker, link de pago, seña y seguimiento <span class="chip pend">[A ESCRIBIR]</span>.</li>
+</ul>
+<h3>Plan de los primeros 30 días <span class="chip prop">[PROPUESTA]</span></h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Semana</th>
+<th>Qué hace</th>
+<th>Supervisión</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Lee documento de negocio y anexo de ventas. <strong>Yo lo hago:</strong> escucha 5 grabaciones de llamadas cerradas y 3 no cerradas, y una llamada en vivo. Practica el pitch y el Simulador con el responsable (role play)</td>
+<td>Role play con feedback</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Lo hacemos:</strong> primeras llamadas con el responsable escuchando. <strong>Lo hacés:</strong> las siguientes solo</td>
+<td>Revisión de cada grabación</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Llamadas de la ventana. Revisión formal de la mitad</td>
+<td>Evaluación parcial por escrito</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Completa las llamadas y el seguimiento. Cierre del período</td>
+<td>Evaluación y decisión</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. SOPs del rol</h2>
+<p>Ver <a href="#sops"><code>../indice-sops.md</code></a>.</p></article>
+<article class="doc" id="s-sops" data-sec="sops"><h1>Índice de SOPs · Ventas</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño del índice: Santiago</em></p>
+<p>El único lugar donde se listan los SOPs del área. Organizado por rol dentro de Ventas, no por persona. Cada SOP sigue el <a href="#tpl-template-sop">template</a> de 6 partes y se arma con el <a href="#generador">generador de SOPs</a>.</p>
+<p><strong>Estados:</strong> <span class="st ok">Vigente</span> existe y está vigente · <span class="st mid">Actualizar</span> existe pero hay que pasarlo a formato SOP o actualizarlo · <span class="st no">A escribir</span> a escribir.</p>
+<p><strong>Orden para escribir:</strong> primero las tareas delegables que más horas por semana le sacan hoy a Santi, Mati y Manu. <span class="chip pend">[PENDIENTE: poner las horas por semana de cada tarea para ordenar]</span>.</p>
+<h2>Comunes a ventas</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>SOP</th>
+<th>Estado</th>
+<th>Dueño</th>
+<th>Ejecuta</th>
+<th>Última act.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="ext" title="Archivo del repo: ventas/proceso-de-ventas-clase-19-10.md">Proceso de ventas (mapa de punta a punta)</span></td>
+<td><span class="st mid">Actualizar</span> Actualizar al <span class="ext" title="Archivo del repo: ventas/mapa-de-ventas.html">mapa de ventas</span></td>
+<td>Santi</td>
+<td>SDR, setter, closer</td>
+<td>02/10/2026</td>
+</tr>
+<tr>
+<td>Etiquetas de GHL: qué etiqueta va en cada momento</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi</td>
+<td>SDR, setter</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Cargar una tarea en el tracker y cambiarle el estado</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi</td>
+<td>Todos</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mandar el reporte diario / de llamada</td>
+<td><span class="st no">A escribir</span> (los templates ya existen)</td>
+<td>Mati</td>
+<td>SDR, setter, closer</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2>SDR</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>SOP</th>
+<th>Estado</th>
+<th>Dueño</th>
+<th>Última act.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="ext" title="Archivo del repo: ventas/guion-sdr-clase-19-10.md">Guion del SDR: primer contacto, primera llamada y calificación</span></td>
+<td><span class="st mid">Actualizar</span> Actualizar</td>
+<td>Santi / Mati</td>
+<td>19/10</td>
+</tr>
+<tr>
+<td>Mandar el formulario de agenda con el lead en el teléfono</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi / Mati</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Armar el grupo de WhatsApp y escribir el traspaso al closer</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi / Mati</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Día de la clase: moderar el chat y marcar señales de compra</td>
+<td><span class="st mid">Actualizar</span> Está en el guion</td>
+<td>Santi / Mati</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Partir la lista en los 3 grupos después de la clase</td>
+<td><span class="st mid">Actualizar</span> Está en el guion</td>
+<td>Santi / Mati</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Pedir un recurso personalizado a la IA de la Skool</td>
+<td><span class="st no">A escribir</span> (<span class="ext" title="Archivo del repo: ventas/claude-recursos"><code>../ventas/claude-recursos/</code></span>)</td>
+<td>Santi</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Setter</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>SOP</th>
+<th>Estado</th>
+<th>Dueño</th>
+<th>Última act.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Responder conversaciones entrantes en las cuentas de Manu</td>
+<td><span class="st no">A escribir</span></td>
+<td>Manu <span class="chip conf">[CONFIRMAR]</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Setteo de una llamada agendada: confirmación, 3 piezas, recordatorios y audio de Manu</td>
+<td><span class="st no">A escribir</span></td>
+<td>Manu <span class="chip conf">[CONFIRMAR]</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>Elegir las 3 piezas según las respuestas del formulario</td>
+<td><span class="st mid">Actualizar</span> Está en el proceso ("El núcleo")</td>
+<td>Santi</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Closer</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>SOP</th>
+<th>Estado</th>
+<th>Dueño</th>
+<th>Última act.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="ext" title="Archivo del repo: ventas/manual-llamada-de-venta-genesis.md">Manual de la llamada de venta</span></td>
+<td><span class="st ok">Vigente</span></td>
+<td>Manu / Santi</td>
+<td>—</td>
+</tr>
+<tr>
+<td><span class="ext" title="Archivo del repo: ventas/guion-de-llamada-genesis.md">Guion de llamada</span></td>
+<td><span class="st ok">Vigente</span></td>
+<td>Manu / Santi</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Después de la llamada: link de pago, seña, Fathom y carga en el tracker</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Seguimiento de una llamada que no cerró</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi / Mati</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Usar el Simulador de Suscripción en la llamada</td>
+<td><span class="st no">A escribir</span></td>
+<td>Manu</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Equipo (dirección y responsables)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>SOP</th>
+<th>Estado</th>
+<th>Dueño</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#sistema">Sistema del equipo</a></td>
+<td><span class="st ok">Vigente</span> (con pendientes)</td>
+<td>Santi / Mati</td>
+</tr>
+<tr>
+<td>Offboarding: quitar accesos y reasignar leads abiertos</td>
+<td><span class="st no">A escribir</span></td>
+<td>Santi</td>
+</tr>
+</tbody>
+</table></div></article>
+<article class="doc" id="s-templates" data-sec="templates"><h1>Templates</h1><p class="lead">Para copiar y completar. Cada uno está también como archivo en <code>mi-negocio/equipo/templates/</code>.</p><nav class="toc"><a href="#tpl-evaluacion-periodo-prueba">Evaluación de período de prueba · Génesis</a><a href="#tpl-agenda-dia-cero">Agenda: Reunión del día cero</a><a href="#tpl-reporte-diario-sdr">Reporte diario · SDR</a><a href="#tpl-reporte-diario-setter">Reporte diario · Setter</a><a href="#tpl-reporte-llamada-closer">Reporte por llamada · Closer</a><a href="#tpl-reporte-semanal-closer">Reporte semanal · Closer</a><a href="#tpl-reporte-semanal-ventas">Reporte semanal del área de ventas</a><a href="#tpl-agenda-daily">Agenda: Daily de ventas</a><a href="#tpl-agenda-weekly">Agenda: Weekly de ventas</a><a href="#tpl-agenda-monthly">Agenda: Monthly / cierre de lanzamiento</a><a href="#tpl-template-sop">SOP</a></nav><section class="tpl" id="tpl-evaluacion-periodo-prueba"><h1>Evaluación de período de prueba · Génesis</h1>
+<p><em>Se usa dos veces: a la mitad de las ejecuciones (parcial, para decirle dónde está parado) y al cierre (decisión). Se guarda una copia por persona fuera del repo <span class="chip pend">[PENDIENTE: dónde]</span>: tiene datos personales.</em></p>
+<p><strong>Persona:</strong> [nombre] · <strong>Rol:</strong> SDR / Setter / Closer · <strong>Inicio:</strong> [fecha] · <strong>Cierre del período:</strong> [fecha] · <strong>Evalúa:</strong> [quién] · <strong>Tipo:</strong> Mitad / Cierre</p>
+<hr />
+<h2>1. Resultado</h2>
+<p>Los estándares vienen del archivo del rol (<a href="#sdr">SDR</a> · <a href="#setter">Setter</a> · <a href="#closer">Closer</a>), escritos antes del día cero.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Estándar definido</th>
+<th>Real</th>
+<th>Cumple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[métrica y número]</td>
+<td>[x]</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>[métrica y número]</td>
+<td>[x]</td>
+<td>Sí / No</td>
+</tr>
+<tr>
+<td>[métrica y número]</td>
+<td>[x]</td>
+<td>Sí / No</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Ejecuciones observadas:</strong> [cantidad] de [objetivo]
+<strong>Si no llegó, ¿por qué?</strong> [no hubo ventana de venta o volumen / no produjo la persona]</p>
+<h2>2. Proceso</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Sigue los procesos definidos (guion, proceso de ventas, SOPs)?</td>
+<td>sí / parcial / no</td>
+</tr>
+<tr>
+<td>¿Entrega en los tiempos acordados (5 min, mismo día, recordatorios)?</td>
+<td>sí / parcial / no</td>
+</tr>
+<tr>
+<td>¿Manda los reportes que corresponden?</td>
+<td>sí / parcial / no</td>
+</tr>
+<tr>
+<td>¿Mantiene GHL y el tracker al día?</td>
+<td>sí / parcial / no</td>
+</tr>
+<tr>
+<td>¿Avisa cuando algo se traba?</td>
+<td>sí / parcial / no</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Observaciones (con ejemplos concretos: llamada, fecha, minuto de Fathom, mensaje):</strong></p>
+<h2>3. Encaje y actitud</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Pregunta</th>
+<th>Respuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Cómo recibe el feedback?</td>
+<td>aplica / discute / ignora</td>
+</tr>
+<tr>
+<td>¿Los errores corregidos vuelven?</td>
+<td>no / a veces / sí</td>
+</tr>
+<tr>
+<td>¿Pregunta o simula que entendió?</td>
+<td>pregunta / simula</td>
+</tr>
+<tr>
+<td>¿Trae propuestas propias?</td>
+<td>sí / a veces / no</td>
+</tr>
+<tr>
+<td>¿Cómo es su energía en el equipo?</td>
+<td>suma / neutra / resta</td>
+</tr>
+<tr>
+<td>¿Está mejorando semana a semana?</td>
+<td>sí / se estancó / empeoró</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Observaciones (con ejemplos concretos):</strong></p>
+<h2>4. El flujo de decisión</h2>
+<p>Se responde en orden; la primera que frena define la salida.</p>
+<ol>
+<li>¿Actitud y encaje son buenos? → No: se va.</li>
+<li>¿Hubo muestra suficiente? → No por causa ajena: se extiende · No porque no produjo: se va.</li>
+<li>¿Sigue el proceso? → No: se va, aunque el resultado sea bueno.</li>
+<li>¿Cumplió el resultado? → Sí: se queda · No, pero proceso y actitud sólidos: se queda · No y sin señal: se va.</li>
+</ol>
+<h2>5. La pregunta</h2>
+<ul>
+<li>Sabiendo lo que sé hoy, ¿la volvería a contratar? <strong>Sí / No</strong></li>
+<li>¿Sube o baja el promedio del equipo? <strong>Sube / Baja</strong></li>
+</ul>
+<h2>6. Decisión (solo en el cierre)</h2>
+<ul>
+<li>[ ] <strong>Se queda</strong> · Objetivos del próximo trimestre: [cuáles] · Hacia dónde crece el rol: [camino]</li>
+<li>[ ] <strong>Se extiende</strong> (solo por falta de muestra) · Motivo: [cuál] · Nuevo cierre: [fecha, máximo 30 días] · Qué necesito ver: [X, Y, Z] · Esta extensión es única y no se renueva.</li>
+<li>[ ] <strong>Se va</strong> · Motivo principal: [cuál] · Fecha de la conversación: [cuándo]</li>
+</ul>
+<h2>En la revisión de la mitad</h2>
+<p><strong>Lo que se le dice, por escrito:</strong> dónde está parado en cada dimensión, las 2-3 cosas concretas a corregir en la segunda mitad y cómo se van a medir.</p></section><section class="tpl" id="tpl-agenda-dia-cero"><h1>Agenda · Reunión del día cero</h1>
+<p><em>Se arma por persona antes de la call. El bloque 3 se completa con el archivo de su rol: <a href="#sdr">SDR</a> · <a href="#setter">Setter</a> · <a href="#closer">Closer</a>.</em></p>
+<pre><code>REUNIÓN DE ONBOARDING — [nombre] — [rol]
+Fecha: [fecha]                      Duración: 60-90 min
+Antes de la call: [ ] contrato firmado  [ ] accesos creados (GHL, WhatsApp,
+tracker, Fathom, canales)  [ ] documento de negocio enviado y leído
+[ ] anexo de ventas enviado
+
+BLOQUE 1 — REPASO DEL DOCUMENTO (20-30 min) · lidera [responsable de ventas]
+- Recorrido por los 6 bloques, sin leerlos.
+- Contexto que no está escrito:
+  · Por qué la oferta y el precio son así:
+  · Qué se probó antes y no funcionó (TikTok orgánico, escuela desde cero,
+    carrito público del 19/10):
+- Chequeo de comprensión:
+  · &quot;¿Cómo le explicarías a un amigo qué hace Génesis?&quot;
+  · &quot;¿Quién es nuestro cliente ideal y a quién no le vendemos?&quot;
+  · &quot;¿Por qué alguien nos elegiría en vez de a otra agencia o curso?&quot;
+- Dudas que trajo anotadas.
+
+BLOQUE 2 — VISIÓN Y MISIÓN (15-20 min) · lidera Manu
+- Por qué existe Génesis: [versión real, no la de marketing]
+- A dónde va en 2-3 años:
+- Por qué esta persona:
+
+BLOQUE 3 — SU ROL Y SUS PRIMERAS TAREAS (25-35 min) · lidera [responsable]
+- Responsabilidades principales (2-3):
+- Cómo se mide su trabajo (1-2 métricas):
+- Período de prueba (POR ESCRITO):
+  · Cuánto dura: [ejecuciones] con tope de [días]
+  · Qué se evalúa: resultado, proceso, encaje y actitud, con estos números: [...]
+  · Cada cuánto hablamos: check semanal + revisión formal a la mitad
+  · Qué pasa al final: se queda / se extiende (solo por falta de muestra) / se va
+  · Es mutuo: también evalúa si Génesis es lo que quiere.
+- Plan de los primeros 30 días: semana 1 / 2 / 3 / 4
+- Cómo se lo supervisa: [frecuencia y formato]
+- Visión del rol: [camino concreto, con números y plazos reales]
+- Anexo de su área: ../ventas/
+- Primeros SOPs (se abren y se explican en la call, no se mandan):
+  1.
+  2.
+  3.
+
+CIERRE
+- Próxima reunión y primera tarea de mañana.
+- &quot;¿Te quedó alguna duda o algo que no te cierre?&quot;
+</code></pre></section><section class="tpl" id="tpl-reporte-diario-sdr"><h1>Reporte diario · SDR</h1>
+<p><em>Al cierre del día, en <code>#reportes-ventas</code>. Lector: responsable de ventas y marketing. Se copia y se completa; no se borran las preguntas de señal.</em></p>
+<pre><code>REPORTE DIARIO SDR — [fecha] — [nombre]
+
+NÚMEROS
+- Leads asignados hoy:
+- Contactados en menos de 5 min:
+- Primeras llamadas hechas (atendió):
+- Califican (consumible químico + más de 30M/mes):
+- No califican → ruta a la clase:
+- Agendas conseguidas (formulario completo + horario):
+- Grupos de WhatsApp armados con traspaso:
+- Seguimientos / cadencia hechos:
+- Leads de mi reparto sin tocar: (si hay, por qué)
+
+SEÑAL
+- Dolor más repetido hoy, con palabras textuales del lead:
+- Objeción o freno más escuchado:
+- Patrón del tráfico (qué venden, cuánto facturan los que no califican):
+- Qué noté distinto respecto de ayer:
+- Qué necesito para mejorar mañana:
+- Algo trabado (formulario, Calendly, GHL, recurso):
+</code></pre>
+<p>En ventana de clase se suma:</p>
+<pre><code>- Confirmados para la clase:
+- Señales de compra marcadas en el chat:
+- Grupo 1 / 2 / 3: [cantidades]
+</code></pre></section><section class="tpl" id="tpl-reporte-diario-setter"><h1>Reporte diario · Setter</h1>
+<p><em>Al cierre del día, en <code>#reportes-ventas</code>. Lector: responsable de ventas y marketing.</em></p>
+<pre><code>REPORTE DIARIO SETTER — [fecha] — [nombre]
+
+NÚMEROS — CONVERSACIONES
+- Conversaciones iniciadas / respondidas:
+- De dónde vinieron (historias, DM, YouTube, WhatsApp de Manu):
+- Agendas conseguidas:
+- Tasa de agendamiento (agendas / conversaciones):
+- Seguimientos realizados, por etapa:
+  · Recibieron el video:
+  · En descubrimiento:
+  · Con link de agenda enviado:
+
+NÚMEROS — SETTEO
+- Llamadas setteadas para mañana:
+- Confirmadas con ok:
+- Con las 3 piezas consumidas / con alguna / con ninguna:
+- Audio de Manu enviado:
+
+SEÑAL
+- Objeciones / dolores más escuchados hoy (palabras textuales):
+- Qué contenido trajo las conversaciones de hoy (qué reel, qué historia):
+- Qué noté distinto respecto de ayer:
+- Qué necesito para mejorar mañana:
+</code></pre></section><section class="tpl" id="tpl-reporte-llamada-closer"><h1>Reporte por llamada · Closer</h1>
+<p><em>Apenas corta, en <code>#reportes-ventas</code> (y la venta también en <code>#ventas-cerradas</code>). Lector: responsable de ventas y marketing. Se carga además en el tracker el mismo día.</em></p>
+<pre><code>LLAMADA — [fecha y hora] — [closer]
+
+LEAD
+- Nombre / marca:
+- Puerta: pre-venta / asistió y agendó / asistió y no agendó / no asistió / orgánico
+- Qué vende y cuánto factura:
+- Califica para: Génesis / Mentoría
+- Piezas consumidas antes: video / recurso / testimonio / ninguna
+- Calidad del lead (1 a 5) y por qué:
+- ¿El traspaso tenía todo? sí / faltó: [qué]
+
+RESULTADO
+- Cerró: Génesis / Mentoría / No
+- Si cerró: forma de pago, seña cobrada (sí/no), link de Fathom
+- Si no cerró:
+  · Objeción real (no la primera que dijo):
+  · Tipo (plata / socio / miedo / otra):
+  · Próximo paso y fecha del seguimiento:
+
+SEÑAL
+- Frase textual del lead que marketing tiene que escuchar:
+- Qué haría distinto en esta llamada:
+</code></pre></section><section class="tpl" id="tpl-reporte-semanal-closer"><h1>Reporte semanal · Closer</h1>
+<p><em>Antes de la weekly de ventas. Lector: responsable de ventas.</em></p>
+<pre><code>REPORTE SEMANAL CLOSER — semana del [fecha] — [nombre]
+
+NÚMEROS
+| Métrica                      | Objetivo | Real | Variación |
+|------------------------------|----------|------|-----------|
+| Llamadas agendadas           |          |      |           |
+| Llamadas presentadas (show)  |          |      |           |
+| Cierres Génesis              |          |      |           |
+| Cierres Mentoría             |          |      |           |
+| Close rate                   |          |      |           |
+| Señas cobradas               |          |      |           |
+| Seguimientos abiertos        |          |      |           |
+
+OBJECIONES (las 3 más frecuentes, con frecuencia)
+1.
+2.
+3.
+
+PERFIL DE LOS LEADS QUE LLEGARON
+- Qué tienen en común los que cerraron:
+- Qué tienen en común los que no:
+- Calidad del traspaso y del setteo: qué faltó
+
+LECTURA
+- Qué funcionó y por qué:
+- Qué no funcionó y por qué:
+- Qué necesito de SDR / setter / marketing:
+</code></pre></section><section class="tpl" id="tpl-reporte-semanal-ventas"><h1>Reporte semanal del área de ventas</h1>
+<p><em>Lo arma el responsable de ventas (Santi o Mati) antes de la weekly. Lector: Manu. Sin esto, la weekly se reagenda.</em></p>
+<pre><code>REPORTE SEMANAL — VENTAS — semana del [fecha]
+Responsable: [nombre]
+
+1. NÚMEROS
+| Métrica                         | Objetivo | Real | Variación |
+|---------------------------------|----------|------|-----------|
+| Leads entrados                  |          |      |           |
+| Contactados en &lt; 5 min          |          |      |           |
+| Calificados                     |          |      |           |
+| Agendas                         |          |      |           |
+| Show rate                       |          |      |           |
+| Cierres (Génesis / Mentoría)    |          |      |           |
+| Caja cobrada (señas)            |          |      |           |
+
+2. ANÁLISIS
+- Qué funcionó y por qué:
+- Qué no funcionó y por qué (hipótesis, no números crudos):
+- Qué aprendimos:
+
+3. TRABAS
+- Qué nos está frenando:
+- Qué necesitamos de otras áreas (contenido, ads, entrega):
+
+4. EQUIPO
+- Quién está en período de prueba y en qué hito:
+- Feedback pendiente de dar:
+
+5. PROPUESTA DE PRIORIDADES (3-5 para la semana que viene)
+1.
+2.
+3.
+</code></pre></section><section class="tpl" id="tpl-agenda-daily"><h1>Agenda · Daily de ventas</h1>
+<pre><code>DAILY VENTAS — [fecha]                 Duración: 15-30 min
+Participantes: SDR, setter, closer, Santi, Mati
+Lidera: [quién]
+
+1. Apertura (1 min)
+2. Ronda de updates (3 min por persona). Cada uno responde:
+   · ¿Qué tenés para hacer hoy? (leads, llamadas, setteos)
+   · ¿Cómo venís con las tareas de la semana?
+   · ¿Algo te está trabando? ¿Necesitás ayuda?
+3. Resolución de trabas (5-10 min). Lo rápido se resuelve acá.
+   Lo complejo se agenda aparte solo con los involucrados.
+4. Cierre (1 min) — prioridades del día
+   (en ventana: a quién se llama primero — Grupo 2 con señales de compra)
+</code></pre></section><section class="tpl" id="tpl-agenda-weekly"><h1>Agenda · Weekly de ventas</h1>
+<pre><code>WEEKLY VENTAS — [fecha]                Duración: 45-60 min
+Presenta: [Santi / Mati]
+
+PREPARACIÓN PREVIA (del responsable, antes de la reunión)
+[ ] Reporte semanal de ventas completo (números de la semana)
+[ ] Hipótesis de por qué dieron así
+[ ] Propuesta de 3-5 prioridades para la semana que viene
+[ ] Reportes semanales del closer leídos
+
+AGENDA
+1. Apertura (5 min) — objetivo de la reunión
+2. Números de la semana (10 min)
+3. Análisis y debate (15 min) — ¿por qué pasó lo que pasó?
+4. Prioridades de la semana que viene (10 min)
+5. Cierre (5 min) — quién hace qué, para cuándo (se carga en el tracker)
+
+CONCLUSIONES
+- Decisión:
+- Acciones: [quién] hace [qué] para [cuándo]
+- Para marketing: [objeciones y dolores de la semana que tienen que llegar]
+</code></pre></section><section class="tpl" id="tpl-agenda-monthly"><h1>Agenda · Monthly / cierre de lanzamiento</h1>
+<pre><code>MONTHLY — [mes o lanzamiento]          Duración: 60-90 min
+Participantes: todo el equipo
+
+1. Apertura (5 min) — objetivos del mes / del lanzamiento y del trimestre
+2. Números por área (20 min) — presenta cada responsable
+   (ventas: leads → calificados → agendas → show → cierres → caja)
+3. Análisis profundo (30 min)
+   · ¿Qué área fue el cuello de botella?
+   · ¿Cuál fue el motor de crecimiento?
+   · ¿Qué aprendimos este lanzamiento?
+4. Ajuste estratégico (20 min) — qué cambia el próximo
+5. Cierre (15 min) — directivas nuevas y quién las baja al equipo
+   + qué se actualiza en el documento de negocio y en el anexo de ventas
+</code></pre></section><section class="tpl" id="tpl-template-sop"><h1>Template · SOP</h1>
+<p><em>Copiá esta estructura para cada proceso. Se lista en el <a href="#sops">índice</a>. Para armarlo rápido: grabate haciendo la tarea, transcribila y pasala por el <a href="#generador">generador de SOPs</a>.</em></p>
+<pre><code>SOP: [Nombre claro y específico de la tarea]
+
+Última actualización: [fecha]
+Dueño del proceso: [quién es responsable de este SOP]
+Ejecuta: [a quién se le delegó la tarea]
+Video: [link al Loom de la grabación]
+
+---
+
+1. OBJETIVO
+[Una frase con el resultado final, específica.]
+
+---
+
+2. QUÉ NECESITÁS ANTES DE EMPEZAR
+Accesos:
+- Acceso a [herramienta]
+Materiales:
+- [material]
+
+---
+
+3. PROCESO PASO A PASO
+Paso 1: [una sola acción concreta]
+   - Detalle o tip
+   - [captura o link al video]
+Paso 2: [acción]
+   - Si pasa [variante], entonces [qué hacer]
+Paso 3: ...
+
+---
+
+4. ERRORES COMUNES Y SOLUCIONES
+- Si pasa [error] → la solución es [solución]
+
+---
+
+5. RESULTADO ESPERADO
+La tarea está completa cuando:
+- [condición verificable con sí o no]
+- [condición verificable]
+</code></pre>
+<p><strong>Antes de darlo por terminado:</strong> se lo das a alguien que nunca hizo la tarea y lo mirás ejecutar sin hablar. Cada duda es un agujero.</p></section></article>
+<article class="doc" id="s-generador" data-sec="generador"><h1>Agente · Generador de SOPs (Génesis)</h1>
+<p><em>Copia del entregable de Limitless (Módulo 8 · Equipo · Cómo hacer SOPs), con los datos del negocio completados desde el repo. Los <span class="chip conf">[CONFIRMAR]</span> hay que validarlos.</em></p>
+<p><strong>Cómo usarlo:</strong> en Claude Code, <em>"usá el agente de <code>mi-negocio/agentes-propios/generador-sops.md</code> con esta transcripción"</em>; o en Claude.ai, pegá todo el bloque de abajo en las instrucciones de un proyecto "Generador de SOPs". Después le pasás la transcripción de tu grabación de pantalla y le pedís: "Convertí esto en un SOP". El resultado se guarda en <code>mi-negocio/equipo/sops/</code> y se suma al <a href="#sops">índice</a>.</p>
+<hr />
+<pre><code># Rol
+
+Sos un documentador de procesos. Tu trabajo es convertir explicaciones
+desordenadas —transcripciones de video, audios, notas sueltas— en SOPs
+tan claros que una persona que nunca hizo la tarea pueda ejecutarla sin
+preguntar nada. Escribís en español argentino, directo y sin relleno.
+
+# Datos de mi negocio
+
+- Nicho del negocio: Génesis, consultoría para marcas de productos
+  consumibles que ya facturan, para instalar un modelo de suscripción
+  (Método B.A.S.E.). Venta high ticket por llamada después de una clase
+  en vivo (webinar) o del funnel orgánico.
+- Herramientas que usamos:
+  · Leads, etiquetas y automatizaciones: GoHighLevel (GHL)
+  · Agenda: formulario con Calendly adentro (nunca el Calendly suelto)
+  · Comunicación con leads: WhatsApp (chat, audio y llamada), WhatsApp API,
+    un grupo de WhatsApp por lead con el closer
+  · Grabación de llamadas: Fathom
+  · Tareas internas: el tracker (sección Tareas)
+  · Clase en vivo: Zoom · Ads: Meta
+  · Entrega a clientes: Skool (campus), Discord, canal 1 a 1
+  · Pagos: [CONFIRMAR plataformas de pago en pesos y en dólares]
+  · Comunicación interna: [CONFIRMAR]
+- Roles del equipo hoy: Manu (fundador, cara de la marca, toma llamadas de
+  los leads más calificados), José (entrega), Santiago y Matías (supervisan
+  ventas y hacen de SDR), closer(s), SDR nuevo en búsqueda, setter.
+- Nivel técnico de quien va a ejecutar los SOPs: medio [CONFIRMAR]
+
+# Proceso
+
+Cada vez que te paso material, hacés esto:
+
+1. Identificás cuál es la tarea y cuál es su resultado final.
+2. Reconstruís la secuencia real de pasos. Si el material está
+   desordenado o la persona volvió atrás mientras explicaba, lo ordenás.
+3. Detectás los pasos que la persona dio por obvios y no explicó. Esto
+   es lo más importante de tu trabajo: el que graba siempre se saltea
+   cosas que para él son automáticas.
+4. Detectás las variantes y bifurcaciones (&quot;si pasa esto, entonces
+   aquello&quot;) y las ubicás en el paso donde ocurren, no al final.
+5. Escribís el SOP con la estructura de abajo.
+6. Al final, listás por separado: (a) las preguntas que necesitás que
+   te responda para completar los huecos, y (b) dónde recomendás poner
+   capturas de pantalla.
+
+# Formato de output
+
+SOP: [nombre claro y específico de la tarea]
+
+Última actualización: [fecha]
+Dueño del proceso: [quién]
+Ejecuta: [quién]
+
+1. OBJETIVO
+   Una frase con el resultado final del proceso.
+
+2. QUÉ NECESITÁS ANTES DE EMPEZAR
+   Accesos y materiales, en listas separadas.
+
+3. PROCESO PASO A PASO
+   Pasos numerados. Una acción por paso. Con sub-viñetas para detalles,
+   tips y variantes.
+
+4. ERRORES COMUNES Y SOLUCIONES
+   Formato &quot;Si pasa X → la solución es Y&quot;.
+
+5. RESULTADO ESPERADO
+   Lista de condiciones verificables. Sin adjetivos: cada línea tiene
+   que poder responderse con sí o no.
+
+---
+HUECOS QUE NECESITO QUE COMPLETES:
+- [pregunta 1]
+
+DÓNDE PONER CAPTURAS:
+- Paso N: [qué debería mostrar la captura]
+
+# Reglas
+
+- Nunca inventes un paso, un dato, una herramienta ni un número. Si
+  falta información, va a la lista de huecos.
+- Nunca escribas un paso que contenga más de una acción. Si tiene tres
+  acciones, son tres pasos.
+- Nunca uses lenguaje vago: &quot;configurar correctamente&quot;, &quot;revisar que
+  esté bien&quot;, &quot;gestionar el proceso&quot;. Todo tiene que ser verificable.
+- Nunca expliques la teoría o el por qué del proceso. El SOP es para
+  ejecutar.
+- No asumas conocimiento previo. Si el ejecutor es de nivel técnico
+  bajo, explicá hasta dónde hacer clic.
+- Si el material que te paso alcanza para menos de la mitad del
+  proceso, decímelo en vez de rellenar.
+- Reglas de Génesis que ningún SOP puede contradecir: el precio no se
+  baja nunca; no se promete garantía ni facturación; Génesis solo al que
+  califica; el link de pago recién después del &quot;sí&quot;; la agenda siempre
+  por el formulario con el Calendly adentro; las contraseñas nunca por
+  chat ni por documento.
+</code></pre></article>
+<article class="doc" id="s-pendientes" data-sec="pendientes"><h1>Pendientes · Equipo</h1>
+<p><em>Lo que falta para que el sistema del equipo quede operativo. Ordenado por lo que bloquea contratar.</em></p>
+<h2>Bloquean el próximo ingreso (sin esto no se puede hacer el día cero)</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qué falta</th>
+<th>Quién decide</th>
+<th>Dónde se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Alcance del setter:</strong> ¿conversaciones entrantes por las cuentas de Manu, setteo de agendas, o las dos? ¿Dónde termina el SDR y empieza el setter?</td>
+<td>Manu, Mati, Santi</td>
+<td><a href="#setter">roles/setter.md</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Los números de cada rol</strong> (validar las propuestas y completar los <span class="chip pend">[PENDIENTE]</span>): show rate, agendas, close rate, tiempos de respuesta</td>
+<td>Mati y Santi, con los datos del 17/11</td>
+<td><a href="#sdr">roles/</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Ejecuciones y tope del período de prueba</strong> por rol (hay propuesta)</td>
+<td>Manu y Mati</td>
+<td><a href="#sistema">00-sistema</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Visión de cada rol con números reales:</strong> comisión, volumen, a dónde puede crecer</td>
+<td>Manu</td>
+<td>Bloque 3 del día cero</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Quién evalúa a quién</strong>, mientras Santi y Mati también son SDR</td>
+<td>Manu</td>
+<td><a href="#sistema">00-sistema</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Equipo vigente:</strong> quién sigue de Diego y Braian, quién es closer hoy</td>
+<td>Santi</td>
+<td>Documento de negocio 6.1</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Bloquean el control diario</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qué falta</th>
+<th>Quién decide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Herramienta y horario de la oficina virtual</td>
+<td>Santi</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Canales internos (hay propuesta) y qué es urgente</td>
+<td>Santi y Mati</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Día y hora de la weekly; frecuencia de la daily fuera de ventana</td>
+<td>Santi y Mati</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Si las llamadas del SDR se graban, y con qué</td>
+<td>Santi</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Quién de marketing lee los reportes de ventas y cada cuánto se vuelcan a la base del avatar</td>
+<td>Manu</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Esquema de premios y consecuencias (comisiones, bonos)</td>
+<td>Manu</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Gestor de contraseñas</td>
+<td>Santi</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Dónde se guardan las evaluaciones (tienen datos personales: fuera del repo)</td>
+<td>Santi</td>
+</tr>
+</tbody>
+</table></div>
+<h2>Para después</h2>
+<ul>
+<li>Proceso de offboarding (accesos y reasignación de leads abiertos).</li>
+<li>Escribir los SOPs marcados <span class="st no">A escribir</span> en el <a href="#sops">índice</a>, en orden de horas que liberan.</li>
+<li>Pasar al documento de negocio (6.2 y 6.4) lo que se decida acá sobre canales, reuniones y feedback.</li>
+</ul></article>
+</main>
+<script>
+(function(){
+  var docs=[].slice.call(document.querySelectorAll('.doc')), tabs=[].slice.call(document.querySelectorAll('nav.tabs a'));
+  function show(){
+    var h=(location.hash||'#inicio').slice(1), sub=null;
+    if(h.indexOf('tpl-')===0){sub=h;h='templates'}
+    if(!document.getElementById('s-'+h)){h='inicio'}
+    docs.forEach(function(d){d.hidden=d.dataset.sec!==h});
+    tabs.forEach(function(t){t.classList.toggle('on',t.dataset.s===h); if(t.dataset.s===h){t.setAttribute('aria-current','page'); try{t.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}} else t.removeAttribute('aria-current')});
+    if(sub){var el=document.getElementById(sub); if(el) el.scrollIntoView();} else window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',show); show();
+})();
+</script>
