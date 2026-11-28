@@ -79,7 +79,7 @@ tr:last-child td{border-bottom:0}
 <header><div class="hwrap">
   <div class="brand"><b>Equipo Génesis OS</b><span>Procesos internos por rol · 28/11/2026</span>
     <div class="legend"><span class="chip pend">[PENDIENTE]</span><span class="chip conf">[CONFIRMAR]</span><span class="chip prop">[PROPUESTA]</span></div></div>
-  <nav class="tabs" aria-label="Documentos"><a href="#inicio" data-s="inicio">Inicio</a><a href="#sistema" data-s="sistema">Sistema común</a><a href="#sdr" data-s="sdr">SDR</a><a href="#setter" data-s="setter">Setter</a><a href="#closer" data-s="closer">Closer</a><a href="#sops" data-s="sops">Índice de SOPs</a><a href="#templates" data-s="templates">Templates</a><a href="#generador" data-s="generador">Generador de SOPs</a><a href="#pendientes" data-s="pendientes">Pendientes</a></nav>
+  <nav class="tabs" aria-label="Documentos"><a href="#inicio" data-s="inicio">Inicio</a><a href="#sistema" data-s="sistema">Sistema común</a><a href="#sdr" data-s="sdr">SDR</a><a href="#setter" data-s="setter">Setter</a><a href="#closer" data-s="closer">Closer</a><a href="#contratacion" data-s="contratacion">Contratación</a><a href="#sops" data-s="sops">Índice de SOPs</a><a href="#templates" data-s="templates">Templates</a><a href="#generador" data-s="generador">Generador de SOPs</a><a href="#pendientes" data-s="pendientes">Pendientes</a></nav>
 </div></header>
 <main><article class="doc" id="s-inicio" data-sec="inicio"><h1>Equipo · Génesis OS</h1>
 <p><em>Última actualización: 28/11/2026 · Responsable: Santiago [CONFIRMAR]</em></p>
@@ -116,6 +116,11 @@ tr:last-child td{border-bottom:0}
 <td>El que contrata y evalúa al closer</td>
 </tr>
 <tr>
+<td><a href="#tpl-con-README"><code>contratacion/</code></a></td>
+<td>El proceso de contratación: de abrir la búsqueda a la oferta. Avisos y formularios que se usaron para el 17/11 (SDR y closer), filtro, entrevista con role play, mensajes y banco de candidatos</td>
+<td>Mati y Santi</td>
+</tr>
+<tr>
 <td><a href="#sops"><code>indice-sops.md</code></a></td>
 <td>Índice único de SOPs de ventas por área: cuál existe, cuál falta, dueño y fecha</td>
 <td>Todos</td>
@@ -134,7 +139,8 @@ tr:last-child td{border-bottom:0}
 </table></div>
 <p>Agente relacionado: <a href="#generador"><code>../agentes-propios/generador-sops.md</code></a> (convierte la transcripción de una grabación de pantalla en un SOP con nuestro formato).</p>
 <h2>El sistema en una página</h2>
-<ol>
+<ol start="0">
+<li><strong>Contratación:</strong> aviso → formulario → filtro → entrevista con role play → oferta por escrito (<a href="#tpl-con-README">proceso</a>).</li>
 <li><strong>Antes de que entre:</strong> existe el documento de negocio (<span class="ext" title="Archivo del repo: negocio/onboarding-equipo-genesis-os.docx"><code>../negocio/onboarding-equipo-genesis-os.docx</code></span>), el anexo de ventas (<span class="ext" title="Archivo del repo: ventas"><code>../ventas/</code></span>), los números del rol escritos y los 2-3 SOPs con los que arranca.</li>
 <li><strong>Día cero:</strong> reunión de 60-90 min en 3 bloques (repaso del documento, visión y misión, su rol). Se le comunica el período de prueba por escrito.</li>
 <li><strong>Primera semana:</strong> yo lo hago → lo hacemos → lo hacés, con 3-5 tareas.</li>
@@ -251,7 +257,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 <tr>
 <td>Día cero</td>
-<td>Reunión de 60-90 min (<a href="#tpl-agenda-dia-cero">agenda</a>)</td>
+<td>Reunión de 60-90 min (<a href="#tpl-tem-agenda-dia-cero">agenda</a>)</td>
 <td>Manu (bloque 2) + responsable de ventas (bloques 1 y 3) <span class="chip conf">[CONFIRMAR]</span></td>
 </tr>
 <tr>
@@ -348,12 +354,12 @@ tr:last-child td{border-bottom:0}
 <tr>
 <td>Mitad de las ejecuciones</td>
 <td>Revisión formal de las 3 dimensiones, por escrito. Se le dice exactamente dónde está parado</td>
-<td><a href="#tpl-evaluacion-periodo-prueba">Evaluación</a> parcial</td>
+<td><a href="#tpl-tem-evaluacion-periodo-prueba">Evaluación</a> parcial</td>
 </tr>
 <tr>
 <td>Cierre</td>
 <td>La decisión</td>
-<td><a href="#tpl-evaluacion-periodo-prueba">Evaluación</a> completa</td>
+<td><a href="#tpl-tem-evaluacion-periodo-prueba">Evaluación</a> completa</td>
 </tr>
 </tbody>
 </table></div>
@@ -481,35 +487,35 @@ tr:last-child td{border-bottom:0}
 <td>Diario</td>
 <td>Al cierre del día</td>
 <td>Responsable de ventas + marketing</td>
-<td><a href="#tpl-reporte-diario-sdr">reporte-diario-sdr.md</a></td>
+<td><a href="#tpl-tem-reporte-diario-sdr">reporte-diario-sdr.md</a></td>
 </tr>
 <tr>
 <td>Setter</td>
 <td>Diario</td>
 <td>Al cierre del día</td>
 <td>Responsable de ventas + marketing</td>
-<td><a href="#tpl-reporte-diario-setter">reporte-diario-setter.md</a></td>
+<td><a href="#tpl-tem-reporte-diario-setter">reporte-diario-setter.md</a></td>
 </tr>
 <tr>
 <td>Closer</td>
 <td>Por llamada</td>
 <td>Apenas corta</td>
 <td>Responsable de ventas + marketing</td>
-<td><a href="#tpl-reporte-llamada-closer">reporte-llamada-closer.md</a></td>
+<td><a href="#tpl-tem-reporte-llamada-closer">reporte-llamada-closer.md</a></td>
 </tr>
 <tr>
 <td>Closer</td>
 <td>Semanal</td>
 <td>Antes de la weekly</td>
 <td>Responsable de ventas</td>
-<td><a href="#tpl-reporte-semanal-closer">reporte-semanal-closer.md</a></td>
+<td><a href="#tpl-tem-reporte-semanal-closer">reporte-semanal-closer.md</a></td>
 </tr>
 <tr>
 <td>Responsable de ventas</td>
 <td>Semanal de área</td>
 <td>Antes de la weekly</td>
 <td>Manu</td>
-<td><a href="#tpl-reporte-semanal-ventas">reporte-semanal-ventas.md</a></td>
+<td><a href="#tpl-tem-reporte-semanal-ventas">reporte-semanal-ventas.md</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -532,21 +538,21 @@ tr:last-child td{border-bottom:0}
 <td>Todos los días a primera hora durante la ventana de venta; <span class="chip prop">[PROPUESTA: fuera de ventana, lunes, miércoles y viernes]</span></td>
 <td>SDR, setter, closer, Santi, Mati</td>
 <td>15-30 min</td>
-<td><a href="#tpl-agenda-daily">agenda-daily.md</a></td>
+<td><a href="#tpl-tem-agenda-daily">agenda-daily.md</a></td>
 </tr>
 <tr>
 <td><strong>Weekly de ventas</strong></td>
 <td><span class="chip pend">[PENDIENTE: día y hora]</span></td>
 <td>Equipo de ventas. Presenta Santi o Mati</td>
 <td>45-60 min</td>
-<td><a href="#tpl-agenda-weekly">agenda-weekly.md</a></td>
+<td><a href="#tpl-tem-agenda-weekly">agenda-weekly.md</a></td>
 </tr>
 <tr>
 <td><strong>Monthly / cierre de lanzamiento</strong></td>
 <td><span class="chip prop">[PROPUESTA]</span> Al cerrar cada ventana de venta, y una por mes si no hubo lanzamiento</td>
 <td>Todo el equipo</td>
 <td>60-90 min</td>
-<td><a href="#tpl-agenda-monthly">agenda-monthly.md</a></td>
+<td><a href="#tpl-tem-agenda-monthly">agenda-monthly.md</a></td>
 </tr>
 <tr>
 <td><strong>Uno a uno</strong></td>
@@ -595,7 +601,7 @@ tr:last-child td{border-bottom:0}
 <h2>7. SOPs</h2>
 <ul>
 <li><strong>Un solo lugar:</strong> <a href="#sops"><code>indice-sops.md</code></a> lista todos con link, dueño y fecha. Organizados por área, no por persona.</li>
-<li><strong>Seis partes:</strong> encabezado (fecha, dueño, ejecuta), objetivo, qué necesitás antes, paso a paso (una acción por paso, variantes donde ocurren), errores comunes ("si pasa X → Y"), resultado esperado (verificable con sí o no). <a href="#tpl-template-sop">Template</a>.</li>
+<li><strong>Seis partes:</strong> encabezado (fecha, dueño, ejecuta), objetivo, qué necesitás antes, paso a paso (una acción por paso, variantes donde ocurren), errores comunes ("si pasa X → Y"), resultado esperado (verificable con sí o no). <a href="#tpl-tem-template-sop">Template</a>.</li>
 <li><strong>Cómo se escriben rápido:</strong> grabarse haciendo la tarea narrando (10-15 min) → transcribir → pasarlo por el <a href="#generador">generador de SOPs</a> → corregir el borrador → adjuntar el video.</li>
 <li><strong>Lo escribe el experto en la tarea, unos días antes de delegarla.</strong> Nunca el que recién entra.</li>
 <li><strong>Se delega la tarea, no la responsabilidad:</strong> el dueño del SOP controla que se haga bien y lo actualiza.</li>
@@ -779,13 +785,13 @@ tr:last-child td{border-bottom:0}
 </ul>
 <hr />
 <h2>4. Su reporte</h2>
-<p>Diario, al cierre, en <code>#reportes-ventas</code>. Lo lee el responsable de ventas y marketing. Template: <a href="#tpl-reporte-diario-sdr"><code>../templates/reporte-diario-sdr.md</code></a>.</p>
+<p>Diario, al cierre, en <code>#reportes-ventas</code>. Lo lee el responsable de ventas y marketing. Template: <a href="#tpl-tem-reporte-diario-sdr"><code>../templates/reporte-diario-sdr.md</code></a>.</p>
 <hr />
 <h2>5. Reuniones en las que está</h2>
 <p>Daily de ventas · weekly de ventas · monthly / cierre de lanzamiento · uno a uno (semanal en el período de prueba). Ver <a href="#sistema"><code>00-sistema-del-equipo.md</code></a>.</p>
 <hr />
 <h2>6. La reunión del día cero · Bloque 3 (su rol)</h2>
-<p>Se usa con la <a href="#tpl-agenda-dia-cero">agenda del día cero</a>.</p>
+<p>Se usa con la <a href="#tpl-tem-agenda-dia-cero">agenda del día cero</a>.</p>
 <ul>
 <li><strong>Responsabilidades:</strong> las 3 de la sección 1.</li>
 <li><strong>Cómo se mide:</strong> contactados en 5 minutos y show rate de sus agendas.</li>
@@ -997,7 +1003,7 @@ tr:last-child td{border-bottom:0}
 </ul>
 <hr />
 <h2>4. Su reporte</h2>
-<p>Diario, al cierre, en <code>#reportes-ventas</code>. Template: <a href="#tpl-reporte-diario-setter"><code>../templates/reporte-diario-setter.md</code></a>.</p>
+<p>Diario, al cierre, en <code>#reportes-ventas</code>. Template: <a href="#tpl-tem-reporte-diario-setter"><code>../templates/reporte-diario-setter.md</code></a>.</p>
 <hr />
 <h2>5. Reuniones</h2>
 <p>Daily de ventas · weekly de ventas · monthly / cierre de lanzamiento · uno a uno.</p>
@@ -1211,8 +1217,8 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2>4. Sus reportes</h2>
 <ul>
-<li><strong>Por llamada</strong>, apenas corta: <a href="#tpl-reporte-llamada-closer"><code>../templates/reporte-llamada-closer.md</code></a>.</li>
-<li><strong>Semanal</strong>, antes de la weekly: <a href="#tpl-reporte-semanal-closer"><code>../templates/reporte-semanal-closer.md</code></a>.</li>
+<li><strong>Por llamada</strong>, apenas corta: <a href="#tpl-tem-reporte-llamada-closer"><code>../templates/reporte-llamada-closer.md</code></a>.</li>
+<li><strong>Semanal</strong>, antes de la weekly: <a href="#tpl-tem-reporte-semanal-closer"><code>../templates/reporte-semanal-closer.md</code></a>.</li>
 </ul>
 <p>Las objeciones y el perfil de los leads van a marketing: son lo que corrige los anuncios, la clase y el filtro del formulario.</p>
 <hr />
@@ -1265,9 +1271,825 @@ tr:last-child td{border-bottom:0}
 <hr />
 <h2>7. SOPs del rol</h2>
 <p>Ver <a href="#sops"><code>../indice-sops.md</code></a>.</p></article>
+<article class="doc" id="s-contratacion" data-sec="contratacion"><nav class="toc"><a href="#tpl-con-README">Proceso</a><a href="#tpl-con-sdr">SDR</a><a href="#tpl-con-closer">Closer</a></nav><section class="tpl" id="tpl-con-README"><h1>Contratación · Equipo de ventas</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Matías (hoy firma las búsquedas) y Santiago · Aprueba la incorporación: Manu <span class="chip conf">[CONFIRMAR]</span></em></p>
+<p>El proceso para sumar a alguien al equipo comercial, desde que se decide abrir la búsqueda hasta que la persona entra al onboarding. Lo que pasa después (día cero, período de prueba) está en <a href="#sistema"><code>../00-sistema-del-equipo.md</code></a>.</p>
+<p>Por rol: <a href="#tpl-con-sdr">SDR</a> · <a href="#tpl-con-closer">Closer</a> · Setter (ver la nota de abajo).</p>
+<blockquote>
+<p><strong>La regla:</strong> contratar lento, despedir rápido. Lento no es tardar: es no saltearse ningún filtro aunque el lanzamiento apriete. El período de prueba solo sirve si entró alguien que pasó por todos.</p>
+<p><strong>Setter:</strong> en la búsqueda del 17/11 no hubo formulario de setter. El formulario del SDR dice "Buscamos un SDR (setter)": en la práctica se buscó un solo rol. Si el setter se separa (ver <a href="#pendientes">pendientes</a>), se usa el proceso del SDR con el role play de conversación por chat en vez del de llamada.</p>
+</blockquote>
+<hr />
+<h2>El proceso en una línea</h2>
+<p>Definir el rol → aviso → formulario → filtro → contacto por WhatsApp → entrevista con role play → (referencias) → decisión → oferta por escrito → contrato y accesos → onboarding. Los que no quedan van al banco de candidatos.</p>
+<h2>Calendario contra el lanzamiento</h2>
+<p>El volumen llega por lanzamientos, así que la búsqueda se arma <strong>hacia atrás desde la captación</strong>: la persona tiene que tener el día cero y la primera semana (yo lo hago, lo hacemos) <strong>antes</strong> de que entren los leads.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Cuándo</th>
+<th>Qué</th>
+<th>Quién</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Captación −21 días</td>
+<td>Se decide abrir la búsqueda. Rol, números y condiciones escritos</td>
+<td>Mati, Santi, Manu</td>
+</tr>
+<tr>
+<td>Captación −20 días</td>
+<td>Se publica el aviso y se abre el formulario</td>
+<td>Mati</td>
+</tr>
+<tr>
+<td>Captación −20 a −13</td>
+<td>Entran postulaciones. Se filtran <strong>cada día</strong>, no al final</td>
+<td>Mati</td>
+</tr>
+<tr>
+<td>Captación −15 a −10</td>
+<td>Entrevistas con role play</td>
+<td>Mati + Santi</td>
+</tr>
+<tr>
+<td>Captación −9</td>
+<td>Decisión, oferta por escrito, contrato</td>
+<td>Mati / Manu</td>
+</tr>
+<tr>
+<td>Captación −7</td>
+<td>Día cero</td>
+<td>Ver <a href="#sistema">sistema</a></td>
+</tr>
+<tr>
+<td>Captación −7 a 0</td>
+<td>Semana 1: yo lo hago, lo hacemos</td>
+<td>Responsable de ventas</td>
+</tr>
+</tbody>
+</table></div>
+<p><span class="chip prop">[PROPUESTA]</span> En la búsqueda del 17/11 la captación arrancaba el 8/11 y el aviso pedía disponibilidad desde el mismo 8/11: no quedaba tiempo de onboarding. Para el próximo lanzamiento, la disponibilidad empieza una semana antes de la captación.</p>
+<hr />
+<h2>Etapa 0 · Antes de abrir la búsqueda</h2>
+<p>No se publica nada si falta una de estas cosas:</p>
+<ul>
+<li>[ ] <strong>El archivo del rol</strong> con responsabilidades y números (<a href="#sdr">SDR</a>, <a href="#closer">closer</a>, <a href="#setter">setter</a>).</li>
+<li>[ ] <strong>Condiciones decididas:</strong> comisión o fijo, cómo y cuándo se paga, fechas del lanzamiento. <span class="chip pend">[PENDIENTE: comisión del SDR; la del closer figuraba como 7% en el borrador del 17/11 — CONFIRMAR]</span>.</li>
+<li>[ ] <strong>Los números públicos validados.</strong> Todo lo que el aviso dice de Manu y de Génesis tiene que ser verdad hoy (facturación, ventas del lanzamiento anterior, tickets). Si no está confirmado, no va.</li>
+<li>[ ] <strong>Quién entrevista y quién decide</strong>, con nombre.</li>
+<li>[ ] <strong>Cuántas personas se buscan</strong> y cuántas llamadas por día tiene que absorber cada una.</li>
+</ul>
+<h2>Etapa 1 · El aviso</h2>
+<p>Es el mensaje que se difunde en grupos de ventas, historias y DMs, con el link al formulario. El de cada rol está en su archivo, tal cual se usó.</p>
+<p><strong>Lo que tiene que decir sí o sí:</strong>
+1. Quién es Manu y qué es Génesis, en dos líneas y con números vigentes.
+2. El rol en tres verbos (qué va a hacer).
+3. El ticket que se vende.
+4. El requisito que filtra (experiencia comprobable en high ticket) y lo que no buscamos.
+5. Las fechas, con "no te postules si no estás disponible".
+6. Que es a largo plazo (mínimo un webinar por mes).
+7. Lo que se pide para postularse (grabación para el closer).
+8. <span class="chip prop">[PROPUESTA]</span> Cómo se cobra (comisión), dicho igual que en el formulario.</p>
+<p><strong>Dónde se difunde:</strong> <span class="chip pend">[PENDIENTE: grupos y comunidades de closers y setters que se usaron, y de cuál vinieron los mejores postulantes]</span>.</p>
+<h2>Etapa 2 · El formulario</h2>
+<p>Un Google Form por rol. Las preguntas reales están en cada archivo de rol, con las correcciones propuestas para la próxima búsqueda.</p>
+<p><strong>Reglas del formulario:</strong>
+- Las preguntas que descartan van primero (disponibilidad), para que el que no puede no pierda 10 minutos.
+- Todo lo que se pueda contar, en número u opción (rango de tickets, tasa de cierre, cantidad de chats).
+- <strong>Una prueba de trabajo real:</strong> grabación de llamada para el closer; audio o grabación para el SDR.
+- Fechas, tickets y condiciones iguales a las del aviso. Si el aviso dice una cosa y el formulario otra, el candidato cree la que le conviene.</p>
+<h2>Etapa 3 · El filtro</h2>
+<p>Se hace <strong>todos los días</strong> mientras está abierto el formulario. Cada postulación termina en una de tres:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Resultado</th>
+<th>Qué pasa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Descarte directo</strong></td>
+<td>Mensaje de "no avanzamos" (abajo). Si el motivo es solo de fechas, va al banco de candidatos</td>
+</tr>
+<tr>
+<td><strong>Puntaje bajo</strong></td>
+<td>Mismo mensaje. Banco solo si algo puntual lo justifica</td>
+</tr>
+<tr>
+<td><strong>Pasa</strong></td>
+<td>Contacto por WhatsApp para coordinar la entrevista, dentro de las 24 h</td>
+</tr>
+</tbody>
+</table></div>
+<p>Los criterios de descarte y el puntaje de cada rol están en su archivo.</p>
+<p><strong>Dónde se registra:</strong> <span class="chip prop">[PROPUESTA]</span> una columna extra en la hoja de respuestas del Google Form: <em>estado</em> (descartado / banco / entrevista / elegido), <em>puntaje</em>, <em>motivo</em> y <em>quién filtró</em>.</p>
+<h2>Etapa 4 · La entrevista</h2>
+<p>30-40 minutos por videollamada, grabada con permiso. La hacen dos personas: una entrevista y hace de lead en el role play, la otra observa y completa la planilla.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Parte</th>
+<th>Min</th>
+<th>Qué se busca</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 · Contexto</td>
+<td>5</td>
+<td>Se cuenta Génesis, el lanzamiento y el rol. Corto: ya lo leyó en el aviso</td>
+</tr>
+<tr>
+<td>2 · Su experiencia, con números</td>
+<td>10</td>
+<td>Se verifica lo del formulario: para quién vendió, ticket, volumen, tasa. Se pide un caso concreto de punta a punta</td>
+</tr>
+<tr>
+<td>3 · Role play</td>
+<td>15</td>
+<td>La prueba de proceso. Escenario del rol (en su archivo). <strong>A la mitad se corta, se le da una corrección y se retoma</strong></td>
+</tr>
+<tr>
+<td>4 · Sus preguntas y condiciones</td>
+<td>5-10</td>
+<td>Disponibilidad real, otros clientes, comisión, período de prueba</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Por qué se corta el role play a la mitad:</strong> el período de prueba pesa la actitud más que el resultado, y la actitud que más predice es cómo recibe una corrección. Si en la entrevista aplica el feedback en el minuto siguiente, es una buena señal. Si lo discute o lo ignora, no va a cambiar en el período de prueba.</p>
+<p><strong>Qué se le dice en la entrevista, sin vueltas:</strong> que si entra hay un período de prueba, cuánto dura y con qué se mide (está en el archivo de su rol). Es mutuo: también evalúa si Génesis le sirve.</p>
+<h3>Planilla de la entrevista (la completa el que observa)</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Dimensión</th>
+<th>Pregunta</th>
+<th>Nota 1-5</th>
+<th>Evidencia (qué dijo o hizo)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Experiencia</td>
+<td>¿Lo que contó coincide con el formulario y tiene números concretos?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Proceso</td>
+<td>¿Siguió una estructura en el role play o improvisó?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Proceso</td>
+<td>¿Preguntó antes de responder? ¿Escuchó?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Rol</td>
+<td>Criterio propio del rol (ver su archivo)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Actitud</td>
+<td>¿Aplicó la corrección que se le dio a la mitad?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Actitud</td>
+<td>¿Pregunta cuando no entiende o simula?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Encaje</td>
+<td>¿Disponibilidad real sin choques con otros clientes?</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Encaje</td>
+<td>¿Habla mal de equipos anteriores?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Decisión del entrevistador:</strong> Avanza / No avanza / Duda (si hay duda, no avanza: la duda en la entrevista se vuelve problema en el período de prueba).</p>
+<h2>Etapa 5 · Referencias <span class="chip prop">[PROPUESTA]</span></h2>
+<p>Para el closer, una llamada corta con una cuenta para la que cerró: ¿cerraba lo que dice? ¿Lo volverían a contratar? Si es el único candidato fuerte y el lanzamiento está encima, se puede saltear; se deja anotado.</p>
+<h2>Etapa 6 · Decisión y oferta</h2>
+<ul>
+<li>Decide <span class="chip conf">[CONFIRMAR: Mati y Santi, con visto bueno de Manu]</span>.</li>
+<li><strong>Sabiendo lo que sé hoy, ¿lo contrataría?</strong> La misma pregunta del período de prueba, antes de que entre.</li>
+<li><strong>La oferta va por escrito</strong> (WhatsApp o mail) con: rol, fechas, comisión y cuándo se paga, período de prueba (ejecuciones, tope, qué se mide), día y hora del día cero, y qué tiene que leer antes (documento de negocio y anexo de ventas).</li>
+<li>Acepta → contrato <span class="chip pend">[PENDIENTE: modelo de contrato o acuerdo de comisión]</span> y accesos (GHL, WhatsApp, tracker, Fathom, canales). Las contraseñas por el gestor, nunca por chat.</li>
+<li>Recién ahí pasa al <a href="#sistema">onboarding</a>.</li>
+</ul>
+<h2>Etapa 7 · Los que no quedan</h2>
+<p>Se les responde a todos los que pasaron el filtro. Al que no pasó el filtro también, si dejó WhatsApp <span class="chip prop">[PROPUESTA]</span>.</p>
+<p><strong>Banco de candidatos:</strong> los que eran buenos y no entraron por fechas, por cupo o porque eligieron a otro. Es lo primero que se mira en la próxima búsqueda, antes de publicar el aviso. <span class="chip pend">[PENDIENTE: dónde vive el banco — misma hoja del Form con estado "banco"]</span>.</p>
+<hr />
+<h2>Mensajes</h2>
+<p><strong>Contacto para la entrevista (WhatsApp):</strong></p>
+<pre><code>Hola [nombre], ¿cómo va? Soy [Mati], del equipo de Manu Dominguez.
+Vi tu postulación para [SDR / closer] y me gustaría que charlemos.
+Son 30-40 minutos por videollamada y vamos a hacer un role play corto.
+¿Te queda bien [día] a las [hora] o [día] a las [hora]?
+</code></pre>
+<p><strong>No avanzamos (después del formulario):</strong></p>
+<pre><code>Hola [nombre], gracias por postularte para [rol] en el equipo de Génesis.
+Para este lanzamiento buscamos un perfil con [el motivo concreto: más
+experiencia en tickets de USD 1.500+ / disponibilidad completa en las
+fechas], así que no vamos a avanzar ahora. Te agradezco el tiempo.
+</code></pre>
+<p><strong>No avanzamos (después de la entrevista):</strong></p>
+<pre><code>Hola [nombre], gracias por la entrevista de [día]. Esta vez elegimos a otra
+persona para el rol. [Si va al banco:] Me gustó [algo concreto]; te tengo
+en cuenta para los próximos lanzamientos y te escribo cuando abramos.
+</code></pre>
+<p><strong>Oferta:</strong></p>
+<pre><code>Hola [nombre], queremos que te sumes como [rol] al equipo de Génesis.
+Te paso las condiciones por escrito:
+- Fechas: del [fecha] al [fecha]. Día cero: [día y hora].
+- Comisión: [X]% de cada venta cerrada, se paga [cuándo].
+- Período de prueba: [ejecuciones] con tope de [días]. Se mira cómo
+  trabajás (proceso y actitud) más que el resultado; a la mitad te digo
+  por escrito cómo venís.
+- Antes del día cero: leé el documento de negocio y el anexo de ventas
+  que te mando ahora.
+¿Te cierra?
+</code></pre>
+<hr />
+<h2>Números de la búsqueda <span class="chip prop">[PROPUESTA]</span></h2>
+<p>Se miran al cerrar cada búsqueda, para mejorar la siguiente:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>17/11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Postulaciones recibidas (por rol)</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>Pasaron el filtro</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>Entrevistados</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>Elegidos</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>De qué canal vino cada elegido</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>Cuántos pasaron el período de prueba</td>
+<td><span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+</tbody>
+</table></div></section><section class="tpl" id="tpl-con-sdr"><h1>Contratación · SDR</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Matías</em></p>
+<p>El proceso común está en <a href="#tpl-con-README"><code>README.md</code></a>. Qué hace el SDR y cómo se lo mide: <a href="#sdr"><code>../roles/sdr.md</code></a>.</p>
+<hr />
+<h2>1. El aviso (tal cual se usó para el 17/11)</h2>
+<pre><code>🚨 BUSCAMOS SDR
+Lanzamiento de Manuel Dominguez (@manudomzz)
+
+💰 Ingresos potenciales: US$1000 – US$5000 por lanzamiento
+
+━━━━━━━━━━━━━━━━━━
+
+Somos el equipo de GENESIS OS.
+Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes. Con Génesis ayuda a dueños de ecommerce que ya facturan a pasar de compra única a suscripción, con el Método B.A.S.E.
+
+📅  El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento.
+
+━━━━━━━━━━━━━━━━━━
+
+🎯 Qué vas a hacer
+
+📲 Contactar a los que aplican y a los que escriben por privado
+🔎 Calificarlos por WhatsApp y llamada
+📆 Agendar las llamadas al closer
+
+Tickets: US$2.000 – US$5.000 (Mentoría grupal o programa 1:1)
+
+━━━━━━━━━━━━━━━━━━
+
+🧠 A quién buscamos
+
+<span class="st ok">Vigente</span> Experiencia comprobable como SDR, setter o closer high ticket
+<span class="st ok">Vigente</span> Disponibilidad del 8 al 20 de noviembre
+⭐ Suma: experiencia con creadores del nicho e-commerce
+
+❌ No buscamos gente que esté arrancando en ventas.
+
+━━━━━━━━━━━━━━━━━━
+
+🚀 No es por un solo lanzamiento
+
+Vamos a hacer como mínimo un webinar por mes. Queremos un SDR fijo en el equipo, con hambre y a largo plazo.
+
+━━━━━━━━━━━━━━━━━━
+
+Si cumplís con todo y querés sumarte al equipo, postulate acá: https://forms.gle/U9KskCYoWaPKUpjn6
+</code></pre>
+<h3>Qué corregir para la próxima</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Problema</th>
+<th>Propuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fechas</td>
+<td>El aviso dice 8 al 20/11 y el formulario 8 al 22/11</td>
+<td>Una sola fecha, igual en los dos, y que arranque una semana antes de la captación</td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td>El aviso dice hasta US$5.000 y el formulario hasta USD 6.000</td>
+<td>Uno solo <span class="chip conf">[CONFIRMAR: el vigente es USD 5.000 Génesis / USD 2.000 Mentoría]</span></td>
+</tr>
+<tr>
+<td>"+280M por mes"</td>
+<td>Es el número de la narrativa del 17/11; el documento de negocio marca la cifra vigente como a confirmar</td>
+<td>Usar el número vigente que valide Manu</td>
+</tr>
+<tr>
+<td>"US$1000 – US$5000 por lanzamiento"</td>
+<td>No dice de dónde sale (¿comisión de qué %?)</td>
+<td>Decir la comisión y de qué ventas, o una cuenta real: "X% de cada venta que agendaste y cerró" <span class="chip pend">[PENDIENTE]</span></td>
+</tr>
+<tr>
+<td>Requisito de ticket</td>
+<td>No dice el mínimo; el formulario sí (USD 1.500)</td>
+<td>"Experiencia comprobable en tickets de USD 1.500 o más"</td>
+</tr>
+<tr>
+<td>Argentina</td>
+<td>El formulario pide "alguien de Argentina"; el aviso no</td>
+<td>Decirlo en el aviso si es requisito <span class="chip conf">[CONFIRMAR]</span></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>2. El formulario (tal cual se usó)</h2>
+<p><strong>Título:</strong> FORMULARIO DE POSTULACIÓN — SDR · <a href="https://forms.gle/U9KskCYoWaPKUpjn6">Link</a></p>
+<p><strong>Texto de presentación:</strong></p>
+<blockquote>
+<p>Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Con Génesis ayuda a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+En octubre hicimos un webinar y cerramos en $36.000
+El martes 17 de noviembre Manu hace un webinar y estamos armando el equipo de ventas que va a acompañar el lanzamiento. Buscamos un SDR (setter) para contactar a los que aplican y a los que escriben por privado, calificarlos y agendarles la llamada con el closer. Son tickets desde USD 2.000 hasta USD 6.000.
+Buscamos a alguien de Argentina con experiencia comprobable como SDR o setter en ventas de ticket alto (USD 1.500 o más), que sepa calificar por WhatsApp y llamada y hacer seguimiento.
+El lanzamiento empieza con la captación el 8 de noviembre y termina el 22 de noviembre.
+(NO TE POSTULES SI NO ESTÁS DISPONIBLE ENTRE ESAS FECHAS)
+Te dejo el perfil de Manuel Dominguez [Instagram]</p>
+</blockquote>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pregunta</th>
+<th>Tipo</th>
+<th>Obligatoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Nombre</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>2</td>
+<td>WhatsApp</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ciudad y país donde vivís actualmente</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Contanos quién sos, cuánto tiempo llevás como SDR o Setter, y qué te motiva a postularte a este proyecto.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>5</td>
+<td>¿Tenés disponibilidad completa (full time) entre el 8 de noviembre y el 22? (Sí / No / Parcial — explicar)</td>
+<td>Opción única: Sí · No · (opción vacía)</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>6</td>
+<td>¿Tenés algún compromiso (otro cliente) que pueda chocar con esas fechas? Contanos.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>7</td>
+<td>¿Para qué cuentas trabajabas como SDR o Setter? Nombralas.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>8</td>
+<td>¿Qué servicio vendías?</td>
+<td>Texto largo</td>
+<td>No</td>
+</tr>
+<tr>
+<td>9</td>
+<td>¿En qué rango de precios estaba el servicio que vendías?</td>
+<td>Opción única: Menos de USD 1.000 · USD 1.000–2.000 · USD 2.000–4.000 · Más de USD 4.000</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>10</td>
+<td>¿Cuántos chats aproximadamente manejabas en otras cuentas?</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>11</td>
+<td>¿Algo más que quieras contarnos sobre vos o tu experiencia?</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Qué corregir para la próxima <span class="chip prop">[PROPUESTA]</span></h3>
+<ul>
+<li><strong>"En octubre hicimos un webinar y cerramos en $36.000":</strong> confirmar el número y la moneda con el registro de ventas del 19/10 y la repesca, o sacarlo. Todo verdad.</li>
+<li><strong>La pregunta 5 tiene una opción vacía:</strong> agregar "Parcial (explicá en la siguiente)".</li>
+<li><strong>La 9 no cruza con el requisito:</strong> el requisito es USD 1.500 y los rangos cortan en 1.000 y 2.000. Rangos propuestos: Menos de USD 1.500 · USD 1.500–3.000 · USD 3.000–5.000 · Más de USD 5.000.</li>
+<li><strong>La 11 es obligatoria y no debería serlo.</strong></li>
+<li><strong>Falta lo que el SDR hace todos los días.</strong> Sumar:</li>
+<li>¿Cuántas llamadas agendabas por semana? ¿Qué show rate tenían? (texto corto)</li>
+<li>¿Calificabas por llamada o solo por chat? (opción: llamada y chat · solo chat · solo llamada)</li>
+<li>¿Qué CRM usaste? (casillas: GoHighLevel · HubSpot · Close · Calendly · Notion · Google Sheets · Otra)</li>
+<li>¿En qué franja horaria podés trabajar? (hora Argentina, casillas)</li>
+<li><strong>Falta una prueba de trabajo:</strong> "Mandanos un audio de 2 minutos como si le hablaras a un lead que se anotó a la clase y no contestó el mensaje" (link a Drive o WhatsApp). Muestra cómo suena por teléfono antes de la entrevista.</li>
+</ul>
+<hr />
+<h2>3. El filtro</h2>
+<p><strong>Descarte directo:</strong>
+- No tiene disponibilidad completa en las fechas (5) y no explica una parcial que sirva.
+- Nunca trabajó como SDR, setter o closer de high ticket (4, 7).
+- Vendía solo servicios de menos de USD 1.000 (9) y no tiene otra experiencia que lo compense.
+- <span class="chip conf">[CONFIRMAR]</span> No vive en Argentina, si es requisito.</p>
+<p><strong>Puntaje <span class="chip prop">[PROPUESTA]</span> (0 a 10, pasa con 6 o más):</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Preguntas</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ticket: vendía USD 2.000 o más</td>
+<td>9</td>
+<td>0 a 2</td>
+</tr>
+<tr>
+<td>Cuentas nombradas y verificables, con qué vendía</td>
+<td>7, 8</td>
+<td>0 a 2</td>
+</tr>
+<tr>
+<td>Volumen: maneja muchos chats a la vez</td>
+<td>10</td>
+<td>0 a 2</td>
+</tr>
+<tr>
+<td>Nicho ecommerce o creadores del nicho</td>
+<td>7, 8</td>
+<td>0 a 2</td>
+</tr>
+<tr>
+<td>Sin choques con otros clientes en las fechas</td>
+<td>6</td>
+<td>0 a 1</td>
+</tr>
+<tr>
+<td>Cómo escribe: claro, sin errores groseros (es lo que va a leer el lead)</td>
+<td>4, 11</td>
+<td>0 a 1</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>4. La entrevista</h2>
+<p>Estructura y planilla en <a href="#tpl-con-README"><code>README.md</code></a>. Lo propio del SDR:</p>
+<h3>Role play: la primera llamada <span class="chip prop">[PROPUESTA]</span></h3>
+<p>El entrevistador hace de lead. El candidato hace la primera llamada del SDR. Se le pasa antes solo lo que el SDR tendría: el formulario del lead.</p>
+<p><strong>El lead:</strong> Martín, 38 años. Marca de suplementos (colágeno y magnesio) en Tiendanube. Se anotó a la clase. En el formulario puso: factura "entre 30 y 50 millones", vende consumible: sí. No contestó el WhatsApp; atiende la segunda llamada.</p>
+<p><strong>Cómo lo juega el entrevistador:</strong>
+- Al principio no ubica quién lo llama.
+- Cuando le preguntan qué lo trajo: "vi lo de la suscripción, pero acá en Argentina nadie se suscribe".
+- Si le preguntan bien: el CPA le subió 40% en el año y cada venta le deja cada vez menos.
+- En algún momento pregunta: "¿y esto cuánto sale?".</p>
+<p><strong>A la mitad:</strong> se corta y se le da una corrección real (por ejemplo, "abriste por el cupo antes de conocer el negocio; arrancá por las dos razones"). Se retoma desde ese punto.</p>
+<p><strong>Lo que se mira (criterio del rol en la planilla):</strong>
+- ¿Se presenta y abre bien cuando el lead no lo ubica?
+- ¿Pregunta antes de explicar? ¿Cava en un solo dolor?
+- ¿Confirma la calificación hablando (qué vende, cuánto factura) aunque el formulario ya lo diga?
+- ¿Qué hace con "¿cuánto sale?": lo esquiva bien o tira un precio? (el SDR no da precio)
+- ¿Intenta agendar en la misma llamada?
+- ¿Aplicó la corrección?</p>
+<h3>Preguntas de la parte 2 (experiencia)</h3>
+<ul>
+<li>"Contame la última cuenta en la que trabajaste: qué vendían, cuántos leads te entraban por día, cuántos agendabas y qué show rate tenías."</li>
+<li>"¿Qué hacías con un lead que no contestaba?"</li>
+<li>"¿Qué es lo que más te costaba del rol?"</li>
+<li>"¿Por qué terminaste con esa cuenta?"</li>
+</ul>
+<hr />
+<h2>5. Después</h2>
+<p>Elegido → oferta por escrito (<a href="#tpl-con-README">mensaje</a>) → onboarding con el plan de 30 días de <a href="#sdr"><code>../roles/sdr.md</code></a>.</p></section><section class="tpl" id="tpl-con-closer"><h1>Contratación · Closer</h1>
+<p><em>Última actualización: 28/11/2026 · Dueño: Matías</em></p>
+<p>El proceso común está en <a href="#tpl-con-README"><code>README.md</code></a>. Qué hace el closer y cómo se lo mide: <a href="#closer"><code>../roles/closer.md</code></a>.</p>
+<blockquote>
+<p>Para el 17/11 hubo dos versiones del formulario: un <strong>borrador largo</strong> de 28 preguntas armado en el repo (<span class="ext" title="Archivo del repo: lanzamientos/2026-11-17-webinar/ventas-y-tracking/formulario-closer.md"><code>formulario-closer.md</code></span>) y el <strong>Google Form que se publicó</strong>, de 12 preguntas. Acá se documenta el publicado, y la propuesta para la próxima toma lo mejor del borrador.</p>
+</blockquote>
+<hr />
+<h2>1. El aviso (tal cual se usó para el 17/11)</h2>
+<pre><code>🚨 Buscamos CLOSERS para el lanzamiento de Manuel Dominguez (@manudomzz)
+💰 Ingresos potenciales: entre US$1000 y US$5000
+
+Somos el equipo de GENESIS OS, Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M. Con Génesis ayuda a dueños de ecommerce que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+
+El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento.
+
+Buscamos:
+CLOSER — cierren ventas de tickets entre US$2.000 y US$5.000 (Mentoria grupal o programa 1;1)
+
+No buscamos a alguien para un solo lanzamiento. Vamos a hacer como mínimo un webinar por mes y queremos un closer fijo en el equipo, con ganas y a largo plazo. Arrancamos con el lanzamiento del 8 al 20 de noviembre
+
+No buscamos gente sin experiencia ni que esté arrancando en ventas: necesitamos a alguien que ya haya cerrado llamadas de high ticket y que pueda mostrarlo.
+
+Valoramos: Experiencia trabajando con creadores del nicho E-commerce
+
+Si ya cerraste tickets de US$1.500 o más, estás disponible en esas fechas y buscás quedarte en un equipo, postulate acá:
+
+👉 APLICAR ACA: https://forms.gle/qV65EmSrqznTBmdF6
+
+Pedimos que adjunten una grabación real de una llamada (Se valora que sean mas de 1 llamada)
+</code></pre>
+<h3>Qué corregir para la próxima</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Problema</th>
+<th>Propuesta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fechas</td>
+<td>Aviso: 8 al 20/11. Formulario: 8 al 22/11</td>
+<td>Una sola, igual en los dos, una semana antes de la captación</td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td>Aviso: hasta US$5.000. Formulario: hasta USD 6.000</td>
+<td>Uno solo <span class="chip conf">[CONFIRMAR]</span></td>
+</tr>
+<tr>
+<td>Comisión</td>
+<td>El borrador decía 7%; el aviso publicado no la nombra</td>
+<td>Decirla: "comisión del X% por venta cerrada (US$140 a US$350 por venta)" <span class="chip conf">[CONFIRMAR %]</span></td>
+</tr>
+<tr>
+<td>"+280M"</td>
+<td>Sin "por mes" y sin confirmar como vigente</td>
+<td>Número vigente validado por Manu</td>
+</tr>
+<tr>
+<td>Detalles</td>
+<td>"1;1", "Mentoria", "mas"</td>
+<td>"1:1", "Mentoría", "más"</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>2. El formulario (tal cual se usó)</h2>
+<p><strong>Título:</strong> FORMULARIO DE POSTULACIÓN — CLOSER · <a href="https://forms.gle/qV65EmSrqznTBmdF6">Link</a></p>
+<p><strong>Texto de presentación:</strong></p>
+<blockquote>
+<p>Soy Matías Chao, growth de Manu Dominguez. Manu tiene ecommerce de consumibles con modelo de suscripción que hoy hacen +280M por mes sin depender del CPA ni de Meta. Con Génesis ayuda a dueños de ecommerce de consumibles que ya facturan a convertir su compra única en suscripción, con el Método B.A.S.E.
+El martes 17 de noviembre Manu hace un webinar en vivo y estamos armando el equipo de ventas que va a acompañar el lanzamiento. Buscamos un Closer para cerrar tickets desde USD 2.000 hasta USD 6.000.
+Buscamos a alguien con experiencia comprobable cerrando tickets de USD 1.500 o más. Si nunca cerraste ventas de ese valor, este puesto no es para vos.
+El lanzamiento empieza con la captación el 8 de noviembre y termina el 22 de noviembre.
+(NO TE POSTULES SI NO ESTÁS DISPONIBLE ENTRE ESAS FECHAS)
+Te dejo el perfil de Manuel Dominguez [Instagram]</p>
+</blockquote>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Pregunta</th>
+<th>Tipo</th>
+<th>Obligatoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Nombre</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>2</td>
+<td>WhatsApp</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Ciudad y país donde vivís actualmente</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Contanos quién sos, cuánto tiempo llevás como closer, y qué te motiva a postularte a este proyecto.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>5</td>
+<td>¿Tenés disponibilidad completa (full time) entre el 8 de noviembre y el 22? (Sí / No / Parcial — explicar)</td>
+<td>Opción única: Sí · No · (opción vacía)</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>6</td>
+<td>¿Tenés algún compromiso (otro cliente) que pueda chocar con esas fechas? Contanos.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>7</td>
+<td>¿Para qué cuentas trabajabas como closer? Nombralas.</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>8</td>
+<td>¿Qué servicio vendías?</td>
+<td>Texto largo</td>
+<td>No</td>
+</tr>
+<tr>
+<td>9</td>
+<td>¿En qué rango de precios estaba el servicio que vendías?</td>
+<td>Opción única: Menos de USD 1.000 · USD 1.000–2.000 · USD 2.000–4.000 · Más de USD 4.000</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>10</td>
+<td>¿Cuál es tu tasa de cierre aproximada (de llamadas agendadas a ventas cerradas)?</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Adjuntá un link (Drive, WeTransfer, YouTube no listado) a una grabación real tuya cerrando o intentando cerrar una venta — video de una llamada real, no un roleplay armado. (Se valora dejar más de una llamada adjuntada)</td>
+<td>Texto corto</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>12</td>
+<td>¿Algo más que quieras contarnos sobre vos o tu experiencia?</td>
+<td>Texto largo</td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Qué corregir para la próxima <span class="chip prop">[PROPUESTA]</span></h3>
+<p>Del borrador largo, sumar solo lo que cambia la decisión (el formulario tiene que seguir llevando menos de 10 minutos):</p>
+<ul>
+<li><strong>La 5:</strong> agregar la opción "Parcial (explicá en la siguiente)".</li>
+<li><strong>La 9:</strong> rangos que corten en el requisito: Menos de USD 1.500 · USD 1.500–3.000 · USD 3.000–5.000 · Más de USD 5.000.</li>
+<li><strong>La 10:</strong> que diga "sobre llamadas presentadas" y sea opción (Menos de 15% · 15–25% · 25–35% · Más de 35% · No la mido). "No la mido" ya es información.</li>
+<li><strong>La 12:</strong> que no sea obligatoria.</li>
+<li><strong>Capacidad</strong> (del borrador): "En la semana del webinar, ¿cuántas llamadas por día podés tomar?" (Hasta 3 · 4 a 6 · 7 a 10 · Más de 10) y "¿En qué franja horaria?" (casillas).</li>
+<li><strong>Lanzamientos</strong> (del borrador): "¿Trabajaste lanzamientos con webinar y ventana de cierre corta (3 a 5 días)? ¿Cómo te fue?"</li>
+<li><strong>1 a 1 / consultoría</strong> (del borrador): "¿Vendiste consultoría 1 a 1 o servicios Done For You, no solo cursos?" (Sí · No)</li>
+<li><strong>Nicho</strong> (del borrador, la que más filtra): "Con tus palabras: ¿qué es el CPA y qué es el LTV? ¿Por qué a una marca de consumibles le conviene que el cliente le compre 3 veces?"</li>
+<li><strong>Una objeción</strong> (del borrador): "Un dueño de marca que factura 50 millones por mes te dice: 'Ya pagué dos mentorías y no me sirvieron'. ¿Qué le respondés?"</li>
+</ul>
+<hr />
+<h2>3. El filtro</h2>
+<p><strong>Descarte directo:</strong>
+- No tiene disponibilidad completa (5) y no explica una parcial que sirva.
+- Nunca cerró tickets de USD 1.500 o más (9 y 7-8).
+- <strong>No manda grabación real (11).</strong> Sin grabación no hay entrevista: es la prueba de trabajo del rol.</p>
+<p><strong>Puntaje <span class="chip prop">[PROPUESTA]</span> (0 a 10, pasa con 7 o más).</strong> Adaptado del borrador a las preguntas del formulario publicado, más la escucha de la grabación:</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>De dónde</th>
+<th>Puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ticket: cerró USD 2.000 o más</td>
+<td>9, 7-8</td>
+<td>0 a 2</td>
+</tr>
+<tr>
+<td>Cuentas nombradas y verificables</td>
+<td>7</td>
+<td>0 a 1</td>
+</tr>
+<tr>
+<td>Tasa de cierre declarada y razonable (desconfiar de más de 50%)</td>
+<td>10</td>
+<td>0 a 1</td>
+</tr>
+<tr>
+<td><strong>La grabación:</strong> estructura (descubre antes de presentar), pregunta antes de responder, maneja la objeción sin pelearla ni presionar</td>
+<td>11</td>
+<td>0 a 4</td>
+</tr>
+<tr>
+<td>Nicho ecommerce o lanzamientos con ventana corta</td>
+<td>7, 8, 12</td>
+<td>0 a 1</td>
+</tr>
+<tr>
+<td>Sin choques con otros clientes en las fechas</td>
+<td>6</td>
+<td>0 a 1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Cómo se escucha la grabación (10-15 min por candidato):</strong> no hace falta la llamada entera. Escuchar los primeros 5 minutos (¿conecta y descubre o arranca a vender?), el momento del precio y la primera objeción. El tono de Génesis es "de tu lado de la mesa": nada de presión, urgencia falsa ni "este precio es solo hoy" (ver el <span class="ext" title="Archivo del repo: ventas/manual-llamada-de-venta-genesis.md">Manual de la llamada</span>).</p>
+<hr />
+<h2>4. La entrevista</h2>
+<p>Estructura y planilla en <a href="#tpl-con-README"><code>README.md</code></a>. Lo propio del closer:</p>
+<h3>Antes de la entrevista</h3>
+<p>Se le manda un resumen corto de la oferta (Génesis USD 5.000 al que califica, Mentoría USD 2.000 al que no, el precio no se baja) para que el role play no sea sobre algo que no conoce. <span class="chip prop">[PROPUESTA: un PDF de una carilla sacado del Guion de llamada]</span>.</p>
+<h3>Role play: la llamada de venta <span class="chip prop">[PROPUESTA]</span></h3>
+<p><strong>El lead:</strong> Laura, dueña de una marca de cosmética capilar (shampoo y tratamientos). Factura 60 millones por mes, pauta en Meta. Vio la clase y agendó. En el traspaso: "el CPA se le duplicó en 8 meses, quiere dejar de depender de Meta, presupuesto entre USD 2.000 y 5.000, lo quiere ya".</p>
+<p><strong>Cómo lo juega el entrevistador:</strong>
+- Arranca a la defensiva: "ya pagué dos mentorías y no me sirvieron".
+- Si el closer descubre bien, da los números: ticket de $35.000, recompra baja, margen que se le come la pauta.
+- Al precio: "lo tengo que hablar con mi socio".</p>
+<p><strong>A la mitad:</strong> corrección real (por ejemplo, "presentaste antes de que ella te dijera cuánto le cuesta el problema; volvé a la consecuencia") y se retoma.</p>
+<p><strong>Lo que se mira (criterio del rol en la planilla):</strong>
+- ¿Conecta y descubre, o presenta enseguida?
+- ¿Encuentra el gap con números del lead (CPA, recompra, margen)?
+- ¿Califica? (60 millones y consumible: Génesis)
+- ¿Aclara la objeción del socio antes de responderla?
+- ¿Presiona, inventa urgencia o baja el precio? (descalifica)
+- ¿Aplicó la corrección?</p>
+<h3>Preguntas de la parte 2 (experiencia)</h3>
+<ul>
+<li>"De la grabación que mandaste: ¿qué harías distinto?" (muestra si se puede autocorregir)</li>
+<li>"Tu mejor mes: cuántas llamadas, cuántos cierres, qué ticket."</li>
+<li>"¿Cómo hacés el seguimiento de un lead que quedó abierto si la ventana cierra en 3 días?"</li>
+<li>"¿Por qué terminaste con la última cuenta?"</li>
+</ul>
+<hr />
+<h2>5. Después</h2>
+<p>Elegido → oferta por escrito (<a href="#tpl-con-README">mensaje</a>) → onboarding con el plan de 30 días de <a href="#closer"><code>../roles/closer.md</code></a>. En el 17/11 el elegido pasaba a la tarea EXT-04 (nutrir closer).</p></section></article>
 <article class="doc" id="s-sops" data-sec="sops"><h1>Índice de SOPs · Ventas</h1>
 <p><em>Última actualización: 28/11/2026 · Dueño del índice: Santiago</em></p>
-<p>El único lugar donde se listan los SOPs del área. Organizado por rol dentro de Ventas, no por persona. Cada SOP sigue el <a href="#tpl-template-sop">template</a> de 6 partes y se arma con el <a href="#generador">generador de SOPs</a>.</p>
+<p>El único lugar donde se listan los SOPs del área. Organizado por rol dentro de Ventas, no por persona. Cada SOP sigue el <a href="#tpl-tem-template-sop">template</a> de 6 partes y se arma con el <a href="#generador">generador de SOPs</a>.</p>
 <p><strong>Estados:</strong> <span class="st ok">Vigente</span> existe y está vigente · <span class="st mid">Actualizar</span> existe pero hay que pasarlo a formato SOP o actualizarlo · <span class="st no">A escribir</span> a escribir.</p>
 <p><strong>Orden para escribir:</strong> primero las tareas delegables que más horas por semana le sacan hoy a Santi, Mati y Manu. <span class="chip pend">[PENDIENTE: poner las horas por semana de cada tarea para ordenar]</span>.</p>
 <h2>Comunes a ventas</h2>
@@ -1457,7 +2279,7 @@ tr:last-child td{border-bottom:0}
 </tr>
 </tbody>
 </table></div></article>
-<article class="doc" id="s-templates" data-sec="templates"><h1>Templates</h1><p class="lead">Para copiar y completar. Cada uno está también como archivo en <code>mi-negocio/equipo/templates/</code>.</p><nav class="toc"><a href="#tpl-evaluacion-periodo-prueba">Evaluación de período de prueba · Génesis</a><a href="#tpl-agenda-dia-cero">Agenda: Reunión del día cero</a><a href="#tpl-reporte-diario-sdr">Reporte diario · SDR</a><a href="#tpl-reporte-diario-setter">Reporte diario · Setter</a><a href="#tpl-reporte-llamada-closer">Reporte por llamada · Closer</a><a href="#tpl-reporte-semanal-closer">Reporte semanal · Closer</a><a href="#tpl-reporte-semanal-ventas">Reporte semanal del área de ventas</a><a href="#tpl-agenda-daily">Agenda: Daily de ventas</a><a href="#tpl-agenda-weekly">Agenda: Weekly de ventas</a><a href="#tpl-agenda-monthly">Agenda: Monthly / cierre de lanzamiento</a><a href="#tpl-template-sop">SOP</a></nav><section class="tpl" id="tpl-evaluacion-periodo-prueba"><h1>Evaluación de período de prueba · Génesis</h1>
+<article class="doc" id="s-templates" data-sec="templates"><h1>Templates</h1><p class="lead">Para copiar y completar. Cada uno está también como archivo en <code>mi-negocio/equipo/templates/</code>.</p><nav class="toc"><a href="#tpl-tem-evaluacion-periodo-prueba">Evaluación de período de prueba · Génesis</a><a href="#tpl-tem-agenda-dia-cero">Agenda: Reunión del día cero</a><a href="#tpl-tem-reporte-diario-sdr">Reporte diario · SDR</a><a href="#tpl-tem-reporte-diario-setter">Reporte diario · Setter</a><a href="#tpl-tem-reporte-llamada-closer">Reporte por llamada · Closer</a><a href="#tpl-tem-reporte-semanal-closer">Reporte semanal · Closer</a><a href="#tpl-tem-reporte-semanal-ventas">Reporte semanal del área de ventas</a><a href="#tpl-tem-agenda-daily">Agenda: Daily de ventas</a><a href="#tpl-tem-agenda-weekly">Agenda: Weekly de ventas</a><a href="#tpl-tem-agenda-monthly">Agenda: Monthly / cierre de lanzamiento</a><a href="#tpl-tem-template-sop">SOP</a></nav><section class="tpl" id="tpl-tem-evaluacion-periodo-prueba"><h1>Evaluación de período de prueba · Génesis</h1>
 <p><em>Se usa dos veces: a la mitad de las ejecuciones (parcial, para decirle dónde está parado) y al cierre (decisión). Se guarda una copia por persona fuera del repo <span class="chip pend">[PENDIENTE: dónde]</span>: tiene datos personales.</em></p>
 <p><strong>Persona:</strong> [nombre] · <strong>Rol:</strong> SDR / Setter / Closer · <strong>Inicio:</strong> [fecha] · <strong>Cierre del período:</strong> [fecha] · <strong>Evalúa:</strong> [quién] · <strong>Tipo:</strong> Mitad / Cierre</p>
 <hr />
@@ -1579,7 +2401,7 @@ tr:last-child td{border-bottom:0}
 <li>[ ] <strong>Se va</strong> · Motivo principal: [cuál] · Fecha de la conversación: [cuándo]</li>
 </ul>
 <h2>En la revisión de la mitad</h2>
-<p><strong>Lo que se le dice, por escrito:</strong> dónde está parado en cada dimensión, las 2-3 cosas concretas a corregir en la segunda mitad y cómo se van a medir.</p></section><section class="tpl" id="tpl-agenda-dia-cero"><h1>Agenda · Reunión del día cero</h1>
+<p><strong>Lo que se le dice, por escrito:</strong> dónde está parado en cada dimensión, las 2-3 cosas concretas a corregir en la segunda mitad y cómo se van a medir.</p></section><section class="tpl" id="tpl-tem-agenda-dia-cero"><h1>Agenda · Reunión del día cero</h1>
 <p><em>Se arma por persona antes de la call. El bloque 3 se completa con el archivo de su rol: <a href="#sdr">SDR</a> · <a href="#setter">Setter</a> · <a href="#closer">Closer</a>.</em></p>
 <pre><code>REUNIÓN DE ONBOARDING — [nombre] — [rol]
 Fecha: [fecha]                      Duración: 60-90 min
@@ -1625,7 +2447,7 @@ BLOQUE 3 — SU ROL Y SUS PRIMERAS TAREAS (25-35 min) · lidera [responsable]
 CIERRE
 - Próxima reunión y primera tarea de mañana.
 - &quot;¿Te quedó alguna duda o algo que no te cierre?&quot;
-</code></pre></section><section class="tpl" id="tpl-reporte-diario-sdr"><h1>Reporte diario · SDR</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-reporte-diario-sdr"><h1>Reporte diario · SDR</h1>
 <p><em>Al cierre del día, en <code>#reportes-ventas</code>. Lector: responsable de ventas y marketing. Se copia y se completa; no se borran las preguntas de señal.</em></p>
 <pre><code>REPORTE DIARIO SDR — [fecha] — [nombre]
 
@@ -1652,7 +2474,7 @@ SEÑAL
 <pre><code>- Confirmados para la clase:
 - Señales de compra marcadas en el chat:
 - Grupo 1 / 2 / 3: [cantidades]
-</code></pre></section><section class="tpl" id="tpl-reporte-diario-setter"><h1>Reporte diario · Setter</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-reporte-diario-setter"><h1>Reporte diario · Setter</h1>
 <p><em>Al cierre del día, en <code>#reportes-ventas</code>. Lector: responsable de ventas y marketing.</em></p>
 <pre><code>REPORTE DIARIO SETTER — [fecha] — [nombre]
 
@@ -1677,7 +2499,7 @@ SEÑAL
 - Qué contenido trajo las conversaciones de hoy (qué reel, qué historia):
 - Qué noté distinto respecto de ayer:
 - Qué necesito para mejorar mañana:
-</code></pre></section><section class="tpl" id="tpl-reporte-llamada-closer"><h1>Reporte por llamada · Closer</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-reporte-llamada-closer"><h1>Reporte por llamada · Closer</h1>
 <p><em>Apenas corta, en <code>#reportes-ventas</code> (y la venta también en <code>#ventas-cerradas</code>). Lector: responsable de ventas y marketing. Se carga además en el tracker el mismo día.</em></p>
 <pre><code>LLAMADA — [fecha y hora] — [closer]
 
@@ -1701,7 +2523,7 @@ RESULTADO
 SEÑAL
 - Frase textual del lead que marketing tiene que escuchar:
 - Qué haría distinto en esta llamada:
-</code></pre></section><section class="tpl" id="tpl-reporte-semanal-closer"><h1>Reporte semanal · Closer</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-reporte-semanal-closer"><h1>Reporte semanal · Closer</h1>
 <p><em>Antes de la weekly de ventas. Lector: responsable de ventas.</em></p>
 <pre><code>REPORTE SEMANAL CLOSER — semana del [fecha] — [nombre]
 
@@ -1730,7 +2552,7 @@ LECTURA
 - Qué funcionó y por qué:
 - Qué no funcionó y por qué:
 - Qué necesito de SDR / setter / marketing:
-</code></pre></section><section class="tpl" id="tpl-reporte-semanal-ventas"><h1>Reporte semanal del área de ventas</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-reporte-semanal-ventas"><h1>Reporte semanal del área de ventas</h1>
 <p><em>Lo arma el responsable de ventas (Santi o Mati) antes de la weekly. Lector: Manu. Sin esto, la weekly se reagenda.</em></p>
 <pre><code>REPORTE SEMANAL — VENTAS — semana del [fecha]
 Responsable: [nombre]
@@ -1763,7 +2585,7 @@ Responsable: [nombre]
 1.
 2.
 3.
-</code></pre></section><section class="tpl" id="tpl-agenda-daily"><h1>Agenda · Daily de ventas</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-agenda-daily"><h1>Agenda · Daily de ventas</h1>
 <pre><code>DAILY VENTAS — [fecha]                 Duración: 15-30 min
 Participantes: SDR, setter, closer, Santi, Mati
 Lidera: [quién]
@@ -1777,7 +2599,7 @@ Lidera: [quién]
    Lo complejo se agenda aparte solo con los involucrados.
 4. Cierre (1 min) — prioridades del día
    (en ventana: a quién se llama primero — Grupo 2 con señales de compra)
-</code></pre></section><section class="tpl" id="tpl-agenda-weekly"><h1>Agenda · Weekly de ventas</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-agenda-weekly"><h1>Agenda · Weekly de ventas</h1>
 <pre><code>WEEKLY VENTAS — [fecha]                Duración: 45-60 min
 Presenta: [Santi / Mati]
 
@@ -1798,7 +2620,7 @@ CONCLUSIONES
 - Decisión:
 - Acciones: [quién] hace [qué] para [cuándo]
 - Para marketing: [objeciones y dolores de la semana que tienen que llegar]
-</code></pre></section><section class="tpl" id="tpl-agenda-monthly"><h1>Agenda · Monthly / cierre de lanzamiento</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-agenda-monthly"><h1>Agenda · Monthly / cierre de lanzamiento</h1>
 <pre><code>MONTHLY — [mes o lanzamiento]          Duración: 60-90 min
 Participantes: todo el equipo
 
@@ -1812,7 +2634,7 @@ Participantes: todo el equipo
 4. Ajuste estratégico (20 min) — qué cambia el próximo
 5. Cierre (15 min) — directivas nuevas y quién las baja al equipo
    + qué se actualiza en el documento de negocio y en el anexo de ventas
-</code></pre></section><section class="tpl" id="tpl-template-sop"><h1>Template · SOP</h1>
+</code></pre></section><section class="tpl" id="tpl-tem-template-sop"><h1>Template · SOP</h1>
 <p><em>Copiá esta estructura para cada proceso. Se lista en el <a href="#sops">índice</a>. Para armarlo rápido: grabate haciendo la tarea, transcribila y pasala por el <a href="#generador">generador de SOPs</a>.</em></p>
 <pre><code>SOP: [Nombre claro y específico de la tarea]
 
@@ -2010,6 +2832,64 @@ DÓNDE PONER CAPTURAS:
 </tr>
 </tbody>
 </table></div>
+<h2>Bloquean la próxima búsqueda</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Qué falta</th>
+<th>Quién decide</th>
+<th>Dónde se usa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Comisión del SDR y del closer (el borrador del closer decía 7%), y cuándo se pagan</td>
+<td>Manu</td>
+<td>Aviso, formulario y oferta</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Números públicos vigentes para el aviso: facturación de Manu (+280M), "en octubre cerramos en $36.000", tickets (¿hasta USD 5.000 o 6.000?)</td>
+<td>Manu</td>
+<td><a href="#tpl-con-README">contratacion/</a></td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Si el SDR tiene que vivir en Argentina</td>
+<td>Mati</td>
+<td>Aviso y filtro del SDR</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Quién decide la incorporación (Mati y Santi con visto bueno de Manu)</td>
+<td>Manu</td>
+<td>Etapa 6</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Modelo de contrato o acuerdo de comisión</td>
+<td>Manu / Santi</td>
+<td>Etapa 6</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Postulaciones, entrevistados y elegidos de la búsqueda del 17/11, y de qué canal vino cada uno</td>
+<td>Mati</td>
+<td>Números de la búsqueda</td>
+</tr>
+<tr>
+<td>C7</td>
+<td>Grupos y comunidades donde se difunde el aviso</td>
+<td>Mati</td>
+<td>Etapa 1</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Dato para el #1 (alcance del setter): el formulario del SDR del 17/11 decía "Buscamos un SDR (setter)". En la práctica se buscó un solo rol.</p>
+</blockquote>
 <h2>Bloquean el control diario</h2>
 <div class="tw"><table>
 <thead>
@@ -2074,7 +2954,7 @@ DÓNDE PONER CAPTURAS:
   var docs=[].slice.call(document.querySelectorAll('.doc')), tabs=[].slice.call(document.querySelectorAll('nav.tabs a'));
   function show(){
     var h=(location.hash||'#inicio').slice(1), sub=null;
-    if(h.indexOf('tpl-')===0){sub=h;h='templates'}
+    if(h.indexOf('tpl-tem-')===0){sub=h;h='templates'} else if(h.indexOf('tpl-con-')===0){sub=h;h='contratacion'}
     if(!document.getElementById('s-'+h)){h='inicio'}
     docs.forEach(function(d){d.hidden=d.dataset.sec!==h});
     tabs.forEach(function(t){t.classList.toggle('on',t.dataset.s===h); if(t.dataset.s===h){t.setAttribute('aria-current','page'); try{t.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}} else t.removeAttribute('aria-current')});

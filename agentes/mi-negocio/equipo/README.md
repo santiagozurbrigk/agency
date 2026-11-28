@@ -14,6 +14,7 @@ Sale de las 4 clases del Módulo 8 de Limitless (transcriptas en [`../teoria-sop
 | [`roles/sdr.md`](roles/sdr.md) | El SDR: qué es acá, estándares, período de prueba, reportes, reunión del día cero, plan de 30 días y SOPs | El que contrata y evalúa al SDR |
 | [`roles/setter.md`](roles/setter.md) | El setter: lo mismo, para el rol de setteo | El que contrata y evalúa al setter |
 | [`roles/closer.md`](roles/closer.md) | El closer: lo mismo, para la llamada de venta | El que contrata y evalúa al closer |
+| [`contratacion/`](contratacion/README.md) | El proceso de contratación: de abrir la búsqueda a la oferta. Avisos y formularios que se usaron para el 17/11 (SDR y closer), filtro, entrevista con role play, mensajes y banco de candidatos | Mati y Santi |
 | [`indice-sops.md`](indice-sops.md) | Índice único de SOPs de ventas por área: cuál existe, cuál falta, dueño y fecha | Todos |
 | [`templates/`](templates/) | Evaluación del período de prueba, reportes (SDR, setter, closer, semanal), agendas de reuniones, agenda del día cero y template de SOP | Todos |
 | [`pendientes.md`](pendientes.md) | Lo que falta definir para que esto quede operativo | Santi, Mati y Manu |
@@ -22,6 +23,7 @@ Agente relacionado: [`../agentes-propios/generador-sops.md`](../agentes-propios/
 
 ## El sistema en una página
 
+0. **Contratación:** aviso → formulario → filtro → entrevista con role play → oferta por escrito ([proceso](contratacion/README.md)).
 1. **Antes de que entre:** existe el documento de negocio ([`../negocio/onboarding-equipo-genesis-os.docx`](../negocio/onboarding-equipo-genesis-os.docx)), el anexo de ventas ([`../ventas/`](../ventas/)), los números del rol escritos y los 2-3 SOPs con los que arranca.
 2. **Día cero:** reunión de 60-90 min en 3 bloques (repaso del documento, visión y misión, su rol). Se le comunica el período de prueba por escrito.
 3. **Primera semana:** yo lo hago → lo hacemos → lo hacés, con 3-5 tareas.

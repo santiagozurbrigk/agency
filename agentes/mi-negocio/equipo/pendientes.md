@@ -13,6 +13,20 @@ _Lo que falta para que el sistema del equipo quede operativo. Ordenado por lo qu
 | 5 | **Quién evalúa a quién**, mientras Santi y Mati también son SDR | Manu | [00-sistema](00-sistema-del-equipo.md#qué-mira-cada-uno) |
 | 6 | **Equipo vigente:** quién sigue de Diego y Braian, quién es closer hoy | Santi | Documento de negocio 6.1 |
 
+## Bloquean la próxima búsqueda
+
+| # | Qué falta | Quién decide | Dónde se usa |
+|---|---|---|---|
+| C1 | Comisión del SDR y del closer (el borrador del closer decía 7%), y cuándo se pagan | Manu | Aviso, formulario y oferta |
+| C2 | Números públicos vigentes para el aviso: facturación de Manu (+280M), "en octubre cerramos en $36.000", tickets (¿hasta USD 5.000 o 6.000?) | Manu | [contratacion/](contratacion/README.md) |
+| C3 | Si el SDR tiene que vivir en Argentina | Mati | Aviso y filtro del SDR |
+| C4 | Quién decide la incorporación (Mati y Santi con visto bueno de Manu) | Manu | Etapa 6 |
+| C5 | Modelo de contrato o acuerdo de comisión | Manu / Santi | Etapa 6 |
+| C6 | Postulaciones, entrevistados y elegidos de la búsqueda del 17/11, y de qué canal vino cada uno | Mati | Números de la búsqueda |
+| C7 | Grupos y comunidades donde se difunde el aviso | Mati | Etapa 1 |
+
+> Dato para el #1 (alcance del setter): el formulario del SDR del 17/11 decía "Buscamos un SDR (setter)". En la práctica se buscó un solo rol.
+
 ## Bloquean el control diario
 
 | # | Qué falta | Quién decide |
