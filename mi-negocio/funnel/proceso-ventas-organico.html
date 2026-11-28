@@ -777,84 +777,96 @@ Vi que llegaste por el video de [TEMA DEL VIDEO — ej. 'cómo Herbora pasó de 
 
 Soy [NOMBRE], trabajo con Manu. ¿Querés que te cuente cómo lo estamos aplicando con otros dueños de consumibles?`},
   setterAsign:{phase:"Setter · Asignación",title:"Setter recibe el lead",role:"setter",
-    rule:"Responder en máximo 2 horas. Si es lead de IG Bio → prioritario, ya es caliente. Verificar subavatar antes de abrir el setting.",
-    text:`[Notificación interna para el setter]
+    rule:"Responder en máximo 2 horas. Si es lead de IG Bio → prioritario. Los mensajes de setting se envían siempre desde la cuenta de Manu. Nunca desde una cuenta de setter o agencia.",
+    text:`[Notificación interna — no enviar al lead]
 
-🔔 Nuevo lead asignado
+Nuevo lead asignado
 
-📌 Keyword / UTM: [KEYWORD o VIDEO_ID]
-📺 Contenido: [NOMBRE DEL REEL / VIDEO]
-📱 Canal: [IG_REEL / IG_BIO / YOUTUBE]
-📦 Producto mencionado: [CONSUMIBLE]
-📎 Recurso enviado: [SÍ/NO — cuál]
-👤 Usuario: @[HANDLE]
+Keyword / UTM: [KEYWORD o VIDEO_ID]
+Contenido: [NOMBRE DEL REEL / VIDEO]
+Canal: [IG_REEL / IG_BIO / YOUTUBE]
+Producto mencionado: [CONSUMIBLE]
+Recurso enviado: [SI/NO — cuál]
+Usuario: @[HANDLE]
 
 Subavatar probable:
-S1 (marca en breakeven) · S2 (tratamiento/cosmético) · S3 (importador/MercadoLibre)`},
-  s1:{phase:"Setting · Paso 1",title:"Apertura con contexto",role:"setter",
-    rule:"Siempre mencionar el contenido o el producto específico. Nunca abrir con mensaje genérico. Si entró por YouTube → referenciar el tema del video.",
-    text:`Hola [NOMBRE] 👋
+S1 (marca en breakeven) · S2 (tratamiento/cosmético) · S3 (importador/MercadoLibre)
 
-Vi que te interesó [el reel / el video] sobre [TEMA].
+Todo el setting se hace desde la cuenta de Manu.`},
+  s1:{phase:"Setting · Paso 1",title:"Apertura desde la cuenta de Manu",role:"manu",
+    rule:"Desde la cuenta de Manu. Referenciar el contenido específico por el que entró. Nunca abrir con un mensaje genérico. El tono es directo, sin venta.",
+    text:`Hola [NOMBRE], vi que te interesó [el reel / el video] sobre [TEMA].
 
-Trabajo con Manu — ayudamos a dueños de consumibles a construir un piso de facturación mensual con suscripciones.
+Te hago una pregunta rapida: tenes una tienda online con ese producto o lo vendés por otro lado?`},
+  s2:{phase:"Setting · Paso 2",title:"Discovery · e-commerce y producto",role:"manu",
+    rule:"Objetivo: entender si tiene e-commerce propio, cuánto tiempo lleva, qué plataforma y qué consumible vende. Sin e-commerce propio o sin producto activo → no calificado. Registrar: plataforma, antigüedad, producto, ciclo de reposición.",
+    text:`[Si tiene tienda online]
+Buenisimo. Cuanto tiempo llevas con la tienda y en que plataforma estas, Tiendanube, Shopify, otra?
 
-¿Qué consumible vendés vos?`},
-  s2:{phase:"Setting · Paso 2",title:"Discovery · producto + situación",role:"setter",
-    rule:"Confirmar: (1) producto consumible con ciclo de reposición, (2) tiene pedidos activos, (3) está dispuesto a invertir. Sin los tres → no calificado.",
-    text:`Te hago un par de preguntas rápidas para ver si tiene sentido que hablemos:
+[Si no tiene tienda / vende por Instagram o MercadoLibre]
+Entiendo. Y el producto lo tenes pensado solo para vender reactivo o ya pensaste en armar algo con recurrencia?
 
-1️⃣ ¿Cuántos pedidos nuevos recibís por mes y cuánto es tu margen promedio?
+[Ambos casos — confirmar el consumible]
+Y el producto, con que frecuencia lo vuelve a comprar alguien que ya te compro una vez?`},
+  s3:{phase:"Setting · Paso 3",title:"Situación actual · números del negocio",role:"manu",
+    rule:"Registrar: pedidos/mes, margen por pedido, % clientes que repitieron, canal principal de venta. Son los datos que el closer necesita para hacer la matemática en la llamada. Copiar textual la frase que use el lead para describir su problema.",
+    text:`Mas o menos cuantos pedidos estas recibiendo por mes ahora?
 
-2️⃣ ¿Cuántos de esos clientes te volvieron a comprar en los últimos 3 meses?
+Y de esos clientes, cuantos te volvieron a comprar en los ultimos 3 meses? Una idea alcanza.
 
-(Con esos dos números ya puedo ver si lo que hace Manu aplica a tu caso 🙌)`},
-  s3:{phase:"Setting · Paso 3",title:"Dolor + Consecuencia",role:"setter",
-    rule:"Registrar situacion_actual, objetivo, gap y pain_phrase. La frase exacta del lead es oro — copiarla textual. El GAP es el motor de urgencia.",
-    text:`Entiendo. Y siendo honesto — ¿hace cuánto que no tienen 'un día bueno' en ventas?
+Cual es tu mayor canal de venta hoy, publicidad paga, organico, MercadoLibre?`},
+  s4:{phase:"Setting · Paso 4",title:"Dolor + consecuencia del GAP",role:"manu",
+    rule:"Anclar el costo de la inestabilidad. No pasar a la solución sin que el lead haya puesto en palabras lo que le está costando no resolver esto. Registrar pain_phrase textual.",
+    text:`Y cuando hay un mes malo, que pasa? Meta sube, las campanas no convierten, y la facturacion cae?
 
-¿Qué pasa con los meses donde las campañas no convierten o Meta sube los costos?
+Cuanto te costo eso el ultimo trimestre, de forma aproximada?
 
-¿Cuánto te está costando esa inestabilidad, solo en el último trimestre?`},
-  s4:{phase:"Setting · Paso 4",title:"Solución · B.A.S.E.",role:"setter",
-    rule:"No saltar a esta fase sin haber anclado el dolor primero. Usar un caso de cliente similar al subavatar detectado.",
-    text:`Tiene sentido lo que me contás. Es exactamente el problema que resuelve el Método B.A.S.E.
+[Esperar — dejar que el lead calcule o describa]
 
-[S1 / breakeven]: "Herbora tenía la misma situación — una marca de suplementos en breakeven. Hoy tiene 300+ suscriptores activos y factura diferente todos los meses."
+Y si en 6 meses sigue igual, que pasa con el negocio?`},
+  s5:{phase:"Setting · Paso 5",title:"Solución + caso similar",role:"manu",
+    rule:"Presentar el B.A.S.E. con un caso real del mismo subavatar. No describir el programa en detalle — solo lo suficiente para que el lead quiera saber más.",
+    text:`[S1 / breakeven — ej. Herbora]
+Tengo un cliente con suplementos que estaba en la misma situacion. Hoy tiene mas de 300 suscriptores activos y el negocio no depende de que les vaya bien los ads ese mes.
 
-[S2 / tratamiento]: "Teníamos un cliente con una crema para hongos — no creía que se pudiera suscribir. Hoy tiene un piso de facturación mensual con sus suscriptores."
+[S2 / tratamiento — ej. crema para hongos]
+Tengo un cliente con un producto de tratamiento, pensaba que no se podia suscribir. Armamos un modelo de mantenimiento y hoy tiene un piso fijo mensual.
 
-[S3 / importador]: "Lopo importaba y vendía por MercadoLibre. 48 minutos de llamada, cerró en el momento."
+[S3 / importador — ej. Lopo]
+Tengo un cliente que venia de MercadoLibre. No tenia tienda propia. Arrancamos desde ahi y hoy tiene recurrencia sin depender del algoritmo.
 
-¿Querés que Manu te muestre en 30 minutos si el B.A.S.E. aplica a tu negocio?`},
-  s5:{phase:"Setting · Paso 5",title:"Pitch + Agenda",role:"setter",
-    rule:"Nunca preguntar 'cuándo tenés tiempo'. Dar exactamente dos opciones concretas. Peor/mejor caso siempre antes de preguntar.",
-    text:`Peor caso: salís de la llamada con claridad de qué tenés que hacer para construir ese piso.
+Lo que hago es un sistema en 3 pasos para que eso funcione en tu caso especifico. Te puede interesar que hablemos 30 minutos para ver si aplica?`},
+  s6:{phase:"Setting · Paso 6",title:"Pitch + Agenda",role:"manu",
+    rule:"Nunca preguntar cuando tiene tiempo. Dar dos opciones concretas. Peor/mejor caso antes de las opciones. 1 follow-up máximo a 48h si no confirma. Recordatorio 24h + 1h antes.",
+    text:`Peor caso: salis de la llamada con claridad de que tenes que hacer.
 Mejor caso: encontramos la forma de trabajar juntos.
 
-¿Te queda mejor mañana o pasado?
-Manu tiene lugar a las [HORA] o [HORA].
+Te queda mejor manana o pasado?
+Tengo lugar a las [HORA] o las [HORA].
 
-[Link de Calendly]: [LINK DE CALENDLY]`},
-  s6:{phase:"Setting · Paso 6",title:"Recordatorio + Handoff al closer",role:"setter",
-    rule:"Recordatorio 24h + 1h antes. Brief completo al closer antes de la llamada. 1 follow-up máximo a 48h si no confirma.",
-    text:`[Recordatorio 24h antes]
-Hola [NOMBRE] 👋 Confirmo tu llamada con Manu mañana a las [HORA]. ¿Seguís?
-
-[Recordatorio 1h antes]
-En 1 hora arranca tu llamada con Manu. ¿Estás listo?
+[LINK DE CALENDLY]
 
 ---
-[Brief al closer — INTERNO]
-👤 Lead: [NOMBRE] | @[HANDLE]
-📌 Entró por: [KEYWORD/VIDEO]
-📦 Consumible: [PRODUCTO + MARGEN]
-🧩 Subavatar: [S1/S2/S3]
-💬 Dolor exacto: "[PAIN_PHRASE]"
-🎯 Objetivo: [OBJETIVO]
-📊 GAP: [GAP] pedidos/mes · $[MONTO]/mes
-📎 Recursos consumidos: [CUÁLES]
-⚡ Precall: [PUSH/SOFT]`},
+[Recordatorio 24h antes — desde la cuenta de Manu]
+Mañana a las [HORA] es nuestra llamada. Seguís?
+
+[Recordatorio 1h antes — desde la cuenta de Manu]
+En 1 hora arrancamos. Listo?
+
+---
+[Brief al closer — INTERNO, no enviar]
+Lead: [NOMBRE] | @[HANDLE]
+Entro por: [KEYWORD/VIDEO]
+Tiene e-commerce: [SI/NO] — plataforma: [PLATAFORMA] — antiguedad: [TIEMPO]
+Consumible: [PRODUCTO] — ciclo reposicion: [DIAS]
+Pedidos/mes: [N] — margen por pedido: $[MONTO]
+Repitieron en 3 meses: [%]
+Canal principal: [ADS / ORGANICO / ML]
+Subavatar: [S1/S2/S3]
+Dolor exacto: "[PAIN_PHRASE]"
+Objetivo: [OBJETIVO]
+Recursos consumidos: [CUALES]
+Precall: [PUSH/SOFT]`},
   precallDec:{phase:"Pre-Call · Decisión",title:"¿Qué tanta fricción tiene el lead?",role:"setter",
     rule:`Baja fricción = responde rápido, pregunta activo, habló de números → Push
 Alta fricción = respuestas lentas, objección temprana (Argentina, mentoría, producto) → Soft
