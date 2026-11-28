@@ -7,10 +7,11 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 | Carpeta | Qué va |
 |---|---|
 | [`bases/`](bases/) | **Las bases del negocio rearmadas con los 9 SOPs (19/11):** avatar, perfil, ecosistema de contenido, ventas → marketing, reels, historias, precio y vender sin vender. Empezar por su [README](bases/README.md). |
-| [`teoria-sops/`](teoria-sops/) | La teoría: los 9 SOPs de la formación, transcritos completos. |
+| [`teoria-sops/`](teoria-sops/) | La teoría: los 9 SOPs de la formación, transcritos completos, y los 4 de equipo (Módulo 8) en [`teoria-sops/equipo/`](teoria-sops/equipo/). |
 | [`negocio/`](negocio/) | Lo que no cambia de un lanzamiento a otro: brief de Génesis, marca personal, avatar, onboarding del equipo y recursos del campus. |
 | [`agentes-propios/`](agentes-propios/) | Los agentes que armamos nosotros (los de Limitless están en `../agentes/`). |
 | [`lanzamientos/`](lanzamientos/) | Una carpeta por lanzamiento, con fecha adelante y las mismas subcarpetas. Ver su [README](lanzamientos/README.md). |
+| [`equipo/`](equipo/) | **La parte interna del equipo comercial (28/11):** sistema común (onboarding, período de prueba, control, reuniones, feedback, SOPs), un archivo por rol (SDR, setter, closer), índice de SOPs, templates de reportes y evaluación. Empezar por su [README](equipo/README.md). |
 | [`ventas/`](ventas/) | Guiones y manual de llamada, objeciones, proceso de ventas y el proyecto de Claude para recursos personalizados. |
 | [`evergreen/`](evergreen/) | Piezas que viven fuera de un lanzamiento: VSL de chat, funnel de YouTube, perfil de Instagram. |
 | [`referencias/`](referencias/) | Material de terceros que usamos de modelo (Naza). |
@@ -22,6 +23,7 @@ Tus archivos propios (agentes que modificaste, notas, outputs). Limitless nunca 
 
 | Agente | Qué hace | Prompt |
 |---|---|---|
+| Generador de SOPs | Convierte la transcripción de una grabación de pantalla en un SOP con las 6 partes y la lista de huecos. | [`generador-sops.md`](agentes-propios/generador-sops.md) |
 | Creador de webinars | Arma el deck completo del webinar (~95 slides, 90 min): hook, 3 terceras con 3 pitches, oferta, objeciones, time check y compliance. | [`creador-webinars.md`](agentes-propios/creador-webinars.md) |
 
 Para usarlo en Claude Code: *"usá el agente de `mi-negocio/agentes-propios/creador-webinars.md`"*. Completa la CONFIGURACIÓN con `CONTEXTO.md` y `negocio/brief-genesis.md`.
