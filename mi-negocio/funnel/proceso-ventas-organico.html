@@ -700,7 +700,7 @@ const EX={
 • Acción 3: Notificar al setter con contexto completo del reel`},
   igBio:{phase:"Entrada · IG Bio",title:"Bio · keyword SUSCRIPCIONES",role:"auto",
     what:"La bio de Instagram tiene el CTA 'Escribime SUSCRIPCIONES'. Es la puerta de entrada para quien ya siguió a Manu y quiere saber cómo funciona el modelo. Lead más caliente que el reel.",
-    rule:"Keyword fija: SUSCRIPCIONES · entry_channel = ig_bio · entry_content_id = ig_bio_cta",
+    rule:"Keyword EXCLUSIVA de la bio — nunca usar SUSCRIPCIONES en reels, historias ni ningún otro contenido. Es el único lugar donde aparece. entry_channel = ig_bio · entry_content_id = ig_bio_cta",
     setup:`Configuración ManyChat:
 • Trigger: Mensaje contiene SUSCRIPCIONES
 • Registrar entry_channel = "ig_bio"
@@ -733,7 +733,7 @@ Acá te mando lo que pediste 👇
 Y mientras tanto: ¿qué producto consumible vendés actualmente?`},
   mcDetectBio:{phase:"ManyChat · IG Bio",title:"Detección SUSCRIPCIONES",role:"auto",
     what:"ManyChat detecta 'SUSCRIPCIONES' y registra entry_channel = ig_bio. Lead caliente: ya consume contenido de Manu y preguntó activamente.",
-    rule:"entry_keyword = SUSCRIPCIONES · entry_channel = ig_bio · entry_content_id = ig_bio_cta",
+    rule:"SUSCRIPCIONES es de uso exclusivo de la bio. Ningún reel ni historia puede usar esta keyword. Si llega un lead con esta keyword → es de bio, siempre. entry_channel = ig_bio · entry_content_id = ig_bio_cta",
     text:`[Respuesta automática bio]
 
 ¡Hola! 👋 Qué bueno que escribiste.
