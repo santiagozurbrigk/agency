@@ -1,0 +1,1377 @@
+<title>Proceso de Ventas Orgánico</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080A10;--surface:#0F1118;--s2:#141824;--s3:#1A1F2E;
+  --b1:#1D2235;--b2:#252B42;--b3:#2E3550;
+  --fg:#E6EAF4;--fg2:#8B95B0;--fg3:#50596E;
+  --ig:#F0507A;--bio:#8B6CF5;--yt:#FF4040;
+  --mc:#FF8A30;--setter:#4F72F0;--setting:#3A85F5;
+  --precall:#E8A020;--nutri:#22BF7A;--llamada:#9B6CE0;
+  --cierre:#15C4A0;--trk:#20C0D8;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100dvh;overflow:hidden}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+
+/* ── canvas ── */
+#vp{
+  position:fixed;inset:0;overflow:hidden;cursor:grab;
+  background-color:var(--bg);
+  background-image:radial-gradient(circle,var(--b1) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+#vp.dragging{cursor:grabbing}
+#world{position:absolute;transform-origin:0 0;will-change:transform}
+#wires{position:absolute;top:0;left:0;pointer-events:none;overflow:visible}
+
+/* ── lane backgrounds ── */
+.lane-strip{
+  position:absolute;pointer-events:none;border-radius:20px;
+  border:1px solid color-mix(in srgb,var(--lc) 18%,transparent);
+  background:color-mix(in srgb,var(--lc) 4%,transparent);
+  transition:opacity .2s;
+}
+.lane-tag{
+  position:absolute;pointer-events:none;
+  display:flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--lc);opacity:.7;
+}
+.lane-tag::before{
+  content:'';display:block;width:3px;height:16px;border-radius:2px;
+  background:var(--lc);opacity:.8;
+}
+
+/* ── frames ── */
+.frame{
+  position:absolute;
+  background:var(--surface);
+  border:1px solid var(--b1);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 2px 24px rgba(0,0,0,.35);
+}
+.fh{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px 12px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--pc,#333) 10%,var(--s2)) 0%,var(--s2) 100%);
+  border-bottom:1px solid var(--b1);
+}
+.fh-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--pc,#555);flex-shrink:0;
+  box-shadow:0 0 8px color-mix(in srgb,var(--pc,#555) 60%,transparent);
+}
+.fh-title{font-size:10px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--fg2)}
+.fb{padding:14px 16px 16px}
+
+/* ── nodes ── */
+.node{
+  display:flex;flex-direction:column;gap:8px;
+  background:var(--s3);
+  border:1px solid var(--b2);
+  border-left:3px solid var(--pc,#444);
+  border-radius:10px;
+  padding:12px 13px;
+  cursor:pointer;
+  transition:border-color .15s,background .15s,box-shadow .15s,transform .12s;
+  margin-bottom:7px;position:relative;
+}
+.node:last-child{margin-bottom:0}
+.node:hover{
+  background:var(--s2);
+  border-color:var(--pc,#444);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--pc,#444) 35%,transparent),
+             0 4px 16px rgba(0,0,0,.4);
+  transform:translateY(-1px);
+}
+.node:focus{outline:2px solid var(--pc,#444);outline-offset:2px;border-radius:10px}
+.node-top{display:flex;align-items:flex-start;gap:9px}
+.node-icon{
+  font-size:16px;line-height:1;flex-shrink:0;
+  width:28px;height:28px;border-radius:7px;
+  background:color-mix(in srgb,var(--pc,#444) 15%,transparent);
+  display:flex;align-items:center;justify-content:center;
+  margin-top:1px;
+}
+.node-text{flex:1;min-width:0}
+.node h3{font-size:12px;font-weight:600;color:var(--fg);line-height:1.35;margin-bottom:2px}
+.node p{font-size:11px;color:var(--fg2);line-height:1.5}
+.node.dec{
+  border-left-width:3px;
+  background:color-mix(in srgb,var(--pc,#333) 7%,var(--s3));
+  border-color:color-mix(in srgb,var(--pc,#333) 50%,var(--b2));
+  border-left-color:var(--pc,#444);
+}
+.node-note{
+  font-size:10px;color:var(--fg3);line-height:1.5;
+  padding:6px 9px;border-radius:6px;
+  background:color-mix(in srgb,var(--pc,#333) 7%,transparent);
+  border-left:2px solid color-mix(in srgb,var(--pc,#333) 35%,transparent);
+}
+
+/* ── badges ── */
+.roles{display:flex;flex-wrap:wrap;gap:4px}
+.badge{
+  font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  padding:2px 7px;border-radius:20px;line-height:1.6;
+}
+.b-ig{background:color-mix(in srgb,var(--ig) 15%,transparent);color:var(--ig)}
+.b-yt{background:color-mix(in srgb,var(--yt) 15%,transparent);color:var(--yt)}
+.b-auto{background:color-mix(in srgb,var(--mc) 15%,transparent);color:var(--mc)}
+.b-setter{background:color-mix(in srgb,var(--setter) 18%,transparent);color:#7B9EFF}
+.b-closer{background:color-mix(in srgb,var(--ig) 15%,transparent);color:var(--ig)}
+.b-manu{background:color-mix(in srgb,#f97316 15%,transparent);color:#fb923c}
+
+/* ── cols ── */
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cols3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.col-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+            color:var(--clr,var(--fg3));margin-bottom:8px}
+
+/* ── tracking table ── */
+.trk-tbl{width:100%;border-collapse:collapse}
+.trk-tbl th{
+  text-align:left;padding:7px 10px;
+  background:var(--s3);color:var(--fg3);
+  font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  border-bottom:1px solid var(--b2);
+}
+.trk-tbl td{padding:7px 10px;border-bottom:1px solid var(--b1);font-size:11px;color:var(--fg)}
+.trk-tbl tr:last-child td{border-bottom:none}
+.trk-tbl td:first-child{font-family:monospace;font-size:10px;color:var(--fg2)}
+.trk-ph{color:var(--pc)!important;font-weight:600;font-family:'Inter',system-ui}
+
+/* ── panel ── */
+#panel{
+  position:fixed;right:0;top:0;bottom:0;width:400px;
+  background:var(--surface);
+  border-left:1px solid var(--b1);
+  transform:translateX(100%);
+  transition:transform .24s cubic-bezier(.32,.72,0,1);
+  z-index:50;display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:-8px 0 40px rgba(0,0,0,.5);
+}
+#panel.open{transform:translateX(0)}
+#panel-head{
+  padding:20px 22px 16px;
+  border-bottom:1px solid var(--b1);
+  flex-shrink:0;
+  background:linear-gradient(180deg,var(--s2),var(--surface));
+}
+#panel-phase{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+             color:var(--pc,var(--fg3));margin-bottom:5px}
+#panel-title{font-size:17px;font-weight:700;color:var(--fg);line-height:1.25}
+#panel-role{margin-top:9px}
+#close-btn{
+  position:absolute;right:14px;top:14px;background:var(--s3);border:1px solid var(--b2);
+  color:var(--fg2);cursor:pointer;width:28px;height:28px;border-radius:7px;
+  display:flex;align-items:center;justify-content:center;font-size:12px;
+  transition:all .15s;
+}
+#close-btn:hover{background:var(--b2);color:var(--fg)}
+#panel-body{flex:1;overflow-y:auto;padding:18px 22px}
+#panel-body::-webkit-scrollbar{width:4px}
+#panel-body::-webkit-scrollbar-track{background:transparent}
+#panel-body::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
+#panel-body h4{
+  font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--fg3);margin:18px 0 8px;
+}
+#panel-body h4:first-child{margin-top:0}
+#panel-body p{font-size:12px;color:var(--fg2);line-height:1.7;margin-bottom:8px}
+#panel-body .script{
+  background:var(--bg);border:1px solid var(--b1);border-radius:9px;
+  padding:14px;font-size:12px;color:var(--fg);line-height:1.65;
+  white-space:pre-wrap;font-family:inherit;margin-bottom:8px;
+}
+#panel-body .rule{
+  background:color-mix(in srgb,var(--pc,#444) 8%,transparent);
+  border-left:3px solid color-mix(in srgb,var(--pc,#444) 55%,transparent);
+  border-radius:0 8px 8px 0;
+  padding:10px 13px;font-size:12px;color:var(--fg2);margin-bottom:8px;line-height:1.65;
+}
+
+/* ── toolbar ── */
+#toolbar{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:color-mix(in srgb,var(--s2) 95%,transparent);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--b2);border-radius:14px;
+  padding:5px 8px;display:flex;align-items:center;gap:2px;z-index:40;
+  box-shadow:0 4px 32px rgba(0,0,0,.55);
+  flex-wrap:wrap;max-width:calc(100vw - 32px);
+}
+.tbtn{
+  background:none;border:none;color:var(--fg2);cursor:pointer;
+  font-size:11px;font-weight:600;padding:5px 11px;border-radius:8px;
+  white-space:nowrap;transition:background .12s,color .12s;letter-spacing:.03em;
+  font-family:'Inter',system-ui;
+}
+.tbtn:hover{background:var(--s3);color:var(--fg)}
+.tbtn.active{background:color-mix(in srgb,var(--setter) 20%,transparent);color:#7B9EFF}
+#tb-sep{width:1px;height:16px;background:var(--b2);margin:0 1px;flex-shrink:0}
+
+/* ── stepper ── */
+#stepper{
+  position:fixed;bottom:20px;right:16px;
+  background:color-mix(in srgb,var(--s2) 95%,transparent);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--b2);border-radius:10px;
+  padding:4px 12px;font-size:11px;color:var(--fg2);z-index:40;
+  display:flex;align-items:center;gap:7px;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+#stepper button{background:none;border:none;color:var(--fg3);cursor:pointer;font-size:14px;padding:0 2px;transition:color .1s}
+#stepper button:hover{color:var(--fg)}
+#step-txt{font-weight:600;color:var(--fg)}
+
+/* ── minimap ── */
+#mm{
+  position:fixed;bottom:68px;left:16px;width:148px;height:68px;
+  background:color-mix(in srgb,var(--s2) 95%,transparent);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--b2);border-radius:9px;overflow:hidden;cursor:pointer;z-index:40;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+#mm-canvas{width:100%;height:100%;display:block}
+</style>
+
+<div id="vp"><div id="world">
+<svg id="wires"></svg>
+
+<!-- Lane strips (positioned by layout()) -->
+<div class="lane-strip" id="ls1" style="--lc:var(--ig)"></div>
+<div class="lane-strip" id="ls2" style="--lc:var(--bio)"></div>
+<div class="lane-strip" id="ls3" style="--lc:var(--yt)"></div>
+<div class="lane-tag" id="lt1" style="--lc:var(--ig)">IG Reel</div>
+<div class="lane-tag" id="lt2" style="--lc:var(--bio)">IG Bio</div>
+<div class="lane-tag" id="lt3" style="--lc:var(--yt)">YouTube</div>
+
+<!-- ══ L1 · IG Reel ══ -->
+<div class="frame" id="l1-entry" style="--pc:var(--ig)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Punto de entrada</span></div>
+  <div class="fb" style="width:230px">
+    <div class="node" data-ex="igReel" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">📱</div>
+        <div class="node-text">
+          <h3>CTA con keyword única</h3>
+          <p>Cada reel o historia tiene su propia keyword en el CTA</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-ig">IG</span><span class="badge b-auto">ManyChat</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="frame" id="l1-mc" style="--pc:var(--mc)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">ManyChat · IG Reel</span></div>
+  <div class="fb" style="width:260px">
+    <div class="node" data-ex="mcDetect" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🔑</div>
+        <div class="node-text">
+          <h3>Detecta keyword → registra entrada</h3>
+          <p>entry_keyword + entry_content_id + entry_channel</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-auto">Auto</span></div>
+    </div>
+    <div class="node" data-ex="mcResource" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">📦</div>
+        <div class="node-text">
+          <h3>Envía recurso + califica</h3>
+          <p>Responde con el recurso prometido y pregunta de cualificación</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-auto">Auto</span></div>
+    </div>
+    <div class="node dec" data-ex="mcCal" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">⚡</div>
+        <div class="node-text">
+          <h3>¿Responde? ¿Califica?</h3>
+          <p>Consumible + interés → setter</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ L2 · IG Bio ══ -->
+<div class="frame" id="l2-entry" style="--pc:var(--bio)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Punto de entrada</span></div>
+  <div class="fb" style="width:230px">
+    <div class="node" data-ex="igBio" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">💬</div>
+        <div class="node-text">
+          <h3>Bio · DM con SUSCRIPCIONES</h3>
+          <p>Keyword fija desde la bio de Instagram</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-ig">IG</span><span class="badge b-auto">ManyChat</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="frame" id="l2-mc" style="--pc:var(--bio)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">ManyChat · IG Bio</span></div>
+  <div class="fb" style="width:260px">
+    <div class="node" data-ex="mcDetectBio" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🔑</div>
+        <div class="node-text">
+          <h3>Detecta SUSCRIPCIONES → registra entrada</h3>
+          <p>entry_keyword = SUSCRIPCIONES · entry_channel = ig_bio</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-auto">Auto</span></div>
+    </div>
+    <div class="node" data-ex="mcResourceBio" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">📦</div>
+        <div class="node-text">
+          <h3>Envía recurso de bienvenida</h3>
+          <p>Recurso de la bio + pregunta de calificación</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-auto">Auto</span></div>
+    </div>
+    <div class="node dec" data-ex="mcCal" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">⚡</div>
+        <div class="node-text">
+          <h3>¿Responde? ¿Califica?</h3>
+          <p>Consumible + interés → setter</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ L3 · YouTube ══ -->
+<div class="frame" id="l3-entry" style="--pc:var(--yt)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Punto de entrada</span></div>
+  <div class="fb" style="width:230px">
+    <div class="node" data-ex="ytEntrada" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">▶️</div>
+        <div class="node-text">
+          <h3>UTM único por video</h3>
+          <p>Descripción del video → link UTM → WhatsApp directo</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-yt">YT</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="frame" id="l3-wa" style="--pc:var(--yt)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">WhatsApp · Directo</span></div>
+  <div class="fb" style="width:260px">
+    <div class="node" data-ex="ytWa" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🔗</div>
+        <div class="node-text">
+          <h3>Lead llega con contexto del video</h3>
+          <p>El UTM identifica el video antes del primer mensaje del setter</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-yt">YT</span><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node-note">entry_content_id = ID del video · entry_channel = youtube</div>
+  </div>
+</div>
+
+<!-- ══ Setter (convergencia) ══ -->
+<div class="frame" id="f-setter" style="--pc:var(--setter)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Setter · Recibe el lead</span></div>
+  <div class="fb" style="width:280px">
+    <div class="node" data-ex="setterAsign" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">👤</div>
+        <div class="node-text">
+          <h3>Notificación con contexto completo</h3>
+          <p>Canal, keyword/video, recurso enviado y consumido</p>
+        </div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node-note">1 follow-up máximo a 48h si no responde</div>
+  </div>
+</div>
+
+<!-- ══ Setting ══ -->
+<div class="frame" id="f-setting" style="--pc:var(--setting)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Setting · 6 pasos</span></div>
+  <div class="fb" style="width:300px">
+    <div class="node" data-ex="s1" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">👋</div>
+        <div class="node-text"><h3>1 · Apertura</h3><p>Referencia el contenido por el que entró</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="s2" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🔍</div>
+        <div class="node-text"><h3>2 · Discovery</h3><p>¿Consumible? ¿Capital? Calificación directa.</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="s3" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🩹</div>
+        <div class="node-text"><h3>3 · Problema + Consecuencia</h3><p>GAP actual → objetivo. Costo de no moverse.</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="s4" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">💡</div>
+        <div class="node-text"><h3>4 · Solución</h3><p>Empatía → caso similar → micro-consultoría</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="s5" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">📅</div>
+        <div class="node-text"><h3>5 · Pitch + Agenda</h3><p>Best/worst case + "¿mañana o pasado?"</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="s6" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🔁</div>
+        <div class="node-text"><h3>6 · Recordatorio + Handoff</h3><p>24h + 1h antes. Brief completo al closer.</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Pre-Call ══ -->
+<div class="frame" id="f-precall" style="--pc:var(--precall)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Pre-Call</span></div>
+  <div class="fb">
+    <div class="node dec" data-ex="precallDec" tabindex="0" style="margin-bottom:12px">
+      <div class="node-top">
+        <div class="node-icon">🎯</div>
+        <div class="node-text"><h3>¿Fricción del lead?</h3><p>Evalúa la resistencia durante el setting</p></div>
+      </div>
+    </div>
+    <div class="cols2" style="min-width:540px">
+      <div>
+        <div class="col-label" style="--clr:var(--precall)">Push · baja fricción</div>
+        <div class="node" data-ex="push1" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">📞</div>
+            <div class="node-text"><h3>Llamada fría 10-15 min</h3><p>Setter llama para calentar antes del cierre</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+        <div class="node" data-ex="push2" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">📋</div>
+            <div class="node-text"><h3>Guion · 8 secciones</h3><p>Apertura → Contexto → GAP → Solución → Agenda → Objeción</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+        <div class="node" data-ex="push3" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">🎙️</div>
+            <div class="node-text"><h3>Audio post-llamada</h3><p>Resume + link de Calendly confirmado</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="col-label" style="--clr:var(--nutri)">Soft · alta fricción</div>
+        <div class="node" data-ex="soft1" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">🚫</div>
+            <div class="node-text"><h3>Sin llamada fría</h3><p>Solo texto/audio en WhatsApp</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+        <div class="node" data-ex="soft2" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">🎧</div>
+            <div class="node-text"><h3>Audio post-agenda</h3><p>Felicita + explica qué esperar en la llamada</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+        <div class="node" data-ex="soft3" tabindex="0">
+          <div class="node-top">
+            <div class="node-icon">👥</div>
+            <div class="node-text"><h3>Grupo de acceso anticipado</h3><p>Telegram/WA privado — pre-valor 48h antes</p></div>
+          </div>
+          <div class="roles"><span class="badge b-setter">Setter</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Nutrición ══ -->
+<div class="frame" id="f-nutri" style="--pc:var(--nutri)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Nutrición · 3 recursos</span></div>
+  <div class="fb" style="width:300px">
+    <div class="node" data-ex="n1" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🎬</div>
+        <div class="node-text"><h3>Recurso 1 · VSL del avatar</h3><p>Mata: <em>"¿Esto funciona?"</em></p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="n2" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">⭐</div>
+        <div class="node-text"><h3>Recurso 2 · Testimonio mismo punto</h3><p>Mata: <em>"¿Para alguien como YO?"</em></p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="n3" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🩺</div>
+        <div class="node-text"><h3>Recurso 3 · Problema puntual</h3><p>Mata: <em>"¿Entienden MI problema?"</em></p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node" data-ex="n4" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">✅</div>
+        <div class="node-text"><h3>Chequeo 24h antes</h3><p>¿Consumió los recursos? Brief para el closer.</p></div>
+      </div>
+      <div class="roles"><span class="badge b-setter">Setter</span></div>
+    </div>
+    <div class="node-note" style="margin-top:7px">24-48h hasta llamada → todos el mismo día · 4-7 días → uno por día</div>
+  </div>
+</div>
+
+<!-- ══ Llamada ══ -->
+<div class="frame" id="f-llamada" style="--pc:var(--llamada)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Llamada de Cierre</span></div>
+  <div class="fb" style="width:280px">
+    <div class="node" data-ex="ll1" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🎙️</div>
+        <div class="node-text"><h3>Apertura con contexto</h3><p>Closer llega con el brief completo del setter</p></div>
+      </div>
+      <div class="roles"><span class="badge b-closer">Closer</span></div>
+    </div>
+    <div class="node" data-ex="ll2" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🧮</div>
+        <div class="node-text"><h3>Matemática en la cuenta</h3><p>¿Cuánto vale resolver esto? ROI a 12 meses.</p></div>
+      </div>
+      <div class="roles"><span class="badge b-closer">Closer</span></div>
+    </div>
+    <div class="node" data-ex="ll3" tabindex="0">
+      <div class="node-top">
+        <div class="node-icon">🤝</div>
+        <div class="node-text"><h3>Propuesta como pregunta</h3><p>"¿Tiene sentido que trabajemos juntos?"</p></div>
+      </div>
+      <div class="roles"><span class="badge b-closer">Closer</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Cierre ══ -->
+<div class="frame" id="f-cierre" style="--pc:var(--cierre)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Cierre</span></div>
+  <div class="fb">
+    <div class="node dec" data-ex="cierreDec" tabindex="0" style="margin-bottom:12px">
+      <div class="node-top">
+        <div class="node-icon">💰</div>
+        <div class="node-text"><h3>¿Decisión del lead?</h3><p>1 follow-up a 24h máximo</p></div>
+      </div>
+    </div>
+    <div class="cols3" style="min-width:520px">
+      <div class="node" data-ex="cOs" tabindex="0">
+        <div class="node-top">
+          <div class="node-icon">🚀</div>
+          <div class="node-text"><h3>Genesis OS</h3><p>USD 5.000 · 4 meses · Done-With-You</p></div>
+        </div>
+        <div class="node-note" style="margin-top:4px">consumible + capital</div>
+        <div class="roles"><span class="badge b-closer">Closer</span></div>
+      </div>
+      <div class="node" data-ex="cLite" tabindex="0">
+        <div class="node-top">
+          <div class="node-icon">✨</div>
+          <div class="node-text"><h3>Genesis Lite</h3><p>USD 2.000 · Solo en llamada</p></div>
+        </div>
+        <div class="roles"><span class="badge b-closer">Closer</span></div>
+      </div>
+      <div class="node" data-ex="cProx" tabindex="0">
+        <div class="node-top">
+          <div class="node-icon">⏳</div>
+          <div class="node-text"><h3>Próximo ciclo</h3><p>No es el momento · nurture</p></div>
+        </div>
+        <div class="roles"><span class="badge b-setter">Setter</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ Tracking ══ -->
+<div class="frame" id="f-trk" style="--pc:var(--trk)">
+  <div class="fh"><span class="fh-dot"></span><span class="fh-title">Tracking · campos capturados</span></div>
+  <div class="fb" style="width:640px;overflow-x:auto">
+    <table class="trk-tbl">
+      <tr><th>Campo</th><th>Qué captura</th><th>Fase</th></tr>
+      <tr><td>entry_keyword</td><td>Keyword que disparó el flujo</td><td class="trk-ph" style="--pc:var(--ig)">Entrada</td></tr>
+      <tr><td>entry_content_id</td><td>ID del reel, historia o video de YT</td><td class="trk-ph" style="--pc:var(--ig)">Entrada</td></tr>
+      <tr><td>entry_channel</td><td>ig_reel / ig_bio / youtube</td><td class="trk-ph" style="--pc:var(--ig)">Entrada</td></tr>
+      <tr><td>subavatar</td><td>Perfil específico del lead</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>pain</td><td>Intensidad del dolor 1-10</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>pain_phrase</td><td>Frase exacta del lead describiendo su problema</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>objetivo</td><td>Meta declarada en la conversación</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>situacion_actual</td><td>Dónde está hoy el lead</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>gap</td><td>Brecha calculada actual → objetivo</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>calificado</td><td>sí / no / pendiente</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>agenda</td><td>Fecha y hora de la llamada agendada</td><td class="trk-ph" style="--pc:var(--setting)">Setting</td></tr>
+      <tr><td>pre_call_tipo</td><td>push / soft</td><td class="trk-ph" style="--pc:var(--precall)">Pre-Call</td></tr>
+      <tr><td>recursos_enviados</td><td>Lista de recursos enviados</td><td class="trk-ph" style="--pc:var(--nutri)">Nutrición</td></tr>
+      <tr><td>recursos_consumidos</td><td>Cuáles abrió o vio el lead</td><td class="trk-ph" style="--pc:var(--nutri)">Nutrición</td></tr>
+      <tr><td>show_call</td><td>sí / no-show</td><td class="trk-ph" style="--pc:var(--llamada)">Llamada</td></tr>
+      <tr><td>cierre</td><td>genesis_os / genesis_lite / proximo / perdido</td><td class="trk-ph" style="--pc:var(--cierre)">Cierre</td></tr>
+      <tr><td>monto_pagado</td><td>USD efectivos cobrados</td><td class="trk-ph" style="--pc:var(--cierre)">Cierre</td></tr>
+      <tr><td>objecion</td><td>Objeción principal</td><td class="trk-ph" style="--pc:var(--cierre)">Cierre</td></tr>
+      <tr><td>fathom</td><td>Link a la grabación de la llamada</td><td class="trk-ph" style="--pc:var(--cierre)">Cierre</td></tr>
+    </table>
+  </div>
+</div>
+
+</div></div><!-- /world /vp -->
+
+<div id="panel">
+  <div id="panel-head">
+    <div id="panel-phase"></div>
+    <div id="panel-title"></div>
+    <div id="panel-role"></div>
+    <button id="close-btn" aria-label="Cerrar">✕</button>
+  </div>
+  <div id="panel-body"></div>
+</div>
+
+<div id="toolbar">
+  <button class="tbtn" onclick="goFrame('l1-entry')">IG Reel</button>
+  <button class="tbtn" onclick="goFrame('l2-entry')">IG Bio</button>
+  <button class="tbtn" onclick="goFrame('l3-entry')">YouTube</button>
+  <div id="tb-sep"></div>
+  <button class="tbtn" onclick="goFrame('f-setter')">Setter</button>
+  <button class="tbtn" onclick="goFrame('f-setting')">Setting</button>
+  <button class="tbtn" onclick="goFrame('f-precall')">Pre-Call</button>
+  <button class="tbtn" onclick="goFrame('f-nutri')">Nutrición</button>
+  <button class="tbtn" onclick="goFrame('f-llamada')">Llamada</button>
+  <button class="tbtn" onclick="goFrame('f-cierre')">Cierre</button>
+  <div id="tb-sep"></div>
+  <button class="tbtn" onclick="goFrame('f-trk')">Tracking</button>
+  <div id="tb-sep"></div>
+  <button class="tbtn" onclick="fitAll()">↔</button>
+</div>
+<div id="stepper">
+  <button onclick="prevStep()">‹</button>
+  <span id="step-txt">1/1</span>
+  <button onclick="nextStep()">›</button>
+</div>
+<div id="mm"><canvas id="mm-canvas"></canvas></div>
+
+<script>
+// ═══════════════════════════
+// DATA
+// ═══════════════════════════
+const EX={
+  igReel:{phase:"Entrada · IG Reel",title:"Reel con keyword única",role:"auto",
+    what:"Cada reel tiene un CTA con una palabra clave única. El lead la escribe en el DM y ManyChat lo detecta automáticamente. El recurso prometido en el reel es lo primero que recibe.",
+    rule:"Cada pieza de contenido tiene su propia keyword. Nunca compartir keywords entre reels. El recurso debe ser específico del dolor de ese reel (ej. 'Escribime CUENTA' para el reel del CPA).",
+    setup:`Configuración ManyChat:
+• Trigger: Mensaje contiene [PALABRA CLAVE]
+• Acción 1: Registrar entry_keyword + entry_content_id + entry_channel = "ig_reel"
+• Acción 2: Enviar recurso prometido en el reel (PDF / video / calculadora)
+• Acción 3: Notificar al setter con contexto completo del reel`},
+  igBio:{phase:"Entrada · IG Bio",title:"Bio · keyword SUSCRIPCIONES",role:"auto",
+    what:"La bio de Instagram tiene el CTA 'Escribime SUSCRIPCIONES'. Es la puerta de entrada para quien ya siguió a Manu y quiere saber cómo funciona el modelo. Lead más caliente que el reel.",
+    rule:"Keyword fija: SUSCRIPCIONES · entry_channel = ig_bio · entry_content_id = ig_bio_cta",
+    setup:`Configuración ManyChat:
+• Trigger: Mensaje contiene SUSCRIPCIONES
+• Registrar entry_channel = "ig_bio"
+• Enviar Cuenta del CPA de Suscripciones (PDF/calculadora)
+• Pregunta de cualificación: ¿Qué consumible vendés?
+• Notificar setter con flag de lead caliente`},
+  ytEntrada:{phase:"Entrada · YouTube",title:"YouTube · UTM por video",role:"yt",
+    what:"Cada video tiene en la descripción un link único con UTM que lleva a WhatsApp. Los 10 videos de la biblioteca cubren TOF/MOF/BOF. El setter sabe exactamente qué video vio el lead antes del primer mensaje.",
+    rule:"Un UTM por video. Nunca reutilizar el mismo link. Biblioteca: YT-1 (caso Herbora), YT-2 (caso Lopo), YT-3 (método B.A.S.E.), YT-4 (churn), YT-5 (matemática), YT-6 (Argentina sí), YT-7 (mentoría vs sistema), YT-8 (Gonza), YT-9 (suscripciones), YT-10 (piso).",
+    setup:`Link en la descripción del video:
+wa.me/5491XXXXXXX?text=Hola+vi+tu+video+sobre+[TEMA]
+
+UTMs sugeridos:
+?utm_source=youtube&utm_medium=organic&utm_content=yt-[NÚMERO]-[SLUG]
+
+El setter ve entry_content_id antes de responder. El lead llega con contexto.`},
+  mcDetect:{phase:"ManyChat · IG Reel",title:"Detección de keyword",role:"auto",
+    what:"ManyChat detecta la keyword y registra: entry_keyword, entry_content_id, entry_channel. Luego envía el recurso prometido y hace la primera pregunta de calificación.",
+    rule:"Todo lead de IG Reel debe tener los 3 campos completos antes de pasar al setter. Sin keyword registrada → no asignar.",
+    text:`[Respuesta automática inmediata]
+
+¡Hola! 👋 Gracias por escribir.
+
+Acá te mando lo que pediste 👇
+
+[RECURSO DEL REEL — PDF / calculadora / video]
+
+¿Lo pudiste abrir? Avisáme cuando lo hayas visto 🙌
+
+Y mientras tanto: ¿qué producto consumible vendés actualmente?`},
+  mcDetectBio:{phase:"ManyChat · IG Bio",title:"Detección SUSCRIPCIONES",role:"auto",
+    what:"ManyChat detecta 'SUSCRIPCIONES' y registra entry_channel = ig_bio. Lead caliente: ya consume contenido de Manu y preguntó activamente.",
+    rule:"entry_keyword = SUSCRIPCIONES · entry_channel = ig_bio · entry_content_id = ig_bio_cta",
+    text:`[Respuesta automática bio]
+
+¡Hola! 👋 Qué bueno que escribiste.
+
+Te mando la Cuenta del CPA de Suscripciones para que entiendas la matemática del modelo 👇
+
+[LINK AL RECURSO PRINCIPAL]
+
+Una pregunta rápida mientras lo revisás:
+¿Qué consumible vendés y cuánto es tu margen por pedido aproximadamente?`},
+  mcResource:{phase:"ManyChat · IG Reel",title:"Calificación inicial",role:"auto",
+    text:`Mientras lo revisás, te hago dos preguntas rápidas:
+
+1️⃣ ¿Qué consumible vendés? (suplemento, cosmético, café, proteína, etc.)
+
+2️⃣ ¿Cuántos pedidos nuevos recibís por mes aproximadamente?
+
+(No necesito número exacto, una idea alcanza 🙌)`},
+  mcResourceBio:{phase:"ManyChat · IG Bio",title:"Recurso de bienvenida bio",role:"auto",
+    text:`Acá está la Cuenta del CPA 👇
+
+[LINK A LA CUENTA DEL CPA]
+
+Calculá cuánto te costaría conseguir un suscriptor versus lo que vale su LTV.
+
+Una pregunta: ¿hace cuánto vendés ese consumible y cuánto es tu margen por pedido?`},
+  mcCal:{phase:"ManyChat · Calificación",title:"¿Responde? ¿Califica?",role:"auto",
+    rule:`✅ Vende consumible con ciclo de reposición ≤30 días → calificado
+✅ Tiene capital para invertir (o está cerca) → calificado
+❌ Producto sin recurrencia (ropa, tecnología, etc.) → no calificado → nurture
+❌ No tiene producto todavía → no calificado → nurture
+→ Si califica en ambos: notificar setter inmediatamente`},
+  ytWa:{phase:"YouTube · WhatsApp",title:"Lead llega por UTM del video",role:"setter",
+    what:"El lead llega a WhatsApp con el UTM del video. El setter tiene el contexto completo: qué video vio, qué tema lo interesó. El primer mensaje siempre referencia el video específico.",
+    rule:"Setter responde en máximo 2 horas. El primer mensaje SIEMPRE referencia el video por tema, no por número.",
+    text:`[Primer mensaje del setter]
+
+Hola [NOMBRE] 👋
+
+Vi que llegaste por el video de [TEMA DEL VIDEO — ej. 'cómo Herbora pasó de breakeven a suscripciones'].
+
+Soy [NOMBRE], trabajo con Manu. ¿Querés que te cuente cómo lo estamos aplicando con otros dueños de consumibles?`},
+  setterAsign:{phase:"Setter · Asignación",title:"Setter recibe el lead",role:"setter",
+    rule:"Responder en máximo 2 horas. Si es lead de IG Bio → prioritario, ya es caliente. Verificar subavatar antes de abrir el setting.",
+    text:`[Notificación interna para el setter]
+
+🔔 Nuevo lead asignado
+
+📌 Keyword / UTM: [KEYWORD o VIDEO_ID]
+📺 Contenido: [NOMBRE DEL REEL / VIDEO]
+📱 Canal: [IG_REEL / IG_BIO / YOUTUBE]
+📦 Producto mencionado: [CONSUMIBLE]
+📎 Recurso enviado: [SÍ/NO — cuál]
+👤 Usuario: @[HANDLE]
+
+Subavatar probable:
+S1 (marca en breakeven) · S2 (tratamiento/cosmético) · S3 (importador/MercadoLibre)`},
+  s1:{phase:"Setting · Paso 1",title:"Apertura con contexto",role:"setter",
+    rule:"Siempre mencionar el contenido o el producto específico. Nunca abrir con mensaje genérico. Si entró por YouTube → referenciar el tema del video.",
+    text:`Hola [NOMBRE] 👋
+
+Vi que te interesó [el reel / el video] sobre [TEMA].
+
+Trabajo con Manu — ayudamos a dueños de consumibles a construir un piso de facturación mensual con suscripciones.
+
+¿Qué consumible vendés vos?`},
+  s2:{phase:"Setting · Paso 2",title:"Discovery · producto + situación",role:"setter",
+    rule:"Confirmar: (1) producto consumible con ciclo de reposición, (2) tiene pedidos activos, (3) está dispuesto a invertir. Sin los tres → no calificado.",
+    text:`Te hago un par de preguntas rápidas para ver si tiene sentido que hablemos:
+
+1️⃣ ¿Cuántos pedidos nuevos recibís por mes y cuánto es tu margen promedio?
+
+2️⃣ ¿Cuántos de esos clientes te volvieron a comprar en los últimos 3 meses?
+
+(Con esos dos números ya puedo ver si lo que hace Manu aplica a tu caso 🙌)`},
+  s3:{phase:"Setting · Paso 3",title:"Dolor + Consecuencia",role:"setter",
+    rule:"Registrar situacion_actual, objetivo, gap y pain_phrase. La frase exacta del lead es oro — copiarla textual. El GAP es el motor de urgencia.",
+    text:`Entiendo. Y siendo honesto — ¿hace cuánto que no tienen 'un día bueno' en ventas?
+
+¿Qué pasa con los meses donde las campañas no convierten o Meta sube los costos?
+
+¿Cuánto te está costando esa inestabilidad, solo en el último trimestre?`},
+  s4:{phase:"Setting · Paso 4",title:"Solución · B.A.S.E.",role:"setter",
+    rule:"No saltar a esta fase sin haber anclado el dolor primero. Usar un caso de cliente similar al subavatar detectado.",
+    text:`Tiene sentido lo que me contás. Es exactamente el problema que resuelve el Método B.A.S.E.
+
+[S1 / breakeven]: "Herbora tenía la misma situación — una marca de suplementos en breakeven. Hoy tiene 300+ suscriptores activos y factura diferente todos los meses."
+
+[S2 / tratamiento]: "Teníamos un cliente con una crema para hongos — no creía que se pudiera suscribir. Hoy tiene un piso de facturación mensual con sus suscriptores."
+
+[S3 / importador]: "Lopo importaba y vendía por MercadoLibre. 48 minutos de llamada, cerró en el momento."
+
+¿Querés que Manu te muestre en 30 minutos si el B.A.S.E. aplica a tu negocio?`},
+  s5:{phase:"Setting · Paso 5",title:"Pitch + Agenda",role:"setter",
+    rule:"Nunca preguntar 'cuándo tenés tiempo'. Dar exactamente dos opciones concretas. Peor/mejor caso siempre antes de preguntar.",
+    text:`Peor caso: salís de la llamada con claridad de qué tenés que hacer para construir ese piso.
+Mejor caso: encontramos la forma de trabajar juntos.
+
+¿Te queda mejor mañana o pasado?
+Manu tiene lugar a las [HORA] o [HORA].
+
+[Link de Calendly]: [LINK DE CALENDLY]`},
+  s6:{phase:"Setting · Paso 6",title:"Recordatorio + Handoff al closer",role:"setter",
+    rule:"Recordatorio 24h + 1h antes. Brief completo al closer antes de la llamada. 1 follow-up máximo a 48h si no confirma.",
+    text:`[Recordatorio 24h antes]
+Hola [NOMBRE] 👋 Confirmo tu llamada con Manu mañana a las [HORA]. ¿Seguís?
+
+[Recordatorio 1h antes]
+En 1 hora arranca tu llamada con Manu. ¿Estás listo?
+
+---
+[Brief al closer — INTERNO]
+👤 Lead: [NOMBRE] | @[HANDLE]
+📌 Entró por: [KEYWORD/VIDEO]
+📦 Consumible: [PRODUCTO + MARGEN]
+🧩 Subavatar: [S1/S2/S3]
+💬 Dolor exacto: "[PAIN_PHRASE]"
+🎯 Objetivo: [OBJETIVO]
+📊 GAP: [GAP] pedidos/mes · $[MONTO]/mes
+📎 Recursos consumidos: [CUÁLES]
+⚡ Precall: [PUSH/SOFT]`},
+  precallDec:{phase:"Pre-Call · Decisión",title:"¿Qué tanta fricción tiene el lead?",role:"setter",
+    rule:`Baja fricción = responde rápido, pregunta activo, habló de números → Push
+Alta fricción = respuestas lentas, objección temprana (Argentina, mentoría, producto) → Soft
+En caso de duda: Soft siempre`},
+  push1:{phase:"Pre-Call · Push",title:"Llamada fría 10-15 min",role:"setter",
+    rule:"Máximo 15 min. No vender nada. Solo confirmar, calentar y validar que el dolor sigue vigente.",
+    text:`[Apertura Push]
+
+"Hola [NOMBRE], soy [SETTER], trabajo con Manu. Te llamo rápido para confirmar nuestra llamada del [FECHA].
+
+¿Tenés 10 minutos ahora?
+
+[Si sí]: Perfecto. Solo quería asegurarme de que [PAIN_PHRASE] sigue siendo lo principal para vos antes de que hables con Manu."`},
+  push2:{phase:"Pre-Call · Push",title:"Guion 8 secciones",role:"setter",
+    rule:"Seguir el orden. No saltear secciones. Objección más común: 'en Argentina no se suscribe nadie' → ir a sección 7.",
+    text:`8 SECCIONES:
+1. Apertura (1 min) — rapport rápido, referencia el canal de entrada
+2. Contexto (1 min) — "Manu me pasó tu caso, me comentó que..."
+3. Validación del dolor (2 min) — ¿sigue siendo [PAIN_PHRASE] lo principal?
+4. Amplificación del GAP (2 min) — ¿qué pasa en 6 meses si seguís igual?
+5. Presentación de solución (2 min) — B.A.S.E.: 3 pasos, 4 meses, caso similar
+6. Agenda confirmada (1 min) — "¿seguís para el [FECHA]?"
+7. Manejo de objección si aparece:
+   • "No se suscribe en Argentina" → Herbora / Lopo / Núñez (casos reales)
+   • "Mi producto no es para suscripción" → si tiene reposición ≤30 días, aplica
+   • "Ya pagué mentoría y no me sirvió" → sistema vs mentoría: vos no necesitás aprender, necesitás ejecutar
+8. Cierre (1 min) — mando el link ahora mismo`},
+  push3:{phase:"Pre-Call · Push",title:"Audio post-llamada",role:"setter",
+    text:`[Audio WA post-Push]
+
+"Hola [NOMBRE], te mando un audio para resumir lo que hablamos.
+
+Básicamente confirmamos que [PAIN_PHRASE] sigue siendo lo que más te pesa, y que el objetivo es llegar a [OBJETIVO].
+
+La llamada con Manu es el [FECHA] a las [HORA]. Acá el link por si necesitás cambiarlo: [LINK CALENDLY] 🙌"`},
+  soft1:{phase:"Pre-Call · Soft",title:"Sin llamada fría",role:"setter",
+    rule:"Alta fricción = objección temprana ('en Argentina no funciona', 'ya pagué una mentoría'), respuestas lentas, poco entusiasmo. En duda siempre Soft. No forzar una llamada que el lead no quiere."},
+  soft2:{phase:"Pre-Call · Soft",title:"Audio post-agenda",role:"setter",
+    text:`[Audio post-agenda Soft]
+
+"Hola [NOMBRE], te mando este audio para felicitarte por dar este paso.
+
+Lo que va a pasar en la llamada con Manu es simple: él va a ver tu negocio — el consumible que vendés, cuántos pedidos tenés, cuánto es el margen — y va a ver si el Método B.A.S.E. aplica.
+
+No es una clase, es una conversación. ¡Nos vemos el [FECHA]! 🙌"`},
+  soft3:{phase:"Pre-Call · Soft",title:"Grupo de acceso anticipado",role:"setter",
+    rule:"Acceso solo por 48h antes de la llamada. Mostrar resultados reales de clientes actuales.",
+    text:`Manu tiene un grupo privado donde muestra en vivo lo que están haciendo sus clientes actuales con sus consumibles.
+
+¿Querés que te agregue? Es solo hasta la llamada 👇
+
+(Ahí vas a ver la matemática real antes de hablar con él)`},
+  n1:{phase:"Nutrición · Recurso 1",title:"VSL Genesis — el caso real de Manu",role:"setter",
+    rule:`Cadencia:
+• 24-48h hasta la llamada → todos el mismo día espaciados 2-3h
+• 4-7 días → uno por día
+• Más de 7 días → empezar al día 3
+Este recurso mata: "¿Esto funciona?" — mostrar los números reales.`,
+    text:`Mientras esperamos la llamada, te mando algo con contexto.
+
+Es el video donde Manu muestra cómo pasó de tener un e-commerce inestable a facturar más de $275M pesos al mes con 3.943 suscriptores activos y 7,2% de churn.
+
+[LINK AL VSL]
+
+Avisáme cuando lo veas, te voy a dar un dato puntual sobre tu categoría 🙌`},
+  n2:{phase:"Nutrición · Recurso 2",title:"Testimonio del mismo subavatar",role:"setter",
+    text:`También quería mostrarte esto — [NOMBRE DEL CLIENTE] tenía exactamente tu situación: [PAIN_PHRASE similar del mismo subavatar].
+
+Hoy tiene [RESULTADO CONCRETO — ej. "280 suscriptores y un piso de $4M/mes"].
+
+Este es su testimonio: [LINK/VIDEO]
+
+¿Se parece a tu caso? 👇`},
+  n3:{phase:"Nutrición · Recurso 3",title:"Recurso del problema específico",role:"setter",
+    text:`Por último, esto es lo más relevante para tu caso puntual:
+
+[ELEGIR SEGÚN SUBAVATAR]:
+S1 (breakeven) → "La matemática de por qué un consumible en breakeven necesita suscripciones antes de escalar ads"
+S2 (tratamiento) → "Cómo convertir un tratamiento de resultado en suscripción de mantenimiento"
+S3 (importador) → "Cómo construir recurrencia sin depender del algoritmo ni de Mercado Libre"
+
+[LINK]`},
+  n4:{phase:"Nutrición · Chequeo 24h antes",title:"Chequeo y brief",role:"setter",
+    rule:"Sin consumo → reenviar el recurso más corto. Con consumo → preguntar qué rezonó. Brief al closer independientemente.",
+    text:`Hola [NOMBRE] 👋 Mañana a las [HORA] es tu llamada con Manu.
+
+¿Pudiste ver los recursos que te mandé?
+
+[Sin consumo]: "Te los reenvío por las dudas para que tengas contexto antes de hablar con él 👇"
+[Con consumo]: "¿Qué fue lo que más te rezonó de lo que viste?"`},
+  ll1:{phase:"Llamada · Apertura",title:"Apertura con brief completo",role:"closer",
+    rule:"Leer el brief completo antes de la llamada. No improvisar el contexto. Validar que el dolor sigue vigente en los primeros 2 minutos.",
+    text:`"Hola [NOMBRE], ¿cómo estás? Soy [CLOSER], trabajo con Manu.
+
+[SETTER] me comentó que entraste por [CONTENIDO], que vendés [CONSUMIBLE] y que tu mayor desafío hoy es [PAIN_PHRASE].
+
+¿Eso sigue siendo lo más urgente para vos?
+
+[Si sí]: Perfecto, arrancamos por ahí entonces."`},
+  ll2:{phase:"Llamada · Matemática en la cuenta",title:"ROI del consumible",role:"closer",
+    rule:"Los números deben venir del lead. El closer solo hace las preguntas. Con los números del B.A.S.E.: 30K margen → 90K con suscripción → 75K piso operativo.",
+    text:`"Decime una cosa — si tuvieras 300 suscriptores activos comprando cada 30 días al mismo margen que tenés hoy, ¿qué significa eso en dinero al mes?
+
+[Esperar — el lead hace el cálculo]
+
+Y si no construís ese piso en los próximos 4 meses, ¿qué pasa con tu negocio en un mal mes de Meta o en temporada baja?
+
+[Esperar]
+
+Entonces construir ese piso vale [X] para vos. ¿Suena correcto?"`},
+  ll3:{phase:"Llamada · Propuesta",title:"Genesis OS como pregunta",role:"closer",
+    rule:"Genesis OS primero SIEMPRE. Genesis Lite solo si hay objección real de capital — nunca proactivamente. Objección 'ya pagué mentoría' → diferencia sistema vs mentoría.",
+    text:`"Lo que hace Manu es trabajar con vos durante 4 meses en el Método B.A.S.E. — se llama Genesis OS.
+
+No es una mentoría donde aprendés y ejecutás solo. Es Done-With-You: construímos el sistema con vos, en tu tienda, con tus productos.
+
+Los 3 pasos:
+1. De pedido a suscriptor — tu primer flujo de suscripciones activo
+2. Migración sin frenar — tus clientes actuales migran sin bajar las ventas
+3. Piso de facturación — el sistema queda en piloto automático
+
+La inversión es USD 5.000.
+
+Teniendo en cuenta que ese piso vale [MONTO que el lead calculó], ¿tiene sentido que trabajemos juntos?"`},
+  cierreDec:{phase:"Cierre · Decisión",title:"¿Decisión del lead?",role:"closer",
+    rule:"1 follow-up a 24h máximo por el closer. Sin respuesta → próximo ciclo y nutrir. No insistir más de 1 vez."},
+  cOs:{phase:"Cierre · Genesis OS",title:"Genesis OS — USD 5.000",role:"closer",
+    rule:"Califica: tiene consumible con ciclo de reposición ≤30 días + capital disponible. 4 meses Done-With-You. Opciones de pago: PIF / 2×2.850 / 3×2.000 (con recargo).",
+    text:`"Perfecto. Los próximos pasos:
+
+1. Te mando el link de pago ahora mismo
+2. Una vez procesado, Manu te agenda el kickoff (esta semana)
+3. Empezamos el B.A.S.E. — Paso 1: tu primer flujo de suscriptores
+
+Opciones de pago:
+• PIF: USD 5.000
+• 2 cuotas: 2 × USD 2.850
+• 3 cuotas: 3 × USD 2.000
+
+¿Con cuál te queda mejor?
+
+[Link de pago]: [LINK DE PAGO]"`},
+  cLite:{phase:"Cierre · Genesis Lite",title:"Genesis Lite — USD 2.000",role:"closer",
+    rule:"Ofrecer SOLO si: quiere trabajar con Manu, el consumible califica, pero el capital es el freno real y genuino. NUNCA comunicado públicamente. NUNCA ofrecerlo primero.",
+    text:`"Manu tiene una opción de entrada — Genesis Lite.
+
+Es USD 2.000. No es el programa completo, pero es el primer paso si el capital es el freno real ahora.
+
+Con Genesis Lite trabajamos el Paso 1 del B.A.S.E. — tu primer flujo de suscriptores activo.
+
+¿Eso te da más posibilidad de arrancar?
+
+[Link de pago Lite]: [LINK DE PAGO LITE]"`},
+  cProx:{phase:"Cierre · Próximo ciclo",title:"No es el momento — nurture",role:"setter",
+    rule:"No insistir. 1 follow-up a 24h máximo. Registrar objección + fecha estimada + pasar a secuencia de nurture de largo plazo.",
+    text:`"Entiendo perfectamente. No es el momento correcto y lo respeto.
+
+¿Cuándo creés que estarías en mejor posición? ¿3 meses? ¿6 meses?
+
+[Registrar fecha estimada → pasar a nurture de largo plazo]
+
+Mientras tanto te voy a ir mandando contenido de Manu para que cuando sea el momento, llegues con todo el contexto."`}
+};
+
+const RL={auto:'🤖 ManyChat / Auto',setter:'👤 Setter',closer:'🎯 Closer',manu:'🧑‍💼 Manu',yt:'▶️ YouTube'};
+const RC={auto:'b-auto',setter:'b-setter',closer:'b-closer',manu:'b-manu',yt:'b-yt'};
+
+const FC={
+  'l1-entry':'--ig','l1-mc':'--mc',
+  'l2-entry':'--bio','l2-mc':'--bio',
+  'l3-entry':'--yt','l3-wa':'--yt',
+  'f-setter':'--setter','f-setting':'--setting',
+  'f-precall':'--precall','f-nutri':'--nutri',
+  'f-llamada':'--llamada','f-cierre':'--cierre','f-trk':'--trk'
+};
+
+const WIRE_DEFS=[
+  {from:'l1-entry',  fromSide:'right',to:'l1-mc',    toSide:'left',  ca:'--ig',    cb:'--mc'},
+  {from:'l2-entry',  fromSide:'right',to:'l2-mc',    toSide:'left',  ca:'--bio',   cb:'--bio'},
+  {from:'l3-entry',  fromSide:'right',to:'l3-wa',    toSide:'left',  ca:'--yt',    cb:'--yt'},
+  {from:'l1-mc',     fromSide:'right',to:'f-setter', toSide:'left',  ca:'--mc',    cb:'--setter'},
+  {from:'l2-mc',     fromSide:'right',to:'f-setter', toSide:'left',  ca:'--bio',   cb:'--setter'},
+  {from:'l3-wa',     fromSide:'right',to:'f-setter', toSide:'left',  ca:'--yt',    cb:'--setter'},
+  {from:'f-setter',  fromSide:'right',to:'f-setting',toSide:'left',  ca:'--setter',cb:'--setting'},
+  {from:'f-setting', fromSide:'right',to:'f-precall',toSide:'left',  ca:'--setting',cb:'--precall'},
+  {from:'f-precall', fromSide:'right',to:'f-nutri',  toSide:'left',  ca:'--precall',cb:'--nutri'},
+  {from:'f-nutri',   fromSide:'right',to:'f-llamada',toSide:'left',  ca:'--nutri', cb:'--llamada'},
+  {from:'f-llamada', fromSide:'right',to:'f-cierre', toSide:'left',  ca:'--llamada',cb:'--cierre'},
+  {from:'f-cierre',  fromSide:'right',to:'f-trk',    toSide:'left',  ca:'--cierre',cb:'--trk'},
+];
+
+// ═══════════════════════════
+// CANVAS
+// ═══════════════════════════
+const vp=document.getElementById('vp');
+const world=document.getElementById('world');
+let tx=60,ty=60,sc=0.5;
+
+function setT(x,y,s){
+  tx=x;ty=y;sc=s;
+  world.style.transform=`translate(${x}px,${y}px) scale(${s})`;
+  // move dot grid with canvas
+  const gs=24*s;
+  const ox=((x%gs)+gs)%gs, oy=((y%gs)+gs)%gs;
+  vp.style.backgroundPosition=`${ox}px ${oy}px`;
+  vp.style.backgroundSize=`${gs}px ${gs}px`;
+  drawWires();drawMinimap();
+}
+
+function fr(id){return document.getElementById(id)}
+function rect(id){
+  const el=fr(id);if(!el) return null;
+  return{x:parseFloat(el.style.left)||0,y:parseFloat(el.style.top)||0,w:el.offsetWidth,h:el.offsetHeight};
+}
+function anchor(id,side){
+  const r=rect(id);if(!r) return null;
+  if(side==='right') return{x:r.x+r.w,y:r.y+r.h/2};
+  if(side==='left')  return{x:r.x,    y:r.y+r.h/2};
+  if(side==='top')   return{x:r.x+r.w/2,y:r.y};
+  if(side==='bottom')return{x:r.x+r.w/2,y:r.y+r.h};
+  return null;
+}
+
+// ═══════════════════════════
+// LAYOUT
+// ═══════════════════════════
+function pl(id,x,y){const el=fr(id);if(el){el.style.left=x+'px';el.style.top=y+'px';}}
+function gh(id){return fr(id)?.offsetHeight||220}
+function gw(id){return fr(id)?.offsetWidth||280}
+
+function layout(){
+  const GH=70, GL=50; // gap horizontal between lane frames, gap lane vertical
+  const hL1=Math.max(gh('l1-entry'),gh('l1-mc'));
+  const hL2=Math.max(gh('l2-entry'),gh('l2-mc'));
+  const hL3=Math.max(gh('l3-entry'),gh('l3-wa'));
+  const X0=100;
+  const y1=60;
+  const y2=y1+hL1+GL;
+  const y3=y2+hL2+GL;
+
+  // Lane frames
+  pl('l1-entry',X0,y1); pl('l1-mc',X0+gw('l1-entry')+GH,y1);
+  pl('l2-entry',X0,y2); pl('l2-mc',X0+gw('l2-entry')+GH,y2);
+  pl('l3-entry',X0,y3); pl('l3-wa',X0+gw('l3-entry')+GH,y3);
+
+  // Lane strip backgrounds
+  const PAD=20,LPAD=70;
+  const rm=Math.max(X0+gw('l1-entry')+GH+gw('l1-mc'),X0+gw('l2-entry')+GH+gw('l2-mc'),X0+gw('l3-entry')+GH+gw('l3-wa'));
+  setStrip('ls1','lt1',X0-LPAD,y1-PAD,rm-X0+LPAD+PAD,hL1+PAD*2,'var(--ig)');
+  setStrip('ls2','lt2',X0-LPAD,y2-PAD,rm-X0+LPAD+PAD,hL2+PAD*2,'var(--bio)');
+  setStrip('ls3','lt3',X0-LPAD,y3-PAD,rm-X0+LPAD+PAD,hL3+PAD*2,'var(--yt)');
+
+  // Setter: centered between all lanes
+  const totalH=(y3+hL3)-y1;
+  const cy=y1+totalH/2;
+  const sx=rm+110;
+  const sy=cy-gh('f-setter')/2;
+  pl('f-setter',sx,sy);
+
+  // Shared flow
+  const sharedCY=sy+gh('f-setter')/2;
+  let cx=sx+gw('f-setter')+70;
+  ['f-setting','f-precall','f-nutri','f-llamada','f-cierre','f-trk'].forEach(id=>{
+    pl(id,cx,sharedCY-gh(id)/2);
+    cx+=gw(id)+70;
+  });
+  drawWires();drawMinimap();
+}
+
+function setStrip(sid,lid,x,y,w,h,color){
+  const s=fr(sid),l=fr(lid);
+  if(s){s.style.left=x+'px';s.style.top=y+'px';s.style.width=w+'px';s.style.height=h+'px';}
+  if(l){
+    l.style.left=(x+10)+'px';
+    l.style.top=(y+h/2-8)+'px';
+  }
+}
+
+// ═══════════════════════════
+// WIRES
+// ═══════════════════════════
+function drawWires(){
+  const svg=document.getElementById('wires');
+  svg.innerHTML='';
+  const st=getComputedStyle(document.documentElement);
+  const frames=[...document.querySelectorAll('.frame')];
+  let mw=0,mh=0;
+  frames.forEach(f=>{
+    const r=parseFloat(f.style.left||0)+f.offsetWidth;
+    const b=parseFloat(f.style.top||0)+f.offsetHeight;
+    if(r>mw)mw=r;if(b>mh)mh=b;
+  });
+  svg.setAttribute('width',mw+200);svg.setAttribute('height',mh+200);
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  svg.appendChild(defs);
+
+  WIRE_DEFS.forEach((w,i)=>{
+    const a=anchor(w.from,w.fromSide),b=anchor(w.to,w.toSide);
+    if(!a||!b) return;
+    const c1=st.getPropertyValue(w.ca).trim()||'#555';
+    const c2=st.getPropertyValue(w.cb).trim()||'#555';
+
+    // Gradient
+    const gid='wg'+i;
+    const g=document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+    g.setAttribute('id',gid);g.setAttribute('gradientUnits','userSpaceOnUse');
+    g.setAttribute('x1',a.x);g.setAttribute('y1',a.y);g.setAttribute('x2',b.x);g.setAttribute('y2',b.y);
+    const s1=document.createElementNS('http://www.w3.org/2000/svg','stop');
+    s1.setAttribute('offset','0%');s1.setAttribute('stop-color',c1);
+    const s2=document.createElementNS('http://www.w3.org/2000/svg','stop');
+    s2.setAttribute('offset','100%');s2.setAttribute('stop-color',c2);
+    g.appendChild(s1);g.appendChild(s2);defs.appendChild(g);
+
+    // Arrow
+    const mid=document.createElementNS('http://www.w3.org/2000/svg','marker');
+    const mId='ma'+i;
+    mid.setAttribute('id',mId);mid.setAttribute('markerWidth','8');mid.setAttribute('markerHeight','8');
+    mid.setAttribute('refX','6');mid.setAttribute('refY','3');mid.setAttribute('orient','auto');
+    const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    poly.setAttribute('points','0 0, 7 3, 0 6');
+    poly.setAttribute('fill',c2);poly.setAttribute('fill-opacity','0.75');
+    mid.appendChild(poly);defs.appendChild(mid);
+
+    // Path
+    const dx=Math.abs(b.x-a.x),dy=Math.abs(b.y-a.y);
+    const cx1=a.x+dx*.55,cy1=a.y;
+    const cx2=b.x-dx*.55,cy2=b.y;
+    const d=`M${a.x},${a.y} C${cx1},${cy1} ${cx2},${cy2} ${b.x},${b.y}`;
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',d);
+    path.setAttribute('stroke',`url(#${gid})`);
+    path.setAttribute('stroke-width','2.5');
+    path.setAttribute('fill','none');
+    path.setAttribute('stroke-opacity','0.55');
+    path.setAttribute('marker-end',`url(#${mId})`);
+    svg.appendChild(path);
+  });
+}
+
+// ═══════════════════════════
+// PAN & ZOOM
+// ═══════════════════════════
+let dragging=false,px=0,py=0,stx=0,sty=0;
+const MIN=.07,MAX=2.2;
+
+vp.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.node,.tbtn,#panel,#stepper,#mm')) return;
+  dragging=true;px=e.clientX;py=e.clientY;stx=tx;sty=ty;
+  vp.classList.add('dragging');vp.setPointerCapture(e.pointerId);
+});
+vp.addEventListener('pointermove',e=>{if(!dragging) return;setT(stx+(e.clientX-px),sty+(e.clientY-py),sc);});
+vp.addEventListener('pointerup',()=>{dragging=false;vp.classList.remove('dragging');});
+vp.addEventListener('wheel',e=>{
+  e.preventDefault();
+  const f=e.deltaY<0?1.09:1/1.09,ns=Math.max(MIN,Math.min(MAX,sc*f));
+  setT(e.clientX-(e.clientX-tx)*(ns/sc),e.clientY-(e.clientY-ty)*(ns/sc),ns);
+},{passive:false});
+
+let tc2=[],ld=0;
+vp.addEventListener('touchstart',e=>{tc2=[...e.touches];if(e.touches.length===2)ld=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);},{passive:true});
+vp.addEventListener('touchmove',e=>{
+  if(e.touches.length===2){e.preventDefault();
+    const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    const f=d/ld;ld=d;
+    const mx=(e.touches[0].clientX+e.touches[1].clientX)/2,my=(e.touches[0].clientY+e.touches[1].clientY)/2;
+    const ns=Math.max(MIN,Math.min(MAX,sc*f));
+    setT(mx-(mx-tx)*(ns/sc),my-(my-ty)*(ns/sc),ns);}
+},{passive:false});
+
+// ═══════════════════════════
+// NAV
+// ═══════════════════════════
+function animTo(tx2,ty2,sc2){
+  const dur=360,start=performance.now(),sx=tx,sy=ty,ss=sc;
+  function step(now){
+    const t=Math.min(1,(now-start)/dur),e=1-Math.pow(1-t,3);
+    setT(sx+(tx2-sx)*e,sy+(ty2-sy)*e,ss+(sc2-ss)*e);
+    if(t<1)requestAnimationFrame(step);
+  }requestAnimationFrame(step);
+}
+function goFrame(id){
+  const el=fr(id);if(!el) return;
+  const vw=vp.offsetWidth,vh=vp.offsetHeight;
+  const ns=Math.max(MIN,Math.min(.92,Math.min((vw-80)/el.offsetWidth,(vh-120)/el.offsetHeight)));
+  const fl=parseFloat(el.style.left)||0,ft=parseFloat(el.style.top)||0;
+  animTo(vw/2-(fl+el.offsetWidth/2)*ns,vh/2-(ft+el.offsetHeight/2)*ns,ns);
+}
+function fitAll(){
+  const frames=[...document.querySelectorAll('.frame,.lane-strip')].filter(f=>f.offsetWidth>0);
+  if(!frames.length) return;
+  const xs=frames.map(f=>parseFloat(f.style.left)||0);
+  const ys=frames.map(f=>parseFloat(f.style.top)||0);
+  const minX=Math.min(...xs),minY=Math.min(...ys);
+  const maxX=Math.max(...frames.map((f,i)=>xs[i]+f.offsetWidth));
+  const maxY=Math.max(...frames.map((f,i)=>ys[i]+f.offsetHeight));
+  const vw=vp.offsetWidth,vh=vp.offsetHeight;
+  const fsc=Math.max(MIN,Math.min(.55,(vw-80)/(maxX-minX),(vh-130)/(maxY-minY)));
+  animTo(vw/2-(minX+(maxX-minX)/2)*fsc,vh/2-(minY+(maxY-minY)/2)*fsc,fsc);
+}
+
+// ═══════════════════════════
+// STEPPER
+// ═══════════════════════════
+let STEPS=[],cur=0;
+function buildSteps(){
+  STEPS=[];
+  const order=['l1-entry','l1-mc','l2-entry','l2-mc','l3-entry','l3-wa',
+               'f-setter','f-setting','f-precall','f-nutri','f-llamada','f-cierre','f-trk'];
+  order.forEach(id=>{
+    const f=fr(id);if(!f) return;
+    f.querySelectorAll('.node').forEach(n=>STEPS.push({el:n,frame:f,ex:n.dataset.ex}));
+  });
+  STEPS.forEach((s,i)=>s.el.dataset.step=i);
+  document.getElementById('step-txt').textContent=`1/${STEPS.length}`;
+}
+function goStep(i){
+  if(!STEPS.length) return;
+  cur=Math.max(0,Math.min(STEPS.length-1,i));
+  document.getElementById('step-txt').textContent=`${cur+1}/${STEPS.length}`;
+  const s=STEPS[cur];goFrame(s.frame.id);
+  setTimeout(()=>openPanel(s.ex),350);
+}
+function nextStep(){goStep(cur+1);}
+function prevStep(){goStep(cur-1);}
+
+// ═══════════════════════════
+// PANEL
+// ═══════════════════════════
+const panel=document.getElementById('panel');
+const panelBody=document.getElementById('panel-body');
+
+function openPanel(key){
+  if(!key) return;
+  const ex=EX[key];if(!ex) return;
+  const node=document.querySelector(`[data-ex="${key}"]`);
+  const f=node?.closest('.frame');
+  if(f) panel.style.setProperty('--pc',`var(${FC[f.id]||'--setter'})`);
+  document.getElementById('panel-phase').textContent=ex.phase||'';
+  document.getElementById('panel-title').textContent=ex.title||'';
+  const rEl=document.getElementById('panel-role');
+  rEl.innerHTML=ex.role?`<span class="badge ${RC[ex.role]||'b-setter'}" style="font-size:11px;padding:3px 9px">${RL[ex.role]||ex.role}</span>`:'';
+  let html='';
+  if(ex.what) html+=`<h4>¿Qué es?</h4><p>${ex.what}</p>`;
+  if(ex.rule) html+=`<h4>Regla</h4><div class="rule">${ex.rule.replace(/\n/g,'<br>')}</div>`;
+  if(ex.setup) html+=`<h4>Configuración</h4><div class="script">${ex.setup}</div>`;
+  if(ex.text) html+=`<h4>Script / Mensaje</h4><div class="script">${ex.text}</div>`;
+  panelBody.innerHTML=html;
+  panel.classList.add('open');
+}
+
+document.getElementById('close-btn').addEventListener('click',()=>panel.classList.remove('open'));
+document.addEventListener('click',e=>{
+  const n=e.target.closest('.node');if(n?.dataset.ex) openPanel(n.dataset.ex);
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.closest('.node')){e.preventDefault();openPanel(e.target.closest('.node').dataset.ex);}
+  if(e.key==='Escape') panel.classList.remove('open');
+  if(e.key==='ArrowRight') nextStep();
+  if(e.key==='ArrowLeft') prevStep();
+});
+
+// ═══════════════════════════
+// MINIMAP
+// ═══════════════════════════
+function drawMinimap(){
+  const mmEl=document.getElementById('mm');
+  const canvas=document.getElementById('mm-canvas');
+  const ctx=canvas.getContext('2d');
+  const DPR=window.devicePixelRatio||1;
+  const W=mmEl.offsetWidth*DPR,H=mmEl.offsetHeight*DPR;
+  canvas.width=W;canvas.height=H;
+  const frames=[...document.querySelectorAll('.frame')].filter(f=>f.offsetWidth>0);
+  const strips=[...document.querySelectorAll('.lane-strip')].filter(s=>s.offsetWidth>0);
+  if(!frames.length) return;
+  const all=[...frames,...strips];
+  const xs=all.map(f=>parseFloat(f.style.left)||0);
+  const ys=all.map(f=>parseFloat(f.style.top)||0);
+  const minX=Math.min(...xs),minY=Math.min(...ys);
+  const maxX=Math.max(...all.map((f,i)=>xs[i]+f.offsetWidth));
+  const maxY=Math.max(...all.map((f,i)=>ys[i]+f.offsetHeight));
+  const ww=maxX-minX||1,wh=maxY-minY||1;
+  const msc=Math.min(W/ww,H/wh)*.86;
+  const ox=(W-ww*msc)/2,oy=(H-wh*msc)/2;
+  ctx.clearRect(0,0,W,H);
+  const st=getComputedStyle(document.documentElement);
+  frames.forEach(f=>{
+    const cv=FC[f.id]||'--fg3';
+    const color=st.getPropertyValue(cv).trim()||'#555';
+    const x=(parseFloat(f.style.left||0)-minX)*msc+ox;
+    const y=(parseFloat(f.style.top||0)-minY)*msc+oy;
+    ctx.fillStyle=color+'25';ctx.strokeStyle=color+'70';ctx.lineWidth=.8;
+    ctx.beginPath();ctx.roundRect(x,y,f.offsetWidth*msc,f.offsetHeight*msc,2);ctx.fill();ctx.stroke();
+  });
+  const vw=vp.offsetWidth,vh=vp.offsetHeight;
+  const vx=(-tx/sc-minX)*msc+ox,vy=(-ty/sc-minY)*msc+oy;
+  ctx.strokeStyle='rgba(255,255,255,.5)';ctx.lineWidth=1.5;
+  ctx.strokeRect(vx,vy,(vw/sc)*msc,(vh/sc)*msc);
+}
+
+document.getElementById('mm').addEventListener('click',e=>{
+  const r=document.getElementById('mm').getBoundingClientRect();
+  const mx=(e.clientX-r.left)/r.width,my=(e.clientY-r.top)/r.height;
+  const frames=[...document.querySelectorAll('.frame,.lane-strip')].filter(f=>f.offsetWidth>0);
+  if(!frames.length) return;
+  const xs=frames.map(f=>parseFloat(f.style.left)||0),ys=frames.map(f=>parseFloat(f.style.top)||0);
+  const minX=Math.min(...xs),minY=Math.min(...ys);
+  const maxX=Math.max(...frames.map((f,i)=>xs[i]+f.offsetWidth));
+  const maxY=Math.max(...frames.map((f,i)=>ys[i]+f.offsetHeight));
+  animTo(vp.offsetWidth/2-(minX+(maxX-minX)*mx)*sc,vp.offsetHeight/2-(minY+(maxY-minY)*my)*sc,sc);
+});
+
+// ═══════════════════════════
+// INIT
+// ═══════════════════════════
+window.addEventListener('load',()=>{
+  layout();buildSteps();
+  setTimeout(fitAll,150);
+});
+window.addEventListener('resize',()=>{drawWires();drawMinimap();});
+</script>
